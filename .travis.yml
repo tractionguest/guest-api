@@ -3,7 +3,7 @@ git:
   depth: false
 branches:
   except:
-    - /^*v[0-9]/
+    - /^v[0-9].*/
   only:
     - master
 

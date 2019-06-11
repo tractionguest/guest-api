@@ -11,4 +11,5 @@ before_install:
 
 script:
   - ./openapi-generator.sh validate -i openapi.yml
+  - export API_VERSION=`cat openapi.yml | shyaml get-value info.version`
   - ./build-scripts/dart.sh

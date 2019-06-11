@@ -8,8 +8,8 @@ branches:
 before_install:
   - sudo easy_install pip
   - pip install shyaml --user
+  - source ./build-scripts/prepare_environment.sh
 
 script:
   - ./openapi-generator.sh validate -i openapi.yml
-  - export API_VERSION=`cat openapi.yml | shyaml get-value info.version`
   - ./build-scripts/dart.sh

@@ -24,4 +24,4 @@ script:
   - export GIT_TAG=v$API_VERSION
   - git commit -m "Generated SDK verion $API_VERSION from TravisCI for build $TRAVIS_BUILD_NUMBER"
   - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-  - git push -q git@github.com:tractionguest/guest-api.git --tags
+  - git push -q git@github.com:tractionguest/guest-api.git --follow-tags

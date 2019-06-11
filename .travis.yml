@@ -8,6 +8,10 @@ branches:
     - master
 
 before_install:
+  - openssl aes-256-cbc -K $encrypted_e0eab208aa27_key -iv $encrypted_e0eab208aa27_iv -in github_deploy_key.enc -out github_deploy_key -d
+  - chmod 600 github_deploy_key
+  - eval $(ssh-agent -s)
+  - ssh-add github_deploy_key
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
   - sudo easy_install pip
@@ -16,11 +20,12 @@ before_install:
 
 script:
   - ./openapi-generator.sh validate -i openapi.yml
+  - ./build-scripts/dart.sh
 
 before_deploy:
-  - export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
+  - export GIT_TAG=v$API_VERSION
   - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-  - git push -q  --tags
+  - git push -q --tags
 
 deploy:
   skip_cleanup: true

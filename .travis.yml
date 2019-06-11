@@ -27,5 +27,5 @@ script:
       $(npm bin)/set-up-ssh --key "$encrypted_e0eab208aa27_key" \
                             --iv "$encrypted_e0eab208aa27_iv" \
                             --path-encrypted-key "github_deploy_key.enc"
-  - git push -q --tags
+  - git push -q git@github.com:tractionguest/guest-api.git --tags
 

@@ -1,0 +1,14 @@
+language: java
+git:
+  depth: false
+branches:
+  only:
+  - master
+
+before_install:
+  - sudo easy_install pip
+  - pip install shyaml
+
+script:
+  - ./openapi-generator.sh validate -i openapi.yml
+  - ./build-scripts/dart.sh

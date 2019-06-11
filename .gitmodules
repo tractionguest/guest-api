@@ -1,3 +1,0 @@
-[submodule "guest-dart-sdk"]
-	path = guest-dart-sdk
-	url = git@github.com:tractionguest/guest-dart-sdk.git

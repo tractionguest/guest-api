@@ -12,10 +12,7 @@ class ApiClient {
   String basePath;
   var client = Client();
 
-  Map<String, String> _defaultHeaderMap = {
-    'USERNAME': 'client_admin@example.com',
-    'PASSWORD': 'Tempor@ry1'
-  };
+  Map<String, String> _defaultHeaderMap = {};
   Map<String, Authentication> _authentications = {};
 
   final _regList = RegExp(r'^List<(.*)>$');

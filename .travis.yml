@@ -17,10 +17,12 @@ before_install:
   - sudo easy_install pip
   - pip install shyaml --user
   - source ./build-scripts/prepare_environment.sh
+  - npm install -g redoc-cli
 
 script:
   - ./openapi-generator.sh validate -i openapi.yml
   - ./build-scripts/dart.sh
+  - ./build-scripts/redoc.sh
   - export GIT_TAG=v$API_VERSION
   - git commit -m "[skip travis] Generated SDK version v$API_VERSION from TravisCI for build $TRAVIS_BUILD_NUMBER"
   - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"

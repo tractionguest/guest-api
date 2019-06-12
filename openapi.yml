@@ -6,17 +6,17 @@ info:
     name: Brandon McKay
     url: 'https://tractionguest.com'
     email: bmckay@tractionguest.com
-  version: 1.0.0
+  version: 1.0.2
 servers:
   -
-    url: 'https://dravaqa.tractionguest.ca/api/mobile/v1'
-    description: The QA API server
-  -
-    url: 'https://mobile-api-refactor-admin.tractionguest.ca/api/mobile/v1'
-    description: The temporary mobile feature branch API
-  -
-    url: 'http://localhost:3000'
-    description: Your Local rails setup
+    url: '{domain}'
+    variables:
+      domain:
+        enum:
+          - 'https://mobile-api-refactor-admin.tractionguest.ca/api/mobile/v1'
+          - 'https://dravaqa.tractionguest.ca/api/mobile/v1'
+          - 'http://localhost:3000'
+        default: 'https://mobile-api-refactor-admin.tractionguest.ca/api/mobile/v1'
 paths:
   /hosts:
     summary: Path used to manage the list of Hosts.
@@ -29,6 +29,25 @@ paths:
       summary: List All Hosts
       description: Gets a list of all `Host` entities.
       operationId: getHosts
+      parameters:
+        -
+          name: query
+          in: query
+          description: 'Will filter by `first_name`, `last_name`, and `email`'
+          schema:
+            type: string
+        -
+          name: limit
+          in: query
+          description: 'Limits the results to a specified number, defaults to 50'
+          schema:
+            type: integer
+        -
+          name: offset
+          in: query
+          description: 'Offsets the results to a specified number, defaults to 0'
+          schema:
+            type: integer
       responses:
         '200':
           description: Successful response - returns an array of `Host` entities.
@@ -41,23 +60,23 @@ paths:
                   value:
                     hosts:
                       -
-                        id: 67
+                        id: 71
                         email: some text
                         first_name: some text
                         last_name: some text
                         mobile: some text
                         profile_pic_url: some text
                       -
-                        id: 13
+                        id: 2
                         email: some text
                         first_name: some text
                         last_name: some text
                         mobile: some text
                         profile_pic_url: some text
                     pagination:
-                      total_records: 66
-                      current_offset: 20
-                      next_offset: 25
+                      total_records: 14
+                      current_offset: 41
+                      next_offset: 85
   /email_templates:
     summary: Path used to manage the list of EmailTemplates.
     description: >-
@@ -69,6 +88,19 @@ paths:
       summary: List All EmailTemplates
       description: Gets a list of all `EmailTemplate` entities.
       operationId: getEmailTemplates
+      parameters:
+        -
+          name: limit
+          in: query
+          description: 'Limits the results to a specified number, defaults to 50'
+          schema:
+            type: integer
+        -
+          name: offset
+          in: query
+          description: 'Offsets the results to a specified number, defaults to 0'
+          schema:
+            type: integer
       responses:
         '200':
           description: Successful response - returns an array of `EmailTemplate` entities.
@@ -92,6 +124,717 @@ paths:
                       total_records: 84
                       current_offset: 99
                       next_offset: 45
+  '/signins/{signinId}':
+    summary: Path used to manage a single Signin.
+    description: The REST endpoint/path used to get single instances of an `Signin`.
+    get:
+      tags:
+        - Signins
+      summary: Get a Signin
+      description: Gets the details of a single instance of a `Signin`.
+      operationId: getSignin
+      responses:
+        '200':
+          description: Successful response - returns a single `Signin`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SigninDetail'
+              examples:
+                default:
+                  value:
+                    id: 45
+                    company: some text
+                    email: some text
+                    first_name: some text
+                    is_accounted_for: true
+                    is_acknowledged: true
+                    last_name: some text
+                    location_name: some text
+                    mobile_number: some text
+                    signed_out_timestamp: '2018-02-10T09:30Z'
+                    signin_photo_url: some text
+                    signin_timestamp: '2018-02-10T09:30Z'
+                    watchlist:
+                      id: 47
+                      external:
+                        - {}
+                        - {}
+                      internal:
+                        - {}
+                        - {}
+                    is_signed_out: true
+                    note: some text
+                    signin_acknowledgement:
+                      code: some text
+                      acknowledged_at: '2018-02-10T09:30Z'
+                      id: 93
+                    signin_data:
+                      -
+                        name: some text
+                        custom_fields:
+                          -
+                            format: {}
+                            field_name: some text
+                            field_value: some text
+                          -
+                            format: {}
+                            field_name: some text
+                            field_value: some text
+                      -
+                        name: some text
+                        custom_fields:
+                          -
+                            format: {}
+                            field_name: some text
+                            field_value: some text
+                          -
+                            format: {}
+                            field_name: some text
+                            field_value: some text
+    put:
+      tags:
+        - Signins
+      summary: Update a Signin attribute
+      description: 'Update, acknowledge, or `Signout` a `Signin`'
+      operationId: updateSignin
+      requestBody:
+        description: >-
+          The only updatable values for a `Signin` are `badge_number`, `badge_returned`,
+          `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.
+
+
+          `is_signed_out`, and `is_acknowledged` are pseudo attributes where once they are set to
+          true, there's no going back.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SigninUpdateParams'
+            examples:
+              default:
+                value:
+                  is_signed_out: true
+                  is_acknowledged: true
+                  badge_number: some text
+                  badge_returned: true
+                  is_accounted_for: true
+        required: true
+      responses:
+        '200':
+          description: 'The Signin has been acknowledged, or signed out.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SigninDetail'
+              examples:
+                default:
+                  value:
+                    id: 99
+                    company: some text
+                    email: some text
+                    first_name: some text
+                    is_accounted_for: true
+                    is_acknowledged: true
+                    last_name: some text
+                    location_name: some text
+                    mobile_number: some text
+                    signed_out_timestamp: '2018-02-10T09:30Z'
+                    signin_photo_url: some text
+                    signin_timestamp: '2018-02-10T09:30Z'
+                    watchlist:
+                      id: 16
+                      external:
+                        - {}
+                        - {}
+                      internal:
+                        - {}
+                        - {}
+                    is_signed_out: true
+                    note: some text
+                    signin_acknowledgement:
+                      code: some text
+                      acknowledged_at: '2018-02-10T09:30Z'
+                      id: 43
+                      signin: {}
+                    signin_data:
+                      -
+                        name: some text
+                        custom_fields:
+                          -
+                            format: {}
+                            field_name: some text
+                            field_value: some text
+                          -
+                            format: {}
+                            field_name: some text
+                            field_value: some text
+                      -
+                        name: some text
+                        custom_fields:
+                          -
+                            format: {}
+                            field_name: some text
+                            field_value: some text
+                          -
+                            format: {}
+                            field_name: some text
+                            field_value: some text
+    parameters:
+      -
+        name: signinId
+        in: path
+        description: A unique identifier for a `Signin`.
+        required: true
+        schema:
+          type: string
+  /users/current:
+    summary: Path used to manage a single User.
+    description: The REST endpoint/path used to get single instances of an `User` and their `PermissionBundle`s.
+    get:
+      tags:
+        - Users
+      summary: Get the current User
+      description: Gets the details of a single instance of the current `User`.
+      operationId: getCurrentUser
+      responses:
+        '200':
+          description: Successful response - returns a single `User`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                default:
+                  value:
+                    id: 73
+                    permission_bundles:
+                      -
+                        id: 36
+                        bundle_name: some text
+                        locked: true
+                        source: some text
+                        updated_at: '2018-02-10T09:30Z'
+                        permissions:
+                          -
+                            name: some text
+                            visibility: some text
+                            values:
+                              - some text
+                              - some text
+                          -
+                            name: some text
+                            visibility: some text
+                            values:
+                              - some text
+                              - some text
+                      -
+                        id: 84
+                        bundle_name: some text
+                        locked: true
+                        source: some text
+                        updated_at: '2018-02-10T09:30Z'
+                        permissions:
+                          -
+                            name: some text
+                            visibility: some text
+                            values:
+                              - some text
+                              - some text
+                          -
+                            name: some text
+                            visibility: some text
+                            values:
+                              - some text
+                              - some text
+  '/watchlists/{watchlistId}':
+    summary: Path used to manage a single Watchlist.
+    description: The REST endpoint/path used to get single instances of a `Watchlist`.
+    get:
+      tags:
+        - Watchlists
+      summary: Get a Watchlist
+      description: Gets the details of a single instance of a `Watchlist`.
+      operationId: getWatchlist
+      responses:
+        '200':
+          description: Successful response - returns a single `Watchlist`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Watchlist'
+              examples:
+                default:
+                  value:
+                    id: 7
+                    colour: GREEN
+                    email: name@example.com
+                    first_name: Alex
+                    last_name: Trebec
+                    notes: some text
+                    photo: some text
+                    aliases:
+                      - some text
+                      - some text
+    parameters:
+      -
+        name: watchlistId
+        in: path
+        description: A unique identifier for a `Watchlist`.
+        required: true
+        schema:
+          type: string
+  /locations:
+    summary: Path used to manage the list of Locations.
+    description: The REST endpoint/path used to list zero or more `Location` entities.
+    get:
+      tags:
+        - Locations
+      summary: List All Locations
+      description: Gets a list of all `Location` entities.
+      operationId: getLocations
+      parameters:
+        -
+          name: limit
+          in: query
+          description: 'Limits the results to a specified number, defaults to 50'
+          schema:
+            type: integer
+        -
+          name: offset
+          in: query
+          description: 'Offsets the results to a specified number, defaults to 0'
+          schema:
+            type: integer
+        -
+          name: query
+          in: query
+          description: Queries by Location `name`
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response - returns an array of `Location` entities.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedLocationsList'
+              examples:
+                default:
+                  value:
+                    pagination:
+                      total_records: 61
+                      current_offset: 41
+                      next_offset: 28
+                    locations:
+                      -
+                        id: 28
+                        name: Default
+                      -
+                        id: 97
+                        name: Rogers Arena
+  '/locations/{locationId}/invites':
+    summary: Path used to manage a single Location's invites.
+    description: The REST endpoint/path used to create single instances of an `Invite` for a specific `Location`.
+    post:
+      tags:
+        - Invites
+      summary: Creates an Invite
+      description: Creates a new `Invite` for a specific `Location`.
+      operationId: createLocationInvite
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InviteDetail'
+            examples:
+              default:
+                value:
+                  id: 66
+                  company: some text
+                  created_at: '2018-02-10T09:30Z'
+                  email: some text
+                  end_date: '2018-02-10T09:30Z'
+                  first_name: some text
+                  last_name: some text
+                  start_date: '2018-02-10T09:30Z'
+                  hosts:
+                    -
+                      id: 10
+                      email: some text
+                      first_name: some text
+                      last_name: some text
+                      mobile: some text
+                      profile_pic_url: some text
+                    -
+                      id: 7
+                      email: some text
+                      first_name: some text
+                      last_name: some text
+                      mobile: some text
+                      profile_pic_url: some text
+                  location:
+                    id: 58
+                    name: some text
+                  watchlist:
+                    id: 0
+                    colour: {}
+                    email: some text
+                    first_name: some text
+                    last_name: some text
+                    notes: some text
+                    photo: some text
+                    aliases:
+                      - some text
+                      - some text
+                  watchlist_colour: some text
+                  country: some text
+                  template:
+                    id: 11
+                    name: some text
+                    template_type: some text
+        required: true
+      responses:
+        '201':
+          description: Created the `Invite` for the `Location`
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invite'
+              examples:
+                default:
+                  value:
+                    id: 87
+                    first_name: some text
+                    last_name: some text
+                    start_date: '2018-02-10T09:30Z'
+                    location:
+                      id: 83
+                      name: some text
+                    watchlist:
+                      id: 26
+                      colour: YELLOW
+                      email: some text
+                      first_name: some text
+                      last_name: some text
+                      notes: some text
+                      photo: some text
+                      aliases:
+                        - some text
+                        - some text
+                    watchlist_colour: YELLOW
+    parameters:
+      -
+        name: locationId
+        in: path
+        description: A unique identifier for a `Location`.
+        required: true
+        schema:
+          type: integer
+  '/invites/{inviteId}':
+    summary: Path used to manage a single Invite.
+    description: >-
+      The REST endpoint/path used to get, update, and delete single instances of an `Invite`.  This path
+      contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks,
+      respectively.
+    get:
+      tags:
+        - Invites
+      summary: Get a Invite
+      description: Gets the details of a single instance of a `Invite`.
+      operationId: getInvite
+      responses:
+        '200':
+          description: Successful response - returns a single `Invite`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteDetail'
+              examples:
+                default:
+                  value:
+                    id: 63
+                    company: some text
+                    created_at: '2018-02-10T09:30Z'
+                    email: some text
+                    end_date: '2018-02-10T09:30Z'
+                    first_name: some text
+                    last_name: some text
+                    start_date: '2018-02-10T09:30Z'
+                    hosts:
+                      -
+                        id: 34
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile: some text
+                        profile_pic_url: some text
+                      -
+                        id: 33
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile: some text
+                        profile_pic_url: some text
+                    location:
+                      id: 47
+                      name: some text
+                    watchlist:
+                      id: 11
+                      colour: GREEN
+                      email: some text
+                      first_name: some text
+                      last_name: some text
+                      notes: some text
+                      photo: some text
+                      aliases:
+                        - some text
+                        - some text
+                    watchlist_colour: GREEN
+                    country: some text
+                    email_template:
+                      id: 77
+                      name: some text
+                      template_type: some text
+    put:
+      tags:
+        - Invites
+      summary: Update a Invite
+      description: Updates an existing `Invite`.
+      operationId: updateInvite
+      requestBody:
+        description: Updated `Invite` information.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InviteUpdateParams'
+            examples:
+              default:
+                value:
+                  checked_in: true
+                  on_premise: true
+                  sent_email: some text
+                  user_id: 45
+                  device_configuration_id: 14
+        required: true
+      responses:
+        '202':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteDetail'
+              examples:
+                default:
+                  value:
+                    id: 84
+                    company: some text
+                    created_at: '2018-02-10T09:30Z'
+                    email: some text
+                    end_date: '2018-02-10T09:30Z'
+                    first_name: some text
+                    last_name: some text
+                    start_date: '2018-02-10T09:30Z'
+                    hosts:
+                      -
+                        id: 53
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile: some text
+                        profile_pic_url: some text
+                      -
+                        id: 9
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile: some text
+                        profile_pic_url: some text
+                    location:
+                      id: 28
+                      name: some text
+                    watchlist:
+                      id: 72
+                      colour: YELLOW
+                      email: some text
+                      first_name: some text
+                      last_name: some text
+                      notes: some text
+                      photo: some text
+                      aliases:
+                        - some text
+                        - some text
+                    watchlist_colour: YELLOW
+                    country: some text
+                    template:
+                      id: 38
+                      name: some text
+                      template_type: some text
+    parameters:
+      -
+        name: inviteId
+        in: path
+        description: A unique identifier for a `Invite`.
+        required: true
+        schema:
+          type: string
+  /credentials:
+    post:
+      tags:
+        - Credentials
+      summary: Creates credentials from login information
+      operationId: createCredentials
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CredentialCreateParams'
+            examples:
+              default:
+                value:
+                  email: some text
+                  password: some text
+        required: true
+      responses:
+        '201':
+          description: Creates a new token for authenticating future API calls
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credential'
+              examples:
+                default:
+                  value:
+                    token: some text
+  /invites:
+    summary: Path used to manage the list of Invites.
+    description: >-
+      The REST endpoint/path used to list and create zero or more `Invite` entities.  This path contains
+      a `GET` and `POST` operation to perform the list and create tasks, respectively.
+    get:
+      tags:
+        - Invites
+      summary: List All Invites
+      description: Gets a list of all `Invite` entities.
+      operationId: getInvites
+      parameters:
+        -
+          name: limit
+          in: query
+          description: 'Limits the results to a specified number, defaults to 50'
+          schema:
+            type: integer
+        -
+          name: offset
+          in: query
+          description: 'Offsets the results to a specified number, defaults to 0'
+          schema:
+            type: integer
+        -
+          name: query
+          in: query
+          description: 'Filters by `first_name`, `last_name`, `company`, and `email`'
+          schema:
+            type: string
+        -
+          name: with_colours
+          in: query
+          description: |-
+            A comma separated list of case-insensitive colour values.
+
+            i.e., `red`, `green`, `yellow`, and `orange`
+          schema:
+            type: string
+        -
+          name: location_ids
+          in: query
+          description: A comma separated list of Location IDs
+          schema:
+            type: integer
+        -
+          name: sort_by
+          in: query
+          description: >-
+            Sorts by the field name and direction provided where the pattern is
+            `FIELD_NAME_DIRECTION`
+          schema:
+            enum:
+              - start_date_asc
+              - start_date_desc
+              - end_date_asc
+              - end_date_desc
+              - created_at_asc
+              - created_at_desc
+              - updated_at_asc
+              - updated_at_desc
+        -
+          name: starts_before
+          in: query
+          description: Filters results to all those *before* the provided datetime
+          schema:
+            format: date
+            type: string
+        -
+          name: starts_after
+          in: query
+          description: Filters results to all those *after* the provided datetime
+          schema:
+            format: date
+            type: string
+      responses:
+        '200':
+          description: Successful response - returns an array of `Invite` entities.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedInvitesList'
+              examples:
+                default:
+                  value:
+                    pagination:
+                      total_records: 2
+                      current_offset: 14
+                      next_offset: 96
+                    invites:
+                      -
+                        id: 8
+                        first_name: some text
+                        last_name: some text
+                        start_date: '2018-02-10T09:30Z'
+                        location:
+                          id: 34
+                          name: some text
+                        watchlist:
+                          id: 18
+                          colour: RED
+                          email: some text
+                          first_name: some text
+                          last_name: some text
+                          notes: some text
+                          photo: some text
+                          aliases:
+                            - some text
+                            - some text
+                        watchlist_colour: RED
+                      -
+                        id: 28
+                        first_name: some text
+                        last_name: some text
+                        start_date: '2018-02-10T09:30Z'
+                        location:
+                          id: 42
+                          name: some text
+                        watchlist:
+                          id: 80
+                          colour: GREEN
+                          email: some text
+                          first_name: some text
+                          last_name: some text
+                          notes: some text
+                          photo: some text
+                          aliases:
+                            - some text
+                            - some text
+                        watchlist_colour: GREEN
   /signins:
     summary: Path used to manage the list of Signins.
     description: >-
@@ -103,6 +846,68 @@ paths:
       summary: List All Signins
       description: Gets a list of all `Signin` entities.
       operationId: getSignins
+      parameters:
+        -
+          name: location_ids
+          in: query
+          description: A comma separated list of Location IDs
+          schema:
+            type: integer
+        -
+          name: with_colours
+          in: query
+          description: |-
+            A comma separated list of case-insensitive colour values.
+
+            i.e., `red`, `green`, `yellow`, and `orange`
+          schema:
+            type: string
+        -
+          name: query
+          in: query
+          description: >-
+            Allows you to query by `company`, `email`, `first_name`, `last_name`, and
+            `location_name`
+          schema:
+            type: string
+        -
+          name: with_acknowledged
+          in: query
+          description: 'Filters to all those `Signin`s that have, or have not been acknowledged'
+          schema:
+            type: boolean
+        -
+          name: with_signed_in
+          in: query
+          description: 'Filters to all `Signin`s that are, or are not currently signed out.'
+          schema:
+            type: boolean
+        -
+          name: signin_before
+          in: query
+          description: Filters results to all those *before* the provided datetime
+          schema:
+            format: date
+            type: string
+        -
+          name: signin_after
+          in: query
+          description: Filters results to all those *after* the provided datetime
+          schema:
+            format: date
+            type: string
+        -
+          name: limit
+          in: query
+          description: 'Limits the results to a specified number, defaults to 50'
+          schema:
+            type: integer
+        -
+          name: offset
+          in: query
+          description: 'Offsets the results to a specified number, defaults to 0'
+          schema:
+            type: integer
       responses:
         '200':
           description: Successful response - returns an array of `Signin` entities.
@@ -115,7 +920,7 @@ paths:
                   value:
                     signins:
                       -
-                        id: 89
+                        id: 55
                         company: some text
                         email: some text
                         first_name: some text
@@ -127,7 +932,7 @@ paths:
                         signin_photo_url: some text
                         signin_timestamp: '2018-02-10T09:30Z'
                         watchlist:
-                          id: 70
+                          id: 13
                           external:
                             - {}
                             - {}
@@ -136,7 +941,7 @@ paths:
                             - {}
                         is_signed_out: true
                       -
-                        id: 26
+                        id: 32
                         company: some text
                         email: some text
                         first_name: some text
@@ -148,7 +953,7 @@ paths:
                         signin_photo_url: some text
                         signin_timestamp: '2018-02-10T09:30Z'
                         watchlist:
-                          id: 30
+                          id: 73
                           external:
                             - {}
                             - {}
@@ -157,9 +962,9 @@ paths:
                             - {}
                         is_signed_out: true
                     pagination:
-                      total_records: 43
-                      current_offset: 5
-                      next_offset: 25
+                      total_records: 88
+                      current_offset: 45
+                      next_offset: 93
     post:
       tags:
         - Signins
@@ -221,199 +1026,6 @@ paths:
                         - {}
                         - {}
                     is_signed_out: true
-  '/signins/{signinId}':
-    summary: Path used to manage a single Signin.
-    description: The REST endpoint/path used to get single instances of an `Signin`.
-    get:
-      tags:
-        - Signins
-      summary: Get a Signin
-      description: Gets the details of a single instance of a `Signin`.
-      operationId: getSignin
-      responses:
-        '200':
-          description: Successful response - returns a single `Signin`.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SigninDetail'
-              examples:
-                default:
-                  value:
-                    id: 34
-                    company: some text
-                    email: some text
-                    first_name: some text
-                    is_accounted_for: true
-                    is_acknowledged: true
-                    last_name: some text
-                    location_name: some text
-                    mobile_number: some text
-                    signed_out_timestamp: '2018-02-10T09:30Z'
-                    signin_photo_url: some text
-                    signin_timestamp: '2018-02-10T09:30Z'
-                    watchlist:
-                      id: 11
-                      external:
-                        - {}
-                        - {}
-                      internal:
-                        - {}
-                        - {}
-                    parsed_info:
-                      id: 27
-                      aboutyou:
-                        - {}
-                        - {}
-                      choices:
-                        - {}
-                        - {}
-                      documents:
-                        - {}
-                        - {}
-                      forms:
-                        - {}
-                        - {}
-                      hosts:
-                        - {}
-                        - {}
-                      videos:
-                        - {}
-                        - {}
-                    is_signed_out: true
-                    note: some text
-                    signin_acknowledgement:
-                      code: some text
-                      acknowledged_at: '2018-02-10T09:30Z'
-                      id: 24
-                      signin: {}
-    put:
-      tags:
-        - Signins
-      summary: Update a Signin attribute
-      description: 'Update, acknowledge, or `Signout` a `Signin`'
-      operationId: updateSignin
-      requestBody:
-        description: >-
-          The only updatable values for a `Signin` are `badge_number`, `badge_returned`,
-          `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.
-
-
-          `is_signed_out`, and `is_acknowledged` are pseudo attributes where once they are set to
-          true, there's no going back.
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SigninUpdateParams'
-            examples:
-              default:
-                value:
-                  is_signed_out: true
-                  is_acknowledged: true
-                  badge_number: some text
-                  badge_returned: true
-                  is_accounted_for: true
-        required: true
-      responses:
-        '200':
-          description: 'The Signin has been acknowledged, or signed out.'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SigninDetail'
-              examples:
-                default:
-                  value:
-                    id: 84
-                    company: some text
-                    email: some text
-                    first_name: some text
-                    is_accounted_for: true
-                    is_acknowledged: true
-                    last_name: some text
-                    location_name: some text
-                    mobile_number: some text
-                    signed_out_timestamp: '2018-02-10T09:30Z'
-                    signin_photo_url: some text
-                    signin_timestamp: '2018-02-10T09:30Z'
-                    watchlist:
-                      id: 29
-                      external:
-                        - {}
-                        - {}
-                      internal:
-                        - {}
-                        - {}
-                    parsed_info:
-                      id: 78
-                      aboutyou:
-                        - {}
-                        - {}
-                      choices:
-                        - {}
-                        - {}
-                      documents:
-                        - {}
-                        - {}
-                      forms:
-                        - {}
-                        - {}
-                      hosts:
-                        - {}
-                        - {}
-                      videos:
-                        - {}
-                        - {}
-                    is_signed_out: true
-                    note: some text
-                    signin_acknowledgement:
-                      code: some text
-                      acknowledged_at: '2018-02-10T09:30Z'
-                      id: 17
-                      signin: {}
-    parameters:
-      -
-        name: signinId
-        in: path
-        description: A unique identifier for a `Signin`.
-        required: true
-        schema:
-          type: string
-  /users/current:
-    summary: Path used to manage a single User.
-    description: The REST endpoint/path used to get single instances of an `User`.
-    get:
-      tags:
-        - Users
-      summary: Get the current User
-      description: Gets the details of a single instance of the current `User`.
-      operationId: getCurrentUser
-      responses:
-        '200':
-          description: Successful response - returns a single `User`.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-              examples:
-                default:
-                  value:
-                    id: 71
-                    permission_bundles:
-                      -
-                        id: 34
-                        bundle_name: some text
-                        locked: true
-                        source: some text
-                        updated_at: '2018-02-10T09:30Z'
-                        permissions: {}
-                      -
-                        id: 94
-                        bundle_name: some text
-                        locked: true
-                        source: some text
-                        updated_at: '2018-02-10T09:30Z'
-                        permissions: {}
   /watchlists:
     summary: Path used to manage the list of Watchlists.
     description: The REST endpoint/path used to list zero or more `Watchlist` entities.
@@ -427,11 +1039,13 @@ paths:
         -
           name: limit
           in: query
+          description: 'Limits the results to a specified number, defaults to 50'
           schema:
             type: integer
         -
           name: offset
           in: query
+          description: 'Offsets the results to a specified number, defaults to 0'
           schema:
             type: integer
         -
@@ -445,11 +1059,12 @@ paths:
         -
           name: with_colours
           in: query
-          description: An inclusive list of colour filters
+          description: |-
+            A comma separated list of case-insensitive colour values.
+
+            i.e., `red`, `green`, `yellow`, and `orange`
           schema:
-            type: array
-            items:
-              type: string
+            type: string
       responses:
         '200':
           description: Successful response - returns an array of `Watchlist` entities.
@@ -461,13 +1076,13 @@ paths:
                 default:
                   value:
                     pagination:
-                      total_records: 79
-                      current_offset: 10
-                      next_offset: 63
+                      total_records: 78
+                      current_offset: 62
+                      next_offset: 57
                     watchlists:
                       -
-                        id: 8
-                        colour: some text
+                        id: 24
+                        colour: GREEN
                         email: some text
                         first_name: some text
                         last_name: some text
@@ -477,8 +1092,8 @@ paths:
                           - some text
                           - some text
                       -
-                        id: 53
-                        colour: some text
+                        id: 26
+                        colour: ORANGE
                         email: some text
                         first_name: some text
                         last_name: some text
@@ -487,416 +1102,6 @@ paths:
                         aliases:
                           - some text
                           - some text
-  '/watchlists/{watchlistId}':
-    summary: Path used to manage a single Watchlist.
-    description: The REST endpoint/path used to get single instances of a `Watchlist`.
-    get:
-      tags:
-        - Watchlists
-      summary: Get a Watchlist
-      description: Gets the details of a single instance of a `Watchlist`.
-      operationId: getWatchlist
-      responses:
-        '200':
-          description: Successful response - returns a single `Watchlist`.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Watchlist'
-              examples:
-                default:
-                  value:
-                    id: 1
-                    colour: some text
-                    email: some text
-                    first_name: some text
-                    last_name: some text
-                    notes: some text
-                    photo: some text
-                    aliases:
-                      - some text
-                      - some text
-    parameters:
-      -
-        name: watchlistId
-        in: path
-        description: A unique identifier for a `Watchlist`.
-        required: true
-        schema:
-          type: string
-  /locations:
-    summary: Path used to manage the list of Locations.
-    description: The REST endpoint/path used to list zero or more `Location` entities.
-    get:
-      tags:
-        - Locations
-      summary: List All Locations
-      description: Gets a list of all `Location` entities.
-      operationId: getLocations
-      responses:
-        '200':
-          description: Successful response - returns an array of `Location` entities.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedLocationsList'
-              examples:
-                default:
-                  value:
-                    pagination:
-                      total_records: 24
-                      current_offset: 91
-                      next_offset: 75
-                    locations:
-                      -
-                        id: 23
-                        name: some text
-                      -
-                        id: 34
-                        name: some text
-  '/locations/{locationId}/invites':
-    summary: Path used to manage a single Location's invites.
-    description: The REST endpoint/path used to create single instances of an `Invite` for a specific `Location`.
-    post:
-      tags:
-        - Invites
-        - Locations
-      summary: Creates an Invite
-      description: Creates a new `Invite` for a specific `Location`.
-      operationId: createLocationInvite
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Invite'
-            examples:
-              default:
-                value:
-                  id: 66
-                  company: some text
-                  created_at: '2018-02-10T09:30Z'
-                  email: some text
-                  end_date: '2018-02-10T09:30Z'
-                  first_name: some text
-                  last_name: some text
-                  start_date: '2018-02-10T09:30Z'
-                  hosts:
-                    -
-                      id: 8
-                      email: some text
-                      first_name: some text
-                      last_name: some text
-                      mobile: some text
-                      profile_pic_url: some text
-                    -
-                      id: 14
-                      email: some text
-                      first_name: some text
-                      last_name: some text
-                      mobile: some text
-                      profile_pic_url: some text
-                  location:
-                    id: 63
-                    name: some text
-                  watchlist:
-                    id: 91
-                    colour: some text
-                    email: some text
-                    first_name: some text
-                    last_name: some text
-                    notes: some text
-                    photo: some text
-                    aliases:
-                      - some text
-                      - some text
-                  watchlist_colour: some text
-        required: true
-      responses:
-        '201':
-          description: Created the `Invite` for the `Location`
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Invite'
-              examples:
-                default:
-                  value:
-                    id: 13
-                    company: some text
-                    created_at: '2018-02-10T09:30Z'
-                    email: some text
-                    end_date: '2018-02-10T09:30Z'
-                    first_name: some text
-                    last_name: some text
-                    start_date: '2018-02-10T09:30Z'
-    parameters:
-      -
-        name: locationId
-        in: path
-        description: A unique identifier for a `Location`.
-        required: true
-        schema:
-          type: string
-  /invites:
-    summary: Path used to manage the list of Invites.
-    description: >-
-      The REST endpoint/path used to list and create zero or more `Invite` entities.  This path contains
-      a `GET` and `POST` operation to perform the list and create tasks, respectively.
-    get:
-      tags:
-        - Invites
-      summary: List All Invites
-      description: Gets a list of all `Invite` entities.
-      operationId: getInvites
-      responses:
-        '200':
-          description: Successful response - returns an array of `Invite` entities.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedInvitesList'
-              examples:
-                default:
-                  value:
-                    pagination:
-                      total_records: 16
-                      current_offset: 39
-                      next_offset: 27
-                    invites:
-                      -
-                        id: 2
-                        first_name: some text
-                        last_name: some text
-                        start_date: '2018-02-10T09:30Z'
-                        location:
-                          id: 36
-                          name: some text
-                        watchlist:
-                          id: 60
-                          colour: some text
-                          email: some text
-                          first_name: some text
-                          last_name: some text
-                          notes: some text
-                          photo: some text
-                          aliases:
-                            - some text
-                            - some text
-                        watchlist_colour: some text
-                      -
-                        id: 75
-                        first_name: some text
-                        last_name: some text
-                        start_date: '2018-02-10T09:30Z'
-                        location:
-                          id: 76
-                          name: some text
-                        watchlist:
-                          id: 95
-                          colour: some text
-                          email: some text
-                          first_name: some text
-                          last_name: some text
-                          notes: some text
-                          photo: some text
-                          aliases:
-                            - some text
-                            - some text
-                        watchlist_colour: some text
-  '/invites/{inviteId}':
-    summary: Path used to manage a single Invite.
-    description: >-
-      The REST endpoint/path used to get, update, and delete single instances of an `Invite`.  This path
-      contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks,
-      respectively.
-    get:
-      tags:
-        - Invites
-      summary: Get a Invite
-      description: Gets the details of a single instance of a `Invite`.
-      operationId: getInvite
-      responses:
-        '200':
-          description: Successful response - returns a single `Invite`.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InviteDetail'
-              examples:
-                default:
-                  value:
-                    id: 43
-                    company: some text
-                    created_at: '2018-02-10T09:30Z'
-                    email: some text
-                    end_date: '2018-02-10T09:30Z'
-                    first_name: some text
-                    last_name: some text
-                    start_date: '2018-02-10T09:30Z'
-                    hosts:
-                      -
-                        id: 55
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
-                      -
-                        id: 97
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
-                    location:
-                      id: 17
-                      name: some text
-                    watchlist:
-                      id: 56
-                      colour: some text
-                      email: some text
-                      first_name: some text
-                      last_name: some text
-                      notes: some text
-                      photo: some text
-                      aliases:
-                        - some text
-                        - some text
-                    watchlist_colour: some text
-                    country: some text
-                    template:
-                      id: 12
-                      name: some text
-                      template_type: some text
-    put:
-      tags:
-        - Invites
-      summary: Update a Invite
-      description: Updates an existing `Invite`.
-      operationId: updateInvite
-      requestBody:
-        description: Updated `Invite` information.
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/InviteUpdateParams'
-            examples:
-              default:
-                value:
-                  checked_in: true
-                  on_premise: true
-                  sent_email: some text
-                  user_id: 45
-                  device_configuration_id: 14
-        required: true
-      responses:
-        '202':
-          description: Successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InviteDetail'
-              examples:
-                default:
-                  value:
-                    id: 79
-                    company: some text
-                    created_at: '2018-02-10T09:30Z'
-                    email: some text
-                    end_date: '2018-02-10T09:30Z'
-                    first_name: some text
-                    last_name: some text
-                    start_date: '2018-02-10T09:30Z'
-                    hosts:
-                      -
-                        id: 84
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
-                      -
-                        id: 96
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
-                    location:
-                      id: 11
-                      name: some text
-                    watchlist:
-                      id: 89
-                      colour: some text
-                      email: some text
-                      first_name: some text
-                      last_name: some text
-                      notes: some text
-                      photo: some text
-                      aliases:
-                        - some text
-                        - some text
-                    watchlist_colour: some text
-                    country: some text
-                    template:
-                      id: 92
-                      name: some text
-                      template_type: some text
-    parameters:
-      -
-        name: inviteId
-        in: path
-        description: A unique identifier for a `Invite`.
-        required: true
-        schema:
-          type: string
-  /parking_lots:
-    summary: Path used to manage the list of ParkingLots.
-    description: >-
-      The REST endpoint/path used to list and create zero or more `ParkingLot` entities.  This path
-      contains a `GET` and `POST` operation to perform the list and create tasks, respectively.
-    get:
-      tags:
-        - Parking
-      summary: List All ParkingLots
-      description: Gets a list of all `ParkingLot` entities.
-      operationId: getParkingLots
-      responses:
-        '200':
-          description: Successful response - returns an array of `ParkingLot` entities.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PaginatedParkingLotList'
-              examples:
-                default:
-                  value:
-                    -
-                      parking_lots:
-                        -
-                          id: 30
-                          name: some text
-                        -
-                          id: 81
-                          name: some text
-                      pagination:
-                        total_records: 92
-                        current_offset: 53
-                        next_offset: 76
-                    -
-                      parking_lots:
-                        -
-                          id: 11
-                          name: some text
-                        -
-                          id: 53
-                          name: some text
-                      pagination:
-                        total_records: 6
-                        current_offset: 43
-                        next_offset: 93
 components:
   schemas:
     Host:
@@ -984,80 +1189,22 @@ components:
         id:
           format: int32
           type: integer
-        external:
+        external_colours:
           type: array
-          items: {}
-        internal:
+          items:
+            type: string
+        internal_colours:
           type: array
-          items: {}
-      example: |-
-        {
-            "id": 1,
-            "external": [{"colour": "RED"}],
-            "internal": [{"colour": "GREEN"}]
-        }
-    SigninParsedInfo:
-      title: Root Type for SigninParsedInfo
-      description: The root of the SigninParsedInfo type's schema.
-      type: object
-      properties:
-        id:
-          format: int32
-          type: integer
-        aboutyou:
-          type: array
-          items: {}
-        choices:
-          type: array
-          items: {}
-        documents:
-          type: array
-          items: {}
-        forms:
-          type: array
-          items: {}
-        hosts:
-          type: array
-          items: {}
-        videos:
-          type: array
-          items: {}
-      example: |-
-        {
-            "id": 188,
-            "aboutyou": [],
-            "choices": [],
-            "documents": [],
-            "forms": [],
-            "hosts": [
-                {
-                    "data": [
-                        {
-                            "id": 14,
-                            "email": "kelley@example.com",
-                            "mobile": "104-793-3072",
-                            "last_name": "Nicolas",
-                            "department": "Business Supplies and Equipment",
-                            "first_name": "Kelley",
-                            "alternate_email": "",
-                            "alternate_mobile": ""
-                        },
-                        {
-                            "id": 21,
-                            "email": "marion@example.net",
-                            "mobile": "(931) 167-9839",
-                            "last_name": "Lindgren",
-                            "department": "Libraries",
-                            "first_name": "Marion",
-                            "alternate_email": "",
-                            "alternate_mobile": ""
-                        }
-                    ],
-                    "title": "Who are you here to see?"
-                }
-            ],
-            "videos": []
-        }
+          items:
+            type: string
+      example:
+        id: 19
+        external_colours:
+          - some text
+          - some text
+        internal_colours:
+          - some text
+          - some text
     PaginatedSigninsList:
       required:
         - signins
@@ -1073,8 +1220,6 @@ components:
     SigninAcknowledgement:
       title: Root Type for SigninAcknowledgement
       description: The root of the SigninAcknowledgement type's schema.
-      required:
-        - signin
       type: object
       properties:
         code:
@@ -1085,54 +1230,10 @@ components:
         id:
           format: int32
           type: integer
-        signin:
-          $ref: '#/components/schemas/SigninDetail'
       example:
         code: some text
         acknowledged_at: '2018-02-10T09:30Z'
-        id: 31
-        signin:
-          id: 8
-          company: some text
-          email: some text
-          first_name: some text
-          is_accounted_for: true
-          is_acknowledged: true
-          last_name: some text
-          location_name: some text
-          mobile_number: some text
-          notes: some text
-          signed_out_timestamp: '2018-02-10T09:30Z'
-          signin_photo_url: some text
-          signin_timestamp: '2018-02-10T09:30Z'
-          watchlist:
-            id: 7
-            external:
-              - {}
-              - {}
-            internal:
-              - {}
-              - {}
-          parsed_info:
-            id: 33
-            aboutyou:
-              - {}
-              - {}
-            choices:
-              - {}
-              - {}
-            documents:
-              - {}
-              - {}
-            forms:
-              - {}
-              - {}
-            hosts:
-              - {}
-              - {}
-            videos:
-              - {}
-              - {}
+        id: 10
     PaginatedHostsList:
       required:
         - hosts
@@ -1162,21 +1263,31 @@ components:
           format: date-time
           type: string
         permissions:
-          type: object
-      example: |-
-        {
-            "id": 96,
-            "bundle_name": "some text",
-            "locked": true,
-            "source": "some text",
-            "updated_at": "2018-02-10T09:30Z",
-            "permissions": {}
-        }
+          type: array
+          items:
+            $ref: '#/components/schemas/Permission'
+      example:
+        id: 91
+        bundle_name: some text
+        locked: true
+        source: some text
+        updated_at: '2018-02-10T09:30Z'
+        permissions:
+          -
+            name: some text
+            visibility: some text
+            values:
+              - some text
+              - some text
+          -
+            name: some text
+            visibility: some text
+            values:
+              - some text
+              - some text
     User:
       title: Root Type for User
       description: The root of the User type's schema.
-      required:
-        - permission_bundles
       type: object
       properties:
         id:
@@ -1212,7 +1323,11 @@ components:
           format: int32
           type: integer
         colour:
-          type: string
+          enum:
+            - RED
+            - YELLOW
+            - GREEN
+            - ORANGE
         email:
           type: string
         first_name:
@@ -1228,8 +1343,8 @@ components:
           items:
             type: string
       example:
-        id: 54
-        colour: some text
+        id: 23
+        colour: GREEN
         email: some text
         first_name: some text
         last_name: some text
@@ -1283,29 +1398,49 @@ components:
         location:
           $ref: '#/components/schemas/Location'
         watchlist:
-          $ref: '#/components/schemas/Watchlist'
+          $ref: '#/components/schemas/InviteWatchlist'
         watchlist_colour:
-          type: string
+          enum:
+            - RED
+            - GREEN
+            - YELLOW
+            - ORANGE
+        hosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
       example:
-        id: 79
+        id: 28
         first_name: some text
         last_name: some text
         start_date: '2018-02-10T09:30Z'
         location:
-          id: 12
+          id: 51
           name: some text
         watchlist:
-          id: 56
-          colour: some text
-          email: some text
-          first_name: some text
-          last_name: some text
-          notes: some text
-          photo: some text
-          aliases:
+          id: 63
+          external_colours:
             - some text
             - some text
-        watchlist_colour: some text
+          internal_colours:
+            - some text
+            - some text
+        watchlist_colour: RED
+        hosts:
+          -
+            id: 38
+            email: some text
+            first_name: some text
+            last_name: some text
+            mobile: some text
+            profile_pic_url: some text
+          -
+            id: 87
+            email: some text
+            first_name: some text
+            last_name: some text
+            mobile: some text
+            profile_pic_url: some text
     PaginatedWatchlistList:
       required:
         - pagination
@@ -1407,8 +1542,6 @@ components:
           type: string
         watchlist:
           $ref: '#/components/schemas/SigninWatchlist'
-        parsed_info:
-          $ref: '#/components/schemas/SigninParsedInfo'
         is_signed_out:
           description: A one-way method of Signing out a Signin
           type: boolean
@@ -1416,8 +1549,12 @@ components:
           type: string
         signin_acknowledgement:
           $ref: '#/components/schemas/SigninAcknowledgement'
+        signin_data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SigninData'
       example:
-        id: 56
+        id: 72
         company: some text
         email: some text
         first_name: some text
@@ -1430,31 +1567,11 @@ components:
         signin_photo_url: some text
         signin_timestamp: '2018-02-10T09:30Z'
         watchlist:
-          id: 69
+          id: 44
           external:
             - {}
             - {}
           internal:
-            - {}
-            - {}
-        parsed_info:
-          id: 82
-          aboutyou:
-            - {}
-            - {}
-          choices:
-            - {}
-            - {}
-          documents:
-            - {}
-            - {}
-          forms:
-            - {}
-            - {}
-          hosts:
-            - {}
-            - {}
-          videos:
             - {}
             - {}
         is_signed_out: true
@@ -1462,51 +1579,30 @@ components:
         signin_acknowledgement:
           code: some text
           acknowledged_at: '2018-02-10T09:30Z'
-          id: 70
-          signin:
-            id: 14
-            company: some text
-            email: some text
-            first_name: some text
-            is_accounted_for: true
-            is_acknowledged: true
-            last_name: some text
-            location_name: some text
-            mobile_number: some text
-            signed_out_timestamp: '2018-02-10T09:30Z'
-            signin_photo_url: some text
-            signin_timestamp: '2018-02-10T09:30Z'
-            watchlist:
-              id: 56
-              external:
-                - {}
-                - {}
-              internal:
-                - {}
-                - {}
-            parsed_info:
-              id: 80
-              aboutyou:
-                - {}
-                - {}
-              choices:
-                - {}
-                - {}
-              documents:
-                - {}
-                - {}
-              forms:
-                - {}
-                - {}
-              hosts:
-                - {}
-                - {}
-              videos:
-                - {}
-                - {}
-            is_signed_out: true
-            note: some text
-            signin_acknowledgement: {}
+          id: 83
+        signin_data:
+          -
+            name: some text
+            custom_fields:
+              -
+                format: {}
+                field_name: some text
+                field_value: some text
+              -
+                format: {}
+                field_name: some text
+                field_value: some text
+          -
+            name: some text
+            custom_fields:
+              -
+                format: {}
+                field_name: some text
+                field_value: some text
+              -
+                format: {}
+                field_name: some text
+                field_value: some text
     Signin:
       title: Root Type for SigninLite
       description: The root of the SigninLite type's schema.
@@ -1552,7 +1648,7 @@ components:
         is_signed_out:
           type: boolean
       example:
-        id: 43
+        id: 57
         company: some text
         email: some text
         first_name: some text
@@ -1564,7 +1660,7 @@ components:
         signin_photo_url: some text
         signin_timestamp: '2018-02-10T09:30Z'
         watchlist:
-          id: 30
+          id: 47
           external:
             - {}
             - {}
@@ -1631,13 +1727,17 @@ components:
               type: array
               items: {}
         watchlist_colour:
-          type: string
+          enum:
+            - RED
+            - GREEN
+            - YELLOW
+            - ORANGE
         country:
           type: string
         template:
           $ref: '#/components/schemas/EmailTemplate'
       example:
-        id: 81
+        id: 48
         company: some text
         created_at: '2018-02-10T09:30Z'
         email: some text
@@ -1647,25 +1747,25 @@ components:
         start_date: '2018-02-10T09:30Z'
         hosts:
           -
-            id: 30
+            id: 38
             email: some text
             first_name: some text
             last_name: some text
             mobile: some text
             profile_pic_url: some text
           -
-            id: 90
+            id: 87
             email: some text
             first_name: some text
             last_name: some text
             mobile: some text
             profile_pic_url: some text
         location:
-          id: 12
+          id: 38
           name: some text
         watchlist:
-          id: 20
-          colour: some text
+          id: 6
+          colour: GREEN
           email: some text
           first_name: some text
           last_name: some text
@@ -1674,10 +1774,10 @@ components:
           aliases:
             - some text
             - some text
-        watchlist_colour: some text
+        watchlist_colour: GREEN
         country: some text
         template:
-          id: 11
+          id: 26
           name: some text
           template_type: some text
     PaginatedInvitesList:
@@ -1736,6 +1836,8 @@ components:
                 - some text
             watchlist_colour: some text
     SigninCreateParams:
+      required:
+        - location_id
       type: object
       properties:
         guest_email_template_id:
@@ -1750,9 +1852,6 @@ components:
           type: integer
         send_notifications:
           type: boolean
-        photos:
-          type: array
-          items: {}
         sms_message:
           type: string
         first_name:
@@ -1763,6 +1862,19 @@ components:
           type: string
         email:
           type: string
+      example:
+        guest_email_template_id: 60
+        host_email_template_id: 50
+        host_ids:
+          - 36
+          - 76
+        location_id: 6
+        send_notifications: true
+        sms_message: some text
+        first_name: some text
+        last_name: some text
+        company: some text
+        email: some text
     SigninUpdateParams:
       type: object
       properties:
@@ -1772,17 +1884,12 @@ components:
         is_acknowledged:
           description: 'Used to acknowledge the `Signin`, can only be set to `true`.'
           type: boolean
-        badge_number:
-          type: string
-        badge_returned:
-          type: boolean
         is_accounted_for:
+          description: Used when keeping track of people in emergency situations
           type: boolean
       example:
         is_signed_out: true
         is_acknowledged: true
-        badge_number: some text
-        badge_returned: true
         is_accounted_for: true
     InviteUpdateParams:
       title: Root Type for InviteUpdateParams
@@ -1809,14 +1916,133 @@ components:
             "user_id": 1,
             "device_configuration_id": 1
         }
+    InputPage:
+      required:
+        - name
+        - custom_fields
+      type: object
+      properties:
+        name:
+          description: 'Eg: "form page", "about you", "etc"'
+          type: string
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+    CustomField:
+      title: Root Type for CustomField
+      description: The root of the CustomField type's schema.
+      type: object
+      properties:
+        format:
+          description: The format type of the field
+          enum:
+            - string
+        field_name:
+          description: What the field should be displayed/labeled as
+          type: string
+        field_value:
+          description: The value to be displayed for the field
+          type: string
+      example:
+        format: {}
+        field_name: some text
+        field_value: some text
+    SigninData:
+      type: object
+      properties:
+        name:
+          type: string
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomField'
+      example:
+        name: some text
+        custom_fields:
+          -
+            format: {}
+            field_name: some text
+            field_value: some text
+          -
+            format: {}
+            field_name: some text
+            field_value: some text
+    Permission:
+      title: Root Type for Permission
+      description: The root of the Permission type's schema.
+      type: object
+      properties:
+        name:
+          type: string
+        visibility:
+          type: string
+        values:
+          type: array
+          items:
+            type: string
+      example:
+        name: some text
+        visibility: some text
+        values:
+          - some text
+          - some text
+    CredentialCreateParams:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: some text
+        password: some text
+    Credential:
+      type: object
+      properties:
+        token:
+          type: string
+      example:
+        token: some text
+    InviteWatchlist:
+      title: Root Type for InviteWatchlist
+      description: The root of the InviteWatchlist type's schema.
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        external_colours:
+          type: array
+          items:
+            type: string
+        internal_colours:
+          type: array
+          items:
+            type: string
+      example:
+        id: 7
+        external_colours: RED
+        internal_colours: GREEN
   securitySchemes:
     ApiCredentials:
       type: http
       description: Contains an `Authorization` header and token
       scheme: basic
+    TractionGuestAuth:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: 'https://server.com/authorize'
+          refreshUrl: 'https://server.com/refresh'
+          scopes:
+            all: ''
 security:
   -
     ApiCredentials: []
+  -
+    TractionGuestAuth:
+      - all
 tags:
   -
     name: EmailTemplates
@@ -1844,3 +2070,6 @@ tags:
   -
     name: Users
     description: All endpoints related to the User model
+  -
+    name: Credentials
+    description: All endpoints relating to Credential tokens for authenticating Users

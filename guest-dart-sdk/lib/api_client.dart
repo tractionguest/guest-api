@@ -18,9 +18,10 @@ class ApiClient {
   final _regList = RegExp(r'^List<(.*)>$');
   final _regMap = RegExp(r'^Map<String,(.*)>$');
 
-  ApiClient({this.basePath = "https://dravaqa.tractionguest.ca/api/mobile/v1"}) {
+  ApiClient({this.basePath = "https://mobile-api-refactor-admin.tractionguest.ca/api/mobile/v1"}) {
     // Setup authentications (key: authentication name, value: authentication).
     _authentications['ApiCredentials'] = HttpBasicAuth();
+    _authentications['TractionGuestAuth'] = OAuth();
   }
 
   void addDefaultHeader(String key, String value) {
@@ -38,16 +39,26 @@ class ApiClient {
           return value is bool ? value : '$value'.toLowerCase() == 'true';
         case 'double':
           return value is double ? value : double.parse('$value');
+        case 'Credential':
+          return Credential.fromJson(value);
+        case 'CredentialCreateParams':
+          return CredentialCreateParams.fromJson(value);
+        case 'CustomField':
+          return CustomField.fromJson(value);
         case 'EmailTemplate':
           return EmailTemplate.fromJson(value);
         case 'Host':
           return Host.fromJson(value);
+        case 'InputPage':
+          return InputPage.fromJson(value);
         case 'Invite':
           return Invite.fromJson(value);
         case 'InviteDetail':
           return InviteDetail.fromJson(value);
         case 'InviteUpdateParams':
           return InviteUpdateParams.fromJson(value);
+        case 'InviteWatchlist':
+          return InviteWatchlist.fromJson(value);
         case 'Location':
           return Location.fromJson(value);
         case 'PaginatedEmailTemplatesList':
@@ -68,6 +79,8 @@ class ApiClient {
           return Pagination.fromJson(value);
         case 'ParkingLot':
           return ParkingLot.fromJson(value);
+        case 'Permission':
+          return Permission.fromJson(value);
         case 'PermissionBundle':
           return PermissionBundle.fromJson(value);
         case 'Signin':
@@ -76,10 +89,10 @@ class ApiClient {
           return SigninAcknowledgement.fromJson(value);
         case 'SigninCreateParams':
           return SigninCreateParams.fromJson(value);
+        case 'SigninData':
+          return SigninData.fromJson(value);
         case 'SigninDetail':
           return SigninDetail.fromJson(value);
-        case 'SigninParsedInfo':
-          return SigninParsedInfo.fromJson(value);
         case 'SigninUpdateParams':
           return SigninUpdateParams.fromJson(value);
         case 'SigninWatchlist':

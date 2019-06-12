@@ -5,6 +5,7 @@ class Watchlist {
   int id = null;
   
   String colour = null;
+  //enum colourEnum {  RED,  YELLOW,  GREEN,  ORANGE,  };{
   
   String email = null;
   

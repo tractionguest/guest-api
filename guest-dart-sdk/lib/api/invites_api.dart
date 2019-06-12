@@ -10,15 +10,15 @@ class InvitesApi {
   /// Creates an Invite
   ///
   /// Creates a new &#x60;Invite&#x60; for a specific &#x60;Location&#x60;.
-  Future<Invite> createLocationInvite(String locationId, Invite invite) async {
-    Object postBody = invite;
+  Future<Invite> createLocationInvite(int locationId, InviteDetail inviteDetail) async {
+    Object postBody = inviteDetail;
 
     // verify required params are set
     if(locationId == null) {
      throw new ApiException(400, "Missing required param: locationId");
     }
-    if(invite == null) {
-     throw new ApiException(400, "Missing required param: invite");
+    if(inviteDetail == null) {
+     throw new ApiException(400, "Missing required param: inviteDetail");
     }
 
     // create path and map variables
@@ -32,7 +32,7 @@ class InvitesApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials"];
+    List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -82,7 +82,7 @@ class InvitesApi {
     List<String> contentTypes = [];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials"];
+    List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -113,7 +113,7 @@ class InvitesApi {
   /// List All Invites
   ///
   /// Gets a list of all &#x60;Invite&#x60; entities.
-  Future<PaginatedInvitesList> getInvites() async {
+  Future<PaginatedInvitesList> getInvites({ int limit, int offset, String query, String withColours, int locationIds, String sortBy, DateTime startsBefore, DateTime startsAfter }) async {
     Object postBody;
 
     // verify required params are set
@@ -125,11 +125,35 @@ class InvitesApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(limit != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "limit", limit));
+    }
+    if(offset != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "offset", offset));
+    }
+    if(query != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "query", query));
+    }
+    if(withColours != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "with_colours", withColours));
+    }
+    if(locationIds != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "location_ids", locationIds));
+    }
+    if(sortBy != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "sort_by", sortBy));
+    }
+    if(startsBefore != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "starts_before", startsBefore));
+    }
+    if(startsAfter != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "starts_after", startsAfter));
+    }
 
     List<String> contentTypes = [];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials"];
+    List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -182,7 +206,7 @@ class InvitesApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials"];
+    List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

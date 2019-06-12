@@ -10,7 +10,7 @@ class HostsApi {
   /// List All Hosts
   ///
   /// Gets a list of all &#x60;Host&#x60; entities.
-  Future<PaginatedHostsList> getHosts() async {
+  Future<PaginatedHostsList> getHosts({ String query, int limit, int offset }) async {
     Object postBody;
 
     // verify required params are set
@@ -22,11 +22,20 @@ class HostsApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(query != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "query", query));
+    }
+    if(limit != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "limit", limit));
+    }
+    if(offset != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "offset", offset));
+    }
 
     List<String> contentTypes = [];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials"];
+    List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

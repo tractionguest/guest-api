@@ -12,7 +12,7 @@ class PermissionBundle {
   
   DateTime updatedAt = null;
   
-  Object permissions = null;
+  List<Permission> permissions = [];
   PermissionBundle();
 
   @override
@@ -50,7 +50,7 @@ class PermissionBundle {
     if (json['permissions'] == null) {
       permissions = null;
     } else {
-          permissions = json['permissions'];
+      permissions = Permission.listFromJson(json['permissions']);
     }
   }
 

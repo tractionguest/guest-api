@@ -29,7 +29,7 @@ class WatchlistsApi {
     List<String> contentTypes = [];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials"];
+    List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -60,7 +60,7 @@ class WatchlistsApi {
   /// List All Watchlists
   ///
   /// Gets a list of all &#x60;Watchlist&#x60; entities.
-  Future<PaginatedWatchlistList> getWatchlists({ int limit, int offset, String query, List<String> withColours }) async {
+  Future<PaginatedWatchlistList> getWatchlists({ int limit, int offset, String query, String withColours }) async {
     Object postBody;
 
     // verify required params are set
@@ -82,13 +82,13 @@ class WatchlistsApi {
       queryParams.addAll(_convertParametersForCollectionFormat("", "query", query));
     }
     if(withColours != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("multi", "with_colours", withColours));
+      queryParams.addAll(_convertParametersForCollectionFormat("", "with_colours", withColours));
     }
 
     List<String> contentTypes = [];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials"];
+    List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

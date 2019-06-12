@@ -2,34 +2,31 @@ part of guest_sdk.api;
 
 
 
-class EmailTemplatesApi {
+class CredentialsApi {
   final ApiClient apiClient;
 
-  EmailTemplatesApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  CredentialsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// List All EmailTemplates
+  /// Creates credentials from login information
   ///
-  /// Gets a list of all &#x60;EmailTemplate&#x60; entities.
-  Future<PaginatedEmailTemplatesList> getEmailTemplates({ int limit, int offset }) async {
-    Object postBody;
+  /// 
+  Future<Credential> createCredentials(CredentialCreateParams credentialCreateParams) async {
+    Object postBody = credentialCreateParams;
 
     // verify required params are set
+    if(credentialCreateParams == null) {
+     throw new ApiException(400, "Missing required param: credentialCreateParams");
+    }
 
     // create path and map variables
-    String path = "/email_templates".replaceAll("{format}","json");
+    String path = "/credentials".replaceAll("{format}","json");
 
     // query params
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
-    if(limit != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "limit", limit));
-    }
-    if(offset != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "offset", offset));
-    }
 
-    List<String> contentTypes = [];
+    List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
     List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
@@ -44,7 +41,7 @@ class EmailTemplatesApi {
     }
 
     var response = await apiClient.invokeAPI(path,
-                                             'GET',
+                                             'POST',
                                              queryParams,
                                              postBody,
                                              headerParams,
@@ -55,7 +52,7 @@ class EmailTemplatesApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'PaginatedEmailTemplatesList') as PaginatedEmailTemplatesList;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'Credential') as Credential;
     } else {
       return null;
     }

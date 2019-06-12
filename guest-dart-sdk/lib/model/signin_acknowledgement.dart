@@ -7,13 +7,11 @@ class SigninAcknowledgement {
   DateTime acknowledgedAt = null;
   
   int id = null;
-  
-  SigninDetail signin = null;
   SigninAcknowledgement();
 
   @override
   String toString() {
-    return 'SigninAcknowledgement[code=$code, acknowledgedAt=$acknowledgedAt, id=$id, signin=$signin, ]';
+    return 'SigninAcknowledgement[code=$code, acknowledgedAt=$acknowledgedAt, id=$id, ]';
   }
 
   SigninAcknowledgement.fromJson(Map<String, dynamic> json) {
@@ -33,11 +31,6 @@ class SigninAcknowledgement {
     } else {
           id = json['id'];
     }
-    if (json['signin'] == null) {
-      signin = null;
-    } else {
-      signin = new SigninDetail.fromJson(json['signin']);
-    }
   }
 
   Map<String, dynamic> toJson() {
@@ -48,8 +41,6 @@ class SigninAcknowledgement {
       json['acknowledged_at'] = acknowledgedAt == null ? null : acknowledgedAt.toUtc().toIso8601String();
     if (id != null)
       json['id'] = id;
-    if (signin != null)
-      json['signin'] = signin;
     return json;
   }
 

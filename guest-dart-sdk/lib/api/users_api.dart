@@ -26,7 +26,7 @@ class UsersApi {
     List<String> contentTypes = [];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials"];
+    List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

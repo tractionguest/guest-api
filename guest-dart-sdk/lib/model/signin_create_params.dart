@@ -12,8 +12,6 @@ class SigninCreateParams {
   
   bool sendNotifications = null;
   
-  List<Object> photos = [];
-  
   String smsMessage = null;
   
   String firstName = null;
@@ -27,7 +25,7 @@ class SigninCreateParams {
 
   @override
   String toString() {
-    return 'SigninCreateParams[guestEmailTemplateId=$guestEmailTemplateId, hostEmailTemplateId=$hostEmailTemplateId, hostIds=$hostIds, locationId=$locationId, sendNotifications=$sendNotifications, photos=$photos, smsMessage=$smsMessage, firstName=$firstName, lastName=$lastName, company=$company, email=$email, ]';
+    return 'SigninCreateParams[guestEmailTemplateId=$guestEmailTemplateId, hostEmailTemplateId=$hostEmailTemplateId, hostIds=$hostIds, locationId=$locationId, sendNotifications=$sendNotifications, smsMessage=$smsMessage, firstName=$firstName, lastName=$lastName, company=$company, email=$email, ]';
   }
 
   SigninCreateParams.fromJson(Map<String, dynamic> json) {
@@ -56,11 +54,6 @@ class SigninCreateParams {
       sendNotifications = null;
     } else {
           sendNotifications = json['send_notifications'];
-    }
-    if (json['photos'] == null) {
-      photos = null;
-    } else {
-      photos = Object.listFromJson(json['photos']);
     }
     if (json['sms_message'] == null) {
       smsMessage = null;
@@ -101,8 +94,6 @@ class SigninCreateParams {
       json['location_id'] = locationId;
     if (sendNotifications != null)
       json['send_notifications'] = sendNotifications;
-    if (photos != null)
-      json['photos'] = photos;
     if (smsMessage != null)
       json['sms_message'] = smsMessage;
     if (firstName != null)

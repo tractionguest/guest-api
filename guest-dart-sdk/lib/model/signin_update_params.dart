@@ -5,17 +5,13 @@ class SigninUpdateParams {
   bool isSignedOut = null;
   /* Used to acknowledge the `Signin`, can only be set to `true`. */
   bool isAcknowledged = null;
-  
-  String badgeNumber = null;
-  
-  bool badgeReturned = null;
-  
+  /* Used when keeping track of people in emergency situations */
   bool isAccountedFor = null;
   SigninUpdateParams();
 
   @override
   String toString() {
-    return 'SigninUpdateParams[isSignedOut=$isSignedOut, isAcknowledged=$isAcknowledged, badgeNumber=$badgeNumber, badgeReturned=$badgeReturned, isAccountedFor=$isAccountedFor, ]';
+    return 'SigninUpdateParams[isSignedOut=$isSignedOut, isAcknowledged=$isAcknowledged, isAccountedFor=$isAccountedFor, ]';
   }
 
   SigninUpdateParams.fromJson(Map<String, dynamic> json) {
@@ -30,16 +26,6 @@ class SigninUpdateParams {
     } else {
           isAcknowledged = json['is_acknowledged'];
     }
-    if (json['badge_number'] == null) {
-      badgeNumber = null;
-    } else {
-          badgeNumber = json['badge_number'];
-    }
-    if (json['badge_returned'] == null) {
-      badgeReturned = null;
-    } else {
-          badgeReturned = json['badge_returned'];
-    }
     if (json['is_accounted_for'] == null) {
       isAccountedFor = null;
     } else {
@@ -53,10 +39,6 @@ class SigninUpdateParams {
       json['is_signed_out'] = isSignedOut;
     if (isAcknowledged != null)
       json['is_acknowledged'] = isAcknowledged;
-    if (badgeNumber != null)
-      json['badge_number'] = badgeNumber;
-    if (badgeReturned != null)
-      json['badge_returned'] = badgeReturned;
     if (isAccountedFor != null)
       json['is_accounted_for'] = isAccountedFor;
     return json;

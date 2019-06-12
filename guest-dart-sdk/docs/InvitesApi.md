@@ -5,7 +5,7 @@
 import 'package:guest_sdk/api.dart';
 ```
 
-All URIs are relative to *https://dravaqa.tractionguest.ca/api/mobile/v1*
+All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api/mobile/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **createLocationInvite**
-> Invite createLocationInvite(locationId, invite)
+> Invite createLocationInvite(locationId, inviteDetail)
 
 Creates an Invite
 
@@ -28,13 +28,15 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
+// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
+//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new InvitesApi();
-var locationId = locationId_example; // String | A unique identifier for a `Location`.
-var invite = new Invite(); // Invite | 
+var locationId = 56; // int | A unique identifier for a `Location`.
+var inviteDetail = new InviteDetail(); // InviteDetail | 
 
 try { 
-    var result = api_instance.createLocationInvite(locationId, invite);
+    var result = api_instance.createLocationInvite(locationId, inviteDetail);
     print(result);
 } catch (e) {
     print("Exception when calling InvitesApi->createLocationInvite: $e\n");
@@ -45,8 +47,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **locationId** | **String**| A unique identifier for a &#x60;Location&#x60;. | [default to null]
- **invite** | [**Invite**](Invite.md)|  | 
+ **locationId** | **int**| A unique identifier for a &#x60;Location&#x60;. | [default to null]
+ **inviteDetail** | [**InviteDetail**](InviteDetail.md)|  | 
 
 ### Return type
 
@@ -54,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials)
+[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 
@@ -76,6 +78,8 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
+// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
+//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new InvitesApi();
 var inviteId = inviteId_example; // String | A unique identifier for a `Invite`.
@@ -100,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials)
+[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 
@@ -110,7 +114,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvites**
-> PaginatedInvitesList getInvites()
+> PaginatedInvitesList getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter)
 
 List All Invites
 
@@ -122,11 +126,21 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
+// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
+//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new InvitesApi();
+var limit = 56; // int | Limits the results to a specified number, defaults to 50
+var offset = 56; // int | Offsets the results to a specified number, defaults to 0
+var query = query_example; // String | Filters by `first_name`, `last_name`, `company`, and `email`
+var withColours = withColours_example; // String | A comma separated list of case-insensitive colour values.  i.e., `red`, `green`, `yellow`, and `orange`
+var locationIds = 56; // int | A comma separated list of Location IDs
+var sortBy = sortBy_example; // String | Sorts by the field name and direction provided where the pattern is `FIELD_NAME_DIRECTION`
+var startsBefore = 2013-10-20; // DateTime | Filters results to all those *before* the provided datetime
+var startsAfter = 2013-10-20; // DateTime | Filters results to all those *after* the provided datetime
 
 try { 
-    var result = api_instance.getInvites();
+    var result = api_instance.getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter);
     print(result);
 } catch (e) {
     print("Exception when calling InvitesApi->getInvites: $e\n");
@@ -134,7 +148,17 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int**| Limits the results to a specified number, defaults to 50 | [optional] [default to null]
+ **offset** | **int**| Offsets the results to a specified number, defaults to 0 | [optional] [default to null]
+ **query** | **String**| Filters by &#x60;first_name&#x60;, &#x60;last_name&#x60;, &#x60;company&#x60;, and &#x60;email&#x60; | [optional] [default to null]
+ **withColours** | **String**| A comma separated list of case-insensitive colour values.  i.e., &#x60;red&#x60;, &#x60;green&#x60;, &#x60;yellow&#x60;, and &#x60;orange&#x60; | [optional] [default to null]
+ **locationIds** | **int**| A comma separated list of Location IDs | [optional] [default to null]
+ **sortBy** | **String**| Sorts by the field name and direction provided where the pattern is &#x60;FIELD_NAME_DIRECTION&#x60; | [optional] [default to null]
+ **startsBefore** | **DateTime**| Filters results to all those *before* the provided datetime | [optional] [default to null]
+ **startsAfter** | **DateTime**| Filters results to all those *after* the provided datetime | [optional] [default to null]
 
 ### Return type
 
@@ -142,7 +166,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials)
+[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 
@@ -164,6 +188,8 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
+// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
+//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new InvitesApi();
 var inviteId = inviteId_example; // String | A unique identifier for a `Invite`.
@@ -190,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials)
+[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 

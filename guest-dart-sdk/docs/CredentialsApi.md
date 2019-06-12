@@ -1,4 +1,4 @@
-# guest_sdk.api.EmailTemplatesApi
+# guest_sdk.api.CredentialsApi
 
 ## Load the API package
 ```dart
@@ -9,15 +9,13 @@ All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getEmailTemplates**](EmailTemplatesApi.md#getEmailTemplates) | **GET** /email_templates | List All EmailTemplates
+[**createCredentials**](CredentialsApi.md#createCredentials) | **POST** /credentials | Creates credentials from login information
 
 
-# **getEmailTemplates**
-> PaginatedEmailTemplatesList getEmailTemplates(limit, offset)
+# **createCredentials**
+> Credential createCredentials(credentialCreateParams)
 
-List All EmailTemplates
-
-Gets a list of all `EmailTemplate` entities.
+Creates credentials from login information
 
 ### Example 
 ```dart
@@ -28,15 +26,14 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure OAuth2 access token for authorization: TractionGuestAuth
 //defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
-var api_instance = new EmailTemplatesApi();
-var limit = 56; // int | Limits the results to a specified number, defaults to 50
-var offset = 56; // int | Offsets the results to a specified number, defaults to 0
+var api_instance = new CredentialsApi();
+var credentialCreateParams = new CredentialCreateParams(); // CredentialCreateParams | 
 
 try { 
-    var result = api_instance.getEmailTemplates(limit, offset);
+    var result = api_instance.createCredentials(credentialCreateParams);
     print(result);
 } catch (e) {
-    print("Exception when calling EmailTemplatesApi->getEmailTemplates: $e\n");
+    print("Exception when calling CredentialsApi->createCredentials: $e\n");
 }
 ```
 
@@ -44,12 +41,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **int**| Limits the results to a specified number, defaults to 50 | [optional] [default to null]
- **offset** | **int**| Offsets the results to a specified number, defaults to 0 | [optional] [default to null]
+ **credentialCreateParams** | [**CredentialCreateParams**](CredentialCreateParams.md)|  | 
 
 ### Return type
 
-[**PaginatedEmailTemplatesList**](PaginatedEmailTemplatesList.md)
+[**Credential**](Credential.md)
 
 ### Authorization
 
@@ -57,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -5,7 +5,7 @@
 import 'package:guest_sdk/api.dart';
 ```
 
-All URIs are relative to *https://dravaqa.tractionguest.ca/api/mobile/v1*
+All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api/mobile/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **getHosts**
-> PaginatedHostsList getHosts()
+> PaginatedHostsList getHosts(query, limit, offset)
 
 List All Hosts
 
@@ -25,11 +25,16 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
+// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
+//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new HostsApi();
+var query = query_example; // String | Will filter by `first_name`, `last_name`, and `email`
+var limit = 56; // int | Limits the results to a specified number, defaults to 50
+var offset = 56; // int | Offsets the results to a specified number, defaults to 0
 
 try { 
-    var result = api_instance.getHosts();
+    var result = api_instance.getHosts(query, limit, offset);
     print(result);
 } catch (e) {
     print("Exception when calling HostsApi->getHosts: $e\n");
@@ -37,7 +42,12 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **query** | **String**| Will filter by &#x60;first_name&#x60;, &#x60;last_name&#x60;, and &#x60;email&#x60; | [optional] [default to null]
+ **limit** | **int**| Limits the results to a specified number, defaults to 50 | [optional] [default to null]
+ **offset** | **int**| Offsets the results to a specified number, defaults to 0 | [optional] [default to null]
 
 ### Return type
 
@@ -45,7 +55,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials)
+[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 

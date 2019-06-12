@@ -1,20 +1,20 @@
 part of guest_sdk.api;
 
-class SigninWatchlist {
+class InviteWatchlist {
   
   int id = null;
   
   List<String> externalColours = [];
   
   List<String> internalColours = [];
-  SigninWatchlist();
+  InviteWatchlist();
 
   @override
   String toString() {
-    return 'SigninWatchlist[id=$id, externalColours=$externalColours, internalColours=$internalColours, ]';
+    return 'InviteWatchlist[id=$id, externalColours=$externalColours, internalColours=$internalColours, ]';
   }
 
-  SigninWatchlist.fromJson(Map<String, dynamic> json) {
+  InviteWatchlist.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
     if (json['id'] == null) {
       id = null;
@@ -44,14 +44,14 @@ class SigninWatchlist {
     return json;
   }
 
-  static List<SigninWatchlist> listFromJson(List<dynamic> json) {
-    return json == null ? new List<SigninWatchlist>() : json.map((value) => new SigninWatchlist.fromJson(value)).toList();
+  static List<InviteWatchlist> listFromJson(List<dynamic> json) {
+    return json == null ? new List<InviteWatchlist>() : json.map((value) => new InviteWatchlist.fromJson(value)).toList();
   }
 
-  static Map<String, SigninWatchlist> mapFromJson(Map<String, dynamic> json) {
-    var map = new Map<String, SigninWatchlist>();
+  static Map<String, InviteWatchlist> mapFromJson(Map<String, dynamic> json) {
+    var map = new Map<String, InviteWatchlist>();
     if (json != null && json.isNotEmpty) {
-      json.forEach((String key, dynamic value) => map[key] = new SigninWatchlist.fromJson(value));
+      json.forEach((String key, dynamic value) => map[key] = new InviteWatchlist.fromJson(value));
     }
     return map;
   }

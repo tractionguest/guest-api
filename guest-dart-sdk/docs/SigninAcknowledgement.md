@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **code** | **String** |  | [optional] [default to null]
 **acknowledgedAt** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
 **id** | **int** |  | [optional] [default to null]
-**signin** | [**SigninDetail**](SigninDetail.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

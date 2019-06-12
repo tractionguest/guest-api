@@ -29,7 +29,7 @@ class SigninsApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials"];
+    List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -79,7 +79,7 @@ class SigninsApi {
     List<String> contentTypes = [];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials"];
+    List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -110,7 +110,7 @@ class SigninsApi {
   /// List All Signins
   ///
   /// Gets a list of all &#x60;Signin&#x60; entities.
-  Future<PaginatedSigninsList> getSignins() async {
+  Future<PaginatedSigninsList> getSignins({ int locationIds, String withColours, String query, bool withAcknowledged, bool withSignedIn, DateTime signinBefore, DateTime signinAfter, int limit, int offset }) async {
     Object postBody;
 
     // verify required params are set
@@ -122,11 +122,38 @@ class SigninsApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(locationIds != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "location_ids", locationIds));
+    }
+    if(withColours != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "with_colours", withColours));
+    }
+    if(query != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "query", query));
+    }
+    if(withAcknowledged != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "with_acknowledged", withAcknowledged));
+    }
+    if(withSignedIn != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "with_signed_in", withSignedIn));
+    }
+    if(signinBefore != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "signin_before", signinBefore));
+    }
+    if(signinAfter != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "signin_after", signinAfter));
+    }
+    if(limit != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "limit", limit));
+    }
+    if(offset != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "offset", offset));
+    }
 
     List<String> contentTypes = [];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials"];
+    List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -179,7 +206,7 @@ class SigninsApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials"];
+    List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;

@@ -25,6 +25,7 @@ class InviteDetail {
   Watchlist watchlist = null;
   
   String watchlistColour = null;
+  //enum watchlistColourEnum {  RED,  GREEN,  YELLOW,  ORANGE,  };{
   
   String country = null;
   

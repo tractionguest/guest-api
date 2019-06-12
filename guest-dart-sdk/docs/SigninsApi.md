@@ -5,7 +5,7 @@
 import 'package:guest_sdk/api.dart';
 ```
 
-All URIs are relative to *https://dravaqa.tractionguest.ca/api/mobile/v1*
+All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api/mobile/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,6 +28,8 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
+// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
+//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new SigninsApi();
 var signinCreateParams = new SigninCreateParams(); // SigninCreateParams | A new `Signin` to be created.
@@ -52,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials)
+[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 
@@ -74,6 +76,8 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
+// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
+//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new SigninsApi();
 var signinId = signinId_example; // String | A unique identifier for a `Signin`.
@@ -98,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials)
+[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 
@@ -108,7 +112,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSignins**
-> PaginatedSigninsList getSignins()
+> PaginatedSigninsList getSignins(locationIds, withColours, query, withAcknowledged, withSignedIn, signinBefore, signinAfter, limit, offset)
 
 List All Signins
 
@@ -120,11 +124,22 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
+// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
+//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new SigninsApi();
+var locationIds = 56; // int | A comma separated list of Location IDs
+var withColours = withColours_example; // String | A comma separated list of case-insensitive colour values.  i.e., `red`, `green`, `yellow`, and `orange`
+var query = query_example; // String | Allows you to query by `company`, `email`, `first_name`, `last_name`, and `location_name`
+var withAcknowledged = true; // bool | Filters to all those `Signin`s that have, or have not been acknowledged
+var withSignedIn = true; // bool | Filters to all `Signin`s that are, or are not currently signed out.
+var signinBefore = 2013-10-20; // DateTime | Filters results to all those *before* the provided datetime
+var signinAfter = 2013-10-20; // DateTime | Filters results to all those *after* the provided datetime
+var limit = 56; // int | Limits the results to a specified number, defaults to 50
+var offset = 56; // int | Offsets the results to a specified number, defaults to 0
 
 try { 
-    var result = api_instance.getSignins();
+    var result = api_instance.getSignins(locationIds, withColours, query, withAcknowledged, withSignedIn, signinBefore, signinAfter, limit, offset);
     print(result);
 } catch (e) {
     print("Exception when calling SigninsApi->getSignins: $e\n");
@@ -132,7 +147,18 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **locationIds** | **int**| A comma separated list of Location IDs | [optional] [default to null]
+ **withColours** | **String**| A comma separated list of case-insensitive colour values.  i.e., &#x60;red&#x60;, &#x60;green&#x60;, &#x60;yellow&#x60;, and &#x60;orange&#x60; | [optional] [default to null]
+ **query** | **String**| Allows you to query by &#x60;company&#x60;, &#x60;email&#x60;, &#x60;first_name&#x60;, &#x60;last_name&#x60;, and &#x60;location_name&#x60; | [optional] [default to null]
+ **withAcknowledged** | **bool**| Filters to all those &#x60;Signin&#x60;s that have, or have not been acknowledged | [optional] [default to null]
+ **withSignedIn** | **bool**| Filters to all &#x60;Signin&#x60;s that are, or are not currently signed out. | [optional] [default to null]
+ **signinBefore** | **DateTime**| Filters results to all those *before* the provided datetime | [optional] [default to null]
+ **signinAfter** | **DateTime**| Filters results to all those *after* the provided datetime | [optional] [default to null]
+ **limit** | **int**| Limits the results to a specified number, defaults to 50 | [optional] [default to null]
+ **offset** | **int**| Offsets the results to a specified number, defaults to 0 | [optional] [default to null]
 
 ### Return type
 
@@ -140,7 +166,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials)
+[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 
@@ -162,6 +188,8 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
+// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
+//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new SigninsApi();
 var signinId = signinId_example; // String | A unique identifier for a `Signin`.
@@ -188,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials)
+[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 

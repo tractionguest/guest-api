@@ -10,13 +10,16 @@ class UsersApi {
   /// Get the current User
   ///
   /// Gets the details of a single instance of the current &#x60;User&#x60;.
-  Future<User> getCurrentUser() async {
+  Future<User> getCurrentUser(String userId) async {
     Object postBody;
 
     // verify required params are set
+    if(userId == null) {
+     throw new ApiException(400, "Missing required param: userId");
+    }
 
     // create path and map variables
-    String path = "/users/current".replaceAll("{format}","json");
+    String path = "/users/{userId}".replaceAll("{format}","json").replaceAll("{" + "userId" + "}", userId.toString());
 
     // query params
     List<QueryParam> queryParams = [];

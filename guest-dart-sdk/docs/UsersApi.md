@@ -9,11 +9,11 @@ All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getCurrentUser**](UsersApi.md#getCurrentUser) | **GET** /users/current | Get the current User
+[**getCurrentUser**](UsersApi.md#getCurrentUser) | **GET** /users/{userId} | Get the current User
 
 
 # **getCurrentUser**
-> User getCurrentUser()
+> User getCurrentUser(userId)
 
 Get the current User
 
@@ -29,9 +29,10 @@ import 'package:guest_sdk/api.dart';
 //defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new UsersApi();
+var userId = userId_example; // String | The user ID, represented as a string.  `\"current\"` can be used as a shortcut for the currently-authenticated user
 
 try { 
-    var result = api_instance.getCurrentUser();
+    var result = api_instance.getCurrentUser(userId);
     print(result);
 } catch (e) {
     print("Exception when calling UsersApi->getCurrentUser: $e\n");
@@ -39,7 +40,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **String**| The user ID, represented as a string.  &#x60;\&quot;current\&quot;&#x60; can be used as a shortcut for the currently-authenticated user | [default to null]
 
 ### Return type
 

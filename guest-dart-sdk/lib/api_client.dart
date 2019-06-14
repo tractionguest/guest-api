@@ -53,6 +53,8 @@ class ApiClient {
           return InputPage.fromJson(value);
         case 'Invite':
           return Invite.fromJson(value);
+        case 'InviteCreateParams':
+          return InviteCreateParams.fromJson(value);
         case 'InviteDetail':
           return InviteDetail.fromJson(value);
         case 'InviteUpdateParams':
@@ -61,6 +63,8 @@ class ApiClient {
           return InviteWatchlist.fromJson(value);
         case 'Location':
           return Location.fromJson(value);
+        case 'NotificationTrigger':
+          return NotificationTrigger.fromJson(value);
         case 'PaginatedEmailTemplatesList':
           return PaginatedEmailTemplatesList.fromJson(value);
         case 'PaginatedHostsList':

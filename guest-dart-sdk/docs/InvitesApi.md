@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **createLocationInvite**
-> Invite createLocationInvite(locationId, inviteCreateParams)
+> InviteDetail createLocationInvite(locationId, inviteCreateParams)
 
 Creates an Invite
 
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Invite**](Invite.md)
+[**InviteDetail**](InviteDetail.md)
 
 ### Authorization
 

@@ -27,14 +27,14 @@ class InviteDetail {
   String watchlistColour = null;
   //enum watchlistColourEnum {  RED,  GREEN,  YELLOW,  ORANGE,  };{
   
-  String country = null;
-  
   EmailTemplate template = null;
+  
+  List<CustomField> customFields = [];
   InviteDetail();
 
   @override
   String toString() {
-    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlist=$watchlist, watchlistColour=$watchlistColour, country=$country, template=$template, ]';
+    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlist=$watchlist, watchlistColour=$watchlistColour, template=$template, customFields=$customFields, ]';
   }
 
   InviteDetail.fromJson(Map<String, dynamic> json) {
@@ -99,15 +99,15 @@ class InviteDetail {
     } else {
           watchlistColour = json['watchlist_colour'];
     }
-    if (json['country'] == null) {
-      country = null;
-    } else {
-          country = json['country'];
-    }
     if (json['template'] == null) {
       template = null;
     } else {
       template = new EmailTemplate.fromJson(json['template']);
+    }
+    if (json['custom_fields'] == null) {
+      customFields = null;
+    } else {
+      customFields = CustomField.listFromJson(json['custom_fields']);
     }
   }
 
@@ -137,10 +137,10 @@ class InviteDetail {
       json['watchlist'] = watchlist;
     if (watchlistColour != null)
       json['watchlist_colour'] = watchlistColour;
-    if (country != null)
-      json['country'] = country;
     if (template != null)
       json['template'] = template;
+    if (customFields != null)
+      json['custom_fields'] = customFields;
     return json;
   }
 

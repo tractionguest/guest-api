@@ -20,8 +20,8 @@ Name | Type | Description | Notes
 **location** | [**Location**](Location.md) |  | [optional] [default to null]
 **watchlist** | [**Watchlist**](Watchlist.md) |  | [optional] [default to null]
 **watchlistColour** | **String** |  | [optional] [default to null]
-**country** | **String** |  | [optional] [default to null]
 **template** | [**EmailTemplate**](EmailTemplate.md) |  | [optional] [default to null]
+**customFields** | [**List&lt;CustomField&gt;**](CustomField.md) |  | [optional] [default to []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -2,63 +2,144 @@ part of guest_sdk.api;
 
 class InviteUpdateParams {
   
-  bool checkedIn = null;
+  String company = null;
+  
+  String email = null;
+  
+  DateTime endDate = null;
+  
+  String lastName = null;
+  
+  DateTime startDate = null;
+  
+  String title = null;
+  
+  List<int> hostIds = [];
+  
+  List<CustomField> customFields = [];
+  
+  int emailTemplateId = null;
+  
+  String mobile = null;
+  
+  String firstName = null;
+  
+  List<NotificationTrigger> notificationTriggers = [];
   
   bool onPremise = null;
-  
-  String sentEmail = null;
-  
+  /* Used for transfering ownership of an `Invite` to another member of the Account */
   int userId = null;
-  
-  int locationId = null;
   InviteUpdateParams();
 
   @override
   String toString() {
-    return 'InviteUpdateParams[checkedIn=$checkedIn, onPremise=$onPremise, sentEmail=$sentEmail, userId=$userId, locationId=$locationId, ]';
+    return 'InviteUpdateParams[company=$company, email=$email, endDate=$endDate, lastName=$lastName, startDate=$startDate, title=$title, hostIds=$hostIds, customFields=$customFields, emailTemplateId=$emailTemplateId, mobile=$mobile, firstName=$firstName, notificationTriggers=$notificationTriggers, onPremise=$onPremise, userId=$userId, ]';
   }
 
   InviteUpdateParams.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    if (json['checked_in'] == null) {
-      checkedIn = null;
+    if (json['company'] == null) {
+      company = null;
     } else {
-          checkedIn = json['checked_in'];
+          company = json['company'];
+    }
+    if (json['email'] == null) {
+      email = null;
+    } else {
+          email = json['email'];
+    }
+    if (json['end_date'] == null) {
+      endDate = null;
+    } else {
+      endDate = DateTime.parse(json['end_date']);
+    }
+    if (json['last_name'] == null) {
+      lastName = null;
+    } else {
+          lastName = json['last_name'];
+    }
+    if (json['start_date'] == null) {
+      startDate = null;
+    } else {
+      startDate = DateTime.parse(json['start_date']);
+    }
+    if (json['title'] == null) {
+      title = null;
+    } else {
+          title = json['title'];
+    }
+    if (json['host_ids'] == null) {
+      hostIds = null;
+    } else {
+      hostIds = (json['host_ids'] as List).cast<int>();
+    }
+    if (json['custom_fields'] == null) {
+      customFields = null;
+    } else {
+      customFields = CustomField.listFromJson(json['custom_fields']);
+    }
+    if (json['email_template_id'] == null) {
+      emailTemplateId = null;
+    } else {
+          emailTemplateId = json['email_template_id'];
+    }
+    if (json['mobile'] == null) {
+      mobile = null;
+    } else {
+          mobile = json['mobile'];
+    }
+    if (json['first_name'] == null) {
+      firstName = null;
+    } else {
+          firstName = json['first_name'];
+    }
+    if (json['notification_triggers'] == null) {
+      notificationTriggers = null;
+    } else {
+      notificationTriggers = NotificationTrigger.listFromJson(json['notification_triggers']);
     }
     if (json['on_premise'] == null) {
       onPremise = null;
     } else {
           onPremise = json['on_premise'];
     }
-    if (json['sent_email'] == null) {
-      sentEmail = null;
-    } else {
-          sentEmail = json['sent_email'];
-    }
     if (json['user_id'] == null) {
       userId = null;
     } else {
           userId = json['user_id'];
     }
-    if (json['location_id'] == null) {
-      locationId = null;
-    } else {
-          locationId = json['location_id'];
-    }
   }
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (checkedIn != null)
-      json['checked_in'] = checkedIn;
+    if (company != null)
+      json['company'] = company;
+    if (email != null)
+      json['email'] = email;
+    if (endDate != null)
+      json['end_date'] = endDate == null ? null : endDate.toUtc().toIso8601String();
+    if (lastName != null)
+      json['last_name'] = lastName;
+    if (startDate != null)
+      json['start_date'] = startDate == null ? null : startDate.toUtc().toIso8601String();
+    if (title != null)
+      json['title'] = title;
+    if (hostIds != null)
+      json['host_ids'] = hostIds;
+    if (customFields != null)
+      json['custom_fields'] = customFields;
+    if (emailTemplateId != null)
+      json['email_template_id'] = emailTemplateId;
+    if (mobile != null)
+      json['mobile'] = mobile;
+    if (firstName != null)
+      json['first_name'] = firstName;
+    if (notificationTriggers != null)
+      json['notification_triggers'] = notificationTriggers;
     if (onPremise != null)
       json['on_premise'] = onPremise;
-    if (sentEmail != null)
-      json['sent_email'] = sentEmail;
     if (userId != null)
       json['user_id'] = userId;
-    if (locationId != null)
-      json['location_id'] = locationId;
     return json;
   }
 

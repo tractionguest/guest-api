@@ -10,7 +10,7 @@ class InvitesApi {
   /// Creates an Invite
   ///
   /// Creates a new &#x60;Invite&#x60; for a specific &#x60;Location&#x60;.
-  Future<Invite> createLocationInvite(int locationId, InviteCreateParams inviteCreateParams) async {
+  Future<InviteDetail> createLocationInvite(int locationId, InviteCreateParams inviteCreateParams) async {
     Object postBody = inviteCreateParams;
 
     // verify required params are set
@@ -55,7 +55,7 @@ class InvitesApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'Invite') as Invite;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'InviteDetail') as InviteDetail;
     } else {
       return null;
     }

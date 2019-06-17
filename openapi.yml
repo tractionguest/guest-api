@@ -6,7 +6,7 @@ info:
         name: Brandon McKay
         url: 'https://tractionguest.com'
         email: bmckay@tractionguest.com
-    version: 0.9.1
+    version: 0.9.2
 servers:
     -
         url: '{domain}'
@@ -438,20 +438,39 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/Invite'
+                                $ref: '#/components/schemas/InviteDetail'
                             examples:
                                 default:
                                     value:
-                                        id: 87
+                                        id: 7
+                                        company: some text
+                                        created_at: '2018-02-10T09:30Z'
+                                        email: some text
+                                        end_date: '2018-02-10T09:30Z'
                                         first_name: some text
                                         last_name: some text
                                         start_date: '2018-02-10T09:30Z'
+                                        hosts:
+                                            -
+                                                id: 38
+                                                email: some text
+                                                first_name: some text
+                                                last_name: some text
+                                                mobile: some text
+                                                profile_pic_url: some text
+                                            -
+                                                id: 3
+                                                email: some text
+                                                first_name: some text
+                                                last_name: some text
+                                                mobile: some text
+                                                profile_pic_url: some text
                                         location:
-                                            id: 83
+                                            id: 23
                                             name: some text
                                         watchlist:
-                                            id: 26
-                                            colour: YELLOW
+                                            id: 98
+                                            colour: {}
                                             email: some text
                                             first_name: some text
                                             last_name: some text
@@ -460,7 +479,20 @@ paths:
                                             aliases:
                                                 - some text
                                                 - some text
-                                        watchlist_colour: YELLOW
+                                        watchlist_colour: {}
+                                        template:
+                                            id: 98
+                                            name: some text
+                                            template_type: some text
+                                        custom_fields:
+                                            -
+                                                format: {}
+                                                field_name: some text
+                                                field_value: some text
+                                            -
+                                                format: {}
+                                                field_name: some text
+                                                field_value: some text
         parameters:
             -
                 name: locationId
@@ -491,7 +523,7 @@ paths:
                             examples:
                                 default:
                                     value:
-                                        id: 63
+                                        id: 23
                                         company: some text
                                         created_at: '2018-02-10T09:30Z'
                                         email: some text
@@ -501,25 +533,25 @@ paths:
                                         start_date: '2018-02-10T09:30Z'
                                         hosts:
                                             -
-                                                id: 34
+                                                id: 7
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
                                             -
-                                                id: 33
+                                                id: 36
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
                                         location:
-                                            id: 47
+                                            id: 57
                                             name: some text
                                         watchlist:
-                                            id: 11
-                                            colour: GREEN
+                                            id: 82
+                                            colour: {}
                                             email: some text
                                             first_name: some text
                                             last_name: some text
@@ -528,12 +560,20 @@ paths:
                                             aliases:
                                                 - some text
                                                 - some text
-                                        watchlist_colour: GREEN
-                                        country: some text
-                                        email_template:
-                                            id: 77
+                                        watchlist_colour: {}
+                                        template:
+                                            id: 74
                                             name: some text
                                             template_type: some text
+                                        custom_fields:
+                                            -
+                                                format: {}
+                                                field_name: some text
+                                                field_value: some text
+                                            -
+                                                format: {}
+                                                field_name: some text
+                                                field_value: some text
         put:
             tags:
                 - Invites
@@ -565,7 +605,7 @@ paths:
                             examples:
                                 default:
                                     value:
-                                        id: 84
+                                        id: 27
                                         company: some text
                                         created_at: '2018-02-10T09:30Z'
                                         email: some text
@@ -575,25 +615,25 @@ paths:
                                         start_date: '2018-02-10T09:30Z'
                                         hosts:
                                             -
-                                                id: 53
+                                                id: 97
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
                                             -
-                                                id: 9
+                                                id: 35
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
                                         location:
-                                            id: 28
+                                            id: 74
                                             name: some text
                                         watchlist:
-                                            id: 72
-                                            colour: YELLOW
+                                            id: 55
+                                            colour: {}
                                             email: some text
                                             first_name: some text
                                             last_name: some text
@@ -602,12 +642,20 @@ paths:
                                             aliases:
                                                 - some text
                                                 - some text
-                                        watchlist_colour: YELLOW
-                                        country: some text
+                                        watchlist_colour: {}
                                         template:
-                                            id: 38
+                                            id: 12
                                             name: some text
                                             template_type: some text
+                                        custom_fields:
+                                            -
+                                                format: {}
+                                                field_name: some text
+                                                field_value: some text
+                                            -
+                                                format: {}
+                                                field_name: some text
+                                                field_value: some text
         parameters:
             -
                 name: inviteId
@@ -730,50 +778,74 @@ paths:
                                 default:
                                     value:
                                         pagination:
-                                            total_records: 2
+                                            total_records: 10
                                             current_offset: 14
-                                            next_offset: 96
+                                            next_offset: 16
                                         invites:
                                             -
-                                                id: 8
+                                                id: 20
                                                 first_name: some text
                                                 last_name: some text
                                                 start_date: '2018-02-10T09:30Z'
                                                 location:
-                                                    id: 34
+                                                    id: 66
                                                     name: some text
                                                 watchlist:
-                                                    id: 18
-                                                    colour: RED
-                                                    email: some text
-                                                    first_name: some text
-                                                    last_name: some text
-                                                    notes: some text
-                                                    photo: some text
-                                                    aliases:
+                                                    id: 37
+                                                    external_colours:
                                                         - some text
                                                         - some text
-                                                watchlist_colour: RED
+                                                    internal_colours:
+                                                        - some text
+                                                        - some text
+                                                watchlist_colour: {}
+                                                hosts:
+                                                    -
+                                                        id: 35
+                                                        email: some text
+                                                        first_name: some text
+                                                        last_name: some text
+                                                        mobile: some text
+                                                        profile_pic_url: some text
+                                                    -
+                                                        id: 47
+                                                        email: some text
+                                                        first_name: some text
+                                                        last_name: some text
+                                                        mobile: some text
+                                                        profile_pic_url: some text
                                             -
-                                                id: 28
+                                                id: 46
                                                 first_name: some text
                                                 last_name: some text
                                                 start_date: '2018-02-10T09:30Z'
                                                 location:
-                                                    id: 42
+                                                    id: 29
                                                     name: some text
                                                 watchlist:
-                                                    id: 80
-                                                    colour: GREEN
-                                                    email: some text
-                                                    first_name: some text
-                                                    last_name: some text
-                                                    notes: some text
-                                                    photo: some text
-                                                    aliases:
+                                                    id: 49
+                                                    external_colours:
                                                         - some text
                                                         - some text
-                                                watchlist_colour: GREEN
+                                                    internal_colours:
+                                                        - some text
+                                                        - some text
+                                                watchlist_colour: {}
+                                                hosts:
+                                                    -
+                                                        id: 81
+                                                        email: some text
+                                                        first_name: some text
+                                                        last_name: some text
+                                                        mobile: some text
+                                                        profile_pic_url: some text
+                                                    -
+                                                        id: 32
+                                                        email: some text
+                                                        first_name: some text
+                                                        last_name: some text
+                                                        mobile: some text
+                                                        profile_pic_url: some text
     /signins:
         summary: Path used to manage the list of Signins.
         description: >-
@@ -1790,10 +1862,12 @@ components:
                         - GREEN
                         - YELLOW
                         - ORANGE
-                country:
-                    type: string
                 template:
                     $ref: '#/components/schemas/EmailTemplate'
+                custom_fields:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/CustomField'
             example:
                 id: 48
                 company: some text
@@ -1949,31 +2023,6 @@ components:
                 is_signed_out: true
                 is_acknowledged: true
                 is_accounted_for: true
-        InviteUpdateParams:
-            title: Root Type for InviteUpdateParams
-            description: The params used to update an existing `Invite`
-            type: object
-            properties:
-                checked_in:
-                    type: boolean
-                on_premise:
-                    type: boolean
-                sent_email:
-                    type: string
-                user_id:
-                    format: int32
-                    type: integer
-                location_id:
-                    format: int32
-                    type: integer
-            example: |-
-                {
-                    "checked_in": false,
-                    "on_premise": false,
-                    "sent_email": "some string",
-                    "user_id": 1,
-                    "device_configuration_id": 1
-                }
         InputPage:
             required:
                 - name
@@ -2225,6 +2274,96 @@ components:
                 notification_groups:
                     - some text
                     - some text
+        InviteUpdateParams:
+            title: Root Type for InviteCreateParams
+            description: The root of the InviteUpdateParams type's schema.
+            required: []
+            type: object
+            properties:
+                company:
+                    type: string
+                email:
+                    type: string
+                end_date:
+                    format: date-time
+                    type: string
+                last_name:
+                    type: string
+                start_date:
+                    format: date-time
+                    description: ''
+                    type: string
+                title:
+                    type: string
+                host_ids:
+                    type: array
+                    items:
+                        type: integer
+                custom_fields:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/CustomField'
+                email_template_id:
+                    type: integer
+                mobile:
+                    type: string
+                first_name:
+                    type: string
+                notification_triggers:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/NotificationTrigger'
+                on_premise:
+                    type: boolean
+                user_id:
+                    description: Used for transfering ownership of an `Invite` to another member of the Account
+                    type: integer
+            example:
+                company: some text
+                email: some text
+                end_date: '2018-02-10T09:30Z'
+                last_name: some text
+                start_date: '2018-02-10T09:30Z'
+                title: some text
+                watchlist_colour: {}
+                host_ids:
+                    - 63
+                    - 49
+                custom_fields:
+                    -
+                        format: {}
+                        field_name: some text
+                        field_value: some text
+                    -
+                        format: {}
+                        field_name: some text
+                        field_value: some text
+                email_template_id: 18
+                mobile: some text
+                first_name: some text
+                notification_triggers:
+                    -
+                        subject: some text
+                        title: some text
+                        message: some text
+                        notification_group_names:
+                            - some text
+                            - some text
+                        trigger_target: {}
+                        trigger_span: {}
+                        trigger_pointer: {}
+                        event_offset: 63
+                    -
+                        subject: some text
+                        title: some text
+                        message: some text
+                        notification_group_names:
+                            - some text
+                            - some text
+                        trigger_target: {}
+                        trigger_span: {}
+                        trigger_pointer: {}
+                        event_offset: 41
     securitySchemes:
         ApiCredentials:
             type: http

@@ -6,7 +6,7 @@ info:
         name: Brandon McKay
         url: 'https://tractionguest.com'
         email: bmckay@tractionguest.com
-    version: 0.9.0
+    version: 0.9.1
 servers:
     -
         url: '{domain}'
@@ -386,53 +386,51 @@ paths:
                 content:
                     application/json:
                         schema:
-                            $ref: '#/components/schemas/InviteDetail'
+                            $ref: '#/components/schemas/InviteCreateParams'
                         examples:
                             default:
                                 value:
-                                    id: 66
                                     company: some text
-                                    created_at: '2018-02-10T09:30Z'
                                     email: some text
                                     end_date: '2018-02-10T09:30Z'
-                                    first_name: some text
                                     last_name: some text
                                     start_date: '2018-02-10T09:30Z'
-                                    hosts:
+                                    title: some text
+                                    watchlist_colour: {}
+                                    host_ids:
+                                        - 96
+                                        - 2
+                                    custom_fields:
                                         -
-                                            id: 10
-                                            email: some text
-                                            first_name: some text
-                                            last_name: some text
-                                            mobile: some text
-                                            profile_pic_url: some text
+                                            format: {}
+                                            field_name: some text
+                                            field_value: some text
                                         -
-                                            id: 7
-                                            email: some text
-                                            first_name: some text
-                                            last_name: some text
-                                            mobile: some text
-                                            profile_pic_url: some text
-                                    location:
-                                        id: 58
-                                        name: some text
-                                    watchlist:
-                                        id: 0
-                                        colour: {}
-                                        email: some text
-                                        first_name: some text
-                                        last_name: some text
-                                        notes: some text
-                                        photo: some text
-                                        aliases:
-                                            - some text
-                                            - some text
-                                    watchlist_colour: some text
-                                    country: some text
-                                    template:
-                                        id: 11
-                                        name: some text
-                                        template_type: some text
+                                            format: {}
+                                            field_name: some text
+                                            field_value: some text
+                                    email_template_id: 53
+                                    mobile: some text
+                                    first_name: some text
+                                    notification_triggers:
+                                        -
+                                            offset_direction: {}
+                                            offset_type: {}
+                                            offset_amount: 34
+                                            offset_origin: {}
+                                            email_template_id: 63
+                                            notification_groups:
+                                                - some text
+                                                - some text
+                                        -
+                                            offset_direction: {}
+                                            offset_type: {}
+                                            offset_amount: 12
+                                            offset_origin: {}
+                                            email_template_id: 2
+                                            notification_groups:
+                                                - some text
+                                                - some text
                 required: true
             responses:
                 '201':
@@ -1617,6 +1615,9 @@ components:
         Signin:
             title: Root Type for SigninLite
             description: The root of the SigninLite type's schema.
+            required:
+                - hosts
+                - signin_data
             type: object
             properties:
                 id:
@@ -1658,8 +1659,16 @@ components:
                             items: {}
                 is_signed_out:
                     type: boolean
+                hosts:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Host'
+                signin_data:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/SigninData'
             example:
-                id: 57
+                id: 55
                 company: some text
                 email: some text
                 first_name: some text
@@ -1671,14 +1680,52 @@ components:
                 signin_photo_url: some text
                 signin_timestamp: '2018-02-10T09:30Z'
                 watchlist:
-                    id: 47
-                    external:
-                        - {}
-                        - {}
-                    internal:
-                        - {}
-                        - {}
+                    id: 28
+                    external_colours:
+                        - some text
+                        - some text
+                    internal_colours:
+                        - some text
+                        - some text
                 is_signed_out: true
+                hosts:
+                    -
+                        id: 64
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile: some text
+                        profile_pic_url: some text
+                    -
+                        id: 2
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile: some text
+                        profile_pic_url: some text
+                signin_data:
+                    -
+                        name: some text
+                        custom_fields:
+                            -
+                                format: {}
+                                field_name: some text
+                                field_value: some text
+                            -
+                                format: {}
+                                field_name: some text
+                                field_value: some text
+                    -
+                        name: some text
+                        custom_fields:
+                            -
+                                format: {}
+                                field_name: some text
+                                field_value: some text
+                            -
+                                format: {}
+                                field_name: some text
+                                field_value: some text
         InviteDetail:
             title: Root Type for InviteDetail
             description: The root of the InviteDetail type's schema.
@@ -1916,7 +1963,7 @@ components:
                 user_id:
                     format: int32
                     type: integer
-                device_configuration_id:
+                location_id:
                     format: int32
                     type: integer
             example: |-
@@ -2041,6 +2088,10 @@ components:
         InviteCreateParams:
             title: Root Type for InviteCreateParams
             description: The root of the InviteCreateParams type's schema.
+            required:
+                - email
+                - last_name
+                - first_name
             type: object
             properties:
                 company:
@@ -2054,6 +2105,7 @@ components:
                     type: string
                 start_date:
                     format: date-time
+                    description: The `start_date` is required for invitations to lobbies
                     type: string
                 title:
                     type: string
@@ -2071,69 +2123,108 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/CustomField'
-                triggers:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/NotificationTrigger'
                 email_template_id:
                     type: integer
                 mobile:
                     type: string
-            example: |-
-                {
-                    "company": "name",
-                    "email": "woot@what.com",
-                    "end_date": "date",
-                    "last_name": "we",
-                    "mobile": "123123",
-                    "start_date": "date",
-                    "title": "string",
-                    "watchlist_colour": "green",
-                    "host_ids": [1,2,3],
-                    "custom_fields": [],
-                    "triggers": []
-                }
+                first_name:
+                    type: string
+                notification_triggers:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/NotificationTrigger'
+            example:
+                company: some text
+                email: some text
+                end_date: '2018-02-10T09:30Z'
+                last_name: some text
+                start_date: '2018-02-10T09:30Z'
+                title: some text
+                watchlist_colour: {}
+                host_ids:
+                    - 63
+                    - 49
+                custom_fields:
+                    -
+                        format: {}
+                        field_name: some text
+                        field_value: some text
+                    -
+                        format: {}
+                        field_name: some text
+                        field_value: some text
+                email_template_id: 18
+                mobile: some text
+                first_name: some text
+                notification_triggers:
+                    -
+                        subject: some text
+                        title: some text
+                        message: some text
+                        notification_group_names:
+                            - some text
+                            - some text
+                        trigger_target: {}
+                        trigger_span: {}
+                        trigger_pointer: {}
+                        event_offset: 63
+                    -
+                        subject: some text
+                        title: some text
+                        message: some text
+                        notification_group_names:
+                            - some text
+                            - some text
+                        trigger_target: {}
+                        trigger_span: {}
+                        trigger_pointer: {}
+                        event_offset: 41
         NotificationTrigger:
             title: Root Type for NotificationTrigger
             description: The root of the NotificationTrigger type's schema.
+            required:
+                - offset_type
+                - offset_origin
+                - offset_direction
+                - offset_amount
+                - notification_groups
+                - email_template_id
             type: object
             properties:
-                subject:
-                    type: string
-                title:
-                    type: string
-                message:
-                    type: string
-                notification_group_names:
-                    type: array
-                    items:
-                        type: string
-                trigger_target:
-                    description: trigger_target
-                    enum:
-                        - START
-                        - END
-                trigger_span:
-                    description: trigger_span
-                    enum:
-                        - days
-                        - hours
-                trigger_pointer:
-                    description: trigger_pointer
+                offset_direction:
+                    description: 'Whether the offset should be calculated for before, or after the event'
                     enum:
                         - BEFORE
                         - AFTER
-                event_offset:
-                    description: the trigger_number
+                offset_type:
+                    description: Whether the offset should be calculated as `days` or `hours`
+                    enum:
+                        - days
+                        - hours
+                offset_amount:
+                    description: The amount to offset the notification from the event
                     type: integer
-            example: |-
-                {
-                    "subject": "",
-                    "title": "",
-                    "message": "",
-                    "when": "",
-                    "when_values": []
-                }
+                offset_origin:
+                    description: 'Whether the offset should be calculated from the start, or finish of the event'
+                    enum:
+                        - START
+                        - END
+                email_template_id:
+                    type: integer
+                notification_groups:
+                    description: 'An array made of only `INVITEE`, `HOSTS, or `LEP` as possible string values'
+                    type: array
+                    items:
+                        type: string
+            example:
+                offset_direction: {}
+                offset_type: {}
+                offset_amount: 94
+                offset_origin: {}
+                email_template_id: 32
+                notification_groups:
+                    - some text
+                    - some text
     securitySchemes:
         ApiCredentials:
             type: http

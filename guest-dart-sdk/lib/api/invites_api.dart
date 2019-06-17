@@ -10,15 +10,15 @@ class InvitesApi {
   /// Creates an Invite
   ///
   /// Creates a new &#x60;Invite&#x60; for a specific &#x60;Location&#x60;.
-  Future<Invite> createLocationInvite(int locationId, InviteDetail inviteDetail) async {
-    Object postBody = inviteDetail;
+  Future<Invite> createLocationInvite(int locationId, InviteCreateParams inviteCreateParams) async {
+    Object postBody = inviteCreateParams;
 
     // verify required params are set
     if(locationId == null) {
      throw new ApiException(400, "Missing required param: locationId");
     }
-    if(inviteDetail == null) {
-     throw new ApiException(400, "Missing required param: inviteDetail");
+    if(inviteCreateParams == null) {
+     throw new ApiException(400, "Missing required param: inviteCreateParams");
     }
 
     // create path and map variables

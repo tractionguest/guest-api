@@ -10,12 +10,12 @@ class InviteUpdateParams {
   
   int userId = null;
   
-  int deviceConfigurationId = null;
+  int locationId = null;
   InviteUpdateParams();
 
   @override
   String toString() {
-    return 'InviteUpdateParams[checkedIn=$checkedIn, onPremise=$onPremise, sentEmail=$sentEmail, userId=$userId, deviceConfigurationId=$deviceConfigurationId, ]';
+    return 'InviteUpdateParams[checkedIn=$checkedIn, onPremise=$onPremise, sentEmail=$sentEmail, userId=$userId, locationId=$locationId, ]';
   }
 
   InviteUpdateParams.fromJson(Map<String, dynamic> json) {
@@ -40,10 +40,10 @@ class InviteUpdateParams {
     } else {
           userId = json['user_id'];
     }
-    if (json['device_configuration_id'] == null) {
-      deviceConfigurationId = null;
+    if (json['location_id'] == null) {
+      locationId = null;
     } else {
-          deviceConfigurationId = json['device_configuration_id'];
+          locationId = json['location_id'];
     }
   }
 
@@ -57,8 +57,8 @@ class InviteUpdateParams {
       json['sent_email'] = sentEmail;
     if (userId != null)
       json['user_id'] = userId;
-    if (deviceConfigurationId != null)
-      json['device_configuration_id'] = deviceConfigurationId;
+    if (locationId != null)
+      json['location_id'] = locationId;
     return json;
   }
 

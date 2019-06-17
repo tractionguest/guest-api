@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **createLocationInvite**
-> Invite createLocationInvite(locationId, inviteDetail)
+> Invite createLocationInvite(locationId, inviteCreateParams)
 
 Creates an Invite
 
@@ -33,10 +33,10 @@ import 'package:guest_sdk/api.dart';
 
 var api_instance = new InvitesApi();
 var locationId = 56; // int | A unique identifier for a `Location`.
-var inviteDetail = new InviteDetail(); // InviteDetail | 
+var inviteCreateParams = new InviteCreateParams(); // InviteCreateParams | 
 
 try { 
-    var result = api_instance.createLocationInvite(locationId, inviteDetail);
+    var result = api_instance.createLocationInvite(locationId, inviteCreateParams);
     print(result);
 } catch (e) {
     print("Exception when calling InvitesApi->createLocationInvite: $e\n");
@@ -48,7 +48,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **int**| A unique identifier for a &#x60;Location&#x60;. | [default to null]
- **inviteDetail** | [**InviteDetail**](InviteDetail.md)|  | 
+ **inviteCreateParams** | [**InviteCreateParams**](InviteCreateParams.md)|  | 
 
 ### Return type
 

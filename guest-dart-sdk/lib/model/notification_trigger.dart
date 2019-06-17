@@ -1,94 +1,76 @@
 part of guest_sdk.api;
 
 class NotificationTrigger {
+  /* Whether the offset should be calculated for before, or after the event */
+  String offsetDirection = null;
+  //enum offsetDirectionEnum {  BEFORE,  AFTER,  };{
+  /* Whether the offset should be calculated as `days` or `hours` */
+  String offsetType = null;
+  //enum offsetTypeEnum {  days,  hours,  };{
+  /* The amount to offset the notification from the event */
+  int offsetAmount = null;
+  /* Whether the offset should be calculated from the start, or finish of the event */
+  String offsetOrigin = null;
+  //enum offsetOriginEnum {  START,  END,  };{
   
-  String subject = null;
-  
-  String title = null;
-  
-  String message = null;
-  
-  List<String> notificationGroupNames = [];
-  /* trigger_target */
-  String triggerTarget = null;
-  //enum triggerTargetEnum {  START,  END,  };{
-  /* trigger_span */
-  String triggerSpan = null;
-  //enum triggerSpanEnum {  days,  hours,  };{
-  /* trigger_pointer */
-  String triggerPointer = null;
-  //enum triggerPointerEnum {  BEFORE,  AFTER,  };{
-  /* the trigger_number */
-  int eventOffset = null;
+  int emailTemplateId = null;
+  /* An array made of only `INVITEE`, `HOSTS, or `LEP` as possible string values */
+  List<String> notificationGroups = [];
   NotificationTrigger();
 
   @override
   String toString() {
-    return 'NotificationTrigger[subject=$subject, title=$title, message=$message, notificationGroupNames=$notificationGroupNames, triggerTarget=$triggerTarget, triggerSpan=$triggerSpan, triggerPointer=$triggerPointer, eventOffset=$eventOffset, ]';
+    return 'NotificationTrigger[offsetDirection=$offsetDirection, offsetType=$offsetType, offsetAmount=$offsetAmount, offsetOrigin=$offsetOrigin, emailTemplateId=$emailTemplateId, notificationGroups=$notificationGroups, ]';
   }
 
   NotificationTrigger.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    if (json['subject'] == null) {
-      subject = null;
+    if (json['offset_direction'] == null) {
+      offsetDirection = null;
     } else {
-          subject = json['subject'];
+          offsetDirection = json['offset_direction'];
     }
-    if (json['title'] == null) {
-      title = null;
+    if (json['offset_type'] == null) {
+      offsetType = null;
     } else {
-          title = json['title'];
+          offsetType = json['offset_type'];
     }
-    if (json['message'] == null) {
-      message = null;
+    if (json['offset_amount'] == null) {
+      offsetAmount = null;
     } else {
-          message = json['message'];
+          offsetAmount = json['offset_amount'];
     }
-    if (json['notification_group_names'] == null) {
-      notificationGroupNames = null;
+    if (json['offset_origin'] == null) {
+      offsetOrigin = null;
     } else {
-      notificationGroupNames = (json['notification_group_names'] as List).cast<String>();
+          offsetOrigin = json['offset_origin'];
     }
-    if (json['trigger_target'] == null) {
-      triggerTarget = null;
+    if (json['email_template_id'] == null) {
+      emailTemplateId = null;
     } else {
-          triggerTarget = json['trigger_target'];
+          emailTemplateId = json['email_template_id'];
     }
-    if (json['trigger_span'] == null) {
-      triggerSpan = null;
+    if (json['notification_groups'] == null) {
+      notificationGroups = null;
     } else {
-          triggerSpan = json['trigger_span'];
-    }
-    if (json['trigger_pointer'] == null) {
-      triggerPointer = null;
-    } else {
-          triggerPointer = json['trigger_pointer'];
-    }
-    if (json['event_offset'] == null) {
-      eventOffset = null;
-    } else {
-          eventOffset = json['event_offset'];
+      notificationGroups = (json['notification_groups'] as List).cast<String>();
     }
   }
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (subject != null)
-      json['subject'] = subject;
-    if (title != null)
-      json['title'] = title;
-    if (message != null)
-      json['message'] = message;
-    if (notificationGroupNames != null)
-      json['notification_group_names'] = notificationGroupNames;
-    if (triggerTarget != null)
-      json['trigger_target'] = triggerTarget;
-    if (triggerSpan != null)
-      json['trigger_span'] = triggerSpan;
-    if (triggerPointer != null)
-      json['trigger_pointer'] = triggerPointer;
-    if (eventOffset != null)
-      json['event_offset'] = eventOffset;
+    if (offsetDirection != null)
+      json['offset_direction'] = offsetDirection;
+    if (offsetType != null)
+      json['offset_type'] = offsetType;
+    if (offsetAmount != null)
+      json['offset_amount'] = offsetAmount;
+    if (offsetOrigin != null)
+      json['offset_origin'] = offsetOrigin;
+    if (emailTemplateId != null)
+      json['email_template_id'] = emailTemplateId;
+    if (notificationGroups != null)
+      json['notification_groups'] = notificationGroups;
     return json;
   }
 

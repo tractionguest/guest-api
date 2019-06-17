@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **signinTimestamp** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
 **watchlist** | [**SigninWatchlist**](SigninWatchlist.md) |  | [optional] [default to null]
 **isSignedOut** | **bool** |  | [optional] [default to null]
+**hosts** | [**List&lt;Host&gt;**](Host.md) |  | [default to []]
+**signinData** | [**List&lt;SigninData&gt;**](SigninData.md) |  | [default to []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

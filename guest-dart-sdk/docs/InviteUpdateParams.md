@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **onPremise** | **bool** |  | [optional] [default to null]
 **sentEmail** | **String** |  | [optional] [default to null]
 **userId** | **int** |  | [optional] [default to null]
-**deviceConfigurationId** | **int** |  | [optional] [default to null]
+**locationId** | **int** |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -27,11 +27,15 @@ class Signin {
   SigninWatchlist watchlist = null;
   
   bool isSignedOut = null;
+  
+  List<Host> hosts = [];
+  
+  List<SigninData> signinData = [];
   Signin();
 
   @override
   String toString() {
-    return 'Signin[id=$id, company=$company, email=$email, firstName=$firstName, isAccountedFor=$isAccountedFor, isAcknowledged=$isAcknowledged, lastName=$lastName, locationName=$locationName, signedOutTimestamp=$signedOutTimestamp, signinPhotoUrl=$signinPhotoUrl, signinTimestamp=$signinTimestamp, watchlist=$watchlist, isSignedOut=$isSignedOut, ]';
+    return 'Signin[id=$id, company=$company, email=$email, firstName=$firstName, isAccountedFor=$isAccountedFor, isAcknowledged=$isAcknowledged, lastName=$lastName, locationName=$locationName, signedOutTimestamp=$signedOutTimestamp, signinPhotoUrl=$signinPhotoUrl, signinTimestamp=$signinTimestamp, watchlist=$watchlist, isSignedOut=$isSignedOut, hosts=$hosts, signinData=$signinData, ]';
   }
 
   Signin.fromJson(Map<String, dynamic> json) {
@@ -101,6 +105,16 @@ class Signin {
     } else {
           isSignedOut = json['is_signed_out'];
     }
+    if (json['hosts'] == null) {
+      hosts = null;
+    } else {
+      hosts = Host.listFromJson(json['hosts']);
+    }
+    if (json['signin_data'] == null) {
+      signinData = null;
+    } else {
+      signinData = SigninData.listFromJson(json['signin_data']);
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -131,6 +145,10 @@ class Signin {
       json['watchlist'] = watchlist;
     if (isSignedOut != null)
       json['is_signed_out'] = isSignedOut;
+    if (hosts != null)
+      json['hosts'] = hosts;
+    if (signinData != null)
+      json['signin_data'] = signinData;
     return json;
   }
 

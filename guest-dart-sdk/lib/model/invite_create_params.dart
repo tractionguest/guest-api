@@ -9,7 +9,7 @@ class InviteCreateParams {
   DateTime endDate = null;
   
   String lastName = null;
-  
+  /* The `start_date` is required for invitations to lobbies */
   DateTime startDate = null;
   
   String title = null;
@@ -21,16 +21,18 @@ class InviteCreateParams {
   
   List<CustomField> customFields = [];
   
-  List<NotificationTrigger> triggers = [];
-  
   int emailTemplateId = null;
   
   String mobile = null;
+  
+  String firstName = null;
+  
+  List<NotificationTrigger> notificationTriggers = [];
   InviteCreateParams();
 
   @override
   String toString() {
-    return 'InviteCreateParams[company=$company, email=$email, endDate=$endDate, lastName=$lastName, startDate=$startDate, title=$title, watchlistColour=$watchlistColour, hostIds=$hostIds, customFields=$customFields, triggers=$triggers, emailTemplateId=$emailTemplateId, mobile=$mobile, ]';
+    return 'InviteCreateParams[company=$company, email=$email, endDate=$endDate, lastName=$lastName, startDate=$startDate, title=$title, watchlistColour=$watchlistColour, hostIds=$hostIds, customFields=$customFields, emailTemplateId=$emailTemplateId, mobile=$mobile, firstName=$firstName, notificationTriggers=$notificationTriggers, ]';
   }
 
   InviteCreateParams.fromJson(Map<String, dynamic> json) {
@@ -80,11 +82,6 @@ class InviteCreateParams {
     } else {
       customFields = CustomField.listFromJson(json['custom_fields']);
     }
-    if (json['triggers'] == null) {
-      triggers = null;
-    } else {
-      triggers = NotificationTrigger.listFromJson(json['triggers']);
-    }
     if (json['email_template_id'] == null) {
       emailTemplateId = null;
     } else {
@@ -94,6 +91,16 @@ class InviteCreateParams {
       mobile = null;
     } else {
           mobile = json['mobile'];
+    }
+    if (json['first_name'] == null) {
+      firstName = null;
+    } else {
+          firstName = json['first_name'];
+    }
+    if (json['notification_triggers'] == null) {
+      notificationTriggers = null;
+    } else {
+      notificationTriggers = NotificationTrigger.listFromJson(json['notification_triggers']);
     }
   }
 
@@ -117,12 +124,14 @@ class InviteCreateParams {
       json['host_ids'] = hostIds;
     if (customFields != null)
       json['custom_fields'] = customFields;
-    if (triggers != null)
-      json['triggers'] = triggers;
     if (emailTemplateId != null)
       json['email_template_id'] = emailTemplateId;
     if (mobile != null)
       json['mobile'] = mobile;
+    if (firstName != null)
+      json['first_name'] = firstName;
+    if (notificationTriggers != null)
+      json['notification_triggers'] = notificationTriggers;
     return json;
   }
 

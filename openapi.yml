@@ -1,626 +1,108 @@
-openapi: 3.0.2
-info:
-    title: Traction Guest Mobile API
-    description: 'A compelling story about a lone device, on a quest for its data.'
-    contact:
-        name: Brandon McKay
-        url: 'https://tractionguest.com'
-        email: bmckay@tractionguest.com
-    version: 0.9.2
-servers:
-    -
-        url: '{domain}'
-        variables:
-            domain:
+summary: Path used to manage the list of Invites.
+description: >-
+    The REST endpoint/path used to list and create zero or more `Invite` entities.  This path contains a `GET`
+    and `POST` operation to perform the list and create tasks, respectively.
+get:
+    tags:
+        - Invites
+    summary: List All Invites
+    description: Gets a list of all `Invite` entities.
+    operationId: getInvites
+    parameters:
+        -
+            name: limit
+            in: query
+            description: 'Limits the results to a specified number, defaults to 50'
+            schema:
+                type: integer
+        -
+            name: offset
+            in: query
+            description: 'Offsets the results to a specified number, defaults to 0'
+            schema:
+                type: integer
+        -
+            name: query
+            in: query
+            description: 'Filters by `first_name`, `last_name`, `company`, and `email`'
+            schema:
+                type: string
+        -
+            name: with_colours
+            in: query
+            description: |-
+                A comma separated list of case-insensitive colour values.
+
+                i.e., `red`, `green`, `yellow`, and `orange`
+            schema:
+                type: string
+        -
+            name: location_ids
+            in: query
+            description: A comma separated list of Location IDs
+            schema:
+                type: integer
+        -
+            name: sort_by
+            in: query
+            description: Sorts by the field name and direction provided where the pattern is `FIELD_NAME_DIRECTION`
+            schema:
                 enum:
-                    - 'https://mobile-api-refactor-admin.tractionguest.ca/api/mobile/v1'
-                    - 'https://dravaqa.tractionguest.ca/api/mobile/v1'
-                    - 'http://localhost:3000'
-                default: 'https://mobile-api-refactor-admin.tractionguest.ca/api/mobile/v1'
-paths:
-    /hosts:
-        summary: Path used to manage the list of Hosts.
-        description: >-
-            The REST endpoint/path used to list and create zero or more `Host` entities.  This path contains a
-            `GET` and `POST` operation to perform the list and create tasks, respectively.
-        get:
-            tags:
-                - Hosts
-            summary: List All Hosts
-            description: Gets a list of all `Host` entities.
-            operationId: getHosts
-            parameters:
-                -
-                    name: query
-                    in: query
-                    description: 'Will filter by `first_name`, `last_name`, and `email`'
+                    - start_date_asc
+                    - start_date_desc
+                    - end_date_asc
+                    - end_date_desc
+                    - created_at_asc
+                    - created_at_desc
+                    - updated_at_asc
+                    - updated_at_desc
+        -
+            name: starts_before
+            in: query
+            description: Filters results to all those *before* the provided datetime
+            schema:
+                format: date
+                type: string
+        -
+            name: starts_after
+            in: query
+            description: Filters results to all those *after* the provided datetime
+            schema:
+                format: date
+                type: string
+    responses:
+        '200':
+            description: Successful response - returns an array of `Invite` entities.
+            content:
+                application/json:
                     schema:
-                        type: string
-                -
-                    name: limit
-                    in: query
-                    description: 'Limits the results to a specified number, defaults to 50'
-                    schema:
-                        type: integer
-                -
-                    name: offset
-                    in: query
-                    description: 'Offsets the results to a specified number, defaults to 0'
-                    schema:
-                        type: integer
-            responses:
-                '200':
-                    description: Successful response - returns an array of `Host` entities.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/PaginatedHostsList'
-                            examples:
-                                default:
-                                    value:
-                                        hosts:
-                                            -
-                                                id: 71
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                mobile: some text
-                                                profile_pic_url: some text
-                                            -
-                                                id: 2
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                mobile: some text
-                                                profile_pic_url: some text
-                                        pagination:
-                                            total_records: 14
-                                            current_offset: 41
-                                            next_offset: 85
-    /email_templates:
-        summary: Path used to manage the list of EmailTemplates.
-        description: >-
-            The REST endpoint/path used to list zero or more `EmailTemplate` entities.  This path contains a
-            `GET` operation to perform the list task.
-        get:
-            tags:
-                - EmailTemplates
-            summary: List All EmailTemplates
-            description: Gets a list of all `EmailTemplate` entities.
-            operationId: getEmailTemplates
-            parameters:
-                -
-                    name: limit
-                    in: query
-                    description: 'Limits the results to a specified number, defaults to 50'
-                    schema:
-                        type: integer
-                -
-                    name: offset
-                    in: query
-                    description: 'Offsets the results to a specified number, defaults to 0'
-                    schema:
-                        type: integer
-            responses:
-                '200':
-                    description: Successful response - returns an array of `EmailTemplate` entities.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/PaginatedEmailTemplatesList'
-                            examples:
-                                default:
-                                    value:
-                                        email_templates:
-                                            -
-                                                id: 58
-                                                name: some text
-                                                template_type: some text
-                                            -
-                                                id: 90
-                                                name: some text
-                                                template_type: some text
-                                        pagination:
-                                            total_records: 84
-                                            current_offset: 99
-                                            next_offset: 45
-    '/signins/{signinId}':
-        summary: Path used to manage a single Signin.
-        description: The REST endpoint/path used to get single instances of an `Signin`.
-        get:
-            tags:
-                - Signins
-            summary: Get a Signin
-            description: Gets the details of a single instance of a `Signin`.
-            operationId: getSignin
-            responses:
-                '200':
-                    description: Successful response - returns a single `Signin`.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/SigninDetail'
-                            examples:
-                                default:
-                                    value:
-                                        id: 45
-                                        company: some text
-                                        email: some text
-                                        first_name: some text
-                                        is_accounted_for: true
-                                        is_acknowledged: true
-                                        last_name: some text
-                                        location_name: some text
-                                        mobile_number: some text
-                                        signed_out_timestamp: '2018-02-10T09:30Z'
-                                        signin_photo_url: some text
-                                        signin_timestamp: '2018-02-10T09:30Z'
-                                        watchlist:
-                                            id: 47
-                                            external:
-                                                - {}
-                                                - {}
-                                            internal:
-                                                - {}
-                                                - {}
-                                        is_signed_out: true
-                                        note: some text
-                                        signin_acknowledgement:
-                                            code: some text
-                                            acknowledged_at: '2018-02-10T09:30Z'
-                                            id: 93
-                                        signin_data:
-                                            -
-                                                name: some text
-                                                custom_fields:
-                                                    -
-                                                        format: {}
-                                                        field_name: some text
-                                                        field_value: some text
-                                                    -
-                                                        format: {}
-                                                        field_name: some text
-                                                        field_value: some text
-                                            -
-                                                name: some text
-                                                custom_fields:
-                                                    -
-                                                        format: {}
-                                                        field_name: some text
-                                                        field_value: some text
-                                                    -
-                                                        format: {}
-                                                        field_name: some text
-                                                        field_value: some text
-        put:
-            tags:
-                - Signins
-            summary: Update a Signin attribute
-            description: 'Update, acknowledge, or `Signout` a `Signin`'
-            operationId: updateSignin
-            requestBody:
-                description: >-
-                    The only updatable values for a `Signin` are `badge_number`, `badge_returned`,
-                    `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.
-
-
-                    `is_signed_out`, and `is_acknowledged` are pseudo attributes where once they are set to
-                    true, there's no going back.
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/SigninUpdateParams'
-                        examples:
-                            default:
-                                value:
-                                    is_signed_out: true
-                                    is_acknowledged: true
-                                    badge_number: some text
-                                    badge_returned: true
-                                    is_accounted_for: true
-                required: true
-            responses:
-                '200':
-                    description: 'The Signin has been acknowledged, or signed out.'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/SigninDetail'
-                            examples:
-                                default:
-                                    value:
-                                        id: 99
-                                        company: some text
-                                        email: some text
-                                        first_name: some text
-                                        is_accounted_for: true
-                                        is_acknowledged: true
-                                        last_name: some text
-                                        location_name: some text
-                                        mobile_number: some text
-                                        signed_out_timestamp: '2018-02-10T09:30Z'
-                                        signin_photo_url: some text
-                                        signin_timestamp: '2018-02-10T09:30Z'
-                                        watchlist:
-                                            id: 16
-                                            external:
-                                                - {}
-                                                - {}
-                                            internal:
-                                                - {}
-                                                - {}
-                                        is_signed_out: true
-                                        note: some text
-                                        signin_acknowledgement:
-                                            code: some text
-                                            acknowledged_at: '2018-02-10T09:30Z'
-                                            id: 43
-                                            signin: {}
-                                        signin_data:
-                                            -
-                                                name: some text
-                                                custom_fields:
-                                                    -
-                                                        format: {}
-                                                        field_name: some text
-                                                        field_value: some text
-                                                    -
-                                                        format: {}
-                                                        field_name: some text
-                                                        field_value: some text
-                                            -
-                                                name: some text
-                                                custom_fields:
-                                                    -
-                                                        format: {}
-                                                        field_name: some text
-                                                        field_value: some text
-                                                    -
-                                                        format: {}
-                                                        field_name: some text
-                                                        field_value: some text
-        parameters:
-            -
-                name: signinId
-                in: path
-                description: A unique identifier for a `Signin`.
-                required: true
-                schema:
-                    type: string
-    '/watchlists/{watchlistId}':
-        summary: Path used to manage a single Watchlist.
-        description: The REST endpoint/path used to get single instances of a `Watchlist`.
-        get:
-            tags:
-                - Watchlists
-            summary: Get a Watchlist
-            description: Gets the details of a single instance of a `Watchlist`.
-            operationId: getWatchlist
-            responses:
-                '200':
-                    description: Successful response - returns a single `Watchlist`.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Watchlist'
-                            examples:
-                                default:
-                                    value:
-                                        id: 7
-                                        colour: GREEN
-                                        email: name@example.com
-                                        first_name: Alex
-                                        last_name: Trebec
-                                        notes: some text
-                                        photo: some text
-                                        aliases:
-                                            - some text
-                                            - some text
-        parameters:
-            -
-                name: watchlistId
-                in: path
-                description: A unique identifier for a `Watchlist`.
-                required: true
-                schema:
-                    type: string
-    /locations:
-        summary: Path used to manage the list of Locations.
-        description: The REST endpoint/path used to list zero or more `Location` entities.
-        get:
-            tags:
-                - Locations
-            summary: List All Locations
-            description: Gets a list of all `Location` entities.
-            operationId: getLocations
-            parameters:
-                -
-                    name: limit
-                    in: query
-                    description: 'Limits the results to a specified number, defaults to 50'
-                    schema:
-                        type: integer
-                -
-                    name: offset
-                    in: query
-                    description: 'Offsets the results to a specified number, defaults to 0'
-                    schema:
-                        type: integer
-                -
-                    name: query
-                    in: query
-                    description: Queries by Location `name`
-                    schema:
-                        type: string
-            responses:
-                '200':
-                    description: Successful response - returns an array of `Location` entities.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/PaginatedLocationsList'
-                            examples:
-                                default:
-                                    value:
-                                        pagination:
-                                            total_records: 61
-                                            current_offset: 41
-                                            next_offset: 28
-                                        locations:
-                                            -
-                                                id: 28
-                                                name: Default
-                                            -
-                                                id: 97
-                                                name: Rogers Arena
-    '/locations/{locationId}/invites':
-        summary: Path used to manage a single Location's invites.
-        description: The REST endpoint/path used to create single instances of an `Invite` for a specific `Location`.
-        post:
-            tags:
-                - Invites
-            summary: Creates an Invite
-            description: Creates a new `Invite` for a specific `Location`.
-            operationId: createLocationInvite
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/InviteCreateParams'
-                        examples:
-                            default:
-                                value:
-                                    company: some text
-                                    email: some text
-                                    end_date: '2018-02-10T09:30Z'
-                                    last_name: some text
-                                    start_date: '2018-02-10T09:30Z'
-                                    title: some text
-                                    watchlist_colour: {}
-                                    host_ids:
-                                        - 96
-                                        - 2
-                                    custom_fields:
-                                        -
-                                            format: {}
-                                            field_name: some text
-                                            field_value: some text
-                                        -
-                                            format: {}
-                                            field_name: some text
-                                            field_value: some text
-                                    email_template_id: 53
-                                    mobile: some text
-                                    first_name: some text
-                                    notification_triggers:
-                                        -
-                                            offset_direction: {}
-                                            offset_type: {}
-                                            offset_amount: 34
-                                            offset_origin: {}
-                                            email_template_id: 63
-                                            notification_groups:
-                                                - some text
-                                                - some text
-                                        -
-                                            offset_direction: {}
-                                            offset_type: {}
-                                            offset_amount: 12
-                                            offset_origin: {}
-                                            email_template_id: 2
-                                            notification_groups:
-                                                - some text
-                                                - some text
-                required: true
-            responses:
-                '201':
-                    description: Created the `Invite` for the `Location`
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/InviteDetail'
-                            examples:
-                                default:
-                                    value:
-                                        id: 7
-                                        company: some text
-                                        created_at: '2018-02-10T09:30Z'
-                                        email: some text
-                                        end_date: '2018-02-10T09:30Z'
+                        $ref: '#/components/schemas/PaginatedInvitesList'
+                    examples:
+                        default:
+                            value:
+                                pagination:
+                                    total_records: 10
+                                    current_offset: 14
+                                    next_offset: 16
+                                invites:
+                                    -
+                                        id: 20
                                         first_name: some text
                                         last_name: some text
                                         start_date: '2018-02-10T09:30Z'
-                                        hosts:
-                                            -
-                                                id: 38
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                mobile: some text
-                                                profile_pic_url: some text
-                                            -
-                                                id: 3
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                mobile: some text
-                                                profile_pic_url: some text
                                         location:
-                                            id: 23
+                                            id: 66
                                             name: some text
                                         watchlist:
-                                            id: 98
-                                            colour: {}
-                                            email: some text
-                                            first_name: some text
-                                            last_name: some text
-                                            notes: some text
-                                            photo: some text
-                                            aliases:
+                                            id: 37
+                                            external_colours:
+                                                - some text
+                                                - some text
+                                            internal_colours:
                                                 - some text
                                                 - some text
                                         watchlist_colour: {}
-                                        template:
-                                            id: 98
-                                            name: some text
-                                            template_type: some text
-                                        custom_fields:
-                                            -
-                                                format: {}
-                                                field_name: some text
-                                                field_value: some text
-                                            -
-                                                format: {}
-                                                field_name: some text
-                                                field_value: some text
-        parameters:
-            -
-                name: locationId
-                in: path
-                description: A unique identifier for a `Location`.
-                required: true
-                schema:
-                    type: integer
-    '/invites/{inviteId}':
-        summary: Path used to manage a single Invite.
-        description: >-
-            The REST endpoint/path used to get, update, and delete single instances of an `Invite`.  This path
-            contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks,
-            respectively.
-        get:
-            tags:
-                - Invites
-            summary: Get a Invite
-            description: Gets the details of a single instance of a `Invite`.
-            operationId: getInvite
-            responses:
-                '200':
-                    description: Successful response - returns a single `Invite`.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/InviteDetail'
-                            examples:
-                                default:
-                                    value:
-                                        id: 23
-                                        company: some text
-                                        created_at: '2018-02-10T09:30Z'
-                                        email: some text
-                                        end_date: '2018-02-10T09:30Z'
-                                        first_name: some text
-                                        last_name: some text
-                                        start_date: '2018-02-10T09:30Z'
                                         hosts:
-                                            -
-                                                id: 7
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                mobile: some text
-                                                profile_pic_url: some text
-                                            -
-                                                id: 36
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                mobile: some text
-                                                profile_pic_url: some text
-                                        location:
-                                            id: 57
-                                            name: some text
-                                        watchlist:
-                                            id: 82
-                                            colour: {}
-                                            email: some text
-                                            first_name: some text
-                                            last_name: some text
-                                            notes: some text
-                                            photo: some text
-                                            aliases:
-                                                - some text
-                                                - some text
-                                        watchlist_colour: {}
-                                        template:
-                                            id: 74
-                                            name: some text
-                                            template_type: some text
-                                        custom_fields:
-                                            -
-                                                format: {}
-                                                field_name: some text
-                                                field_value: some text
-                                            -
-                                                format: {}
-                                                field_name: some text
-                                                field_value: some text
-        put:
-            tags:
-                - Invites
-            summary: Update a Invite
-            description: Updates an existing `Invite`.
-            operationId: updateInvite
-            requestBody:
-                description: Updated `Invite` information.
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/InviteUpdateParams'
-                        examples:
-                            default:
-                                value:
-                                    checked_in: true
-                                    on_premise: true
-                                    sent_email: some text
-                                    user_id: 45
-                                    device_configuration_id: 14
-                required: true
-            responses:
-                '202':
-                    description: Successful response.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/InviteDetail'
-                            examples:
-                                default:
-                                    value:
-                                        id: 27
-                                        company: some text
-                                        created_at: '2018-02-10T09:30Z'
-                                        email: some text
-                                        end_date: '2018-02-10T09:30Z'
-                                        first_name: some text
-                                        last_name: some text
-                                        start_date: '2018-02-10T09:30Z'
-                                        hosts:
-                                            -
-                                                id: 97
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                mobile: some text
-                                                profile_pic_url: some text
                                             -
                                                 id: 35
                                                 email: some text
@@ -628,1788 +110,218 @@ paths:
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
+                                            -
+                                                id: 47
+                                                email: some text
+                                                first_name: some text
+                                                last_name: some text
+                                                mobile: some text
+                                                profile_pic_url: some text
+                                    -
+                                        id: 46
+                                        first_name: some text
+                                        last_name: some text
+                                        start_date: '2018-02-10T09:30Z'
                                         location:
-                                            id: 74
+                                            id: 29
                                             name: some text
                                         watchlist:
-                                            id: 55
-                                            colour: {}
-                                            email: some text
-                                            first_name: some text
-                                            last_name: some text
-                                            notes: some text
-                                            photo: some text
-                                            aliases:
+                                            id: 49
+                                            external_colours:
+                                                - some text
+                                                - some text
+                                            internal_colours:
                                                 - some text
                                                 - some text
                                         watchlist_colour: {}
-                                        template:
-                                            id: 12
-                                            name: some text
-                                            template_type: some text
-                                        custom_fields:
+                                        hosts:
                                             -
-                                                format: {}
-                                                field_name: some text
-                                                field_value: some text
-                                            -
-                                                format: {}
-                                                field_name: some text
-                                                field_value: some text
-        parameters:
-            -
-                name: inviteId
-                in: path
-                description: A unique identifier for a `Invite`.
-                required: true
-                schema:
-                    type: string
-    /credentials:
-        post:
-            tags:
-                - Credentials
-            summary: Creates credentials from login information
-            operationId: createCredentials
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/CredentialCreateParams'
-                        examples:
-                            default:
-                                value:
-                                    email: some text
-                                    password: some text
-                required: true
-            responses:
-                '201':
-                    description: Creates a new token for authenticating future API calls
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Credential'
-                            examples:
-                                default:
-                                    value:
-                                        token: some text
-    /invites:
-        summary: Path used to manage the list of Invites.
-        description: >-
-            The REST endpoint/path used to list and create zero or more `Invite` entities.  This path contains
-            a `GET` and `POST` operation to perform the list and create tasks, respectively.
-        get:
-            tags:
-                - Invites
-            summary: List All Invites
-            description: Gets a list of all `Invite` entities.
-            operationId: getInvites
-            parameters:
-                -
-                    name: limit
-                    in: query
-                    description: 'Limits the results to a specified number, defaults to 50'
-                    schema:
-                        type: integer
-                -
-                    name: offset
-                    in: query
-                    description: 'Offsets the results to a specified number, defaults to 0'
-                    schema:
-                        type: integer
-                -
-                    name: query
-                    in: query
-                    description: 'Filters by `first_name`, `last_name`, `company`, and `email`'
-                    schema:
-                        type: string
-                -
-                    name: with_colours
-                    in: query
-                    description: |-
-                        A comma separated list of case-insensitive colour values.
-
-                        i.e., `red`, `green`, `yellow`, and `orange`
-                    schema:
-                        type: string
-                -
-                    name: location_ids
-                    in: query
-                    description: A comma separated list of Location IDs
-                    schema:
-                        type: integer
-                -
-                    name: sort_by
-                    in: query
-                    description: >-
-                        Sorts by the field name and direction provided where the pattern is
-                        `FIELD_NAME_DIRECTION`
-                    schema:
-                        enum:
-                            - start_date_asc
-                            - start_date_desc
-                            - end_date_asc
-                            - end_date_desc
-                            - created_at_asc
-                            - created_at_desc
-                            - updated_at_asc
-                            - updated_at_desc
-                -
-                    name: starts_before
-                    in: query
-                    description: Filters results to all those *before* the provided datetime
-                    schema:
-                        format: date
-                        type: string
-                -
-                    name: starts_after
-                    in: query
-                    description: Filters results to all those *after* the provided datetime
-                    schema:
-                        format: date
-                        type: string
-            responses:
-                '200':
-                    description: Successful response - returns an array of `Invite` entities.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/PaginatedInvitesList'
-                            examples:
-                                default:
-                                    value:
-                                        pagination:
-                                            total_records: 10
-                                            current_offset: 14
-                                            next_offset: 16
-                                        invites:
-                                            -
-                                                id: 20
-                                                first_name: some text
-                                                last_name: some text
-                                                start_date: '2018-02-10T09:30Z'
-                                                location:
-                                                    id: 66
-                                                    name: some text
-                                                watchlist:
-                                                    id: 37
-                                                    external_colours:
-                                                        - some text
-                                                        - some text
-                                                    internal_colours:
-                                                        - some text
-                                                        - some text
-                                                watchlist_colour: {}
-                                                hosts:
-                                                    -
-                                                        id: 35
-                                                        email: some text
-                                                        first_name: some text
-                                                        last_name: some text
-                                                        mobile: some text
-                                                        profile_pic_url: some text
-                                                    -
-                                                        id: 47
-                                                        email: some text
-                                                        first_name: some text
-                                                        last_name: some text
-                                                        mobile: some text
-                                                        profile_pic_url: some text
-                                            -
-                                                id: 46
-                                                first_name: some text
-                                                last_name: some text
-                                                start_date: '2018-02-10T09:30Z'
-                                                location:
-                                                    id: 29
-                                                    name: some text
-                                                watchlist:
-                                                    id: 49
-                                                    external_colours:
-                                                        - some text
-                                                        - some text
-                                                    internal_colours:
-                                                        - some text
-                                                        - some text
-                                                watchlist_colour: {}
-                                                hosts:
-                                                    -
-                                                        id: 81
-                                                        email: some text
-                                                        first_name: some text
-                                                        last_name: some text
-                                                        mobile: some text
-                                                        profile_pic_url: some text
-                                                    -
-                                                        id: 32
-                                                        email: some text
-                                                        first_name: some text
-                                                        last_name: some text
-                                                        mobile: some text
-                                                        profile_pic_url: some text
-    /signins:
-        summary: Path used to manage the list of Signins.
-        description: >-
-            The REST endpoint/path used to list and create zero or more `Signin` entities.  This path contains
-            a `GET` and `POST` operation to perform the list and create tasks, respectively.
-        get:
-            tags:
-                - Signins
-            summary: List All Signins
-            description: Gets a list of all `Signin` entities.
-            operationId: getSignins
-            parameters:
-                -
-                    name: location_ids
-                    in: query
-                    description: A comma separated list of Location IDs
-                    schema:
-                        type: integer
-                -
-                    name: with_colours
-                    in: query
-                    description: |-
-                        A comma separated list of case-insensitive colour values.
-
-                        i.e., `red`, `green`, `yellow`, and `orange`
-                    schema:
-                        type: string
-                -
-                    name: query
-                    in: query
-                    description: >-
-                        Allows you to query by `company`, `email`, `first_name`, `last_name`, and
-                        `location_name`
-                    schema:
-                        type: string
-                -
-                    name: with_acknowledged
-                    in: query
-                    description: 'Filters to all those `Signin`s that have, or have not been acknowledged'
-                    schema:
-                        type: boolean
-                -
-                    name: with_signed_in
-                    in: query
-                    description: 'Filters to all `Signin`s that are, or are not currently signed out.'
-                    schema:
-                        type: boolean
-                -
-                    name: signin_before
-                    in: query
-                    description: Filters results to all those *before* the provided datetime
-                    schema:
-                        format: date
-                        type: string
-                -
-                    name: signin_after
-                    in: query
-                    description: Filters results to all those *after* the provided datetime
-                    schema:
-                        format: date
-                        type: string
-                -
-                    name: limit
-                    in: query
-                    description: 'Limits the results to a specified number, defaults to 50'
-                    schema:
-                        type: integer
-                -
-                    name: offset
-                    in: query
-                    description: 'Offsets the results to a specified number, defaults to 0'
-                    schema:
-                        type: integer
-            responses:
-                '200':
-                    description: Successful response - returns an array of `Signin` entities.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/PaginatedSigninsList'
-                            examples:
-                                default:
-                                    value:
-                                        signins:
-                                            -
-                                                id: 55
-                                                company: some text
+                                                id: 81
                                                 email: some text
                                                 first_name: some text
-                                                is_accounted_for: true
-                                                is_acknowledged: true
                                                 last_name: some text
-                                                location_name: some text
-                                                signed_out_timestamp: '2018-02-10T09:30Z'
-                                                signin_photo_url: some text
-                                                signin_timestamp: '2018-02-10T09:30Z'
-                                                watchlist:
-                                                    id: 13
-                                                    external:
-                                                        - {}
-                                                        - {}
-                                                    internal:
-                                                        - {}
-                                                        - {}
-                                                is_signed_out: true
+                                                mobile: some text
+                                                profile_pic_url: some text
                                             -
                                                 id: 32
-                                                company: some text
-                                                email: some text
-                                                first_name: some text
-                                                is_accounted_for: true
-                                                is_acknowledged: true
-                                                last_name: some text
-                                                location_name: some text
-                                                signed_out_timestamp: '2018-02-10T09:30Z'
-                                                signin_photo_url: some text
-                                                signin_timestamp: '2018-02-10T09:30Z'
-                                                watchlist:
-                                                    id: 73
-                                                    external:
-                                                        - {}
-                                                        - {}
-                                                    internal:
-                                                        - {}
-                                                        - {}
-                                                is_signed_out: true
-                                        pagination:
-                                            total_records: 88
-                                            current_offset: 45
-                                            next_offset: 93
-        post:
-            tags:
-                - Signins
-            summary: Create a Signin
-            description: Creates a new instance of a `Signin`.
-            operationId: createSignin
-            requestBody:
-                description: A new `Signin` to be created.
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/SigninCreateParams'
-                        examples:
-                            default:
-                                value:
-                                    guest_email_template_id: 47
-                                    host_email_template_id: 65
-                                    host_ids:
-                                        - 77
-                                        - 49
-                                    location_id: 79
-                                    send_notifications: true
-                                    photos:
-                                        - {}
-                                        - {}
-                                    sms_message: some text
-                                    first_name: some text
-                                    last_name: some text
-                                    company: some text
-                                    email: some text
-                required: true
-            responses:
-                '201':
-                    description: Successful response.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Signin'
-                            examples:
-                                default:
-                                    value:
-                                        id: 44
-                                        company: some text
-                                        email: some text
-                                        first_name: some text
-                                        is_accounted_for: true
-                                        is_acknowledged: true
-                                        last_name: some text
-                                        location_name: some text
-                                        signed_out_timestamp: '2018-02-10T09:30Z'
-                                        signin_photo_url: some text
-                                        signin_timestamp: '2018-02-10T09:30Z'
-                                        watchlist:
-                                            id: 56
-                                            external:
-                                                - {}
-                                                - {}
-                                            internal:
-                                                - {}
-                                                - {}
-                                        is_signed_out: true
-    /watchlists:
-        summary: Path used to manage the list of Watchlists.
-        description: The REST endpoint/path used to list zero or more `Watchlist` entities.
-        get:
-            tags:
-                - Watchlists
-            summary: List All Watchlists
-            description: Gets a list of all `Watchlist` entities.
-            operationId: getWatchlists
-            parameters:
-                -
-                    name: limit
-                    in: query
-                    description: 'Limits the results to a specified number, defaults to 50'
-                    schema:
-                        type: integer
-                -
-                    name: offset
-                    in: query
-                    description: 'Offsets the results to a specified number, defaults to 0'
-                    schema:
-                        type: integer
-                -
-                    name: query
-                    in: query
-                    description: >-
-                        Query the results by `first_name`, `last_name`, `email`, `colour`, and `notes` all at
-                        once.
-                    schema:
-                        type: string
-                -
-                    name: with_colours
-                    in: query
-                    description: |-
-                        A comma separated list of case-insensitive colour values.
-
-                        i.e., `red`, `green`, `yellow`, and `orange`
-                    schema:
-                        type: string
-            responses:
-                '200':
-                    description: Successful response - returns an array of `Watchlist` entities.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/PaginatedWatchlistList'
-                            examples:
-                                default:
-                                    value:
-                                        pagination:
-                                            total_records: 78
-                                            current_offset: 62
-                                            next_offset: 57
-                                        watchlists:
-                                            -
-                                                id: 24
-                                                colour: GREEN
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                notes: some text
-                                                photo: some text
-                                                aliases:
-                                                    - some text
-                                                    - some text
-                                            -
-                                                id: 26
-                                                colour: ORANGE
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                notes: some text
-                                                photo: some text
-                                                aliases:
-                                                    - some text
-                                                    - some text
-    '/users/{userId}':
-        summary: Path used to manage a single User.
-        description: The REST endpoint/path used to get single instances of an `User` and their `PermissionBundle`s.
-        get:
-            tags:
-                - Users
-            summary: Get the current User
-            description: Gets the details of a single instance of the current `User`.
-            operationId: getCurrentUser
-            responses:
-                '200':
-                    description: Successful response - returns a single `User`.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/User'
-                            examples:
-                                default:
-                                    value:
-                                        id: 73
-                                        permission_bundles:
-                                            -
-                                                id: 36
-                                                bundle_name: some text
-                                                locked: true
-                                                source: some text
-                                                updated_at: '2018-02-10T09:30Z'
-                                                permissions:
-                                                    -
-                                                        name: some text
-                                                        visibility: some text
-                                                        values:
-                                                            - some text
-                                                            - some text
-                                                    -
-                                                        name: some text
-                                                        visibility: some text
-                                                        values:
-                                                            - some text
-                                                            - some text
-                                            -
-                                                id: 84
-                                                bundle_name: some text
-                                                locked: true
-                                                source: some text
-                                                updated_at: '2018-02-10T09:30Z'
-                                                permissions:
-                                                    -
-                                                        name: some text
-                                                        visibility: some text
-                                                        values:
-                                                            - some text
-                                                            - some text
-                                                    -
-                                                        name: some text
-                                                        visibility: some text
-                                                        values:
-                                                            - some text
-                                                            - some text
-        parameters:
-            -
-                name: userId
-                in: path
-                description: |-
-                    The user ID, represented as a string.
-
-                    `"current"` can be used as a shortcut for the currently-authenticated user
-                required: true
-                schema:
-                    type: string
-components:
-    schemas:
-        Host:
-            title: Root Type for Host
-            description: A client host assigned to a Signin
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                email:
-                    type: string
-                first_name:
-                    type: string
-                last_name:
-                    type: string
-                mobile:
-                    type: string
-                profile_pic_url:
-                    type: string
-            example: |-
-                {
-                    "id": 1,
-                    "email": "name@email.com",
-                    "first_name": "Frank",
-                    "last_name": "Longbottom",
-                    "mobile": "(604) 980-9933",
-                    "profile_pic_url": "image.jpg"
-                }
-        EmailTemplate:
-            title: Root Type for EmailTemplate
-            description: The root of the EmailTemplate type's schema.
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                name:
-                    type: string
-                template_type:
-                    type: string
-            example: |-
-                {
-                    "id": 1,
-                    "name": "Template name",
-                    "template_type": "typename"
-                }
-        PaginatedEmailTemplatesList:
-            required:
-                - email_templates
-                - pagination
-            type: object
-            properties:
-                email_templates:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/EmailTemplate'
-                pagination:
-                    $ref: '#/components/schemas/Pagination'
-        Pagination:
-            title: Root Type for Pagination
-            description: The root of the Pagination type's schema.
-            type: object
-            properties:
-                total_records:
-                    format: int32
-                    type: integer
-                current_offset:
-                    format: int32
-                    type: integer
-                next_offset:
-                    format: int32
-                    type: integer
-            example: |-
-                {
-                    "total_records": 50,
-                    "current_offset": 20,
-                    "next_offset": 30
-                }
-        SigninWatchlist:
-            title: Root Type for SigninWatchlist
-            description: The root of the SigninWatchlist type's schema.
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                external_colours:
-                    type: array
-                    items:
-                        type: string
-                internal_colours:
-                    type: array
-                    items:
-                        type: string
-            example:
-                id: 19
-                external_colours:
-                    - some text
-                    - some text
-                internal_colours:
-                    - some text
-                    - some text
-        PaginatedSigninsList:
-            required:
-                - signins
-                - pagination
-            type: object
-            properties:
-                signins:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Signin'
-                pagination:
-                    $ref: '#/components/schemas/Pagination'
-        SigninAcknowledgement:
-            title: Root Type for SigninAcknowledgement
-            description: The root of the SigninAcknowledgement type's schema.
-            type: object
-            properties:
-                code:
-                    type: string
-                acknowledged_at:
-                    format: date-time
-                    type: string
-                id:
-                    format: int32
-                    type: integer
-            example:
-                code: some text
-                acknowledged_at: '2018-02-10T09:30Z'
-                id: 10
-        PaginatedHostsList:
-            required:
-                - hosts
-            type: object
-            properties:
-                hosts:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Host'
-                pagination:
-                    $ref: '#/components/schemas/Pagination'
-        PermissionBundle:
-            title: Root Type for PermissionBundle
-            description: The root of the PermissionBundle type's schema.
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                bundle_name:
-                    type: string
-                locked:
-                    type: boolean
-                source:
-                    type: string
-                updated_at:
-                    format: date-time
-                    type: string
-                permissions:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Permission'
-            example:
-                id: 91
-                bundle_name: some text
-                locked: true
-                source: some text
-                updated_at: '2018-02-10T09:30Z'
-                permissions:
-                    -
-                        name: some text
-                        visibility: some text
-                        values:
-                            - some text
-                            - some text
-                    -
-                        name: some text
-                        visibility: some text
-                        values:
-                            - some text
-                            - some text
-        User:
-            title: Root Type for User
-            description: The root of the User type's schema.
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                permission_bundles:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/PermissionBundle'
-            example:
-                id: 50
-                permission_bundles:
-                    -
-                        id: 2
-                        bundle_name: some text
-                        locked: true
-                        source: some text
-                        updated_at: '2018-02-10T09:30Z'
-                        permissions: {}
-                    -
-                        id: 35
-                        bundle_name: some text
-                        locked: true
-                        source: some text
-                        updated_at: '2018-02-10T09:30Z'
-                        permissions: {}
-        Watchlist:
-            title: Root Type for Watchlist
-            description: The root of the Watchlist type's schema.
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                colour:
-                    enum:
-                        - RED
-                        - YELLOW
-                        - GREEN
-                        - ORANGE
-                email:
-                    type: string
-                first_name:
-                    type: string
-                last_name:
-                    type: string
-                notes:
-                    type: string
-                photo:
-                    type: string
-                aliases:
-                    type: array
-                    items:
-                        type: string
-            example:
-                id: 23
-                colour: GREEN
-                email: some text
-                first_name: some text
-                last_name: some text
-                notes: some text
-                photo: some text
-                aliases:
-                    - some text
-                    - some text
-        Location:
-            title: Root Type for Location
-            description: The root of the Location type's schema.
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                name:
-                    type: string
-            example: |-
-                {
-                    "id": 1,
-                    "name": "Default"
-                }
-        PaginatedLocationsList:
-            required:
-                - pagination
-                - locations
-            type: object
-            properties:
-                pagination:
-                    $ref: '#/components/schemas/Pagination'
-                locations:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Location'
-        Invite:
-            title: Root Type for Invite
-            description: The root of the Invite type's schema.
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                first_name:
-                    type: string
-                last_name:
-                    type: string
-                start_date:
-                    format: date-time
-                    type: string
-                location:
-                    $ref: '#/components/schemas/Location'
-                watchlist:
-                    $ref: '#/components/schemas/InviteWatchlist'
-                watchlist_colour:
-                    enum:
-                        - RED
-                        - GREEN
-                        - YELLOW
-                        - ORANGE
-                hosts:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Host'
-            example:
-                id: 28
-                first_name: some text
-                last_name: some text
-                start_date: '2018-02-10T09:30Z'
-                location:
-                    id: 51
-                    name: some text
-                watchlist:
-                    id: 63
-                    external_colours:
-                        - some text
-                        - some text
-                    internal_colours:
-                        - some text
-                        - some text
-                watchlist_colour: RED
-                hosts:
-                    -
-                        id: 38
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
-                    -
-                        id: 87
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
-        PaginatedWatchlistList:
-            required:
-                - pagination
-                - watchlists
-            type: object
-            properties:
-                pagination:
-                    $ref: '#/components/schemas/Pagination'
-                watchlists:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Watchlist'
-            example:
-                pagination:
-                    total_records: 24
-                    current_offset: 58
-                    next_offset: 38
-                watchlists:
-                    -
-                        id: 2
-                        colour: some text
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        notes: some text
-                        photo: some text
-                        aliases:
-                            - some text
-                            - some text
-                    -
-                        id: 96
-                        colour: some text
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        notes: some text
-                        photo: some text
-                        aliases:
-                            - some text
-                            - some text
-        ParkingLot:
-            title: Root Type for ParkingLot
-            description: The root of the ParkingLot type's schema.
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                name:
-                    type: string
-            example: |-
-                {
-                    "id": 1,
-                    "name": "Default"
-                }
-        PaginatedParkingLotList:
-            type: object
-            properties:
-                parking_lots:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/ParkingLot'
-                pagination:
-                    $ref: '#/components/schemas/Pagination'
-        SigninDetail:
-            title: Root Type for Signin
-            description: The root of the Signin type's schema.
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                company:
-                    type: string
-                email:
-                    type: string
-                first_name:
-                    type: string
-                is_accounted_for:
-                    type: boolean
-                is_acknowledged:
-                    description: |-
-                        Whether this Signin has been acknowledged yet.
-                        Can also be used as a one-way method of setting the Signin as acknowledged.
-                    type: boolean
-                last_name:
-                    type: string
-                location_name:
-                    type: string
-                mobile_number:
-                    type: string
-                signed_out_timestamp:
-                    format: date-time
-                    type: string
-                signin_photo_url:
-                    type: string
-                signin_timestamp:
-                    format: date-time
-                    type: string
-                watchlist:
-                    $ref: '#/components/schemas/SigninWatchlist'
-                is_signed_out:
-                    description: A one-way method of Signing out a Signin
-                    type: boolean
-                note:
-                    type: string
-                signin_acknowledgement:
-                    $ref: '#/components/schemas/SigninAcknowledgement'
-                signin_data:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/SigninData'
-            example:
-                id: 72
-                company: some text
-                email: some text
-                first_name: some text
-                is_accounted_for: true
-                is_acknowledged: true
-                last_name: some text
-                location_name: some text
-                mobile_number: some text
-                signed_out_timestamp: '2018-02-10T09:30Z'
-                signin_photo_url: some text
-                signin_timestamp: '2018-02-10T09:30Z'
-                watchlist:
-                    id: 44
-                    external:
-                        - {}
-                        - {}
-                    internal:
-                        - {}
-                        - {}
-                is_signed_out: true
-                note: some text
-                signin_acknowledgement:
-                    code: some text
-                    acknowledged_at: '2018-02-10T09:30Z'
-                    id: 83
-                signin_data:
-                    -
-                        name: some text
-                        custom_fields:
-                            -
-                                format: {}
-                                field_name: some text
-                                field_value: some text
-                            -
-                                format: {}
-                                field_name: some text
-                                field_value: some text
-                    -
-                        name: some text
-                        custom_fields:
-                            -
-                                format: {}
-                                field_name: some text
-                                field_value: some text
-                            -
-                                format: {}
-                                field_name: some text
-                                field_value: some text
-        Signin:
-            title: Root Type for SigninLite
-            description: The root of the SigninLite type's schema.
-            required:
-                - hosts
-                - signin_data
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                company:
-                    type: string
-                email:
-                    type: string
-                first_name:
-                    type: string
-                is_accounted_for:
-                    type: boolean
-                is_acknowledged:
-                    type: boolean
-                last_name:
-                    type: string
-                location_name:
-                    type: string
-                signed_out_timestamp:
-                    format: date-time
-                    type: string
-                signin_photo_url:
-                    type: string
-                signin_timestamp:
-                    format: date-time
-                    type: string
-                watchlist:
-                    $ref: '#/components/schemas/SigninWatchlist'
-                    properties:
-                        id:
-                            format: int32
-                            type: integer
-                        external:
-                            type: array
-                            items: {}
-                        internal:
-                            type: array
-                            items: {}
-                is_signed_out:
-                    type: boolean
-                hosts:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Host'
-                signin_data:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/SigninData'
-            example:
-                id: 55
-                company: some text
-                email: some text
-                first_name: some text
-                is_accounted_for: true
-                is_acknowledged: true
-                last_name: some text
-                location_name: some text
-                signed_out_timestamp: '2018-02-10T09:30Z'
-                signin_photo_url: some text
-                signin_timestamp: '2018-02-10T09:30Z'
-                watchlist:
-                    id: 28
-                    external_colours:
-                        - some text
-                        - some text
-                    internal_colours:
-                        - some text
-                        - some text
-                is_signed_out: true
-                hosts:
-                    -
-                        id: 64
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
-                    -
-                        id: 2
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
-                signin_data:
-                    -
-                        name: some text
-                        custom_fields:
-                            -
-                                format: {}
-                                field_name: some text
-                                field_value: some text
-                            -
-                                format: {}
-                                field_name: some text
-                                field_value: some text
-                    -
-                        name: some text
-                        custom_fields:
-                            -
-                                format: {}
-                                field_name: some text
-                                field_value: some text
-                            -
-                                format: {}
-                                field_name: some text
-                                field_value: some text
-        InviteDetail:
-            title: Root Type for InviteDetail
-            description: The root of the InviteDetail type's schema.
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                company:
-                    type: string
-                created_at:
-                    format: date-time
-                    type: string
-                email:
-                    type: string
-                end_date:
-                    format: date-time
-                    type: string
-                first_name:
-                    type: string
-                last_name:
-                    type: string
-                start_date:
-                    format: date-time
-                    type: string
-                hosts:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Host'
-                location:
-                    $ref: '#/components/schemas/Location'
-                    properties:
-                        id:
-                            format: int32
-                            type: integer
-                        name:
-                            type: string
-                watchlist:
-                    $ref: '#/components/schemas/Watchlist'
-                    properties:
-                        id:
-                            format: int32
-                            type: integer
-                        colour:
-                            type: string
-                        email:
-                            type: string
-                        first_name:
-                            type: string
-                        last_name:
-                            type: string
-                        notes:
-                            type: string
-                        photo:
-                            type: string
-                        aliases:
-                            type: array
-                            items: {}
-                watchlist_colour:
-                    enum:
-                        - RED
-                        - GREEN
-                        - YELLOW
-                        - ORANGE
-                template:
-                    $ref: '#/components/schemas/EmailTemplate'
-                custom_fields:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/CustomField'
-            example:
-                id: 48
-                company: some text
-                created_at: '2018-02-10T09:30Z'
-                email: some text
-                end_date: '2018-02-10T09:30Z'
-                first_name: some text
-                last_name: some text
-                start_date: '2018-02-10T09:30Z'
-                hosts:
-                    -
-                        id: 38
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
-                    -
-                        id: 87
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
-                location:
-                    id: 38
-                    name: some text
-                watchlist:
-                    id: 6
-                    colour: GREEN
-                    email: some text
-                    first_name: some text
-                    last_name: some text
-                    notes: some text
-                    photo: some text
-                    aliases:
-                        - some text
-                        - some text
-                watchlist_colour: GREEN
-                country: some text
-                template:
-                    id: 26
-                    name: some text
-                    template_type: some text
-        PaginatedInvitesList:
-            type: object
-            properties:
-                pagination:
-                    $ref: '#/components/schemas/Pagination'
-                invites:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Invite'
-            example:
-                pagination:
-                    total_records: 78
-                    current_offset: 21
-                    next_offset: 55
-                invites:
-                    -
-                        id: 47
-                        first_name: some text
-                        last_name: some text
-                        start_date: '2018-02-10T09:30Z'
-                        location:
-                            id: 8
-                            name: some text
-                        watchlist:
-                            id: 99
-                            colour: some text
-                            email: some text
-                            first_name: some text
-                            last_name: some text
-                            notes: some text
-                            photo: some text
-                            aliases:
-                                - some text
-                                - some text
-                        watchlist_colour: some text
-                    -
-                        id: 6
-                        first_name: some text
-                        last_name: some text
-                        start_date: '2018-02-10T09:30Z'
-                        location:
-                            id: 98
-                            name: some text
-                        watchlist:
-                            id: 31
-                            colour: some text
-                            email: some text
-                            first_name: some text
-                            last_name: some text
-                            notes: some text
-                            photo: some text
-                            aliases:
-                                - some text
-                                - some text
-                        watchlist_colour: some text
-        SigninCreateParams:
-            required:
-                - location_id
-            type: object
-            properties:
-                guest_email_template_id:
-                    type: integer
-                host_email_template_id:
-                    type: integer
-                host_ids:
-                    type: array
-                    items:
-                        type: integer
-                location_id:
-                    type: integer
-                send_notifications:
-                    type: boolean
-                sms_message:
-                    type: string
-                first_name:
-                    type: string
-                last_name:
-                    type: string
-                company:
-                    type: string
-                email:
-                    type: string
-            example:
-                guest_email_template_id: 60
-                host_email_template_id: 50
-                host_ids:
-                    - 36
-                    - 76
-                location_id: 6
-                send_notifications: true
-                sms_message: some text
-                first_name: some text
-                last_name: some text
-                company: some text
-                email: some text
-        SigninUpdateParams:
-            type: object
-            properties:
-                is_signed_out:
-                    description: 'Used to sign out the `Signin`, can only be set to `true`.'
-                    type: boolean
-                is_acknowledged:
-                    description: 'Used to acknowledge the `Signin`, can only be set to `true`.'
-                    type: boolean
-                is_accounted_for:
-                    description: Used when keeping track of people in emergency situations
-                    type: boolean
-            example:
-                is_signed_out: true
-                is_acknowledged: true
-                is_accounted_for: true
-        InputPage:
-            required:
-                - name
-                - custom_fields
-            type: object
-            properties:
-                name:
-                    description: 'Eg: "form page", "about you", "etc"'
-                    type: string
-                custom_fields:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/CustomField'
-        CustomField:
-            title: Root Type for CustomField
-            description: The root of the CustomField type's schema.
-            required:
-                - field_value
-                - field_name
-            type: object
-            properties:
-                format:
-                    description: The format type of the field
-                    enum:
-                        - string
-                field_name:
-                    description: What the field should be displayed/labeled as
-                    type: string
-                field_value:
-                    description: The value to be displayed for the field
-                    type: string
-            example:
-                format: {}
-                field_name: some text
-                field_value: some text
-        SigninData:
-            type: object
-            properties:
-                name:
-                    type: string
-                custom_fields:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/CustomField'
-            example:
-                name: some text
-                custom_fields:
-                    -
-                        format: {}
-                        field_name: some text
-                        field_value: some text
-                    -
-                        format: {}
-                        field_name: some text
-                        field_value: some text
-        Permission:
-            title: Root Type for Permission
-            description: The root of the Permission type's schema.
-            type: object
-            properties:
-                name:
-                    type: string
-                visibility:
-                    type: string
-                values:
-                    type: array
-                    items:
-                        type: string
-            example:
-                name: some text
-                visibility: some text
-                values:
-                    - some text
-                    - some text
-        CredentialCreateParams:
-            type: object
-            properties:
-                email:
-                    type: string
-                password:
-                    type: string
-            example:
-                email: some text
-                password: some text
-        Credential:
-            type: object
-            properties:
-                token:
-                    type: string
-            example:
-                token: some text
-        InviteWatchlist:
-            title: Root Type for InviteWatchlist
-            description: The root of the InviteWatchlist type's schema.
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                external_colours:
-                    type: array
-                    items:
-                        type: string
-                internal_colours:
-                    type: array
-                    items:
-                        type: string
-            example:
-                id: 7
-                external_colours: RED
-                internal_colours: GREEN
-        InviteCreateParams:
-            title: Root Type for InviteCreateParams
-            description: The root of the InviteCreateParams type's schema.
-            required:
-                - email
-                - last_name
-                - first_name
-            type: object
-            properties:
-                company:
-                    type: string
-                email:
-                    type: string
-                end_date:
-                    format: date-time
-                    type: string
-                last_name:
-                    type: string
-                start_date:
-                    format: date-time
-                    description: The `start_date` is required for invitations to lobbies
-                    type: string
-                title:
-                    type: string
-                watchlist_colour:
-                    enum:
-                        - RED
-                        - GREEN
-                        - YELLOW
-                        - ORANGE
-                host_ids:
-                    type: array
-                    items:
-                        type: integer
-                custom_fields:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/CustomField'
-                email_template_id:
-                    type: integer
-                mobile:
-                    type: string
-                first_name:
-                    type: string
-                notification_triggers:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/NotificationTrigger'
-            example:
-                company: some text
-                email: some text
-                end_date: '2018-02-10T09:30Z'
-                last_name: some text
-                start_date: '2018-02-10T09:30Z'
-                title: some text
-                watchlist_colour: {}
-                host_ids:
-                    - 63
-                    - 49
-                custom_fields:
-                    -
-                        format: {}
-                        field_name: some text
-                        field_value: some text
-                    -
-                        format: {}
-                        field_name: some text
-                        field_value: some text
-                email_template_id: 18
-                mobile: some text
-                first_name: some text
-                notification_triggers:
-                    -
-                        subject: some text
-                        title: some text
-                        message: some text
-                        notification_group_names:
-                            - some text
-                            - some text
-                        trigger_target: {}
-                        trigger_span: {}
-                        trigger_pointer: {}
-                        event_offset: 63
-                    -
-                        subject: some text
-                        title: some text
-                        message: some text
-                        notification_group_names:
-                            - some text
-                            - some text
-                        trigger_target: {}
-                        trigger_span: {}
-                        trigger_pointer: {}
-                        event_offset: 41
-        NotificationTrigger:
-            title: Root Type for NotificationTrigger
-            description: The root of the NotificationTrigger type's schema.
-            required:
-                - offset_type
-                - offset_origin
-                - offset_direction
-                - offset_amount
-                - notification_groups
-                - email_template_id
-            type: object
-            properties:
-                offset_direction:
-                    description: 'Whether the offset should be calculated for before, or after the event'
-                    enum:
-                        - BEFORE
-                        - AFTER
-                offset_type:
-                    description: Whether the offset should be calculated as `days` or `hours`
-                    enum:
-                        - days
-                        - hours
-                offset_amount:
-                    description: The amount to offset the notification from the event
-                    type: integer
-                offset_origin:
-                    description: 'Whether the offset should be calculated from the start, or finish of the event'
-                    enum:
-                        - START
-                        - END
-                email_template_id:
-                    type: integer
-                notification_groups:
-                    description: 'An array made of only `INVITEE`, `HOSTS, or `LEP` as possible string values'
-                    type: array
-                    items:
-                        type: string
-            example:
-                offset_direction: {}
-                offset_type: {}
-                offset_amount: 94
-                offset_origin: {}
-                email_template_id: 32
-                notification_groups:
-                    - some text
-                    - some text
-        InviteUpdateParams:
-            title: Root Type for InviteCreateParams
-            description: The root of the InviteUpdateParams type's schema.
-            required: []
-            type: object
-            properties:
-                company:
-                    type: string
-                email:
-                    type: string
-                end_date:
-                    format: date-time
-                    type: string
-                last_name:
-                    type: string
-                start_date:
-                    format: date-time
-                    description: ''
-                    type: string
-                title:
-                    type: string
-                host_ids:
-                    type: array
-                    items:
-                        type: integer
-                custom_fields:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/CustomField'
-                email_template_id:
-                    type: integer
-                mobile:
-                    type: string
-                first_name:
-                    type: string
-                notification_triggers:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/NotificationTrigger'
-                on_premise:
-                    type: boolean
-                user_id:
-                    description: Used for transfering ownership of an `Invite` to another member of the Account
-                    type: integer
-            example:
-                company: some text
-                email: some text
-                end_date: '2018-02-10T09:30Z'
-                last_name: some text
-                start_date: '2018-02-10T09:30Z'
-                title: some text
-                watchlist_colour: {}
-                host_ids:
-                    - 63
-                    - 49
-                custom_fields:
-                    -
-                        format: {}
-                        field_name: some text
-                        field_value: some text
-                    -
-                        format: {}
-                        field_name: some text
-                        field_value: some text
-                email_template_id: 18
-                mobile: some text
-                first_name: some text
-                notification_triggers:
-                    -
-                        subject: some text
-                        title: some text
-                        message: some text
-                        notification_group_names:
-                            - some text
-                            - some text
-                        trigger_target: {}
-                        trigger_span: {}
-                        trigger_pointer: {}
-                        event_offset: 63
-                    -
-                        subject: some text
-                        title: some text
-                        message: some text
-                        notification_group_names:
-                            - some text
-                            - some text
-                        trigger_target: {}
-                        trigger_span: {}
-                        trigger_pointer: {}
-                        event_offset: 41
-    securitySchemes:
-        ApiCredentials:
-            type: http
-            description: Contains an `Authorization` header and token
-            scheme: basic
-        TractionGuestAuth:
-            type: oauth2
-            flows:
-                password:
-                    tokenUrl: 'https://server.com/authorize'
-                    refreshUrl: 'https://server.com/refresh'
-                    scopes:
-                        all: ''
-security:
-    -
-        ApiCredentials: []
-    -
-        TractionGuestAuth:
-            - all
-tags:
-    -
-        name: EmailTemplates
-        description: All endpoints relating to operations for the EmailTemplate model
-    -
-        name: Hosts
-        description: All endpoints relating to the Host model
-    -
-        name: Invites
-        description: 'All endpoints relating to the Invite model, aka. PreRegistrations'
-    -
-        name: Locations
-        description: 'All endpoints relating to the Location model, aka. DeviceConfigurations'
-    -
-        name: Parking
-        description: 'All endpoint related to the parking feature, including the ParkingLot and ParkingStallRange models'
-    -
-        name: Signins
-        description: >-
-            All endpoints related to models that track signing in and out of a location. E.g., Signin,
-            Signout, SigninAcknowledgment models
-    -
-        name: Watchlists
-        description: All endpoint related to the Watchlist model
-    -
-        name: Users
-        description: All endpoints related to the User model
-    -
-        name: Credentials
-        description: All endpoints relating to Credential tokens for authenticating Users
+                                                mobile: some text
+                                                profile_pic_url: some text
+                        Full List:
+                            value:
+                                invites:
+                                    -
+                                        id: 189
+                                        first_name: Kenny G
+                                        last_name: Mosciski
+                                        start_date: '2019-07-07T16:00:00Z'
+                                        watchlist_colour: RED
+                                        location:
+                                            id: 1
+                                            name: Default
+                                        invite_watchlist:
+                                            id: 189
+                                            external_colours: []
+                                            internal_colours:
+                                                - RED
+                                    -
+                                        id: 188
+                                        first_name: Chandra
+                                        last_name: Streich
+                                        start_date: '2019-07-07T15:00:00Z'
+                                        watchlist_colour: YELLOW
+                                        location:
+                                            id: 1
+                                            name: Default
+                                        invite_watchlist:
+                                            id: 188
+                                            external_colours: []
+                                            internal_colours:
+                                                - YELLOW
+                                    -
+                                        id: 187
+                                        first_name: Shana
+                                        last_name: Leffler
+                                        start_date: '2019-07-07T14:00:00Z'
+                                        watchlist_colour: ORANGE
+                                        location:
+                                            id: 1
+                                            name: Default
+                                        invite_watchlist:
+                                            id: 187
+                                            external_colours: []
+                                            internal_colours:
+                                                - ORANGE
+                                    -
+                                        id: 186
+                                        first_name: Barney
+                                        last_name: Weimann
+                                        start_date: '2019-07-07T13:00:00Z'
+                                        watchlist_colour: ORANGE
+                                        location:
+                                            id: 1
+                                            name: Default
+                                        invite_watchlist:
+                                            id: 186
+                                            external_colours: []
+                                            internal_colours:
+                                                - ORANGE
+                                    -
+                                        id: 185
+                                        first_name: Neal
+                                        last_name: Satterfield
+                                        start_date: '2019-07-07T12:00:00Z'
+                                        watchlist_colour: ORANGE
+                                        location:
+                                            id: 1
+                                            name: Default
+                                        invite_watchlist:
+                                            id: 185
+                                            external_colours: []
+                                            internal_colours:
+                                                - ORANGE
+                                    -
+                                        id: 184
+                                        first_name: Hyun
+                                        last_name: Kulas
+                                        start_date: '2019-07-07T11:00:00Z'
+                                        watchlist_colour: RED
+                                        location:
+                                            id: 1
+                                            name: Default
+                                        invite_watchlist:
+                                            id: 184
+                                            external_colours: []
+                                            internal_colours:
+                                                - RED
+                                    -
+                                        id: 183
+                                        first_name: Cruz
+                                        last_name: Kreiger
+                                        start_date: '2019-07-07T10:00:00Z'
+                                        watchlist_colour: ORANGE
+                                        location:
+                                            id: 1
+                                            name: Default
+                                        invite_watchlist:
+                                            id: 183
+                                            external_colours: []
+                                            internal_colours:
+                                                - ORANGE
+                                    -
+                                        id: 182
+                                        first_name: Saturnina
+                                        last_name: Hills
+                                        start_date: '2019-07-07T09:00:00Z'
+                                        watchlist_colour: ORANGE
+                                        location:
+                                            id: 1
+                                            name: Default
+                                        invite_watchlist:
+                                            id: 182
+                                            external_colours: []
+                                            internal_colours:
+                                                - ORANGE
+                                    -
+                                        id: 181
+                                        first_name: Leana
+                                        last_name: Jast
+                                        start_date: '2019-07-07T08:00:00Z'
+                                        watchlist_colour: YELLOW
+                                        location:
+                                            id: 1
+                                            name: Default
+                                        invite_watchlist:
+                                            id: 181
+                                            external_colours: []
+                                            internal_colours:
+                                                - YELLOW
+                                    -
+                                        id: 180
+                                        first_name: Kayla
+                                        last_name: Funk
+                                        start_date: '2019-07-06T16:00:00Z'
+                                        watchlist_colour: ORANGE
+                                        location:
+                                            id: 1
+                                            name: Default
+                                        invite_watchlist:
+                                            id: 180
+                                            external_colours: []
+                                            internal_colours:
+                                                - ORANGE
+                                    -
+                                        id: 179
+                                        first_name: Lacie
+                                        last_name: Ortiz
+                                        start_date: '2019-07-06T15:00:00Z'
+                                        watchlist_colour: YELLOW
+                                        location:
+                                            id: 1
+                                            name: Default
+                                        invite_watchlist:
+                                            id: 179
+                                            external_colours: []
+                                            internal_colours:
+                                                - YELLOW
+                                    -
+                                        id: 178
+                                        first_name: Gearldine
+                                        last_name: Kemmer
+                                        start_date: '2019-07-06T14:00:00Z'
+                                        watchlist_colour: ORANGE
+                                        location:
+                                            id: 1
+                                            name: Default
+                                        invite_watchlist:
+                                            id: 178
+                                            external_colours: []
+                                            internal_colours:
+                                                - ORANGE
+                                pagination:
+                                    total_records: 190
+                                    current_offset: 0
+                                    next_offset: 12
+                                    limit: 12

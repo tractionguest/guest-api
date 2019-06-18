@@ -49,8 +49,6 @@ class ApiClient {
           return EmailTemplate.fromJson(value);
         case 'Host':
           return Host.fromJson(value);
-        case 'InputPage':
-          return InputPage.fromJson(value);
         case 'Invite':
           return Invite.fromJson(value);
         case 'InviteCreateParams':
@@ -73,16 +71,12 @@ class ApiClient {
           return PaginatedInvitesList.fromJson(value);
         case 'PaginatedLocationsList':
           return PaginatedLocationsList.fromJson(value);
-        case 'PaginatedParkingLotList':
-          return PaginatedParkingLotList.fromJson(value);
         case 'PaginatedSigninsList':
           return PaginatedSigninsList.fromJson(value);
         case 'PaginatedWatchlistList':
           return PaginatedWatchlistList.fromJson(value);
         case 'Pagination':
           return Pagination.fromJson(value);
-        case 'ParkingLot':
-          return ParkingLot.fromJson(value);
         case 'Permission':
           return Permission.fromJson(value);
         case 'PermissionBundle':

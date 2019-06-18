@@ -2511,8 +2511,8 @@ tags:
             All endpoints related to models that track signing in and out of a location. E.g., Signin,
             Signout, SigninAcknowledgment models
     -
-        name: Watchlists
-        description: All endpoint related to the Watchlist model
-    -
         name: Users
         description: All endpoints related to the User model
+    -
+        name: Watchlists
+        description: All endpoint related to the Watchlist model

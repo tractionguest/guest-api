@@ -846,7 +846,7 @@ paths:
                                                         last_name: some text
                                                         mobile: some text
                                                         profile_pic_url: some text
-                                Full List:
+                                full_list:
                                     value:
                                         invites:
                                             -
@@ -2488,6 +2488,9 @@ security:
             - all
 tags:
     -
+        name: Credentials
+        description: All endpoints relating to Credential tokens for authenticating Users
+    -
         name: EmailTemplates
         description: All endpoints relating to operations for the EmailTemplate model
     -
@@ -2513,6 +2516,3 @@ tags:
     -
         name: Users
         description: All endpoints related to the User model
-    -
-        name: Credentials
-        description: All endpoints relating to Credential tokens for authenticating Users

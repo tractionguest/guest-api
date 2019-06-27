@@ -113,7 +113,7 @@ class InvitesApi {
   /// List All Invites
   ///
   /// Gets a list of all &#x60;Invite&#x60; entities.
-  Future<PaginatedInvitesList> getInvites({ int limit, int offset, String query, String withColours, int locationIds, String sortBy, DateTime startsBefore, DateTime startsAfter }) async {
+  Future<PaginatedInvitesList> getInvites({ int limit, int offset, String query, String withColours, String locationIds, String sortBy, DateTime startsBefore, DateTime startsAfter }) async {
     Object postBody;
 
     // verify required params are set

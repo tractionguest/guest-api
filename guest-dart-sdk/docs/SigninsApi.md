@@ -128,7 +128,7 @@ import 'package:guest_sdk/api.dart';
 //defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new SigninsApi();
-var locationIds = 56; // int | A comma separated list of Location IDs
+var locationIds = locationIds_example; // String | A comma separated list of Location IDs
 var withColours = withColours_example; // String | A comma separated list of case-insensitive colour values.  i.e., `red`, `green`, `yellow`, and `orange`
 var query = query_example; // String | Allows you to query by `company`, `email`, `first_name`, `last_name`, and `location_name`
 var withAcknowledged = true; // bool | Filters to all those `Signin`s that have, or have not been acknowledged
@@ -150,7 +150,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **locationIds** | **int**| A comma separated list of Location IDs | [optional] [default to null]
+ **locationIds** | **String**| A comma separated list of Location IDs | [optional] [default to null]
  **withColours** | **String**| A comma separated list of case-insensitive colour values.  i.e., &#x60;red&#x60;, &#x60;green&#x60;, &#x60;yellow&#x60;, and &#x60;orange&#x60; | [optional] [default to null]
  **query** | **String**| Allows you to query by &#x60;company&#x60;, &#x60;email&#x60;, &#x60;first_name&#x60;, &#x60;last_name&#x60;, and &#x60;location_name&#x60; | [optional] [default to null]
  **withAcknowledged** | **bool**| Filters to all those &#x60;Signin&#x60;s that have, or have not been acknowledged | [optional] [default to null]

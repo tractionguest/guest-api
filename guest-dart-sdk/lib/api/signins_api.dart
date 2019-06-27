@@ -110,7 +110,7 @@ class SigninsApi {
   /// List All Signins
   ///
   /// Gets a list of all &#x60;Signin&#x60; entities.
-  Future<PaginatedSigninsList> getSignins({ int locationIds, String withColours, String query, bool withAcknowledged, bool withSignedIn, DateTime signinBefore, DateTime signinAfter, int limit, int offset }) async {
+  Future<PaginatedSigninsList> getSignins({ String locationIds, String withColours, String query, bool withAcknowledged, bool withSignedIn, DateTime signinBefore, DateTime signinAfter, int limit, int offset }) async {
     Object postBody;
 
     // verify required params are set

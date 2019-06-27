@@ -8,7 +8,7 @@ import 'package:guest_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] [default to null]
+**id** | **int** |  | [default to null]
 **email** | **String** |  | [optional] [default to null]
 **firstName** | **String** |  | [optional] [default to null]
 **lastName** | **String** |  | [optional] [default to null]

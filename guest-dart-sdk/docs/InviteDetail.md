@@ -8,13 +8,13 @@ import 'package:guest_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] [default to null]
+**id** | **int** |  | [default to null]
 **company** | **String** |  | [optional] [default to null]
 **createdAt** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
-**email** | **String** |  | [optional] [default to null]
+**email** | **String** |  | [default to null]
 **endDate** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
-**firstName** | **String** |  | [optional] [default to null]
-**lastName** | **String** |  | [optional] [default to null]
+**firstName** | **String** |  | [default to null]
+**lastName** | **String** |  | [default to null]
 **startDate** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
 **hosts** | [**List&lt;Host&gt;**](Host.md) |  | [optional] [default to []]
 **location** | [**Location**](Location.md) |  | [optional] [default to null]

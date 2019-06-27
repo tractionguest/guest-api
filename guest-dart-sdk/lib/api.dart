@@ -25,6 +25,8 @@ part 'model/credential.dart';
 part 'model/credential_create_params.dart';
 part 'model/custom_field.dart';
 part 'model/email_template.dart';
+part 'model/error.dart';
+part 'model/errors_list.dart';
 part 'model/host.dart';
 part 'model/invite.dart';
 part 'model/invite_create_params.dart';

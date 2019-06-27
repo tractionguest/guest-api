@@ -47,6 +47,10 @@ class ApiClient {
           return CustomField.fromJson(value);
         case 'EmailTemplate':
           return EmailTemplate.fromJson(value);
+        case 'Error':
+          return Error.fromJson(value);
+        case 'ErrorsList':
+          return ErrorsList.fromJson(value);
         case 'Host':
           return Host.fromJson(value);
         case 'Invite':

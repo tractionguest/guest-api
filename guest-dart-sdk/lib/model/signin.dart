@@ -24,18 +24,18 @@ class Signin {
   
   DateTime signinTimestamp = null;
   
-  SigninWatchlist watchlist = null;
-  
   bool isSignedOut = null;
   
   List<Host> hosts = [];
   
   List<SigninData> signinData = [];
+  
+  SigninWatchlist signinWatchlist = null;
   Signin();
 
   @override
   String toString() {
-    return 'Signin[id=$id, company=$company, email=$email, firstName=$firstName, isAccountedFor=$isAccountedFor, isAcknowledged=$isAcknowledged, lastName=$lastName, locationName=$locationName, signedOutTimestamp=$signedOutTimestamp, signinPhotoUrl=$signinPhotoUrl, signinTimestamp=$signinTimestamp, watchlist=$watchlist, isSignedOut=$isSignedOut, hosts=$hosts, signinData=$signinData, ]';
+    return 'Signin[id=$id, company=$company, email=$email, firstName=$firstName, isAccountedFor=$isAccountedFor, isAcknowledged=$isAcknowledged, lastName=$lastName, locationName=$locationName, signedOutTimestamp=$signedOutTimestamp, signinPhotoUrl=$signinPhotoUrl, signinTimestamp=$signinTimestamp, isSignedOut=$isSignedOut, hosts=$hosts, signinData=$signinData, signinWatchlist=$signinWatchlist, ]';
   }
 
   Signin.fromJson(Map<String, dynamic> json) {
@@ -95,11 +95,6 @@ class Signin {
     } else {
       signinTimestamp = DateTime.parse(json['signin_timestamp']);
     }
-    if (json['watchlist'] == null) {
-      watchlist = null;
-    } else {
-      watchlist = new SigninWatchlist.fromJson(json['watchlist']);
-    }
     if (json['is_signed_out'] == null) {
       isSignedOut = null;
     } else {
@@ -114,6 +109,11 @@ class Signin {
       signinData = null;
     } else {
       signinData = SigninData.listFromJson(json['signin_data']);
+    }
+    if (json['signin_watchlist'] == null) {
+      signinWatchlist = null;
+    } else {
+      signinWatchlist = new SigninWatchlist.fromJson(json['signin_watchlist']);
     }
   }
 
@@ -141,14 +141,14 @@ class Signin {
       json['signin_photo_url'] = signinPhotoUrl;
     if (signinTimestamp != null)
       json['signin_timestamp'] = signinTimestamp == null ? null : signinTimestamp.toUtc().toIso8601String();
-    if (watchlist != null)
-      json['watchlist'] = watchlist;
     if (isSignedOut != null)
       json['is_signed_out'] = isSignedOut;
     if (hosts != null)
       json['hosts'] = hosts;
     if (signinData != null)
       json['signin_data'] = signinData;
+    if (signinWatchlist != null)
+      json['signin_watchlist'] = signinWatchlist;
     return json;
   }
 

@@ -1,12 +1,12 @@
 openapi: 3.0.2
 info:
     title: Traction Guest Mobile API
+    version: 0.9.4
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
         url: 'https://tractionguest.com'
         email: bmckay@tractionguest.com
-    version: 0.9.3
 servers:
     -
         url: '{domain}'
@@ -26,31 +26,27 @@ paths:
         get:
             tags:
                 - Hosts
-            summary: List All Hosts
-            description: Gets a list of all `Host` entities.
-            operationId: getHosts
             parameters:
                 -
                     name: query
-                    in: query
                     description: 'Will filter by `first_name`, `last_name`, and `email`'
                     schema:
                         type: string
+                    in: query
                 -
                     name: limit
-                    in: query
                     description: 'Limits the results to a specified number, defaults to 50'
                     schema:
                         type: integer
+                    in: query
                 -
                     name: offset
-                    in: query
                     description: 'Offsets the results to a specified number, defaults to 0'
                     schema:
                         type: integer
+                    in: query
             responses:
                 '200':
-                    description: Successful response - returns an array of `Host` entities.
                     content:
                         application/json:
                             schema:
@@ -77,6 +73,34 @@ paths:
                                             total_records: 14
                                             current_offset: 41
                                             next_offset: 85
+                    description: Successful response - returns an array of `Host` entities.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view these Hosts
+                '403':
+                    description: You do not have permission for this action
+            operationId: getHosts
+            summary: List All Hosts
+            description: Gets a list of all `Host` entities.
     /email_templates:
         summary: Path used to manage the list of EmailTemplates.
         description: >-
@@ -85,25 +109,21 @@ paths:
         get:
             tags:
                 - EmailTemplates
-            summary: List All EmailTemplates
-            description: Gets a list of all `EmailTemplate` entities.
-            operationId: getEmailTemplates
             parameters:
                 -
                     name: limit
-                    in: query
                     description: 'Limits the results to a specified number, defaults to 50'
                     schema:
                         type: integer
+                    in: query
                 -
                     name: offset
-                    in: query
                     description: 'Offsets the results to a specified number, defaults to 0'
                     schema:
                         type: integer
+                    in: query
             responses:
                 '200':
-                    description: Successful response - returns an array of `EmailTemplate` entities.
                     content:
                         application/json:
                             schema:
@@ -124,18 +144,42 @@ paths:
                                             total_records: 84
                                             current_offset: 99
                                             next_offset: 45
+                    description: Successful response - returns an array of `EmailTemplate` entities.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view this EmailTemplate
+                '403':
+                    description: You do not have permission for this action
+            operationId: getEmailTemplates
+            summary: List All EmailTemplates
+            description: Gets a list of all `EmailTemplate` entities.
     '/signins/{signinId}':
         summary: Path used to manage a single Signin.
         description: The REST endpoint/path used to get single instances of an `Signin`.
         get:
             tags:
                 - Signins
-            summary: Get a Signin
-            description: Gets the details of a single instance of a `Signin`.
-            operationId: getSignin
             responses:
                 '200':
-                    description: Successful response - returns a single `Signin`.
                     content:
                         application/json:
                             schema:
@@ -192,12 +236,37 @@ paths:
                                                         format: {}
                                                         field_name: some text
                                                         field_value: some text
+                    description: Successful response - returns a single `Signin`.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view this Signin
+                '403':
+                    description: You do not have permission for this action
+                '404':
+                    description: The Signin does not exist
+            operationId: getSignin
+            summary: Get a Signin
+            description: Gets the details of a single instance of a `Signin`.
         put:
-            tags:
-                - Signins
-            summary: Update a Signin attribute
-            description: 'Update, acknowledge, or `Signout` a `Signin`'
-            operationId: updateSignin
             requestBody:
                 description: >-
                     The only updatable values for a `Signin` are `badge_number`, `badge_returned`,
@@ -219,9 +288,10 @@ paths:
                                     badge_returned: true
                                     is_accounted_for: true
                 required: true
+            tags:
+                - Signins
             responses:
                 '200':
-                    description: 'The Signin has been acknowledged, or signed out.'
                     content:
                         application/json:
                             schema:
@@ -279,26 +349,54 @@ paths:
                                                         format: {}
                                                         field_name: some text
                                                         field_value: some text
+                    description: 'The Signin has been acknowledged, or signed out.'
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to update this Signin
+                '403':
+                    description: You do not have permission for this action
+                '404':
+                    description: The Signin does not exist
+                '422':
+                    description: Your request was not formatted correctly
+            operationId: updateSignin
+            summary: Update a Signin attribute
+            description: 'Update, acknowledge, or `Signout` a `Signin`'
         parameters:
             -
                 name: signinId
-                in: path
                 description: A unique identifier for a `Signin`.
-                required: true
                 schema:
                     type: string
+                in: path
+                required: true
     '/watchlists/{watchlistId}':
         summary: Path used to manage a single Watchlist.
         description: The REST endpoint/path used to get single instances of a `Watchlist`.
         get:
             tags:
                 - Watchlists
-            summary: Get a Watchlist
-            description: Gets the details of a single instance of a `Watchlist`.
-            operationId: getWatchlist
             responses:
                 '200':
-                    description: Successful response - returns a single `Watchlist`.
                     content:
                         application/json:
                             schema:
@@ -316,45 +414,71 @@ paths:
                                         aliases:
                                             - some text
                                             - some text
+                    description: Successful response - returns a single `Watchlist`.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view this Watchlist
+                '403':
+                    description: You do not have permission for this action
+                '404':
+                    description: The Watchlist does not exist
+            operationId: getWatchlist
+            summary: Get a Watchlist
+            description: Gets the details of a single instance of a `Watchlist`.
         parameters:
             -
                 name: watchlistId
-                in: path
                 description: A unique identifier for a `Watchlist`.
-                required: true
                 schema:
                     type: string
+                in: path
+                required: true
     /locations:
         summary: Path used to manage the list of Locations.
         description: The REST endpoint/path used to list zero or more `Location` entities.
         get:
             tags:
                 - Locations
-            summary: List All Locations
-            description: Gets a list of all `Location` entities.
-            operationId: getLocations
             parameters:
                 -
                     name: limit
-                    in: query
                     description: 'Limits the results to a specified number, defaults to 50'
                     schema:
                         type: integer
+                    in: query
                 -
                     name: offset
-                    in: query
                     description: 'Offsets the results to a specified number, defaults to 0'
                     schema:
                         type: integer
+                    in: query
                 -
                     name: query
-                    in: query
                     description: Queries by Location `name`
                     schema:
                         type: string
+                    in: query
             responses:
                 '200':
-                    description: Successful response - returns an array of `Location` entities.
                     content:
                         application/json:
                             schema:
@@ -373,15 +497,38 @@ paths:
                                             -
                                                 id: 97
                                                 name: Rogers Arena
+                    description: Successful response - returns an array of `Location` entities.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view these Locations
+                '403':
+                    description: You do not have permission for this action
+            operationId: getLocations
+            summary: List All Locations
+            description: Gets a list of all `Location` entities.
     '/locations/{locationId}/invites':
         summary: Path used to manage a single Location's invites.
         description: The REST endpoint/path used to create single instances of an `Invite` for a specific `Location`.
         post:
-            tags:
-                - Invites
-            summary: Creates an Invite
-            description: Creates a new `Invite` for a specific `Location`.
-            operationId: createLocationInvite
             requestBody:
                 content:
                     application/json:
@@ -432,9 +579,10 @@ paths:
                                                 - some text
                                                 - some text
                 required: true
+            tags:
+                - Invites
             responses:
                 '201':
-                    description: Created the `Invite` for the `Location`
                     content:
                         application/json:
                             schema:
@@ -493,183 +641,48 @@ paths:
                                                 format: {}
                                                 field_name: some text
                                                 field_value: some text
+                    description: Created the `Invite` for the `Location`
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to create this Invite
+                '403':
+                    description: You do not have permission for this action
+                '404':
+                    description: The Location does not exist
+                '422':
+                    description: Your request was not formatted correctly
+            operationId: createLocationInvite
+            summary: Creates an Invite
+            description: Creates a new `Invite` for a specific `Location`.
         parameters:
             -
                 name: locationId
-                in: path
                 description: A unique identifier for a `Location`.
-                required: true
                 schema:
                     type: integer
-    '/invites/{inviteId}':
-        summary: Path used to manage a single Invite.
-        description: >-
-            The REST endpoint/path used to get, update, and delete single instances of an `Invite`.  This path
-            contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks,
-            respectively.
-        get:
-            tags:
-                - Invites
-            summary: Get a Invite
-            description: Gets the details of a single instance of a `Invite`.
-            operationId: getInvite
-            responses:
-                '200':
-                    description: Successful response - returns a single `Invite`.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/InviteDetail'
-                            examples:
-                                default:
-                                    value:
-                                        id: 23
-                                        company: some text
-                                        created_at: '2018-02-10T09:30Z'
-                                        email: some text
-                                        end_date: '2018-02-10T09:30Z'
-                                        first_name: some text
-                                        last_name: some text
-                                        start_date: '2018-02-10T09:30Z'
-                                        hosts:
-                                            -
-                                                id: 7
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                mobile: some text
-                                                profile_pic_url: some text
-                                            -
-                                                id: 36
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                mobile: some text
-                                                profile_pic_url: some text
-                                        location:
-                                            id: 57
-                                            name: some text
-                                        watchlist:
-                                            id: 82
-                                            colour: {}
-                                            email: some text
-                                            first_name: some text
-                                            last_name: some text
-                                            notes: some text
-                                            photo: some text
-                                            aliases:
-                                                - some text
-                                                - some text
-                                        watchlist_colour: {}
-                                        template:
-                                            id: 74
-                                            name: some text
-                                            template_type: some text
-                                        custom_fields:
-                                            -
-                                                format: {}
-                                                field_name: some text
-                                                field_value: some text
-                                            -
-                                                format: {}
-                                                field_name: some text
-                                                field_value: some text
-        put:
-            tags:
-                - Invites
-            summary: Update a Invite
-            description: Updates an existing `Invite`.
-            operationId: updateInvite
-            requestBody:
-                description: Updated `Invite` information.
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/InviteUpdateParams'
-                        examples:
-                            default:
-                                value:
-                                    checked_in: true
-                                    on_premise: true
-                                    sent_email: some text
-                                    user_id: 45
-                                    device_configuration_id: 14
-                required: true
-            responses:
-                '202':
-                    description: Successful response.
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/InviteDetail'
-                            examples:
-                                default:
-                                    value:
-                                        id: 27
-                                        company: some text
-                                        created_at: '2018-02-10T09:30Z'
-                                        email: some text
-                                        end_date: '2018-02-10T09:30Z'
-                                        first_name: some text
-                                        last_name: some text
-                                        start_date: '2018-02-10T09:30Z'
-                                        hosts:
-                                            -
-                                                id: 97
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                mobile: some text
-                                                profile_pic_url: some text
-                                            -
-                                                id: 35
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                mobile: some text
-                                                profile_pic_url: some text
-                                        location:
-                                            id: 74
-                                            name: some text
-                                        watchlist:
-                                            id: 55
-                                            colour: {}
-                                            email: some text
-                                            first_name: some text
-                                            last_name: some text
-                                            notes: some text
-                                            photo: some text
-                                            aliases:
-                                                - some text
-                                                - some text
-                                        watchlist_colour: {}
-                                        template:
-                                            id: 12
-                                            name: some text
-                                            template_type: some text
-                                        custom_fields:
-                                            -
-                                                format: {}
-                                                field_name: some text
-                                                field_value: some text
-                                            -
-                                                format: {}
-                                                field_name: some text
-                                                field_value: some text
-        parameters:
-            -
-                name: inviteId
                 in: path
-                description: A unique identifier for a `Invite`.
                 required: true
-                schema:
-                    type: string
     /credentials:
         post:
-            tags:
-                - Credentials
-            summary: Creates credentials from login information
-            operationId: createCredentials
             requestBody:
                 content:
                     application/json:
@@ -681,9 +694,10 @@ paths:
                                     email: some text
                                     password: some text
                 required: true
+            tags:
+                - Credentials
             responses:
                 '201':
-                    description: Creates a new token for authenticating future API calls
                     content:
                         application/json:
                             schema:
@@ -692,6 +706,33 @@ paths:
                                 default:
                                     value:
                                         token: some text
+                    description: Creates a new token for authenticating future API calls
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: Your login details are incorrect
+                '403':
+                    description: You do not have permission for this action
+            operationId: createCredentials
+            summary: Creates credentials from login information
     /invites:
         summary: Path used to manage the list of Invites.
         description: >-
@@ -700,46 +741,42 @@ paths:
         get:
             tags:
                 - Invites
-            summary: List All Invites
-            description: Gets a list of all `Invite` entities.
-            operationId: getInvites
             parameters:
                 -
                     name: limit
-                    in: query
                     description: 'Limits the results to a specified number, defaults to 50'
                     schema:
                         type: integer
+                    in: query
                 -
                     name: offset
-                    in: query
                     description: 'Offsets the results to a specified number, defaults to 0'
                     schema:
                         type: integer
+                    in: query
                 -
                     name: query
-                    in: query
                     description: 'Filters by `first_name`, `last_name`, `company`, and `email`'
                     schema:
                         type: string
+                    in: query
                 -
                     name: with_colours
-                    in: query
                     description: |-
                         A comma separated list of case-insensitive colour values.
 
                         i.e., `red`, `green`, `yellow`, and `orange`
                     schema:
                         type: string
+                    in: query
                 -
                     name: location_ids
-                    in: query
                     description: A comma separated list of Location IDs
                     schema:
-                        type: integer
+                        type: string
+                    in: query
                 -
                     name: sort_by
-                    in: query
                     description: >-
                         Sorts by the field name and direction provided where the pattern is
                         `FIELD_NAME_DIRECTION`
@@ -753,23 +790,23 @@ paths:
                             - created_at_desc
                             - updated_at_asc
                             - updated_at_desc
+                    in: query
                 -
                     name: starts_before
-                    in: query
                     description: Filters results to all those *before* the provided datetime
                     schema:
                         format: date
                         type: string
+                    in: query
                 -
                     name: starts_after
-                    in: query
                     description: Filters results to all those *after* the provided datetime
                     schema:
                         format: date
                         type: string
+                    in: query
             responses:
                 '200':
-                    description: Successful response - returns an array of `Invite` entities.
                     content:
                         application/json:
                             schema:
@@ -1022,6 +1059,34 @@ paths:
                                             current_offset: 0
                                             next_offset: 12
                                             limit: 12
+                    description: Successful response - returns an array of `Invite` entities.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view these Invites
+                '403':
+                    description: You do not have permission for this action
+            operationId: getInvites
+            summary: List All Invites
+            description: Gets a list of all `Invite` entities.
     /signins:
         summary: Path used to manage the list of Signins.
         description: >-
@@ -1030,74 +1095,70 @@ paths:
         get:
             tags:
                 - Signins
-            summary: List All Signins
-            description: Gets a list of all `Signin` entities.
-            operationId: getSignins
             parameters:
                 -
                     name: location_ids
-                    in: query
                     description: A comma separated list of Location IDs
                     schema:
-                        type: integer
+                        type: string
+                    in: query
                 -
                     name: with_colours
-                    in: query
                     description: |-
                         A comma separated list of case-insensitive colour values.
 
                         i.e., `red`, `green`, `yellow`, and `orange`
                     schema:
                         type: string
+                    in: query
                 -
                     name: query
-                    in: query
                     description: >-
                         Allows you to query by `company`, `email`, `first_name`, `last_name`, and
                         `location_name`
                     schema:
                         type: string
+                    in: query
                 -
                     name: with_acknowledged
-                    in: query
                     description: 'Filters to all those `Signin`s that have, or have not been acknowledged'
                     schema:
                         type: boolean
+                    in: query
                 -
                     name: with_signed_in
-                    in: query
                     description: 'Filters to all `Signin`s that are, or are not currently signed out.'
                     schema:
                         type: boolean
+                    in: query
                 -
                     name: signin_before
-                    in: query
                     description: Filters results to all those *before* the provided datetime
                     schema:
                         format: date
                         type: string
+                    in: query
                 -
                     name: signin_after
-                    in: query
                     description: Filters results to all those *after* the provided datetime
                     schema:
                         format: date
                         type: string
+                    in: query
                 -
                     name: limit
-                    in: query
                     description: 'Limits the results to a specified number, defaults to 50'
                     schema:
                         type: integer
+                    in: query
                 -
                     name: offset
-                    in: query
                     description: 'Offsets the results to a specified number, defaults to 0'
                     schema:
                         type: integer
+                    in: query
             responses:
                 '200':
-                    description: Successful response - returns an array of `Signin` entities.
                     content:
                         application/json:
                             schema:
@@ -1152,12 +1213,35 @@ paths:
                                             total_records: 88
                                             current_offset: 45
                                             next_offset: 93
+                    description: Successful response - returns an array of `Signin` entities.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view these Signins
+                '403':
+                    description: You do not have permission for this action
+            operationId: getSignins
+            summary: List All Signins
+            description: Gets a list of all `Signin` entities.
         post:
-            tags:
-                - Signins
-            summary: Create a Signin
-            description: Creates a new instance of a `Signin`.
-            operationId: createSignin
             requestBody:
                 description: A new `Signin` to be created.
                 content:
@@ -1183,9 +1267,10 @@ paths:
                                     company: some text
                                     email: some text
                 required: true
+            tags:
+                - Signins
             responses:
                 '201':
-                    description: Successful response.
                     content:
                         application/json:
                             schema:
@@ -1213,48 +1298,74 @@ paths:
                                                 - {}
                                                 - {}
                                         is_signed_out: true
+                    description: Successful response.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to create this Signin
+                '403':
+                    description: You do not have permission for this action
+                '422':
+                    description: Your request was not formatted correctly
+            operationId: createSignin
+            summary: Create a Signin
+            description: Creates a new instance of a `Signin`.
     /watchlists:
         summary: Path used to manage the list of Watchlists.
         description: The REST endpoint/path used to list zero or more `Watchlist` entities.
         get:
             tags:
                 - Watchlists
-            summary: List All Watchlists
-            description: Gets a list of all `Watchlist` entities.
-            operationId: getWatchlists
             parameters:
                 -
                     name: limit
-                    in: query
                     description: 'Limits the results to a specified number, defaults to 50'
                     schema:
                         type: integer
+                    in: query
                 -
                     name: offset
-                    in: query
                     description: 'Offsets the results to a specified number, defaults to 0'
                     schema:
                         type: integer
+                    in: query
                 -
                     name: query
-                    in: query
                     description: >-
                         Query the results by `first_name`, `last_name`, `email`, `colour`, and `notes` all at
                         once.
                     schema:
                         type: string
+                    in: query
                 -
                     name: with_colours
-                    in: query
                     description: |-
                         A comma separated list of case-insensitive colour values.
 
                         i.e., `red`, `green`, `yellow`, and `orange`
                     schema:
                         type: string
+                    in: query
             responses:
                 '200':
-                    description: Successful response - returns an array of `Watchlist` entities.
                     content:
                         application/json:
                             schema:
@@ -1289,18 +1400,42 @@ paths:
                                                 aliases:
                                                     - some text
                                                     - some text
+                    description: Successful response - returns an array of `Watchlist` entities.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view these Watchlists
+                '403':
+                    description: You do not have permission for this action
+            operationId: getWatchlists
+            summary: List All Watchlists
+            description: Gets a list of all `Watchlist` entities.
     '/users/{userId}':
         summary: Path used to manage a single User.
         description: The REST endpoint/path used to get single instances of an `User` and their `PermissionBundle`s.
         get:
             tags:
                 - Users
-            summary: Get the current User
-            description: Gets the details of a single instance of the current `User`.
-            operationId: getCurrentUser
             responses:
                 '200':
-                    description: Successful response - returns a single `User`.
                     content:
                         application/json:
                             schema:
@@ -1348,22 +1483,303 @@ paths:
                                                         values:
                                                             - some text
                                                             - some text
+                    description: Successful response - returns a single `User`.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view this User
+                '403':
+                    description: You do not have permission for this action
+                '404':
+                    description: The User does not exist
+            operationId: getCurrentUser
+            summary: Get the current User
+            description: Gets the details of a single instance of the current `User`.
         parameters:
             -
                 name: userId
-                in: path
                 description: |-
                     The user ID, represented as a string.
 
                     `"current"` can be used as a shortcut for the currently-authenticated user
-                required: true
                 schema:
                     type: string
+                in: path
+                required: true
+    '/invites/{inviteId}':
+        summary: Path used to manage a single Invite.
+        description: >-
+            The REST endpoint/path used to get, update, and delete single instances of an `Invite`.  This path
+            contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks,
+            respectively.
+        get:
+            tags:
+                - Invites
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/InviteDetail'
+                            examples:
+                                default:
+                                    value:
+                                        id: 23
+                                        company: some text
+                                        created_at: '2018-02-10T09:30Z'
+                                        email: some text
+                                        end_date: '2018-02-10T09:30Z'
+                                        first_name: some text
+                                        last_name: some text
+                                        start_date: '2018-02-10T09:30Z'
+                                        hosts:
+                                            -
+                                                id: 7
+                                                email: some text
+                                                first_name: some text
+                                                last_name: some text
+                                                mobile: some text
+                                                profile_pic_url: some text
+                                            -
+                                                id: 36
+                                                email: some text
+                                                first_name: some text
+                                                last_name: some text
+                                                mobile: some text
+                                                profile_pic_url: some text
+                                        location:
+                                            id: 57
+                                            name: some text
+                                        watchlist:
+                                            id: 82
+                                            colour: {}
+                                            email: some text
+                                            first_name: some text
+                                            last_name: some text
+                                            notes: some text
+                                            photo: some text
+                                            aliases:
+                                                - some text
+                                                - some text
+                                        watchlist_colour: {}
+                                        template:
+                                            id: 74
+                                            name: some text
+                                            template_type: some text
+                                        custom_fields:
+                                            -
+                                                format: {}
+                                                field_name: some text
+                                                field_value: some text
+                                            -
+                                                format: {}
+                                                field_name: some text
+                                                field_value: some text
+                    description: Successful response - returns a single `Invite`.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view this Invite
+                '403':
+                    description: You do not have permission for this action
+                '404':
+                    description: The Invite you are looking for does not exist
+            operationId: getInvite
+            summary: Get a Invite
+            description: Gets the details of a single instance of a `Invite`.
+        put:
+            requestBody:
+                description: Updated `Invite` information.
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/InviteUpdateParams'
+                        examples:
+                            default:
+                                value:
+                                    checked_in: true
+                                    on_premise: true
+                                    sent_email: some text
+                                    user_id: 45
+                                    device_configuration_id: 14
+                required: true
+            tags:
+                - Invites
+            responses:
+                '202':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/InviteDetail'
+                            examples:
+                                default:
+                                    value:
+                                        id: 27
+                                        company: some text
+                                        created_at: '2018-02-10T09:30Z'
+                                        email: some text
+                                        end_date: '2018-02-10T09:30Z'
+                                        first_name: some text
+                                        last_name: some text
+                                        start_date: '2018-02-10T09:30Z'
+                                        hosts:
+                                            -
+                                                id: 97
+                                                email: some text
+                                                first_name: some text
+                                                last_name: some text
+                                                mobile: some text
+                                                profile_pic_url: some text
+                                            -
+                                                id: 35
+                                                email: some text
+                                                first_name: some text
+                                                last_name: some text
+                                                mobile: some text
+                                                profile_pic_url: some text
+                                        location:
+                                            id: 74
+                                            name: some text
+                                        watchlist:
+                                            id: 55
+                                            colour: {}
+                                            email: some text
+                                            first_name: some text
+                                            last_name: some text
+                                            notes: some text
+                                            photo: some text
+                                            aliases:
+                                                - some text
+                                                - some text
+                                        watchlist_colour: {}
+                                        template:
+                                            id: 12
+                                            name: some text
+                                            template_type: some text
+                                        custom_fields:
+                                            -
+                                                format: {}
+                                                field_name: some text
+                                                field_value: some text
+                                            -
+                                                format: {}
+                                                field_name: some text
+                                                field_value: some text
+                    description: Successful response.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view this Invite
+                '403':
+                    description: You do not have permission for this action
+                '404':
+                    description: The Invite does not exist
+                '422':
+                    description: Your request was not formatted correctly
+            operationId: updateInvite
+            summary: Update a Invite
+            description: Updates an existing `Invite`.
+        parameters:
+            -
+                name: inviteId
+                description: A unique identifier for a `Invite`.
+                schema:
+                    type: string
+                in: path
+                required: true
+    '/credentials/{credentialId}':
+        delete:
+            tags:
+                - Credentials
+            responses:
+                '200':
+                    description: Deleted the token specified.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                    description: A generic error
+                '401':
+                    description: You're not authorized to do this action
+                '403':
+                    description: This action is forbidden
+                '404':
+                    description: The Credential you are looking for does not exist
+            security:
+                -
+                    ApiCredentials: []
+            operationId: deleteCredential
+            summary: Deletes a mobile credential
+        parameters:
+            -
+                name: credentialId
+                description: It can be the credential id or the string 'current'
+                schema:
+                    type: string
+                in: path
+                required: true
 components:
     schemas:
         Host:
             title: Root Type for Host
             description: A client host assigned to a Signin
+            required:
+                - id
             type: object
             properties:
                 id:
@@ -1391,6 +1807,8 @@ components:
         EmailTemplate:
             title: Root Type for EmailTemplate
             description: The root of the EmailTemplate type's schema.
+            required:
+                - id
             type: object
             properties:
                 id:
@@ -1441,6 +1859,8 @@ components:
         SigninWatchlist:
             title: Root Type for SigninWatchlist
             description: The root of the SigninWatchlist type's schema.
+            required:
+                - id
             type: object
             properties:
                 id:
@@ -1477,6 +1897,8 @@ components:
         SigninAcknowledgement:
             title: Root Type for SigninAcknowledgement
             description: The root of the SigninAcknowledgement type's schema.
+            required:
+                - id
             type: object
             properties:
                 code:
@@ -1493,6 +1915,7 @@ components:
                 id: 10
         PaginatedHostsList:
             required:
+                - pagination
                 - hosts
             type: object
             properties:
@@ -1545,6 +1968,8 @@ components:
         User:
             title: Root Type for User
             description: The root of the User type's schema.
+            required:
+                - id
             type: object
             properties:
                 id:
@@ -1574,6 +1999,8 @@ components:
         Watchlist:
             title: Root Type for Watchlist
             description: The root of the Watchlist type's schema.
+            required:
+                - id
             type: object
             properties:
                 id:
@@ -1613,6 +2040,9 @@ components:
         Location:
             title: Root Type for Location
             description: The root of the Location type's schema.
+            required:
+                - id
+                - name
             type: object
             properties:
                 id:
@@ -1640,6 +2070,10 @@ components:
         Invite:
             title: Root Type for Invite
             description: The root of the Invite type's schema.
+            required:
+                - id
+                - first_name
+                - last_name
             type: object
             properties:
                 id:
@@ -1741,6 +2175,8 @@ components:
         SigninDetail:
             title: Root Type for Signin
             description: The root of the Signin type's schema.
+            required:
+                - id
             type: object
             properties:
                 id:
@@ -1842,6 +2278,7 @@ components:
             required:
                 - hosts
                 - signin_data
+                - id
             type: object
             properties:
                 id:
@@ -1869,8 +2306,6 @@ components:
                 signin_timestamp:
                     format: date-time
                     type: string
-                watchlist:
-                    $ref: '#/components/schemas/SigninWatchlist'
                 is_signed_out:
                     type: boolean
                 hosts:
@@ -1881,6 +2316,8 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/SigninData'
+                signin_watchlist:
+                    $ref: '#/components/schemas/SigninWatchlist'
             example:
                 id: 55
                 company: some text
@@ -1943,6 +2380,11 @@ components:
         InviteDetail:
             title: Root Type for InviteDetail
             description: The root of the InviteDetail type's schema.
+            required:
+                - id
+                - email
+                - first_name
+                - last_name
             type: object
             properties:
                 id:
@@ -2030,6 +2472,9 @@ components:
                     name: some text
                     template_type: some text
         PaginatedInvitesList:
+            required:
+                - pagination
+                - invites
             type: object
             properties:
                 pagination:
@@ -2202,6 +2647,9 @@ components:
                     - some text
                     - some text
         CredentialCreateParams:
+            required:
+                - email
+                - password
             type: object
             properties:
                 email:
@@ -2212,6 +2660,8 @@ components:
                 email: some text
                 password: some text
         Credential:
+            required:
+                - token
             type: object
             properties:
                 token:
@@ -2221,6 +2671,8 @@ components:
         InviteWatchlist:
             title: Root Type for InviteWatchlist
             description: The root of the InviteWatchlist type's schema.
+            required:
+                - id
             type: object
             properties:
                 id:
@@ -2293,45 +2745,41 @@ components:
                 last_name: some text
                 start_date: '2018-02-10T09:30Z'
                 title: some text
-                watchlist_colour: {}
+                watchlist_colour: GREEN
                 host_ids:
-                    - 63
-                    - 49
+                    - 16
+                    - 6
                 custom_fields:
                     -
-                        format: {}
+                        format: string
                         field_name: some text
                         field_value: some text
                     -
-                        format: {}
+                        format: string
                         field_name: some text
                         field_value: some text
-                email_template_id: 18
+                email_template_id: 65
                 mobile: some text
                 first_name: some text
                 notification_triggers:
                     -
-                        subject: some text
-                        title: some text
-                        message: some text
-                        notification_group_names:
+                        offset_direction: AFTER
+                        offset_type: days
+                        offset_amount: 36
+                        offset_origin: START
+                        email_template_id: 16
+                        notification_groups:
                             - some text
                             - some text
-                        trigger_target: {}
-                        trigger_span: {}
-                        trigger_pointer: {}
-                        event_offset: 63
                     -
-                        subject: some text
-                        title: some text
-                        message: some text
-                        notification_group_names:
+                        offset_direction: BEFORE
+                        offset_type: days
+                        offset_amount: 83
+                        offset_origin: START
+                        email_template_id: 89
+                        notification_groups:
                             - some text
                             - some text
-                        trigger_target: {}
-                        trigger_span: {}
-                        trigger_pointer: {}
-                        event_offset: 41
         NotificationTrigger:
             title: Root Type for NotificationTrigger
             description: The root of the NotificationTrigger type's schema.
@@ -2467,19 +2915,68 @@ components:
                         trigger_span: {}
                         trigger_pointer: {}
                         event_offset: 41
+        ErrorsList:
+            description: A list of Errors that occured on the server
+            required:
+                - errors
+            type: object
+            properties:
+                errors:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Error'
+            example:
+                errors:
+                    -
+                        domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+                    -
+                        domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+        Error:
+            title: Root Type for Error
+            description: The root of the Error type's schema.
+            required:
+                - domain
+                - code
+            type: object
+            properties:
+                domain:
+                    description: 'The name of the model with the error, or global if it is something outside a model'
+                    type: string
+                attribute:
+                    description: The model attribute where the error occured
+                    type: string
+                code:
+                    description: An error code reference for the specific error that occured
+                    type: string
+                message:
+                    description: A human readable error message that can be discarded for internationalization purposes
+                    type: string
+            example: |-
+                {
+                    "domain": "model_name",
+                    "attribute": "name",
+                    "code": "cant_be_blank",
+                    "message": "Words to use"
+                }
     securitySchemes:
         ApiCredentials:
+            scheme: basic
             type: http
             description: Contains an `Authorization` header and token
-            scheme: basic
         TractionGuestAuth:
-            type: oauth2
             flows:
                 password:
                     tokenUrl: 'https://server.com/authorize'
                     refreshUrl: 'https://server.com/refresh'
                     scopes:
                         all: ''
+            type: oauth2
 security:
     -
         ApiCredentials: []

@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest Mobile API
-    version: 0.9.5
+    version: 0.9.6
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -2546,6 +2546,14 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/CustomField'
+                notification_triggers:
+                    description: List of scheduled notifications for an invite
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/NotificationTrigger'
+                mobile:
+                    description: Phone number
+                    type: string
             example:
                 id: 48
                 company: some text

@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest Mobile API
-    version: 0.9.4
+    version: 0.9.5
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -1168,7 +1168,7 @@ paths:
                                     value:
                                         signins:
                                             -
-                                                id: 55
+                                                id: 28
                                                 company: some text
                                                 email: some text
                                                 first_name: some text
@@ -1179,17 +1179,55 @@ paths:
                                                 signed_out_timestamp: '2018-02-10T09:30Z'
                                                 signin_photo_url: some text
                                                 signin_timestamp: '2018-02-10T09:30Z'
-                                                watchlist:
-                                                    id: 13
-                                                    external:
-                                                        - {}
-                                                        - {}
-                                                    internal:
-                                                        - {}
-                                                        - {}
                                                 is_signed_out: true
+                                                hosts:
+                                                    -
+                                                        id: 52
+                                                        email: some text
+                                                        first_name: some text
+                                                        last_name: some text
+                                                        mobile: some text
+                                                        profile_pic_url: some text
+                                                    -
+                                                        id: 97
+                                                        email: some text
+                                                        first_name: some text
+                                                        last_name: some text
+                                                        mobile: some text
+                                                        profile_pic_url: some text
+                                                signin_data:
+                                                    -
+                                                        name: some text
+                                                        custom_fields:
+                                                            -
+                                                                format: string
+                                                                field_name: some text
+                                                                field_value: some text
+                                                            -
+                                                                format: string
+                                                                field_name: some text
+                                                                field_value: some text
+                                                    -
+                                                        name: some text
+                                                        custom_fields:
+                                                            -
+                                                                format: string
+                                                                field_name: some text
+                                                                field_value: some text
+                                                            -
+                                                                format: string
+                                                                field_name: some text
+                                                                field_value: some text
+                                                signin_watchlist:
+                                                    id: 99
+                                                    external_colours:
+                                                        - some text
+                                                        - some text
+                                                    internal_colours:
+                                                        - some text
+                                                        - some text
                                             -
-                                                id: 32
+                                                id: 86
                                                 company: some text
                                                 email: some text
                                                 first_name: some text
@@ -1200,19 +1238,57 @@ paths:
                                                 signed_out_timestamp: '2018-02-10T09:30Z'
                                                 signin_photo_url: some text
                                                 signin_timestamp: '2018-02-10T09:30Z'
-                                                watchlist:
-                                                    id: 73
-                                                    external:
-                                                        - {}
-                                                        - {}
-                                                    internal:
-                                                        - {}
-                                                        - {}
                                                 is_signed_out: true
+                                                hosts:
+                                                    -
+                                                        id: 51
+                                                        email: some text
+                                                        first_name: some text
+                                                        last_name: some text
+                                                        mobile: some text
+                                                        profile_pic_url: some text
+                                                    -
+                                                        id: 24
+                                                        email: some text
+                                                        first_name: some text
+                                                        last_name: some text
+                                                        mobile: some text
+                                                        profile_pic_url: some text
+                                                signin_data:
+                                                    -
+                                                        name: some text
+                                                        custom_fields:
+                                                            -
+                                                                format: string
+                                                                field_name: some text
+                                                                field_value: some text
+                                                            -
+                                                                format: string
+                                                                field_name: some text
+                                                                field_value: some text
+                                                    -
+                                                        name: some text
+                                                        custom_fields:
+                                                            -
+                                                                format: string
+                                                                field_name: some text
+                                                                field_value: some text
+                                                            -
+                                                                format: string
+                                                                field_name: some text
+                                                                field_value: some text
+                                                signin_watchlist:
+                                                    id: 31
+                                                    external_colours:
+                                                        - some text
+                                                        - some text
+                                                    internal_colours:
+                                                        - some text
+                                                        - some text
                                         pagination:
-                                            total_records: 88
-                                            current_offset: 45
-                                            next_offset: 93
+                                            total_records: 20
+                                            current_offset: 81
+                                            next_offset: 98
                     description: Successful response - returns an array of `Signin` entities.
                 '400':
                     content:
@@ -1278,7 +1354,7 @@ paths:
                             examples:
                                 default:
                                     value:
-                                        id: 44
+                                        id: 29
                                         company: some text
                                         email: some text
                                         first_name: some text
@@ -1289,15 +1365,53 @@ paths:
                                         signed_out_timestamp: '2018-02-10T09:30Z'
                                         signin_photo_url: some text
                                         signin_timestamp: '2018-02-10T09:30Z'
-                                        watchlist:
-                                            id: 56
-                                            external:
-                                                - {}
-                                                - {}
-                                            internal:
-                                                - {}
-                                                - {}
                                         is_signed_out: true
+                                        hosts:
+                                            -
+                                                id: 13
+                                                email: some text
+                                                first_name: some text
+                                                last_name: some text
+                                                mobile: some text
+                                                profile_pic_url: some text
+                                            -
+                                                id: 60
+                                                email: some text
+                                                first_name: some text
+                                                last_name: some text
+                                                mobile: some text
+                                                profile_pic_url: some text
+                                        signin_data:
+                                            -
+                                                name: some text
+                                                custom_fields:
+                                                    -
+                                                        format: string
+                                                        field_name: some text
+                                                        field_value: some text
+                                                    -
+                                                        format: string
+                                                        field_name: some text
+                                                        field_value: some text
+                                            -
+                                                name: some text
+                                                custom_fields:
+                                                    -
+                                                        format: string
+                                                        field_name: some text
+                                                        field_value: some text
+                                                    -
+                                                        format: string
+                                                        field_name: some text
+                                                        field_value: some text
+                                        signin_watchlist:
+                                            id: 81
+                                            external_colours:
+                                                - some text
+                                                - some text
+                                            internal_colours:
+                                                - some text
+                                                - some text
                     description: Successful response.
                 '400':
                     content:
@@ -2222,6 +2336,11 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/SigninData'
+                hosts:
+                    description: ''
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Host'
             example:
                 id: 72
                 company: some text

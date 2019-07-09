@@ -30,11 +30,15 @@ class InviteDetail {
   EmailTemplate template = null;
   
   List<CustomField> customFields = [];
+  /* List of scheduled notifications for an invite */
+  List<NotificationTrigger> notificationTriggers = [];
+  /* Phone number */
+  String mobile = null;
   InviteDetail();
 
   @override
   String toString() {
-    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlist=$watchlist, watchlistColour=$watchlistColour, template=$template, customFields=$customFields, ]';
+    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlist=$watchlist, watchlistColour=$watchlistColour, template=$template, customFields=$customFields, notificationTriggers=$notificationTriggers, mobile=$mobile, ]';
   }
 
   InviteDetail.fromJson(Map<String, dynamic> json) {
@@ -109,6 +113,16 @@ class InviteDetail {
     } else {
       customFields = CustomField.listFromJson(json['custom_fields']);
     }
+    if (json['notification_triggers'] == null) {
+      notificationTriggers = null;
+    } else {
+      notificationTriggers = NotificationTrigger.listFromJson(json['notification_triggers']);
+    }
+    if (json['mobile'] == null) {
+      mobile = null;
+    } else {
+          mobile = json['mobile'];
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -141,6 +155,10 @@ class InviteDetail {
       json['template'] = template;
     if (customFields != null)
       json['custom_fields'] = customFields;
+    if (notificationTriggers != null)
+      json['notification_triggers'] = notificationTriggers;
+    if (mobile != null)
+      json['mobile'] = mobile;
     return json;
   }
 

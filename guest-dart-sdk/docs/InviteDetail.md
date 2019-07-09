@@ -22,6 +22,8 @@ Name | Type | Description | Notes
 **watchlistColour** | **String** |  | [optional] [default to null]
 **template** | [**EmailTemplate**](EmailTemplate.md) |  | [optional] [default to null]
 **customFields** | [**List&lt;CustomField&gt;**](CustomField.md) |  | [optional] [default to []]
+**notificationTriggers** | [**List&lt;NotificationTrigger&gt;**](NotificationTrigger.md) | List of scheduled notifications for an invite | [optional] [default to []]
+**mobile** | **String** | Phone number | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

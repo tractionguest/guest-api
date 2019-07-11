@@ -1,6 +1,6 @@
 part of guest_sdk.api;
 
-class NotificationTrigger {
+class NotificationTriggerCreateParams {
   /* Whether the offset should be calculated for before, or after the event */
   String offsetDirection = null;
   //enum offsetDirectionEnum {  BEFORE,  AFTER,  };{
@@ -16,16 +16,14 @@ class NotificationTrigger {
   /* Whether the offset should be calculated as `days` or `hours` */
   String offsetUnit = null;
   //enum offsetUnitEnum {  days,  hours,  };{
-  /* The name of the EmailTemplate associated with the NotificationTrigger. This is only given from the server, not used as a create param. */
-  String emailTemplateName = null;
-  NotificationTrigger();
+  NotificationTriggerCreateParams();
 
   @override
   String toString() {
-    return 'NotificationTrigger[offsetDirection=$offsetDirection, offsetAmount=$offsetAmount, offsetOrigin=$offsetOrigin, emailTemplateId=$emailTemplateId, notificationGroups=$notificationGroups, offsetUnit=$offsetUnit, emailTemplateName=$emailTemplateName, ]';
+    return 'NotificationTriggerCreateParams[offsetDirection=$offsetDirection, offsetAmount=$offsetAmount, offsetOrigin=$offsetOrigin, emailTemplateId=$emailTemplateId, notificationGroups=$notificationGroups, offsetUnit=$offsetUnit, ]';
   }
 
-  NotificationTrigger.fromJson(Map<String, dynamic> json) {
+  NotificationTriggerCreateParams.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
     if (json['offset_direction'] == null) {
       offsetDirection = null;
@@ -57,11 +55,6 @@ class NotificationTrigger {
     } else {
           offsetUnit = json['offset_unit'];
     }
-    if (json['email_template_name'] == null) {
-      emailTemplateName = null;
-    } else {
-          emailTemplateName = json['email_template_name'];
-    }
   }
 
   Map<String, dynamic> toJson() {
@@ -78,19 +71,17 @@ class NotificationTrigger {
       json['notification_groups'] = notificationGroups;
     if (offsetUnit != null)
       json['offset_unit'] = offsetUnit;
-    if (emailTemplateName != null)
-      json['email_template_name'] = emailTemplateName;
     return json;
   }
 
-  static List<NotificationTrigger> listFromJson(List<dynamic> json) {
-    return json == null ? new List<NotificationTrigger>() : json.map((value) => new NotificationTrigger.fromJson(value)).toList();
+  static List<NotificationTriggerCreateParams> listFromJson(List<dynamic> json) {
+    return json == null ? new List<NotificationTriggerCreateParams>() : json.map((value) => new NotificationTriggerCreateParams.fromJson(value)).toList();
   }
 
-  static Map<String, NotificationTrigger> mapFromJson(Map<String, dynamic> json) {
-    var map = new Map<String, NotificationTrigger>();
+  static Map<String, NotificationTriggerCreateParams> mapFromJson(Map<String, dynamic> json) {
+    var map = new Map<String, NotificationTriggerCreateParams>();
     if (json != null && json.isNotEmpty) {
-      json.forEach((String key, dynamic value) => map[key] = new NotificationTrigger.fromJson(value));
+      json.forEach((String key, dynamic value) => map[key] = new NotificationTriggerCreateParams.fromJson(value));
     }
     return map;
   }

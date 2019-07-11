@@ -27,7 +27,7 @@ class InviteCreateParams {
   
   String firstName = null;
   
-  List<NotificationTrigger> notificationTriggers = [];
+  List<NotificationTriggerCreateParams> notificationTriggers = [];
   InviteCreateParams();
 
   @override
@@ -100,7 +100,7 @@ class InviteCreateParams {
     if (json['notification_triggers'] == null) {
       notificationTriggers = null;
     } else {
-      notificationTriggers = NotificationTrigger.listFromJson(json['notification_triggers']);
+      notificationTriggers = NotificationTriggerCreateParams.listFromJson(json['notification_triggers']);
     }
   }
 

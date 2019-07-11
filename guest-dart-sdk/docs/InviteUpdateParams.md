@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **emailTemplateId** | **int** |  | [optional] [default to null]
 **mobile** | **String** |  | [optional] [default to null]
 **firstName** | **String** |  | [optional] [default to null]
-**notificationTriggers** | [**List&lt;NotificationTrigger&gt;**](NotificationTrigger.md) |  | [optional] [default to []]
+**notificationTriggers** | [**List&lt;NotificationTriggerCreateParams&gt;**](NotificationTriggerCreateParams.md) |  | [optional] [default to []]
 **onPremise** | **bool** |  | [optional] [default to null]
 **userId** | **int** | Used for transfering ownership of an &#x60;Invite&#x60; to another member of the Account | [optional] [default to null]
 

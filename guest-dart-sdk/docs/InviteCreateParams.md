@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **emailTemplateId** | **int** |  | [optional] [default to null]
 **mobile** | **String** |  | [optional] [default to null]
 **firstName** | **String** |  | [default to null]
-**notificationTriggers** | [**List&lt;NotificationTrigger&gt;**](NotificationTrigger.md) |  | [optional] [default to []]
+**notificationTriggers** | [**List&lt;NotificationTriggerCreateParams&gt;**](NotificationTriggerCreateParams.md) |  | [optional] [default to []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

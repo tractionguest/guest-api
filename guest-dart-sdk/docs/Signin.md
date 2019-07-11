@@ -19,7 +19,6 @@ Name | Type | Description | Notes
 **signedOutTimestamp** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
 **signinPhotoUrl** | **String** |  | [optional] [default to null]
 **signinTimestamp** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
-**isSignedOut** | **bool** |  | [optional] [default to null]
 **hosts** | [**List&lt;Host&gt;**](Host.md) |  | [default to []]
 **signinData** | [**List&lt;SigninData&gt;**](SigninData.md) |  | [default to []]
 **signinWatchlist** | [**SigninWatchlist**](SigninWatchlist.md) |  | [optional] [default to null]

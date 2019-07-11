@@ -20,12 +20,12 @@ Name | Type | Description | Notes
 **signedOutTimestamp** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
 **signinPhotoUrl** | **String** |  | [optional] [default to null]
 **signinTimestamp** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
-**watchlist** | [**SigninWatchlist**](SigninWatchlist.md) |  | [optional] [default to null]
 **isSignedOut** | **bool** | A one-way method of Signing out a Signin | [optional] [default to null]
 **note** | **String** |  | [optional] [default to null]
 **signinAcknowledgement** | [**SigninAcknowledgement**](SigninAcknowledgement.md) |  | [optional] [default to null]
 **signinData** | [**List&lt;SigninData&gt;**](SigninData.md) |  | [optional] [default to []]
 **hosts** | [**List&lt;Host&gt;**](Host.md) |  | [optional] [default to []]
+**signinWatchlist** | [**SigninWatchlist**](SigninWatchlist.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

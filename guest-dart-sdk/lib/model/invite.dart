@@ -12,17 +12,17 @@ class Invite {
   
   Location location = null;
   
-  InviteWatchlist watchlist = null;
-  
   String watchlistColour = null;
   //enum watchlistColourEnum {  RED,  GREEN,  YELLOW,  ORANGE,  };{
   
   List<Host> hosts = [];
+  
+  InviteWatchlist inviteWatchlist = null;
   Invite();
 
   @override
   String toString() {
-    return 'Invite[id=$id, firstName=$firstName, lastName=$lastName, startDate=$startDate, location=$location, watchlist=$watchlist, watchlistColour=$watchlistColour, hosts=$hosts, ]';
+    return 'Invite[id=$id, firstName=$firstName, lastName=$lastName, startDate=$startDate, location=$location, watchlistColour=$watchlistColour, hosts=$hosts, inviteWatchlist=$inviteWatchlist, ]';
   }
 
   Invite.fromJson(Map<String, dynamic> json) {
@@ -52,11 +52,6 @@ class Invite {
     } else {
       location = new Location.fromJson(json['location']);
     }
-    if (json['watchlist'] == null) {
-      watchlist = null;
-    } else {
-      watchlist = new InviteWatchlist.fromJson(json['watchlist']);
-    }
     if (json['watchlist_colour'] == null) {
       watchlistColour = null;
     } else {
@@ -66,6 +61,11 @@ class Invite {
       hosts = null;
     } else {
       hosts = Host.listFromJson(json['hosts']);
+    }
+    if (json['invite_watchlist'] == null) {
+      inviteWatchlist = null;
+    } else {
+      inviteWatchlist = new InviteWatchlist.fromJson(json['invite_watchlist']);
     }
   }
 
@@ -81,12 +81,12 @@ class Invite {
       json['start_date'] = startDate == null ? null : startDate.toUtc().toIso8601String();
     if (location != null)
       json['location'] = location;
-    if (watchlist != null)
-      json['watchlist'] = watchlist;
     if (watchlistColour != null)
       json['watchlist_colour'] = watchlistColour;
     if (hosts != null)
       json['hosts'] = hosts;
+    if (inviteWatchlist != null)
+      json['invite_watchlist'] = inviteWatchlist;
     return json;
   }
 

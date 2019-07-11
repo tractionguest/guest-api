@@ -35,6 +35,7 @@ part 'model/invite_update_params.dart';
 part 'model/invite_watchlist.dart';
 part 'model/location.dart';
 part 'model/notification_trigger.dart';
+part 'model/notification_trigger_create_params.dart';
 part 'model/paginated_email_templates_list.dart';
 part 'model/paginated_hosts_list.dart';
 part 'model/paginated_invites_list.dart';

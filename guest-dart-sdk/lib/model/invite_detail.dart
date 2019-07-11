@@ -22,8 +22,6 @@ class InviteDetail {
   
   Location location = null;
   
-  Watchlist watchlist = null;
-  
   String watchlistColour = null;
   //enum watchlistColourEnum {  RED,  GREEN,  YELLOW,  ORANGE,  };{
   
@@ -34,11 +32,13 @@ class InviteDetail {
   List<NotificationTrigger> notificationTriggers = [];
   /* Phone number */
   String mobile = null;
+  
+  InviteWatchlist inviteWatchlist = null;
   InviteDetail();
 
   @override
   String toString() {
-    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlist=$watchlist, watchlistColour=$watchlistColour, template=$template, customFields=$customFields, notificationTriggers=$notificationTriggers, mobile=$mobile, ]';
+    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlistColour=$watchlistColour, template=$template, customFields=$customFields, notificationTriggers=$notificationTriggers, mobile=$mobile, inviteWatchlist=$inviteWatchlist, ]';
   }
 
   InviteDetail.fromJson(Map<String, dynamic> json) {
@@ -93,11 +93,6 @@ class InviteDetail {
     } else {
       location = new Location.fromJson(json['location']);
     }
-    if (json['watchlist'] == null) {
-      watchlist = null;
-    } else {
-      watchlist = new Watchlist.fromJson(json['watchlist']);
-    }
     if (json['watchlist_colour'] == null) {
       watchlistColour = null;
     } else {
@@ -123,6 +118,11 @@ class InviteDetail {
     } else {
           mobile = json['mobile'];
     }
+    if (json['invite_watchlist'] == null) {
+      inviteWatchlist = null;
+    } else {
+      inviteWatchlist = new InviteWatchlist.fromJson(json['invite_watchlist']);
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -147,8 +147,6 @@ class InviteDetail {
       json['hosts'] = hosts;
     if (location != null)
       json['location'] = location;
-    if (watchlist != null)
-      json['watchlist'] = watchlist;
     if (watchlistColour != null)
       json['watchlist_colour'] = watchlistColour;
     if (template != null)
@@ -159,6 +157,8 @@ class InviteDetail {
       json['notification_triggers'] = notificationTriggers;
     if (mobile != null)
       json['mobile'] = mobile;
+    if (inviteWatchlist != null)
+      json['invite_watchlist'] = inviteWatchlist;
     return json;
   }
 

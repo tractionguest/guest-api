@@ -25,8 +25,6 @@ class SigninDetail {
   String signinPhotoUrl = null;
   
   DateTime signinTimestamp = null;
-  
-  SigninWatchlist watchlist = null;
   /* A one-way method of Signing out a Signin */
   bool isSignedOut = null;
   
@@ -37,11 +35,13 @@ class SigninDetail {
   List<SigninData> signinData = [];
   
   List<Host> hosts = [];
+  
+  SigninWatchlist signinWatchlist = null;
   SigninDetail();
 
   @override
   String toString() {
-    return 'SigninDetail[id=$id, company=$company, email=$email, firstName=$firstName, isAccountedFor=$isAccountedFor, isAcknowledged=$isAcknowledged, lastName=$lastName, locationName=$locationName, mobileNumber=$mobileNumber, signedOutTimestamp=$signedOutTimestamp, signinPhotoUrl=$signinPhotoUrl, signinTimestamp=$signinTimestamp, watchlist=$watchlist, isSignedOut=$isSignedOut, note=$note, signinAcknowledgement=$signinAcknowledgement, signinData=$signinData, hosts=$hosts, ]';
+    return 'SigninDetail[id=$id, company=$company, email=$email, firstName=$firstName, isAccountedFor=$isAccountedFor, isAcknowledged=$isAcknowledged, lastName=$lastName, locationName=$locationName, mobileNumber=$mobileNumber, signedOutTimestamp=$signedOutTimestamp, signinPhotoUrl=$signinPhotoUrl, signinTimestamp=$signinTimestamp, isSignedOut=$isSignedOut, note=$note, signinAcknowledgement=$signinAcknowledgement, signinData=$signinData, hosts=$hosts, signinWatchlist=$signinWatchlist, ]';
   }
 
   SigninDetail.fromJson(Map<String, dynamic> json) {
@@ -106,11 +106,6 @@ class SigninDetail {
     } else {
       signinTimestamp = DateTime.parse(json['signin_timestamp']);
     }
-    if (json['watchlist'] == null) {
-      watchlist = null;
-    } else {
-      watchlist = new SigninWatchlist.fromJson(json['watchlist']);
-    }
     if (json['is_signed_out'] == null) {
       isSignedOut = null;
     } else {
@@ -135,6 +130,11 @@ class SigninDetail {
       hosts = null;
     } else {
       hosts = Host.listFromJson(json['hosts']);
+    }
+    if (json['signin_watchlist'] == null) {
+      signinWatchlist = null;
+    } else {
+      signinWatchlist = new SigninWatchlist.fromJson(json['signin_watchlist']);
     }
   }
 
@@ -164,8 +164,6 @@ class SigninDetail {
       json['signin_photo_url'] = signinPhotoUrl;
     if (signinTimestamp != null)
       json['signin_timestamp'] = signinTimestamp == null ? null : signinTimestamp.toUtc().toIso8601String();
-    if (watchlist != null)
-      json['watchlist'] = watchlist;
     if (isSignedOut != null)
       json['is_signed_out'] = isSignedOut;
     if (note != null)
@@ -176,6 +174,8 @@ class SigninDetail {
       json['signin_data'] = signinData;
     if (hosts != null)
       json['hosts'] = hosts;
+    if (signinWatchlist != null)
+      json['signin_watchlist'] = signinWatchlist;
     return json;
   }
 

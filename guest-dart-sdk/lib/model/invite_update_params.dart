@@ -24,7 +24,7 @@ class InviteUpdateParams {
   
   String firstName = null;
   
-  List<NotificationTrigger> notificationTriggers = [];
+  List<NotificationTriggerCreateParams> notificationTriggers = [];
   
   bool onPremise = null;
   /* Used for transfering ownership of an `Invite` to another member of the Account */
@@ -96,7 +96,7 @@ class InviteUpdateParams {
     if (json['notification_triggers'] == null) {
       notificationTriggers = null;
     } else {
-      notificationTriggers = NotificationTrigger.listFromJson(json['notification_triggers']);
+      notificationTriggers = NotificationTriggerCreateParams.listFromJson(json['notification_triggers']);
     }
     if (json['on_premise'] == null) {
       onPremise = null;

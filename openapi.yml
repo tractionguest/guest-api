@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest Mobile API
-    version: 0.9.6
+    version: 0.9.7
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -590,7 +590,7 @@ paths:
                             examples:
                                 default:
                                     value:
-                                        id: 7
+                                        id: 58
                                         company: some text
                                         created_at: '2018-02-10T09:30Z'
                                         email: some text
@@ -600,25 +600,25 @@ paths:
                                         start_date: '2018-02-10T09:30Z'
                                         hosts:
                                             -
-                                                id: 38
+                                                id: 73
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
                                             -
-                                                id: 3
+                                                id: 71
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
                                         location:
-                                            id: 23
+                                            id: 85
                                             name: some text
                                         watchlist:
-                                            id: 98
-                                            colour: {}
+                                            id: 42
+                                            colour: RED
                                             email: some text
                                             first_name: some text
                                             last_name: some text
@@ -627,20 +627,42 @@ paths:
                                             aliases:
                                                 - some text
                                                 - some text
-                                        watchlist_colour: {}
+                                        watchlist_colour: ORANGE
                                         template:
-                                            id: 98
+                                            id: 80
                                             name: some text
                                             template_type: some text
                                         custom_fields:
                                             -
-                                                format: {}
+                                                format: string
                                                 field_name: some text
                                                 field_value: some text
                                             -
-                                                format: {}
+                                                format: string
                                                 field_name: some text
                                                 field_value: some text
+                                        notification_triggers:
+                                            -
+                                                offset_direction: AFTER
+                                                offset_amount: 76
+                                                offset_origin: START
+                                                email_template_id: 81
+                                                notification_groups:
+                                                    - some text
+                                                    - some text
+                                                offset_unit: hours
+                                                email_template_name: some text
+                                            -
+                                                offset_direction: AFTER
+                                                offset_amount: 34
+                                                offset_origin: END
+                                                email_template_id: 11
+                                                notification_groups:
+                                                    - some text
+                                                    - some text
+                                                offset_unit: hours
+                                                email_template_name: some text
+                                        mobile: some text
                     description: Created the `Invite` for the `Location`
                 '400':
                     content:
@@ -1656,7 +1678,7 @@ paths:
                             examples:
                                 default:
                                     value:
-                                        id: 23
+                                        id: 46
                                         company: some text
                                         created_at: '2018-02-10T09:30Z'
                                         email: some text
@@ -1666,25 +1688,25 @@ paths:
                                         start_date: '2018-02-10T09:30Z'
                                         hosts:
                                             -
-                                                id: 7
+                                                id: 97
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
                                             -
-                                                id: 36
+                                                id: 53
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
                                         location:
-                                            id: 57
+                                            id: 0
                                             name: some text
                                         watchlist:
-                                            id: 82
-                                            colour: {}
+                                            id: 3
+                                            colour: GREEN
                                             email: some text
                                             first_name: some text
                                             last_name: some text
@@ -1693,20 +1715,42 @@ paths:
                                             aliases:
                                                 - some text
                                                 - some text
-                                        watchlist_colour: {}
+                                        watchlist_colour: ORANGE
                                         template:
-                                            id: 74
+                                            id: 14
                                             name: some text
                                             template_type: some text
                                         custom_fields:
                                             -
-                                                format: {}
+                                                format: string
                                                 field_name: some text
                                                 field_value: some text
                                             -
-                                                format: {}
+                                                format: string
                                                 field_name: some text
                                                 field_value: some text
+                                        notification_triggers:
+                                            -
+                                                offset_direction: AFTER
+                                                offset_amount: 5
+                                                offset_origin: END
+                                                email_template_id: 82
+                                                notification_groups:
+                                                    - some text
+                                                    - some text
+                                                offset_unit: days
+                                                email_template_name: some text
+                                            -
+                                                offset_direction: BEFORE
+                                                offset_amount: 35
+                                                offset_origin: START
+                                                email_template_id: 35
+                                                notification_groups:
+                                                    - some text
+                                                    - some text
+                                                offset_unit: hours
+                                                email_template_name: some text
+                                        mobile: some text
                     description: Successful response - returns a single `Invite`.
                 '400':
                     content:
@@ -1764,7 +1808,7 @@ paths:
                             examples:
                                 default:
                                     value:
-                                        id: 27
+                                        id: 39
                                         company: some text
                                         created_at: '2018-02-10T09:30Z'
                                         email: some text
@@ -1774,25 +1818,25 @@ paths:
                                         start_date: '2018-02-10T09:30Z'
                                         hosts:
                                             -
-                                                id: 97
+                                                id: 70
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
                                             -
-                                                id: 35
+                                                id: 47
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
                                         location:
-                                            id: 74
+                                            id: 43
                                             name: some text
                                         watchlist:
-                                            id: 55
-                                            colour: {}
+                                            id: 3
+                                            colour: GREEN
                                             email: some text
                                             first_name: some text
                                             last_name: some text
@@ -1801,20 +1845,42 @@ paths:
                                             aliases:
                                                 - some text
                                                 - some text
-                                        watchlist_colour: {}
+                                        watchlist_colour: GREEN
                                         template:
-                                            id: 12
+                                            id: 39
                                             name: some text
                                             template_type: some text
                                         custom_fields:
                                             -
-                                                format: {}
+                                                format: string
                                                 field_name: some text
                                                 field_value: some text
                                             -
-                                                format: {}
+                                                format: string
                                                 field_name: some text
                                                 field_value: some text
+                                        notification_triggers:
+                                            -
+                                                offset_direction: BEFORE
+                                                offset_amount: 14
+                                                offset_origin: START
+                                                email_template_id: 19
+                                                notification_groups:
+                                                    - some text
+                                                    - some text
+                                                offset_unit: days
+                                                email_template_name: some text
+                                            -
+                                                offset_direction: AFTER
+                                                offset_amount: 59
+                                                offset_origin: END
+                                                email_template_id: 97
+                                                notification_groups:
+                                                    - some text
+                                                    - some text
+                                                offset_unit: hours
+                                                email_template_name: some text
+                                        mobile: some text
                     description: Successful response.
                 '400':
                     content:
@@ -2202,8 +2268,6 @@ components:
                     type: string
                 location:
                     $ref: '#/components/schemas/Location'
-                watchlist:
-                    $ref: '#/components/schemas/InviteWatchlist'
                 watchlist_colour:
                     enum:
                         - RED
@@ -2214,6 +2278,8 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/Host'
+                invite_watchlist:
+                    $ref: '#/components/schemas/InviteWatchlist'
             example:
                 id: 28
                 first_name: some text
@@ -2323,8 +2389,6 @@ components:
                 signin_timestamp:
                     format: date-time
                     type: string
-                watchlist:
-                    $ref: '#/components/schemas/SigninWatchlist'
                 is_signed_out:
                     description: A one-way method of Signing out a Signin
                     type: boolean
@@ -2341,6 +2405,8 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/Host'
+                signin_watchlist:
+                    $ref: '#/components/schemas/SigninWatchlist'
             example:
                 id: 72
                 company: some text
@@ -2425,8 +2491,6 @@ components:
                 signin_timestamp:
                     format: date-time
                     type: string
-                is_signed_out:
-                    type: boolean
                 hosts:
                     type: array
                     items:
@@ -2532,8 +2596,6 @@ components:
                         $ref: '#/components/schemas/Host'
                 location:
                     $ref: '#/components/schemas/Location'
-                watchlist:
-                    $ref: '#/components/schemas/Watchlist'
                 watchlist_colour:
                     enum:
                         - RED
@@ -2554,6 +2616,8 @@ components:
                 mobile:
                     description: Phone number
                     type: string
+                invite_watchlist:
+                    $ref: '#/components/schemas/InviteWatchlist'
             example:
                 id: 48
                 company: some text
@@ -2814,9 +2878,13 @@ components:
                     items:
                         type: string
             example:
-                id: 7
-                external_colours: RED
-                internal_colours: GREEN
+                id: 4
+                external_colours:
+                    - some text
+                    - some text
+                internal_colours:
+                    - some text
+                    - some text
         InviteCreateParams:
             title: Root Type for InviteCreateParams
             description: The root of the InviteCreateParams type's schema.
@@ -2864,7 +2932,7 @@ components:
                 notification_triggers:
                     type: array
                     items:
-                        $ref: '#/components/schemas/NotificationTrigger'
+                        $ref: '#/components/schemas/NotificationTriggerCreateParams'
             example:
                 company: some text
                 email: some text
@@ -2911,12 +2979,13 @@ components:
             title: Root Type for NotificationTrigger
             description: The root of the NotificationTrigger type's schema.
             required:
-                - offset_type
+                - offset_unit
                 - offset_origin
                 - offset_direction
                 - offset_amount
                 - notification_groups
                 - email_template_id
+                - email_template_name
             type: object
             properties:
                 offset_direction:
@@ -2924,11 +2993,6 @@ components:
                     enum:
                         - BEFORE
                         - AFTER
-                offset_type:
-                    description: Whether the offset should be calculated as `days` or `hours`
-                    enum:
-                        - days
-                        - hours
                 offset_amount:
                     description: The amount to offset the notification from the event
                     type: integer
@@ -2944,6 +3008,16 @@ components:
                     type: array
                     items:
                         type: string
+                offset_unit:
+                    description: Whether the offset should be calculated as `days` or `hours`
+                    enum:
+                        - days
+                        - hours
+                email_template_name:
+                    description: |-
+                        The name of the EmailTemplate associated with the NotificationTrigger.
+                        This is only given from the server, not used as a create param.
+                    type: string
             example:
                 offset_direction: {}
                 offset_type: {}
@@ -2990,7 +3064,7 @@ components:
                 notification_triggers:
                     type: array
                     items:
-                        $ref: '#/components/schemas/NotificationTrigger'
+                        $ref: '#/components/schemas/NotificationTriggerCreateParams'
                 on_premise:
                     type: boolean
                 user_id:
@@ -3091,6 +3165,52 @@ components:
                     "code": "cant_be_blank",
                     "message": "Words to use"
                 }
+        NotificationTriggerCreateParams:
+            title: Root Type for NotificationTrigger
+            description: The root of the NotificationTrigger type's schema.
+            required:
+                - offset_unit
+                - offset_origin
+                - offset_direction
+                - offset_amount
+                - notification_groups
+                - email_template_id
+            type: object
+            properties:
+                offset_direction:
+                    description: 'Whether the offset should be calculated for before, or after the event'
+                    enum:
+                        - BEFORE
+                        - AFTER
+                offset_amount:
+                    description: The amount to offset the notification from the event
+                    type: integer
+                offset_origin:
+                    description: 'Whether the offset should be calculated from the start, or finish of the event'
+                    enum:
+                        - START
+                        - END
+                email_template_id:
+                    type: integer
+                notification_groups:
+                    description: 'An array made of only `INVITEE`, `HOSTS, or `LEP` as possible string values'
+                    type: array
+                    items:
+                        type: string
+                offset_unit:
+                    description: Whether the offset should be calculated as `days` or `hours`
+                    enum:
+                        - days
+                        - hours
+            example:
+                offset_direction: {}
+                offset_type: {}
+                offset_amount: 94
+                offset_origin: {}
+                email_template_id: 32
+                notification_groups:
+                    - some text
+                    - some text
     securitySchemes:
         ApiCredentials:
             scheme: basic

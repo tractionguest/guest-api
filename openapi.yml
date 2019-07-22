@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest Mobile API
-    version: 0.9.7
+    version: 0.9.8
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -2150,6 +2150,9 @@ components:
             description: The root of the User type's schema.
             required:
                 - id
+                - first_name
+                - last_name
+                - email
             type: object
             properties:
                 id:
@@ -2159,6 +2162,15 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/PermissionBundle'
+                first_name:
+                    description: ''
+                    type: string
+                last_name:
+                    description: ''
+                    type: string
+                email:
+                    description: ''
+                    type: string
             example:
                 id: 50
                 permission_bundles:

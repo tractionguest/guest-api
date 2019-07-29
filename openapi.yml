@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
-    title: Traction Guest Mobile API
-    version: 0.9.8
+    title: Traction Guest API
+    version: 0.9.9
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -13,10 +13,10 @@ servers:
         variables:
             domain:
                 enum:
-                    - 'https://mobile-api-refactor-admin.tractionguest.ca/api/mobile/v1'
-                    - 'https://dravaqa.tractionguest.ca/api/mobile/v1'
+                    - 'https://mobile-api-refactor-admin.tractionguest.ca/api/v1'
+                    - 'https://dravaqa.tractionguest.ca/api/v1'
                     - 'http://localhost:3000'
-                default: 'https://mobile-api-refactor-admin.tractionguest.ca/api/mobile/v1'
+                default: 'https://mobile-api-refactor-admin.tractionguest.ca/api/v1'
 paths:
     /hosts:
         summary: Path used to manage the list of Hosts.
@@ -2150,8 +2150,6 @@ components:
             description: The root of the User type's schema.
             required:
                 - id
-                - first_name
-                - last_name
                 - email
             type: object
             properties:
@@ -2292,6 +2290,10 @@ components:
                         $ref: '#/components/schemas/Host'
                 invite_watchlist:
                     $ref: '#/components/schemas/InviteWatchlist'
+                end_date:
+                    format: date-time
+                    description: ''
+                    type: string
             example:
                 id: 28
                 first_name: some text
@@ -2474,7 +2476,6 @@ components:
             description: The root of the SigninLite type's schema.
             required:
                 - hosts
-                - signin_data
                 - id
             type: object
             properties:
@@ -2507,10 +2508,6 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/Host'
-                signin_data:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/SigninData'
                 signin_watchlist:
                     $ref: '#/components/schemas/SigninWatchlist'
             example:

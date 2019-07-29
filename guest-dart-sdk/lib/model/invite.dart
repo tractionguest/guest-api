@@ -18,11 +18,13 @@ class Invite {
   List<Host> hosts = [];
   
   InviteWatchlist inviteWatchlist = null;
+  
+  DateTime endDate = null;
   Invite();
 
   @override
   String toString() {
-    return 'Invite[id=$id, firstName=$firstName, lastName=$lastName, startDate=$startDate, location=$location, watchlistColour=$watchlistColour, hosts=$hosts, inviteWatchlist=$inviteWatchlist, ]';
+    return 'Invite[id=$id, firstName=$firstName, lastName=$lastName, startDate=$startDate, location=$location, watchlistColour=$watchlistColour, hosts=$hosts, inviteWatchlist=$inviteWatchlist, endDate=$endDate, ]';
   }
 
   Invite.fromJson(Map<String, dynamic> json) {
@@ -67,6 +69,11 @@ class Invite {
     } else {
       inviteWatchlist = new InviteWatchlist.fromJson(json['invite_watchlist']);
     }
+    if (json['end_date'] == null) {
+      endDate = null;
+    } else {
+      endDate = DateTime.parse(json['end_date']);
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -87,6 +94,8 @@ class Invite {
       json['hosts'] = hosts;
     if (inviteWatchlist != null)
       json['invite_watchlist'] = inviteWatchlist;
+    if (endDate != null)
+      json['end_date'] = endDate == null ? null : endDate.toUtc().toIso8601String();
     return json;
   }
 

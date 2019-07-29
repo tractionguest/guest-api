@@ -18,7 +18,7 @@ class ApiClient {
   final _regList = RegExp(r'^List<(.*)>$');
   final _regMap = RegExp(r'^Map<String,(.*)>$');
 
-  ApiClient({this.basePath = "https://mobile-api-refactor-admin.tractionguest.ca/api/mobile/v1"}) {
+  ApiClient({this.basePath = "https://mobile-api-refactor-admin.tractionguest.ca/api/v1"}) {
     // Setup authentications (key: authentication name, value: authentication).
     _authentications['ApiCredentials'] = HttpBasicAuth();
     _authentications['TractionGuestAuth'] = OAuth();

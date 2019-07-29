@@ -26,14 +26,12 @@ class Signin {
   
   List<Host> hosts = [];
   
-  List<SigninData> signinData = [];
-  
   SigninWatchlist signinWatchlist = null;
   Signin();
 
   @override
   String toString() {
-    return 'Signin[id=$id, company=$company, email=$email, firstName=$firstName, isAccountedFor=$isAccountedFor, isAcknowledged=$isAcknowledged, lastName=$lastName, locationName=$locationName, signedOutTimestamp=$signedOutTimestamp, signinPhotoUrl=$signinPhotoUrl, signinTimestamp=$signinTimestamp, hosts=$hosts, signinData=$signinData, signinWatchlist=$signinWatchlist, ]';
+    return 'Signin[id=$id, company=$company, email=$email, firstName=$firstName, isAccountedFor=$isAccountedFor, isAcknowledged=$isAcknowledged, lastName=$lastName, locationName=$locationName, signedOutTimestamp=$signedOutTimestamp, signinPhotoUrl=$signinPhotoUrl, signinTimestamp=$signinTimestamp, hosts=$hosts, signinWatchlist=$signinWatchlist, ]';
   }
 
   Signin.fromJson(Map<String, dynamic> json) {
@@ -98,11 +96,6 @@ class Signin {
     } else {
       hosts = Host.listFromJson(json['hosts']);
     }
-    if (json['signin_data'] == null) {
-      signinData = null;
-    } else {
-      signinData = SigninData.listFromJson(json['signin_data']);
-    }
     if (json['signin_watchlist'] == null) {
       signinWatchlist = null;
     } else {
@@ -136,8 +129,6 @@ class Signin {
       json['signin_timestamp'] = signinTimestamp == null ? null : signinTimestamp.toUtc().toIso8601String();
     if (hosts != null)
       json['hosts'] = hosts;
-    if (signinData != null)
-      json['signin_data'] = signinData;
     if (signinWatchlist != null)
       json['signin_watchlist'] = signinWatchlist;
     return json;

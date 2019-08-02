@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.9
+    version: 0.9.10
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -13,10 +13,10 @@ servers:
         variables:
             domain:
                 enum:
-                    - 'https://mobile-api-refactor-admin.tractionguest.ca/api/v1'
-                    - 'https://dravaqa.tractionguest.ca/api/v1'
+                    - 'https://mobile-api-refactor-admin.tractionguest.ca/api/v3'
+                    - 'https://dravaqa.tractionguest.ca/api/v3'
                     - 'http://localhost:3000'
-                default: 'https://mobile-api-refactor-admin.tractionguest.ca/api/v1'
+                default: 'https://mobile-api-refactor-admin.tractionguest.ca/api/v3'
 paths:
     /hosts:
         summary: Path used to manage the list of Hosts.
@@ -837,250 +837,76 @@ paths:
                                 default:
                                     value:
                                         pagination:
-                                            total_records: 10
-                                            current_offset: 14
-                                            next_offset: 16
+                                            total_records: 69
+                                            current_offset: 64
+                                            next_offset: 50
                                         invites:
                                             -
-                                                id: 20
+                                                id: 22
                                                 first_name: some text
                                                 last_name: some text
                                                 start_date: '2018-02-10T09:30Z'
                                                 location:
-                                                    id: 66
+                                                    id: 23
                                                     name: some text
-                                                watchlist:
-                                                    id: 37
+                                                watchlist_colour: GREEN
+                                                hosts:
+                                                    -
+                                                        id: 31
+                                                        email: some text
+                                                        first_name: some text
+                                                        last_name: some text
+                                                        mobile: some text
+                                                        profile_pic_url: some text
+                                                    -
+                                                        id: 21
+                                                        email: some text
+                                                        first_name: some text
+                                                        last_name: some text
+                                                        mobile: some text
+                                                        profile_pic_url: some text
+                                                invite_watchlist:
+                                                    id: 72
                                                     external_colours:
                                                         - some text
                                                         - some text
                                                     internal_colours:
                                                         - some text
                                                         - some text
-                                                watchlist_colour: {}
-                                                hosts:
-                                                    -
-                                                        id: 35
-                                                        email: some text
-                                                        first_name: some text
-                                                        last_name: some text
-                                                        mobile: some text
-                                                        profile_pic_url: some text
-                                                    -
-                                                        id: 47
-                                                        email: some text
-                                                        first_name: some text
-                                                        last_name: some text
-                                                        mobile: some text
-                                                        profile_pic_url: some text
+                                                end_date: '2018-02-10T09:30Z'
                                             -
-                                                id: 46
+                                                id: 54
                                                 first_name: some text
                                                 last_name: some text
                                                 start_date: '2018-02-10T09:30Z'
                                                 location:
-                                                    id: 29
+                                                    id: 58
                                                     name: some text
-                                                watchlist:
-                                                    id: 49
+                                                watchlist_colour: ORANGE
+                                                hosts:
+                                                    -
+                                                        id: 31
+                                                        email: some text
+                                                        first_name: some text
+                                                        last_name: some text
+                                                        mobile: some text
+                                                        profile_pic_url: some text
+                                                    -
+                                                        id: 34
+                                                        email: some text
+                                                        first_name: some text
+                                                        last_name: some text
+                                                        mobile: some text
+                                                        profile_pic_url: some text
+                                                invite_watchlist:
+                                                    id: 70
                                                     external_colours:
                                                         - some text
                                                         - some text
                                                     internal_colours:
                                                         - some text
                                                         - some text
-                                                watchlist_colour: {}
-                                                hosts:
-                                                    -
-                                                        id: 81
-                                                        email: some text
-                                                        first_name: some text
-                                                        last_name: some text
-                                                        mobile: some text
-                                                        profile_pic_url: some text
-                                                    -
-                                                        id: 32
-                                                        email: some text
-                                                        first_name: some text
-                                                        last_name: some text
-                                                        mobile: some text
-                                                        profile_pic_url: some text
-                                full_list:
-                                    value:
-                                        invites:
-                                            -
-                                                id: 189
-                                                first_name: Kenny G
-                                                last_name: Mosciski
-                                                start_date: '2019-07-07T16:00:00Z'
-                                                watchlist_colour: RED
-                                                location:
-                                                    id: 1
-                                                    name: Default
-                                                invite_watchlist:
-                                                    id: 189
-                                                    external_colours: []
-                                                    internal_colours:
-                                                        - RED
-                                            -
-                                                id: 188
-                                                first_name: Chandra
-                                                last_name: Streich
-                                                start_date: '2019-07-07T15:00:00Z'
-                                                watchlist_colour: YELLOW
-                                                location:
-                                                    id: 1
-                                                    name: Default
-                                                invite_watchlist:
-                                                    id: 188
-                                                    external_colours: []
-                                                    internal_colours:
-                                                        - YELLOW
-                                            -
-                                                id: 187
-                                                first_name: Shana
-                                                last_name: Leffler
-                                                start_date: '2019-07-07T14:00:00Z'
-                                                watchlist_colour: ORANGE
-                                                location:
-                                                    id: 1
-                                                    name: Default
-                                                invite_watchlist:
-                                                    id: 187
-                                                    external_colours: []
-                                                    internal_colours:
-                                                        - ORANGE
-                                            -
-                                                id: 186
-                                                first_name: Barney
-                                                last_name: Weimann
-                                                start_date: '2019-07-07T13:00:00Z'
-                                                watchlist_colour: ORANGE
-                                                location:
-                                                    id: 1
-                                                    name: Default
-                                                invite_watchlist:
-                                                    id: 186
-                                                    external_colours: []
-                                                    internal_colours:
-                                                        - ORANGE
-                                            -
-                                                id: 185
-                                                first_name: Neal
-                                                last_name: Satterfield
-                                                start_date: '2019-07-07T12:00:00Z'
-                                                watchlist_colour: ORANGE
-                                                location:
-                                                    id: 1
-                                                    name: Default
-                                                invite_watchlist:
-                                                    id: 185
-                                                    external_colours: []
-                                                    internal_colours:
-                                                        - ORANGE
-                                            -
-                                                id: 184
-                                                first_name: Hyun
-                                                last_name: Kulas
-                                                start_date: '2019-07-07T11:00:00Z'
-                                                watchlist_colour: RED
-                                                location:
-                                                    id: 1
-                                                    name: Default
-                                                invite_watchlist:
-                                                    id: 184
-                                                    external_colours: []
-                                                    internal_colours:
-                                                        - RED
-                                            -
-                                                id: 183
-                                                first_name: Cruz
-                                                last_name: Kreiger
-                                                start_date: '2019-07-07T10:00:00Z'
-                                                watchlist_colour: ORANGE
-                                                location:
-                                                    id: 1
-                                                    name: Default
-                                                invite_watchlist:
-                                                    id: 183
-                                                    external_colours: []
-                                                    internal_colours:
-                                                        - ORANGE
-                                            -
-                                                id: 182
-                                                first_name: Saturnina
-                                                last_name: Hills
-                                                start_date: '2019-07-07T09:00:00Z'
-                                                watchlist_colour: ORANGE
-                                                location:
-                                                    id: 1
-                                                    name: Default
-                                                invite_watchlist:
-                                                    id: 182
-                                                    external_colours: []
-                                                    internal_colours:
-                                                        - ORANGE
-                                            -
-                                                id: 181
-                                                first_name: Leana
-                                                last_name: Jast
-                                                start_date: '2019-07-07T08:00:00Z'
-                                                watchlist_colour: YELLOW
-                                                location:
-                                                    id: 1
-                                                    name: Default
-                                                invite_watchlist:
-                                                    id: 181
-                                                    external_colours: []
-                                                    internal_colours:
-                                                        - YELLOW
-                                            -
-                                                id: 180
-                                                first_name: Kayla
-                                                last_name: Funk
-                                                start_date: '2019-07-06T16:00:00Z'
-                                                watchlist_colour: ORANGE
-                                                location:
-                                                    id: 1
-                                                    name: Default
-                                                invite_watchlist:
-                                                    id: 180
-                                                    external_colours: []
-                                                    internal_colours:
-                                                        - ORANGE
-                                            -
-                                                id: 179
-                                                first_name: Lacie
-                                                last_name: Ortiz
-                                                start_date: '2019-07-06T15:00:00Z'
-                                                watchlist_colour: YELLOW
-                                                location:
-                                                    id: 1
-                                                    name: Default
-                                                invite_watchlist:
-                                                    id: 179
-                                                    external_colours: []
-                                                    internal_colours:
-                                                        - YELLOW
-                                            -
-                                                id: 178
-                                                first_name: Gearldine
-                                                last_name: Kemmer
-                                                start_date: '2019-07-06T14:00:00Z'
-                                                watchlist_colour: ORANGE
-                                                location:
-                                                    id: 1
-                                                    name: Default
-                                                invite_watchlist:
-                                                    id: 178
-                                                    external_colours: []
-                                                    internal_colours:
-                                                        - ORANGE
-                                        pagination:
-                                            total_records: 190
-                                            current_offset: 0
-                                            next_offset: 12
-                                            limit: 12
+                                                end_date: '2018-02-10T09:30Z'
                     description: Successful response - returns an array of `Invite` entities.
                 '400':
                     content:
@@ -2264,6 +2090,7 @@ components:
                 - id
                 - first_name
                 - last_name
+                - email
             type: object
             properties:
                 id:
@@ -2294,38 +2121,42 @@ components:
                     format: date-time
                     description: ''
                     type: string
+                email:
+                    description: ''
+                    type: string
             example:
-                id: 28
+                id: 72
                 first_name: some text
                 last_name: some text
                 start_date: '2018-02-10T09:30Z'
                 location:
-                    id: 51
+                    id: 62
                     name: some text
-                watchlist:
-                    id: 63
+                watchlist_colour: RED
+                hosts:
+                    -
+                        id: 33
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile: some text
+                        profile_pic_url: some text
+                    -
+                        id: 62
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile: some text
+                        profile_pic_url: some text
+                invite_watchlist:
+                    id: 14
                     external_colours:
                         - some text
                         - some text
                     internal_colours:
                         - some text
                         - some text
-                watchlist_colour: RED
-                hosts:
-                    -
-                        id: 38
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
-                    -
-                        id: 87
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
+                end_date: '2018-02-10T09:30Z'
         PaginatedWatchlistList:
             required:
                 - pagination
@@ -2628,7 +2459,7 @@ components:
                 invite_watchlist:
                     $ref: '#/components/schemas/InviteWatchlist'
             example:
-                id: 48
+                id: 2
                 company: some text
                 created_at: '2018-02-10T09:30Z'
                 email: some text
@@ -2638,39 +2469,66 @@ components:
                 start_date: '2018-02-10T09:30Z'
                 hosts:
                     -
-                        id: 38
+                        id: 96
                         email: some text
                         first_name: some text
                         last_name: some text
                         mobile: some text
                         profile_pic_url: some text
                     -
-                        id: 87
+                        id: 8
                         email: some text
                         first_name: some text
                         last_name: some text
                         mobile: some text
                         profile_pic_url: some text
                 location:
-                    id: 38
+                    id: 64
                     name: some text
-                watchlist:
-                    id: 6
-                    colour: GREEN
-                    email: some text
-                    first_name: some text
-                    last_name: some text
-                    notes: some text
-                    photo: some text
-                    aliases:
-                        - some text
-                        - some text
                 watchlist_colour: GREEN
-                country: some text
                 template:
-                    id: 26
+                    id: 37
                     name: some text
                     template_type: some text
+                custom_fields:
+                    -
+                        format: string
+                        field_name: some text
+                        field_value: some text
+                    -
+                        format: string
+                        field_name: some text
+                        field_value: some text
+                notification_triggers:
+                    -
+                        offset_direction: BEFORE
+                        offset_amount: 17
+                        offset_origin: START
+                        email_template_id: 81
+                        notification_groups:
+                            - some text
+                            - some text
+                        offset_unit: hours
+                        email_template_name: some text
+                    -
+                        offset_direction: BEFORE
+                        offset_amount: 92
+                        offset_origin: START
+                        email_template_id: 73
+                        notification_groups:
+                            - some text
+                            - some text
+                        offset_unit: days
+                        email_template_name: some text
+                mobile: some text
+                invite_watchlist:
+                    id: 77
+                    external_colours:
+                        - some text
+                        - some text
+                    internal_colours:
+                        - some text
+                        - some text
         PaginatedInvitesList:
             required:
                 - pagination
@@ -2685,50 +2543,76 @@ components:
                         $ref: '#/components/schemas/Invite'
             example:
                 pagination:
-                    total_records: 78
-                    current_offset: 21
-                    next_offset: 55
+                    total_records: 75
+                    current_offset: 17
+                    next_offset: 56
                 invites:
                     -
-                        id: 47
+                        id: 89
                         first_name: some text
                         last_name: some text
                         start_date: '2018-02-10T09:30Z'
                         location:
-                            id: 8
+                            id: 1
                             name: some text
-                        watchlist:
-                            id: 99
-                            colour: some text
-                            email: some text
-                            first_name: some text
-                            last_name: some text
-                            notes: some text
-                            photo: some text
-                            aliases:
+                        watchlist_colour: YELLOW
+                        hosts:
+                            -
+                                id: 13
+                                email: some text
+                                first_name: some text
+                                last_name: some text
+                                mobile: some text
+                                profile_pic_url: some text
+                            -
+                                id: 11
+                                email: some text
+                                first_name: some text
+                                last_name: some text
+                                mobile: some text
+                                profile_pic_url: some text
+                        invite_watchlist:
+                            id: 14
+                            external_colours:
                                 - some text
                                 - some text
-                        watchlist_colour: some text
+                            internal_colours:
+                                - some text
+                                - some text
+                        end_date: '2018-02-10T09:30Z'
                     -
-                        id: 6
+                        id: 18
                         first_name: some text
                         last_name: some text
                         start_date: '2018-02-10T09:30Z'
                         location:
-                            id: 98
+                            id: 13
                             name: some text
-                        watchlist:
-                            id: 31
-                            colour: some text
-                            email: some text
-                            first_name: some text
-                            last_name: some text
-                            notes: some text
-                            photo: some text
-                            aliases:
+                        watchlist_colour: ORANGE
+                        hosts:
+                            -
+                                id: 81
+                                email: some text
+                                first_name: some text
+                                last_name: some text
+                                mobile: some text
+                                profile_pic_url: some text
+                            -
+                                id: 50
+                                email: some text
+                                first_name: some text
+                                last_name: some text
+                                mobile: some text
+                                profile_pic_url: some text
+                        invite_watchlist:
+                            id: 74
+                            external_colours:
                                 - some text
                                 - some text
-                        watchlist_colour: some text
+                            internal_colours:
+                                - some text
+                                - some text
+                        end_date: '2018-02-10T09:30Z'
         SigninCreateParams:
             required:
                 - location_id

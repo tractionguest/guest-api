@@ -2400,135 +2400,6 @@ components:
                                 format: {}
                                 field_name: some text
                                 field_value: some text
-        InviteDetail:
-            title: Root Type for InviteDetail
-            description: The root of the InviteDetail type's schema.
-            required:
-                - id
-                - email
-                - first_name
-                - last_name
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                company:
-                    type: string
-                created_at:
-                    format: date-time
-                    type: string
-                email:
-                    type: string
-                end_date:
-                    format: date-time
-                    type: string
-                first_name:
-                    type: string
-                last_name:
-                    type: string
-                start_date:
-                    format: date-time
-                    type: string
-                hosts:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Host'
-                location:
-                    $ref: '#/components/schemas/Location'
-                watchlist_colour:
-                    enum:
-                        - RED
-                        - GREEN
-                        - YELLOW
-                        - ORANGE
-                template:
-                    $ref: '#/components/schemas/EmailTemplate'
-                custom_fields:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/CustomField'
-                notification_triggers:
-                    description: List of scheduled notifications for an invite
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/NotificationTrigger'
-                mobile:
-                    description: Phone number
-                    type: string
-                invite_watchlist:
-                    $ref: '#/components/schemas/InviteWatchlist'
-            example:
-                id: 2
-                company: some text
-                created_at: '2018-02-10T09:30Z'
-                email: some text
-                end_date: '2018-02-10T09:30Z'
-                first_name: some text
-                last_name: some text
-                start_date: '2018-02-10T09:30Z'
-                hosts:
-                    -
-                        id: 96
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
-                    -
-                        id: 8
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile: some text
-                        profile_pic_url: some text
-                location:
-                    id: 64
-                    name: some text
-                watchlist_colour: GREEN
-                template:
-                    id: 37
-                    name: some text
-                    template_type: some text
-                custom_fields:
-                    -
-                        format: string
-                        field_name: some text
-                        field_value: some text
-                    -
-                        format: string
-                        field_name: some text
-                        field_value: some text
-                notification_triggers:
-                    -
-                        offset_direction: BEFORE
-                        offset_amount: 17
-                        offset_origin: START
-                        email_template_id: 81
-                        notification_groups:
-                            - some text
-                            - some text
-                        offset_unit: hours
-                        email_template_name: some text
-                    -
-                        offset_direction: BEFORE
-                        offset_amount: 92
-                        offset_origin: START
-                        email_template_id: 73
-                        notification_groups:
-                            - some text
-                            - some text
-                        offset_unit: days
-                        email_template_name: some text
-                mobile: some text
-                invite_watchlist:
-                    id: 77
-                    external_colours:
-                        - some text
-                        - some text
-                    internal_colours:
-                        - some text
-                        - some text
         PaginatedInvitesList:
             required:
                 - pagination
@@ -3104,6 +2975,135 @@ components:
                 notification_groups:
                     - some text
                     - some text
+        InviteDetail:
+            title: Root Type for InviteDetail
+            description: The root of the InviteDetail type's schema.
+            required:
+                - id
+                - email
+                - first_name
+                - last_name
+            type: object
+            properties:
+                id:
+                    format: int32
+                    type: integer
+                company:
+                    type: string
+                created_at:
+                    format: date-time
+                    type: string
+                email:
+                    type: string
+                end_date:
+                    format: date-time
+                    type: string
+                first_name:
+                    type: string
+                last_name:
+                    type: string
+                start_date:
+                    format: date-time
+                    type: string
+                hosts:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Host'
+                location:
+                    $ref: '#/components/schemas/Location'
+                watchlist_colour:
+                    enum:
+                        - RED
+                        - GREEN
+                        - YELLOW
+                        - ORANGE
+                custom_fields:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/CustomField'
+                notification_triggers:
+                    description: List of scheduled notifications for an invite
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/NotificationTrigger'
+                mobile:
+                    description: Phone number
+                    type: string
+                invite_watchlist:
+                    $ref: '#/components/schemas/InviteWatchlist'
+                email_template:
+                    $ref: '#/components/schemas/EmailTemplate'
+            example:
+                id: 2
+                company: some text
+                created_at: '2018-02-10T09:30Z'
+                email: some text
+                end_date: '2018-02-10T09:30Z'
+                first_name: some text
+                last_name: some text
+                start_date: '2018-02-10T09:30Z'
+                hosts:
+                    -
+                        id: 96
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile: some text
+                        profile_pic_url: some text
+                    -
+                        id: 8
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile: some text
+                        profile_pic_url: some text
+                location:
+                    id: 64
+                    name: some text
+                watchlist_colour: GREEN
+                email_template:
+                    id: 37
+                    name: some text
+                    template_type: some text
+                custom_fields:
+                    -
+                        format: string
+                        field_name: some text
+                        field_value: some text
+                    -
+                        format: string
+                        field_name: some text
+                        field_value: some text
+                notification_triggers:
+                    -
+                        offset_direction: BEFORE
+                        offset_amount: 17
+                        offset_origin: START
+                        email_template_id: 81
+                        notification_groups:
+                            - some text
+                            - some text
+                        offset_unit: hours
+                        email_template_name: some text
+                    -
+                        offset_direction: BEFORE
+                        offset_amount: 92
+                        offset_origin: START
+                        email_template_id: 73
+                        notification_groups:
+                            - some text
+                            - some text
+                        offset_unit: days
+                        email_template_name: some text
+                mobile: some text
+                invite_watchlist:
+                    id: 77
+                    external_colours:
+                        - some text
+                        - some text
+                    internal_colours:
+                        - some text
+                        - some text
     securitySchemes:
         ApiCredentials:
             scheme: basic

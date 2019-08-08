@@ -19,11 +19,11 @@ Name | Type | Description | Notes
 **hosts** | [**List&lt;Host&gt;**](Host.md) |  | [optional] [default to []]
 **location** | [**Location**](Location.md) |  | [optional] [default to null]
 **watchlistColour** | **String** |  | [optional] [default to null]
-**template** | [**EmailTemplate**](EmailTemplate.md) |  | [optional] [default to null]
 **customFields** | [**List&lt;CustomField&gt;**](CustomField.md) |  | [optional] [default to []]
 **notificationTriggers** | [**List&lt;NotificationTrigger&gt;**](NotificationTrigger.md) | List of scheduled notifications for an invite | [optional] [default to []]
 **mobile** | **String** | Phone number | [optional] [default to null]
 **inviteWatchlist** | [**InviteWatchlist**](InviteWatchlist.md) |  | [optional] [default to null]
+**emailTemplate** | [**EmailTemplate**](EmailTemplate.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -25,8 +25,6 @@ class InviteDetail {
   String watchlistColour = null;
   //enum watchlistColourEnum {  RED,  GREEN,  YELLOW,  ORANGE,  };{
   
-  EmailTemplate template = null;
-  
   List<CustomField> customFields = [];
   /* List of scheduled notifications for an invite */
   List<NotificationTrigger> notificationTriggers = [];
@@ -34,11 +32,13 @@ class InviteDetail {
   String mobile = null;
   
   InviteWatchlist inviteWatchlist = null;
+  
+  EmailTemplate emailTemplate = null;
   InviteDetail();
 
   @override
   String toString() {
-    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlistColour=$watchlistColour, template=$template, customFields=$customFields, notificationTriggers=$notificationTriggers, mobile=$mobile, inviteWatchlist=$inviteWatchlist, ]';
+    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlistColour=$watchlistColour, customFields=$customFields, notificationTriggers=$notificationTriggers, mobile=$mobile, inviteWatchlist=$inviteWatchlist, emailTemplate=$emailTemplate, ]';
   }
 
   InviteDetail.fromJson(Map<String, dynamic> json) {
@@ -98,11 +98,6 @@ class InviteDetail {
     } else {
           watchlistColour = json['watchlist_colour'];
     }
-    if (json['template'] == null) {
-      template = null;
-    } else {
-      template = new EmailTemplate.fromJson(json['template']);
-    }
     if (json['custom_fields'] == null) {
       customFields = null;
     } else {
@@ -122,6 +117,11 @@ class InviteDetail {
       inviteWatchlist = null;
     } else {
       inviteWatchlist = new InviteWatchlist.fromJson(json['invite_watchlist']);
+    }
+    if (json['email_template'] == null) {
+      emailTemplate = null;
+    } else {
+      emailTemplate = new EmailTemplate.fromJson(json['email_template']);
     }
   }
 
@@ -149,8 +149,6 @@ class InviteDetail {
       json['location'] = location;
     if (watchlistColour != null)
       json['watchlist_colour'] = watchlistColour;
-    if (template != null)
-      json['template'] = template;
     if (customFields != null)
       json['custom_fields'] = customFields;
     if (notificationTriggers != null)
@@ -159,6 +157,8 @@ class InviteDetail {
       json['mobile'] = mobile;
     if (inviteWatchlist != null)
       json['invite_watchlist'] = inviteWatchlist;
+    if (emailTemplate != null)
+      json['email_template'] = emailTemplate;
     return json;
   }
 

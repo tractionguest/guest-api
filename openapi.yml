@@ -1542,7 +1542,7 @@ paths:
                                                 - some text
                                                 - some text
                                         watchlist_colour: ORANGE
-                                        template:
+                                        email_template:
                                             id: 14
                                             name: some text
                                             template_type: some text

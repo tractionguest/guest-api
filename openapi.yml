@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.10
+    version: 0.9.11
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -1542,7 +1542,7 @@ paths:
                                                 - some text
                                                 - some text
                                         watchlist_colour: ORANGE
-                                        template:
+                                        email_template:
                                             id: 14
                                             name: some text
                                             template_type: some text
@@ -2442,8 +2442,6 @@ components:
                         - GREEN
                         - YELLOW
                         - ORANGE
-                template:
-                    $ref: '#/components/schemas/EmailTemplate'
                 custom_fields:
                     type: array
                     items:
@@ -2458,6 +2456,8 @@ components:
                     type: string
                 invite_watchlist:
                     $ref: '#/components/schemas/InviteWatchlist'
+                email_template:
+                    $ref: '#/components/schemas/EmailTemplate'
             example:
                 id: 2
                 company: some text
@@ -2486,7 +2486,7 @@ components:
                     id: 64
                     name: some text
                 watchlist_colour: GREEN
-                template:
+                email_template:
                     id: 37
                     name: some text
                     template_type: some text
@@ -3103,7 +3103,7 @@ components:
                 email_template_id: 32
                 notification_groups:
                     - some text
-                    - some text
+                    - some text        
     securitySchemes:
         ApiCredentials:
             scheme: basic

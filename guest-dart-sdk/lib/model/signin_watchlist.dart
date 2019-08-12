@@ -4,14 +4,14 @@ class SigninWatchlist {
   
   int id = null;
   
-  List<String> externalColours = [];
+  List<Watchlist> external_ = [];
   
-  List<String> internalColours = [];
+  List<Watchlist> internal = [];
   SigninWatchlist();
 
   @override
   String toString() {
-    return 'SigninWatchlist[id=$id, externalColours=$externalColours, internalColours=$internalColours, ]';
+    return 'SigninWatchlist[id=$id, external_=$external_, internal=$internal, ]';
   }
 
   SigninWatchlist.fromJson(Map<String, dynamic> json) {
@@ -21,15 +21,15 @@ class SigninWatchlist {
     } else {
           id = json['id'];
     }
-    if (json['external_colours'] == null) {
-      externalColours = null;
+    if (json['external'] == null) {
+      external_ = null;
     } else {
-      externalColours = (json['external_colours'] as List).cast<String>();
+      external_ = Watchlist.listFromJson(json['external']);
     }
-    if (json['internal_colours'] == null) {
-      internalColours = null;
+    if (json['internal'] == null) {
+      internal = null;
     } else {
-      internalColours = (json['internal_colours'] as List).cast<String>();
+      internal = Watchlist.listFromJson(json['internal']);
     }
   }
 
@@ -37,10 +37,10 @@ class SigninWatchlist {
     Map <String, dynamic> json = {};
     if (id != null)
       json['id'] = id;
-    if (externalColours != null)
-      json['external_colours'] = externalColours;
-    if (internalColours != null)
-      json['internal_colours'] = internalColours;
+    if (external_ != null)
+      json['external'] = external_;
+    if (internal != null)
+      json['internal'] = internal;
     return json;
   }
 

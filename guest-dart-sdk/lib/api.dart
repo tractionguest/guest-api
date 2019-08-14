@@ -27,7 +27,9 @@ part 'model/custom_field.dart';
 part 'model/email_template.dart';
 part 'model/error.dart';
 part 'model/errors_list.dart';
+part 'model/external_watchlist_result.dart';
 part 'model/host.dart';
+part 'model/internal_watchlist_result.dart';
 part 'model/invite.dart';
 part 'model/invite_create_params.dart';
 part 'model/invite_detail.dart';
@@ -54,6 +56,8 @@ part 'model/signin_update_params.dart';
 part 'model/signin_watchlist.dart';
 part 'model/user.dart';
 part 'model/watchlist.dart';
+part 'model/watchlist_match.dart';
+part 'model/watchlist_search.dart';
 
 
 ApiClient defaultApiClient = ApiClient();

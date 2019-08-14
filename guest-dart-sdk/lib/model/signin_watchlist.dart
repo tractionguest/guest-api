@@ -4,9 +4,9 @@ class SigninWatchlist {
   
   int id = null;
   
-  List<Watchlist> external_ = [];
+  List<ExternalWatchlistResult> external_ = [];
   
-  List<Watchlist> internal = [];
+  List<InternalWatchlistResult> internal = [];
   SigninWatchlist();
 
   @override
@@ -24,12 +24,12 @@ class SigninWatchlist {
     if (json['external'] == null) {
       external_ = null;
     } else {
-      external_ = Watchlist.listFromJson(json['external']);
+      external_ = ExternalWatchlistResult.listFromJson(json['external']);
     }
     if (json['internal'] == null) {
       internal = null;
     } else {
-      internal = Watchlist.listFromJson(json['internal']);
+      internal = InternalWatchlistResult.listFromJson(json['internal']);
     }
   }
 

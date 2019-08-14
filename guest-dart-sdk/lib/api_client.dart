@@ -51,8 +51,12 @@ class ApiClient {
           return Error.fromJson(value);
         case 'ErrorsList':
           return ErrorsList.fromJson(value);
+        case 'ExternalWatchlistResult':
+          return ExternalWatchlistResult.fromJson(value);
         case 'Host':
           return Host.fromJson(value);
+        case 'InternalWatchlistResult':
+          return InternalWatchlistResult.fromJson(value);
         case 'Invite':
           return Invite.fromJson(value);
         case 'InviteCreateParams':
@@ -105,6 +109,10 @@ class ApiClient {
           return User.fromJson(value);
         case 'Watchlist':
           return Watchlist.fromJson(value);
+        case 'WatchlistMatch':
+          return WatchlistMatch.fromJson(value);
+        case 'WatchlistSearch':
+          return WatchlistSearch.fromJson(value);
         default:
           {
             Match match;

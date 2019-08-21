@@ -45,6 +45,8 @@ class ApiClient {
           return CredentialCreateParams.fromJson(value);
         case 'CustomField':
           return CustomField.fromJson(value);
+        case 'Docusign':
+          return Docusign.fromJson(value);
         case 'EmailTemplate':
           return EmailTemplate.fromJson(value);
         case 'Error':
@@ -91,6 +93,8 @@ class ApiClient {
           return Permission.fromJson(value);
         case 'PermissionBundle':
           return PermissionBundle.fromJson(value);
+        case 'SignableDocument':
+          return SignableDocument.fromJson(value);
         case 'Signin':
           return Signin.fromJson(value);
         case 'SigninAcknowledgement':
@@ -105,6 +109,8 @@ class ApiClient {
           return SigninUpdateParams.fromJson(value);
         case 'SigninWatchlist':
           return SigninWatchlist.fromJson(value);
+        case 'SimpleSignature':
+          return SimpleSignature.fromJson(value);
         case 'User':
           return User.fromJson(value);
         case 'Watchlist':

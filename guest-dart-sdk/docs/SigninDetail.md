@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **signinData** | [**List&lt;SigninData&gt;**](SigninData.md) |  | [optional] [default to []]
 **hosts** | [**List&lt;Host&gt;**](Host.md) |  | [optional] [default to []]
 **signinWatchlist** | [**SigninWatchlist**](SigninWatchlist.md) |  | [optional] [default to null]
+**documents** | [**List&lt;SignableDocument&gt;**](SignableDocument.md) |  | [optional] [default to []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

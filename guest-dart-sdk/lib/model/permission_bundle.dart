@@ -2,8 +2,6 @@ part of guest_sdk.api;
 
 class PermissionBundle {
   
-  int id = null;
-  
   String bundleName = null;
   
   bool locked = null;
@@ -17,16 +15,11 @@ class PermissionBundle {
 
   @override
   String toString() {
-    return 'PermissionBundle[id=$id, bundleName=$bundleName, locked=$locked, source=$source, updatedAt=$updatedAt, permissions=$permissions, ]';
+    return 'PermissionBundle[bundleName=$bundleName, locked=$locked, source=$source, updatedAt=$updatedAt, permissions=$permissions, ]';
   }
 
   PermissionBundle.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    if (json['id'] == null) {
-      id = null;
-    } else {
-          id = json['id'];
-    }
     if (json['bundle_name'] == null) {
       bundleName = null;
     } else {
@@ -56,8 +49,6 @@ class PermissionBundle {
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (id != null)
-      json['id'] = id;
     if (bundleName != null)
       json['bundle_name'] = bundleName;
     if (locked != null)

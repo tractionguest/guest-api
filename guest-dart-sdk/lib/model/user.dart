@@ -4,18 +4,18 @@ class User {
   
   int id = null;
   
-  List<PermissionBundle> permissionBundles = [];
-  
   String firstName = null;
   
   String lastName = null;
   
   String email = null;
+  
+  PermissionBundle permissionBundle = null;
   User();
 
   @override
   String toString() {
-    return 'User[id=$id, permissionBundles=$permissionBundles, firstName=$firstName, lastName=$lastName, email=$email, ]';
+    return 'User[id=$id, firstName=$firstName, lastName=$lastName, email=$email, permissionBundle=$permissionBundle, ]';
   }
 
   User.fromJson(Map<String, dynamic> json) {
@@ -24,11 +24,6 @@ class User {
       id = null;
     } else {
           id = json['id'];
-    }
-    if (json['permission_bundles'] == null) {
-      permissionBundles = null;
-    } else {
-      permissionBundles = PermissionBundle.listFromJson(json['permission_bundles']);
     }
     if (json['first_name'] == null) {
       firstName = null;
@@ -45,20 +40,25 @@ class User {
     } else {
           email = json['email'];
     }
+    if (json['permission_bundle'] == null) {
+      permissionBundle = null;
+    } else {
+      permissionBundle = new PermissionBundle.fromJson(json['permission_bundle']);
+    }
   }
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
     if (id != null)
       json['id'] = id;
-    if (permissionBundles != null)
-      json['permission_bundles'] = permissionBundles;
     if (firstName != null)
       json['first_name'] = firstName;
     if (lastName != null)
       json['last_name'] = lastName;
     if (email != null)
       json['email'] = email;
+    if (permissionBundle != null)
+      json['permission_bundle'] = permissionBundle;
     return json;
   }
 

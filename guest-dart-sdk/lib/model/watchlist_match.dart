@@ -34,9 +34,9 @@ class WatchlistMatch {
   
   String frc = null;
   
-  DateTime start = null;
+  String start = null;
   
-  DateTime end = null;
+  String end = null;
   
   String frserve = null;
   
@@ -135,12 +135,12 @@ class WatchlistMatch {
     if (json['start'] == null) {
       start = null;
     } else {
-      start = DateTime.parse(json['start']);
+          start = json['start'];
     }
     if (json['end'] == null) {
       end = null;
     } else {
-      end = DateTime.parse(json['end']);
+          end = json['end'];
     }
     if (json['frserve'] == null) {
       frserve = null;
@@ -194,9 +194,9 @@ class WatchlistMatch {
     if (frc != null)
       json['frc'] = frc;
     if (start != null)
-      json['start'] = start == null ? null : start.toUtc().toIso8601String();
+      json['start'] = start;
     if (end != null)
-      json['end'] = end == null ? null : end.toUtc().toIso8601String();
+      json['end'] = end;
     if (frserve != null)
       json['frserve'] = frserve;
     if (optionalID != null)

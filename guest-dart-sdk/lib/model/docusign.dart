@@ -12,7 +12,7 @@ class Docusign {
   
   String envelopeId = null;
   
-  int sequence = null;
+  String sequence = null;
   
   String docusignId = null;
   

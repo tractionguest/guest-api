@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **ndaStatus** | **String** |  | [optional] [default to null]
 **ndaSignedDate** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
 **envelopeId** | **String** |  | [optional] [default to null]
-**sequence** | **int** |  | [optional] [default to null]
+**sequence** | **String** |  | [optional] [default to null]
 **docusignId** | **String** |  | [optional] [default to null]
 **docusignName** | **String** |  | [optional] [default to null]
 **title** | **String** |  | [optional] [default to null]

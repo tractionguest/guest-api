@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.14
+    version: 0.9.15
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -5005,7 +5005,6 @@ components:
             title: Root Type for WatchlistMatch
             description: ''
             required:
-                - id
                 - name
                 - list
             type: object
@@ -5066,6 +5065,123 @@ components:
                     description: ''
                     type: string
                 alert_type:
+                    description: ''
+                    type: string
+                pair_status:
+                    description: ''
+                    type: string
+                pair_reason:
+                    description: ''
+                    type: string
+                pair_comments:
+                    description: ''
+                    type: string
+                application_display_name:
+                    description: ''
+                    type: string
+                application_id:
+                    description: ''
+                    type: string
+                client_id:
+                    description: ''
+                    type: string
+                client_key:
+                    description: ''
+                    type: string
+                client_full_name:
+                    description: ''
+                    type: string
+                list_key:
+                    description: ''
+                    type: string
+                list_name:
+                    description: ''
+                    type: string
+                list_id:
+                    description: ''
+                    type: string
+                list_version:
+                    description: ''
+                    type: string
+                list_modify_date:
+                    description: ''
+                    type: string
+                list_profile_id:
+                    description: ''
+                    type: string
+                list_profile_key:
+                    description: ''
+                    type: string
+                link_single_string_name:
+                    description: ''
+                    type: string
+                list_parent_single_string_name:
+                    description: ''
+                    type: string
+                list_category:
+                    description: ''
+                    type: string
+                list_pep_category:
+                    description: ''
+                    type: string
+                list_do_bs:
+                    description: ''
+                    type: string
+                list_countries:
+                    description: ''
+                    type: string
+                rank_string:
+                    description: ''
+                    type: string
+                ranktype:
+                    description: ''
+                    type: string
+                rankweight:
+                    description: ''
+                    type: string
+                pair_load_date:
+                    description: ''
+                    type: string
+                e_address_to:
+                    description: ''
+                    type: string
+                e_address_cc:
+                    description: ''
+                    type: string
+                origin:
+                    description: ''
+                    type: string
+                secondsviewed:
+                    description: ''
+                    type: string
+                initial_user:
+                    description: ''
+                    type: string
+                is_pair_parent_flag:
+                    description: ''
+                    type: string
+                pair_met_search_criteria_flag:
+                    description: ''
+                    type: string
+                editable_due_to_assignment_flag:
+                    description: ''
+                    type: string
+                modify_date:
+                    description: ''
+                    type: string
+                modified_by_user:
+                    description: ''
+                    type: string
+                pair_report_type:
+                    description: ''
+                    type: string
+                finscan_category:
+                    description: ''
+                    type: string
+                wrapper_status:
+                    description: ''
+                    type: string
+                source_lists:
                     description: ''
                     type: string
             example:
@@ -5129,7 +5245,7 @@ components:
                     country: some text
                     state: some text
                 integration: some text
-                colour: ORANGE
+                colour: RED
                 matches:
                     -
                         id: some text
@@ -5141,6 +5257,59 @@ components:
                         source_information_url: some text
                         source_list_url: some text
                         list: some text
+                        type: some text
+                        category: some text
+                        street1: some text
+                        street2: some text
+                        city: some text
+                        state: some text
+                        country: some text
+                        notes: some text
+                        frc: some text
+                        start: some text
+                        end: some text
+                        frserve: some text
+                        optional_ID: some text
+                        alert_type: some text
+                        pair_status: some text
+                        pair_reason: some text
+                        pair_comments: some text
+                        application_display_name: some text
+                        application_id: some text
+                        client_id: some text
+                        client_key: some text
+                        client_full_name: some text
+                        list_key: some text
+                        list_name: some text
+                        list_id: some text
+                        list_version: some text
+                        list_modify_date: some text
+                        list_profile_id: some text
+                        list_profile_key: some text
+                        link_single_string_name: some text
+                        list_parent_single_string_name: some text
+                        list_category: some text
+                        list_pep_category: some text
+                        list_do_bs: some text
+                        list_countries: some text
+                        rank_string: some text
+                        ranktype: some text
+                        rankweight: some text
+                        pair_load_date: some text
+                        e_address_to: some text
+                        e_address_cc: some text
+                        origin: some text
+                        secondsviewed: some text
+                        initial_user: some text
+                        is_pair_parent_flag: some text
+                        pair_met_search_criteria_flag: some text
+                        editable_due_to_assignment_flag: some text
+                        modify_date: some text
+                        modified_by_user: some text
+                        pair_report_type: some text
+                        finscan_category: some text
+                        wrapper_status: some text
+                        source_lists: some text
                     -
                         id: some text
                         alt_names:
@@ -5151,6 +5320,59 @@ components:
                         source_information_url: some text
                         source_list_url: some text
                         list: some text
+                        type: some text
+                        category: some text
+                        street1: some text
+                        street2: some text
+                        city: some text
+                        state: some text
+                        country: some text
+                        notes: some text
+                        frc: some text
+                        start: some text
+                        end: some text
+                        frserve: some text
+                        optional_ID: some text
+                        alert_type: some text
+                        pair_status: some text
+                        pair_reason: some text
+                        pair_comments: some text
+                        application_display_name: some text
+                        application_id: some text
+                        client_id: some text
+                        client_key: some text
+                        client_full_name: some text
+                        list_key: some text
+                        list_name: some text
+                        list_id: some text
+                        list_version: some text
+                        list_modify_date: some text
+                        list_profile_id: some text
+                        list_profile_key: some text
+                        link_single_string_name: some text
+                        list_parent_single_string_name: some text
+                        list_category: some text
+                        list_pep_category: some text
+                        list_do_bs: some text
+                        list_countries: some text
+                        rank_string: some text
+                        ranktype: some text
+                        rankweight: some text
+                        pair_load_date: some text
+                        e_address_to: some text
+                        e_address_cc: some text
+                        origin: some text
+                        secondsviewed: some text
+                        initial_user: some text
+                        is_pair_parent_flag: some text
+                        pair_met_search_criteria_flag: some text
+                        editable_due_to_assignment_flag: some text
+                        modify_date: some text
+                        modified_by_user: some text
+                        pair_report_type: some text
+                        finscan_category: some text
+                        wrapper_status: some text
+                        source_lists: some text
         InternalWatchlistResult:
             description: ''
             required:
@@ -5200,7 +5422,7 @@ components:
                     type: string
                 sequence:
                     description: ''
-                    type: integer
+                    type: string
                 docusign_id:
                     description: ''
                     type: string
@@ -5240,6 +5462,39 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/SimpleSignature'
+            example:
+                docusigns:
+                    -
+                        template_id: some text
+                        integration: some text
+                        nda_status: some text
+                        nda_signed_date: '2018-02-10T09:30Z'
+                        envelope_id: some text
+                        sequence: 80
+                        docusign_id: some text
+                        docusign_name: some text
+                        title: some text
+                    -
+                        template_id: some text
+                        integration: some text
+                        nda_status: some text
+                        nda_signed_date: '2018-02-10T09:30Z'
+                        envelope_id: some text
+                        sequence: 88
+                        docusign_id: some text
+                        docusign_name: some text
+                        title: some text
+                simple_signatures:
+                    -
+                        status: some text
+                        template_name: some text
+                        id: some text
+                        title: some text
+                    -
+                        status: some text
+                        template_name: some text
+                        id: some text
+                        title: some text
     securitySchemes:
         ApiCredentials:
             scheme: basic

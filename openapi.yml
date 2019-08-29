@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.16
+    version: 0.9.17
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -5498,14 +5498,7 @@ components:
         TractionGuestAuth:
             type: openIdConnect
             openIdConnectUrl: /.well-known/openid-configuration
-        ApiCredentials:
-            scheme: basic
-            type: http
-            description: Contains an `Authorization` header and token
-
 security:
-    -
-        ApiCredentials: []
     -
         TractionGuestAuth:
             - all

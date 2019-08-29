@@ -1233,58 +1233,6 @@ paths:
                     type: integer
                 in: path
                 required: true
-    /credentials:
-        post:
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/CredentialCreateParams'
-                        examples:
-                            default:
-                                value:
-                                    email: some text
-                                    password: some text
-                required: true
-            tags:
-                - Credentials
-            responses:
-                '201':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Credential'
-                            examples:
-                                default:
-                                    value:
-                                        token: some text
-                    description: Creates a new token for authenticating future API calls
-                '400':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/ErrorsList'
-                            examples:
-                                default:
-                                    value:
-                                        errors:
-                                            -
-                                                domain: some text
-                                                attribute: some text
-                                                code: some text
-                                                message: some text
-                                            -
-                                                domain: some text
-                                                attribute: some text
-                                                code: some text
-                                                message: some text
-                    description: A generic error
-                '401':
-                    description: Your login details are incorrect
-                '403':
-                    description: You do not have permission for this action
-            operationId: createCredentials
-            summary: Creates credentials from login information
     /invites:
         summary: Path used to manage the list of Invites.
         description: >-
@@ -5503,9 +5451,6 @@ security:
         TractionGuestAuth:
             - all
 tags:
-    -
-        name: Credentials
-        description: All endpoints relating to Credential tokens for authenticating Users
     -
         name: EmailTemplates
         description: All endpoints relating to operations for the EmailTemplate model

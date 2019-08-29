@@ -25,8 +25,6 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
-// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
-//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new HostsApi();
 var query = query_example; // String | Will filter by `first_name`, `last_name`, and `email`

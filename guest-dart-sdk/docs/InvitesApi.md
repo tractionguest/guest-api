@@ -28,8 +28,6 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
-// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
-//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new InvitesApi();
 var locationId = 56; // int | A unique identifier for a `Location`.
@@ -78,8 +76,6 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
-// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
-//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new InvitesApi();
 var inviteId = inviteId_example; // String | A unique identifier for a `Invite`.
@@ -126,8 +122,6 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
-// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
-//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new InvitesApi();
 var limit = 56; // int | Limits the results to a specified number, defaults to 50
@@ -188,8 +182,6 @@ import 'package:guest_sdk/api.dart';
 // TODO Configure HTTP basic authorization: ApiCredentials
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
-// TODO Configure OAuth2 access token for authorization: TractionGuestAuth
-//defaultApiClient.getAuthentication<OAuth>('TractionGuestAuth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = new InvitesApi();
 var inviteId = inviteId_example; // String | A unique identifier for a `Invite`.

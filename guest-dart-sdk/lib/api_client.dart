@@ -21,7 +21,6 @@ class ApiClient {
   ApiClient({this.basePath = "https://mobile-api-refactor-admin.tractionguest.ca/api/v3"}) {
     // Setup authentications (key: authentication name, value: authentication).
     _authentications['ApiCredentials'] = HttpBasicAuth();
-    _authentications['TractionGuestAuth'] = OAuth();
   }
 
   void addDefaultHeader(String key, String value) {

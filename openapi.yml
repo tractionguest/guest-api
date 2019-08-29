@@ -3017,38 +3017,6 @@ paths:
                     type: string
                 in: path
                 required: true
-    '/credentials/{credentialId}':
-        delete:
-            tags:
-                - Credentials
-            responses:
-                '200':
-                    description: Deleted the token specified.
-                '400':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/ErrorsList'
-                    description: A generic error
-                '401':
-                    description: You're not authorized to do this action
-                '403':
-                    description: This action is forbidden
-                '404':
-                    description: The Credential you are looking for does not exist
-            security:
-                -
-                    ApiCredentials: []
-            operationId: deleteCredential
-            summary: Deletes a mobile credential
-        parameters:
-            -
-                name: credentialId
-                description: It can be the credential id or the string 'current'
-                schema:
-                    type: string
-                in: path
-                required: true
 components:
     schemas:
         Host:
@@ -4574,28 +4542,6 @@ components:
                 values:
                     - some text
                     - some text
-        CredentialCreateParams:
-            required:
-                - email
-                - password
-            type: object
-            properties:
-                email:
-                    type: string
-                password:
-                    type: string
-            example:
-                email: some text
-                password: some text
-        Credential:
-            required:
-                - token
-            type: object
-            properties:
-                token:
-                    type: string
-            example:
-                token: some text
         InviteWatchlist:
             title: Root Type for InviteWatchlist
             description: The root of the InviteWatchlist type's schema.

@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.16
+    version: 0.9.17
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -1233,58 +1233,6 @@ paths:
                     type: integer
                 in: path
                 required: true
-    /credentials:
-        post:
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/CredentialCreateParams'
-                        examples:
-                            default:
-                                value:
-                                    email: some text
-                                    password: some text
-                required: true
-            tags:
-                - Credentials
-            responses:
-                '201':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Credential'
-                            examples:
-                                default:
-                                    value:
-                                        token: some text
-                    description: Creates a new token for authenticating future API calls
-                '400':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/ErrorsList'
-                            examples:
-                                default:
-                                    value:
-                                        errors:
-                                            -
-                                                domain: some text
-                                                attribute: some text
-                                                code: some text
-                                                message: some text
-                                            -
-                                                domain: some text
-                                                attribute: some text
-                                                code: some text
-                                                message: some text
-                    description: A generic error
-                '401':
-                    description: Your login details are incorrect
-                '403':
-                    description: You do not have permission for this action
-            operationId: createCredentials
-            summary: Creates credentials from login information
     /invites:
         summary: Path used to manage the list of Invites.
         description: >-
@@ -3069,38 +3017,6 @@ paths:
                     type: string
                 in: path
                 required: true
-    '/credentials/{credentialId}':
-        delete:
-            tags:
-                - Credentials
-            responses:
-                '200':
-                    description: Deleted the token specified.
-                '400':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/ErrorsList'
-                    description: A generic error
-                '401':
-                    description: You're not authorized to do this action
-                '403':
-                    description: This action is forbidden
-                '404':
-                    description: The Credential you are looking for does not exist
-            security:
-                -
-                    ApiCredentials: []
-            operationId: deleteCredential
-            summary: Deletes a mobile credential
-        parameters:
-            -
-                name: credentialId
-                description: It can be the credential id or the string 'current'
-                schema:
-                    type: string
-                in: path
-                required: true
 components:
     schemas:
         Host:
@@ -4626,28 +4542,6 @@ components:
                 values:
                     - some text
                     - some text
-        CredentialCreateParams:
-            required:
-                - email
-                - password
-            type: object
-            properties:
-                email:
-                    type: string
-                password:
-                    type: string
-            example:
-                email: some text
-                password: some text
-        Credential:
-            required:
-                - token
-            type: object
-            properties:
-                token:
-                    type: string
-            example:
-                token: some text
         InviteWatchlist:
             title: Root Type for InviteWatchlist
             description: The root of the InviteWatchlist type's schema.
@@ -5498,21 +5392,11 @@ components:
         TractionGuestAuth:
             type: openIdConnect
             openIdConnectUrl: /.well-known/openid-configuration
-        ApiCredentials:
-            scheme: basic
-            type: http
-            description: Contains an `Authorization` header and token
-
 security:
-    -
-        ApiCredentials: []
     -
         TractionGuestAuth:
             - all
 tags:
-    -
-        name: Credentials
-        description: All endpoints relating to Credential tokens for authenticating Users
     -
         name: EmailTemplates
         description: All endpoints relating to operations for the EmailTemplate model

@@ -12,7 +12,6 @@ part 'auth/api_key_auth.dart';
 part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 
-part 'api/credentials_api.dart';
 part 'api/email_templates_api.dart';
 part 'api/hosts_api.dart';
 part 'api/invites_api.dart';
@@ -21,8 +20,6 @@ part 'api/signins_api.dart';
 part 'api/users_api.dart';
 part 'api/watchlists_api.dart';
 
-part 'model/credential.dart';
-part 'model/credential_create_params.dart';
 part 'model/custom_field.dart';
 part 'model/docusign.dart';
 part 'model/email_template.dart';

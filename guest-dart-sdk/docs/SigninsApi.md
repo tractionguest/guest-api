@@ -25,9 +25,6 @@ Creates a new instance of a `Signin`.
 ### Example 
 ```dart
 import 'package:guest_sdk/api.dart';
-// TODO Configure HTTP basic authorization: ApiCredentials
-//defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
 
 var api_instance = new SigninsApi();
 var signinCreateParams = new SigninCreateParams(); // SigninCreateParams | A new `Signin` to be created.
@@ -52,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
+[TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 
@@ -71,9 +68,6 @@ Gets the details of a single instance of a `Signin`.
 ### Example 
 ```dart
 import 'package:guest_sdk/api.dart';
-// TODO Configure HTTP basic authorization: ApiCredentials
-//defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
 
 var api_instance = new SigninsApi();
 var signinId = signinId_example; // String | A unique identifier for a `Signin`.
@@ -98,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
+[TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 
@@ -117,9 +111,6 @@ Gets a list of all `Signin` entities.
 ### Example 
 ```dart
 import 'package:guest_sdk/api.dart';
-// TODO Configure HTTP basic authorization: ApiCredentials
-//defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
 
 var api_instance = new SigninsApi();
 var locationIds = locationIds_example; // String | A comma separated list of Location IDs
@@ -160,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
+[TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 
@@ -179,9 +170,6 @@ Update, acknowledge, or `Signout` a `Signin`
 ### Example 
 ```dart
 import 'package:guest_sdk/api.dart';
-// TODO Configure HTTP basic authorization: ApiCredentials
-//defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
 
 var api_instance = new SigninsApi();
 var signinId = signinId_example; // String | A unique identifier for a `Signin`.
@@ -208,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
+[TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 

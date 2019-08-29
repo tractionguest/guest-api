@@ -22,9 +22,6 @@ Gets a list of all `Location` entities.
 ### Example 
 ```dart
 import 'package:guest_sdk/api.dart';
-// TODO Configure HTTP basic authorization: ApiCredentials
-//defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
 
 var api_instance = new LocationsApi();
 var limit = 56; // int | Limits the results to a specified number, defaults to 50
@@ -53,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
+[TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 

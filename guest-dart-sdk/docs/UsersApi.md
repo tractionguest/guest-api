@@ -22,9 +22,6 @@ Gets the details of a single instance of the current `User`.
 ### Example 
 ```dart
 import 'package:guest_sdk/api.dart';
-// TODO Configure HTTP basic authorization: ApiCredentials
-//defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('ApiCredentials').password = 'YOUR_PASSWORD';
 
 var api_instance = new UsersApi();
 var userId = userId_example; // String | The user ID, represented as a string.  `\"current\"` can be used as a shortcut for the currently-authenticated user
@@ -49,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiCredentials](../README.md#ApiCredentials), [TractionGuestAuth](../README.md#TractionGuestAuth)
+[TractionGuestAuth](../README.md#TractionGuestAuth)
 
 ### HTTP request headers
 

@@ -20,7 +20,6 @@ class ApiClient {
 
   ApiClient({this.basePath = "https://mobile-api-refactor-admin.tractionguest.ca/api/v3"}) {
     // Setup authentications (key: authentication name, value: authentication).
-    _authentications['ApiCredentials'] = HttpBasicAuth();
   }
 
   void addDefaultHeader(String key, String value) {
@@ -38,10 +37,6 @@ class ApiClient {
           return value is bool ? value : '$value'.toLowerCase() == 'true';
         case 'double':
           return value is double ? value : double.parse('$value');
-        case 'Credential':
-          return Credential.fromJson(value);
-        case 'CredentialCreateParams':
-          return CredentialCreateParams.fromJson(value);
         case 'CustomField':
           return CustomField.fromJson(value);
         case 'Docusign':

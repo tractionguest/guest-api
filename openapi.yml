@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.18
+    version: 0.9.19
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -853,6 +853,35 @@ paths:
             operationId: getWatchlist
             summary: Get a Watchlist
             description: Gets the details of a single instance of a `Watchlist`.
+        delete:
+            tags:
+                - Watchlists
+            responses:
+                '204':
+                    description: The Watchlist has been deleted
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: There was an issue in trying to delete the Watchlist
+            operationId: deleteWatchlist
+            summary: Deletes a Watchlist
+            description: Deletes a single instance of `Watchlist`
         parameters:
             -
                 name: watchlistId
@@ -2986,6 +3015,35 @@ paths:
             operationId: updateInvite
             summary: Update a Invite
             description: Updates an existing `Invite`.
+        delete:
+            tags:
+                - Invites
+            responses:
+                '204':
+                    description: The `Invite` has been deleted
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: There was an error in trying to delete the `Invite`
+            operationId: deleteInvite
+            summary: Deletes an Invite
+            description: Deletes a single instance of `Invite`
         parameters:
             -
                 name: inviteId

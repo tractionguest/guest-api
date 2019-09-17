@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.17
+    version: 0.9.18
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -2433,46 +2433,23 @@ paths:
                             examples:
                                 default:
                                     value:
-                                        id: 73
-                                        permission_bundles:
+                                        id: 63
+                                        first_name: some text
+                                        last_name: some text
+                                        email: some text
+                                        permissions:
                                             -
-                                                id: 36
-                                                bundle_name: some text
-                                                locked: true
-                                                source: some text
-                                                updated_at: '2018-02-10T09:30Z'
-                                                permissions:
-                                                    -
-                                                        name: some text
-                                                        visibility: some text
-                                                        values:
-                                                            - some text
-                                                            - some text
-                                                    -
-                                                        name: some text
-                                                        visibility: some text
-                                                        values:
-                                                            - some text
-                                                            - some text
+                                                name: some text
+                                                visibility: some text
+                                                values:
+                                                    - some text
+                                                    - some text
                                             -
-                                                id: 84
-                                                bundle_name: some text
-                                                locked: true
-                                                source: some text
-                                                updated_at: '2018-02-10T09:30Z'
-                                                permissions:
-                                                    -
-                                                        name: some text
-                                                        visibility: some text
-                                                        values:
-                                                            - some text
-                                                            - some text
-                                                    -
-                                                        name: some text
-                                                        visibility: some text
-                                                        values:
-                                                            - some text
-                                                            - some text
+                                                name: some text
+                                                visibility: some text
+                                                values:
+                                                    - some text
+                                                    - some text
                     description: Successful response - returns a single `User`.
                 '400':
                     content:
@@ -3281,43 +3258,6 @@ components:
                         $ref: '#/components/schemas/Host'
                 pagination:
                     $ref: '#/components/schemas/Pagination'
-        PermissionBundle:
-            title: Root Type for PermissionBundle
-            description: The root of the PermissionBundle type's schema.
-            type: object
-            properties:
-                bundle_name:
-                    type: string
-                locked:
-                    type: boolean
-                source:
-                    type: string
-                updated_at:
-                    format: date-time
-                    type: string
-                permissions:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Permission'
-            example:
-                id: 91
-                bundle_name: some text
-                locked: true
-                source: some text
-                updated_at: '2018-02-10T09:30Z'
-                permissions:
-                    -
-                        name: some text
-                        visibility: some text
-                        values:
-                            - some text
-                            - some text
-                    -
-                        name: some text
-                        visibility: some text
-                        values:
-                            - some text
-                            - some text
         User:
             title: Root Type for User
             description: The root of the User type's schema.
@@ -3338,32 +3278,28 @@ components:
                 email:
                     description: ''
                     type: string
-                permission_bundle:
-                    $ref: '#/components/schemas/PermissionBundle'
+                permissions:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Permission'
             example:
-                id: 10
+                id: 9
                 first_name: some text
                 last_name: some text
                 email: some text
-                permission_bundle:
-                    id: 88
-                    bundle_name: some text
-                    locked: true
-                    source: some text
-                    updated_at: '2018-02-10T09:30Z'
-                    permissions:
-                        -
-                            name: some text
-                            visibility: some text
-                            values:
-                                - some text
-                                - some text
-                        -
-                            name: some text
-                            visibility: some text
-                            values:
-                                - some text
-                                - some text
+                permissions:
+                    -
+                        name: some text
+                        visibility: some text
+                        values:
+                            - some text
+                            - some text
+                    -
+                        name: some text
+                        visibility: some text
+                        values:
+                            - some text
+                            - some text
         Watchlist:
             title: Root Type for Watchlist
             description: The root of the Watchlist type's schema.
@@ -5390,8 +5326,8 @@ components:
                         title: some text
     securitySchemes:
         TractionGuestAuth:
-            type: openIdConnect
             openIdConnectUrl: /.well-known/openid-configuration
+            type: openIdConnect
 security:
     -
         TractionGuestAuth:

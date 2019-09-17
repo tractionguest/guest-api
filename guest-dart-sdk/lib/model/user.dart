@@ -10,12 +10,12 @@ class User {
   
   String email = null;
   
-  PermissionBundle permissionBundle = null;
+  List<PermissionGroup> permissionGroups = [];
   User();
 
   @override
   String toString() {
-    return 'User[id=$id, firstName=$firstName, lastName=$lastName, email=$email, permissionBundle=$permissionBundle, ]';
+    return 'User[id=$id, firstName=$firstName, lastName=$lastName, email=$email, permissionGroups=$permissionGroups, ]';
   }
 
   User.fromJson(Map<String, dynamic> json) {
@@ -40,10 +40,10 @@ class User {
     } else {
           email = json['email'];
     }
-    if (json['permission_bundle'] == null) {
-      permissionBundle = null;
+    if (json['permission_groups'] == null) {
+      permissionGroups = null;
     } else {
-      permissionBundle = new PermissionBundle.fromJson(json['permission_bundle']);
+      permissionGroups = PermissionGroup.listFromJson(json['permission_groups']);
     }
   }
 
@@ -57,8 +57,8 @@ class User {
       json['last_name'] = lastName;
     if (email != null)
       json['email'] = email;
-    if (permissionBundle != null)
-      json['permission_bundle'] = permissionBundle;
+    if (permissionGroups != null)
+      json['permission_groups'] = permissionGroups;
     return json;
   }
 

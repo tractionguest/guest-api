@@ -83,10 +83,8 @@ class ApiClient {
           return PaginatedWatchlistList.fromJson(value);
         case 'Pagination':
           return Pagination.fromJson(value);
-        case 'Permission':
-          return Permission.fromJson(value);
-        case 'PermissionBundle':
-          return PermissionBundle.fromJson(value);
+        case 'PermissionGroup':
+          return PermissionGroup.fromJson(value);
         case 'SignableDocument':
           return SignableDocument.fromJson(value);
         case 'Signin':

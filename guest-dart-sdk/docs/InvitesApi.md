@@ -10,6 +10,7 @@ All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createLocationInvite**](InvitesApi.md#createLocationInvite) | **POST** /locations/{locationId}/invites | Creates an Invite
+[**deleteInvite**](InvitesApi.md#deleteInvite) | **DELETE** /invites/{inviteId} | Deletes an Invite
 [**getInvite**](InvitesApi.md#getInvite) | **GET** /invites/{inviteId} | Get a Invite
 [**getInvites**](InvitesApi.md#getInvites) | **GET** /invites | List All Invites
 [**updateInvite**](InvitesApi.md#updateInvite) | **PUT** /invites/{inviteId} | Update a Invite
@@ -56,6 +57,48 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteInvite**
+> deleteInvite(inviteId)
+
+Deletes an Invite
+
+Deletes a single instance of `Invite`
+
+### Example 
+```dart
+import 'package:guest_sdk/api.dart';
+
+var api_instance = new InvitesApi();
+var inviteId = inviteId_example; // String | A unique identifier for a `Invite`.
+
+try { 
+    api_instance.deleteInvite(inviteId);
+} catch (e) {
+    print("Exception when calling InvitesApi->deleteInvite: $e\n");
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inviteId** | **String**| A unique identifier for a &#x60;Invite&#x60;. | [default to null]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[TractionGuestAuth](../README.md#TractionGuestAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

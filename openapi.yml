@@ -3074,6 +3074,9 @@ components:
                     type: string
                 profile_pic_url:
                     type: string
+                department:
+                    description: ''
+                    type: string
             example: |-
                 {
                     "id": 1,

@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.19
+    version: 0.9.20
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -62,17 +62,19 @@ paths:
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
+                                                department: some text
                                             -
-                                                id: 2
+                                                id: 99
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
+                                                department: some text
                                         pagination:
-                                            total_records: 14
-                                            current_offset: 41
-                                            next_offset: 85
+                                            total_records: 12
+                                            current_offset: 16
+                                            next_offset: 70
                     description: Successful response - returns an array of `Host` entities.
                 '400':
                     content:
@@ -1028,7 +1030,7 @@ paths:
                             examples:
                                 default:
                                     value:
-                                        id: 93
+                                        id: 99
                                         company: some text
                                         created_at: '2018-02-10T09:30Z'
                                         email: some text
@@ -1038,27 +1040,25 @@ paths:
                                         start_date: '2018-02-10T09:30Z'
                                         hosts:
                                             -
-                                                id: 23
+                                                id: 60
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
+                                                department: some text
                                             -
-                                                id: 33
+                                                id: 26
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
+                                                department: some text
                                         location:
-                                            id: 20
+                                            id: 62
                                             name: some text
                                         watchlist_colour: YELLOW
-                                        template:
-                                            id: 15
-                                            name: some text
-                                            template_type: some text
                                         custom_fields:
                                             -
                                                 format: string
@@ -1071,19 +1071,19 @@ paths:
                                         notification_triggers:
                                             -
                                                 offset_direction: AFTER
-                                                offset_amount: 66
-                                                offset_origin: END
-                                                email_template_id: 80
+                                                offset_amount: 13
+                                                offset_origin: START
+                                                email_template_id: 54
                                                 notification_groups:
                                                     - some text
                                                     - some text
-                                                offset_unit: hours
+                                                offset_unit: days
                                                 email_template_name: some text
                                             -
                                                 offset_direction: BEFORE
-                                                offset_amount: 21
+                                                offset_amount: 61
                                                 offset_origin: END
-                                                email_template_id: 30
+                                                email_template_id: 52
                                                 notification_groups:
                                                     - some text
                                                     - some text
@@ -1091,7 +1091,7 @@ paths:
                                                 email_template_name: some text
                                         mobile: some text
                                         invite_watchlist:
-                                            id: 3
+                                            id: 93
                                             external:
                                                 -
                                                     search_terms:
@@ -1122,11 +1122,50 @@ paths:
                                                             country: some text
                                                             notes: some text
                                                             frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
+                                                            start: some text
+                                                            end: some text
                                                             frserve: some text
                                                             optional_ID: some text
                                                             alert_type: some text
+                                                            pair_status: some text
+                                                            pair_reason: some text
+                                                            pair_comments: some text
+                                                            application_display_name: some text
+                                                            application_id: some text
+                                                            client_id: some text
+                                                            client_key: some text
+                                                            client_full_name: some text
+                                                            list_key: some text
+                                                            list_name: some text
+                                                            list_id: some text
+                                                            list_version: some text
+                                                            list_modify_date: some text
+                                                            list_profile_id: some text
+                                                            list_profile_key: some text
+                                                            link_single_string_name: some text
+                                                            list_parent_single_string_name: some text
+                                                            list_category: some text
+                                                            list_pep_category: some text
+                                                            list_do_bs: some text
+                                                            list_countries: some text
+                                                            rank_string: some text
+                                                            ranktype: some text
+                                                            rankweight: some text
+                                                            pair_load_date: some text
+                                                            e_address_to: some text
+                                                            e_address_cc: some text
+                                                            origin: some text
+                                                            secondsviewed: some text
+                                                            initial_user: some text
+                                                            is_pair_parent_flag: some text
+                                                            pair_met_search_criteria_flag: some text
+                                                            editable_due_to_assignment_flag: some text
+                                                            modify_date: some text
+                                                            modified_by_user: some text
+                                                            pair_report_type: some text
+                                                            finscan_category: some text
+                                                            wrapper_status: some text
+                                                            source_lists: some text
                                                         -
                                                             id: some text
                                                             alt_names:
@@ -1146,11 +1185,50 @@ paths:
                                                             country: some text
                                                             notes: some text
                                                             frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
+                                                            start: some text
+                                                            end: some text
                                                             frserve: some text
                                                             optional_ID: some text
                                                             alert_type: some text
+                                                            pair_status: some text
+                                                            pair_reason: some text
+                                                            pair_comments: some text
+                                                            application_display_name: some text
+                                                            application_id: some text
+                                                            client_id: some text
+                                                            client_key: some text
+                                                            client_full_name: some text
+                                                            list_key: some text
+                                                            list_name: some text
+                                                            list_id: some text
+                                                            list_version: some text
+                                                            list_modify_date: some text
+                                                            list_profile_id: some text
+                                                            list_profile_key: some text
+                                                            link_single_string_name: some text
+                                                            list_parent_single_string_name: some text
+                                                            list_category: some text
+                                                            list_pep_category: some text
+                                                            list_do_bs: some text
+                                                            list_countries: some text
+                                                            rank_string: some text
+                                                            ranktype: some text
+                                                            rankweight: some text
+                                                            pair_load_date: some text
+                                                            e_address_to: some text
+                                                            e_address_cc: some text
+                                                            origin: some text
+                                                            secondsviewed: some text
+                                                            initial_user: some text
+                                                            is_pair_parent_flag: some text
+                                                            pair_met_search_criteria_flag: some text
+                                                            editable_due_to_assignment_flag: some text
+                                                            modify_date: some text
+                                                            modified_by_user: some text
+                                                            pair_report_type: some text
+                                                            finscan_category: some text
+                                                            wrapper_status: some text
+                                                            source_lists: some text
                                                 -
                                                     search_terms:
                                                         name: some text
@@ -1180,11 +1258,50 @@ paths:
                                                             country: some text
                                                             notes: some text
                                                             frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
+                                                            start: some text
+                                                            end: some text
                                                             frserve: some text
                                                             optional_ID: some text
                                                             alert_type: some text
+                                                            pair_status: some text
+                                                            pair_reason: some text
+                                                            pair_comments: some text
+                                                            application_display_name: some text
+                                                            application_id: some text
+                                                            client_id: some text
+                                                            client_key: some text
+                                                            client_full_name: some text
+                                                            list_key: some text
+                                                            list_name: some text
+                                                            list_id: some text
+                                                            list_version: some text
+                                                            list_modify_date: some text
+                                                            list_profile_id: some text
+                                                            list_profile_key: some text
+                                                            link_single_string_name: some text
+                                                            list_parent_single_string_name: some text
+                                                            list_category: some text
+                                                            list_pep_category: some text
+                                                            list_do_bs: some text
+                                                            list_countries: some text
+                                                            rank_string: some text
+                                                            ranktype: some text
+                                                            rankweight: some text
+                                                            pair_load_date: some text
+                                                            e_address_to: some text
+                                                            e_address_cc: some text
+                                                            origin: some text
+                                                            secondsviewed: some text
+                                                            initial_user: some text
+                                                            is_pair_parent_flag: some text
+                                                            pair_met_search_criteria_flag: some text
+                                                            editable_due_to_assignment_flag: some text
+                                                            modify_date: some text
+                                                            modified_by_user: some text
+                                                            pair_report_type: some text
+                                                            finscan_category: some text
+                                                            wrapper_status: some text
+                                                            source_lists: some text
                                                         -
                                                             id: some text
                                                             alt_names:
@@ -1204,24 +1321,67 @@ paths:
                                                             country: some text
                                                             notes: some text
                                                             frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
+                                                            start: some text
+                                                            end: some text
                                                             frserve: some text
                                                             optional_ID: some text
                                                             alert_type: some text
+                                                            pair_status: some text
+                                                            pair_reason: some text
+                                                            pair_comments: some text
+                                                            application_display_name: some text
+                                                            application_id: some text
+                                                            client_id: some text
+                                                            client_key: some text
+                                                            client_full_name: some text
+                                                            list_key: some text
+                                                            list_name: some text
+                                                            list_id: some text
+                                                            list_version: some text
+                                                            list_modify_date: some text
+                                                            list_profile_id: some text
+                                                            list_profile_key: some text
+                                                            link_single_string_name: some text
+                                                            list_parent_single_string_name: some text
+                                                            list_category: some text
+                                                            list_pep_category: some text
+                                                            list_do_bs: some text
+                                                            list_countries: some text
+                                                            rank_string: some text
+                                                            ranktype: some text
+                                                            rankweight: some text
+                                                            pair_load_date: some text
+                                                            e_address_to: some text
+                                                            e_address_cc: some text
+                                                            origin: some text
+                                                            secondsviewed: some text
+                                                            initial_user: some text
+                                                            is_pair_parent_flag: some text
+                                                            pair_met_search_criteria_flag: some text
+                                                            editable_due_to_assignment_flag: some text
+                                                            modify_date: some text
+                                                            modified_by_user: some text
+                                                            pair_report_type: some text
+                                                            finscan_category: some text
+                                                            wrapper_status: some text
+                                                            source_lists: some text
                                             internal:
                                                 -
-                                                    id: 95
+                                                    id: 32
                                                     email: some text
                                                     colour: some text
                                                     last_name: some text
                                                     first_name: some text
                                                 -
-                                                    id: 75
+                                                    id: 74
                                                     email: some text
                                                     colour: some text
                                                     last_name: some text
                                                     first_name: some text
+                                        email_template:
+                                            id: 46
+                                            name: some text
+                                            template_type: some text
                     description: Created the `Invite` for the `Location`
                 '400':
                     content:
@@ -1344,37 +1504,175 @@ paths:
                                 default:
                                     value:
                                         pagination:
-                                            total_records: 44
-                                            current_offset: 89
-                                            next_offset: 51
+                                            total_records: 92
+                                            current_offset: 91
+                                            next_offset: 45
                                         invites:
                                             -
-                                                id: 69
+                                                id: 26
                                                 first_name: some text
                                                 last_name: some text
                                                 start_date: '2018-02-10T09:30Z'
                                                 location:
-                                                    id: 93
+                                                    id: 5
                                                     name: some text
-                                                watchlist_colour: GREEN
+                                                watchlist_colour: RED
                                                 hosts:
                                                     -
-                                                        id: 55
+                                                        id: 8
                                                         email: some text
                                                         first_name: some text
                                                         last_name: some text
                                                         mobile: some text
                                                         profile_pic_url: some text
+                                                        department: some text
                                                     -
-                                                        id: 32
+                                                        id: 44
                                                         email: some text
                                                         first_name: some text
                                                         last_name: some text
                                                         mobile: some text
                                                         profile_pic_url: some text
+                                                        department: some text
                                                 invite_watchlist:
-                                                    id: 22
+                                                    id: 19
                                                     external:
+                                                        -
+                                                            search_terms:
+                                                                name: some text
+                                                                company: some text
+                                                                city: some text
+                                                                country: some text
+                                                                state: some text
+                                                            integration: some text
+                                                            colour: ORANGE
+                                                            matches:
+                                                                -
+                                                                    id: some text
+                                                                    alt_names:
+                                                                        - some text
+                                                                        - some text
+                                                                    federal_register_notice: some text
+                                                                    name: some text
+                                                                    source_information_url: some text
+                                                                    source_list_url: some text
+                                                                    list: some text
+                                                                    type: some text
+                                                                    category: some text
+                                                                    street1: some text
+                                                                    street2: some text
+                                                                    city: some text
+                                                                    state: some text
+                                                                    country: some text
+                                                                    notes: some text
+                                                                    frc: some text
+                                                                    start: some text
+                                                                    end: some text
+                                                                    frserve: some text
+                                                                    optional_ID: some text
+                                                                    alert_type: some text
+                                                                    pair_status: some text
+                                                                    pair_reason: some text
+                                                                    pair_comments: some text
+                                                                    application_display_name: some text
+                                                                    application_id: some text
+                                                                    client_id: some text
+                                                                    client_key: some text
+                                                                    client_full_name: some text
+                                                                    list_key: some text
+                                                                    list_name: some text
+                                                                    list_id: some text
+                                                                    list_version: some text
+                                                                    list_modify_date: some text
+                                                                    list_profile_id: some text
+                                                                    list_profile_key: some text
+                                                                    link_single_string_name: some text
+                                                                    list_parent_single_string_name: some text
+                                                                    list_category: some text
+                                                                    list_pep_category: some text
+                                                                    list_do_bs: some text
+                                                                    list_countries: some text
+                                                                    rank_string: some text
+                                                                    ranktype: some text
+                                                                    rankweight: some text
+                                                                    pair_load_date: some text
+                                                                    e_address_to: some text
+                                                                    e_address_cc: some text
+                                                                    origin: some text
+                                                                    secondsviewed: some text
+                                                                    initial_user: some text
+                                                                    is_pair_parent_flag: some text
+                                                                    pair_met_search_criteria_flag: some text
+                                                                    editable_due_to_assignment_flag: some text
+                                                                    modify_date: some text
+                                                                    modified_by_user: some text
+                                                                    pair_report_type: some text
+                                                                    finscan_category: some text
+                                                                    wrapper_status: some text
+                                                                    source_lists: some text
+                                                                -
+                                                                    id: some text
+                                                                    alt_names:
+                                                                        - some text
+                                                                        - some text
+                                                                    federal_register_notice: some text
+                                                                    name: some text
+                                                                    source_information_url: some text
+                                                                    source_list_url: some text
+                                                                    list: some text
+                                                                    type: some text
+                                                                    category: some text
+                                                                    street1: some text
+                                                                    street2: some text
+                                                                    city: some text
+                                                                    state: some text
+                                                                    country: some text
+                                                                    notes: some text
+                                                                    frc: some text
+                                                                    start: some text
+                                                                    end: some text
+                                                                    frserve: some text
+                                                                    optional_ID: some text
+                                                                    alert_type: some text
+                                                                    pair_status: some text
+                                                                    pair_reason: some text
+                                                                    pair_comments: some text
+                                                                    application_display_name: some text
+                                                                    application_id: some text
+                                                                    client_id: some text
+                                                                    client_key: some text
+                                                                    client_full_name: some text
+                                                                    list_key: some text
+                                                                    list_name: some text
+                                                                    list_id: some text
+                                                                    list_version: some text
+                                                                    list_modify_date: some text
+                                                                    list_profile_id: some text
+                                                                    list_profile_key: some text
+                                                                    link_single_string_name: some text
+                                                                    list_parent_single_string_name: some text
+                                                                    list_category: some text
+                                                                    list_pep_category: some text
+                                                                    list_do_bs: some text
+                                                                    list_countries: some text
+                                                                    rank_string: some text
+                                                                    ranktype: some text
+                                                                    rankweight: some text
+                                                                    pair_load_date: some text
+                                                                    e_address_to: some text
+                                                                    e_address_cc: some text
+                                                                    origin: some text
+                                                                    secondsviewed: some text
+                                                                    initial_user: some text
+                                                                    is_pair_parent_flag: some text
+                                                                    pair_met_search_criteria_flag: some text
+                                                                    editable_due_to_assignment_flag: some text
+                                                                    modify_date: some text
+                                                                    modified_by_user: some text
+                                                                    pair_report_type: some text
+                                                                    finscan_category: some text
+                                                                    wrapper_status: some text
+                                                                    source_lists: some text
                                                         -
                                                             search_terms:
                                                                 name: some text
@@ -1404,11 +1702,50 @@ paths:
                                                                     country: some text
                                                                     notes: some text
                                                                     frc: some text
-                                                                    start: '2018-01-17'
-                                                                    end: '2018-01-17'
+                                                                    start: some text
+                                                                    end: some text
                                                                     frserve: some text
                                                                     optional_ID: some text
                                                                     alert_type: some text
+                                                                    pair_status: some text
+                                                                    pair_reason: some text
+                                                                    pair_comments: some text
+                                                                    application_display_name: some text
+                                                                    application_id: some text
+                                                                    client_id: some text
+                                                                    client_key: some text
+                                                                    client_full_name: some text
+                                                                    list_key: some text
+                                                                    list_name: some text
+                                                                    list_id: some text
+                                                                    list_version: some text
+                                                                    list_modify_date: some text
+                                                                    list_profile_id: some text
+                                                                    list_profile_key: some text
+                                                                    link_single_string_name: some text
+                                                                    list_parent_single_string_name: some text
+                                                                    list_category: some text
+                                                                    list_pep_category: some text
+                                                                    list_do_bs: some text
+                                                                    list_countries: some text
+                                                                    rank_string: some text
+                                                                    ranktype: some text
+                                                                    rankweight: some text
+                                                                    pair_load_date: some text
+                                                                    e_address_to: some text
+                                                                    e_address_cc: some text
+                                                                    origin: some text
+                                                                    secondsviewed: some text
+                                                                    initial_user: some text
+                                                                    is_pair_parent_flag: some text
+                                                                    pair_met_search_criteria_flag: some text
+                                                                    editable_due_to_assignment_flag: some text
+                                                                    modify_date: some text
+                                                                    modified_by_user: some text
+                                                                    pair_report_type: some text
+                                                                    finscan_category: some text
+                                                                    wrapper_status: some text
+                                                                    source_lists: some text
                                                                 -
                                                                     id: some text
                                                                     alt_names:
@@ -1428,78 +1765,59 @@ paths:
                                                                     country: some text
                                                                     notes: some text
                                                                     frc: some text
-                                                                    start: '2018-01-17'
-                                                                    end: '2018-01-17'
+                                                                    start: some text
+                                                                    end: some text
                                                                     frserve: some text
                                                                     optional_ID: some text
                                                                     alert_type: some text
-                                                        -
-                                                            search_terms:
-                                                                name: some text
-                                                                company: some text
-                                                                city: some text
-                                                                country: some text
-                                                                state: some text
-                                                            integration: some text
-                                                            colour: YELLOW
-                                                            matches:
-                                                                -
-                                                                    id: some text
-                                                                    alt_names:
-                                                                        - some text
-                                                                        - some text
-                                                                    federal_register_notice: some text
-                                                                    name: some text
-                                                                    source_information_url: some text
-                                                                    source_list_url: some text
-                                                                    list: some text
-                                                                    type: some text
-                                                                    category: some text
-                                                                    street1: some text
-                                                                    street2: some text
-                                                                    city: some text
-                                                                    state: some text
-                                                                    country: some text
-                                                                    notes: some text
-                                                                    frc: some text
-                                                                    start: '2018-01-17'
-                                                                    end: '2018-01-17'
-                                                                    frserve: some text
-                                                                    optional_ID: some text
-                                                                    alert_type: some text
-                                                                -
-                                                                    id: some text
-                                                                    alt_names:
-                                                                        - some text
-                                                                        - some text
-                                                                    federal_register_notice: some text
-                                                                    name: some text
-                                                                    source_information_url: some text
-                                                                    source_list_url: some text
-                                                                    list: some text
-                                                                    type: some text
-                                                                    category: some text
-                                                                    street1: some text
-                                                                    street2: some text
-                                                                    city: some text
-                                                                    state: some text
-                                                                    country: some text
-                                                                    notes: some text
-                                                                    frc: some text
-                                                                    start: '2018-01-17'
-                                                                    end: '2018-01-17'
-                                                                    frserve: some text
-                                                                    optional_ID: some text
-                                                                    alert_type: some text
+                                                                    pair_status: some text
+                                                                    pair_reason: some text
+                                                                    pair_comments: some text
+                                                                    application_display_name: some text
+                                                                    application_id: some text
+                                                                    client_id: some text
+                                                                    client_key: some text
+                                                                    client_full_name: some text
+                                                                    list_key: some text
+                                                                    list_name: some text
+                                                                    list_id: some text
+                                                                    list_version: some text
+                                                                    list_modify_date: some text
+                                                                    list_profile_id: some text
+                                                                    list_profile_key: some text
+                                                                    link_single_string_name: some text
+                                                                    list_parent_single_string_name: some text
+                                                                    list_category: some text
+                                                                    list_pep_category: some text
+                                                                    list_do_bs: some text
+                                                                    list_countries: some text
+                                                                    rank_string: some text
+                                                                    ranktype: some text
+                                                                    rankweight: some text
+                                                                    pair_load_date: some text
+                                                                    e_address_to: some text
+                                                                    e_address_cc: some text
+                                                                    origin: some text
+                                                                    secondsviewed: some text
+                                                                    initial_user: some text
+                                                                    is_pair_parent_flag: some text
+                                                                    pair_met_search_criteria_flag: some text
+                                                                    editable_due_to_assignment_flag: some text
+                                                                    modify_date: some text
+                                                                    modified_by_user: some text
+                                                                    pair_report_type: some text
+                                                                    finscan_category: some text
+                                                                    wrapper_status: some text
+                                                                    source_lists: some text
                                                     internal:
                                                         -
-                                                            id: 50
+                                                            id: 37
                                                             email: some text
                                                             colour: some text
                                                             last_name: some text
                                                             first_name: some text
                                                         -
-                                                            id: 80
+                                                            id: 64
                                                             email: some text
                                                             colour: some text
                                                             last_name: some text
@@ -1507,31 +1825,33 @@ paths:
                                                 end_date: '2018-02-10T09:30Z'
                                                 email: some text
                                             -
-                                                id: 46
+                                                id: 88
                                                 first_name: some text
                                                 last_name: some text
                                                 start_date: '2018-02-10T09:30Z'
                                                 location:
-                                                    id: 87
+                                                    id: 8
                                                     name: some text
                                                 watchlist_colour: ORANGE
                                                 hosts:
                                                     -
-                                                        id: 4
+                                                        id: 91
                                                         email: some text
                                                         first_name: some text
                                                         last_name: some text
                                                         mobile: some text
                                                         profile_pic_url: some text
+                                                        department: some text
                                                     -
-                                                        id: 70
+                                                        id: 37
                                                         email: some text
                                                         first_name: some text
                                                         last_name: some text
                                                         mobile: some text
                                                         profile_pic_url: some text
+                                                        department: some text
                                                 invite_watchlist:
-                                                    id: 63
+                                                    id: 25
                                                     external:
                                                         -
                                                             search_terms:
@@ -1562,11 +1882,50 @@ paths:
                                                                     country: some text
                                                                     notes: some text
                                                                     frc: some text
-                                                                    start: '2018-01-17'
-                                                                    end: '2018-01-17'
+                                                                    start: some text
+                                                                    end: some text
                                                                     frserve: some text
                                                                     optional_ID: some text
                                                                     alert_type: some text
+                                                                    pair_status: some text
+                                                                    pair_reason: some text
+                                                                    pair_comments: some text
+                                                                    application_display_name: some text
+                                                                    application_id: some text
+                                                                    client_id: some text
+                                                                    client_key: some text
+                                                                    client_full_name: some text
+                                                                    list_key: some text
+                                                                    list_name: some text
+                                                                    list_id: some text
+                                                                    list_version: some text
+                                                                    list_modify_date: some text
+                                                                    list_profile_id: some text
+                                                                    list_profile_key: some text
+                                                                    link_single_string_name: some text
+                                                                    list_parent_single_string_name: some text
+                                                                    list_category: some text
+                                                                    list_pep_category: some text
+                                                                    list_do_bs: some text
+                                                                    list_countries: some text
+                                                                    rank_string: some text
+                                                                    ranktype: some text
+                                                                    rankweight: some text
+                                                                    pair_load_date: some text
+                                                                    e_address_to: some text
+                                                                    e_address_cc: some text
+                                                                    origin: some text
+                                                                    secondsviewed: some text
+                                                                    initial_user: some text
+                                                                    is_pair_parent_flag: some text
+                                                                    pair_met_search_criteria_flag: some text
+                                                                    editable_due_to_assignment_flag: some text
+                                                                    modify_date: some text
+                                                                    modified_by_user: some text
+                                                                    pair_report_type: some text
+                                                                    finscan_category: some text
+                                                                    wrapper_status: some text
+                                                                    source_lists: some text
                                                                 -
                                                                     id: some text
                                                                     alt_names:
@@ -1586,11 +1945,50 @@ paths:
                                                                     country: some text
                                                                     notes: some text
                                                                     frc: some text
-                                                                    start: '2018-01-17'
-                                                                    end: '2018-01-17'
+                                                                    start: some text
+                                                                    end: some text
                                                                     frserve: some text
                                                                     optional_ID: some text
                                                                     alert_type: some text
+                                                                    pair_status: some text
+                                                                    pair_reason: some text
+                                                                    pair_comments: some text
+                                                                    application_display_name: some text
+                                                                    application_id: some text
+                                                                    client_id: some text
+                                                                    client_key: some text
+                                                                    client_full_name: some text
+                                                                    list_key: some text
+                                                                    list_name: some text
+                                                                    list_id: some text
+                                                                    list_version: some text
+                                                                    list_modify_date: some text
+                                                                    list_profile_id: some text
+                                                                    list_profile_key: some text
+                                                                    link_single_string_name: some text
+                                                                    list_parent_single_string_name: some text
+                                                                    list_category: some text
+                                                                    list_pep_category: some text
+                                                                    list_do_bs: some text
+                                                                    list_countries: some text
+                                                                    rank_string: some text
+                                                                    ranktype: some text
+                                                                    rankweight: some text
+                                                                    pair_load_date: some text
+                                                                    e_address_to: some text
+                                                                    e_address_cc: some text
+                                                                    origin: some text
+                                                                    secondsviewed: some text
+                                                                    initial_user: some text
+                                                                    is_pair_parent_flag: some text
+                                                                    pair_met_search_criteria_flag: some text
+                                                                    editable_due_to_assignment_flag: some text
+                                                                    modify_date: some text
+                                                                    modified_by_user: some text
+                                                                    pair_report_type: some text
+                                                                    finscan_category: some text
+                                                                    wrapper_status: some text
+                                                                    source_lists: some text
                                                         -
                                                             search_terms:
                                                                 name: some text
@@ -1599,7 +1997,7 @@ paths:
                                                                 country: some text
                                                                 state: some text
                                                             integration: some text
-                                                            colour: YELLOW
+                                                            colour: ORANGE
                                                             matches:
                                                                 -
                                                                     id: some text
@@ -1620,11 +2018,50 @@ paths:
                                                                     country: some text
                                                                     notes: some text
                                                                     frc: some text
-                                                                    start: '2018-01-17'
-                                                                    end: '2018-01-17'
+                                                                    start: some text
+                                                                    end: some text
                                                                     frserve: some text
                                                                     optional_ID: some text
                                                                     alert_type: some text
+                                                                    pair_status: some text
+                                                                    pair_reason: some text
+                                                                    pair_comments: some text
+                                                                    application_display_name: some text
+                                                                    application_id: some text
+                                                                    client_id: some text
+                                                                    client_key: some text
+                                                                    client_full_name: some text
+                                                                    list_key: some text
+                                                                    list_name: some text
+                                                                    list_id: some text
+                                                                    list_version: some text
+                                                                    list_modify_date: some text
+                                                                    list_profile_id: some text
+                                                                    list_profile_key: some text
+                                                                    link_single_string_name: some text
+                                                                    list_parent_single_string_name: some text
+                                                                    list_category: some text
+                                                                    list_pep_category: some text
+                                                                    list_do_bs: some text
+                                                                    list_countries: some text
+                                                                    rank_string: some text
+                                                                    ranktype: some text
+                                                                    rankweight: some text
+                                                                    pair_load_date: some text
+                                                                    e_address_to: some text
+                                                                    e_address_cc: some text
+                                                                    origin: some text
+                                                                    secondsviewed: some text
+                                                                    initial_user: some text
+                                                                    is_pair_parent_flag: some text
+                                                                    pair_met_search_criteria_flag: some text
+                                                                    editable_due_to_assignment_flag: some text
+                                                                    modify_date: some text
+                                                                    modified_by_user: some text
+                                                                    pair_report_type: some text
+                                                                    finscan_category: some text
+                                                                    wrapper_status: some text
+                                                                    source_lists: some text
                                                                 -
                                                                     id: some text
                                                                     alt_names:
@@ -1644,20 +2081,59 @@ paths:
                                                                     country: some text
                                                                     notes: some text
                                                                     frc: some text
-                                                                    start: '2018-01-17'
-                                                                    end: '2018-01-17'
+                                                                    start: some text
+                                                                    end: some text
                                                                     frserve: some text
                                                                     optional_ID: some text
                                                                     alert_type: some text
+                                                                    pair_status: some text
+                                                                    pair_reason: some text
+                                                                    pair_comments: some text
+                                                                    application_display_name: some text
+                                                                    application_id: some text
+                                                                    client_id: some text
+                                                                    client_key: some text
+                                                                    client_full_name: some text
+                                                                    list_key: some text
+                                                                    list_name: some text
+                                                                    list_id: some text
+                                                                    list_version: some text
+                                                                    list_modify_date: some text
+                                                                    list_profile_id: some text
+                                                                    list_profile_key: some text
+                                                                    link_single_string_name: some text
+                                                                    list_parent_single_string_name: some text
+                                                                    list_category: some text
+                                                                    list_pep_category: some text
+                                                                    list_do_bs: some text
+                                                                    list_countries: some text
+                                                                    rank_string: some text
+                                                                    ranktype: some text
+                                                                    rankweight: some text
+                                                                    pair_load_date: some text
+                                                                    e_address_to: some text
+                                                                    e_address_cc: some text
+                                                                    origin: some text
+                                                                    secondsviewed: some text
+                                                                    initial_user: some text
+                                                                    is_pair_parent_flag: some text
+                                                                    pair_met_search_criteria_flag: some text
+                                                                    editable_due_to_assignment_flag: some text
+                                                                    modify_date: some text
+                                                                    modified_by_user: some text
+                                                                    pair_report_type: some text
+                                                                    finscan_category: some text
+                                                                    wrapper_status: some text
+                                                                    source_lists: some text
                                                     internal:
                                                         -
-                                                            id: 79
+                                                            id: 89
                                                             email: some text
                                                             colour: some text
                                                             last_name: some text
                                                             first_name: some text
                                                         -
-                                                            id: 91
+                                                            id: 36
                                                             email: some text
                                                             colour: some text
                                                             last_name: some text
@@ -2538,7 +3014,7 @@ paths:
                             examples:
                                 default:
                                     value:
-                                        id: 2
+                                        id: 67
                                         company: some text
                                         created_at: '2018-02-10T09:30Z'
                                         email: some text
@@ -2548,27 +3024,25 @@ paths:
                                         start_date: '2018-02-10T09:30Z'
                                         hosts:
                                             -
-                                                id: 68
+                                                id: 89
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
+                                                department: some text
                                             -
-                                                id: 82
+                                                id: 27
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
+                                                department: some text
                                         location:
-                                            id: 10
+                                            id: 62
                                             name: some text
-                                        watchlist_colour: GREEN
-                                        template:
-                                            id: 0
-                                            name: some text
-                                            template_type: some text
+                                        watchlist_colour: YELLOW
                                         custom_fields:
                                             -
                                                 format: string
@@ -2581,19 +3055,19 @@ paths:
                                         notification_triggers:
                                             -
                                                 offset_direction: AFTER
-                                                offset_amount: 95
+                                                offset_amount: 96
                                                 offset_origin: START
-                                                email_template_id: 83
+                                                email_template_id: 29
                                                 notification_groups:
                                                     - some text
                                                     - some text
-                                                offset_unit: days
+                                                offset_unit: hours
                                                 email_template_name: some text
                                             -
-                                                offset_direction: AFTER
-                                                offset_amount: 32
+                                                offset_direction: BEFORE
+                                                offset_amount: 41
                                                 offset_origin: END
-                                                email_template_id: 32
+                                                email_template_id: 85
                                                 notification_groups:
                                                     - some text
                                                     - some text
@@ -2601,66 +3075,8 @@ paths:
                                                 email_template_name: some text
                                         mobile: some text
                                         invite_watchlist:
-                                            id: 47
+                                            id: 42
                                             external:
-                                                -
-                                                    search_terms:
-                                                        name: some text
-                                                        company: some text
-                                                        city: some text
-                                                        country: some text
-                                                        state: some text
-                                                    integration: some text
-                                                    colour: GREEN
-                                                    matches:
-                                                        -
-                                                            id: some text
-                                                            alt_names:
-                                                                - some text
-                                                                - some text
-                                                            federal_register_notice: some text
-                                                            name: some text
-                                                            source_information_url: some text
-                                                            source_list_url: some text
-                                                            list: some text
-                                                            type: some text
-                                                            category: some text
-                                                            street1: some text
-                                                            street2: some text
-                                                            city: some text
-                                                            state: some text
-                                                            country: some text
-                                                            notes: some text
-                                                            frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
-                                                            frserve: some text
-                                                            optional_ID: some text
-                                                            alert_type: some text
-                                                        -
-                                                            id: some text
-                                                            alt_names:
-                                                                - some text
-                                                                - some text
-                                                            federal_register_notice: some text
-                                                            name: some text
-                                                            source_information_url: some text
-                                                            source_list_url: some text
-                                                            list: some text
-                                                            type: some text
-                                                            category: some text
-                                                            street1: some text
-                                                            street2: some text
-                                                            city: some text
-                                                            state: some text
-                                                            country: some text
-                                                            notes: some text
-                                                            frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
-                                                            frserve: some text
-                                                            optional_ID: some text
-                                                            alert_type: some text
                                                 -
                                                     search_terms:
                                                         name: some text
@@ -2690,11 +3106,50 @@ paths:
                                                             country: some text
                                                             notes: some text
                                                             frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
+                                                            start: some text
+                                                            end: some text
                                                             frserve: some text
                                                             optional_ID: some text
                                                             alert_type: some text
+                                                            pair_status: some text
+                                                            pair_reason: some text
+                                                            pair_comments: some text
+                                                            application_display_name: some text
+                                                            application_id: some text
+                                                            client_id: some text
+                                                            client_key: some text
+                                                            client_full_name: some text
+                                                            list_key: some text
+                                                            list_name: some text
+                                                            list_id: some text
+                                                            list_version: some text
+                                                            list_modify_date: some text
+                                                            list_profile_id: some text
+                                                            list_profile_key: some text
+                                                            link_single_string_name: some text
+                                                            list_parent_single_string_name: some text
+                                                            list_category: some text
+                                                            list_pep_category: some text
+                                                            list_do_bs: some text
+                                                            list_countries: some text
+                                                            rank_string: some text
+                                                            ranktype: some text
+                                                            rankweight: some text
+                                                            pair_load_date: some text
+                                                            e_address_to: some text
+                                                            e_address_cc: some text
+                                                            origin: some text
+                                                            secondsviewed: some text
+                                                            initial_user: some text
+                                                            is_pair_parent_flag: some text
+                                                            pair_met_search_criteria_flag: some text
+                                                            editable_due_to_assignment_flag: some text
+                                                            modify_date: some text
+                                                            modified_by_user: some text
+                                                            pair_report_type: some text
+                                                            finscan_category: some text
+                                                            wrapper_status: some text
+                                                            source_lists: some text
                                                         -
                                                             id: some text
                                                             alt_names:
@@ -2714,24 +3169,203 @@ paths:
                                                             country: some text
                                                             notes: some text
                                                             frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
+                                                            start: some text
+                                                            end: some text
                                                             frserve: some text
                                                             optional_ID: some text
                                                             alert_type: some text
+                                                            pair_status: some text
+                                                            pair_reason: some text
+                                                            pair_comments: some text
+                                                            application_display_name: some text
+                                                            application_id: some text
+                                                            client_id: some text
+                                                            client_key: some text
+                                                            client_full_name: some text
+                                                            list_key: some text
+                                                            list_name: some text
+                                                            list_id: some text
+                                                            list_version: some text
+                                                            list_modify_date: some text
+                                                            list_profile_id: some text
+                                                            list_profile_key: some text
+                                                            link_single_string_name: some text
+                                                            list_parent_single_string_name: some text
+                                                            list_category: some text
+                                                            list_pep_category: some text
+                                                            list_do_bs: some text
+                                                            list_countries: some text
+                                                            rank_string: some text
+                                                            ranktype: some text
+                                                            rankweight: some text
+                                                            pair_load_date: some text
+                                                            e_address_to: some text
+                                                            e_address_cc: some text
+                                                            origin: some text
+                                                            secondsviewed: some text
+                                                            initial_user: some text
+                                                            is_pair_parent_flag: some text
+                                                            pair_met_search_criteria_flag: some text
+                                                            editable_due_to_assignment_flag: some text
+                                                            modify_date: some text
+                                                            modified_by_user: some text
+                                                            pair_report_type: some text
+                                                            finscan_category: some text
+                                                            wrapper_status: some text
+                                                            source_lists: some text
+                                                -
+                                                    search_terms:
+                                                        name: some text
+                                                        company: some text
+                                                        city: some text
+                                                        country: some text
+                                                        state: some text
+                                                    integration: some text
+                                                    colour: GREEN
+                                                    matches:
+                                                        -
+                                                            id: some text
+                                                            alt_names:
+                                                                - some text
+                                                                - some text
+                                                            federal_register_notice: some text
+                                                            name: some text
+                                                            source_information_url: some text
+                                                            source_list_url: some text
+                                                            list: some text
+                                                            type: some text
+                                                            category: some text
+                                                            street1: some text
+                                                            street2: some text
+                                                            city: some text
+                                                            state: some text
+                                                            country: some text
+                                                            notes: some text
+                                                            frc: some text
+                                                            start: some text
+                                                            end: some text
+                                                            frserve: some text
+                                                            optional_ID: some text
+                                                            alert_type: some text
+                                                            pair_status: some text
+                                                            pair_reason: some text
+                                                            pair_comments: some text
+                                                            application_display_name: some text
+                                                            application_id: some text
+                                                            client_id: some text
+                                                            client_key: some text
+                                                            client_full_name: some text
+                                                            list_key: some text
+                                                            list_name: some text
+                                                            list_id: some text
+                                                            list_version: some text
+                                                            list_modify_date: some text
+                                                            list_profile_id: some text
+                                                            list_profile_key: some text
+                                                            link_single_string_name: some text
+                                                            list_parent_single_string_name: some text
+                                                            list_category: some text
+                                                            list_pep_category: some text
+                                                            list_do_bs: some text
+                                                            list_countries: some text
+                                                            rank_string: some text
+                                                            ranktype: some text
+                                                            rankweight: some text
+                                                            pair_load_date: some text
+                                                            e_address_to: some text
+                                                            e_address_cc: some text
+                                                            origin: some text
+                                                            secondsviewed: some text
+                                                            initial_user: some text
+                                                            is_pair_parent_flag: some text
+                                                            pair_met_search_criteria_flag: some text
+                                                            editable_due_to_assignment_flag: some text
+                                                            modify_date: some text
+                                                            modified_by_user: some text
+                                                            pair_report_type: some text
+                                                            finscan_category: some text
+                                                            wrapper_status: some text
+                                                            source_lists: some text
+                                                        -
+                                                            id: some text
+                                                            alt_names:
+                                                                - some text
+                                                                - some text
+                                                            federal_register_notice: some text
+                                                            name: some text
+                                                            source_information_url: some text
+                                                            source_list_url: some text
+                                                            list: some text
+                                                            type: some text
+                                                            category: some text
+                                                            street1: some text
+                                                            street2: some text
+                                                            city: some text
+                                                            state: some text
+                                                            country: some text
+                                                            notes: some text
+                                                            frc: some text
+                                                            start: some text
+                                                            end: some text
+                                                            frserve: some text
+                                                            optional_ID: some text
+                                                            alert_type: some text
+                                                            pair_status: some text
+                                                            pair_reason: some text
+                                                            pair_comments: some text
+                                                            application_display_name: some text
+                                                            application_id: some text
+                                                            client_id: some text
+                                                            client_key: some text
+                                                            client_full_name: some text
+                                                            list_key: some text
+                                                            list_name: some text
+                                                            list_id: some text
+                                                            list_version: some text
+                                                            list_modify_date: some text
+                                                            list_profile_id: some text
+                                                            list_profile_key: some text
+                                                            link_single_string_name: some text
+                                                            list_parent_single_string_name: some text
+                                                            list_category: some text
+                                                            list_pep_category: some text
+                                                            list_do_bs: some text
+                                                            list_countries: some text
+                                                            rank_string: some text
+                                                            ranktype: some text
+                                                            rankweight: some text
+                                                            pair_load_date: some text
+                                                            e_address_to: some text
+                                                            e_address_cc: some text
+                                                            origin: some text
+                                                            secondsviewed: some text
+                                                            initial_user: some text
+                                                            is_pair_parent_flag: some text
+                                                            pair_met_search_criteria_flag: some text
+                                                            editable_due_to_assignment_flag: some text
+                                                            modify_date: some text
+                                                            modified_by_user: some text
+                                                            pair_report_type: some text
+                                                            finscan_category: some text
+                                                            wrapper_status: some text
+                                                            source_lists: some text
                                             internal:
                                                 -
-                                                    id: 57
+                                                    id: 20
                                                     email: some text
                                                     colour: some text
                                                     last_name: some text
                                                     first_name: some text
                                                 -
-                                                    id: 30
+                                                    id: 61
                                                     email: some text
                                                     colour: some text
                                                     last_name: some text
                                                     first_name: some text
+                                        email_template:
+                                            id: 33
+                                            name: some text
+                                            template_type: some text
                     description: Successful response - returns a single `Invite`.
                 '400':
                     content:
@@ -2789,7 +3423,7 @@ paths:
                             examples:
                                 default:
                                     value:
-                                        id: 54
+                                        id: 22
                                         company: some text
                                         created_at: '2018-02-10T09:30Z'
                                         email: some text
@@ -2799,27 +3433,25 @@ paths:
                                         start_date: '2018-02-10T09:30Z'
                                         hosts:
                                             -
-                                                id: 64
+                                                id: 19
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
+                                                department: some text
                                             -
-                                                id: 54
+                                                id: 95
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
                                                 mobile: some text
                                                 profile_pic_url: some text
+                                                department: some text
                                         location:
-                                            id: 67
+                                            id: 5
                                             name: some text
-                                        watchlist_colour: YELLOW
-                                        template:
-                                            id: 77
-                                            name: some text
-                                            template_type: some text
+                                        watchlist_colour: ORANGE
                                         custom_fields:
                                             -
                                                 format: string
@@ -2832,27 +3464,27 @@ paths:
                                         notification_triggers:
                                             -
                                                 offset_direction: AFTER
-                                                offset_amount: 45
+                                                offset_amount: 37
                                                 offset_origin: START
-                                                email_template_id: 93
-                                                notification_groups:
-                                                    - some text
-                                                    - some text
-                                                offset_unit: hours
-                                                email_template_name: some text
-                                            -
-                                                offset_direction: AFTER
-                                                offset_amount: 28
-                                                offset_origin: END
-                                                email_template_id: 19
+                                                email_template_id: 68
                                                 notification_groups:
                                                     - some text
                                                     - some text
                                                 offset_unit: days
                                                 email_template_name: some text
+                                            -
+                                                offset_direction: BEFORE
+                                                offset_amount: 73
+                                                offset_origin: END
+                                                email_template_id: 10
+                                                notification_groups:
+                                                    - some text
+                                                    - some text
+                                                offset_unit: hours
+                                                email_template_name: some text
                                         mobile: some text
                                         invite_watchlist:
-                                            id: 43
+                                            id: 96
                                             external:
                                                 -
                                                     search_terms:
@@ -2883,11 +3515,50 @@ paths:
                                                             country: some text
                                                             notes: some text
                                                             frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
+                                                            start: some text
+                                                            end: some text
                                                             frserve: some text
                                                             optional_ID: some text
                                                             alert_type: some text
+                                                            pair_status: some text
+                                                            pair_reason: some text
+                                                            pair_comments: some text
+                                                            application_display_name: some text
+                                                            application_id: some text
+                                                            client_id: some text
+                                                            client_key: some text
+                                                            client_full_name: some text
+                                                            list_key: some text
+                                                            list_name: some text
+                                                            list_id: some text
+                                                            list_version: some text
+                                                            list_modify_date: some text
+                                                            list_profile_id: some text
+                                                            list_profile_key: some text
+                                                            link_single_string_name: some text
+                                                            list_parent_single_string_name: some text
+                                                            list_category: some text
+                                                            list_pep_category: some text
+                                                            list_do_bs: some text
+                                                            list_countries: some text
+                                                            rank_string: some text
+                                                            ranktype: some text
+                                                            rankweight: some text
+                                                            pair_load_date: some text
+                                                            e_address_to: some text
+                                                            e_address_cc: some text
+                                                            origin: some text
+                                                            secondsviewed: some text
+                                                            initial_user: some text
+                                                            is_pair_parent_flag: some text
+                                                            pair_met_search_criteria_flag: some text
+                                                            editable_due_to_assignment_flag: some text
+                                                            modify_date: some text
+                                                            modified_by_user: some text
+                                                            pair_report_type: some text
+                                                            finscan_category: some text
+                                                            wrapper_status: some text
+                                                            source_lists: some text
                                                         -
                                                             id: some text
                                                             alt_names:
@@ -2907,11 +3578,50 @@ paths:
                                                             country: some text
                                                             notes: some text
                                                             frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
+                                                            start: some text
+                                                            end: some text
                                                             frserve: some text
                                                             optional_ID: some text
                                                             alert_type: some text
+                                                            pair_status: some text
+                                                            pair_reason: some text
+                                                            pair_comments: some text
+                                                            application_display_name: some text
+                                                            application_id: some text
+                                                            client_id: some text
+                                                            client_key: some text
+                                                            client_full_name: some text
+                                                            list_key: some text
+                                                            list_name: some text
+                                                            list_id: some text
+                                                            list_version: some text
+                                                            list_modify_date: some text
+                                                            list_profile_id: some text
+                                                            list_profile_key: some text
+                                                            link_single_string_name: some text
+                                                            list_parent_single_string_name: some text
+                                                            list_category: some text
+                                                            list_pep_category: some text
+                                                            list_do_bs: some text
+                                                            list_countries: some text
+                                                            rank_string: some text
+                                                            ranktype: some text
+                                                            rankweight: some text
+                                                            pair_load_date: some text
+                                                            e_address_to: some text
+                                                            e_address_cc: some text
+                                                            origin: some text
+                                                            secondsviewed: some text
+                                                            initial_user: some text
+                                                            is_pair_parent_flag: some text
+                                                            pair_met_search_criteria_flag: some text
+                                                            editable_due_to_assignment_flag: some text
+                                                            modify_date: some text
+                                                            modified_by_user: some text
+                                                            pair_report_type: some text
+                                                            finscan_category: some text
+                                                            wrapper_status: some text
+                                                            source_lists: some text
                                                 -
                                                     search_terms:
                                                         name: some text
@@ -2941,11 +3651,50 @@ paths:
                                                             country: some text
                                                             notes: some text
                                                             frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
+                                                            start: some text
+                                                            end: some text
                                                             frserve: some text
                                                             optional_ID: some text
                                                             alert_type: some text
+                                                            pair_status: some text
+                                                            pair_reason: some text
+                                                            pair_comments: some text
+                                                            application_display_name: some text
+                                                            application_id: some text
+                                                            client_id: some text
+                                                            client_key: some text
+                                                            client_full_name: some text
+                                                            list_key: some text
+                                                            list_name: some text
+                                                            list_id: some text
+                                                            list_version: some text
+                                                            list_modify_date: some text
+                                                            list_profile_id: some text
+                                                            list_profile_key: some text
+                                                            link_single_string_name: some text
+                                                            list_parent_single_string_name: some text
+                                                            list_category: some text
+                                                            list_pep_category: some text
+                                                            list_do_bs: some text
+                                                            list_countries: some text
+                                                            rank_string: some text
+                                                            ranktype: some text
+                                                            rankweight: some text
+                                                            pair_load_date: some text
+                                                            e_address_to: some text
+                                                            e_address_cc: some text
+                                                            origin: some text
+                                                            secondsviewed: some text
+                                                            initial_user: some text
+                                                            is_pair_parent_flag: some text
+                                                            pair_met_search_criteria_flag: some text
+                                                            editable_due_to_assignment_flag: some text
+                                                            modify_date: some text
+                                                            modified_by_user: some text
+                                                            pair_report_type: some text
+                                                            finscan_category: some text
+                                                            wrapper_status: some text
+                                                            source_lists: some text
                                                         -
                                                             id: some text
                                                             alt_names:
@@ -2965,24 +3714,67 @@ paths:
                                                             country: some text
                                                             notes: some text
                                                             frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
+                                                            start: some text
+                                                            end: some text
                                                             frserve: some text
                                                             optional_ID: some text
                                                             alert_type: some text
+                                                            pair_status: some text
+                                                            pair_reason: some text
+                                                            pair_comments: some text
+                                                            application_display_name: some text
+                                                            application_id: some text
+                                                            client_id: some text
+                                                            client_key: some text
+                                                            client_full_name: some text
+                                                            list_key: some text
+                                                            list_name: some text
+                                                            list_id: some text
+                                                            list_version: some text
+                                                            list_modify_date: some text
+                                                            list_profile_id: some text
+                                                            list_profile_key: some text
+                                                            link_single_string_name: some text
+                                                            list_parent_single_string_name: some text
+                                                            list_category: some text
+                                                            list_pep_category: some text
+                                                            list_do_bs: some text
+                                                            list_countries: some text
+                                                            rank_string: some text
+                                                            ranktype: some text
+                                                            rankweight: some text
+                                                            pair_load_date: some text
+                                                            e_address_to: some text
+                                                            e_address_cc: some text
+                                                            origin: some text
+                                                            secondsviewed: some text
+                                                            initial_user: some text
+                                                            is_pair_parent_flag: some text
+                                                            pair_met_search_criteria_flag: some text
+                                                            editable_due_to_assignment_flag: some text
+                                                            modify_date: some text
+                                                            modified_by_user: some text
+                                                            pair_report_type: some text
+                                                            finscan_category: some text
+                                                            wrapper_status: some text
+                                                            source_lists: some text
                                             internal:
                                                 -
-                                                    id: 32
+                                                    id: 74
                                                     email: some text
                                                     colour: some text
                                                     last_name: some text
                                                     first_name: some text
                                                 -
-                                                    id: 28
+                                                    id: 88
                                                     email: some text
                                                     colour: some text
                                                     last_name: some text
                                                     first_name: some text
+                                        email_template:
+                                            id: 6
+                                            name: some text
+                                            template_type: some text
                     description: Successful response.
                 '400':
                     content:
@@ -3074,15 +3866,17 @@ components:
                     type: string
                 profile_pic_url:
                     type: string
-            example: |-
-                {
-                    "id": 1,
-                    "email": "name@email.com",
-                    "first_name": "Frank",
-                    "last_name": "Longbottom",
-                    "mobile": "(604) 980-9933",
-                    "profile_pic_url": "image.jpg"
-                }
+                department:
+                    description: ''
+                    type: string
+            example:
+                id: 42
+                email: some text
+                first_name: some text
+                last_name: some text
+                mobile: some text
+                profile_pic_url: some text
+                department: some text
         EmailTemplate:
             title: Root Type for EmailTemplate
             description: The root of the EmailTemplate type's schema.

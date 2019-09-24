@@ -13,11 +13,13 @@ class Host {
   String mobile = null;
   
   String profilePicUrl = null;
+  
+  String department = null;
   Host();
 
   @override
   String toString() {
-    return 'Host[id=$id, email=$email, firstName=$firstName, lastName=$lastName, mobile=$mobile, profilePicUrl=$profilePicUrl, ]';
+    return 'Host[id=$id, email=$email, firstName=$firstName, lastName=$lastName, mobile=$mobile, profilePicUrl=$profilePicUrl, department=$department, ]';
   }
 
   Host.fromJson(Map<String, dynamic> json) {
@@ -52,6 +54,11 @@ class Host {
     } else {
           profilePicUrl = json['profile_pic_url'];
     }
+    if (json['department'] == null) {
+      department = null;
+    } else {
+          department = json['department'];
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -68,6 +75,8 @@ class Host {
       json['mobile'] = mobile;
     if (profilePicUrl != null)
       json['profile_pic_url'] = profilePicUrl;
+    if (department != null)
+      json['department'] = department;
     return json;
   }
 

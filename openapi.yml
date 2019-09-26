@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
-    title: Traction Guest API
-    version: 0.9.20
+    title: Traction Guest API (hackathon emergency notifications)
+    version: 0.9.20-hackathon
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -3052,6 +3052,25 @@ paths:
                     type: string
                 in: path
                 required: true
+    /guest_notifications:
+        summary: Path used to manage the list of guestnotifications.
+        description: >-
+            The REST endpoint/path used to list and create zero or more `GuestNotification` entities.  This
+            path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.
+        post:
+            requestBody:
+                description: A new `GuestNotification` to be created.
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/GuestNotification'
+                required: true
+            responses:
+                '201':
+                    description: Successful response.
+            operationId: createGuestNotification
+            summary: Create a GuestNotification
+            description: Creates a new instance of a `GuestNotification`.
 components:
     schemas:
         Host:
@@ -4026,6 +4045,9 @@ components:
                         $ref: '#/components/schemas/Host'
                 signin_watchlist:
                     $ref: '#/components/schemas/SigninWatchlist'
+                mobile_number:
+                    description: ''
+                    type: string
             example:
                 id: 55
                 company: some text
@@ -5385,6 +5407,25 @@ components:
                 permissions:
                     - some text
                     - some text
+        GuestNotification:
+            description: ''
+            required:
+                - signin_ids
+                - message_title
+                - message_body
+            type: object
+            properties:
+                message_body:
+                    description: Will be used for the email body and the SMS text payload
+                    type: string
+                message_title:
+                    description: Will be used for the email subject
+                    type: string
+                signin_ids:
+                    description: ''
+                    type: array
+                    items:
+                        type: integer
     securitySchemes:
         TractionGuestAuth:
             openIdConnectUrl: /.well-known/openid-configuration

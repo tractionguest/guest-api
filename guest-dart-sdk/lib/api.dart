@@ -12,6 +12,7 @@ part 'auth/api_key_auth.dart';
 part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 
+part 'api/default_api.dart';
 part 'api/email_templates_api.dart';
 part 'api/hosts_api.dart';
 part 'api/invites_api.dart';
@@ -26,6 +27,7 @@ part 'model/email_template.dart';
 part 'model/error.dart';
 part 'model/errors_list.dart';
 part 'model/external_watchlist_result.dart';
+part 'model/guest_notification.dart';
 part 'model/host.dart';
 part 'model/internal_watchlist_result.dart';
 part 'model/invite.dart';

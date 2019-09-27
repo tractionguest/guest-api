@@ -49,6 +49,8 @@ class ApiClient {
           return ErrorsList.fromJson(value);
         case 'ExternalWatchlistResult':
           return ExternalWatchlistResult.fromJson(value);
+        case 'GuestNotification':
+          return GuestNotification.fromJson(value);
         case 'Host':
           return Host.fromJson(value);
         case 'InternalWatchlistResult':

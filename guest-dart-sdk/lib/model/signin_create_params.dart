@@ -21,11 +21,13 @@ class SigninCreateParams {
   String company = null;
   
   String email = null;
+  
+  String mobileNumber = null;
   SigninCreateParams();
 
   @override
   String toString() {
-    return 'SigninCreateParams[guestEmailTemplateId=$guestEmailTemplateId, hostEmailTemplateId=$hostEmailTemplateId, hostIds=$hostIds, locationId=$locationId, sendNotifications=$sendNotifications, smsMessage=$smsMessage, firstName=$firstName, lastName=$lastName, company=$company, email=$email, ]';
+    return 'SigninCreateParams[guestEmailTemplateId=$guestEmailTemplateId, hostEmailTemplateId=$hostEmailTemplateId, hostIds=$hostIds, locationId=$locationId, sendNotifications=$sendNotifications, smsMessage=$smsMessage, firstName=$firstName, lastName=$lastName, company=$company, email=$email, mobileNumber=$mobileNumber, ]';
   }
 
   SigninCreateParams.fromJson(Map<String, dynamic> json) {
@@ -80,6 +82,11 @@ class SigninCreateParams {
     } else {
           email = json['email'];
     }
+    if (json['mobile_number'] == null) {
+      mobileNumber = null;
+    } else {
+          mobileNumber = json['mobile_number'];
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -104,6 +111,8 @@ class SigninCreateParams {
       json['company'] = company;
     if (email != null)
       json['email'] = email;
+    if (mobileNumber != null)
+      json['mobile_number'] = mobileNumber;
     return json;
   }
 

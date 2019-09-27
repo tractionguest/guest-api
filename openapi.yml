@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API (hackathon emergency notifications)
-    version: 0.9.20-hackathon
+    version: 0.9.20-hackathon-sininparams
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -3066,8 +3066,8 @@ paths:
                             $ref: '#/components/schemas/GuestNotification'
                 required: true
             responses:
-                '201':
-                    description: Successful response.
+                '204':
+                    description: Successfully sent messages
             operationId: createGuestNotification
             summary: Create a GuestNotification
             description: Creates a new instance of a `GuestNotification`.
@@ -4470,6 +4470,8 @@ components:
                 company:
                     type: string
                 email:
+                    type: string
+                mobile_number:
                     type: string
             example:
                 guest_email_template_id: 60

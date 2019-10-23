@@ -3473,6 +3473,9 @@ components:
                 email:
                     description: ''
                     type: string
+                mobile_number:
+                    description: phone number for an invite
+                    type: string
             example:
                 id: 59
                 first_name: some text

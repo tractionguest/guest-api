@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.20
+    version: 0.9.21
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -4026,6 +4026,9 @@ components:
                         $ref: '#/components/schemas/Host'
                 signin_watchlist:
                     $ref: '#/components/schemas/SigninWatchlist'
+                mobile:
+                    description: mobile phone number
+                    type: string
             example:
                 id: 55
                 company: some text

@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.21
+    version: 0.9.22
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -476,11 +476,9 @@ paths:
             requestBody:
                 description: >-
                     The only updatable values for a `Signin` are `badge_number`, `badge_returned`,
-                    `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.
-
-
-                    `is_signed_out`, and `is_acknowledged` are pseudo attributes where once they are set to
-                    true, there's no going back.
+                    `is_accounted_for`, `is_signed_out`, and `is_acknowledged`. `is_signed_out`, and
+                    `is_acknowledged` are pseudo attributes where once they are set to true, there's no going
+                    back.
                 content:
                     application/json:
                         schema:
@@ -1293,7 +1291,6 @@ paths:
                     name: with_colours
                     description: |-
                         A comma separated list of case-insensitive colour values.
-
                         i.e., `red`, `green`, `yellow`, and `orange`
                     schema:
                         type: string
@@ -1711,7 +1708,6 @@ paths:
                     name: with_colours
                     description: |-
                         A comma separated list of case-insensitive colour values.
-
                         i.e., `red`, `green`, `yellow`, and `orange`
                     schema:
                         type: string
@@ -2378,7 +2374,6 @@ paths:
                     name: with_colours
                     description: |-
                         A comma separated list of case-insensitive colour values.
-
                         i.e., `red`, `green`, `yellow`, and `orange`
                     schema:
                         type: string
@@ -2514,7 +2509,6 @@ paths:
                 name: userId
                 description: |-
                     The user ID, represented as a string.
-
                     `"current"` can be used as a shortcut for the currently-authenticated user
                 schema:
                     type: string
@@ -3070,12 +3064,12 @@ components:
                     type: string
                 last_name:
                     type: string
-                mobile:
-                    type: string
                 profile_pic_url:
                     type: string
                 department:
                     description: ''
+                    type: string
+                mobile_number:
                     type: string
             example: |-
                 {
@@ -3474,7 +3468,7 @@ components:
                     description: ''
                     type: string
                 mobile_number:
-                    description: phone number for an invite
+                    description: ''
                     type: string
             example:
                 id: 59
@@ -4029,11 +4023,11 @@ components:
                         $ref: '#/components/schemas/Host'
                 signin_watchlist:
                     $ref: '#/components/schemas/SigninWatchlist'
-                mobile:
-                    description: mobile phone number
+                mobile_number:
+                    description: ''
                     type: string
             example:
-                id: 55
+                id: 89
                 company: some text
                 email: some text
                 first_name: some text
@@ -4044,53 +4038,311 @@ components:
                 signed_out_timestamp: '2018-02-10T09:30Z'
                 signin_photo_url: some text
                 signin_timestamp: '2018-02-10T09:30Z'
-                watchlist:
-                    id: 28
-                    external_colours:
-                        - some text
-                        - some text
-                    internal_colours:
-                        - some text
-                        - some text
-                is_signed_out: true
                 hosts:
                     -
-                        id: 64
+                        id: 51
                         email: some text
                         first_name: some text
                         last_name: some text
                         mobile: some text
                         profile_pic_url: some text
+                        department: some text
                     -
-                        id: 2
+                        id: 23
                         email: some text
                         first_name: some text
                         last_name: some text
                         mobile: some text
                         profile_pic_url: some text
-                signin_data:
-                    -
-                        name: some text
-                        custom_fields:
-                            -
-                                format: {}
-                                field_name: some text
-                                field_value: some text
-                            -
-                                format: {}
-                                field_name: some text
-                                field_value: some text
-                    -
-                        name: some text
-                        custom_fields:
-                            -
-                                format: {}
-                                field_name: some text
-                                field_value: some text
-                            -
-                                format: {}
-                                field_name: some text
-                                field_value: some text
+                        department: some text
+                signin_watchlist:
+                    id: 92
+                    external:
+                        -
+                            search_terms:
+                                name: some text
+                                company: some text
+                                city: some text
+                                country: some text
+                                state: some text
+                            integration: some text
+                            colour: RED
+                            matches:
+                                -
+                                    id: some text
+                                    alt_names:
+                                        - some text
+                                        - some text
+                                    federal_register_notice: some text
+                                    name: some text
+                                    source_information_url: some text
+                                    source_list_url: some text
+                                    list: some text
+                                    type: some text
+                                    category: some text
+                                    street1: some text
+                                    street2: some text
+                                    city: some text
+                                    state: some text
+                                    country: some text
+                                    notes: some text
+                                    frc: some text
+                                    start: some text
+                                    end: some text
+                                    frserve: some text
+                                    optional_ID: some text
+                                    alert_type: some text
+                                    pair_status: some text
+                                    pair_reason: some text
+                                    pair_comments: some text
+                                    application_display_name: some text
+                                    application_id: some text
+                                    client_id: some text
+                                    client_key: some text
+                                    client_full_name: some text
+                                    list_key: some text
+                                    list_name: some text
+                                    list_id: some text
+                                    list_version: some text
+                                    list_modify_date: some text
+                                    list_profile_id: some text
+                                    list_profile_key: some text
+                                    link_single_string_name: some text
+                                    list_parent_single_string_name: some text
+                                    list_category: some text
+                                    list_pep_category: some text
+                                    list_do_bs: some text
+                                    list_countries: some text
+                                    rank_string: some text
+                                    ranktype: some text
+                                    rankweight: some text
+                                    pair_load_date: some text
+                                    e_address_to: some text
+                                    e_address_cc: some text
+                                    origin: some text
+                                    secondsviewed: some text
+                                    initial_user: some text
+                                    is_pair_parent_flag: some text
+                                    pair_met_search_criteria_flag: some text
+                                    editable_due_to_assignment_flag: some text
+                                    modify_date: some text
+                                    modified_by_user: some text
+                                    pair_report_type: some text
+                                    finscan_category: some text
+                                    wrapper_status: some text
+                                    source_lists: some text
+                                -
+                                    id: some text
+                                    alt_names:
+                                        - some text
+                                        - some text
+                                    federal_register_notice: some text
+                                    name: some text
+                                    source_information_url: some text
+                                    source_list_url: some text
+                                    list: some text
+                                    type: some text
+                                    category: some text
+                                    street1: some text
+                                    street2: some text
+                                    city: some text
+                                    state: some text
+                                    country: some text
+                                    notes: some text
+                                    frc: some text
+                                    start: some text
+                                    end: some text
+                                    frserve: some text
+                                    optional_ID: some text
+                                    alert_type: some text
+                                    pair_status: some text
+                                    pair_reason: some text
+                                    pair_comments: some text
+                                    application_display_name: some text
+                                    application_id: some text
+                                    client_id: some text
+                                    client_key: some text
+                                    client_full_name: some text
+                                    list_key: some text
+                                    list_name: some text
+                                    list_id: some text
+                                    list_version: some text
+                                    list_modify_date: some text
+                                    list_profile_id: some text
+                                    list_profile_key: some text
+                                    link_single_string_name: some text
+                                    list_parent_single_string_name: some text
+                                    list_category: some text
+                                    list_pep_category: some text
+                                    list_do_bs: some text
+                                    list_countries: some text
+                                    rank_string: some text
+                                    ranktype: some text
+                                    rankweight: some text
+                                    pair_load_date: some text
+                                    e_address_to: some text
+                                    e_address_cc: some text
+                                    origin: some text
+                                    secondsviewed: some text
+                                    initial_user: some text
+                                    is_pair_parent_flag: some text
+                                    pair_met_search_criteria_flag: some text
+                                    editable_due_to_assignment_flag: some text
+                                    modify_date: some text
+                                    modified_by_user: some text
+                                    pair_report_type: some text
+                                    finscan_category: some text
+                                    wrapper_status: some text
+                                    source_lists: some text
+                        -
+                            search_terms:
+                                name: some text
+                                company: some text
+                                city: some text
+                                country: some text
+                                state: some text
+                            integration: some text
+                            colour: YELLOW
+                            matches:
+                                -
+                                    id: some text
+                                    alt_names:
+                                        - some text
+                                        - some text
+                                    federal_register_notice: some text
+                                    name: some text
+                                    source_information_url: some text
+                                    source_list_url: some text
+                                    list: some text
+                                    type: some text
+                                    category: some text
+                                    street1: some text
+                                    street2: some text
+                                    city: some text
+                                    state: some text
+                                    country: some text
+                                    notes: some text
+                                    frc: some text
+                                    start: some text
+                                    end: some text
+                                    frserve: some text
+                                    optional_ID: some text
+                                    alert_type: some text
+                                    pair_status: some text
+                                    pair_reason: some text
+                                    pair_comments: some text
+                                    application_display_name: some text
+                                    application_id: some text
+                                    client_id: some text
+                                    client_key: some text
+                                    client_full_name: some text
+                                    list_key: some text
+                                    list_name: some text
+                                    list_id: some text
+                                    list_version: some text
+                                    list_modify_date: some text
+                                    list_profile_id: some text
+                                    list_profile_key: some text
+                                    link_single_string_name: some text
+                                    list_parent_single_string_name: some text
+                                    list_category: some text
+                                    list_pep_category: some text
+                                    list_do_bs: some text
+                                    list_countries: some text
+                                    rank_string: some text
+                                    ranktype: some text
+                                    rankweight: some text
+                                    pair_load_date: some text
+                                    e_address_to: some text
+                                    e_address_cc: some text
+                                    origin: some text
+                                    secondsviewed: some text
+                                    initial_user: some text
+                                    is_pair_parent_flag: some text
+                                    pair_met_search_criteria_flag: some text
+                                    editable_due_to_assignment_flag: some text
+                                    modify_date: some text
+                                    modified_by_user: some text
+                                    pair_report_type: some text
+                                    finscan_category: some text
+                                    wrapper_status: some text
+                                    source_lists: some text
+                                -
+                                    id: some text
+                                    alt_names:
+                                        - some text
+                                        - some text
+                                    federal_register_notice: some text
+                                    name: some text
+                                    source_information_url: some text
+                                    source_list_url: some text
+                                    list: some text
+                                    type: some text
+                                    category: some text
+                                    street1: some text
+                                    street2: some text
+                                    city: some text
+                                    state: some text
+                                    country: some text
+                                    notes: some text
+                                    frc: some text
+                                    start: some text
+                                    end: some text
+                                    frserve: some text
+                                    optional_ID: some text
+                                    alert_type: some text
+                                    pair_status: some text
+                                    pair_reason: some text
+                                    pair_comments: some text
+                                    application_display_name: some text
+                                    application_id: some text
+                                    client_id: some text
+                                    client_key: some text
+                                    client_full_name: some text
+                                    list_key: some text
+                                    list_name: some text
+                                    list_id: some text
+                                    list_version: some text
+                                    list_modify_date: some text
+                                    list_profile_id: some text
+                                    list_profile_key: some text
+                                    link_single_string_name: some text
+                                    list_parent_single_string_name: some text
+                                    list_category: some text
+                                    list_pep_category: some text
+                                    list_do_bs: some text
+                                    list_countries: some text
+                                    rank_string: some text
+                                    ranktype: some text
+                                    rankweight: some text
+                                    pair_load_date: some text
+                                    e_address_to: some text
+                                    e_address_cc: some text
+                                    origin: some text
+                                    secondsviewed: some text
+                                    initial_user: some text
+                                    is_pair_parent_flag: some text
+                                    pair_met_search_criteria_flag: some text
+                                    editable_due_to_assignment_flag: some text
+                                    modify_date: some text
+                                    modified_by_user: some text
+                                    pair_report_type: some text
+                                    finscan_category: some text
+                                    wrapper_status: some text
+                                    source_lists: some text
+                    internal:
+                        -
+                            id: 92
+                            email: some text
+                            colour: some text
+                            last_name: some text
+                            first_name: some text
+                        -
+                            id: 92
+                            email: some text
+                            colour: some text
+                            last_name: some text
+                            first_name: some text
         InviteDetail:
             title: Root Type for InviteDetail
             description: The root of the InviteDetail type's schema.
@@ -4142,13 +4394,13 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/NotificationTrigger'
-                mobile:
-                    description: Phone number
-                    type: string
                 invite_watchlist:
                     $ref: '#/components/schemas/InviteWatchlist'
                 email_template:
                     $ref: '#/components/schemas/EmailTemplate'
+                mobile_number:
+                    description: Phone number
+                    type: string
             example:
                 id: 20
                 company: some text
@@ -4519,11 +4771,11 @@ components:
                 name: some text
                 custom_fields:
                     -
-                        format: {}
+                        format: string
                         field_name: some text
                         field_value: some text
                     -
-                        format: {}
+                        format: string
                         field_name: some text
                         field_value: some text
         InviteWatchlist:
@@ -4593,14 +4845,14 @@ components:
                         $ref: '#/components/schemas/CustomField'
                 email_template_id:
                     type: integer
-                mobile:
-                    type: string
                 first_name:
                     type: string
                 notification_triggers:
                     type: array
                     items:
                         $ref: '#/components/schemas/NotificationTriggerCreateParams'
+                mobile_number:
+                    type: string
             example:
                 company: some text
                 email: some text
@@ -4725,8 +4977,6 @@ components:
                         $ref: '#/components/schemas/CustomField'
                 email_template_id:
                     type: integer
-                mobile:
-                    type: string
                 first_name:
                     type: string
                 notification_triggers:
@@ -4738,6 +4988,8 @@ components:
                 user_id:
                     description: Used for transfering ownership of an `Invite` to another member of the Account
                     type: integer
+                mobile_number:
+                    type: string
             example:
                 company: some text
                 email: some text

@@ -20,8 +20,6 @@ class InviteUpdateParams {
   
   int emailTemplateId = null;
   
-  String mobile = null;
-  
   String firstName = null;
   
   List<NotificationTriggerCreateParams> notificationTriggers = [];
@@ -29,11 +27,13 @@ class InviteUpdateParams {
   bool onPremise = null;
   /* Used for transfering ownership of an `Invite` to another member of the Account */
   int userId = null;
+  
+  String mobileNumber = null;
   InviteUpdateParams();
 
   @override
   String toString() {
-    return 'InviteUpdateParams[company=$company, email=$email, endDate=$endDate, lastName=$lastName, startDate=$startDate, title=$title, hostIds=$hostIds, customFields=$customFields, emailTemplateId=$emailTemplateId, mobile=$mobile, firstName=$firstName, notificationTriggers=$notificationTriggers, onPremise=$onPremise, userId=$userId, ]';
+    return 'InviteUpdateParams[company=$company, email=$email, endDate=$endDate, lastName=$lastName, startDate=$startDate, title=$title, hostIds=$hostIds, customFields=$customFields, emailTemplateId=$emailTemplateId, firstName=$firstName, notificationTriggers=$notificationTriggers, onPremise=$onPremise, userId=$userId, mobileNumber=$mobileNumber, ]';
   }
 
   InviteUpdateParams.fromJson(Map<String, dynamic> json) {
@@ -83,11 +83,6 @@ class InviteUpdateParams {
     } else {
           emailTemplateId = json['email_template_id'];
     }
-    if (json['mobile'] == null) {
-      mobile = null;
-    } else {
-          mobile = json['mobile'];
-    }
     if (json['first_name'] == null) {
       firstName = null;
     } else {
@@ -107,6 +102,11 @@ class InviteUpdateParams {
       userId = null;
     } else {
           userId = json['user_id'];
+    }
+    if (json['mobile_number'] == null) {
+      mobileNumber = null;
+    } else {
+          mobileNumber = json['mobile_number'];
     }
   }
 
@@ -130,8 +130,6 @@ class InviteUpdateParams {
       json['custom_fields'] = customFields;
     if (emailTemplateId != null)
       json['email_template_id'] = emailTemplateId;
-    if (mobile != null)
-      json['mobile'] = mobile;
     if (firstName != null)
       json['first_name'] = firstName;
     if (notificationTriggers != null)
@@ -140,6 +138,8 @@ class InviteUpdateParams {
       json['on_premise'] = onPremise;
     if (userId != null)
       json['user_id'] = userId;
+    if (mobileNumber != null)
+      json['mobile_number'] = mobileNumber;
     return json;
   }
 

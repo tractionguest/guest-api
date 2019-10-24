@@ -23,16 +23,16 @@ class InviteCreateParams {
   
   int emailTemplateId = null;
   
-  String mobile = null;
-  
   String firstName = null;
   
   List<NotificationTriggerCreateParams> notificationTriggers = [];
+  
+  String mobileNumber = null;
   InviteCreateParams();
 
   @override
   String toString() {
-    return 'InviteCreateParams[company=$company, email=$email, endDate=$endDate, lastName=$lastName, startDate=$startDate, title=$title, watchlistColour=$watchlistColour, hostIds=$hostIds, customFields=$customFields, emailTemplateId=$emailTemplateId, mobile=$mobile, firstName=$firstName, notificationTriggers=$notificationTriggers, ]';
+    return 'InviteCreateParams[company=$company, email=$email, endDate=$endDate, lastName=$lastName, startDate=$startDate, title=$title, watchlistColour=$watchlistColour, hostIds=$hostIds, customFields=$customFields, emailTemplateId=$emailTemplateId, firstName=$firstName, notificationTriggers=$notificationTriggers, mobileNumber=$mobileNumber, ]';
   }
 
   InviteCreateParams.fromJson(Map<String, dynamic> json) {
@@ -87,11 +87,6 @@ class InviteCreateParams {
     } else {
           emailTemplateId = json['email_template_id'];
     }
-    if (json['mobile'] == null) {
-      mobile = null;
-    } else {
-          mobile = json['mobile'];
-    }
     if (json['first_name'] == null) {
       firstName = null;
     } else {
@@ -101,6 +96,11 @@ class InviteCreateParams {
       notificationTriggers = null;
     } else {
       notificationTriggers = NotificationTriggerCreateParams.listFromJson(json['notification_triggers']);
+    }
+    if (json['mobile_number'] == null) {
+      mobileNumber = null;
+    } else {
+          mobileNumber = json['mobile_number'];
     }
   }
 
@@ -126,12 +126,12 @@ class InviteCreateParams {
       json['custom_fields'] = customFields;
     if (emailTemplateId != null)
       json['email_template_id'] = emailTemplateId;
-    if (mobile != null)
-      json['mobile'] = mobile;
     if (firstName != null)
       json['first_name'] = firstName;
     if (notificationTriggers != null)
       json['notification_triggers'] = notificationTriggers;
+    if (mobileNumber != null)
+      json['mobile_number'] = mobileNumber;
     return json;
   }
 

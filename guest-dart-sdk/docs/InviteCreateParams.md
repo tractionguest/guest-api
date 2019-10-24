@@ -18,9 +18,9 @@ Name | Type | Description | Notes
 **hostIds** | **List&lt;int&gt;** |  | [optional] [default to []]
 **customFields** | [**List&lt;CustomField&gt;**](CustomField.md) |  | [optional] [default to []]
 **emailTemplateId** | **int** |  | [optional] [default to null]
-**mobile** | **String** |  | [optional] [default to null]
 **firstName** | **String** |  | [default to null]
 **notificationTriggers** | [**List&lt;NotificationTriggerCreateParams&gt;**](NotificationTriggerCreateParams.md) |  | [optional] [default to []]
+**mobileNumber** | **String** |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

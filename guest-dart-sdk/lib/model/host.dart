@@ -10,16 +10,16 @@ class Host {
   
   String lastName = null;
   
-  String mobile = null;
-  
   String profilePicUrl = null;
   
   String department = null;
+  
+  String mobileNumber = null;
   Host();
 
   @override
   String toString() {
-    return 'Host[id=$id, email=$email, firstName=$firstName, lastName=$lastName, mobile=$mobile, profilePicUrl=$profilePicUrl, department=$department, ]';
+    return 'Host[id=$id, email=$email, firstName=$firstName, lastName=$lastName, profilePicUrl=$profilePicUrl, department=$department, mobileNumber=$mobileNumber, ]';
   }
 
   Host.fromJson(Map<String, dynamic> json) {
@@ -44,11 +44,6 @@ class Host {
     } else {
           lastName = json['last_name'];
     }
-    if (json['mobile'] == null) {
-      mobile = null;
-    } else {
-          mobile = json['mobile'];
-    }
     if (json['profile_pic_url'] == null) {
       profilePicUrl = null;
     } else {
@@ -58,6 +53,11 @@ class Host {
       department = null;
     } else {
           department = json['department'];
+    }
+    if (json['mobile_number'] == null) {
+      mobileNumber = null;
+    } else {
+          mobileNumber = json['mobile_number'];
     }
   }
 
@@ -71,12 +71,12 @@ class Host {
       json['first_name'] = firstName;
     if (lastName != null)
       json['last_name'] = lastName;
-    if (mobile != null)
-      json['mobile'] = mobile;
     if (profilePicUrl != null)
       json['profile_pic_url'] = profilePicUrl;
     if (department != null)
       json['department'] = department;
+    if (mobileNumber != null)
+      json['mobile_number'] = mobileNumber;
     return json;
   }
 

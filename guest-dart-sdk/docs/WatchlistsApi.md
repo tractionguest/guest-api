@@ -114,7 +114,7 @@ var api_instance = new WatchlistsApi();
 var limit = 56; // int | Limits the results to a specified number, defaults to 50
 var offset = 56; // int | Offsets the results to a specified number, defaults to 0
 var query = query_example; // String | Query the results by `first_name`, `last_name`, `email`, `colour`, and `notes` all at once.
-var withColours = withColours_example; // String | A comma separated list of case-insensitive colour values.  i.e., `red`, `green`, `yellow`, and `orange`
+var withColours = withColours_example; // String | A comma separated list of case-insensitive colour values. i.e., `red`, `green`, `yellow`, and `orange`
 
 try { 
     var result = api_instance.getWatchlists(limit, offset, query, withColours);
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| Limits the results to a specified number, defaults to 50 | [optional] [default to null]
  **offset** | **int**| Offsets the results to a specified number, defaults to 0 | [optional] [default to null]
  **query** | **String**| Query the results by &#x60;first_name&#x60;, &#x60;last_name&#x60;, &#x60;email&#x60;, &#x60;colour&#x60;, and &#x60;notes&#x60; all at once. | [optional] [default to null]
- **withColours** | **String**| A comma separated list of case-insensitive colour values.  i.e., &#x60;red&#x60;, &#x60;green&#x60;, &#x60;yellow&#x60;, and &#x60;orange&#x60; | [optional] [default to null]
+ **withColours** | **String**| A comma separated list of case-insensitive colour values. i.e., &#x60;red&#x60;, &#x60;green&#x60;, &#x60;yellow&#x60;, and &#x60;orange&#x60; | [optional] [default to null]
 
 ### Return type
 

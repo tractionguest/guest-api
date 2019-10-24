@@ -24,7 +24,7 @@ Gets the details of a single instance of the current `User`.
 import 'package:guest_sdk/api.dart';
 
 var api_instance = new UsersApi();
-var userId = userId_example; // String | The user ID, represented as a string.  `\"current\"` can be used as a shortcut for the currently-authenticated user
+var userId = userId_example; // String | The user ID, represented as a string. `\"current\"` can be used as a shortcut for the currently-authenticated user
 
 try { 
     var result = api_instance.getCurrentUser(userId);
@@ -38,7 +38,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**| The user ID, represented as a string.  &#x60;\&quot;current\&quot;&#x60; can be used as a shortcut for the currently-authenticated user | [default to null]
+ **userId** | **String**| The user ID, represented as a string. &#x60;\&quot;current\&quot;&#x60; can be used as a shortcut for the currently-authenticated user | [default to null]
 
 ### Return type
 

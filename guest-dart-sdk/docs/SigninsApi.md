@@ -114,7 +114,7 @@ import 'package:guest_sdk/api.dart';
 
 var api_instance = new SigninsApi();
 var locationIds = locationIds_example; // String | A comma separated list of Location IDs
-var withColours = withColours_example; // String | A comma separated list of case-insensitive colour values.  i.e., `red`, `green`, `yellow`, and `orange`
+var withColours = withColours_example; // String | A comma separated list of case-insensitive colour values. i.e., `red`, `green`, `yellow`, and `orange`
 var query = query_example; // String | Allows you to query by `company`, `email`, `first_name`, `last_name`, and `location_name`
 var withAcknowledged = true; // bool | Filters to all those `Signin`s that have, or have not been acknowledged
 var withSignedIn = true; // bool | Filters to all `Signin`s that are, or are not currently signed out.
@@ -136,7 +136,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationIds** | **String**| A comma separated list of Location IDs | [optional] [default to null]
- **withColours** | **String**| A comma separated list of case-insensitive colour values.  i.e., &#x60;red&#x60;, &#x60;green&#x60;, &#x60;yellow&#x60;, and &#x60;orange&#x60; | [optional] [default to null]
+ **withColours** | **String**| A comma separated list of case-insensitive colour values. i.e., &#x60;red&#x60;, &#x60;green&#x60;, &#x60;yellow&#x60;, and &#x60;orange&#x60; | [optional] [default to null]
  **query** | **String**| Allows you to query by &#x60;company&#x60;, &#x60;email&#x60;, &#x60;first_name&#x60;, &#x60;last_name&#x60;, and &#x60;location_name&#x60; | [optional] [default to null]
  **withAcknowledged** | **bool**| Filters to all those &#x60;Signin&#x60;s that have, or have not been acknowledged | [optional] [default to null]
  **withSignedIn** | **bool**| Filters to all &#x60;Signin&#x60;s that are, or are not currently signed out. | [optional] [default to null]
@@ -173,7 +173,7 @@ import 'package:guest_sdk/api.dart';
 
 var api_instance = new SigninsApi();
 var signinId = signinId_example; // String | A unique identifier for a `Signin`.
-var signinUpdateParams = new SigninUpdateParams(); // SigninUpdateParams | The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.  `is_signed_out`, and `is_acknowledged` are pseudo attributes where once they are set to true, there's no going back.
+var signinUpdateParams = new SigninUpdateParams(); // SigninUpdateParams | The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`. `is_signed_out`, and `is_acknowledged` are pseudo attributes where once they are set to true, there's no going back.
 
 try { 
     var result = api_instance.updateSignin(signinId, signinUpdateParams);
@@ -188,7 +188,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **signinId** | **String**| A unique identifier for a &#x60;Signin&#x60;. | [default to null]
- **signinUpdateParams** | [**SigninUpdateParams**](SigninUpdateParams.md)| The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;.  &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60; are pseudo attributes where once they are set to true, there&#39;s no going back. | 
+ **signinUpdateParams** | [**SigninUpdateParams**](SigninUpdateParams.md)| The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;. &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60; are pseudo attributes where once they are set to true, there&#39;s no going back. | 
 
 ### Return type
 

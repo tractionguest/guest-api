@@ -27,13 +27,13 @@ class Signin {
   List<Host> hosts = [];
   
   SigninWatchlist signinWatchlist = null;
-  /* mobile phone number */
-  String mobile = null;
+  
+  String mobileNumber = null;
   Signin();
 
   @override
   String toString() {
-    return 'Signin[id=$id, company=$company, email=$email, firstName=$firstName, isAccountedFor=$isAccountedFor, isAcknowledged=$isAcknowledged, lastName=$lastName, locationName=$locationName, signedOutTimestamp=$signedOutTimestamp, signinPhotoUrl=$signinPhotoUrl, signinTimestamp=$signinTimestamp, hosts=$hosts, signinWatchlist=$signinWatchlist, mobile=$mobile, ]';
+    return 'Signin[id=$id, company=$company, email=$email, firstName=$firstName, isAccountedFor=$isAccountedFor, isAcknowledged=$isAcknowledged, lastName=$lastName, locationName=$locationName, signedOutTimestamp=$signedOutTimestamp, signinPhotoUrl=$signinPhotoUrl, signinTimestamp=$signinTimestamp, hosts=$hosts, signinWatchlist=$signinWatchlist, mobileNumber=$mobileNumber, ]';
   }
 
   Signin.fromJson(Map<String, dynamic> json) {
@@ -103,10 +103,10 @@ class Signin {
     } else {
       signinWatchlist = new SigninWatchlist.fromJson(json['signin_watchlist']);
     }
-    if (json['mobile'] == null) {
-      mobile = null;
+    if (json['mobile_number'] == null) {
+      mobileNumber = null;
     } else {
-          mobile = json['mobile'];
+          mobileNumber = json['mobile_number'];
     }
   }
 
@@ -138,8 +138,8 @@ class Signin {
       json['hosts'] = hosts;
     if (signinWatchlist != null)
       json['signin_watchlist'] = signinWatchlist;
-    if (mobile != null)
-      json['mobile'] = mobile;
+    if (mobileNumber != null)
+      json['mobile_number'] = mobileNumber;
     return json;
   }
 

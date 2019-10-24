@@ -28,17 +28,17 @@ class InviteDetail {
   List<CustomField> customFields = [];
   /* List of scheduled notifications for an invite */
   List<NotificationTrigger> notificationTriggers = [];
-  /* Phone number */
-  String mobile = null;
   
   InviteWatchlist inviteWatchlist = null;
   
   EmailTemplate emailTemplate = null;
+  /* Phone number */
+  String mobileNumber = null;
   InviteDetail();
 
   @override
   String toString() {
-    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlistColour=$watchlistColour, customFields=$customFields, notificationTriggers=$notificationTriggers, mobile=$mobile, inviteWatchlist=$inviteWatchlist, emailTemplate=$emailTemplate, ]';
+    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlistColour=$watchlistColour, customFields=$customFields, notificationTriggers=$notificationTriggers, inviteWatchlist=$inviteWatchlist, emailTemplate=$emailTemplate, mobileNumber=$mobileNumber, ]';
   }
 
   InviteDetail.fromJson(Map<String, dynamic> json) {
@@ -108,11 +108,6 @@ class InviteDetail {
     } else {
       notificationTriggers = NotificationTrigger.listFromJson(json['notification_triggers']);
     }
-    if (json['mobile'] == null) {
-      mobile = null;
-    } else {
-          mobile = json['mobile'];
-    }
     if (json['invite_watchlist'] == null) {
       inviteWatchlist = null;
     } else {
@@ -122,6 +117,11 @@ class InviteDetail {
       emailTemplate = null;
     } else {
       emailTemplate = new EmailTemplate.fromJson(json['email_template']);
+    }
+    if (json['mobile_number'] == null) {
+      mobileNumber = null;
+    } else {
+          mobileNumber = json['mobile_number'];
     }
   }
 
@@ -153,12 +153,12 @@ class InviteDetail {
       json['custom_fields'] = customFields;
     if (notificationTriggers != null)
       json['notification_triggers'] = notificationTriggers;
-    if (mobile != null)
-      json['mobile'] = mobile;
     if (inviteWatchlist != null)
       json['invite_watchlist'] = inviteWatchlist;
     if (emailTemplate != null)
       json['email_template'] = emailTemplate;
+    if (mobileNumber != null)
+      json['mobile_number'] = mobileNumber;
     return json;
   }
 

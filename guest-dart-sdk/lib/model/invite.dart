@@ -22,7 +22,7 @@ class Invite {
   DateTime endDate = null;
   
   String email = null;
-  /* phone number for an invite */
+  
   String mobileNumber = null;
   Invite();
 

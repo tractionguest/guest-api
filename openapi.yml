@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.22
+    version: 0.9.23
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -1757,6 +1757,15 @@ paths:
                     description: 'Offsets the results to a specified number, defaults to 0'
                     schema:
                         type: integer
+                    in: query
+                -
+                    name: query_sort
+                    description: Allows you to override ordering by most relevant results when querying
+                    schema:
+                        enum:
+                            - signin_timestamp_desc
+                            - signin_timestamp_asc
+                        type: string
                     in: query
             responses:
                 '200':

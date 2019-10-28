@@ -110,7 +110,7 @@ class SigninsApi {
   /// List All Signins
   ///
   /// Gets a list of all &#x60;Signin&#x60; entities.
-  Future<PaginatedSigninsList> getSignins({ String locationIds, String withColours, String query, bool withAcknowledged, bool withSignedIn, DateTime signinBefore, DateTime signinAfter, int limit, int offset }) async {
+  Future<PaginatedSigninsList> getSignins({ String locationIds, String withColours, String query, bool withAcknowledged, bool withSignedIn, DateTime signinBefore, DateTime signinAfter, int limit, int offset, String querySort }) async {
     Object postBody;
 
     // verify required params are set
@@ -148,6 +148,9 @@ class SigninsApi {
     }
     if(offset != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "offset", offset));
+    }
+    if(querySort != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "query_sort", querySort));
     }
 
     List<String> contentTypes = [];

@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSignins**
-> PaginatedSigninsList getSignins(locationIds, withColours, query, withAcknowledged, withSignedIn, signinBefore, signinAfter, limit, offset)
+> PaginatedSigninsList getSignins(locationIds, withColours, query, withAcknowledged, withSignedIn, signinBefore, signinAfter, limit, offset, querySort)
 
 List All Signins
 
@@ -122,9 +122,10 @@ var signinBefore = 2013-10-20; // DateTime | Filters results to all those *befor
 var signinAfter = 2013-10-20; // DateTime | Filters results to all those *after* the provided datetime
 var limit = 56; // int | Limits the results to a specified number, defaults to 50
 var offset = 56; // int | Offsets the results to a specified number, defaults to 0
+var querySort = querySort_example; // String | Allows you to override ordering by most relevant results when querying
 
 try { 
-    var result = api_instance.getSignins(locationIds, withColours, query, withAcknowledged, withSignedIn, signinBefore, signinAfter, limit, offset);
+    var result = api_instance.getSignins(locationIds, withColours, query, withAcknowledged, withSignedIn, signinBefore, signinAfter, limit, offset, querySort);
     print(result);
 } catch (e) {
     print("Exception when calling SigninsApi->getSignins: $e\n");
@@ -144,6 +145,7 @@ Name | Type | Description  | Notes
  **signinAfter** | **DateTime**| Filters results to all those *after* the provided datetime | [optional] [default to null]
  **limit** | **int**| Limits the results to a specified number, defaults to 50 | [optional] [default to null]
  **offset** | **int**| Offsets the results to a specified number, defaults to 0 | [optional] [default to null]
+ **querySort** | **String**| Allows you to override ordering by most relevant results when querying | [optional] [default to null]
 
 ### Return type
 

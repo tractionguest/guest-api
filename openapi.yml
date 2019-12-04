@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.23
+    version: 0.9.24
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -3055,6 +3055,138 @@ paths:
                     type: string
                 in: path
                 required: true
+    '/locations/{locationId}/deliveries':
+        get:
+            tags:
+                - Deliveries
+                - Locations
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/PaginatedDeliveries'
+                            examples:
+                                default:
+                                    value:
+                                        deliveries:
+                                            -
+                                                location_id: 95
+                                                host_id: 73
+                                                photo_url: some text
+                                                signin_timestamp: '2018-02-10T09:30Z'
+                                                signout_timestamp: '2018-02-10T09:30Z'
+                                                recipient_name: some text
+                                            -
+                                                location_id: 71
+                                                host_id: 26
+                                                photo_url: some text
+                                                signin_timestamp: '2018-02-10T09:30Z'
+                                                signout_timestamp: '2018-02-10T09:30Z'
+                                                recipient_name: some text
+                                        pagination:
+                                            total_records: 34
+                                            current_offset: 66
+                                            next_offset: 92
+                    description: List all Deliveries for the account
+            operationId: getDeliveries
+            summary: List all Deliveries
+        post:
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Delivery'
+                        examples:
+                            default:
+                                value:
+                                    location_id: 77
+                                    host_id: 60
+                                    photo_url: some text
+                                    signin_timestamp: '2018-02-10T09:30Z'
+                                    signout_timestamp: '2018-02-10T09:30Z'
+                                    recipient_name: some text
+            tags:
+                - Deliveries
+                - Locations
+            responses:
+                '201':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Delivery'
+                            examples:
+                                default:
+                                    value:
+                                        location_id: 76
+                                        host_id: 29
+                                        photo_url: some text
+                                        signin_timestamp: '2018-02-10T09:30Z'
+                                        signout_timestamp: '2018-02-10T09:30Z'
+                                        recipient_name: some text
+                    description: Successful response - creates a new Delivery
+            operationId: createDelivery
+            summary: Create a Delivery
+        parameters:
+            -
+                name: locationId
+                schema:
+                    type: string
+                in: path
+                required: true
+    '/deliveries/{deliveryId}':
+        put:
+            requestBody:
+                description: Update `Delivery` information
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Delivery'
+                        examples:
+                            default:
+                                value:
+                                    location_id: 97
+                                    host_id: 85
+                                    photo_url: some text
+                                    signin_timestamp: '2018-02-10T09:30Z'
+                                    signout_timestamp: '2018-02-10T09:30Z'
+                                    recipient_name: some text
+                required: true
+            tags:
+                - Deliveries
+            parameters:
+                -
+                    name: deliveryId
+                    description: A unique identifier for a Delivery
+                    schema:
+                        type: string
+                    in: path
+                    required: true
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Delivery'
+                            examples:
+                                default:
+                                    value:
+                                        location_id: 5
+                                        host_id: 64
+                                        photo_url: some text
+                                        signin_timestamp: '2018-02-10T09:30Z'
+                                        signout_timestamp: '2018-02-10T09:30Z'
+                                        recipient_name: some text
+                    description: Successful response
+            operationId: updateDelivery
+            summary: Update a Delivery
+        parameters:
+            -
+                name: deliveryId
+                schema:
+                    type: string
+                in: path
+                required: true
 components:
     schemas:
         Host:
@@ -5652,6 +5784,44 @@ components:
                 permissions:
                     - some text
                     - some text
+        Delivery:
+            description: ''
+            required:
+                - location_id
+            type: object
+            properties:
+                location_id:
+                    description: ''
+                    type: integer
+                host_id:
+                    description: ''
+                    type: integer
+                photo_url:
+                    description: ''
+                    type: string
+                signin_timestamp:
+                    format: date-time
+                    description: ''
+                    type: string
+                signout_timestamp:
+                    format: date-time
+                    description: ''
+                    type: string
+                recipient_name:
+                    description: ''
+                    type: string
+        PaginatedDeliveries:
+            description: ''
+            type: object
+            properties:
+                deliveries:
+                    description: ''
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Delivery'
+                pagination:
+                    $ref: '#/components/schemas/Pagination'
+                    description: ''
     securitySchemes:
         TractionGuestAuth:
             openIdConnectUrl: /.well-known/openid-configuration
@@ -5687,3 +5857,6 @@ tags:
     -
         name: Watchlists
         description: All endpoint related to the Watchlist model
+    -
+        name: Deliveries
+        description: ''

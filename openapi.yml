@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.23
+    version: 0.9.24
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -44,6 +44,12 @@ paths:
                     description: 'Offsets the results to a specified number, defaults to 0'
                     schema:
                         type: integer
+                    in: query
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
+                        type: string
                     in: query
             responses:
                 '200':
@@ -101,6 +107,44 @@ paths:
             operationId: getHosts
             summary: List All Hosts
             description: Gets a list of all `Host` entities.
+        post:
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Host'
+                        examples:
+                            default:
+                                value:
+                                    id: 34
+                                    email: some text
+                                    first_name: some text
+                                    last_name: some text
+                                    profile_pic_url: some text
+                                    department: some text
+                                    mobile_number: some text
+                required: true
+            tags:
+                - Hosts
+            responses:
+                '201':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Host'
+                            examples:
+                                default:
+                                    value:
+                                        id: 80
+                                        email: some text
+                                        first_name: some text
+                                        last_name: some text
+                                        profile_pic_url: some text
+                                        department: some text
+                                        mobile_number: some text
+                    description: Successful response
+            operationId: createHost
+            summary: Create a Host
     /email_templates:
         summary: Path used to manage the list of EmailTemplates.
         description: >-
@@ -121,6 +165,12 @@ paths:
                     description: 'Offsets the results to a specified number, defaults to 0'
                     schema:
                         type: integer
+                    in: query
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
+                        type: string
                     in: query
             responses:
                 '200':
@@ -178,6 +228,13 @@ paths:
         get:
             tags:
                 - Signins
+            parameters:
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
+                        type: string
+                    in: query
             responses:
                 '200':
                     content:
@@ -802,6 +859,13 @@ paths:
         get:
             tags:
                 - Watchlists
+            parameters:
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
+                        type: string
+                    in: query
             responses:
                 '200':
                     content:
@@ -910,6 +974,12 @@ paths:
                 -
                     name: query
                     description: Queries by Location `name`
+                    schema:
+                        type: string
+                    in: query
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
                     schema:
                         type: string
                     in: query
@@ -1329,6 +1399,12 @@ paths:
                     description: Filters results to all those *after* the provided datetime
                     schema:
                         format: date
+                        type: string
+                    in: query
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
                         type: string
                     in: query
             responses:
@@ -1765,6 +1841,12 @@ paths:
                         enum:
                             - signin_timestamp_desc
                             - signin_timestamp_asc
+                        type: string
+                    in: query
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
                         type: string
                     in: query
             responses:
@@ -2387,6 +2469,12 @@ paths:
                     schema:
                         type: string
                     in: query
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
+                        type: string
+                    in: query
             responses:
                 '200':
                     content:
@@ -2457,6 +2545,13 @@ paths:
         get:
             tags:
                 - Users
+            parameters:
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
+                        type: string
+                    in: query
             responses:
                 '200':
                     content:
@@ -2532,6 +2627,13 @@ paths:
         get:
             tags:
                 - Invites
+            parameters:
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
+                        type: string
+                    in: query
             responses:
                 '200':
                     content:
@@ -3051,6 +3153,171 @@ paths:
             -
                 name: inviteId
                 description: A unique identifier for a `Invite`.
+                schema:
+                    type: string
+                in: path
+                required: true
+    '/locations/{locationId}/deliveries':
+        get:
+            tags:
+                - Deliveries
+                - Locations
+            parameters:
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
+                        type: string
+                    in: query
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/PaginatedDeliveries'
+                            examples:
+                                default:
+                                    value:
+                                        deliveries:
+                                            -
+                                                photo_url: some text
+                                                signin_timestamp: '2018-02-10T09:30Z'
+                                                signout_timestamp: '2018-02-10T09:30Z'
+                                                recipient_name: some text
+                                                host:
+                                                    id: 44
+                                                    email: some text
+                                                    first_name: some text
+                                                    last_name: some text
+                                                    profile_pic_url: some text
+                                                    department: some text
+                                                    mobile_number: some text
+                                                location:
+                                                    id: 23
+                                                    name: some text
+                                            -
+                                                photo_url: some text
+                                                signin_timestamp: '2018-02-10T09:30Z'
+                                                signout_timestamp: '2018-02-10T09:30Z'
+                                                recipient_name: some text
+                                                host:
+                                                    id: 71
+                                                    email: some text
+                                                    first_name: some text
+                                                    last_name: some text
+                                                    profile_pic_url: some text
+                                                    department: some text
+                                                    mobile_number: some text
+                                                location:
+                                                    id: 69
+                                                    name: some text
+                                        pagination:
+                                            total_records: 64
+                                            current_offset: 92
+                                            next_offset: 48
+                    description: List all Deliveries for the account
+            operationId: getDeliveries
+            summary: List all Deliveries
+        post:
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/DeliveryCreateParams'
+                        examples:
+                            default:
+                                value:
+                                    location_id: 14
+                                    host_id: 21
+                                    photo_url: some text
+                                    signin_timestamp: '2018-02-10T09:30Z'
+                                    signout_timestamp: '2018-02-10T09:30Z'
+                                    recipient_name: some text
+            tags:
+                - Deliveries
+                - Locations
+            responses:
+                '201':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Delivery'
+                            examples:
+                                default:
+                                    value:
+                                        location_id: 76
+                                        host_id: 29
+                                        photo_url: some text
+                                        signin_timestamp: '2018-02-10T09:30Z'
+                                        signout_timestamp: '2018-02-10T09:30Z'
+                                        recipient_name: some text
+                    description: Successful response - creates a new Delivery
+            operationId: createDelivery
+            summary: Create a Delivery
+        parameters:
+            -
+                name: locationId
+                schema:
+                    type: string
+                in: path
+                required: true
+    '/deliveries/{deliveryId}':
+        put:
+            requestBody:
+                description: Update `Delivery` information
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/DeliveryUpdateParams'
+                        examples:
+                            default:
+                                value:
+                                    host_id: 43
+                                    photo_url: some text
+                                    signin_timestamp: '2018-02-10T09:30Z'
+                                    signout_timestamp: '2018-02-10T09:30Z'
+                                    recipient_name: some text
+                required: true
+            tags:
+                - Deliveries
+            parameters:
+                -
+                    name: deliveryId
+                    description: A unique identifier for a Delivery
+                    schema:
+                        type: string
+                    in: path
+                    required: true
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Delivery'
+                            examples:
+                                default:
+                                    value:
+                                        photo_url: some text
+                                        signin_timestamp: '2018-02-10T09:30Z'
+                                        signout_timestamp: '2018-02-10T09:30Z'
+                                        recipient_name: some text
+                                        host:
+                                            id: 63
+                                            email: some text
+                                            first_name: some text
+                                            last_name: some text
+                                            profile_pic_url: some text
+                                            department: some text
+                                            mobile_number: some text
+                                        location:
+                                            id: 4
+                                            name: some text
+                    description: Successful response
+            operationId: updateDelivery
+            summary: Update a Delivery
+        parameters:
+            -
+                name: deliveryId
                 schema:
                     type: string
                 in: path
@@ -5652,6 +5919,92 @@ components:
                 permissions:
                     - some text
                     - some text
+        Delivery:
+            description: ''
+            required:
+                - location
+            type: object
+            properties:
+                photo_url:
+                    description: ''
+                    type: string
+                signin_timestamp:
+                    format: date-time
+                    description: ''
+                    type: string
+                signout_timestamp:
+                    format: date-time
+                    description: ''
+                    type: string
+                recipient_name:
+                    description: ''
+                    type: string
+                host:
+                    $ref: '#/components/schemas/Host'
+                    description: ''
+                location:
+                    $ref: '#/components/schemas/Location'
+                    description: ''
+        PaginatedDeliveries:
+            description: ''
+            type: object
+            properties:
+                deliveries:
+                    description: ''
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Delivery'
+                pagination:
+                    $ref: '#/components/schemas/Pagination'
+                    description: ''
+        DeliveryCreateParams:
+            description: ''
+            required:
+                - location_id
+            type: object
+            properties:
+                location_id:
+                    description: ''
+                    type: integer
+                host_id:
+                    description: ''
+                    type: integer
+                photo_url:
+                    description: ''
+                    type: string
+                signin_timestamp:
+                    format: date-time
+                    description: ''
+                    type: string
+                signout_timestamp:
+                    format: date-time
+                    description: ''
+                    type: string
+                recipient_name:
+                    description: ''
+                    type: string
+        DeliveryUpdateParams:
+            description: ''
+            required: []
+            type: object
+            properties:
+                host_id:
+                    description: ''
+                    type: integer
+                photo_url:
+                    description: ''
+                    type: string
+                signin_timestamp:
+                    format: date-time
+                    description: ''
+                    type: string
+                signout_timestamp:
+                    format: date-time
+                    description: ''
+                    type: string
+                recipient_name:
+                    description: ''
+                    type: string
     securitySchemes:
         TractionGuestAuth:
             openIdConnectUrl: /.well-known/openid-configuration
@@ -5687,3 +6040,6 @@ tags:
     -
         name: Watchlists
         description: All endpoint related to the Watchlist model
+    -
+        name: Deliveries
+        description: ''

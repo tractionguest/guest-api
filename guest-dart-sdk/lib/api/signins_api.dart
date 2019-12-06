@@ -60,7 +60,7 @@ class SigninsApi {
   /// Get a Signin
   ///
   /// Gets the details of a single instance of a &#x60;Signin&#x60;.
-  Future<SigninDetail> getSignin(String signinId) async {
+  Future<SigninDetail> getSignin(String signinId, { String include }) async {
     Object postBody;
 
     // verify required params are set
@@ -75,6 +75,9 @@ class SigninsApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(include != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "include", include));
+    }
 
     List<String> contentTypes = [];
 
@@ -110,7 +113,7 @@ class SigninsApi {
   /// List All Signins
   ///
   /// Gets a list of all &#x60;Signin&#x60; entities.
-  Future<PaginatedSigninsList> getSignins({ String locationIds, String withColours, String query, bool withAcknowledged, bool withSignedIn, DateTime signinBefore, DateTime signinAfter, int limit, int offset, String querySort }) async {
+  Future<PaginatedSigninsList> getSignins({ String locationIds, String withColours, String query, bool withAcknowledged, bool withSignedIn, DateTime signinBefore, DateTime signinAfter, int limit, int offset, String querySort, String include }) async {
     Object postBody;
 
     // verify required params are set
@@ -151,6 +154,9 @@ class SigninsApi {
     }
     if(querySort != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "query_sort", querySort));
+    }
+    if(include != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "include", include));
     }
 
     List<String> contentTypes = [];

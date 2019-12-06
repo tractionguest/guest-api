@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **getCurrentUser**
-> User getCurrentUser(userId)
+> User getCurrentUser(userId, include)
 
 Get the current User
 
@@ -25,9 +25,10 @@ import 'package:guest_sdk/api.dart';
 
 var api_instance = new UsersApi();
 var userId = userId_example; // String | The user ID, represented as a string. `\"current\"` can be used as a shortcut for the currently-authenticated user
+var include = include_example; // String | A list of comma-separated related models to include
 
 try { 
-    var result = api_instance.getCurrentUser(userId);
+    var result = api_instance.getCurrentUser(userId, include);
     print(result);
 } catch (e) {
     print("Exception when calling UsersApi->getCurrentUser: $e\n");
@@ -39,6 +40,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**| The user ID, represented as a string. &#x60;\&quot;current\&quot;&#x60; can be used as a shortcut for the currently-authenticated user | [default to null]
+ **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
 
 ### Return type
 

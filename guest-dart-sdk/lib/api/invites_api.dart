@@ -112,7 +112,7 @@ class InvitesApi {
   /// Get a Invite
   ///
   /// Gets the details of a single instance of a &#x60;Invite&#x60;.
-  Future<InviteDetail> getInvite(String inviteId) async {
+  Future<InviteDetail> getInvite(String inviteId, { String include }) async {
     Object postBody;
 
     // verify required params are set
@@ -127,6 +127,9 @@ class InvitesApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(include != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "include", include));
+    }
 
     List<String> contentTypes = [];
 
@@ -162,7 +165,7 @@ class InvitesApi {
   /// List All Invites
   ///
   /// Gets a list of all &#x60;Invite&#x60; entities.
-  Future<PaginatedInvitesList> getInvites({ int limit, int offset, String query, String withColours, String locationIds, String sortBy, DateTime startsBefore, DateTime startsAfter }) async {
+  Future<PaginatedInvitesList> getInvites({ int limit, int offset, String query, String withColours, String locationIds, String sortBy, DateTime startsBefore, DateTime startsAfter, String include }) async {
     Object postBody;
 
     // verify required params are set
@@ -197,6 +200,9 @@ class InvitesApi {
     }
     if(startsAfter != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "starts_after", startsAfter));
+    }
+    if(include != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "include", include));
     }
 
     List<String> contentTypes = [];

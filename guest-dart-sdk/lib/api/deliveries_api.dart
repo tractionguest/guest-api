@@ -2,31 +2,31 @@ part of guest_sdk.api;
 
 
 
-class WatchlistsApi {
+class DeliveriesApi {
   final ApiClient apiClient;
 
-  WatchlistsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  DeliveriesApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// Deletes a Watchlist
+  /// Create a Delivery
   ///
-  /// Deletes a single instance of &#x60;Watchlist&#x60;
-  Future deleteWatchlist(String watchlistId) async {
-    Object postBody;
+  /// 
+  Future<Delivery> createDelivery(String locationId, { DeliveryCreateParams deliveryCreateParams }) async {
+    Object postBody = deliveryCreateParams;
 
     // verify required params are set
-    if(watchlistId == null) {
-     throw new ApiException(400, "Missing required param: watchlistId");
+    if(locationId == null) {
+     throw new ApiException(400, "Missing required param: locationId");
     }
 
     // create path and map variables
-    String path = "/watchlists/{watchlistId}".replaceAll("{format}","json").replaceAll("{" + "watchlistId" + "}", watchlistId.toString());
+    String path = "/locations/{locationId}/deliveries".replaceAll("{format}","json").replaceAll("{" + "locationId" + "}", locationId.toString());
 
     // query params
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
 
-    List<String> contentTypes = [];
+    List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
     List<String> authNames = ["TractionGuestAuth"];
@@ -41,7 +41,7 @@ class WatchlistsApi {
     }
 
     var response = await apiClient.invokeAPI(path,
-                                             'DELETE',
+                                             'POST',
                                              queryParams,
                                              postBody,
                                              headerParams,
@@ -52,90 +52,29 @@ class WatchlistsApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
-    } else {
-      return;
-    }
-  }
-  /// Get a Watchlist
-  ///
-  /// Gets the details of a single instance of a &#x60;Watchlist&#x60;.
-  Future<Watchlist> getWatchlist(String watchlistId, { String include }) async {
-    Object postBody;
-
-    // verify required params are set
-    if(watchlistId == null) {
-     throw new ApiException(400, "Missing required param: watchlistId");
-    }
-
-    // create path and map variables
-    String path = "/watchlists/{watchlistId}".replaceAll("{format}","json").replaceAll("{" + "watchlistId" + "}", watchlistId.toString());
-
-    // query params
-    List<QueryParam> queryParams = [];
-    Map<String, String> headerParams = {};
-    Map<String, String> formParams = {};
-    if(include != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "include", include));
-    }
-
-    List<String> contentTypes = [];
-
-    String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["TractionGuestAuth"];
-
-    if(contentType.startsWith("multipart/form-data")) {
-      bool hasFields = false;
-      MultipartRequest mp = new MultipartRequest(null, null);
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-    }
-
-    var response = await apiClient.invokeAPI(path,
-                                             'GET',
-                                             queryParams,
-                                             postBody,
-                                             headerParams,
-                                             formParams,
-                                             contentType,
-                                             authNames);
-
-    if(response.statusCode >= 400) {
-      throw new ApiException(response.statusCode, _decodeBodyBytes(response));
-    } else if(response.body != null) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'Watchlist') as Watchlist;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'Delivery') as Delivery;
     } else {
       return null;
     }
   }
-  /// List All Watchlists
+  /// List all Deliveries
   ///
-  /// Gets a list of all &#x60;Watchlist&#x60; entities.
-  Future<PaginatedWatchlistList> getWatchlists({ int limit, int offset, String query, String withColours, String include }) async {
+  /// 
+  Future<PaginatedDeliveries> getDeliveries(String locationId, { String include }) async {
     Object postBody;
 
     // verify required params are set
+    if(locationId == null) {
+     throw new ApiException(400, "Missing required param: locationId");
+    }
 
     // create path and map variables
-    String path = "/watchlists".replaceAll("{format}","json");
+    String path = "/locations/{locationId}/deliveries".replaceAll("{format}","json").replaceAll("{" + "locationId" + "}", locationId.toString());
 
     // query params
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
-    if(limit != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "limit", limit));
-    }
-    if(offset != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "offset", offset));
-    }
-    if(query != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "query", query));
-    }
-    if(withColours != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "with_colours", withColours));
-    }
     if(include != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "include", include));
     }
@@ -166,7 +105,60 @@ class WatchlistsApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'PaginatedWatchlistList') as PaginatedWatchlistList;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'PaginatedDeliveries') as PaginatedDeliveries;
+    } else {
+      return null;
+    }
+  }
+  /// Update a Delivery
+  ///
+  /// 
+  Future<Delivery> updateDelivery(String deliveryId, DeliveryUpdateParams deliveryUpdateParams) async {
+    Object postBody = deliveryUpdateParams;
+
+    // verify required params are set
+    if(deliveryId == null) {
+     throw new ApiException(400, "Missing required param: deliveryId");
+    }
+    if(deliveryUpdateParams == null) {
+     throw new ApiException(400, "Missing required param: deliveryUpdateParams");
+    }
+
+    // create path and map variables
+    String path = "/deliveries/{deliveryId}".replaceAll("{format}","json").replaceAll("{" + "deliveryId" + "}", deliveryId.toString());
+
+    // query params
+    List<QueryParam> queryParams = [];
+    Map<String, String> headerParams = {};
+    Map<String, String> formParams = {};
+
+    List<String> contentTypes = ["application/json"];
+
+    String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
+    List<String> authNames = ["TractionGuestAuth"];
+
+    if(contentType.startsWith("multipart/form-data")) {
+      bool hasFields = false;
+      MultipartRequest mp = new MultipartRequest(null, null);
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+    }
+
+    var response = await apiClient.invokeAPI(path,
+                                             'PUT',
+                                             queryParams,
+                                             postBody,
+                                             headerParams,
+                                             formParams,
+                                             contentType,
+                                             authNames);
+
+    if(response.statusCode >= 400) {
+      throw new ApiException(response.statusCode, _decodeBodyBytes(response));
+    } else if(response.body != null) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'Delivery') as Delivery;
     } else {
       return null;
     }

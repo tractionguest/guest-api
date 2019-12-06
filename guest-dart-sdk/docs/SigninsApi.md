@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSignin**
-> SigninDetail getSignin(signinId)
+> SigninDetail getSignin(signinId, include)
 
 Get a Signin
 
@@ -71,9 +71,10 @@ import 'package:guest_sdk/api.dart';
 
 var api_instance = new SigninsApi();
 var signinId = signinId_example; // String | A unique identifier for a `Signin`.
+var include = include_example; // String | A list of comma-separated related models to include
 
 try { 
-    var result = api_instance.getSignin(signinId);
+    var result = api_instance.getSignin(signinId, include);
     print(result);
 } catch (e) {
     print("Exception when calling SigninsApi->getSignin: $e\n");
@@ -85,6 +86,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **signinId** | **String**| A unique identifier for a &#x60;Signin&#x60;. | [default to null]
+ **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
 
 ### Return type
 
@@ -102,7 +104,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSignins**
-> PaginatedSigninsList getSignins(locationIds, withColours, query, withAcknowledged, withSignedIn, signinBefore, signinAfter, limit, offset, querySort)
+> PaginatedSigninsList getSignins(locationIds, withColours, query, withAcknowledged, withSignedIn, signinBefore, signinAfter, limit, offset, querySort, include)
 
 List All Signins
 
@@ -123,9 +125,10 @@ var signinAfter = 2013-10-20; // DateTime | Filters results to all those *after*
 var limit = 56; // int | Limits the results to a specified number, defaults to 50
 var offset = 56; // int | Offsets the results to a specified number, defaults to 0
 var querySort = querySort_example; // String | Allows you to override ordering by most relevant results when querying
+var include = include_example; // String | A list of comma-separated related models to include
 
 try { 
-    var result = api_instance.getSignins(locationIds, withColours, query, withAcknowledged, withSignedIn, signinBefore, signinAfter, limit, offset, querySort);
+    var result = api_instance.getSignins(locationIds, withColours, query, withAcknowledged, withSignedIn, signinBefore, signinAfter, limit, offset, querySort, include);
     print(result);
 } catch (e) {
     print("Exception when calling SigninsApi->getSignins: $e\n");
@@ -146,6 +149,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| Limits the results to a specified number, defaults to 50 | [optional] [default to null]
  **offset** | **int**| Offsets the results to a specified number, defaults to 0 | [optional] [default to null]
  **querySort** | **String**| Allows you to override ordering by most relevant results when querying | [optional] [default to null]
+ **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
 
 ### Return type
 

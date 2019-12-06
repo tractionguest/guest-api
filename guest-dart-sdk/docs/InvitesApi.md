@@ -104,7 +104,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvite**
-> InviteDetail getInvite(inviteId)
+> InviteDetail getInvite(inviteId, include)
 
 Get a Invite
 
@@ -116,9 +116,10 @@ import 'package:guest_sdk/api.dart';
 
 var api_instance = new InvitesApi();
 var inviteId = inviteId_example; // String | A unique identifier for a `Invite`.
+var include = include_example; // String | A list of comma-separated related models to include
 
 try { 
-    var result = api_instance.getInvite(inviteId);
+    var result = api_instance.getInvite(inviteId, include);
     print(result);
 } catch (e) {
     print("Exception when calling InvitesApi->getInvite: $e\n");
@@ -130,6 +131,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **inviteId** | **String**| A unique identifier for a &#x60;Invite&#x60;. | [default to null]
+ **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
 
 ### Return type
 
@@ -147,7 +149,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvites**
-> PaginatedInvitesList getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter)
+> PaginatedInvitesList getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter, include)
 
 List All Invites
 
@@ -166,9 +168,10 @@ var locationIds = locationIds_example; // String | A comma separated list of Loc
 var sortBy = sortBy_example; // String | Sorts by the field name and direction provided where the pattern is `FIELD_NAME_DIRECTION`
 var startsBefore = 2013-10-20; // DateTime | Filters results to all those *before* the provided datetime
 var startsAfter = 2013-10-20; // DateTime | Filters results to all those *after* the provided datetime
+var include = include_example; // String | A list of comma-separated related models to include
 
 try { 
-    var result = api_instance.getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter);
+    var result = api_instance.getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter, include);
     print(result);
 } catch (e) {
     print("Exception when calling InvitesApi->getInvites: $e\n");
@@ -187,6 +190,7 @@ Name | Type | Description  | Notes
  **sortBy** | **String**| Sorts by the field name and direction provided where the pattern is &#x60;FIELD_NAME_DIRECTION&#x60; | [optional] [default to null]
  **startsBefore** | **DateTime**| Filters results to all those *before* the provided datetime | [optional] [default to null]
  **startsAfter** | **DateTime**| Filters results to all those *after* the provided datetime | [optional] [default to null]
+ **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
 
 ### Return type
 

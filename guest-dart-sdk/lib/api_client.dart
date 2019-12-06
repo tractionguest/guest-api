@@ -39,6 +39,12 @@ class ApiClient {
           return value is double ? value : double.parse('$value');
         case 'CustomField':
           return CustomField.fromJson(value);
+        case 'Delivery':
+          return Delivery.fromJson(value);
+        case 'DeliveryCreateParams':
+          return DeliveryCreateParams.fromJson(value);
+        case 'DeliveryUpdateParams':
+          return DeliveryUpdateParams.fromJson(value);
         case 'Docusign':
           return Docusign.fromJson(value);
         case 'EmailTemplate':
@@ -69,6 +75,8 @@ class ApiClient {
           return NotificationTrigger.fromJson(value);
         case 'NotificationTriggerCreateParams':
           return NotificationTriggerCreateParams.fromJson(value);
+        case 'PaginatedDeliveries':
+          return PaginatedDeliveries.fromJson(value);
         case 'PaginatedEmailTemplatesList':
           return PaginatedEmailTemplatesList.fromJson(value);
         case 'PaginatedHostsList':

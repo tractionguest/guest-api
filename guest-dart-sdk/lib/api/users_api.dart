@@ -10,7 +10,7 @@ class UsersApi {
   /// Get the current User
   ///
   /// Gets the details of a single instance of the current &#x60;User&#x60;.
-  Future<User> getCurrentUser(String userId) async {
+  Future<User> getCurrentUser(String userId, { String include }) async {
     Object postBody;
 
     // verify required params are set
@@ -25,6 +25,9 @@ class UsersApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(include != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "include", include));
+    }
 
     List<String> contentTypes = [];
 

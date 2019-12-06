@@ -10,7 +10,7 @@ class EmailTemplatesApi {
   /// List All EmailTemplates
   ///
   /// Gets a list of all &#x60;EmailTemplate&#x60; entities.
-  Future<PaginatedEmailTemplatesList> getEmailTemplates({ int limit, int offset }) async {
+  Future<PaginatedEmailTemplatesList> getEmailTemplates({ int limit, int offset, String include }) async {
     Object postBody;
 
     // verify required params are set
@@ -27,6 +27,9 @@ class EmailTemplatesApi {
     }
     if(offset != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "offset", offset));
+    }
+    if(include != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "include", include));
     }
 
     List<String> contentTypes = [];

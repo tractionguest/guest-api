@@ -1,4 +1,4 @@
-# guest_sdk.api.LocationsApi
+# guest_sdk.api.DeliveriesApi
 
 ## Load the API package
 ```dart
@@ -9,9 +9,9 @@ All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createDelivery**](LocationsApi.md#createDelivery) | **POST** /locations/{locationId}/deliveries | Create a Delivery
-[**getDeliveries**](LocationsApi.md#getDeliveries) | **GET** /locations/{locationId}/deliveries | List all Deliveries
-[**getLocations**](LocationsApi.md#getLocations) | **GET** /locations | List All Locations
+[**createDelivery**](DeliveriesApi.md#createDelivery) | **POST** /locations/{locationId}/deliveries | Create a Delivery
+[**getDeliveries**](DeliveriesApi.md#getDeliveries) | **GET** /locations/{locationId}/deliveries | List all Deliveries
+[**updateDelivery**](DeliveriesApi.md#updateDelivery) | **PUT** /deliveries/{deliveryId} | Update a Delivery
 
 
 # **createDelivery**
@@ -23,7 +23,7 @@ Create a Delivery
 ```dart
 import 'package:guest_sdk/api.dart';
 
-var api_instance = new LocationsApi();
+var api_instance = new DeliveriesApi();
 var locationId = locationId_example; // String | A unique identifier for a `Location`.
 var deliveryCreateParams = new DeliveryCreateParams(); // DeliveryCreateParams | 
 
@@ -31,7 +31,7 @@ try {
     var result = api_instance.createDelivery(locationId, deliveryCreateParams);
     print(result);
 } catch (e) {
-    print("Exception when calling LocationsApi->createDelivery: $e\n");
+    print("Exception when calling DeliveriesApi->createDelivery: $e\n");
 }
 ```
 
@@ -66,7 +66,7 @@ List all Deliveries
 ```dart
 import 'package:guest_sdk/api.dart';
 
-var api_instance = new LocationsApi();
+var api_instance = new DeliveriesApi();
 var locationId = locationId_example; // String | A unique identifier for a `Location`.
 var include = include_example; // String | A list of comma-separated related models to include
 
@@ -74,7 +74,7 @@ try {
     var result = api_instance.getDeliveries(locationId, include);
     print(result);
 } catch (e) {
-    print("Exception when calling LocationsApi->getDeliveries: $e\n");
+    print("Exception when calling DeliveriesApi->getDeliveries: $e\n");
 }
 ```
 
@@ -100,28 +100,24 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getLocations**
-> PaginatedLocationsList getLocations(limit, offset, query, include)
+# **updateDelivery**
+> Delivery updateDelivery(deliveryId, deliveryUpdateParams)
 
-List All Locations
-
-Gets a list of all `Location` entities.
+Update a Delivery
 
 ### Example 
 ```dart
 import 'package:guest_sdk/api.dart';
 
-var api_instance = new LocationsApi();
-var limit = 56; // int | Limits the results to a specified number, defaults to 50
-var offset = 56; // int | Offsets the results to a specified number, defaults to 0
-var query = query_example; // String | Queries by Location `name`
-var include = include_example; // String | A list of comma-separated related models to include
+var api_instance = new DeliveriesApi();
+var deliveryId = deliveryId_example; // String | A unique identifier for a Delivery
+var deliveryUpdateParams = new DeliveryUpdateParams(); // DeliveryUpdateParams | Update `Delivery` information
 
 try { 
-    var result = api_instance.getLocations(limit, offset, query, include);
+    var result = api_instance.updateDelivery(deliveryId, deliveryUpdateParams);
     print(result);
 } catch (e) {
-    print("Exception when calling LocationsApi->getLocations: $e\n");
+    print("Exception when calling DeliveriesApi->updateDelivery: $e\n");
 }
 ```
 
@@ -129,14 +125,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **int**| Limits the results to a specified number, defaults to 50 | [optional] [default to null]
- **offset** | **int**| Offsets the results to a specified number, defaults to 0 | [optional] [default to null]
- **query** | **String**| Queries by Location &#x60;name&#x60; | [optional] [default to null]
- **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
+ **deliveryId** | **String**| A unique identifier for a Delivery | [default to null]
+ **deliveryUpdateParams** | [**DeliveryUpdateParams**](DeliveryUpdateParams.md)| Update &#x60;Delivery&#x60; information | 
 
 ### Return type
 
-[**PaginatedLocationsList**](PaginatedLocationsList.md)
+[**Delivery**](Delivery.md)
 
 ### Authorization
 
@@ -144,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

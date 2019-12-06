@@ -57,7 +57,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWatchlist**
-> Watchlist getWatchlist(watchlistId)
+> Watchlist getWatchlist(watchlistId, include)
 
 Get a Watchlist
 
@@ -69,9 +69,10 @@ import 'package:guest_sdk/api.dart';
 
 var api_instance = new WatchlistsApi();
 var watchlistId = watchlistId_example; // String | A unique identifier for a `Watchlist`.
+var include = include_example; // String | A list of comma-separated related models to include
 
 try { 
-    var result = api_instance.getWatchlist(watchlistId);
+    var result = api_instance.getWatchlist(watchlistId, include);
     print(result);
 } catch (e) {
     print("Exception when calling WatchlistsApi->getWatchlist: $e\n");
@@ -83,6 +84,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **watchlistId** | **String**| A unique identifier for a &#x60;Watchlist&#x60;. | [default to null]
+ **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
 
 ### Return type
 
@@ -100,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWatchlists**
-> PaginatedWatchlistList getWatchlists(limit, offset, query, withColours)
+> PaginatedWatchlistList getWatchlists(limit, offset, query, withColours, include)
 
 List All Watchlists
 
@@ -115,9 +117,10 @@ var limit = 56; // int | Limits the results to a specified number, defaults to 5
 var offset = 56; // int | Offsets the results to a specified number, defaults to 0
 var query = query_example; // String | Query the results by `first_name`, `last_name`, `email`, `colour`, and `notes` all at once.
 var withColours = withColours_example; // String | A comma separated list of case-insensitive colour values. i.e., `red`, `green`, `yellow`, and `orange`
+var include = include_example; // String | A list of comma-separated related models to include
 
 try { 
-    var result = api_instance.getWatchlists(limit, offset, query, withColours);
+    var result = api_instance.getWatchlists(limit, offset, query, withColours, include);
     print(result);
 } catch (e) {
     print("Exception when calling WatchlistsApi->getWatchlists: $e\n");
@@ -132,6 +135,7 @@ Name | Type | Description  | Notes
  **offset** | **int**| Offsets the results to a specified number, defaults to 0 | [optional] [default to null]
  **query** | **String**| Query the results by &#x60;first_name&#x60;, &#x60;last_name&#x60;, &#x60;email&#x60;, &#x60;colour&#x60;, and &#x60;notes&#x60; all at once. | [optional] [default to null]
  **withColours** | **String**| A comma separated list of case-insensitive colour values. i.e., &#x60;red&#x60;, &#x60;green&#x60;, &#x60;yellow&#x60;, and &#x60;orange&#x60; | [optional] [default to null]
+ **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
 
 ### Return type
 

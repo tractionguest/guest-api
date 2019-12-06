@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.24
+    version: 0.9.25
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -3181,11 +3181,9 @@ paths:
                                         deliveries:
                                             -
                                                 photo_url: some text
-                                                signin_timestamp: '2018-02-10T09:30Z'
-                                                signout_timestamp: '2018-02-10T09:30Z'
                                                 recipient_name: some text
                                                 host:
-                                                    id: 44
+                                                    id: 92
                                                     email: some text
                                                     first_name: some text
                                                     last_name: some text
@@ -3193,15 +3191,15 @@ paths:
                                                     department: some text
                                                     mobile_number: some text
                                                 location:
-                                                    id: 23
+                                                    id: 84
                                                     name: some text
+                                                created_at: '2018-02-10T09:30Z'
+                                                pickup_timestamp: '2018-02-10T09:30Z'
                                             -
                                                 photo_url: some text
-                                                signin_timestamp: '2018-02-10T09:30Z'
-                                                signout_timestamp: '2018-02-10T09:30Z'
                                                 recipient_name: some text
                                                 host:
-                                                    id: 71
+                                                    id: 27
                                                     email: some text
                                                     first_name: some text
                                                     last_name: some text
@@ -3209,12 +3207,14 @@ paths:
                                                     department: some text
                                                     mobile_number: some text
                                                 location:
-                                                    id: 69
+                                                    id: 77
                                                     name: some text
+                                                created_at: '2018-02-10T09:30Z'
+                                                pickup_timestamp: '2018-02-10T09:30Z'
                                         pagination:
-                                            total_records: 64
-                                            current_offset: 92
-                                            next_offset: 48
+                                            total_records: 96
+                                            current_offset: 71
+                                            next_offset: 12
                     description: List all Deliveries for the account
             operationId: getDeliveries
             summary: List all Deliveries
@@ -3245,18 +3245,28 @@ paths:
                             examples:
                                 default:
                                     value:
-                                        location_id: 76
-                                        host_id: 29
                                         photo_url: some text
-                                        signin_timestamp: '2018-02-10T09:30Z'
-                                        signout_timestamp: '2018-02-10T09:30Z'
                                         recipient_name: some text
+                                        host:
+                                            id: 16
+                                            email: some text
+                                            first_name: some text
+                                            last_name: some text
+                                            profile_pic_url: some text
+                                            department: some text
+                                            mobile_number: some text
+                                        location:
+                                            id: 61
+                                            name: some text
+                                        created_at: '2018-02-10T09:30Z'
+                                        pickup_timestamp: '2018-02-10T09:30Z'
                     description: Successful response - creates a new Delivery
             operationId: createDelivery
             summary: Create a Delivery
         parameters:
             -
                 name: locationId
+                description: A unique identifier for a `Location`.
                 schema:
                     type: string
                 in: path
@@ -3272,7 +3282,7 @@ paths:
                         examples:
                             default:
                                 value:
-                                    host_id: 43
+                                    host_id: 53
                                     photo_url: some text
                                     signin_timestamp: '2018-02-10T09:30Z'
                                     signout_timestamp: '2018-02-10T09:30Z'
@@ -3298,11 +3308,9 @@ paths:
                                 default:
                                     value:
                                         photo_url: some text
-                                        signin_timestamp: '2018-02-10T09:30Z'
-                                        signout_timestamp: '2018-02-10T09:30Z'
                                         recipient_name: some text
                                         host:
-                                            id: 63
+                                            id: 28
                                             email: some text
                                             first_name: some text
                                             last_name: some text
@@ -3310,14 +3318,17 @@ paths:
                                             department: some text
                                             mobile_number: some text
                                         location:
-                                            id: 4
+                                            id: 53
                                             name: some text
+                                        created_at: '2018-02-10T09:30Z'
+                                        pickup_timestamp: '2018-02-10T09:30Z'
                     description: Successful response
             operationId: updateDelivery
             summary: Update a Delivery
         parameters:
             -
                 name: deliveryId
+                description: A unique identifier for a Delivery
                 schema:
                     type: string
                 in: path
@@ -5928,14 +5939,6 @@ components:
                 photo_url:
                     description: ''
                     type: string
-                signin_timestamp:
-                    format: date-time
-                    description: ''
-                    type: string
-                signout_timestamp:
-                    format: date-time
-                    description: ''
-                    type: string
                 recipient_name:
                     description: ''
                     type: string
@@ -5945,6 +5948,14 @@ components:
                 location:
                     $ref: '#/components/schemas/Location'
                     description: ''
+                created_at:
+                    format: date-time
+                    description: ''
+                    type: string
+                pickup_timestamp:
+                    format: date-time
+                    description: ''
+                    type: string
         PaginatedDeliveries:
             description: ''
             type: object
@@ -5959,8 +5970,7 @@ components:
                     description: ''
         DeliveryCreateParams:
             description: ''
-            required:
-                - location_id
+            required: []
             type: object
             properties:
                 location_id:

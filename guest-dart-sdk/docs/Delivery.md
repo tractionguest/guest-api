@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **photoUrl** | **String** |  | [optional] [default to null]
 **recipientName** | **String** |  | [optional] [default to null]
 **host** | [**Host**](Host.md) |  | [optional] [default to null]
-**location** | [**Location**](Location.md) |  | [default to null]
+**location** | [**Location**](Location.md) |  | [optional] [default to null]
 **createdAt** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
 **pickupTimestamp** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
 

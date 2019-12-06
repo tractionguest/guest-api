@@ -6,16 +6,14 @@ class DeliveryUpdateParams {
   
   String photoUrl = null;
   
-  DateTime signinTimestamp = null;
-  
-  DateTime signoutTimestamp = null;
-  
   String recipientName = null;
+  
+  DateTime pickupTimestamp = null;
   DeliveryUpdateParams();
 
   @override
   String toString() {
-    return 'DeliveryUpdateParams[hostId=$hostId, photoUrl=$photoUrl, signinTimestamp=$signinTimestamp, signoutTimestamp=$signoutTimestamp, recipientName=$recipientName, ]';
+    return 'DeliveryUpdateParams[hostId=$hostId, photoUrl=$photoUrl, recipientName=$recipientName, pickupTimestamp=$pickupTimestamp, ]';
   }
 
   DeliveryUpdateParams.fromJson(Map<String, dynamic> json) {
@@ -30,20 +28,15 @@ class DeliveryUpdateParams {
     } else {
           photoUrl = json['photo_url'];
     }
-    if (json['signin_timestamp'] == null) {
-      signinTimestamp = null;
-    } else {
-      signinTimestamp = DateTime.parse(json['signin_timestamp']);
-    }
-    if (json['signout_timestamp'] == null) {
-      signoutTimestamp = null;
-    } else {
-      signoutTimestamp = DateTime.parse(json['signout_timestamp']);
-    }
     if (json['recipient_name'] == null) {
       recipientName = null;
     } else {
           recipientName = json['recipient_name'];
+    }
+    if (json['pickup_timestamp'] == null) {
+      pickupTimestamp = null;
+    } else {
+      pickupTimestamp = DateTime.parse(json['pickup_timestamp']);
     }
   }
 
@@ -53,12 +46,10 @@ class DeliveryUpdateParams {
       json['host_id'] = hostId;
     if (photoUrl != null)
       json['photo_url'] = photoUrl;
-    if (signinTimestamp != null)
-      json['signin_timestamp'] = signinTimestamp == null ? null : signinTimestamp.toUtc().toIso8601String();
-    if (signoutTimestamp != null)
-      json['signout_timestamp'] = signoutTimestamp == null ? null : signoutTimestamp.toUtc().toIso8601String();
     if (recipientName != null)
       json['recipient_name'] = recipientName;
+    if (pickupTimestamp != null)
+      json['pickup_timestamp'] = pickupTimestamp == null ? null : pickupTimestamp.toUtc().toIso8601String();
     return json;
   }
 

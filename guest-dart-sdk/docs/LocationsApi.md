@@ -9,7 +9,7 @@ All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createDelivery**](LocationsApi.md#createDelivery) | **POST** /locations/{locationId}/deliveries | Create a Delivery
+[**createDelivery**](LocationsApi.md#createDelivery) | **POST** /locations/{locationId}/deliveries | Create Delivery
 [**getDeliveries**](LocationsApi.md#getDeliveries) | **GET** /locations/{locationId}/deliveries | List all Deliveries
 [**getLocations**](LocationsApi.md#getLocations) | **GET** /locations | List All Locations
 
@@ -17,15 +17,15 @@ Method | HTTP request | Description
 # **createDelivery**
 > Delivery createDelivery(locationId, deliveryCreateParams)
 
-Create a Delivery
+Create Delivery
 
 ### Example 
 ```dart
 import 'package:guest_sdk/api.dart';
 
 var api_instance = new LocationsApi();
-var locationId = locationId_example; // String | A unique identifier for a `Location`.
-var deliveryCreateParams = new DeliveryCreateParams(); // DeliveryCreateParams | 
+var locationId = 98; // int | A unique identifier for a `Location`.
+var deliveryCreateParams = new DeliveryCreateParams(); // DeliveryCreateParams | Create params
 
 try { 
     var result = api_instance.createDelivery(locationId, deliveryCreateParams);
@@ -39,8 +39,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **locationId** | **String**| A unique identifier for a &#x60;Location&#x60;. | [default to null]
- **deliveryCreateParams** | [**DeliveryCreateParams**](DeliveryCreateParams.md)|  | [optional] 
+ **locationId** | **int**| A unique identifier for a &#x60;Location&#x60;. | [default to null]
+ **deliveryCreateParams** | [**DeliveryCreateParams**](DeliveryCreateParams.md)| Create params | 
 
 ### Return type
 
@@ -67,7 +67,7 @@ List all Deliveries
 import 'package:guest_sdk/api.dart';
 
 var api_instance = new LocationsApi();
-var locationId = locationId_example; // String | A unique identifier for a `Location`.
+var locationId = 98; // int | A unique identifier for a `Location`.
 var include = include_example; // String | A list of comma-separated related models to include
 
 try { 
@@ -82,7 +82,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **locationId** | **String**| A unique identifier for a &#x60;Location&#x60;. | [default to null]
+ **locationId** | **int**| A unique identifier for a &#x60;Location&#x60;. | [default to null]
  **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
 
 ### Return type

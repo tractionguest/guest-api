@@ -7,15 +7,18 @@ class LocationsApi {
 
   LocationsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// Create a Delivery
+  /// Create Delivery
   ///
   /// 
-  Future<Delivery> createDelivery(String locationId, { DeliveryCreateParams deliveryCreateParams }) async {
+  Future<Delivery> createDelivery(int locationId, DeliveryCreateParams deliveryCreateParams) async {
     Object postBody = deliveryCreateParams;
 
     // verify required params are set
     if(locationId == null) {
      throw new ApiException(400, "Missing required param: locationId");
+    }
+    if(deliveryCreateParams == null) {
+     throw new ApiException(400, "Missing required param: deliveryCreateParams");
     }
 
     // create path and map variables
@@ -60,7 +63,7 @@ class LocationsApi {
   /// List all Deliveries
   ///
   /// 
-  Future<PaginatedDeliveries> getDeliveries(String locationId, { String include }) async {
+  Future<PaginatedDeliveries> getDeliveries(int locationId, { String include }) async {
     Object postBody;
 
     // verify required params are set

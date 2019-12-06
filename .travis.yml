@@ -22,7 +22,6 @@ before_install:
 
 script:
   - ./openapi-generator.sh validate -i openapi.yml
-  - speccy lint openapi.yml
   - ./build-scripts/dart.sh
   - ./build-scripts/redoc.sh
  

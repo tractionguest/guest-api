@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.25
+    version: 0.9.26
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -3158,6 +3158,10 @@ paths:
                 in: path
                 required: true
     '/locations/{locationId}/deliveries':
+        summary: Path used to manage a single Location's deliveries.
+        description: >-
+            The REST endpoint/path used to create single instances of a `Delivery`, or view all of the records
+            for a specific `Location`.
         get:
             tags:
                 - Deliveries
@@ -3183,7 +3187,7 @@ paths:
                                                 photo_url: some text
                                                 recipient_name: some text
                                                 host:
-                                                    id: 92
+                                                    id: 13
                                                     email: some text
                                                     first_name: some text
                                                     last_name: some text
@@ -3207,32 +3211,25 @@ paths:
                                                     department: some text
                                                     mobile_number: some text
                                                 location:
-                                                    id: 77
+                                                    id: 63
                                                     name: some text
                                                 created_at: '2018-02-10T09:30Z'
                                                 pickup_timestamp: '2018-02-10T09:30Z'
                                         pagination:
-                                            total_records: 96
-                                            current_offset: 71
-                                            next_offset: 12
+                                            total_records: 50
+                                            current_offset: 11
+                                            next_offset: 69
                     description: List all Deliveries for the account
             operationId: getDeliveries
             summary: List all Deliveries
         post:
             requestBody:
+                description: Create params
                 content:
                     application/json:
                         schema:
                             $ref: '#/components/schemas/DeliveryCreateParams'
-                        examples:
-                            default:
-                                value:
-                                    location_id: 14
-                                    host_id: 21
-                                    photo_url: some text
-                                    signin_timestamp: '2018-02-10T09:30Z'
-                                    signout_timestamp: '2018-02-10T09:30Z'
-                                    recipient_name: some text
+                required: true
             tags:
                 - Deliveries
                 - Locations
@@ -3248,7 +3245,7 @@ paths:
                                         photo_url: some text
                                         recipient_name: some text
                                         host:
-                                            id: 16
+                                            id: 33
                                             email: some text
                                             first_name: some text
                                             last_name: some text
@@ -3256,22 +3253,29 @@ paths:
                                             department: some text
                                             mobile_number: some text
                                         location:
-                                            id: 61
+                                            id: 92
                                             name: some text
                                         created_at: '2018-02-10T09:30Z'
                                         pickup_timestamp: '2018-02-10T09:30Z'
-                    description: Successful response - creates a new Delivery
+                    description: It worked
             operationId: createDelivery
-            summary: Create a Delivery
+            summary: Create Delivery
         parameters:
             -
+                examples:
+                    default:
+                        value: '98'
                 name: locationId
                 description: A unique identifier for a `Location`.
                 schema:
-                    type: string
+                    type: integer
                 in: path
                 required: true
     '/deliveries/{deliveryId}':
+        summary: Path used to manage a single Delivery
+        description: >-
+            The REST endpoint/path used to get, update, and delete single instances of a `Delivery`.  This
+            path contains `PUT` operations used to perform the action.
         put:
             requestBody:
                 description: Update `Delivery` information
@@ -3282,11 +3286,10 @@ paths:
                         examples:
                             default:
                                 value:
-                                    host_id: 53
+                                    host_id: 76
                                     photo_url: some text
-                                    signin_timestamp: '2018-02-10T09:30Z'
-                                    signout_timestamp: '2018-02-10T09:30Z'
                                     recipient_name: some text
+                                    pickup_timestamp: '2018-02-10T09:30Z'
                 required: true
             tags:
                 - Deliveries
@@ -3310,7 +3313,7 @@ paths:
                                         photo_url: some text
                                         recipient_name: some text
                                         host:
-                                            id: 28
+                                            id: 89
                                             email: some text
                                             first_name: some text
                                             last_name: some text
@@ -3318,7 +3321,7 @@ paths:
                                             department: some text
                                             mobile_number: some text
                                         location:
-                                            id: 53
+                                            id: 48
                                             name: some text
                                         created_at: '2018-02-10T09:30Z'
                                         pickup_timestamp: '2018-02-10T09:30Z'
@@ -5931,9 +5934,8 @@ components:
                     - some text
                     - some text
         Delivery:
-            description: ''
-            required:
-                - location
+            description: The root of the Delivery type's schema.
+            required: []
             type: object
             properties:
                 photo_url:
@@ -5956,6 +5958,22 @@ components:
                     format: date-time
                     description: ''
                     type: string
+            example:
+                photo_url: some text
+                recipient_name: some text
+                host:
+                    id: 4
+                    email: some text
+                    first_name: some text
+                    last_name: some text
+                    profile_pic_url: some text
+                    department: some text
+                    mobile_number: some text
+                location:
+                    id: 3
+                    name: some text
+                created_at: '2018-02-10T09:30Z'
+                pickup_timestamp: '2018-02-10T09:30Z'
         PaginatedDeliveries:
             description: ''
             type: object
@@ -5968,31 +5986,71 @@ components:
                 pagination:
                     $ref: '#/components/schemas/Pagination'
                     description: ''
+            example:
+                deliveries:
+                    -
+                        photo_url: some text
+                        recipient_name: some text
+                        host:
+                            id: 13
+                            email: some text
+                            first_name: some text
+                            last_name: some text
+                            profile_pic_url: some text
+                            department: some text
+                            mobile_number: some text
+                        location:
+                            id: 73
+                            name: some text
+                        created_at: '2018-02-10T09:30Z'
+                        pickup_timestamp: '2018-02-10T09:30Z'
+                    -
+                        photo_url: some text
+                        recipient_name: some text
+                        host:
+                            id: 91
+                            email: some text
+                            first_name: some text
+                            last_name: some text
+                            profile_pic_url: some text
+                            department: some text
+                            mobile_number: some text
+                        location:
+                            id: 22
+                            name: some text
+                        created_at: '2018-02-10T09:30Z'
+                        pickup_timestamp: '2018-02-10T09:30Z'
+                pagination:
+                    total_records: 4
+                    current_offset: 2
+                    next_offset: 74
         DeliveryCreateParams:
-            description: ''
+            description: The root of the DeliveryCreateParams type's schema.
             required: []
             type: object
             properties:
                 location_id:
                     description: ''
-                    type: integer
+                    type: string
                 host_id:
                     description: ''
-                    type: integer
+                    type: string
                 photo_url:
-                    description: ''
-                    type: string
-                signin_timestamp:
-                    format: date-time
-                    description: ''
-                    type: string
-                signout_timestamp:
-                    format: date-time
                     description: ''
                     type: string
                 recipient_name:
                     description: ''
                     type: string
+                pickup_timestamp:
+                    format: date-time
+                    description: ''
+                    type: string
+            example:
+                location_id: some text
+                host_id: some text
+                photo_url: some text
+                recipient_name: some text
+                pickup_timestamp: '2018-02-10T09:30Z'
         DeliveryUpdateParams:
             description: ''
             required: []
@@ -6004,20 +6062,16 @@ components:
                 photo_url:
                     description: ''
                     type: string
-                signin_timestamp:
-                    format: date-time
-                    description: ''
-                    type: string
-                signout_timestamp:
-                    format: date-time
-                    description: ''
-                    type: string
                 recipient_name:
+                    description: ''
+                    type: string
+                pickup_timestamp:
+                    format: date-time
                     description: ''
                     type: string
     securitySchemes:
         TractionGuestAuth:
-            openIdConnectUrl: /.well-known/openid-configuration
+            openIdConnectUrl: 'https://mobile-api-refactor-admin.tractionguest.ca/.well-known/openid-configuration'
             type: openIdConnect
 security:
     -

@@ -1,5 +1,5 @@
 name: guest_sdk
-version: 0.9.26
+version: 0.9.27
 description: OpenAPI API client
 environment:
   sdk: '>=2.0.0 <3.0.0'

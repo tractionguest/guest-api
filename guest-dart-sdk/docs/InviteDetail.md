@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **notificationTriggers** | [**List&lt;NotificationTrigger&gt;**](NotificationTrigger.md) | List of scheduled notifications for an invite | [optional] [default to []]
 **inviteWatchlist** | [**InviteWatchlist**](InviteWatchlist.md) |  | [optional] [default to null]
 **emailTemplate** | [**EmailTemplate**](EmailTemplate.md) |  | [optional] [default to null]
-**mobileNumber** | **String** | Phone number | [optional] [default to null]
+**mobile** | **String** | Phone number | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

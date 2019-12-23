@@ -1160,9 +1160,9 @@ paths:
                                         mobile: some text
                                         invite_watchlist:
                                             id: 3
-                                            external:
+                                            external_colours:
                                                 - some text
-                                            internal:
+                                            internal_colours:
                                                 - some text
                                                 - some text
                     description: Created the `Invite` for the `Location`

@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.26
+    version: 0.9.27
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -1161,135 +1161,10 @@ paths:
                                         invite_watchlist:
                                             id: 3
                                             external:
-                                                -
-                                                    search_terms:
-                                                        name: some text
-                                                        company: some text
-                                                        city: some text
-                                                        country: some text
-                                                        state: some text
-                                                    integration: some text
-                                                    colour: ORANGE
-                                                    matches:
-                                                        -
-                                                            id: some text
-                                                            alt_names:
-                                                                - some text
-                                                                - some text
-                                                            federal_register_notice: some text
-                                                            name: some text
-                                                            source_information_url: some text
-                                                            source_list_url: some text
-                                                            list: some text
-                                                            type: some text
-                                                            category: some text
-                                                            street1: some text
-                                                            street2: some text
-                                                            city: some text
-                                                            state: some text
-                                                            country: some text
-                                                            notes: some text
-                                                            frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
-                                                            frserve: some text
-                                                            optional_ID: some text
-                                                            alert_type: some text
-                                                        -
-                                                            id: some text
-                                                            alt_names:
-                                                                - some text
-                                                                - some text
-                                                            federal_register_notice: some text
-                                                            name: some text
-                                                            source_information_url: some text
-                                                            source_list_url: some text
-                                                            list: some text
-                                                            type: some text
-                                                            category: some text
-                                                            street1: some text
-                                                            street2: some text
-                                                            city: some text
-                                                            state: some text
-                                                            country: some text
-                                                            notes: some text
-                                                            frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
-                                                            frserve: some text
-                                                            optional_ID: some text
-                                                            alert_type: some text
-                                                -
-                                                    search_terms:
-                                                        name: some text
-                                                        company: some text
-                                                        city: some text
-                                                        country: some text
-                                                        state: some text
-                                                    integration: some text
-                                                    colour: YELLOW
-                                                    matches:
-                                                        -
-                                                            id: some text
-                                                            alt_names:
-                                                                - some text
-                                                                - some text
-                                                            federal_register_notice: some text
-                                                            name: some text
-                                                            source_information_url: some text
-                                                            source_list_url: some text
-                                                            list: some text
-                                                            type: some text
-                                                            category: some text
-                                                            street1: some text
-                                                            street2: some text
-                                                            city: some text
-                                                            state: some text
-                                                            country: some text
-                                                            notes: some text
-                                                            frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
-                                                            frserve: some text
-                                                            optional_ID: some text
-                                                            alert_type: some text
-                                                        -
-                                                            id: some text
-                                                            alt_names:
-                                                                - some text
-                                                                - some text
-                                                            federal_register_notice: some text
-                                                            name: some text
-                                                            source_information_url: some text
-                                                            source_list_url: some text
-                                                            list: some text
-                                                            type: some text
-                                                            category: some text
-                                                            street1: some text
-                                                            street2: some text
-                                                            city: some text
-                                                            state: some text
-                                                            country: some text
-                                                            notes: some text
-                                                            frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
-                                                            frserve: some text
-                                                            optional_ID: some text
-                                                            alert_type: some text
+                                                - some text
                                             internal:
-                                                -
-                                                    id: 95
-                                                    email: some text
-                                                    colour: some text
-                                                    last_name: some text
-                                                    first_name: some text
-                                                -
-                                                    id: 75
-                                                    email: some text
-                                                    colour: some text
-                                                    last_name: some text
-                                                    first_name: some text
+                                                - some text
+                                                - some text
                     description: Created the `Invite` for the `Location`
                 '400':
                     content:
@@ -1447,136 +1322,11 @@ paths:
                                                         profile_pic_url: some text
                                                 invite_watchlist:
                                                     id: 22
-                                                    external:
-                                                        -
-                                                            search_terms:
-                                                                name: some text
-                                                                company: some text
-                                                                city: some text
-                                                                country: some text
-                                                                state: some text
-                                                            integration: some text
-                                                            colour: GREEN
-                                                            matches:
-                                                                -
-                                                                    id: some text
-                                                                    alt_names:
-                                                                        - some text
-                                                                        - some text
-                                                                    federal_register_notice: some text
-                                                                    name: some text
-                                                                    source_information_url: some text
-                                                                    source_list_url: some text
-                                                                    list: some text
-                                                                    type: some text
-                                                                    category: some text
-                                                                    street1: some text
-                                                                    street2: some text
-                                                                    city: some text
-                                                                    state: some text
-                                                                    country: some text
-                                                                    notes: some text
-                                                                    frc: some text
-                                                                    start: '2018-01-17'
-                                                                    end: '2018-01-17'
-                                                                    frserve: some text
-                                                                    optional_ID: some text
-                                                                    alert_type: some text
-                                                                -
-                                                                    id: some text
-                                                                    alt_names:
-                                                                        - some text
-                                                                        - some text
-                                                                    federal_register_notice: some text
-                                                                    name: some text
-                                                                    source_information_url: some text
-                                                                    source_list_url: some text
-                                                                    list: some text
-                                                                    type: some text
-                                                                    category: some text
-                                                                    street1: some text
-                                                                    street2: some text
-                                                                    city: some text
-                                                                    state: some text
-                                                                    country: some text
-                                                                    notes: some text
-                                                                    frc: some text
-                                                                    start: '2018-01-17'
-                                                                    end: '2018-01-17'
-                                                                    frserve: some text
-                                                                    optional_ID: some text
-                                                                    alert_type: some text
-                                                        -
-                                                            search_terms:
-                                                                name: some text
-                                                                company: some text
-                                                                city: some text
-                                                                country: some text
-                                                                state: some text
-                                                            integration: some text
-                                                            colour: YELLOW
-                                                            matches:
-                                                                -
-                                                                    id: some text
-                                                                    alt_names:
-                                                                        - some text
-                                                                        - some text
-                                                                    federal_register_notice: some text
-                                                                    name: some text
-                                                                    source_information_url: some text
-                                                                    source_list_url: some text
-                                                                    list: some text
-                                                                    type: some text
-                                                                    category: some text
-                                                                    street1: some text
-                                                                    street2: some text
-                                                                    city: some text
-                                                                    state: some text
-                                                                    country: some text
-                                                                    notes: some text
-                                                                    frc: some text
-                                                                    start: '2018-01-17'
-                                                                    end: '2018-01-17'
-                                                                    frserve: some text
-                                                                    optional_ID: some text
-                                                                    alert_type: some text
-                                                                -
-                                                                    id: some text
-                                                                    alt_names:
-                                                                        - some text
-                                                                        - some text
-                                                                    federal_register_notice: some text
-                                                                    name: some text
-                                                                    source_information_url: some text
-                                                                    source_list_url: some text
-                                                                    list: some text
-                                                                    type: some text
-                                                                    category: some text
-                                                                    street1: some text
-                                                                    street2: some text
-                                                                    city: some text
-                                                                    state: some text
-                                                                    country: some text
-                                                                    notes: some text
-                                                                    frc: some text
-                                                                    start: '2018-01-17'
-                                                                    end: '2018-01-17'
-                                                                    frserve: some text
-                                                                    optional_ID: some text
-                                                                    alert_type: some text
-                                                    internal:
-                                                        -
-                                                            id: 50
-                                                            email: some text
-                                                            colour: some text
-                                                            last_name: some text
-                                                            first_name: some text
-                                                        -
-                                                            id: 80
-                                                            email: some text
-                                                            colour: some text
-                                                            last_name: some text
-                                                            first_name: some text
+                                                    external_colours:
+                                                        - some text
+                                                    internal_colours:
+                                                        - some text
+                                                        - some text
                                                 end_date: '2018-02-10T09:30Z'
                                                 email: some text
                                             -
@@ -2707,136 +2457,12 @@ paths:
                                         mobile: some text
                                         invite_watchlist:
                                             id: 47
-                                            external:
-                                                -
-                                                    search_terms:
-                                                        name: some text
-                                                        company: some text
-                                                        city: some text
-                                                        country: some text
-                                                        state: some text
-                                                    integration: some text
-                                                    colour: GREEN
-                                                    matches:
-                                                        -
-                                                            id: some text
-                                                            alt_names:
-                                                                - some text
-                                                                - some text
-                                                            federal_register_notice: some text
-                                                            name: some text
-                                                            source_information_url: some text
-                                                            source_list_url: some text
-                                                            list: some text
-                                                            type: some text
-                                                            category: some text
-                                                            street1: some text
-                                                            street2: some text
-                                                            city: some text
-                                                            state: some text
-                                                            country: some text
-                                                            notes: some text
-                                                            frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
-                                                            frserve: some text
-                                                            optional_ID: some text
-                                                            alert_type: some text
-                                                        -
-                                                            id: some text
-                                                            alt_names:
-                                                                - some text
-                                                                - some text
-                                                            federal_register_notice: some text
-                                                            name: some text
-                                                            source_information_url: some text
-                                                            source_list_url: some text
-                                                            list: some text
-                                                            type: some text
-                                                            category: some text
-                                                            street1: some text
-                                                            street2: some text
-                                                            city: some text
-                                                            state: some text
-                                                            country: some text
-                                                            notes: some text
-                                                            frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
-                                                            frserve: some text
-                                                            optional_ID: some text
-                                                            alert_type: some text
-                                                -
-                                                    search_terms:
-                                                        name: some text
-                                                        company: some text
-                                                        city: some text
-                                                        country: some text
-                                                        state: some text
-                                                    integration: some text
-                                                    colour: YELLOW
-                                                    matches:
-                                                        -
-                                                            id: some text
-                                                            alt_names:
-                                                                - some text
-                                                                - some text
-                                                            federal_register_notice: some text
-                                                            name: some text
-                                                            source_information_url: some text
-                                                            source_list_url: some text
-                                                            list: some text
-                                                            type: some text
-                                                            category: some text
-                                                            street1: some text
-                                                            street2: some text
-                                                            city: some text
-                                                            state: some text
-                                                            country: some text
-                                                            notes: some text
-                                                            frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
-                                                            frserve: some text
-                                                            optional_ID: some text
-                                                            alert_type: some text
-                                                        -
-                                                            id: some text
-                                                            alt_names:
-                                                                - some text
-                                                                - some text
-                                                            federal_register_notice: some text
-                                                            name: some text
-                                                            source_information_url: some text
-                                                            source_list_url: some text
-                                                            list: some text
-                                                            type: some text
-                                                            category: some text
-                                                            street1: some text
-                                                            street2: some text
-                                                            city: some text
-                                                            state: some text
-                                                            country: some text
-                                                            notes: some text
-                                                            frc: some text
-                                                            start: '2018-01-17'
-                                                            end: '2018-01-17'
-                                                            frserve: some text
-                                                            optional_ID: some text
-                                                            alert_type: some text
-                                            internal:
-                                                -
-                                                    id: 57
-                                                    email: some text
-                                                    colour: some text
-                                                    last_name: some text
-                                                    first_name: some text
-                                                -
-                                                    id: 30
-                                                    email: some text
-                                                    colour: some text
-                                                    last_name: some text
-                                                    first_name: some text
+                                            external_colours:
+                                                - some text
+                                                - some text
+                                            internal_colours:
+                                                - some text
+                                                - some text
                     description: Successful response - returns a single `Invite`.
                 '400':
                     content:
@@ -3157,185 +2783,6 @@ paths:
                     type: string
                 in: path
                 required: true
-    '/locations/{locationId}/deliveries':
-        summary: Path used to manage a single Location's deliveries.
-        description: >-
-            The REST endpoint/path used to create single instances of a `Delivery`, or view all of the records
-            for a specific `Location`.
-        get:
-            tags:
-                - Deliveries
-                - Locations
-            parameters:
-                -
-                    name: include
-                    description: A list of comma-separated related models to include
-                    schema:
-                        type: string
-                    in: query
-            responses:
-                '200':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/PaginatedDeliveries'
-                            examples:
-                                default:
-                                    value:
-                                        deliveries:
-                                            -
-                                                photo_url: some text
-                                                recipient_name: some text
-                                                host:
-                                                    id: 13
-                                                    email: some text
-                                                    first_name: some text
-                                                    last_name: some text
-                                                    profile_pic_url: some text
-                                                    department: some text
-                                                    mobile_number: some text
-                                                location:
-                                                    id: 84
-                                                    name: some text
-                                                created_at: '2018-02-10T09:30Z'
-                                                pickup_timestamp: '2018-02-10T09:30Z'
-                                            -
-                                                photo_url: some text
-                                                recipient_name: some text
-                                                host:
-                                                    id: 27
-                                                    email: some text
-                                                    first_name: some text
-                                                    last_name: some text
-                                                    profile_pic_url: some text
-                                                    department: some text
-                                                    mobile_number: some text
-                                                location:
-                                                    id: 63
-                                                    name: some text
-                                                created_at: '2018-02-10T09:30Z'
-                                                pickup_timestamp: '2018-02-10T09:30Z'
-                                        pagination:
-                                            total_records: 50
-                                            current_offset: 11
-                                            next_offset: 69
-                    description: List all Deliveries for the account
-            operationId: getDeliveries
-            summary: List all Deliveries
-        post:
-            requestBody:
-                description: Create params
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/DeliveryCreateParams'
-                required: true
-            tags:
-                - Deliveries
-                - Locations
-            responses:
-                '201':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Delivery'
-                            examples:
-                                default:
-                                    value:
-                                        photo_url: some text
-                                        recipient_name: some text
-                                        host:
-                                            id: 33
-                                            email: some text
-                                            first_name: some text
-                                            last_name: some text
-                                            profile_pic_url: some text
-                                            department: some text
-                                            mobile_number: some text
-                                        location:
-                                            id: 92
-                                            name: some text
-                                        created_at: '2018-02-10T09:30Z'
-                                        pickup_timestamp: '2018-02-10T09:30Z'
-                    description: It worked
-            operationId: createDelivery
-            summary: Create Delivery
-        parameters:
-            -
-                examples:
-                    default:
-                        value: '98'
-                name: locationId
-                description: A unique identifier for a `Location`.
-                schema:
-                    type: integer
-                in: path
-                required: true
-    '/deliveries/{deliveryId}':
-        summary: Path used to manage a single Delivery
-        description: >-
-            The REST endpoint/path used to get, update, and delete single instances of a `Delivery`.  This
-            path contains `PUT` operations used to perform the action.
-        put:
-            requestBody:
-                description: Update `Delivery` information
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/DeliveryUpdateParams'
-                        examples:
-                            default:
-                                value:
-                                    host_id: 76
-                                    photo_url: some text
-                                    recipient_name: some text
-                                    pickup_timestamp: '2018-02-10T09:30Z'
-                required: true
-            tags:
-                - Deliveries
-            parameters:
-                -
-                    name: deliveryId
-                    description: A unique identifier for a Delivery
-                    schema:
-                        type: string
-                    in: path
-                    required: true
-            responses:
-                '200':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Delivery'
-                            examples:
-                                default:
-                                    value:
-                                        photo_url: some text
-                                        recipient_name: some text
-                                        host:
-                                            id: 89
-                                            email: some text
-                                            first_name: some text
-                                            last_name: some text
-                                            profile_pic_url: some text
-                                            department: some text
-                                            mobile_number: some text
-                                        location:
-                                            id: 48
-                                            name: some text
-                                        created_at: '2018-02-10T09:30Z'
-                                        pickup_timestamp: '2018-02-10T09:30Z'
-                    description: Successful response
-            operationId: updateDelivery
-            summary: Update a Delivery
-        parameters:
-            -
-                name: deliveryId
-                description: A unique identifier for a Delivery
-                schema:
-                    type: string
-                in: path
-                required: true
 components:
     schemas:
         Host:
@@ -3422,144 +2869,6 @@ components:
                     "current_offset": 20,
                     "next_offset": 30
                 }
-        SigninWatchlist:
-            title: Root Type for SigninWatchlist
-            description: The root of the SigninWatchlist type's schema.
-            required:
-                - id
-            type: object
-            properties:
-                id:
-                    format: int32
-                    type: integer
-                external:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/ExternalWatchlistResult'
-                internal:
-                    description: ''
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/InternalWatchlistResult'
-            example:
-                id: 6
-                external:
-                    -
-                        search_terms:
-                            name: some text
-                            company: some text
-                            city: some text
-                            country: some text
-                            state: some text
-                        integration: some text
-                        colour: YELLOW
-                        matches:
-                            -
-                                id: some text
-                                alt_names:
-                                    - some text
-                                    - some text
-                                federal_register_notice: some text
-                                name: some text
-                                source_information_url: some text
-                                source_list_url: some text
-                                list: some text
-                                type: some text
-                                category: some text
-                                street1: some text
-                                street2: some text
-                                city: some text
-                                state: some text
-                                country: some text
-                                notes: some text
-                                frc: some text
-                                start: '2018-01-17'
-                                end: '2018-01-17'
-                                frserve: some text
-                                optional_ID: some text
-                                alert_type: some text
-                            -
-                                id: some text
-                                alt_names:
-                                    - some text
-                                    - some text
-                                federal_register_notice: some text
-                                name: some text
-                                source_information_url: some text
-                                source_list_url: some text
-                                list: some text
-                                type: some text
-                                category: some text
-                                street1: some text
-                                street2: some text
-                                city: some text
-                                state: some text
-                                country: some text
-                                notes: some text
-                                frc: some text
-                                start: '2018-01-17'
-                                end: '2018-01-17'
-                                frserve: some text
-                                optional_ID: some text
-                                alert_type: some text
-                    -
-                        search_terms:
-                            name: some text
-                            company: some text
-                            city: some text
-                            country: some text
-                            state: some text
-                        integration: some text
-                        colour: RED
-                        matches:
-                            -
-                                id: some text
-                                alt_names:
-                                    - some text
-                                    - some text
-                                federal_register_notice: some text
-                                name: some text
-                                source_information_url: some text
-                                source_list_url: some text
-                                list: some text
-                                type: some text
-                                category: some text
-                                street1: some text
-                                street2: some text
-                                city: some text
-                                state: some text
-                                country: some text
-                                notes: some text
-                                frc: some text
-                                start: '2018-01-17'
-                                end: '2018-01-17'
-                                frserve: some text
-                                optional_ID: some text
-                                alert_type: some text
-                            -
-                                id: some text
-                                alt_names:
-                                    - some text
-                                    - some text
-                                federal_register_notice: some text
-                                name: some text
-                                source_information_url: some text
-                                source_list_url: some text
-                                list: some text
-                                type: some text
-                                category: some text
-                                street1: some text
-                                street2: some text
-                                city: some text
-                                state: some text
-                                country: some text
-                                notes: some text
-                                frc: some text
-                                start: '2018-01-17'
-                                end: '2018-01-17'
-                                frserve: some text
-                                optional_ID: some text
-                                alert_type: some text
         PaginatedSigninsList:
             required:
                 - signins
@@ -3757,7 +3066,7 @@ components:
                 email:
                     description: ''
                     type: string
-                mobile_number:
+                mobile:
                     description: ''
                     type: string
             example:
@@ -3785,137 +3094,13 @@ components:
                         mobile: some text
                         profile_pic_url: some text
                 invite_watchlist:
-                    id: 97
-                    external:
-                        -
-                            search_terms:
-                                name: some text
-                                company: some text
-                                city: some text
-                                country: some text
-                                state: some text
-                            integration: some text
-                            colour: GREEN
-                            matches:
-                                -
-                                    id: some text
-                                    alt_names:
-                                        - some text
-                                        - some text
-                                    federal_register_notice: some text
-                                    name: some text
-                                    source_information_url: some text
-                                    source_list_url: some text
-                                    list: some text
-                                    type: some text
-                                    category: some text
-                                    street1: some text
-                                    street2: some text
-                                    city: some text
-                                    state: some text
-                                    country: some text
-                                    notes: some text
-                                    frc: some text
-                                    start: '2018-01-17'
-                                    end: '2018-01-17'
-                                    frserve: some text
-                                    optional_ID: some text
-                                    alert_type: some text
-                                -
-                                    id: some text
-                                    alt_names:
-                                        - some text
-                                        - some text
-                                    federal_register_notice: some text
-                                    name: some text
-                                    source_information_url: some text
-                                    source_list_url: some text
-                                    list: some text
-                                    type: some text
-                                    category: some text
-                                    street1: some text
-                                    street2: some text
-                                    city: some text
-                                    state: some text
-                                    country: some text
-                                    notes: some text
-                                    frc: some text
-                                    start: '2018-01-17'
-                                    end: '2018-01-17'
-                                    frserve: some text
-                                    optional_ID: some text
-                                    alert_type: some text
-                        -
-                            search_terms:
-                                name: some text
-                                company: some text
-                                city: some text
-                                country: some text
-                                state: some text
-                            integration: some text
-                            colour: GREEN
-                            matches:
-                                -
-                                    id: some text
-                                    alt_names:
-                                        - some text
-                                        - some text
-                                    federal_register_notice: some text
-                                    name: some text
-                                    source_information_url: some text
-                                    source_list_url: some text
-                                    list: some text
-                                    type: some text
-                                    category: some text
-                                    street1: some text
-                                    street2: some text
-                                    city: some text
-                                    state: some text
-                                    country: some text
-                                    notes: some text
-                                    frc: some text
-                                    start: '2018-01-17'
-                                    end: '2018-01-17'
-                                    frserve: some text
-                                    optional_ID: some text
-                                    alert_type: some text
-                                -
-                                    id: some text
-                                    alt_names:
-                                        - some text
-                                        - some text
-                                    federal_register_notice: some text
-                                    name: some text
-                                    source_information_url: some text
-                                    source_list_url: some text
-                                    list: some text
-                                    type: some text
-                                    category: some text
-                                    street1: some text
-                                    street2: some text
-                                    city: some text
-                                    state: some text
-                                    country: some text
-                                    notes: some text
-                                    frc: some text
-                                    start: '2018-01-17'
-                                    end: '2018-01-17'
-                                    frserve: some text
-                                    optional_ID: some text
-                                    alert_type: some text
-                    internal:
-                        -
-                            id: 51
-                            email: some text
-                            colour: some text
-                            last_name: some text
-                            first_name: some text
-                        -
-                            id: 10
-                            email: some text
-                            colour: some text
-                            last_name: some text
-                            first_name: some text
+                    id: 4
+                    external_colours:
+                        - RED
+                        - ORANGE
+                    internal_colours:
+                        - YELLOW
+                        - GREEN
                 end_date: '2018-02-10T09:30Z'
                 email: some text
         PaginatedWatchlistList:
@@ -4688,7 +3873,7 @@ components:
                     $ref: '#/components/schemas/InviteWatchlist'
                 email_template:
                     $ref: '#/components/schemas/EmailTemplate'
-                mobile_number:
+                mobile:
                     description: Phone number
                     type: string
             example:
@@ -4751,137 +3936,13 @@ components:
                         email_template_name: some text
                 mobile: some text
                 invite_watchlist:
-                    id: 64
-                    external:
-                        -
-                            search_terms:
-                                name: some text
-                                company: some text
-                                city: some text
-                                country: some text
-                                state: some text
-                            integration: some text
-                            colour: ORANGE
-                            matches:
-                                -
-                                    id: some text
-                                    alt_names:
-                                        - some text
-                                        - some text
-                                    federal_register_notice: some text
-                                    name: some text
-                                    source_information_url: some text
-                                    source_list_url: some text
-                                    list: some text
-                                    type: some text
-                                    category: some text
-                                    street1: some text
-                                    street2: some text
-                                    city: some text
-                                    state: some text
-                                    country: some text
-                                    notes: some text
-                                    frc: some text
-                                    start: '2018-01-17'
-                                    end: '2018-01-17'
-                                    frserve: some text
-                                    optional_ID: some text
-                                    alert_type: some text
-                                -
-                                    id: some text
-                                    alt_names:
-                                        - some text
-                                        - some text
-                                    federal_register_notice: some text
-                                    name: some text
-                                    source_information_url: some text
-                                    source_list_url: some text
-                                    list: some text
-                                    type: some text
-                                    category: some text
-                                    street1: some text
-                                    street2: some text
-                                    city: some text
-                                    state: some text
-                                    country: some text
-                                    notes: some text
-                                    frc: some text
-                                    start: '2018-01-17'
-                                    end: '2018-01-17'
-                                    frserve: some text
-                                    optional_ID: some text
-                                    alert_type: some text
-                        -
-                            search_terms:
-                                name: some text
-                                company: some text
-                                city: some text
-                                country: some text
-                                state: some text
-                            integration: some text
-                            colour: ORANGE
-                            matches:
-                                -
-                                    id: some text
-                                    alt_names:
-                                        - some text
-                                        - some text
-                                    federal_register_notice: some text
-                                    name: some text
-                                    source_information_url: some text
-                                    source_list_url: some text
-                                    list: some text
-                                    type: some text
-                                    category: some text
-                                    street1: some text
-                                    street2: some text
-                                    city: some text
-                                    state: some text
-                                    country: some text
-                                    notes: some text
-                                    frc: some text
-                                    start: '2018-01-17'
-                                    end: '2018-01-17'
-                                    frserve: some text
-                                    optional_ID: some text
-                                    alert_type: some text
-                                -
-                                    id: some text
-                                    alt_names:
-                                        - some text
-                                        - some text
-                                    federal_register_notice: some text
-                                    name: some text
-                                    source_information_url: some text
-                                    source_list_url: some text
-                                    list: some text
-                                    type: some text
-                                    category: some text
-                                    street1: some text
-                                    street2: some text
-                                    city: some text
-                                    state: some text
-                                    country: some text
-                                    notes: some text
-                                    frc: some text
-                                    start: '2018-01-17'
-                                    end: '2018-01-17'
-                                    frserve: some text
-                                    optional_ID: some text
-                                    alert_type: some text
-                    internal:
-                        -
-                            id: 11
-                            email: some text
-                            colour: some text
-                            last_name: some text
-                            first_name: some text
-                        -
-                            id: 21
-                            email: some text
-                            colour: some text
-                            last_name: some text
-                            first_name: some text
+                    id: 4
+                    external_colours:
+                        - RED
+                        - ORANGE
+                    internal_colours:
+                        - YELLOW
+                        - GREEN
                 email_template:
                     id: 65
                     name: some text
@@ -5078,23 +4139,23 @@ components:
                 id:
                     format: int32
                     type: integer
-                external:
+                external_colours:
                     description: ''
                     type: array
                     items:
-                        $ref: '#/components/schemas/ExternalWatchlistResult'
-                internal:
+                        type: string
+                internal_colours:
                     type: array
                     items:
-                        $ref: '#/components/schemas/InternalWatchlistResult'
+                        type: string
             example:
                 id: 4
                 external_colours:
-                    - some text
-                    - some text
+                    - RED
+                    - ORANGE
                 internal_colours:
-                    - some text
-                    - some text
+                    - YELLOW
+                    - GREEN
         InviteCreateParams:
             title: Root Type for InviteCreateParams
             description: The root of the InviteCreateParams type's schema.
@@ -5933,142 +4994,157 @@ components:
                 permissions:
                     - some text
                     - some text
-        Delivery:
-            description: The root of the Delivery type's schema.
-            required: []
+        SigninWatchlist:
+            title: Root Type for SigninWatchlist
+            description: The root of the SigninWatchlist type's schema.
+            required:
+                - id
             type: object
             properties:
-                photo_url:
-                    description: ''
-                    type: string
-                recipient_name:
-                    description: ''
-                    type: string
-                host:
-                    $ref: '#/components/schemas/Host'
-                    description: ''
-                location:
-                    $ref: '#/components/schemas/Location'
-                    description: ''
-                created_at:
-                    format: date-time
-                    description: ''
-                    type: string
-                pickup_timestamp:
-                    format: date-time
-                    description: ''
-                    type: string
-            example:
-                photo_url: some text
-                recipient_name: some text
-                host:
-                    id: 4
-                    email: some text
-                    first_name: some text
-                    last_name: some text
-                    profile_pic_url: some text
-                    department: some text
-                    mobile_number: some text
-                location:
-                    id: 3
-                    name: some text
-                created_at: '2018-02-10T09:30Z'
-                pickup_timestamp: '2018-02-10T09:30Z'
-        PaginatedDeliveries:
-            description: ''
-            type: object
-            properties:
-                deliveries:
+                id:
+                    format: int32
+                    type: integer
+                external:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/ExternalWatchlistResult'
+                internal:
                     description: ''
                     type: array
                     items:
-                        $ref: '#/components/schemas/Delivery'
-                pagination:
-                    $ref: '#/components/schemas/Pagination'
-                    description: ''
+                        $ref: '#/components/schemas/InternalWatchlistResult'
             example:
-                deliveries:
+                id: 6
+                external:
                     -
-                        photo_url: some text
-                        recipient_name: some text
-                        host:
-                            id: 13
-                            email: some text
-                            first_name: some text
-                            last_name: some text
-                            profile_pic_url: some text
-                            department: some text
-                            mobile_number: some text
-                        location:
-                            id: 73
+                        search_terms:
                             name: some text
-                        created_at: '2018-02-10T09:30Z'
-                        pickup_timestamp: '2018-02-10T09:30Z'
+                            company: some text
+                            city: some text
+                            country: some text
+                            state: some text
+                        integration: some text
+                        colour: YELLOW
+                        matches:
+                            -
+                                id: some text
+                                alt_names:
+                                    - some text
+                                    - some text
+                                federal_register_notice: some text
+                                name: some text
+                                source_information_url: some text
+                                source_list_url: some text
+                                list: some text
+                                type: some text
+                                category: some text
+                                street1: some text
+                                street2: some text
+                                city: some text
+                                state: some text
+                                country: some text
+                                notes: some text
+                                frc: some text
+                                start: '2018-01-17'
+                                end: '2018-01-17'
+                                frserve: some text
+                                optional_ID: some text
+                                alert_type: some text
+                            -
+                                id: some text
+                                alt_names:
+                                    - some text
+                                    - some text
+                                federal_register_notice: some text
+                                name: some text
+                                source_information_url: some text
+                                source_list_url: some text
+                                list: some text
+                                type: some text
+                                category: some text
+                                street1: some text
+                                street2: some text
+                                city: some text
+                                state: some text
+                                country: some text
+                                notes: some text
+                                frc: some text
+                                start: '2018-01-17'
+                                end: '2018-01-17'
+                                frserve: some text
+                                optional_ID: some text
+                                alert_type: some text
                     -
-                        photo_url: some text
-                        recipient_name: some text
-                        host:
-                            id: 91
-                            email: some text
-                            first_name: some text
-                            last_name: some text
-                            profile_pic_url: some text
-                            department: some text
-                            mobile_number: some text
-                        location:
-                            id: 22
+                        search_terms:
                             name: some text
-                        created_at: '2018-02-10T09:30Z'
-                        pickup_timestamp: '2018-02-10T09:30Z'
-                pagination:
-                    total_records: 4
-                    current_offset: 2
-                    next_offset: 74
-        DeliveryCreateParams:
-            description: The root of the DeliveryCreateParams type's schema.
-            required: []
-            type: object
-            properties:
-                location_id:
-                    description: ''
-                    type: string
-                host_id:
-                    description: ''
-                    type: string
-                photo_url:
-                    description: ''
-                    type: string
-                recipient_name:
-                    description: ''
-                    type: string
-                pickup_timestamp:
-                    format: date-time
-                    description: ''
-                    type: string
-            example:
-                location_id: some text
-                host_id: some text
-                photo_url: some text
-                recipient_name: some text
-                pickup_timestamp: '2018-02-10T09:30Z'
-        DeliveryUpdateParams:
-            description: ''
-            required: []
-            type: object
-            properties:
-                host_id:
-                    description: ''
-                    type: integer
-                photo_url:
-                    description: ''
-                    type: string
-                recipient_name:
-                    description: ''
-                    type: string
-                pickup_timestamp:
-                    format: date-time
-                    description: ''
-                    type: string
+                            company: some text
+                            city: some text
+                            country: some text
+                            state: some text
+                        integration: some text
+                        colour: RED
+                        matches:
+                            -
+                                id: some text
+                                alt_names:
+                                    - some text
+                                    - some text
+                                federal_register_notice: some text
+                                name: some text
+                                source_information_url: some text
+                                source_list_url: some text
+                                list: some text
+                                type: some text
+                                category: some text
+                                street1: some text
+                                street2: some text
+                                city: some text
+                                state: some text
+                                country: some text
+                                notes: some text
+                                frc: some text
+                                start: '2018-01-17'
+                                end: '2018-01-17'
+                                frserve: some text
+                                optional_ID: some text
+                                alert_type: some text
+                            -
+                                id: some text
+                                alt_names:
+                                    - some text
+                                    - some text
+                                federal_register_notice: some text
+                                name: some text
+                                source_information_url: some text
+                                source_list_url: some text
+                                list: some text
+                                type: some text
+                                category: some text
+                                street1: some text
+                                street2: some text
+                                city: some text
+                                state: some text
+                                country: some text
+                                notes: some text
+                                frc: some text
+                                start: '2018-01-17'
+                                end: '2018-01-17'
+                                frserve: some text
+                                optional_ID: some text
+                                alert_type: some text
+                internal:
+                    -
+                        id: 11
+                        email: some text
+                        colour: GREEN
+                        last_name: some text
+                        first_name: some text
+                    -
+                        id: 21
+                        email: some text
+                        colour: RED
+                        last_name: some text
+                        first_name: some text
     securitySchemes:
         TractionGuestAuth:
             openIdConnectUrl: 'https://mobile-api-refactor-admin.tractionguest.ca/.well-known/openid-configuration'
@@ -6104,6 +5180,3 @@ tags:
     -
         name: Watchlists
         description: All endpoint related to the Watchlist model
-    -
-        name: Deliveries
-        description: ''

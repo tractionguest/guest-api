@@ -66,14 +66,14 @@ paths:
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                             -
                                                 id: 2
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                         pagination:
                                             total_records: 14
@@ -291,14 +291,14 @@ paths:
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                             -
                                                 id: 24
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                         signin_watchlist:
                                             id: 47
@@ -605,14 +605,14 @@ paths:
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                             -
                                                 id: 64
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                         signin_watchlist:
                                             id: 90
@@ -1063,7 +1063,7 @@ paths:
                                             field_name: some text
                                             field_value: some text
                                     email_template_id: 53
-                                    mobile: some text
+                                    mobile_number: some text
                                     first_name: some text
                                     notification_triggers:
                                         -
@@ -1110,14 +1110,14 @@ paths:
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                             -
                                                 id: 33
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                         location:
                                             id: 20
@@ -1157,7 +1157,7 @@ paths:
                                                     - some text
                                                 offset_unit: days
                                                 email_template_name: some text
-                                        mobile: some text
+                                        mobile_number: some text
                                         invite_watchlist:
                                             id: 3
                                             external_colours:
@@ -1311,14 +1311,14 @@ paths:
                                                         email: some text
                                                         first_name: some text
                                                         last_name: some text
-                                                        mobile: some text
+                                                        mobile_number: some text
                                                         profile_pic_url: some text
                                                     -
                                                         id: 32
                                                         email: some text
                                                         first_name: some text
                                                         last_name: some text
-                                                        mobile: some text
+                                                        mobile_number: some text
                                                         profile_pic_url: some text
                                                 invite_watchlist:
                                                     id: 22
@@ -1344,14 +1344,14 @@ paths:
                                                         email: some text
                                                         first_name: some text
                                                         last_name: some text
-                                                        mobile: some text
+                                                        mobile_number: some text
                                                         profile_pic_url: some text
                                                     -
                                                         id: 70
                                                         email: some text
                                                         first_name: some text
                                                         last_name: some text
-                                                        mobile: some text
+                                                        mobile_number: some text
                                                         profile_pic_url: some text
                                                 invite_watchlist:
                                                     id: 63
@@ -1502,14 +1502,14 @@ paths:
                                                         email: some text
                                                         first_name: some text
                                                         last_name: some text
-                                                        mobile: some text
+                                                        mobile_number: some text
                                                         profile_pic_url: some text
                                                     -
                                                         id: 95
                                                         email: some text
                                                         first_name: some text
                                                         last_name: some text
-                                                        mobile: some text
+                                                        mobile_number: some text
                                                         profile_pic_url: some text
                                                 signin_watchlist:
                                                     id: 25
@@ -1661,14 +1661,14 @@ paths:
                                                         email: some text
                                                         first_name: some text
                                                         last_name: some text
-                                                        mobile: some text
+                                                        mobile_number: some text
                                                         profile_pic_url: some text
                                                     -
                                                         id: 45
                                                         email: some text
                                                         first_name: some text
                                                         last_name: some text
-                                                        mobile: some text
+                                                        mobile_number: some text
                                                         profile_pic_url: some text
                                                 signin_watchlist:
                                                     id: 89
@@ -1888,14 +1888,14 @@ paths:
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                             -
                                                 id: 96
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                         signin_watchlist:
                                             id: 98
@@ -2282,14 +2282,14 @@ paths:
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                             -
                                                 id: 82
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                         location:
                                             id: 10
@@ -2329,7 +2329,7 @@ paths:
                                                     - some text
                                                 offset_unit: days
                                                 email_template_name: some text
-                                        mobile: some text
+                                        mobile_number: some text
                                         invite_watchlist:
                                             id: 47
                                             external_colours:
@@ -2409,14 +2409,14 @@ paths:
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                             -
                                                 id: 54
                                                 email: some text
                                                 first_name: some text
                                                 last_name: some text
-                                                mobile: some text
+                                                mobile_number: some text
                                                 profile_pic_url: some text
                                         location:
                                             id: 67
@@ -2456,7 +2456,7 @@ paths:
                                                     - some text
                                                 offset_unit: days
                                                 email_template_name: some text
-                                        mobile: some text
+                                        mobile_number: some text
                                         invite_watchlist:
                                             id: 43
                                             external_colours:
@@ -2563,7 +2563,7 @@ components:
                     "email": "name@email.com",
                     "first_name": "Frank",
                     "last_name": "Longbottom",
-                    "mobile": "(604) 980-9933",
+                    "mobile_number": "(604) 980-9933",
                     "profile_pic_url": "image.jpg"
                 }
         EmailTemplate:
@@ -2815,7 +2815,7 @@ components:
                 email:
                     description: ''
                     type: string
-                mobile:
+                mobile_number:
                     description: ''
                     type: string
             example:
@@ -2833,14 +2833,14 @@ components:
                         email: some text
                         first_name: some text
                         last_name: some text
-                        mobile: some text
+                        mobile_number: some text
                         profile_pic_url: some text
                     -
                         id: 81
                         email: some text
                         first_name: some text
                         last_name: some text
-                        mobile: some text
+                        mobile_number: some text
                         profile_pic_url: some text
                 invite_watchlist:
                     id: 4
@@ -3000,14 +3000,14 @@ components:
                         email: some text
                         first_name: some text
                         last_name: some text
-                        mobile: some text
+                        mobile_number: some text
                         profile_pic_url: some text
                     -
                         id: 1
                         email: some text
                         first_name: some text
                         last_name: some text
-                        mobile: some text
+                        mobile_number: some text
                         profile_pic_url: some text
                 signin_watchlist:
                     id: 33
@@ -3268,7 +3268,7 @@ components:
                         email: some text
                         first_name: some text
                         last_name: some text
-                        mobile: some text
+                        mobile_number: some text
                         profile_pic_url: some text
                         department: some text
                     -
@@ -3276,7 +3276,7 @@ components:
                         email: some text
                         first_name: some text
                         last_name: some text
-                        mobile: some text
+                        mobile_number: some text
                         profile_pic_url: some text
                         department: some text
                 signin_watchlist:
@@ -3622,7 +3622,7 @@ components:
                     $ref: '#/components/schemas/InviteWatchlist'
                 email_template:
                     $ref: '#/components/schemas/EmailTemplate'
-                mobile:
+                mobile_number:
                     description: Phone number
                     type: string
             example:
@@ -3640,14 +3640,14 @@ components:
                         email: some text
                         first_name: some text
                         last_name: some text
-                        mobile: some text
+                        mobile_number: some text
                         profile_pic_url: some text
                     -
                         id: 9
                         email: some text
                         first_name: some text
                         last_name: some text
-                        mobile: some text
+                        mobile_number: some text
                         profile_pic_url: some text
                 location:
                     id: 10
@@ -3683,7 +3683,7 @@ components:
                             - some text
                         offset_unit: hours
                         email_template_name: some text
-                mobile: some text
+                mobile_number: some text
                 invite_watchlist:
                     id: 4
                     external_colours:
@@ -3729,14 +3729,14 @@ components:
                                 email: some text
                                 first_name: some text
                                 last_name: some text
-                                mobile: some text
+                                mobile_number: some text
                                 profile_pic_url: some text
                             -
                                 id: 11
                                 email: some text
                                 first_name: some text
                                 last_name: some text
-                                mobile: some text
+                                mobile_number: some text
                                 profile_pic_url: some text
                         invite_watchlist:
                             id: 14
@@ -3762,14 +3762,14 @@ components:
                                 email: some text
                                 first_name: some text
                                 last_name: some text
-                                mobile: some text
+                                mobile_number: some text
                                 profile_pic_url: some text
                             -
                                 id: 50
                                 email: some text
                                 first_name: some text
                                 last_name: some text
-                                mobile: some text
+                                mobile_number: some text
                                 profile_pic_url: some text
                         invite_watchlist:
                             id: 74
@@ -3974,7 +3974,7 @@ components:
                         field_name: some text
                         field_value: some text
                 email_template_id: 65
-                mobile: some text
+                mobile_number: some text
                 first_name: some text
                 notification_triggers:
                     -
@@ -4111,7 +4111,7 @@ components:
                         field_name: some text
                         field_value: some text
                 email_template_id: 18
-                mobile: some text
+                mobile_number: some text
                 first_name: some text
                 notification_triggers:
                     -

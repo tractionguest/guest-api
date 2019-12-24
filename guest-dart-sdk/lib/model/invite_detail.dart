@@ -33,12 +33,12 @@ class InviteDetail {
   
   EmailTemplate emailTemplate = null;
   /* Phone number */
-  String mobile = null;
+  String mobileNumber = null;
   InviteDetail();
 
   @override
   String toString() {
-    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlistColour=$watchlistColour, customFields=$customFields, notificationTriggers=$notificationTriggers, inviteWatchlist=$inviteWatchlist, emailTemplate=$emailTemplate, mobile=$mobile, ]';
+    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlistColour=$watchlistColour, customFields=$customFields, notificationTriggers=$notificationTriggers, inviteWatchlist=$inviteWatchlist, emailTemplate=$emailTemplate, mobileNumber=$mobileNumber, ]';
   }
 
   InviteDetail.fromJson(Map<String, dynamic> json) {
@@ -118,10 +118,10 @@ class InviteDetail {
     } else {
       emailTemplate = new EmailTemplate.fromJson(json['email_template']);
     }
-    if (json['mobile'] == null) {
-      mobile = null;
+    if (json['mobile_number'] == null) {
+      mobileNumber = null;
     } else {
-          mobile = json['mobile'];
+          mobileNumber = json['mobile_number'];
     }
   }
 
@@ -157,8 +157,8 @@ class InviteDetail {
       json['invite_watchlist'] = inviteWatchlist;
     if (emailTemplate != null)
       json['email_template'] = emailTemplate;
-    if (mobile != null)
-      json['mobile'] = mobile;
+    if (mobileNumber != null)
+      json['mobile_number'] = mobileNumber;
     return json;
   }
 

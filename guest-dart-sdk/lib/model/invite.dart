@@ -23,12 +23,12 @@ class Invite {
   
   String email = null;
   
-  String mobile = null;
+  String mobileNumber = null;
   Invite();
 
   @override
   String toString() {
-    return 'Invite[id=$id, firstName=$firstName, lastName=$lastName, startDate=$startDate, location=$location, watchlistColour=$watchlistColour, hosts=$hosts, inviteWatchlist=$inviteWatchlist, endDate=$endDate, email=$email, mobile=$mobile, ]';
+    return 'Invite[id=$id, firstName=$firstName, lastName=$lastName, startDate=$startDate, location=$location, watchlistColour=$watchlistColour, hosts=$hosts, inviteWatchlist=$inviteWatchlist, endDate=$endDate, email=$email, mobileNumber=$mobileNumber, ]';
   }
 
   Invite.fromJson(Map<String, dynamic> json) {
@@ -83,10 +83,10 @@ class Invite {
     } else {
           email = json['email'];
     }
-    if (json['mobile'] == null) {
-      mobile = null;
+    if (json['mobile_number'] == null) {
+      mobileNumber = null;
     } else {
-          mobile = json['mobile'];
+          mobileNumber = json['mobile_number'];
     }
   }
 
@@ -112,8 +112,8 @@ class Invite {
       json['end_date'] = endDate == null ? null : endDate.toUtc().toIso8601String();
     if (email != null)
       json['email'] = email;
-    if (mobile != null)
-      json['mobile'] = mobile;
+    if (mobileNumber != null)
+      json['mobile_number'] = mobileNumber;
     return json;
   }
 

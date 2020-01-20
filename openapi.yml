@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.28
+    version: 0.9.29
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -2667,6 +2667,7 @@ components:
             required:
                 - id
                 - email
+                - mobile_access
             type: object
             properties:
                 id:
@@ -2685,6 +2686,9 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/PermissionGroup'
+                mobile_access:
+                    description: Identifies if user has access to mobile app features.
+                    type: boolean
             example:
                 id: 60
                 first_name: some text

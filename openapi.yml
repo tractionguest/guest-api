@@ -2667,7 +2667,7 @@ components:
             required:
                 - id
                 - email
-                - mobile_access
+                - mobile_access_enabled
             type: object
             properties:
                 id:
@@ -2686,7 +2686,7 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/PermissionGroup'
-                mobile_access:
+                mobile_access_enabled:
                     description: Identifies if user has access to mobile app features.
                     type: boolean
             example:

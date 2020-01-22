@@ -11,11 +11,13 @@ class User {
   String email = null;
   
   List<PermissionGroup> permissionGroups = [];
+  /* Identifies if user has access to mobile app features. */
+  bool mobileAccessEnabled = null;
   User();
 
   @override
   String toString() {
-    return 'User[id=$id, firstName=$firstName, lastName=$lastName, email=$email, permissionGroups=$permissionGroups, ]';
+    return 'User[id=$id, firstName=$firstName, lastName=$lastName, email=$email, permissionGroups=$permissionGroups, mobileAccessEnabled=$mobileAccessEnabled, ]';
   }
 
   User.fromJson(Map<String, dynamic> json) {
@@ -45,6 +47,11 @@ class User {
     } else {
       permissionGroups = PermissionGroup.listFromJson(json['permission_groups']);
     }
+    if (json['mobile_access_enabled'] == null) {
+      mobileAccessEnabled = null;
+    } else {
+          mobileAccessEnabled = json['mobile_access_enabled'];
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -59,6 +66,8 @@ class User {
       json['email'] = email;
     if (permissionGroups != null)
       json['permission_groups'] = permissionGroups;
+    if (mobileAccessEnabled != null)
+      json['mobile_access_enabled'] = mobileAccessEnabled;
     return json;
   }
 

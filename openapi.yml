@@ -1283,7 +1283,7 @@ paths:
                         type: string
                     in: query
                 -
-                    name: approved
+                    name: is_approved
                     description: >-
                         True to return approved and auto approved invites, False to return pending and
                         rejected invites

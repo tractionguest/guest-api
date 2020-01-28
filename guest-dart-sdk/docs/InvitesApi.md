@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvites**
-> PaginatedInvitesList getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter, include)
+> PaginatedInvitesList getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter, include, isApproved)
 
 List All Invites
 
@@ -169,9 +169,10 @@ var sortBy = sortBy_example; // String | Sorts by the field name and direction p
 var startsBefore = 2013-10-20; // DateTime | Filters results to all those *before* the provided datetime
 var startsAfter = 2013-10-20; // DateTime | Filters results to all those *after* the provided datetime
 var include = include_example; // String | A list of comma-separated related models to include
+var isApproved = true; // bool | True to return approved and auto approved invites, False to return pending and rejected invites
 
 try { 
-    var result = api_instance.getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter, include);
+    var result = api_instance.getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter, include, isApproved);
     print(result);
 } catch (e) {
     print("Exception when calling InvitesApi->getInvites: $e\n");
@@ -191,6 +192,7 @@ Name | Type | Description  | Notes
  **startsBefore** | **DateTime**| Filters results to all those *before* the provided datetime | [optional] [default to null]
  **startsAfter** | **DateTime**| Filters results to all those *after* the provided datetime | [optional] [default to null]
  **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
+ **isApproved** | **bool**| True to return approved and auto approved invites, False to return pending and rejected invites | [optional] [default to null]
 
 ### Return type
 

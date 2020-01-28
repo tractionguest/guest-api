@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.29
+    version: 0.9.30
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -1281,6 +1281,14 @@ paths:
                     description: A list of comma-separated related models to include
                     schema:
                         type: string
+                    in: query
+                -
+                    name: is_approved
+                    description: >-
+                        True to return approved and auto approved invites, False to return pending and
+                        rejected invites
+                    schema:
+                        type: boolean
                     in: query
             responses:
                 '200':

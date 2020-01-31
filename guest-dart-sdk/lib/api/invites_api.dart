@@ -10,7 +10,7 @@ class InvitesApi {
   /// Creates an Invite
   ///
   /// Creates a new &#x60;Invite&#x60; for a specific &#x60;Location&#x60;.
-  Future<InviteDetail> createLocationInvite(int locationId, InviteCreateParams inviteCreateParams) async {
+  Future<InviteDetail> createLocationInvite(int locationId, InviteCreateParams inviteCreateParams, { String idempotencyKey }) async {
     Object postBody = inviteCreateParams;
 
     // verify required params are set
@@ -28,6 +28,7 @@ class InvitesApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    headerParams["Idempotency-Key"] = idempotencyKey;
 
     List<String> contentTypes = ["application/json"];
 
@@ -63,7 +64,7 @@ class InvitesApi {
   /// Deletes an Invite
   ///
   /// Deletes a single instance of &#x60;Invite&#x60;
-  Future deleteInvite(String inviteId) async {
+  Future deleteInvite(String inviteId, { String idempotencyKey }) async {
     Object postBody;
 
     // verify required params are set
@@ -78,6 +79,7 @@ class InvitesApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    headerParams["Idempotency-Key"] = idempotencyKey;
 
     List<String> contentTypes = [];
 
@@ -242,7 +244,7 @@ class InvitesApi {
   /// Update a Invite
   ///
   /// Updates an existing &#x60;Invite&#x60;.
-  Future<InviteDetail> updateInvite(String inviteId, InviteUpdateParams inviteUpdateParams) async {
+  Future<InviteDetail> updateInvite(String inviteId, InviteUpdateParams inviteUpdateParams, { String idempotencyKey }) async {
     Object postBody = inviteUpdateParams;
 
     // verify required params are set
@@ -260,6 +262,7 @@ class InvitesApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    headerParams["Idempotency-Key"] = idempotencyKey;
 
     List<String> contentTypes = ["application/json"];
 

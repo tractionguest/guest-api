@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **deleteWatchlist**
-> deleteWatchlist(watchlistId)
+> deleteWatchlist(watchlistId, idempotencyKey)
 
 Deletes a Watchlist
 
@@ -27,9 +27,10 @@ import 'package:guest_sdk/api.dart';
 
 var api_instance = new WatchlistsApi();
 var watchlistId = watchlistId_example; // String | A unique identifier for a `Watchlist`.
+var idempotencyKey = idempotencyKey_example; // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours
 
 try { 
-    api_instance.deleteWatchlist(watchlistId);
+    api_instance.deleteWatchlist(watchlistId, idempotencyKey);
 } catch (e) {
     print("Exception when calling WatchlistsApi->deleteWatchlist: $e\n");
 }
@@ -40,6 +41,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **watchlistId** | **String**| A unique identifier for a &#x60;Watchlist&#x60;. | [default to null]
+ **idempotencyKey** | **String**| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours | [optional] [default to null]
 
 ### Return type
 

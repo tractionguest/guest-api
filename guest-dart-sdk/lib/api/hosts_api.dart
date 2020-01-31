@@ -10,7 +10,7 @@ class HostsApi {
   /// Create a Host
   ///
   /// 
-  Future<Host> createHost(Host host) async {
+  Future<Host> createHost(Host host, { String idempotencyKey }) async {
     Object postBody = host;
 
     // verify required params are set
@@ -25,6 +25,7 @@ class HostsApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    headerParams["Idempotency-Key"] = idempotencyKey;
 
     List<String> contentTypes = ["application/json"];
 

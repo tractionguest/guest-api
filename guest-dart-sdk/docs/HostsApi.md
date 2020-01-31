@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **createHost**
-> Host createHost(host)
+> Host createHost(host, idempotencyKey)
 
 Create a Host
 
@@ -24,9 +24,10 @@ import 'package:guest_sdk/api.dart';
 
 var api_instance = new HostsApi();
 var host = new Host(); // Host | 
+var idempotencyKey = idempotencyKey_example; // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours
 
 try { 
-    var result = api_instance.createHost(host);
+    var result = api_instance.createHost(host, idempotencyKey);
     print(result);
 } catch (e) {
     print("Exception when calling HostsApi->createHost: $e\n");
@@ -38,6 +39,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **host** | [**Host**](Host.md)|  | 
+ **idempotencyKey** | **String**| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours | [optional] [default to null]
 
 ### Return type
 

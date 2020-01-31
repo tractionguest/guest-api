@@ -10,7 +10,7 @@ class SigninsApi {
   /// Create a Signin
   ///
   /// Creates a new instance of a &#x60;Signin&#x60;.
-  Future<Signin> createSignin(SigninCreateParams signinCreateParams) async {
+  Future<Signin> createSignin(SigninCreateParams signinCreateParams, { String idempotencyKey }) async {
     Object postBody = signinCreateParams;
 
     // verify required params are set
@@ -25,6 +25,7 @@ class SigninsApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    headerParams["Idempotency-Key"] = idempotencyKey;
 
     List<String> contentTypes = ["application/json"];
 
@@ -193,7 +194,7 @@ class SigninsApi {
   /// Update a Signin attribute
   ///
   /// Update, acknowledge, or &#x60;Signout&#x60; a &#x60;Signin&#x60;
-  Future<SigninDetail> updateSignin(String signinId, SigninUpdateParams signinUpdateParams) async {
+  Future<SigninDetail> updateSignin(String signinId, SigninUpdateParams signinUpdateParams, { String idempotencyKey }) async {
     Object postBody = signinUpdateParams;
 
     // verify required params are set
@@ -211,6 +212,7 @@ class SigninsApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    headerParams["Idempotency-Key"] = idempotencyKey;
 
     List<String> contentTypes = ["application/json"];
 

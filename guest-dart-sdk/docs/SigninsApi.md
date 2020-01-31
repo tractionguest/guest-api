@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **createSignin**
-> Signin createSignin(signinCreateParams)
+> Signin createSignin(signinCreateParams, idempotencyKey)
 
 Create a Signin
 
@@ -28,9 +28,10 @@ import 'package:guest_sdk/api.dart';
 
 var api_instance = new SigninsApi();
 var signinCreateParams = new SigninCreateParams(); // SigninCreateParams | A new `Signin` to be created.
+var idempotencyKey = idempotencyKey_example; // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours
 
 try { 
-    var result = api_instance.createSignin(signinCreateParams);
+    var result = api_instance.createSignin(signinCreateParams, idempotencyKey);
     print(result);
 } catch (e) {
     print("Exception when calling SigninsApi->createSignin: $e\n");
@@ -42,6 +43,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **signinCreateParams** | [**SigninCreateParams**](SigninCreateParams.md)| A new &#x60;Signin&#x60; to be created. | 
+ **idempotencyKey** | **String**| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours | [optional] [default to null]
 
 ### Return type
 
@@ -167,7 +169,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateSignin**
-> SigninDetail updateSignin(signinId, signinUpdateParams)
+> SigninDetail updateSignin(signinId, signinUpdateParams, idempotencyKey)
 
 Update a Signin attribute
 
@@ -180,9 +182,10 @@ import 'package:guest_sdk/api.dart';
 var api_instance = new SigninsApi();
 var signinId = signinId_example; // String | A unique identifier for a `Signin`.
 var signinUpdateParams = new SigninUpdateParams(); // SigninUpdateParams | The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`. `is_signed_out`, and `is_acknowledged` are pseudo attributes where once they are set to true, there's no going back.
+var idempotencyKey = idempotencyKey_example; // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours
 
 try { 
-    var result = api_instance.updateSignin(signinId, signinUpdateParams);
+    var result = api_instance.updateSignin(signinId, signinUpdateParams, idempotencyKey);
     print(result);
 } catch (e) {
     print("Exception when calling SigninsApi->updateSignin: $e\n");
@@ -195,6 +198,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **signinId** | **String**| A unique identifier for a &#x60;Signin&#x60;. | [default to null]
  **signinUpdateParams** | [**SigninUpdateParams**](SigninUpdateParams.md)| The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;. &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60; are pseudo attributes where once they are set to true, there&#39;s no going back. | 
+ **idempotencyKey** | **String**| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours | [optional] [default to null]
 
 ### Return type
 

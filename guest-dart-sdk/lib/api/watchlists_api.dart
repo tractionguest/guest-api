@@ -10,7 +10,7 @@ class WatchlistsApi {
   /// Deletes a Watchlist
   ///
   /// Deletes a single instance of &#x60;Watchlist&#x60;
-  Future deleteWatchlist(String watchlistId) async {
+  Future deleteWatchlist(String watchlistId, { String idempotencyKey }) async {
     Object postBody;
 
     // verify required params are set
@@ -25,6 +25,7 @@ class WatchlistsApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    headerParams["Idempotency-Key"] = idempotencyKey;
 
     List<String> contentTypes = [];
 

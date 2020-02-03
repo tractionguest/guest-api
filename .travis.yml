@@ -23,7 +23,7 @@ before_install:
 script:
   - ./openapi-generator.sh validate -i openapi.yml
   - ./build-scripts/dart.sh
-  - ./build-scripts/typescript.sh
+  - ./build-scripts/typescript-angular.sh
   - ./build-scripts/redoc.sh
  
 after_success:

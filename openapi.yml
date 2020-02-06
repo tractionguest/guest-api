@@ -1304,7 +1304,7 @@ paths:
                     in: query
                 -
                     name: active_after
-                    description: Active filters check that an invite is still active after a specified time
+                    description: Checks that an invite hasn't yet started, or has started and is still active after a specified time
                     schema:
                         format: date-time
                         type: string

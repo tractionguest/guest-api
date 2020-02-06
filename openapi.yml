@@ -1311,7 +1311,7 @@ paths:
                     in: query
                 -
                     name: active_before
-                    description: Active filters check that an invite is still active before specified time
+                    description: Checks that an invite hasn't ended before a specified time
                     schema:
                         format: date-time
                         type: string

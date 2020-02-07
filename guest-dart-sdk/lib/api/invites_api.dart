@@ -167,7 +167,7 @@ class InvitesApi {
   /// List All Invites
   ///
   /// Gets a list of all &#x60;Invite&#x60; entities.
-  Future<PaginatedInvitesList> getInvites({ int limit, int offset, String query, String withColours, String locationIds, String sortBy, DateTime startsBefore, DateTime startsAfter, String include, bool isApproved }) async {
+  Future<PaginatedInvitesList> getInvites({ int limit, int offset, String query, String withColours, String locationIds, String sortBy, DateTime startsBefore, DateTime startsAfter, String include, bool isApproved, DateTime activeAfter, DateTime activeBefore }) async {
     Object postBody;
 
     // verify required params are set
@@ -208,6 +208,12 @@ class InvitesApi {
     }
     if(isApproved != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "is_approved", isApproved));
+    }
+    if(activeAfter != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "active_after", activeAfter));
+    }
+    if(activeBefore != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "active_before", activeBefore));
     }
 
     List<String> contentTypes = [];

@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getInvites**
-> PaginatedInvitesList getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter, include, isApproved)
+> PaginatedInvitesList getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter, include, isApproved, activeAfter, activeBefore)
 
 List All Invites
 
@@ -174,9 +174,11 @@ var startsBefore = 2013-10-20; // DateTime | Filters results to all those *befor
 var startsAfter = 2013-10-20; // DateTime | Filters results to all those *after* the provided datetime
 var include = include_example; // String | A list of comma-separated related models to include
 var isApproved = true; // bool | True to return approved and auto approved invites, False to return pending and rejected invites
+var activeAfter = 2013-10-20T19:20:30+01:00; // DateTime | Checks that an invite hasn't yet started, or has started and is still active after a specified time
+var activeBefore = 2013-10-20T19:20:30+01:00; // DateTime | Checks that an invite hasn't ended before a specified time
 
 try { 
-    var result = api_instance.getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter, include, isApproved);
+    var result = api_instance.getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter, include, isApproved, activeAfter, activeBefore);
     print(result);
 } catch (e) {
     print("Exception when calling InvitesApi->getInvites: $e\n");
@@ -197,6 +199,8 @@ Name | Type | Description  | Notes
  **startsAfter** | **DateTime**| Filters results to all those *after* the provided datetime | [optional] [default to null]
  **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
  **isApproved** | **bool**| True to return approved and auto approved invites, False to return pending and rejected invites | [optional] [default to null]
+ **activeAfter** | **DateTime**| Checks that an invite hasn&#39;t yet started, or has started and is still active after a specified time | [optional] [default to null]
+ **activeBefore** | **DateTime**| Checks that an invite hasn&#39;t ended before a specified time | [optional] [default to null]
 
 ### Return type
 

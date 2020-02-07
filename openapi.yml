@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.31
+    version: 0.9.32
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -108,8 +108,6 @@ paths:
             summary: List All Hosts
             description: Gets a list of all `Host` entities.
         post:
-            parameters:
-              - $ref: "#/components/parameters/idempotencyKey"
             requestBody:
                 content:
                     application/json:
@@ -128,6 +126,9 @@ paths:
                 required: true
             tags:
                 - Hosts
+            parameters:
+                -
+                    $ref: '#/components/parameters/idempotencyKey'
             responses:
                 '201':
                     content:
@@ -532,8 +533,6 @@ paths:
             summary: Get a Signin
             description: Gets the details of a single instance of a `Signin`.
         put:
-            parameters:
-              - $ref: "#/components/parameters/idempotencyKey"
             requestBody:
                 description: >-
                     The only updatable values for a `Signin` are `badge_number`, `badge_returned`,
@@ -553,6 +552,9 @@ paths:
                 required: true
             tags:
                 - Signins
+            parameters:
+                -
+                    $ref: '#/components/parameters/idempotencyKey'
             responses:
                 '200':
                     content:
@@ -920,10 +922,11 @@ paths:
             summary: Get a Watchlist
             description: Gets the details of a single instance of a `Watchlist`.
         delete:
-            parameters:
-              - $ref: "#/components/parameters/idempotencyKey"
             tags:
                 - Watchlists
+            parameters:
+                -
+                    $ref: '#/components/parameters/idempotencyKey'
             responses:
                 '204':
                     description: The Watchlist has been deleted
@@ -1041,8 +1044,6 @@ paths:
         summary: Path used to manage a single Location's invites.
         description: The REST endpoint/path used to create single instances of an `Invite` for a specific `Location`.
         post:
-            parameters:
-              - $ref: "#/components/parameters/idempotencyKey"
             requestBody:
                 content:
                     application/json:
@@ -1095,6 +1096,9 @@ paths:
                 required: true
             tags:
                 - Invites
+            parameters:
+                -
+                    $ref: '#/components/parameters/idempotencyKey'
             responses:
                 '201':
                     content:
@@ -1297,6 +1301,20 @@ paths:
                         rejected invites
                     schema:
                         type: boolean
+                    in: query
+                -
+                    name: active_after
+                    description: Checks that an invite hasn't yet started, or has started and is still active after a specified time
+                    schema:
+                        format: date-time
+                        type: string
+                    in: query
+                -
+                    name: active_before
+                    description: Checks that an invite hasn't ended before a specified time
+                    schema:
+                        format: date-time
+                        type: string
                     in: query
             responses:
                 '200':
@@ -1851,8 +1869,6 @@ paths:
             summary: List All Signins
             description: Gets a list of all `Signin` entities.
         post:
-            parameters:
-              - $ref: "#/components/parameters/idempotencyKey"
             requestBody:
                 description: A new `Signin` to be created.
                 content:
@@ -1880,6 +1896,9 @@ paths:
                 required: true
             tags:
                 - Signins
+            parameters:
+                -
+                    $ref: '#/components/parameters/idempotencyKey'
             responses:
                 '201':
                     content:
@@ -2387,8 +2406,6 @@ paths:
             summary: Get a Invite
             description: Gets the details of a single instance of a `Invite`.
         put:
-            parameters:
-              - $ref: "#/components/parameters/idempotencyKey"
             requestBody:
                 description: Updated `Invite` information.
                 content:
@@ -2406,6 +2423,9 @@ paths:
                 required: true
             tags:
                 - Invites
+            parameters:
+                -
+                    $ref: '#/components/parameters/idempotencyKey'
             responses:
                 '202':
                     content:
@@ -2516,10 +2536,11 @@ paths:
             summary: Update a Invite
             description: Updates an existing `Invite`.
         delete:
-            parameters:
-              - $ref: "#/components/parameters/idempotencyKey"
             tags:
                 - Invites
+            parameters:
+                -
+                    $ref: '#/components/parameters/idempotencyKey'
             responses:
                 '204':
                     description: The `Invite` has been deleted
@@ -4920,19 +4941,21 @@ components:
                         colour: RED
                         last_name: some text
                         first_name: some text
+    parameters:
+        idempotencyKey:
+            name: Idempotency-Key
+            description: >-
+                An optional idempotency key to allow for repeat API requests. Any API request with this key
+                will only be executed once, no matter how many times it's submitted. We store idempotency keys
+                for only 24 hours
+            schema:
+                type: string
+            in: header
+            required: false
     securitySchemes:
         TractionGuestAuth:
             openIdConnectUrl: 'https://mobile-api-refactor-admin.tractionguest.ca/.well-known/openid-configuration'
             type: openIdConnect
-    parameters:
-      idempotencyKey:
-        in: header
-        name: Idempotency-Key
-        required: false
-        description: An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours
-        schema:
-          type: string
-          
 security:
     -
         TractionGuestAuth:

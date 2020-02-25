@@ -4,8 +4,6 @@ git:
 branches:
   except:
     - /^v[0-9]/
-  only:
-    - master
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_e0eab208aa27_key -iv $encrypted_e0eab208aa27_iv -in github_deploy_key.enc -out github_deploy_key -d
@@ -27,7 +25,4 @@ script:
   - ./build-scripts/redoc.sh
  
 after_success:
-  - export GIT_TAG=v$API_VERSION
-  - git commit -m "[skip travis] Generated SDK version v$API_VERSION from TravisCI for build $TRAVIS_BUILD_NUMBER"
-  - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-  - git push -q --follow-tags git@github.com:tractionguest/guest-api.git HEAD:master
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" ]; then bash build-scripts/git.sh; fi'

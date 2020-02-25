@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.32
+    version: 0.10.0
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -1304,7 +1304,9 @@ paths:
                     in: query
                 -
                     name: active_after
-                    description: Checks that an invite hasn't yet started, or has started and is still active after a specified time
+                    description: >-
+                        Checks that an invite hasn't yet started, or has started and is still active after a
+                        specified time
                     schema:
                         format: date-time
                         type: string
@@ -2571,6 +2573,219 @@ paths:
             -
                 name: inviteId
                 description: A unique identifier for a `Invite`.
+                schema:
+                    type: string
+                in: path
+                required: true
+    /audit_logs:
+        summary: Path used to manage the list of AuditLogs.
+        description: >-
+            The REST endpoint/path used to list zero or more `AuditLog` entities.  This path contains a `GET`
+            operation to perform the list task.
+        get:
+            tags:
+                - AuditLogs
+            parameters:
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
+                        type: string
+                    in: query
+                    required: false
+                -
+                    name: limit
+                    description: 'Limits the results to a specified number, defaults to 50'
+                    schema:
+                        type: integer
+                    in: query
+                    required: false
+                -
+                    name: offset
+                    description: 'Offsets the results to a specified number, defaults to 0'
+                    schema:
+                        type: integer
+                    in: query
+                    required: false
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/PaginatedAuditLogsList'
+                            examples:
+                                default:
+                                    value:
+                                        audit_logs:
+                                            -
+                                                id: 19
+                                                auditable_id: 12
+                                                auditable_type: some text
+                                                associated_id: 39
+                                                associated_type: some text
+                                                user_id: 37
+                                                user_type: some text
+                                                username: some text
+                                                action: some text
+                                                audited_changes:
+                                                    -
+                                                        field_name: result
+                                                        field_value_before: '{}'
+                                                        field_value_after: >-
+                                                            {"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}
+                                                        format: json
+                                                    -
+                                                        field_name: user_id
+                                                        field_value_before: '1'
+                                                        field_value_after: '2'
+                                                        format: integer
+                                                    -
+                                                        field_name: flag_enabled
+                                                        field_value_before: null
+                                                        field_value_after: 'true'
+                                                        format: boolean
+                                                    -
+                                                        field_name: email
+                                                        field_value_before: ''
+                                                        field_value_after: some@email.com
+                                                        format: string
+                                                version: 51
+                                                comment: some text
+                                                remote_address: some text
+                                                request_uuid: some text
+                                                created_at: some text
+                                                location: some text
+                                                change_summary: some text
+                                                change_details: some text
+                                                user_display_name: some text
+                                            -
+                                                id: 3
+                                                auditable_id: 87
+                                                auditable_type: some text
+                                                associated_id: 79
+                                                associated_type: some text
+                                                user_id: 91
+                                                user_type: some text
+                                                username: some text
+                                                action: some text
+                                                audited_changes:
+                                                    -
+                                                        field_name: email
+                                                        field_value_before: ''
+                                                        field_value_after: another@email.com
+                                                        format: string
+                                                version: 50
+                                                comment: some text
+                                                remote_address: some text
+                                                request_uuid: some text
+                                                created_at: some text
+                                                location: some text
+                                                change_summary: some text
+                                                change_details: some text
+                                                user_display_name: some text
+                                        pagination:
+                                            total_records: 23
+                                            current_offset: 98
+                                            next_offset: 55
+                    description: Successful response - returns an array of `AuditLog` entities.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view this AuditLog
+                '403':
+                    description: You do not have permission for this action
+            operationId: getAuditLogs
+            summary: List All AuditLogs
+            description: Gets a list of all `AuditLog` entities.
+    '/audit_logs/{auditLogId}':
+        summary: Path used to manage a single AuditLog.
+        description: The REST endpoint/path used to get single instances of an `AuditLog`.
+        get:
+            tags:
+                - AuditLogs
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AuditLog'
+                            examples:
+                                default:
+                                    value:
+                                        id: 94
+                                        auditable_id: 70
+                                        auditable_type: some text
+                                        associated_id: 24
+                                        associated_type: some text
+                                        user_id: 84
+                                        user_type: some text
+                                        username: some text
+                                        action: some text
+                                        audited_changes:
+                                            -
+                                                field_name: result
+                                                field_value_before: '{}'
+                                                field_value_after: >-
+                                                    {"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}
+                                                format: json
+                                            -
+                                                field_name: user_id
+                                                field_value_before: '1'
+                                                field_value_after: '2'
+                                                format: integer
+                                            -
+                                                field_name: flag_enabled
+                                                field_value_before: null
+                                                field_value_after: 'true'
+                                                format: boolean
+                                            -
+                                                field_name: email
+                                                field_value_before: ''
+                                                field_value_after: some@email.com
+                                                format: string
+                                        version: 15
+                                        comment: some text
+                                        remote_address: some text
+                                        request_uuid: some text
+                                        created_at: some text
+                                        location: some text
+                                        change_summary: some text
+                                        change_details: some text
+                                        user_display_name: some text
+                    description: Successful response - returns a single `AuditLog`.
+                '400':
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view this AuditLog
+                '403':
+                    description: You do not have permission for this action
+                '404':
+                    description: The AuditLog does not exist
+            operationId: getAuditLog
+            summary: Get an AuditLog
+            description: Gets the details of a single instance of a `AuditLog`.
+        parameters:
+            -
+                name: auditLogId
+                description: A unique identifier for a `AuditLog`.
                 schema:
                     type: string
                 in: path
@@ -4941,6 +5156,151 @@ components:
                         colour: RED
                         last_name: some text
                         first_name: some text
+        PaginatedAuditLogsList:
+            description: ''
+            required:
+                - pagination
+                - audit_logs
+            type: object
+            properties:
+                audit_logs:
+                    description: ''
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/AuditLog'
+                pagination:
+                    $ref: '#/components/schemas/Pagination'
+                    description: ''
+        AuditLog:
+            description: The root of the AuditLog type's schema.
+            required:
+                - id
+            type: object
+            properties:
+                id:
+                    description: ''
+                    type: integer
+                auditable_id:
+                    description: ''
+                    type: integer
+                auditable_type:
+                    description: ''
+                    type: string
+                associated_id:
+                    description: ''
+                    type: integer
+                associated_type:
+                    description: ''
+                    type: string
+                user_id:
+                    description: ''
+                    type: integer
+                user_type:
+                    description: ''
+                    type: string
+                username:
+                    description: ''
+                    type: string
+                action:
+                    description: ''
+                    type: string
+                audited_changes:
+                    description: ''
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/AuditLogChange'
+                version:
+                    description: ''
+                    type: integer
+                comment:
+                    description: ''
+                    type: string
+                remote_address:
+                    description: ''
+                    type: string
+                request_uuid:
+                    description: ''
+                    type: string
+                created_at:
+                    description: ''
+                    type: string
+                location:
+                    description: ''
+                    type: string
+                change_summary:
+                    description: ''
+                    type: string
+                change_details:
+                    description: ''
+                    type: string
+                user_display_name:
+                    description: ''
+                    type: string
+            example:
+                id: 87
+                auditable_id: 8
+                auditable_type: some text
+                associated_id: 73
+                associated_type: some text
+                user_id: 27
+                user_type: some text
+                username: some text
+                action: some text
+                audited_changes:
+                    -
+                        field_name: result
+                        field_value_before: '{}'
+                        field_value_after: >-
+                            {"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}
+                        format: json
+                    -
+                        field_name: user_id
+                        field_value_before: '1'
+                        field_value_after: '2'
+                        format: integer
+                    -
+                        field_name: flag_enabled
+                        field_value_before: null
+                        field_value_after: 'true'
+                        format: boolean
+                version: 60
+                comment: some text
+                remote_address: some text
+                request_uuid: some text
+                created_at: some text
+                location: some text
+                change_summary: some text
+                change_details: some text
+                user_display_name: some text
+        AuditLogChange:
+            description: ''
+            required:
+                - field_name
+                - format
+            type: object
+            properties:
+                field_name:
+                    description: What the field should be displayed/labeled as
+                    type: string
+                field_value_before:
+                    description: The value to be displayed for the field before changes
+                    type: string
+                field_value_after:
+                    description: The value to be displayed for the field after changes
+                    type: string
+                format:
+                    description: The format type of the field
+                    enum:
+                        - string
+                        - integer
+                        - boolean
+                        - json
+                    type: string
+            example:
+                field_name: result
+                field_value_before: '{}'
+                field_value_after: '{"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}'
+                format: json
     parameters:
         idempotencyKey:
             name: Idempotency-Key
@@ -4963,27 +5323,30 @@ security:
 tags:
     -
         name: EmailTemplates
-        description: All endpoints relating to operations for the EmailTemplate model
+        description: All endpoints related to operations for the EmailTemplate model.
     -
         name: Hosts
-        description: All endpoints relating to the Host model
+        description: All endpoints related to the Host model.
     -
         name: Invites
-        description: 'All endpoints relating to the Invite model, aka. PreRegistrations'
+        description: 'All endpoints related to the Invite model, a.k.a. the PreRegistration model.'
     -
         name: Locations
-        description: 'All endpoints relating to the Location model, aka. DeviceConfigurations'
+        description: 'All endpoints related to the Location model, a.k.a. the DeviceConfiguration model.'
     -
         name: Parking
-        description: 'All endpoint related to the parking feature, including the ParkingLot and ParkingStallRange models'
+        description: 'All endpoints related to parking, which includes the ParkingLot and ParkingStallRange models.'
     -
         name: Signins
         description: >-
             All endpoints related to models that track signing in and out of a location. E.g., Signin,
-            Signout, SigninAcknowledgment models
+            Signout, SigninAcknowledgment models.
     -
         name: Users
-        description: All endpoints related to the User model
+        description: All endpoints related to the User model.
     -
         name: Watchlists
-        description: All endpoint related to the Watchlist model
+        description: All endpoints related to the Watchlist model.
+    -
+        name: AuditLogs
+        description: All endpoints related to the AuditLog model.

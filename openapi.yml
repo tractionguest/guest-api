@@ -2616,13 +2616,41 @@ paths:
                     in: query
                 -
                     name: auditable_type
-                    description: The name of the model that has associated audit logs
+                    description: |
+                        The name of the model that has associated audit logs. Valid values include:
+
+                        - `user`
+                        - `device_configuration`
+                        - `signin`
+                        - `pre_registration`
+                        - `watchlist_record`
+                        - `account_preference`
+                        - `signout`
+                        - `host`
+                        - `invite_watchlist`
+                        - `location_preference`
+                        - `parking_lot`
+                        - `parking_stall`
+                        - `permission_bundle`
+                        - `person`
+                        - `physical_access_grant`
+                        - `physical_access_provider`
+                        - `physical_access_rule`
+                        - `security_badge_type`
+                        - `signin_watchlist`
+                        - `user_group_physical_access_rule`
+                        - `visitor`
                     schema:
                         type: string
                     in: query
                 -
                     name: action_type
-                    description: The action performed by the user
+                    description: |
+                        The action performed by the user. Valid values include: 
+
+                        - `create`
+                        - `update`
+                        - `destroy`
                     schema:
                         type: string
                     in: query

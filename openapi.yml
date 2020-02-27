@@ -2587,13 +2587,6 @@ paths:
                 - AuditLogs
             parameters:
                 -
-                    name: include
-                    description: A list of comma-separated related models to include
-                    schema:
-                        type: string
-                    in: query
-                    required: false
-                -
                     name: limit
                     description: 'Limits the results to a specified number, defaults to 50'
                     schema:
@@ -2607,6 +2600,38 @@ paths:
                         type: integer
                     in: query
                     required: false
+                -
+                    name: sort_by
+                    description: >-
+                        Sorts by the field name and direction provided where the pattern is
+                        `FIELD_NAME_DIRECTION`
+                    schema:
+                        type: string
+                    in: query
+                -
+                    name: auditable_id
+                    description: The unique ID of a model that has associated audit logs
+                    schema:
+                        type: integer
+                    in: query
+                -
+                    name: auditable_type
+                    description: The name of the model that has associated audit logs
+                    schema:
+                        type: string
+                    in: query
+                -
+                    name: action_type
+                    description: The action performed by the user
+                    schema:
+                        type: string
+                    in: query
+                -
+                    name: user_id
+                    description: The ID of the user who performed the database change
+                    schema:
+                        type: integer
+                    in: query
             responses:
                 '200':
                     content:
@@ -2619,11 +2644,9 @@ paths:
                                         audit_logs:
                                             -
                                                 id: 19
-                                                auditable_id: 12
+                                                auditable_id: 85
                                                 auditable_type: some text
-                                                associated_id: 39
-                                                associated_type: some text
-                                                user_id: 37
+                                                user_id: 56
                                                 user_type: some text
                                                 username: some text
                                                 action: some text
@@ -2641,7 +2664,6 @@ paths:
                                                         format: integer
                                                     -
                                                         field_name: flag_enabled
-                                                        field_value_before: null
                                                         field_value_after: 'true'
                                                         format: boolean
                                                     -
@@ -2649,22 +2671,16 @@ paths:
                                                         field_value_before: ''
                                                         field_value_after: some@email.com
                                                         format: string
-                                                version: 51
+                                                version: 64
                                                 comment: some text
                                                 remote_address: some text
                                                 request_uuid: some text
                                                 created_at: some text
-                                                location: some text
-                                                change_summary: some text
-                                                change_details: some text
-                                                user_display_name: some text
                                             -
-                                                id: 3
-                                                auditable_id: 87
+                                                id: 4
+                                                auditable_id: 84
                                                 auditable_type: some text
-                                                associated_id: 79
-                                                associated_type: some text
-                                                user_id: 91
+                                                user_id: 78
                                                 user_type: some text
                                                 username: some text
                                                 action: some text
@@ -2674,19 +2690,15 @@ paths:
                                                         field_value_before: ''
                                                         field_value_after: another@email.com
                                                         format: string
-                                                version: 50
+                                                version: 27
                                                 comment: some text
                                                 remote_address: some text
                                                 request_uuid: some text
                                                 created_at: some text
-                                                location: some text
-                                                change_summary: some text
-                                                change_details: some text
-                                                user_display_name: some text
                                         pagination:
-                                            total_records: 23
-                                            current_offset: 98
-                                            next_offset: 55
+                                            total_records: 44
+                                            current_offset: 71
+                                            next_offset: 27
                     description: Successful response - returns an array of `AuditLog` entities.
                 '400':
                     content:
@@ -2730,12 +2742,10 @@ paths:
                             examples:
                                 default:
                                     value:
-                                        id: 94
-                                        auditable_id: 70
+                                        id: 90
+                                        auditable_id: 49
                                         auditable_type: some text
-                                        associated_id: 24
-                                        associated_type: some text
-                                        user_id: 84
+                                        user_id: 72
                                         user_type: some text
                                         username: some text
                                         action: some text
@@ -2753,7 +2763,6 @@ paths:
                                                 format: integer
                                             -
                                                 field_name: flag_enabled
-                                                field_value_before: null
                                                 field_value_after: 'true'
                                                 format: boolean
                                             -
@@ -2761,15 +2770,11 @@ paths:
                                                 field_value_before: ''
                                                 field_value_after: some@email.com
                                                 format: string
-                                        version: 15
+                                        version: 66
                                         comment: some text
                                         remote_address: some text
                                         request_uuid: some text
                                         created_at: some text
-                                        location: some text
-                                        change_summary: some text
-                                        change_details: some text
-                                        user_display_name: some text
                     description: Successful response - returns a single `AuditLog`.
                 '400':
                     description: A generic error
@@ -2781,11 +2786,11 @@ paths:
                     description: The AuditLog does not exist
             operationId: getAuditLog
             summary: Get an AuditLog
-            description: Gets the details of a single instance of a `AuditLog`.
+            description: Gets the details of a single instance of an `AuditLog`.
         parameters:
             -
                 name: auditLogId
-                description: A unique identifier for a `AuditLog`.
+                description: A unique identifier for an `AuditLog`.
                 schema:
                     type: string
                 in: path
@@ -5186,12 +5191,6 @@ components:
                 auditable_type:
                     description: ''
                     type: string
-                associated_id:
-                    description: ''
-                    type: integer
-                associated_type:
-                    description: ''
-                    type: string
                 user_id:
                     description: ''
                     type: integer
@@ -5224,25 +5223,11 @@ components:
                 created_at:
                     description: ''
                     type: string
-                location:
-                    description: ''
-                    type: string
-                change_summary:
-                    description: ''
-                    type: string
-                change_details:
-                    description: ''
-                    type: string
-                user_display_name:
-                    description: ''
-                    type: string
             example:
-                id: 87
-                auditable_id: 8
+                id: 58
+                auditable_id: 31
                 auditable_type: some text
-                associated_id: 73
-                associated_type: some text
-                user_id: 27
+                user_id: 83
                 user_type: some text
                 username: some text
                 action: some text
@@ -5260,18 +5245,13 @@ components:
                         format: integer
                     -
                         field_name: flag_enabled
-                        field_value_before: null
                         field_value_after: 'true'
                         format: boolean
-                version: 60
+                version: 56
                 comment: some text
                 remote_address: some text
                 request_uuid: some text
                 created_at: some text
-                location: some text
-                change_summary: some text
-                change_details: some text
-                user_display_name: some text
         AuditLogChange:
             description: ''
             required:

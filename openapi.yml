@@ -2640,6 +2640,7 @@ paths:
                         - `signin_watchlist`
                         - `user_group_physical_access_rule`
                         - `visitor`
+                        - `bulk_data_batch`
                     schema:
                         type: string
                     in: query

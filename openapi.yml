@@ -2676,7 +2676,6 @@ paths:
                                                 auditable_id: 85
                                                 auditable_type: some text
                                                 user_id: 56
-                                                user_type: some text
                                                 username: some text
                                                 action: some text
                                                 audited_changes:
@@ -2710,7 +2709,6 @@ paths:
                                                 auditable_id: 84
                                                 auditable_type: some text
                                                 user_id: 78
-                                                user_type: some text
                                                 username: some text
                                                 action: some text
                                                 audited_changes:
@@ -2775,7 +2773,6 @@ paths:
                                         auditable_id: 49
                                         auditable_type: some text
                                         user_id: 72
-                                        user_type: some text
                                         username: some text
                                         action: some text
                                         audited_changes:
@@ -5223,9 +5220,6 @@ components:
                 user_id:
                     description: ''
                     type: integer
-                user_type:
-                    description: ''
-                    type: string
                 username:
                     description: ''
                     type: string
@@ -5257,7 +5251,6 @@ components:
                 auditable_id: 31
                 auditable_type: some text
                 user_id: 83
-                user_type: some text
                 username: some text
                 action: some text
                 audited_changes:

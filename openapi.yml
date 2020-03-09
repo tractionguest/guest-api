@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.32
+    version: 0.9.33
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -972,7 +972,9 @@ paths:
                     name: limit
                     description: 'Limits the results to a specified number, defaults to 50'
                     schema:
-                        type: integer
+                        type: array
+                        items:
+                            type: string
                     in: query
                 -
                     name: offset
@@ -2575,6 +2577,40 @@ paths:
                     type: string
                 in: path
                 required: true
+    /notifications:
+        summary: Broadcasts notification to filtered signins
+        post:
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/NotificationsCreateParams'
+                        examples:
+                            default:
+                                value:
+                                    target: some text
+                                    message: some text
+                                    signin_filters:
+                                        location_ids:
+                                            - 79
+                                            - 35
+                                        signins_ids:
+                                            - 1
+                                            - 66
+                                        with_signed_in: true
+                                        signin_before: '2018-02-10T09:30Z'
+                                        signin_after: '2018-02-10T09:30Z'
+                                    channels:
+                                        - SMS
+                                        - EMAIL
+                required: true
+            tags:
+                - Notifications
+            responses:
+                '201':
+                    description: Notifications broadcast was queued
+            operationId: createNotification
+            summary: Notifications to signins which meet signin_filters criteria.
 components:
     schemas:
         Host:
@@ -4941,6 +4977,54 @@ components:
                         colour: RED
                         last_name: some text
                         first_name: some text
+        NotificationsCreateParams:
+            description: ''
+            required:
+                - target
+                - message
+                - channels
+            type: object
+            properties:
+                target:
+                    description: Creates a notification for signins
+                    type: string
+                message:
+                    description: ''
+                    type: string
+                signin_filters:
+                    $ref: '#/components/schemas/NotifcationsSigninFilterParams'
+                    description: ''
+                channels:
+                    description: ''
+                    type: array
+                    items:
+                        type: string
+        NotifcationsSigninFilterParams:
+            description: ''
+            required: []
+            type: object
+            properties:
+                location_ids:
+                    description: ''
+                    type: array
+                    items:
+                        type: integer
+                signins_ids:
+                    description: ''
+                    type: array
+                    items:
+                        type: integer
+                with_signed_in:
+                    description: ''
+                    type: boolean
+                signin_before:
+                    format: date-time
+                    description: ''
+                    type: string
+                signin_after:
+                    format: date-time
+                    description: ''
+                    type: string
     parameters:
         idempotencyKey:
             name: Idempotency-Key
@@ -4987,3 +5071,6 @@ tags:
     -
         name: Watchlists
         description: All endpoint related to the Watchlist model
+    -
+        name: Notifications
+        description: 'All endpoints relating to sending Notifications '

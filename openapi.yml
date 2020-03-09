@@ -2622,7 +2622,7 @@ paths:
                         - `user`
                         - `device_configuration`
                         - `signin`
-                        - `pre_registration`
+                        - `invite`
                         - `watchlist_record`
                         - `account_preference`
                         - `signout`

@@ -2618,7 +2618,6 @@ paths:
                     name: auditable_type
                     description: |
                         The name of the model that has associated audit logs. Valid values include:
-
                         - `user`
                         - `device_configuration`
                         - `signin`
@@ -2648,7 +2647,6 @@ paths:
                     name: action_type
                     description: |
                         The action performed by the user. Valid values include: 
-
                         - `create`
                         - `update`
                         - `destroy`
@@ -2901,12 +2899,15 @@ components:
                 next_offset:
                     format: int32
                     type: integer
-            example: |-
-                {
-                    "total_records": 50,
-                    "current_offset": 20,
-                    "next_offset": 30
-                }
+                last_id:
+                    format: int32
+                    description: 'The last ID rendered, if the request included the ''after_id'' param.'
+                    type: integer
+            example:
+                total_records: 7
+                current_offset: 25
+                next_offset: 84
+                last_id: 16
         PaginatedSigninsList:
             required:
                 - signins

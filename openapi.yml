@@ -2578,7 +2578,7 @@ paths:
                 in: path
                 required: true
     /notifications:
-        summary: Broadcasts notification to filtered signins
+        summary: TODO
         post:
             requestBody:
                 content:
@@ -2588,8 +2588,8 @@ paths:
                         examples:
                             default:
                                 value:
-                                    target: some text
-                                    message: some text
+                                    target: signins
+                                    message: 'Please, go to reception right now!'
                                     signin_filters:
                                         location_ids:
                                             - 79
@@ -2608,9 +2608,11 @@ paths:
                 - Notifications
             responses:
                 '201':
-                    description: Notifications broadcast was queued
+                    description: 'This response indicates notification have been scheduled'
             operationId: createNotification
-            summary: Notifications to signins which meet signin_filters criteria.
+            summary: Create notifications
+            description: >-
+                Broadcast notifications via specified channels to objects based on filtered criteria
 components:
     schemas:
         Host:
@@ -4986,20 +4988,23 @@ components:
             type: object
             properties:
                 target:
-                    description: Creates a notification for signins
+                    description: 'The type of object that will receive the notification such as, ''signin'' or ''host'''
                     type: string
                 message:
-                    description: ''
+                    description: 'Notification body '
                     type: string
                 signin_filters:
-                    $ref: '#/components/schemas/NotifcationsSigninFilterParams'
+                    $ref: '#/components/schemas/NotificationsSigninFilterParams'
                     description: ''
                 channels:
-                    description: ''
+                    description: 'Specify the broadcast channel, such as ''SMS'' or ''EMAIL'''
                     type: array
                     items:
                         type: string
-        NotifcationsSigninFilterParams:
+                host_filters:
+                    $ref: '#/components/schemas/NotificationsHostFilterParams'
+                    description: ''
+        NotificationsSigninFilterParams:
             description: ''
             required: []
             type: object
@@ -5025,6 +5030,21 @@ components:
                     format: date-time
                     description: ''
                     type: string
+        NotificationsHostFilterParams:
+            description: ''
+            required: []
+            type: object
+            properties:
+                location_ids:
+                    description: ''
+                    type: array
+                    items:
+                        type: integer
+                hosts_ids:
+                    description: ''
+                    type: array
+                    items:
+                        type: integer
     parameters:
         idempotencyKey:
             name: Idempotency-Key

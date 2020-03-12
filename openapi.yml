@@ -2439,6 +2439,9 @@ paths:
             summary: Get a Watchlist
             description: Gets the details of a single instance of a `Watchlist`.
         put:
+            parameters:
+                -
+                    $ref: '#/components/parameters/idempotencyKey'
             requestBody:
                 description: The watchlist record attributes to update
                 content:
@@ -2446,7 +2449,7 @@ paths:
                         schema:
                             $ref: '#/components/schemas/WatchlistCreateParams'
                         examples:
-                            New valid watchlist:
+                            NewWatchlist:
                                 value:
                                     colour: YELLOW
                                     email: some text
@@ -2466,7 +2469,7 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/Watchlist'
                             examples:
-                                Updated watchlist:
+                                UpdatedWatchlist:
                                     value:
                                         id: 66
                                         colour: GREEN
@@ -2655,7 +2658,7 @@ paths:
                         schema:
                             $ref: '#/components/schemas/WatchlistCreateParams'
                         examples:
-                            New valid watchlist:
+                            NewWatchlist:
                                 value:
                                     colour: GREEN
                                     email: some text
@@ -2668,6 +2671,9 @@ paths:
                 required: true
             tags:
                 - Watchlists
+            parameters:
+                -
+                    $ref: '#/components/parameters/idempotencyKey'
             responses:
                 '201':
                     content:
@@ -2675,7 +2681,7 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/Watchlist'
                             examples:
-                                Newly created watchlist:
+                                NewWatchlist:
                                     value:
                                         id: 77
                                         colour: GREEN

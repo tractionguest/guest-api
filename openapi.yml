@@ -2608,11 +2608,11 @@ paths:
                 - Notifications
             responses:
                 '201':
-                    description: 'This response indicates the notification has been scheduled'
+                    description: 'The broadcast was scheduled successfully'
             operationId: createNotification
             summary: Create notifications
             description: >-
-                Broadcast notifications via specified channels to objects based on filtered criteria
+                Broadcasts notifications via specified channels to objects based on filter criteria
 components:
     schemas:
         Host:
@@ -4998,9 +4998,10 @@ components:
                     description: ''
                 channels:
                     description: 'Specify the broadcast channel, such as ''SMS'' or ''EMAIL'''
-                    type: array
-                    items:
-                        type: string
+                    enum:
+                        - SMS
+                        - EMAIL
+                    type: string
                 host_filters:
                     $ref: '#/components/schemas/NotificationsHostFilterParams'
                     description: ''

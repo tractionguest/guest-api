@@ -2608,7 +2608,7 @@ paths:
                 - Notifications
             responses:
                 '201':
-                    description: 'This response indicates notification have been scheduled'
+                    description: 'This response indicates the notification has been scheduled'
             operationId: createNotification
             summary: Create notifications
             description: >-

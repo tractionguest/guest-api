@@ -972,9 +972,7 @@ paths:
                     name: limit
                     description: 'Limits the results to a specified number, defaults to 50'
                     schema:
-                        type: array
-                        items:
-                            type: string
+                        type: integer
                     in: query
                 -
                     name: offset

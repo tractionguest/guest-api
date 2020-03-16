@@ -9,22 +9,25 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { WatchlistMatchGuest } from './watchlistMatch';
-import { WatchlistSearchGuest } from './watchlistSearch';
 
 
-export interface ExternalWatchlistResultGuest { 
-    searchTerms?: WatchlistSearchGuest;
-    integration?: string;
-    colour?: ExternalWatchlistResultGuest.ColourGuestEnum;
-    matches?: Array<WatchlistMatchGuest>;
+/**
+ * Parameters required for updating or creating watchlist records
+ */
+export interface WatchlistCreateParamsGuest { 
+    colour?: WatchlistCreateParamsGuest.ColourGuestEnum;
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    notes?: string;
+    aliases?: Array<string>;
 }
-export namespace ExternalWatchlistResultGuest {
-    export type ColourGuestEnum = 'RED' | 'GREEN' | 'YELLOW' | 'ORANGE';
+export namespace WatchlistCreateParamsGuest {
+    export type ColourGuestEnum = 'RED' | 'YELLOW' | 'GREEN' | 'ORANGE';
     export const ColourGuestEnum = {
         RED: 'RED' as ColourGuestEnum,
-        GREEN: 'GREEN' as ColourGuestEnum,
         YELLOW: 'YELLOW' as ColourGuestEnum,
+        GREEN: 'GREEN' as ColourGuestEnum,
         ORANGE: 'ORANGE' as ColourGuestEnum
     };
 }

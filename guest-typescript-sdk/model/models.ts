@@ -32,6 +32,7 @@ export * from './signinUpdateParams';
 export * from './signinWatchlist';
 export * from './simpleSignature';
 export * from './user';
+export * from './watchlistCreateParams';
 export * from './watchlist';
 export * from './watchlistMatch';
 export * from './watchlistSearch';

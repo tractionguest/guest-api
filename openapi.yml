@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.10.0
+    version: 0.10.1
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -2439,9 +2439,6 @@ paths:
             summary: Get a Watchlist
             description: Gets the details of a single instance of a `Watchlist`.
         put:
-            parameters:
-                -
-                    $ref: '#/components/parameters/idempotencyKey'
             requestBody:
                 description: The watchlist record attributes to update
                 content:
@@ -2462,6 +2459,9 @@ paths:
                 required: true
             tags:
                 - Watchlists
+            parameters:
+                -
+                    $ref: '#/components/parameters/idempotencyKey'
             responses:
                 '200':
                     content:
@@ -2705,6 +2705,248 @@ paths:
             description: >-
                 Create a new `Watchlist` record. Please note, every action taken against this endpoint is
                 recorded in the audit log.
+    /audit_logs:
+        summary: Path used to manage the list of AuditLogs.
+        description: >-
+            The REST endpoint/path used to list zero or more `AuditLog` entities.  This path contains a `GET`
+            operation to perform the list task.
+        get:
+            tags:
+                - AuditLogs
+            parameters:
+                -
+                    name: limit
+                    description: 'Limits the results to a specified number, defaults to 50'
+                    schema:
+                        type: integer
+                    in: query
+                    required: false
+                -
+                    name: offset
+                    description: 'Offsets the results to a specified number, defaults to 0'
+                    schema:
+                        type: integer
+                    in: query
+                    required: false
+                -
+                    name: sort_by
+                    description: >-
+                        Sorts by the field name and direction provided where the pattern is
+                        `FIELD_NAME_DIRECTION`
+                    schema:
+                        type: string
+                    in: query
+                -
+                    name: auditable_id
+                    description: The unique ID of a model that has associated audit logs
+                    schema:
+                        type: integer
+                    in: query
+                -
+                    name: auditable_type
+                    description: |
+                        The name of the model that has associated audit logs. Valid values include:
+                        - `user`
+                        - `device_configuration`
+                        - `signin`
+                        - `invite`
+                        - `watchlist_record`
+                        - `account_preference`
+                        - `signout`
+                        - `host`
+                        - `invite_watchlist`
+                        - `location_preference`
+                        - `parking_lot`
+                        - `parking_stall`
+                        - `permission_bundle`
+                        - `person`
+                        - `physical_access_grant`
+                        - `physical_access_provider`
+                        - `physical_access_rule`
+                        - `security_badge_type`
+                        - `signin_watchlist`
+                        - `user_group_physical_access_rule`
+                        - `visitor`
+                        - `bulk_data_batch`
+                    schema:
+                        type: string
+                    in: query
+                -
+                    name: action_type
+                    description: |
+                        The action performed by the user. Valid values include: 
+                        - `create`
+                        - `update`
+                        - `destroy`
+                    schema:
+                        type: string
+                    in: query
+                -
+                    name: user_id
+                    description: The ID of the user who performed the database change
+                    schema:
+                        type: integer
+                    in: query
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/PaginatedAuditLogsList'
+                            examples:
+                                default:
+                                    value:
+                                        audit_logs:
+                                            -
+                                                id: 19
+                                                auditable_id: 85
+                                                auditable_type: some text
+                                                user_id: 56
+                                                username: some text
+                                                action: some text
+                                                audited_changes:
+                                                    -
+                                                        field_name: result
+                                                        field_value_before: '{}'
+                                                        field_value_after: >-
+                                                            {"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}
+                                                        format: json
+                                                    -
+                                                        field_name: user_id
+                                                        field_value_before: '1'
+                                                        field_value_after: '2'
+                                                        format: integer
+                                                    -
+                                                        field_name: flag_enabled
+                                                        field_value_after: 'true'
+                                                        format: boolean
+                                                    -
+                                                        field_name: email
+                                                        field_value_before: ''
+                                                        field_value_after: some@email.com
+                                                        format: string
+                                                version: 64
+                                                comment: some text
+                                                remote_address: some text
+                                                request_uuid: some text
+                                                created_at: some text
+                                            -
+                                                id: 4
+                                                auditable_id: 84
+                                                auditable_type: some text
+                                                user_id: 78
+                                                username: some text
+                                                action: some text
+                                                audited_changes:
+                                                    -
+                                                        field_name: email
+                                                        field_value_before: ''
+                                                        field_value_after: another@email.com
+                                                        format: string
+                                                version: 27
+                                                comment: some text
+                                                remote_address: some text
+                                                request_uuid: some text
+                                                created_at: some text
+                                        pagination:
+                                            total_records: 44
+                                            current_offset: 71
+                                            next_offset: 27
+                    description: Successful response - returns an array of `AuditLog` entities.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view this AuditLog
+                '403':
+                    description: You do not have permission for this action
+            operationId: getAuditLogs
+            summary: List All AuditLogs
+            description: Gets a list of all `AuditLog` entities.
+    '/audit_logs/{auditLogId}':
+        summary: Path used to manage a single AuditLog.
+        description: The REST endpoint/path used to get single instances of an `AuditLog`.
+        get:
+            tags:
+                - AuditLogs
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AuditLog'
+                            examples:
+                                default:
+                                    value:
+                                        id: 90
+                                        auditable_id: 49
+                                        auditable_type: some text
+                                        user_id: 72
+                                        username: some text
+                                        action: some text
+                                        audited_changes:
+                                            -
+                                                field_name: result
+                                                field_value_before: '{}'
+                                                field_value_after: >-
+                                                    {"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}
+                                                format: json
+                                            -
+                                                field_name: user_id
+                                                field_value_before: '1'
+                                                field_value_after: '2'
+                                                format: integer
+                                            -
+                                                field_name: flag_enabled
+                                                field_value_after: 'true'
+                                                format: boolean
+                                            -
+                                                field_name: email
+                                                field_value_before: ''
+                                                field_value_after: some@email.com
+                                                format: string
+                                        version: 66
+                                        comment: some text
+                                        remote_address: some text
+                                        request_uuid: some text
+                                        created_at: some text
+                    description: Successful response - returns a single `AuditLog`.
+                '400':
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view this AuditLog
+                '403':
+                    description: You do not have permission for this action
+                '404':
+                    description: The AuditLog does not exist
+            operationId: getAuditLog
+            summary: Get an AuditLog
+            description: Gets the details of a single instance of an `AuditLog`.
+        parameters:
+            -
+                name: auditLogId
+                description: A unique identifier for an `AuditLog`.
+                schema:
+                    type: string
+                in: path
+                required: true
 components:
     schemas:
         Host:
@@ -2790,10 +3032,10 @@ components:
                     description: 'The last ID rendered, if the request included the ''after_id'' param.'
                     type: integer
             example:
-                total_records: 7
-                current_offset: 25
-                next_offset: 84
-                last_id: 16
+                total_records: 16
+                current_offset: 31
+                next_offset: 20
+                last_id: 28
         PaginatedSigninsList:
             required:
                 - signins
@@ -5108,6 +5350,122 @@ components:
                 aliases:
                     - Horrible Person
                     - Bad Guy
+        AuditLogChange:
+            description: ''
+            type: object
+            properties:
+                field_name:
+                    description: What the field should be displayed/labeled as
+                    type: string
+                field_value_before:
+                    description: The value to be displayed for the field before changes
+                    type: string
+                field_value_after:
+                    description: The value to be displayed for the field after changes
+                    type: string
+                format:
+                    description: The format type of the field
+                    enum:
+                        - string
+                        - boolean
+                        - integer
+                        - json
+                        - 'null'
+                    type: string
+            example: |-
+                {
+                    "field_name": "result",
+                    "field_value_before": "{}",
+                    "field_value_after": '{"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}',
+                    "format": "json"
+                }
+        AuditLog:
+            description: The root of the AuditLog type's schema.
+            required:
+                - id
+            type: object
+            properties:
+                id:
+                    description: ''
+                    type: integer
+                auditable_id:
+                    description: ''
+                    type: integer
+                auditable_type:
+                    description: ''
+                    type: string
+                user_id:
+                    description: ''
+                    type: integer
+                username:
+                    description: ''
+                    type: string
+                action:
+                    description: ''
+                    type: string
+                audited_changes:
+                    description: ''
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/AuditLogChange'
+                version:
+                    description: ''
+                    type: integer
+                comment:
+                    description: ''
+                    type: string
+                remote_address:
+                    description: ''
+                    type: string
+                request_uuid:
+                    description: ''
+                    type: string
+                created_at:
+                    description: ''
+                    type: string
+            example:
+                id: 58
+                auditable_id: 31
+                auditable_type: some text
+                user_id: 83
+                username: some text
+                action: some text
+                audited_changes:
+                    -
+                        field_name: result
+                        field_value_before: '{}'
+                        field_value_after: >-
+                            {"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}
+                        format: json
+                    -
+                        field_name: user_id
+                        field_value_before: '1'
+                        field_value_after: '2'
+                        format: integer
+                    -
+                        field_name: flag_enabled
+                        field_value_after: 'true'
+                        format: boolean
+                version: 56
+                comment: some text
+                remote_address: some text
+                request_uuid: some text
+                created_at: some text
+        PaginatedAuditLogsList:
+            description: ''
+            required:
+                - pagination
+                - audit_logs
+            type: object
+            properties:
+                audit_logs:
+                    description: ''
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/AuditLog'
+                pagination:
+                    $ref: '#/components/schemas/Pagination'
+                    description: ''
     parameters:
         idempotencyKey:
             name: Idempotency-Key
@@ -5153,30 +5511,30 @@ security:
 tags:
     -
         name: EmailTemplates
-        description: All endpoints related to operations for the EmailTemplate model.
+        description: All endpoints relating to operations for the EmailTemplate model
     -
         name: Hosts
-        description: All endpoints related to the Host model.
+        description: All endpoints relating to the Host model
     -
         name: Invites
-        description: 'All endpoints related to the Invite model, a.k.a. the PreRegistration model.'
+        description: 'All endpoints relating to the Invite model, aka. PreRegistrations'
     -
         name: Locations
-        description: 'All endpoints related to the Location model, a.k.a. the DeviceConfiguration model.'
+        description: 'All endpoints relating to the Location model, aka. DeviceConfigurations'
     -
         name: Parking
-        description: 'All endpoints related to parking, which includes the ParkingLot and ParkingStallRange models.'
+        description: 'All endpoint related to the parking feature, including the ParkingLot and ParkingStallRange models'
     -
         name: Signins
         description: >-
             All endpoints related to models that track signing in and out of a location. E.g., Signin,
-            Signout, SigninAcknowledgment models.
+            Signout, SigninAcknowledgment models
     -
         name: Users
-        description: All endpoints related to the User model.
+        description: All endpoints related to the User model
     -
         name: Watchlists
-        description: All endpoints related to the Watchlist model.
+        description: All endpoint related to the Watchlist model
     -
         name: AuditLogs
         description: All endpoints related to the AuditLog model.

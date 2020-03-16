@@ -5023,11 +5023,11 @@ components:
                 with_signed_in:
                     description: ''
                     type: boolean
-                signin_before:
+                signed_in_before:
                     format: date-time
                     description: ''
                     type: string
-                signin_after:
+                signed_in_after:
                     format: date-time
                     description: ''
                     type: string

@@ -5017,11 +5017,6 @@ components:
                     type: array
                     items:
                         type: integer
-                signins_ids:
-                    description: ''
-                    type: array
-                    items:
-                        type: integer
                 with_signed_in:
                     description: ''
                     type: boolean
@@ -5033,6 +5028,11 @@ components:
                     format: date-time
                     description: ''
                     type: string
+                signin_ids:
+                    description: ''
+                    type: array
+                    items:
+                        type: integer
         NotificationsHostFilterParams:
             description: ''
             required: []
@@ -5043,7 +5043,7 @@ components:
                     type: array
                     items:
                         type: integer
-                hosts_ids:
+                host_ids:
                     description: ''
                     type: array
                     items:

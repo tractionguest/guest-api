@@ -5298,6 +5298,7 @@ components:
                         - integer
                         - boolean
                         - json
+                        - 'null'
                     type: string
             example:
                 field_name: result

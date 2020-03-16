@@ -18,9 +18,9 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { AuditLogGuest } from '../model/auditLog';
 import { ErrorsListGuest } from '../model/errorsList';
-import { HostGuest } from '../model/host';
-import { PaginatedHostsListGuest } from '../model/paginatedHostsList';
+import { PaginatedAuditLogsListGuest } from '../model/paginatedAuditLogsList';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -29,7 +29,7 @@ import { Configuration }                                     from '../configurat
 @Injectable({
   providedIn: 'root'
 })
-export class HostsService {
+export class AuditLogsService {
 
     protected basePath = 'https://mobile-api-refactor-admin.tractionguest.ca/api/v3';
     public defaultHeaders = new HttpHeaders();
@@ -62,25 +62,21 @@ export class HostsService {
 
 
     /**
-     * Create a Host
-     * 
-     * @param hostGuest 
-     * @param idempotencyKey An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it\&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored
+     * Get an AuditLog
+     * Gets the details of a single instance of an &#x60;AuditLog&#x60;.
+     * @param auditLogId A unique identifier for an &#x60;AuditLog&#x60;.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createHost(hostGuest: HostGuest, idempotencyKey?: string, observe?: 'body', reportProgress?: boolean): Observable<HostGuest>;
-    public createHost(hostGuest: HostGuest, idempotencyKey?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<HostGuest>>;
-    public createHost(hostGuest: HostGuest, idempotencyKey?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<HostGuest>>;
-    public createHost(hostGuest: HostGuest, idempotencyKey?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (hostGuest === null || hostGuest === undefined) {
-            throw new Error('Required parameter hostGuest was null or undefined when calling createHost.');
+    public getAuditLog(auditLogId: string, observe?: 'body', reportProgress?: boolean): Observable<AuditLogGuest>;
+    public getAuditLog(auditLogId: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AuditLogGuest>>;
+    public getAuditLog(auditLogId: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AuditLogGuest>>;
+    public getAuditLog(auditLogId: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (auditLogId === null || auditLogId === undefined) {
+            throw new Error('Required parameter auditLogId was null or undefined when calling getAuditLog.');
         }
 
         let headers = this.defaultHeaders;
-        if (idempotencyKey !== undefined && idempotencyKey !== null) {
-            headers = headers.set('Idempotency-Key', String(idempotencyKey));
-        }
 
         // authentication (TractionGuestAuth) required
         // to determine the Accept header
@@ -94,15 +90,9 @@ export class HostsService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
-            'application/json'
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
 
-        return this.httpClient.post<HostGuest>(`${this.configuration.basePath}/hosts`,
-            hostGuest,
+        return this.httpClient.get<AuditLogGuest>(`${this.configuration.basePath}/audit_logs/${encodeURIComponent(String(auditLogId))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -113,32 +103,44 @@ export class HostsService {
     }
 
     /**
-     * List All Hosts
-     * Gets a list of all &#x60;Host&#x60; entities.
-     * @param query Will filter by &#x60;first_name&#x60;, &#x60;last_name&#x60;, and &#x60;email&#x60;
+     * List All AuditLogs
+     * Gets a list of all &#x60;AuditLog&#x60; entities.
      * @param limit Limits the results to a specified number, defaults to 50
      * @param offset Offsets the results to a specified number, defaults to 0
-     * @param include A list of comma-separated related models to include
+     * @param sortBy Sorts by the field name and direction provided where the pattern is &#x60;FIELD_NAME_DIRECTION&#x60;
+     * @param auditableId The unique ID of a model that has associated audit logs
+     * @param auditableType The name of the model that has associated audit logs. Valid values include: - &#x60;user&#x60; - &#x60;device_configuration&#x60; - &#x60;signin&#x60; - &#x60;invite&#x60; - &#x60;watchlist_record&#x60; - &#x60;account_preference&#x60; - &#x60;signout&#x60; - &#x60;host&#x60; - &#x60;invite_watchlist&#x60; - &#x60;location_preference&#x60; - &#x60;parking_lot&#x60; - &#x60;parking_stall&#x60; - &#x60;permission_bundle&#x60; - &#x60;person&#x60; - &#x60;physical_access_grant&#x60; - &#x60;physical_access_provider&#x60; - &#x60;physical_access_rule&#x60; - &#x60;security_badge_type&#x60; - &#x60;signin_watchlist&#x60; - &#x60;user_group_physical_access_rule&#x60; - &#x60;visitor&#x60; - &#x60;bulk_data_batch&#x60; 
+     * @param actionType The action performed by the user. Valid values include:  - &#x60;create&#x60; - &#x60;update&#x60; - &#x60;destroy&#x60; 
+     * @param userId The ID of the user who performed the database change
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getHosts(query?: string, limit?: number, offset?: number, include?: string, observe?: 'body', reportProgress?: boolean): Observable<PaginatedHostsListGuest>;
-    public getHosts(query?: string, limit?: number, offset?: number, include?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginatedHostsListGuest>>;
-    public getHosts(query?: string, limit?: number, offset?: number, include?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginatedHostsListGuest>>;
-    public getHosts(query?: string, limit?: number, offset?: number, include?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAuditLogs(limit?: number, offset?: number, sortBy?: string, auditableId?: number, auditableType?: string, actionType?: string, userId?: number, observe?: 'body', reportProgress?: boolean): Observable<PaginatedAuditLogsListGuest>;
+    public getAuditLogs(limit?: number, offset?: number, sortBy?: string, auditableId?: number, auditableType?: string, actionType?: string, userId?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginatedAuditLogsListGuest>>;
+    public getAuditLogs(limit?: number, offset?: number, sortBy?: string, auditableId?: number, auditableType?: string, actionType?: string, userId?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginatedAuditLogsListGuest>>;
+    public getAuditLogs(limit?: number, offset?: number, sortBy?: string, auditableId?: number, auditableType?: string, actionType?: string, userId?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (query !== undefined && query !== null) {
-            queryParameters = queryParameters.set('query', <any>query);
-        }
         if (limit !== undefined && limit !== null) {
             queryParameters = queryParameters.set('limit', <any>limit);
         }
         if (offset !== undefined && offset !== null) {
             queryParameters = queryParameters.set('offset', <any>offset);
         }
-        if (include !== undefined && include !== null) {
-            queryParameters = queryParameters.set('include', <any>include);
+        if (sortBy !== undefined && sortBy !== null) {
+            queryParameters = queryParameters.set('sort_by', <any>sortBy);
+        }
+        if (auditableId !== undefined && auditableId !== null) {
+            queryParameters = queryParameters.set('auditable_id', <any>auditableId);
+        }
+        if (auditableType !== undefined && auditableType !== null) {
+            queryParameters = queryParameters.set('auditable_type', <any>auditableType);
+        }
+        if (actionType !== undefined && actionType !== null) {
+            queryParameters = queryParameters.set('action_type', <any>actionType);
+        }
+        if (userId !== undefined && userId !== null) {
+            queryParameters = queryParameters.set('user_id', <any>userId);
         }
 
         let headers = this.defaultHeaders;
@@ -157,7 +159,7 @@ export class HostsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<PaginatedHostsListGuest>(`${this.configuration.basePath}/hosts`,
+        return this.httpClient.get<PaginatedAuditLogsListGuest>(`${this.configuration.basePath}/audit_logs`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

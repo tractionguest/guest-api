@@ -1,3 +1,5 @@
+export * from './auditLogs.service';
+import { AuditLogsService } from './auditLogs.service';
 export * from './emailTemplates.service';
 import { EmailTemplatesService } from './emailTemplates.service';
 export * from './hosts.service';
@@ -12,4 +14,4 @@ export * from './users.service';
 import { UsersService } from './users.service';
 export * from './watchlists.service';
 import { WatchlistsService } from './watchlists.service';
-export const APIS = [EmailTemplatesService, HostsService, InvitesService, LocationsService, SigninsService, UsersService, WatchlistsService];
+export const APIS = [AuditLogsService, EmailTemplatesService, HostsService, InvitesService, LocationsService, SigninsService, UsersService, WatchlistsService];

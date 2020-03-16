@@ -1,3 +1,5 @@
+export * from './auditLogChange';
+export * from './auditLog';
 export * from './customField';
 export * from './docusign';
 export * from './emailTemplate';
@@ -14,6 +16,7 @@ export * from './location';
 export * from './error';
 export * from './notificationTriggerCreateParams';
 export * from './notificationTrigger';
+export * from './paginatedAuditLogsList';
 export * from './paginatedEmailTemplatesList';
 export * from './paginatedHostsList';
 export * from './paginatedInvitesList';

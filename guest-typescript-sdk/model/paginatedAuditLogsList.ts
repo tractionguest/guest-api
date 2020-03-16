@@ -9,14 +9,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { AuditLogGuest } from './auditLog';
+import { PaginationGuest } from './pagination';
 
 
-/**
- * The root of the SigninAcknowledgement type\'s schema.
- */
-export interface SigninAcknowledgementGuest { 
-    code?: string;
-    acknowledgedAt?: Date;
-    id: number;
+export interface PaginatedAuditLogsListGuest { 
+    auditLogs: Array<AuditLogGuest>;
+    pagination: PaginationGuest;
 }
 

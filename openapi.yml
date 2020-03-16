@@ -2588,21 +2588,19 @@ paths:
                         examples:
                             default:
                                 value:
-                                    target: signins
                                     message: 'Please, go to reception right now!'
                                     signin_filters:
                                         location_ids:
-                                            - 79
-                                            - 35
+                                            - 77
+                                            - 6
+                                        signed_in_before: '2018-02-10T09:30Z'
+                                        signed_in_after: '2018-02-10T09:30Z'
                                         signin_ids:
-                                            - 1
-                                            - 66
-                                        with_signed_in: true
-                                        signin_before: '2018-02-10T09:30Z'
-                                        signin_after: '2018-02-10T09:30Z'
-                                    channels:
-                                        - SMS
-                                        - EMAIL
+                                            - 13
+                                            - 34
+                                        is_signed_out: false
+                                    channels: SMS
+                                    target: SIGNINS
                 required: true
             tags:
                 - Notifications
@@ -4986,12 +4984,6 @@ components:
                 - channels
             type: object
             properties:
-                target:
-                    description: 'The type of object that will receive the notification such as, ''signin'' or ''host'''
-                    enum:
-                        - SIGNIN
-                        - HOST
-                    type: string
                 message:
                     description: 'Notification body '
                     type: string
@@ -5007,6 +4999,12 @@ components:
                 host_filters:
                     $ref: '#/components/schemas/NotificationsHostFilterParams'
                     description: ''
+                target:
+                    description: 'The type of object that will receive the notification such as, ''signin'' or ''host'''
+                    enum:
+                        - HOSTS
+                        - SIGNINS
+                    type: string
         NotificationsSigninFilterParams:
             description: ''
             required: []

@@ -9,10 +9,57 @@ All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createWatchlist**](WatchlistsApi.md#createWatchlist) | **POST** /watchlists | Create watchlist
 [**deleteWatchlist**](WatchlistsApi.md#deleteWatchlist) | **DELETE** /watchlists/{watchlistId} | Deletes a Watchlist
 [**getWatchlist**](WatchlistsApi.md#getWatchlist) | **GET** /watchlists/{watchlistId} | Get a Watchlist
 [**getWatchlists**](WatchlistsApi.md#getWatchlists) | **GET** /watchlists | List All Watchlists
+[**updateWatchlist**](WatchlistsApi.md#updateWatchlist) | **PUT** /watchlists/{watchlistId} | Update a watchlist record
 
+
+# **createWatchlist**
+> Watchlist createWatchlist(watchlistCreateParams, idempotencyKey)
+
+Create watchlist
+
+Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log.
+
+### Example 
+```dart
+import 'package:guest_sdk/api.dart';
+
+var api_instance = new WatchlistsApi();
+var watchlistCreateParams = new WatchlistCreateParams(); // WatchlistCreateParams | The new `Watchlist` to create
+var idempotencyKey = idempotencyKey_example; // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored
+
+try { 
+    var result = api_instance.createWatchlist(watchlistCreateParams, idempotencyKey);
+    print(result);
+} catch (e) {
+    print("Exception when calling WatchlistsApi->createWatchlist: $e\n");
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **watchlistCreateParams** | [**WatchlistCreateParams**](WatchlistCreateParams.md)| The new &#x60;Watchlist&#x60; to create | 
+ **idempotencyKey** | **String**| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] [default to null]
+
+### Return type
+
+[**Watchlist**](Watchlist.md)
+
+### Authorization
+
+[TractionGuestAuth](../README.md#TractionGuestAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteWatchlist**
 > deleteWatchlist(watchlistId, idempotencyKey)
@@ -150,6 +197,53 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateWatchlist**
+> Watchlist updateWatchlist(watchlistId, watchlistCreateParams, idempotencyKey)
+
+Update a watchlist record
+
+Update an existing `Watchlist` record. Every operation against this endpoint is recorded in the audit log.
+
+### Example 
+```dart
+import 'package:guest_sdk/api.dart';
+
+var api_instance = new WatchlistsApi();
+var watchlistId = watchlistId_example; // String | A unique identifier for a `Watchlist`.
+var watchlistCreateParams = new WatchlistCreateParams(); // WatchlistCreateParams | The watchlist record attributes to update
+var idempotencyKey = idempotencyKey_example; // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored
+
+try { 
+    var result = api_instance.updateWatchlist(watchlistId, watchlistCreateParams, idempotencyKey);
+    print(result);
+} catch (e) {
+    print("Exception when calling WatchlistsApi->updateWatchlist: $e\n");
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **watchlistId** | **String**| A unique identifier for a &#x60;Watchlist&#x60;. | [default to null]
+ **watchlistCreateParams** | [**WatchlistCreateParams**](WatchlistCreateParams.md)| The watchlist record attributes to update | 
+ **idempotencyKey** | **String**| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] [default to null]
+
+### Return type
+
+[**Watchlist**](Watchlist.md)
+
+### Authorization
+
+[TractionGuestAuth](../README.md#TractionGuestAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -107,6 +107,8 @@ class ApiClient {
           return User.fromJson(value);
         case 'Watchlist':
           return Watchlist.fromJson(value);
+        case 'WatchlistCreateParams':
+          return WatchlistCreateParams.fromJson(value);
         case 'WatchlistMatch':
           return WatchlistMatch.fromJson(value);
         case 'WatchlistSearch':

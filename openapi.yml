@@ -2578,7 +2578,7 @@ paths:
                 in: path
                 required: true
     /notifications:
-        summary: TODO
+        summary: Broadcasts notifications to filtered Hosts and/or SignIns via specified channels
         post:
             requestBody:
                 content:
@@ -2594,7 +2594,7 @@ paths:
                                         location_ids:
                                             - 79
                                             - 35
-                                        signins_ids:
+                                        signin_ids:
                                             - 1
                                             - 66
                                         with_signed_in: true
@@ -2608,11 +2608,10 @@ paths:
                 - Notifications
             responses:
                 '201':
-                    description: 'The broadcast was scheduled successfully'
+                    description: The broadcast was scheduled successfully
             operationId: createNotification
             summary: Create notifications
-            description: >-
-                Broadcasts notifications via specified channels to objects based on filter criteria
+            description: Enqueues notifications to filtered Hosts and/or SignIns via specified channels
 components:
     schemas:
         Host:
@@ -4989,6 +4988,9 @@ components:
             properties:
                 target:
                     description: 'The type of object that will receive the notification such as, ''signin'' or ''host'''
+                    enum:
+                        - SIGNIN
+                        - HOST
                     type: string
                 message:
                     description: 'Notification body '

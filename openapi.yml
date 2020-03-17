@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.9.33
+    version: 0.10.2
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -859,108 +859,6 @@ paths:
                     type: string
                 in: path
                 required: true
-    '/watchlists/{watchlistId}':
-        summary: Path used to manage a single Watchlist.
-        description: The REST endpoint/path used to get single instances of a `Watchlist`.
-        get:
-            tags:
-                - Watchlists
-            parameters:
-                -
-                    name: include
-                    description: A list of comma-separated related models to include
-                    schema:
-                        type: string
-                    in: query
-            responses:
-                '200':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Watchlist'
-                            examples:
-                                default:
-                                    value:
-                                        id: 7
-                                        colour: GREEN
-                                        email: name@example.com
-                                        first_name: Alex
-                                        last_name: Trebec
-                                        notes: some text
-                                        photo: some text
-                                        aliases:
-                                            - some text
-                                            - some text
-                    description: Successful response - returns a single `Watchlist`.
-                '400':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/ErrorsList'
-                            examples:
-                                default:
-                                    value:
-                                        errors:
-                                            -
-                                                domain: some text
-                                                attribute: some text
-                                                code: some text
-                                                message: some text
-                                            -
-                                                domain: some text
-                                                attribute: some text
-                                                code: some text
-                                                message: some text
-                    description: A generic error
-                '401':
-                    description: You don't have permission to view this Watchlist
-                '403':
-                    description: You do not have permission for this action
-                '404':
-                    description: The Watchlist does not exist
-            operationId: getWatchlist
-            summary: Get a Watchlist
-            description: Gets the details of a single instance of a `Watchlist`.
-        delete:
-            tags:
-                - Watchlists
-            parameters:
-                -
-                    $ref: '#/components/parameters/idempotencyKey'
-            responses:
-                '204':
-                    description: The Watchlist has been deleted
-                '400':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/ErrorsList'
-                            examples:
-                                default:
-                                    value:
-                                        errors:
-                                            -
-                                                domain: some text
-                                                attribute: some text
-                                                code: some text
-                                                message: some text
-                                            -
-                                                domain: some text
-                                                attribute: some text
-                                                code: some text
-                                                message: some text
-                    description: There was an issue in trying to delete the Watchlist
-            operationId: deleteWatchlist
-            summary: Deletes a Watchlist
-            description: Deletes a single instance of `Watchlist`
-        parameters:
-            -
-                name: watchlistId
-                description: A unique identifier for a `Watchlist`.
-                schema:
-                    type: string
-                in: path
-                required: true
     /locations:
         summary: Path used to manage the list of Locations.
         description: The REST endpoint/path used to list zero or more `Location` entities.
@@ -1304,7 +1202,9 @@ paths:
                     in: query
                 -
                     name: active_after
-                    description: Checks that an invite hasn't yet started, or has started and is still active after a specified time
+                    description: >-
+                        Checks that an invite hasn't yet started, or has started and is still active after a
+                        specified time
                     schema:
                         format: date-time
                         type: string
@@ -2096,111 +1996,6 @@ paths:
             operationId: createSignin
             summary: Create a Signin
             description: Creates a new instance of a `Signin`.
-    /watchlists:
-        summary: Path used to manage the list of Watchlists.
-        description: The REST endpoint/path used to list zero or more `Watchlist` entities.
-        get:
-            tags:
-                - Watchlists
-            parameters:
-                -
-                    name: limit
-                    description: 'Limits the results to a specified number, defaults to 50'
-                    schema:
-                        type: integer
-                    in: query
-                -
-                    name: offset
-                    description: 'Offsets the results to a specified number, defaults to 0'
-                    schema:
-                        type: integer
-                    in: query
-                -
-                    name: query
-                    description: >-
-                        Query the results by `first_name`, `last_name`, `email`, `colour`, and `notes` all at
-                        once.
-                    schema:
-                        type: string
-                    in: query
-                -
-                    name: with_colours
-                    description: |-
-                        A comma separated list of case-insensitive colour values.
-                        i.e., `red`, `green`, `yellow`, and `orange`
-                    schema:
-                        type: string
-                    in: query
-                -
-                    name: include
-                    description: A list of comma-separated related models to include
-                    schema:
-                        type: string
-                    in: query
-            responses:
-                '200':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/PaginatedWatchlistList'
-                            examples:
-                                default:
-                                    value:
-                                        pagination:
-                                            total_records: 78
-                                            current_offset: 62
-                                            next_offset: 57
-                                        watchlists:
-                                            -
-                                                id: 24
-                                                colour: GREEN
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                notes: some text
-                                                photo: some text
-                                                aliases:
-                                                    - some text
-                                                    - some text
-                                            -
-                                                id: 26
-                                                colour: ORANGE
-                                                email: some text
-                                                first_name: some text
-                                                last_name: some text
-                                                notes: some text
-                                                photo: some text
-                                                aliases:
-                                                    - some text
-                                                    - some text
-                    description: Successful response - returns an array of `Watchlist` entities.
-                '400':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/ErrorsList'
-                            examples:
-                                default:
-                                    value:
-                                        errors:
-                                            -
-                                                domain: some text
-                                                attribute: some text
-                                                code: some text
-                                                message: some text
-                                            -
-                                                domain: some text
-                                                attribute: some text
-                                                code: some text
-                                                message: some text
-                    description: A generic error
-                '401':
-                    description: You don't have permission to view these Watchlists
-                '403':
-                    description: You do not have permission for this action
-            operationId: getWatchlists
-            summary: List All Watchlists
-            description: Gets a list of all `Watchlist` entities.
     '/users/{userId}':
         summary: Path used to manage a single User.
         description: The REST endpoint/path used to get single instances of an `User` and their `PermissionBundle`s.
@@ -2575,6 +2370,583 @@ paths:
                     type: string
                 in: path
                 required: true
+    '/watchlists/{watchlistId}':
+        summary: Path used to manage a single Watchlist.
+        description: The REST endpoint/path used to get single instances of a `Watchlist`.
+        get:
+            tags:
+                - Watchlists
+            parameters:
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
+                        type: string
+                    in: query
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Watchlist'
+                            examples:
+                                default:
+                                    value:
+                                        id: 7
+                                        colour: GREEN
+                                        email: name@example.com
+                                        first_name: Alex
+                                        last_name: Trebec
+                                        notes: some text
+                                        photo: some text
+                                        aliases:
+                                            - some text
+                                            - some text
+                    description: Successful response - returns a single `Watchlist`.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view this Watchlist
+                '403':
+                    description: You do not have permission for this action
+                '404':
+                    description: The Watchlist does not exist
+            security:
+                -
+                    TractionGuestAuth:
+                        - all
+                        - 'watchlists:*'
+                        - 'watchlists:read'
+            operationId: getWatchlist
+            summary: Get a Watchlist
+            description: Gets the details of a single instance of a `Watchlist`.
+        put:
+            requestBody:
+                description: The watchlist record attributes to update
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/WatchlistCreateParams'
+                        examples:
+                            NewWatchlist:
+                                value:
+                                    colour: YELLOW
+                                    email: some text
+                                    first_name: some text
+                                    last_name: some text
+                                    notes: some text
+                                    aliases:
+                                        - some text
+                                        - some text
+                required: true
+            tags:
+                - Watchlists
+            parameters:
+                -
+                    $ref: '#/components/parameters/idempotencyKey'
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Watchlist'
+                            examples:
+                                UpdatedWatchlist:
+                                    value:
+                                        id: 66
+                                        colour: GREEN
+                                        email: some text
+                                        first_name: some text
+                                        last_name: some text
+                                        notes: some text
+                                        photo: some text
+                                        aliases:
+                                            - some text
+                                            - some text
+                    description: The complete updated watchlist record
+            security:
+                -
+                    TractionGuestAuth:
+                        - all
+                        - 'watchlists:*'
+                        - 'watchlists:write'
+            operationId: updateWatchlist
+            summary: Update a watchlist record
+            description: >-
+                Update an existing `Watchlist` record. Every operation against this endpoint is recorded in
+                the audit log.
+        delete:
+            tags:
+                - Watchlists
+            parameters:
+                -
+                    $ref: '#/components/parameters/idempotencyKey'
+            responses:
+                '204':
+                    description: The Watchlist has been deleted
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: There was an issue in trying to delete the Watchlist
+            security:
+                -
+                    TractionGuestAuth:
+                        - all
+                        - 'watchlists:*'
+                        - 'watchlists:write'
+            operationId: deleteWatchlist
+            summary: Deletes a Watchlist
+            description: Deletes a single instance of `Watchlist`
+        parameters:
+            -
+                name: watchlistId
+                description: A unique identifier for a `Watchlist`.
+                schema:
+                    type: string
+                in: path
+                required: true
+    /watchlists:
+        summary: Path used to manage the list of Watchlists.
+        description: The REST endpoint/path used to list zero or more `Watchlist` entities.
+        get:
+            tags:
+                - Watchlists
+            parameters:
+                -
+                    name: limit
+                    description: 'Limits the results to a specified number, defaults to 50'
+                    schema:
+                        type: integer
+                    in: query
+                -
+                    name: offset
+                    description: 'Offsets the results to a specified number, defaults to 0'
+                    schema:
+                        type: integer
+                    in: query
+                -
+                    name: query
+                    description: >-
+                        Query the results by `first_name`, `last_name`, `email`, `colour`, and `notes` all at
+                        once.
+                    schema:
+                        type: string
+                    in: query
+                -
+                    name: with_colours
+                    description: |-
+                        A comma separated list of case-insensitive colour values.
+                        i.e., `red`, `green`, `yellow`, and `orange`
+                    schema:
+                        type: string
+                    in: query
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
+                        type: string
+                    in: query
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/PaginatedWatchlistList'
+                            examples:
+                                default:
+                                    value:
+                                        pagination:
+                                            total_records: 78
+                                            current_offset: 62
+                                            next_offset: 57
+                                        watchlists:
+                                            -
+                                                id: 24
+                                                colour: GREEN
+                                                email: some text
+                                                first_name: some text
+                                                last_name: some text
+                                                notes: some text
+                                                photo: some text
+                                                aliases:
+                                                    - some text
+                                                    - some text
+                                            -
+                                                id: 26
+                                                colour: ORANGE
+                                                email: some text
+                                                first_name: some text
+                                                last_name: some text
+                                                notes: some text
+                                                photo: some text
+                                                aliases:
+                                                    - some text
+                                                    - some text
+                    description: Successful response - returns an array of `Watchlist` entities.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view these Watchlists
+                '403':
+                    description: You do not have permission for this action
+            security:
+                -
+                    TractionGuestAuth:
+                        - all
+                        - 'watchlists:*'
+                        - 'watchlists:read'
+            operationId: getWatchlists
+            summary: List All Watchlists
+            description: Gets a list of all `Watchlist` entities.
+        post:
+            requestBody:
+                description: The new `Watchlist` to create
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/WatchlistCreateParams'
+                        examples:
+                            NewWatchlist:
+                                value:
+                                    colour: GREEN
+                                    email: some text
+                                    first_name: some text
+                                    last_name: some text
+                                    notes: some text
+                                    aliases:
+                                        - some text
+                                        - some text
+                required: true
+            tags:
+                - Watchlists
+            parameters:
+                -
+                    $ref: '#/components/parameters/idempotencyKey'
+            responses:
+                '201':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Watchlist'
+                            examples:
+                                NewWatchlist:
+                                    value:
+                                        id: 77
+                                        colour: GREEN
+                                        email: some text
+                                        first_name: some text
+                                        last_name: some text
+                                        notes: some text
+                                        photo: some text
+                                        aliases:
+                                            - some text
+                                            - some text
+                    description: The newly created `Watchlist`
+            security:
+                -
+                    TractionGuestAuth:
+                        - all
+                        - 'watchlists:*'
+                        - 'watchlists:write'
+            operationId: createWatchlist
+            summary: Create watchlist
+            description: >-
+                Create a new `Watchlist` record. Please note, every action taken against this endpoint is
+                recorded in the audit log.
+    /audit_logs:
+        summary: Path used to manage the list of AuditLogs.
+        description: >-
+            The REST endpoint/path used to list zero or more `AuditLog` entities.  This path contains a `GET`
+            operation to perform the list task.
+        get:
+            tags:
+                - AuditLogs
+            parameters:
+                -
+                    name: limit
+                    description: 'Limits the results to a specified number, defaults to 50'
+                    schema:
+                        type: integer
+                    in: query
+                    required: false
+                -
+                    name: offset
+                    description: 'Offsets the results to a specified number, defaults to 0'
+                    schema:
+                        type: integer
+                    in: query
+                    required: false
+                -
+                    name: sort_by
+                    description: >-
+                        Sorts by the field name and direction provided where the pattern is
+                        `FIELD_NAME_DIRECTION`
+                    schema:
+                        type: string
+                    in: query
+                -
+                    name: auditable_id
+                    description: The unique ID of a model that has associated audit logs
+                    schema:
+                        type: integer
+                    in: query
+                -
+                    name: auditable_type
+                    description: |
+                        The name of the model that has associated audit logs. Valid values include:
+                        - `user`
+                        - `device_configuration`
+                        - `signin`
+                        - `invite`
+                        - `watchlist_record`
+                        - `account_preference`
+                        - `signout`
+                        - `host`
+                        - `invite_watchlist`
+                        - `location_preference`
+                        - `parking_lot`
+                        - `parking_stall`
+                        - `permission_bundle`
+                        - `person`
+                        - `physical_access_grant`
+                        - `physical_access_provider`
+                        - `physical_access_rule`
+                        - `security_badge_type`
+                        - `signin_watchlist`
+                        - `user_group_physical_access_rule`
+                        - `visitor`
+                        - `bulk_data_batch`
+                    schema:
+                        type: string
+                    in: query
+                -
+                    name: action_type
+                    description: |
+                        The action performed by the user. Valid values include: 
+                        - `create`
+                        - `update`
+                        - `destroy`
+                    schema:
+                        type: string
+                    in: query
+                -
+                    name: user_id
+                    description: The ID of the user who performed the database change
+                    schema:
+                        type: integer
+                    in: query
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/PaginatedAuditLogsList'
+                            examples:
+                                default:
+                                    value:
+                                        audit_logs:
+                                            -
+                                                id: 19
+                                                auditable_id: 85
+                                                auditable_type: some text
+                                                user_id: 56
+                                                username: some text
+                                                action: some text
+                                                audited_changes:
+                                                    -
+                                                        field_name: result
+                                                        field_value_before: '{}'
+                                                        field_value_after: >-
+                                                            {"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}
+                                                        format: json
+                                                    -
+                                                        field_name: user_id
+                                                        field_value_before: '1'
+                                                        field_value_after: '2'
+                                                        format: integer
+                                                    -
+                                                        field_name: flag_enabled
+                                                        field_value_after: 'true'
+                                                        format: boolean
+                                                    -
+                                                        field_name: email
+                                                        field_value_before: ''
+                                                        field_value_after: some@email.com
+                                                        format: string
+                                                version: 64
+                                                comment: some text
+                                                remote_address: some text
+                                                request_uuid: some text
+                                                created_at: some text
+                                            -
+                                                id: 4
+                                                auditable_id: 84
+                                                auditable_type: some text
+                                                user_id: 78
+                                                username: some text
+                                                action: some text
+                                                audited_changes:
+                                                    -
+                                                        field_name: email
+                                                        field_value_before: ''
+                                                        field_value_after: another@email.com
+                                                        format: string
+                                                version: 27
+                                                comment: some text
+                                                remote_address: some text
+                                                request_uuid: some text
+                                                created_at: some text
+                                        pagination:
+                                            total_records: 44
+                                            current_offset: 71
+                                            next_offset: 27
+                    description: Successful response - returns an array of `AuditLog` entities.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view this AuditLog
+                '403':
+                    description: You do not have permission for this action
+            operationId: getAuditLogs
+            summary: List All AuditLogs
+            description: Gets a list of all `AuditLog` entities.
+    '/audit_logs/{auditLogId}':
+        summary: Path used to manage a single AuditLog.
+        description: The REST endpoint/path used to get single instances of an `AuditLog`.
+        get:
+            tags:
+                - AuditLogs
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AuditLog'
+                            examples:
+                                default:
+                                    value:
+                                        id: 90
+                                        auditable_id: 49
+                                        auditable_type: some text
+                                        user_id: 72
+                                        username: some text
+                                        action: some text
+                                        audited_changes:
+                                            -
+                                                field_name: result
+                                                field_value_before: '{}'
+                                                field_value_after: >-
+                                                    {"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}
+                                                format: json
+                                            -
+                                                field_name: user_id
+                                                field_value_before: '1'
+                                                field_value_after: '2'
+                                                format: integer
+                                            -
+                                                field_name: flag_enabled
+                                                field_value_after: 'true'
+                                                format: boolean
+                                            -
+                                                field_name: email
+                                                field_value_before: ''
+                                                field_value_after: some@email.com
+                                                format: string
+                                        version: 66
+                                        comment: some text
+                                        remote_address: some text
+                                        request_uuid: some text
+                                        created_at: some text
+                    description: Successful response - returns a single `AuditLog`.
+                '400':
+                    description: A generic error
+                '401':
+                    description: You don't have permission to view this AuditLog
+                '403':
+                    description: You do not have permission for this action
+                '404':
+                    description: The AuditLog does not exist
+            operationId: getAuditLog
+            summary: Get an AuditLog
+            description: Gets the details of a single instance of an `AuditLog`.
+        parameters:
+            -
+                name: auditLogId
+                description: A unique identifier for an `AuditLog`.
+                schema:
+                    type: string
+                in: path
+                required: true
     /notifications:
         summary: Broadcasts notifications to filtered Hosts and/or SignIns via specified channels
         post:
@@ -2688,12 +3060,15 @@ components:
                 next_offset:
                     format: int32
                     type: integer
-            example: |-
-                {
-                    "total_records": 50,
-                    "current_offset": 20,
-                    "next_offset": 30
-                }
+                last_id:
+                    format: int32
+                    description: 'The last ID rendered, if the request included the ''after_id'' param.'
+                    type: integer
+            example:
+                total_records: 16
+                current_offset: 31
+                next_offset: 20
+                last_id: 28
         PaginatedSigninsList:
             required:
                 - signins
@@ -5044,13 +5419,163 @@ components:
                     type: array
                     items:
                         type: integer
+        WatchlistCreateParams:
+            title: Watchlist update/create params
+            description: Parameters required for updating or creating watchlist records
+            required:
+                - color
+            type: object
+            properties:
+                colour:
+                    enum:
+                        - RED
+                        - YELLOW
+                        - GREEN
+                        - ORANGE
+                email:
+                    type: string
+                first_name:
+                    type: string
+                last_name:
+                    type: string
+                notes:
+                    type: string
+                aliases:
+                    type: array
+                    items:
+                        type: string
+            example:
+                colour: RED
+                email: bperson@example.com
+                first_name: Bad
+                last_name: Person
+                notes: This is a bad person. Don't let them in
+                aliases:
+                    - Horrible Person
+                    - Bad Guy
+        AuditLogChange:
+            description: ''
+            type: object
+            properties:
+                field_name:
+                    description: What the field should be displayed/labeled as
+                    type: string
+                field_value_before:
+                    description: The value to be displayed for the field before changes
+                    type: string
+                field_value_after:
+                    description: The value to be displayed for the field after changes
+                    type: string
+                format:
+                    description: The format type of the field
+                    enum:
+                        - string
+                        - boolean
+                        - integer
+                        - json
+                        - 'null'
+                    type: string
+            example: |-
+                {
+                    "field_name": "result",
+                    "field_value_before": "{}",
+                    "field_value_after": '{"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}',
+                    "format": "json"
+                }
+        AuditLog:
+            description: The root of the AuditLog type's schema.
+            required:
+                - id
+            type: object
+            properties:
+                id:
+                    description: ''
+                    type: integer
+                auditable_id:
+                    description: ''
+                    type: integer
+                auditable_type:
+                    description: ''
+                    type: string
+                user_id:
+                    description: ''
+                    type: integer
+                username:
+                    description: ''
+                    type: string
+                action:
+                    description: ''
+                    type: string
+                audited_changes:
+                    description: ''
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/AuditLogChange'
+                version:
+                    description: ''
+                    type: integer
+                comment:
+                    description: ''
+                    type: string
+                remote_address:
+                    description: ''
+                    type: string
+                request_uuid:
+                    description: ''
+                    type: string
+                created_at:
+                    description: ''
+                    type: string
+            example:
+                id: 58
+                auditable_id: 31
+                auditable_type: some text
+                user_id: 83
+                username: some text
+                action: some text
+                audited_changes:
+                    -
+                        field_name: result
+                        field_value_before: '{}'
+                        field_value_after: >-
+                            {"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}
+                        format: json
+                    -
+                        field_name: user_id
+                        field_value_before: '1'
+                        field_value_after: '2'
+                        format: integer
+                    -
+                        field_name: flag_enabled
+                        field_value_after: 'true'
+                        format: boolean
+                version: 56
+                comment: some text
+                remote_address: some text
+                request_uuid: some text
+                created_at: some text
+        PaginatedAuditLogsList:
+            description: ''
+            required:
+                - pagination
+                - audit_logs
+            type: object
+            properties:
+                audit_logs:
+                    description: ''
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/AuditLog'
+                pagination:
+                    $ref: '#/components/schemas/Pagination'
+                    description: ''
     parameters:
         idempotencyKey:
             name: Idempotency-Key
             description: >-
                 An optional idempotency key to allow for repeat API requests. Any API request with this key
                 will only be executed once, no matter how many times it's submitted. We store idempotency keys
-                for only 24 hours
+                for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored
             schema:
                 type: string
             in: header
@@ -5063,6 +5588,29 @@ security:
     -
         TractionGuestAuth:
             - all
+            - openid
+            - 'admin:webhooks'
+            - 'watchlists:*'
+            - 'watchlists:read'
+            - 'watchlists:write'
+            - 'users:*'
+            - 'users:read'
+            - 'users:write'
+            - 'visitors:*'
+            - 'visitors:read'
+            - 'visitors:write'
+            - 'parking:*'
+            - 'parking:read'
+            - 'parking:write'
+            - 'locations:*'
+            - 'locations:read'
+            - 'locations:write'
+            - 'hosts:*'
+            - 'hosts:read'
+            - 'hosts:write'
+            - 'email_templates:*'
+            - 'email_templates:read'
+            - 'email_templates:write'
 tags:
     -
         name: EmailTemplates
@@ -5093,3 +5641,6 @@ tags:
     -
         name: Notifications
         description: 'All endpoints relating to sending Notifications '
+    -
+        name: AuditLogs
+        description: All endpoints related to the AuditLog model.

@@ -7,11 +7,13 @@ class Pagination {
   int currentOffset = null;
   
   int nextOffset = null;
+  /* The last ID rendered, if the request included the 'after_id' param. */
+  int lastId = null;
   Pagination();
 
   @override
   String toString() {
-    return 'Pagination[totalRecords=$totalRecords, currentOffset=$currentOffset, nextOffset=$nextOffset, ]';
+    return 'Pagination[totalRecords=$totalRecords, currentOffset=$currentOffset, nextOffset=$nextOffset, lastId=$lastId, ]';
   }
 
   Pagination.fromJson(Map<String, dynamic> json) {
@@ -31,6 +33,11 @@ class Pagination {
     } else {
           nextOffset = json['next_offset'];
     }
+    if (json['last_id'] == null) {
+      lastId = null;
+    } else {
+          lastId = json['last_id'];
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -41,6 +48,8 @@ class Pagination {
       json['current_offset'] = currentOffset;
     if (nextOffset != null)
       json['next_offset'] = nextOffset;
+    if (lastId != null)
+      json['last_id'] = lastId;
     return json;
   }
 

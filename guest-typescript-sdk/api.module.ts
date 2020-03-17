@@ -3,6 +3,7 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 
+import { AuditLogsService } from './api/auditLogs.service';
 import { EmailTemplatesService } from './api/emailTemplates.service';
 import { HostsService } from './api/hosts.service';
 import { InvitesService } from './api/invites.service';
@@ -16,6 +17,7 @@ import { WatchlistsService } from './api/watchlists.service';
   declarations: [],
   exports:      [],
   providers: [
+    AuditLogsService,
     EmailTemplatesService,
     HostsService,
     InvitesService,

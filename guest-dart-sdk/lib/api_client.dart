@@ -37,6 +37,10 @@ class ApiClient {
           return value is bool ? value : '$value'.toLowerCase() == 'true';
         case 'double':
           return value is double ? value : double.parse('$value');
+        case 'AuditLog':
+          return AuditLog.fromJson(value);
+        case 'AuditLogChange':
+          return AuditLogChange.fromJson(value);
         case 'CustomField':
           return CustomField.fromJson(value);
         case 'Docusign':
@@ -69,6 +73,8 @@ class ApiClient {
           return NotificationTrigger.fromJson(value);
         case 'NotificationTriggerCreateParams':
           return NotificationTriggerCreateParams.fromJson(value);
+        case 'PaginatedAuditLogsList':
+          return PaginatedAuditLogsList.fromJson(value);
         case 'PaginatedEmailTemplatesList':
           return PaginatedEmailTemplatesList.fromJson(value);
         case 'PaginatedHostsList':
@@ -107,6 +113,8 @@ class ApiClient {
           return User.fromJson(value);
         case 'Watchlist':
           return Watchlist.fromJson(value);
+        case 'WatchlistCreateParams':
+          return WatchlistCreateParams.fromJson(value);
         case 'WatchlistMatch':
           return WatchlistMatch.fromJson(value);
         case 'WatchlistSearch':

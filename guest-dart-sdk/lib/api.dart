@@ -12,6 +12,7 @@ part 'auth/api_key_auth.dart';
 part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 
+part 'api/audit_logs_api.dart';
 part 'api/email_templates_api.dart';
 part 'api/hosts_api.dart';
 part 'api/invites_api.dart';
@@ -20,6 +21,8 @@ part 'api/signins_api.dart';
 part 'api/users_api.dart';
 part 'api/watchlists_api.dart';
 
+part 'model/audit_log.dart';
+part 'model/audit_log_change.dart';
 part 'model/custom_field.dart';
 part 'model/docusign.dart';
 part 'model/email_template.dart';
@@ -36,6 +39,7 @@ part 'model/invite_watchlist.dart';
 part 'model/location.dart';
 part 'model/notification_trigger.dart';
 part 'model/notification_trigger_create_params.dart';
+part 'model/paginated_audit_logs_list.dart';
 part 'model/paginated_email_templates_list.dart';
 part 'model/paginated_hosts_list.dart';
 part 'model/paginated_invites_list.dart';
@@ -55,6 +59,7 @@ part 'model/signin_watchlist.dart';
 part 'model/simple_signature.dart';
 part 'model/user.dart';
 part 'model/watchlist.dart';
+part 'model/watchlist_create_params.dart';
 part 'model/watchlist_match.dart';
 part 'model/watchlist_search.dart';
 

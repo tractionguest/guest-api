@@ -18,8 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { ErrorsListGuest } from '../model/errorsList';
-import { PaginatedLocationsListGuest } from '../model/paginatedLocationsList';
+import { NotificationsCreateParamsGuest } from '../model/notificationsCreateParams';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -28,7 +27,7 @@ import { Configuration }                                     from '../configurat
 @Injectable({
   providedIn: 'root'
 })
-export class LocationsService {
+export class NotificationsService {
 
     protected basePath = 'https://mobile-api-refactor-admin.tractionguest.ca/api/v3';
     public defaultHeaders = new HttpHeaders();
@@ -61,32 +60,18 @@ export class LocationsService {
 
 
     /**
-     * List All Locations
-     * Gets a list of all &#x60;Location&#x60; entities.
-     * @param limit Limits the results to a specified number, defaults to 50
-     * @param offset Offsets the results to a specified number, defaults to 0
-     * @param query Queries by Location &#x60;name&#x60;
-     * @param include A list of comma-separated related models to include
+     * Create notifications
+     * Enqueues notifications to filtered Hosts and/or SignIns via specified channels
+     * @param notificationsCreateParamsGuest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getLocations(limit?: number, offset?: number, query?: string, include?: string, observe?: 'body', reportProgress?: boolean): Observable<PaginatedLocationsListGuest>;
-    public getLocations(limit?: number, offset?: number, query?: string, include?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginatedLocationsListGuest>>;
-    public getLocations(limit?: number, offset?: number, query?: string, include?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginatedLocationsListGuest>>;
-    public getLocations(limit?: number, offset?: number, query?: string, include?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (limit !== undefined && limit !== null) {
-            queryParameters = queryParameters.set('limit', <any>limit);
-        }
-        if (offset !== undefined && offset !== null) {
-            queryParameters = queryParameters.set('offset', <any>offset);
-        }
-        if (query !== undefined && query !== null) {
-            queryParameters = queryParameters.set('query', <any>query);
-        }
-        if (include !== undefined && include !== null) {
-            queryParameters = queryParameters.set('include', <any>include);
+    public createNotification(notificationsCreateParamsGuest: NotificationsCreateParamsGuest, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createNotification(notificationsCreateParamsGuest: NotificationsCreateParamsGuest, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createNotification(notificationsCreateParamsGuest: NotificationsCreateParamsGuest, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createNotification(notificationsCreateParamsGuest: NotificationsCreateParamsGuest, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (notificationsCreateParamsGuest === null || notificationsCreateParamsGuest === undefined) {
+            throw new Error('Required parameter notificationsCreateParamsGuest was null or undefined when calling createNotification.');
         }
 
         let headers = this.defaultHeaders;
@@ -94,7 +79,6 @@ export class LocationsService {
         // authentication (TractionGuestAuth) required
         // to determine the Accept header
         const httpHeaderAccepts: string[] = [
-            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected !== undefined) {
@@ -103,11 +87,16 @@ export class LocationsService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            'application/json'
         ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
 
-        return this.httpClient.get<PaginatedLocationsListGuest>(`${this.configuration.basePath}/locations`,
+        return this.httpClient.post<any>(`${this.configuration.basePath}/notifications`,
+            notificationsCreateParamsGuest,
             {
-                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

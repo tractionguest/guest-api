@@ -73,6 +73,12 @@ class ApiClient {
           return NotificationTrigger.fromJson(value);
         case 'NotificationTriggerCreateParams':
           return NotificationTriggerCreateParams.fromJson(value);
+        case 'NotificationsCreateParams':
+          return NotificationsCreateParams.fromJson(value);
+        case 'NotificationsHostFilterParams':
+          return NotificationsHostFilterParams.fromJson(value);
+        case 'NotificationsSigninFilterParams':
+          return NotificationsSigninFilterParams.fromJson(value);
         case 'PaginatedAuditLogsList':
           return PaginatedAuditLogsList.fromJson(value);
         case 'PaginatedEmailTemplatesList':

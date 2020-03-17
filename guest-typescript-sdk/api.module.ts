@@ -8,6 +8,7 @@ import { EmailTemplatesService } from './api/emailTemplates.service';
 import { HostsService } from './api/hosts.service';
 import { InvitesService } from './api/invites.service';
 import { LocationsService } from './api/locations.service';
+import { NotificationsService } from './api/notifications.service';
 import { SigninsService } from './api/signins.service';
 import { UsersService } from './api/users.service';
 import { WatchlistsService } from './api/watchlists.service';
@@ -22,6 +23,7 @@ import { WatchlistsService } from './api/watchlists.service';
     HostsService,
     InvitesService,
     LocationsService,
+    NotificationsService,
     SigninsService,
     UsersService,
     WatchlistsService ]

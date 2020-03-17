@@ -11,16 +11,8 @@
  */
 
 
-/**
- * The root of the Pagination type\'s schema.
- */
-export interface PaginationGuest { 
-    totalRecords?: number;
-    currentOffset?: number;
-    nextOffset?: number;
-    /**
-     * The last ID rendered, if the request included the \'after_id\' param.
-     */
-    lastId?: number;
+export interface NotificationsHostFilterParamsGuest { 
+    locationIds?: Array<number>;
+    hostIds?: Array<number>;
 }
 

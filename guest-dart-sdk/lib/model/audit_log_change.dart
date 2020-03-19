@@ -8,8 +8,8 @@ class AuditLogChange {
   /* The value to be displayed for the field after changes */
   String fieldValueAfter = null;
   /* The format type of the field */
-  String format = FormatEnum.null_;
-  //enum formatEnum {  string,  boolean,  integer,  json,  null,  };{
+  String format = null;
+  //enum formatEnum {  string,  boolean,  integer,  json,  no_value,  };{
   AuditLogChange();
 
   @override

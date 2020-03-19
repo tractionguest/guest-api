@@ -5473,7 +5473,7 @@ components:
                         - boolean
                         - integer
                         - json
-                        - 'null'
+                        - no_value
                     type: string
             example: |-
                 {

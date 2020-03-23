@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.10.3
+    version: 0.10.4
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -5352,9 +5352,10 @@ components:
         NotificationsCreateParams:
             description: ''
             required:
-                - target
+                - targets
                 - message
                 - channels
+                - location_filters
             type: object
             properties:
                 message:
@@ -5365,56 +5366,46 @@ components:
                     description: ''
                 channels:
                     description: 'Specify the broadcast channel, such as ''SMS'' or ''EMAIL'''
-                    enum:
-                        - SMS
-                        - EMAIL
-                    type: string
-                host_filters:
-                    $ref: '#/components/schemas/NotificationsHostFilterParams'
+                    type: array
+                    items:
+                        type: string
+                targets:
+                    description: '''SIGNINS'' and/or ''HOSTS'''
+                    type: array
+                    items:
+                        type: string
+                location_filters:
+                    $ref: '#/components/schemas/NotificationsLocationFilterParams'
                     description: ''
-                target:
-                    description: 'The type of object that will receive the notification such as, ''signin'' or ''host'''
-                    enum:
-                        - HOSTS
-                        - SIGNINS
-                    type: string
+            example:
+                message: Get to the chopper!
+                signin_filters:
+                    signin_ids:
+                        - 39
+                        - 15
+                    is_signed_out: true
+                channels:
+                    - SMS
+                    - EMAIL
+                targets:
+                    - HOSTS
+                    - SIGNINS
+                    - LOCATIONS
+                location_filters:
+                    location_ids:
+                        - 53
+                        - 28
         NotificationsSigninFilterParams:
             description: ''
             required: []
             type: object
             properties:
-                location_ids:
-                    description: ''
-                    type: array
-                    items:
-                        type: integer
-                signed_in_before:
-                    format: date-time
-                    description: ''
-                    type: string
-                signed_in_after:
-                    format: date-time
-                    description: ''
-                    type: string
                 signin_ids:
                     description: ''
                     type: array
                     items:
                         type: integer
                 is_signed_out:
-                    description: ''
-                    type: boolean
-        NotificationsHostFilterParams:
-            description: ''
-            required: []
-            type: object
-            properties:
-                location_ids:
-                    description: ''
-                    type: array
-                    items:
-                        type: integer
-                host_ids:
                     description: ''
                     type: array
                     items:
@@ -5569,6 +5560,21 @@ components:
                 pagination:
                     $ref: '#/components/schemas/Pagination'
                     description: ''
+        NotificationsLocationFilterParams:
+            description: ''
+            required:
+                - location_ids
+            type: object
+            properties:
+                location_ids:
+                    description: ''
+                    type: array
+                    items:
+                        type: integer
+            example:
+                location_ids:
+                    - 60
+                    - 71
     parameters:
         idempotencyKey:
             name: Idempotency-Key

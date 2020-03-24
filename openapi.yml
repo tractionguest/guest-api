@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.10.3
+    version: 0.11.0
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -2980,6 +2980,150 @@ paths:
             operationId: createNotification
             summary: Create notifications
             description: Enqueues notifications to filtered Hosts and/or SignIns via specified channels
+    '/registrations/{registrationId}':
+        summary: Path used to display a single Registration.
+        description: The REST endpoint/path used to get single instances of a `Registration`.
+        get:
+            tags:
+                - Registration
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Registration'
+                            examples:
+                                Successful Registration response:
+                                    value:
+                                        id: 123123123
+                                        created_at: '2020-01-01'
+                                        visitor_id: 1
+                                        pre_registration_id: 1
+                                        collected_information:
+                                            forms:
+                                                -
+                                                    title: This is a form
+                                                    sequence: 1
+                                                    id: 1
+                                                    data:
+                                                        -
+                                                            key: question_1
+                                                            value: Red Wine
+                                                        -
+                                                            key: question_2
+                                                            value: White Wine
+                                                -
+                                                    title: This is another form
+                                                    sequence: 3
+                                                    id: 10
+                                                    data:
+                                                        -
+                                                            key: question_3
+                                                            value: Postal Code
+                                                        -
+                                                            key: question_4
+                                                            value: V3B0K9
+                                            hosts:
+                                                -
+                                                    title: This is a host page
+                                                    sequence: 2
+                                                    id: 20
+                                                    data:
+                                                        -
+                                                            fullname: Cam Wiebe
+                                                            department: CTO
+                                                            email: cwiebe@tg.com
+                                                            profile_picture: 'https://tg.com/picture/jpg'
+                                                        -
+                                                            fullname: Dan Souza
+                                                            department: Dev
+                                                            email: dsouza@tg.com
+                                                            profile_picture: 'https://tg.com/picture/jpg'
+                                            identities:
+                                                -
+                                                    title: Tell us a bit about yourself
+                                                    id: 33
+                                                    sequence: 3
+                                                    data:
+                                                        email: gqueirz@tg.com
+                                                        company: TG
+                                                        fullname: Gabe Queiroz
+                                                        mobile: '+123123123'
+                                            guest_signs:
+                                                -
+                                                    title: Please read info about COVID-19
+                                                    id: 44
+                                                    sequence: 4
+                                                    data:
+                                                        status: signed
+                                                        document_name: COVID-19 - Gabriel Queiroz - 2020-01-01
+                                                        template_name: COVID-19
+                                                        document_url: 'https://tg.com/document/id'
+                                                -
+                                                    title: Please read info about our security measures
+                                                    id: 55
+                                                    sequence: 5
+                                                    data:
+                                                        status: declined
+                                                        template_name: Security
+                                            docusigns:
+                                                -
+                                                    title: Please read our Docusign thingy
+                                                    id: 66
+                                                    sequence: 6
+                                                    data:
+                                                        status: signed
+                                                        envelope_id: 123123-123123123-123123123-123123123
+                                                        template_id: 123123123-123123123-123123123-123123
+                                                        template_name: Docusign thingy
+                                                        document_url: 'https://tg.com/document/id'
+                                            branches:
+                                                -
+                                                    title: Are you here for an interview?
+                                                    id: 77
+                                                    sequence: 7
+                                                    data:
+                                                        key: 1
+                                                        value: 'Yes'
+                                                -
+                                                    title: Are you an American citizen?
+                                                    id: 88
+                                                    sequence: 8
+                                                    data:
+                                                        key: 2
+                                                        value: 'No'
+                                            videos:
+                                                -
+                                                    title: Please watch the following welcome video
+                                                    id: 88
+                                                    sequence: 8
+                                                    data:
+                                                        id: XYZ
+                                                        src: 'https://youtube.com/xyz'
+                                                        status: previously_watched
+                                                -
+                                                    title: Please watch the following safety video
+                                                    id: 99
+                                                    sequence: 9
+                                                    data:
+                                                        id: XYZ
+                                                        src: 'https://youtube.com/xyz'
+                                                        status: previously_watched
+                    description: Successful response - returns a single `Registration`.
+            operationId: getRegistration
+            summary: Get a Registration
+            description: Gets the details of a single instance of a `Registration`
+        parameters:
+            -
+                examples:
+                    '1':
+                        value: '1'
+                name: registrationId
+                description: A unique identifier for `Registration`.
+                schema:
+                    type: string
+                in: path
+                required: true
 components:
     schemas:
         Host:
@@ -5569,6 +5713,143 @@ components:
                 pagination:
                     $ref: '#/components/schemas/Pagination'
                     description: ''
+        Registration:
+            title: Root Type for Registration
+            description: ''
+            type: object
+            properties:
+                id:
+                    format: int32
+                    description: Unique identifier of `Registration`
+                    type: integer
+                created_at:
+                    description: Timestamp when this `Registration` was created
+                account_id:
+                    description: Unique identifier of the `Account` this `Registration` belongs to
+                    type: integer
+                visitor_id:
+                    description: Unique identifier of the `Visitor` this `Registration` belongs to
+                    type: integer
+                pre_registration_id:
+                    description: Unique identifier of the `PreRegistration` this `Registration` belongs to
+                    type: integer
+                collected_information:
+                    description: A hash with all the different types of possible pages on the `Registration` flow.
+            example:
+                id: 123123123
+                created_at: '2020-01-01'
+                visitor_id: 1
+                pre_registration_id: 1
+                collected_information:
+                    forms:
+                        -
+                            title: This is a form
+                            sequence: 1
+                            id: 1
+                            data:
+                                -
+                                    key: question_1
+                                    value: Red Wine
+                                -
+                                    key: question_2
+                                    value: White Wine
+                        -
+                            title: This is another form
+                            sequence: 3
+                            id: 10
+                            data:
+                                -
+                                    key: question_3
+                                    value: Postal Code
+                                -
+                                    key: question_4
+                                    value: V3B0K9
+                    hosts:
+                        -
+                            title: This is a host page
+                            sequence: 2
+                            id: 20
+                            data:
+                                -
+                                    fullname: Cam Wiebe
+                                    department: CTO
+                                    email: cwiebe@tg.com
+                                    profile_picture: 'https://tg.com/picture/jpg'
+                                -
+                                    fullname: Dan Souza
+                                    department: Dev
+                                    email: dsouza@tg.com
+                                    profile_picture: 'https://tg.com/picture/jpg'
+                    identities:
+                        -
+                            title: Tell us a bit about yourself
+                            id: 33
+                            sequence: 3
+                            data:
+                                email: gqueirz@tg.com
+                                company: TG
+                                fullname: Gabe Queiroz
+                                mobile: '+123123123'
+                    guest_signs:
+                        -
+                            title: Please read info about COVID-19
+                            id: 44
+                            sequence: 4
+                            data:
+                                status: signed
+                                document_name: COVID-19 - Gabriel Queiroz - 2020-01-01
+                                template_name: COVID-19
+                                document_url: 'https://tg.com/document/id'
+                        -
+                            title: Please read info about our security measures
+                            id: 55
+                            sequence: 5
+                            data:
+                                status: declined
+                                template_name: Security
+                    docusigns:
+                        -
+                            title: Please read our Docusign thingy
+                            id: 66
+                            sequence: 6
+                            data:
+                                status: signed
+                                envelope_id: 123123-123123123-123123123-123123123
+                                template_id: 123123123-123123123-123123123-123123
+                                template_name: Docusign thingy
+                                document_url: 'https://tg.com/document/id'
+                    branches:
+                        -
+                            title: Are you here for an interview?
+                            id: 77
+                            sequence: 7
+                            data:
+                                key: 1
+                                value: 'Yes'
+                        -
+                            title: Are you an American citizen?
+                            id: 88
+                            sequence: 8
+                            data:
+                                key: 2
+                                value: 'No'
+                    videos:
+                        -
+                            title: Please watch the following welcome video
+                            id: 88
+                            sequence: 8
+                            data:
+                                id: XYZ
+                                src: 'https://youtube.com/xyz'
+                                status: previously_watched
+                        -
+                            title: Please watch the following safety video
+                            id: 99
+                            sequence: 9
+                            data:
+                                id: XYZ
+                                src: 'https://youtube.com/xyz'
+                                status: previously_watched
     parameters:
         idempotencyKey:
             name: Idempotency-Key

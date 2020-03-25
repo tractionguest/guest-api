@@ -2947,39 +2947,61 @@ paths:
                     type: string
                 in: path
                 required: true
-    /notifications:
-        summary: Broadcasts notifications to filtered Hosts and/or SignIns via specified channels
+    /guest_alerts:
+        summary: Broadcasts alerts to guests via specified channel
         post:
             requestBody:
                 content:
                     application/json:
                         schema:
-                            $ref: '#/components/schemas/NotificationsCreateParams'
+                            $ref: '#/components/schemas/GuestAlertCreateParams'
                         examples:
                             default:
                                 value:
-                                    message: 'Please, go to reception right now!'
-                                    signin_filters:
-                                        location_ids:
-                                            - 77
-                                            - 6
-                                        signed_in_before: '2018-02-10T09:30Z'
-                                        signed_in_after: '2018-02-10T09:30Z'
+                                    message: some text
+                                    channels:
+                                        - SMS
+                                        - EMAIL
+                                    signin_selectors:
                                         signin_ids:
-                                            - 13
-                                            - 34
+                                            - 19
+                                            - 64
                                         is_signed_out: false
-                                    channels: SMS
-                                    target: SIGNINS
                 required: true
             tags:
-                - Notifications
+                - GuestAlerts
             responses:
                 '201':
-                    description: The broadcast was scheduled successfully
-            operationId: createNotification
-            summary: Create notifications
-            description: Enqueues notifications to filtered Hosts and/or SignIns via specified channels
+                    content:
+                        application/json: {}
+                    description: Guest Alert has been scheduled for delivery
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to create requested Guest Alerts
+                '403':
+                    description: You do not have permission for this action
+            operationId: createGuestAlert
+            summary: Create Guest Alert
+            description: Enqueues guest alerts via specified channels
 components:
     schemas:
         Host:
@@ -5349,67 +5371,6 @@ components:
                         colour: RED
                         last_name: some text
                         first_name: some text
-        NotificationsCreateParams:
-            description: ''
-            required:
-                - targets
-                - message
-                - channels
-                - location_filters
-            type: object
-            properties:
-                message:
-                    description: 'Notification body '
-                    type: string
-                signin_filters:
-                    $ref: '#/components/schemas/NotificationsSigninFilterParams'
-                    description: ''
-                channels:
-                    description: 'Specify the broadcast channel, such as ''SMS'' or ''EMAIL'''
-                    type: array
-                    items:
-                        type: string
-                targets:
-                    description: '''SIGNINS'' and/or ''HOSTS'''
-                    type: array
-                    items:
-                        type: string
-                location_filters:
-                    $ref: '#/components/schemas/NotificationsLocationFilterParams'
-                    description: ''
-            example:
-                message: Get to the chopper!
-                signin_filters:
-                    signin_ids:
-                        - 39
-                        - 15
-                    is_signed_out: true
-                channels:
-                    - SMS
-                    - EMAIL
-                targets:
-                    - HOSTS
-                    - SIGNINS
-                    - LOCATIONS
-                location_filters:
-                    location_ids:
-                        - 53
-                        - 28
-        NotificationsSigninFilterParams:
-            description: ''
-            required: []
-            type: object
-            properties:
-                signin_ids:
-                    description: ''
-                    type: array
-                    items:
-                        type: integer
-                is_signed_out:
-                    description: ''
-                    type: array
-                    items:
-                        type: integer
         WatchlistCreateParams:
             title: Watchlist update/create params
             description: Parameters required for updating or creating watchlist records
@@ -5560,21 +5521,89 @@ components:
                 pagination:
                     $ref: '#/components/schemas/Pagination'
                     description: ''
-        NotificationsLocationFilterParams:
+        GuestAlertCreateParams:
             description: ''
             required:
-                - location_ids
+                - message
+                - channels
             type: object
             properties:
-                location_ids:
+                message:
+                    description: Plain text of the alert to be sent
+                    type: string
+                channels:
+                    description: 'Specify the broadcast channel, one of ''SMS'' and/or ''EMAIL'''
+                    type: array
+                    items:
+                        type: string
+                signin_selectors:
+                    $ref: '#/components/schemas/GuestAlertSigninSelectors'
+                    description: ''
+            example:
+                message: some text
+                channels:
+                    - SMS
+                    - EMAIL
+                signin_selectors:
+                    signin_ids:
+                        - 19
+                        - 64
+                    is_signed_out: false
+        GuestAlertSigninSelectors:
+            description: ''
+            type: object
+            properties:
+                signin_ids:
                     description: ''
                     type: array
                     items:
                         type: integer
-            example:
-                location_ids:
-                    - 60
-                    - 71
+                is_signed_out:
+                    description: ''
+                    type: boolean
+        GuestAlertDetail:
+            description: ''
+            required:
+                - delivery_status
+                - channel
+                - pending_count
+                - failed_count
+                - sent_count
+                - guest_alert_uuid
+                - message
+            type: object
+            properties:
+                delivery_status:
+                    description: |
+                        pending: 1, success: 2, failure: 3
+                    enum:
+                        - pending
+                        - success
+                        - partial_success
+                        - failure
+                    type: string
+                channel:
+                    description: Channel used to send the message
+                    type: array
+                    items:
+                        type: string
+                pending_count:
+                    description: |
+                        Count of pending messages
+                    type: integer
+                sent_count:
+                    description: |
+                        Count of successfully sent messages
+                    type: integer
+                failed_count:
+                    description: Count of messages that failed to be sent
+                    type: integer
+                guest_alert_uuid:
+                    description: The uuid of the guest_alert object
+                    type: string
+                message:
+                    description: ''
+                    type: string
     parameters:
         idempotencyKey:
             name: Idempotency-Key
@@ -5645,8 +5674,8 @@ tags:
         name: Watchlists
         description: All endpoint related to the Watchlist model
     -
-        name: Notifications
-        description: 'All endpoints relating to sending Notifications '
+        name: GuestAlerts
+        description: 'All endpoints relating to sending guest alerts '
     -
         name: AuditLogs
         description: All endpoints related to the AuditLog model.

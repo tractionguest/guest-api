@@ -5545,48 +5545,60 @@ components:
                     - SMS
                     - EMAIL
                 signin_selectors:
+                    is_signed_out: true
                     signin_ids:
-                        - 19
-                        - 64
-                    is_signed_out: false
+                        - 45
+                        - 91
+                    location_ids:
+                        - 46
+                        - 83
         GuestAlertSigninSelectors:
             description: ''
             type: object
             properties:
+                is_signed_out:
+                    description: ''
+                    type: boolean
                 signin_ids:
                     description: ''
                     type: array
                     items:
                         type: integer
-                is_signed_out:
+                location_ids:
                     description: ''
-                    type: boolean
+                    type: array
+                    items:
+                        type: integer
+            example:
+                is_signed_out: false
+                signin_ids:
+                    - 26
+                    - 81
+                location_ids:
+                    - 40
+                    - 81
         GuestAlertDetail:
             description: ''
             required:
                 - delivery_status
-                - channel
+                - channels
                 - pending_count
                 - failed_count
                 - sent_count
-                - guest_alert_uuid
+                - uuid
                 - message
             type: object
             properties:
                 delivery_status:
-                    description: |
-                        pending: 1, success: 2, failure: 3
+                    description: |+
+                        pending, success, partial success, or failure
+
                     enum:
                         - pending
                         - success
                         - partial_success
                         - failure
                     type: string
-                channel:
-                    description: Channel used to send the message
-                    type: array
-                    items:
-                        type: string
                 pending_count:
                     description: |
                         Count of pending messages
@@ -5598,12 +5610,27 @@ components:
                 failed_count:
                     description: Count of messages that failed to be sent
                     type: integer
-                guest_alert_uuid:
-                    description: The uuid of the guest_alert object
-                    type: string
                 message:
                     description: ''
                     type: string
+                uuid:
+                    description: The uuid of the guest_alert object
+                    type: string
+                channels:
+                    description: Channel used to send the message
+                    type: array
+                    items:
+                        type: string
+            example:
+                delivery_status: success
+                pending_count: 42
+                sent_count: 0
+                failed_count: 0
+                message: some text
+                uuid: some text
+                channels:
+                    - SMS
+                    - EMAIL
     parameters:
         idempotencyKey:
             name: Idempotency-Key

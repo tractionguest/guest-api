@@ -5615,7 +5615,7 @@ components:
                     type: integer
                 collected_information:
                     $ref: '#/components/schemas/CollectedInformation'
-                    description: A hash with all the different types of possible pages on the `Registration` flow.
+                    description: '`CollectedInformation`'
                 invite_id:
                     description: Unique identifier of the `Invite` this `Registration` belongs to
                     type: integer

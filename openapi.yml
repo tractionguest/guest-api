@@ -2973,7 +2973,9 @@ paths:
             responses:
                 '201':
                     content:
-                        application/json: {}
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GuestAlertDetail'
                     description: Guest Alert has been scheduled for delivery
                 '400':
                     content:

@@ -5613,16 +5613,17 @@ components:
                 visitor_id:
                     description: Unique identifier of the `Visitor` this `Registration` belongs to
                     type: integer
-                pre_registration_id:
-                    description: Unique identifier of the `PreRegistration` this `Registration` belongs to
-                    type: integer
                 collected_information:
+                    $ref: '#/components/schemas/CollectedInformation'
                     description: A hash with all the different types of possible pages on the `Registration` flow.
+                invite_id:
+                    description: Unique identifier of the `Invite` this `Registration` belongs to
+                    type: integer
             example:
                 id: 123123123
                 created_at: '2020-01-01'
                 visitor_id: 1
-                pre_registration_id: 1
+                invite_id: 1
                 collected_information:
                     forms:
                         -
@@ -5733,6 +5734,507 @@ components:
                                 id: XYZ
                                 src: 'https://youtube.com/xyz'
                                 status: previously_watched
+        CollectedInformation:
+            description: ''
+            type: object
+            properties:
+                forms:
+                    description: Array of `FormPage`
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/FormPage'
+                hosts:
+                    description: Array of `HostPage`
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/HostPage'
+                identities:
+                    description: Array of `IdentityPage`
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/IdentityPage'
+                guest_signs:
+                    description: Array of `GuestSignPage`
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/GuestSignPage'
+                docusigns:
+                    description: Array of `DocusignPage`
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/DocusignPage'
+                branches:
+                    description: Array of `BranchPage`
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/BranchPage'
+                videos:
+                    description: Array of `VideoPage`
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/VideoPage'
+            example:
+                forms:
+                    -
+                        title: This is a form
+                        sequence: 1
+                        id: 1
+                        data:
+                            -
+                                key: question_1
+                                value: Red Wine
+                            -
+                                key: question_2
+                                value: White Wine
+                    -
+                        title: This is another form
+                        sequence: 3
+                        id: 10
+                        data:
+                            -
+                                key: question_3
+                                value: Postal Code
+                            -
+                                key: question_4
+                                value: V3B0K9
+                hosts:
+                    -
+                        title: This is a host page
+                        sequence: 2
+                        id: 20
+                        data:
+                            -
+                                fullname: Cam Wiebe
+                                department: CTO
+                                email: cwiebe@tg.com
+                                profile_picture: 'https://tg.com/picture/jpg'
+                            -
+                                fullname: Dan Souza
+                                department: Dev
+                                email: dsouza@tg.com
+                                profile_picture: 'https://tg.com/picture/jpg'
+                identities:
+                    -
+                        title: Tell us a bit about yourself
+                        id: 33
+                        sequence: 3
+                        data:
+                            email: gqueirz@tg.com
+                            company: TG
+                            fullname: Gabe Queiroz
+                            mobile: '+123123123'
+                guest_signs:
+                    -
+                        title: Please read info about COVID-19
+                        id: 44
+                        sequence: 4
+                        data:
+                            status: signed
+                            document_name: COVID-19 - Gabriel Queiroz - 2020-01-01
+                            template_name: COVID-19
+                            document_url: 'https://tg.com/document/id'
+                    -
+                        title: Please read info about our security measures
+                        id: 55
+                        sequence: 5
+                        data:
+                            status: declined
+                            template_name: Security
+                docusigns:
+                    -
+                        title: Please read our Docusign thingy
+                        id: 66
+                        sequence: 6
+                        data:
+                            status: signed
+                            envelope_id: 123123-123123123-123123123-123123123
+                            template_id: 123123123-123123123-123123123-123123
+                            template_name: Docusign thingy
+                            document_url: 'https://tg.com/document/id'
+                branches:
+                    -
+                        title: Are you here for an interview?
+                        id: 77
+                        sequence: 7
+                        data:
+                            key: 1
+                            value: 'Yes'
+                    -
+                        title: Are you an American citizen?
+                        id: 88
+                        sequence: 8
+                        data:
+                            key: 2
+                            value: 'No'
+                videos:
+                    -
+                        title: Please watch the following welcome video
+                        id: 88
+                        sequence: 8
+                        data:
+                            id: XYZ
+                            src: 'https://youtube.com/xyz'
+                            status: previously_watched
+                    -
+                        title: Please watch the following safety video
+                        id: 99
+                        sequence: 9
+                        data:
+                            id: XYZ
+                            src: 'https://youtube.com/xyz'
+                            status: previously_watched
+        FormPage:
+            description: ''
+            type: object
+            properties:
+                title:
+                    description: Title of the page
+                    type: string
+                sequence:
+                    description: ''
+                    type: integer
+                id:
+                    description: Unique identifier
+                    type: integer
+                data:
+                    description: Array of key and value data
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/FormData'
+            example:
+                title: This is a form
+                sequence: 1
+                id: 1
+                data:
+                    -
+                        key: question_1
+                        value: Red Wine
+                    -
+                        key: question_2
+                        value: White Wine
+        HostPage:
+            description: Host Page on the Registration Portal
+            type: object
+            properties:
+                title:
+                    description: Title of the page
+                    type: string
+                id:
+                    description: Unique identifier
+                    type: integer
+                sequence:
+                    description: ''
+                    type: integer
+                data:
+                    description: Array of personal information of hosts
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/HostData'
+            example:
+                title: This is a host page
+                sequence: 2
+                id: 20
+                data:
+                    -
+                        fullname: Cam Wiebe
+                        department: CTO
+                        email: cwiebe@tg.com
+                        profile_picture: 'https://tg.com/picture/jpg'
+                    -
+                        fullname: Dan Souza
+                        department: Dev
+                        email: dsouza@tg.com
+                        profile_picture: 'https://tg.com/picture/jpg'
+        FormData:
+            description: ''
+            type: object
+            properties:
+                key:
+                    description: Key
+                    type: string
+                value:
+                    description: Value
+                    type: string
+            example:
+                key: question_1
+                value: Red Wine
+        HostData:
+            description: ''
+            type: object
+            properties:
+                fullname:
+                    description: First and last name
+                    type: string
+                department:
+                    description: Department
+                    type: string
+                email:
+                    description: Email
+                    type: string
+                profile_picture:
+                    description: URL of the uploaded profile picture.
+                    type: string
+            example:
+                fullname: Cam Wiebe
+                department: CTO
+                email: cwiebe@tg.com
+                profile_picture: 'https://tg.com/picture/jpg'
+        IdentityPage:
+            description: Identity Page on the Registration Portal
+            type: object
+            properties:
+                title:
+                    description: Title of the page
+                    type: string
+                id:
+                    description: Unique identifier
+                    type: integer
+                sequence:
+                    description: Sequence order on the workflow
+                    type: integer
+                data:
+                    $ref: '#/components/schemas/IdentityData'
+                    description: ''
+            example:
+                title: Tell us a bit about yourself
+                id: 33
+                sequence: 3
+                data:
+                    email: gqueirz@tg.com
+                    company: TG
+                    fullname: Gabe Queiroz
+                    mobile: '+123123123'
+        IdentityData:
+            description: ''
+            type: object
+            properties:
+                email:
+                    description: Email
+                    type: string
+                company:
+                    description: Company name
+                    type: string
+                fullname:
+                    description: First and last name
+                    type: string
+                mobile:
+                    description: Mobile number
+                    type: string
+            example:
+                email: gqueirz@tg.com
+                company: TG
+                fullname: Gabe Queiroz
+                mobile: '+123123123'
+        DocusignPage:
+            title: Root Type for DocusignPage
+            description: Docusign Page on the Registration Portal
+            type: object
+            properties:
+                title:
+                    description: Title of the page
+                    type: string
+                id:
+                    format: int32
+                    description: Unique identifier
+                    type: integer
+                sequence:
+                    format: int32
+                    type: integer
+                data:
+                    $ref: '#/components/schemas/DocusignData'
+                    properties:
+                        status:
+                            type: string
+                        envelope_id:
+                            type: string
+                        template_id:
+                            type: string
+                        template_name:
+                            type: string
+                        document_url:
+                            type: string
+            example:
+                title: Please read our Docusign thingy
+                id: 66
+                sequence: 6
+                data:
+                    status: signed
+                    envelope_id: 123123-123123123-123123123-123123123
+                    template_id: 123123123-123123123-123123123-123123
+                    template_name: Docusign thingy
+                    document_url: 'https://tg.com/document/id'
+        DocusignData:
+            title: Root Type for DocusignData
+            description: ''
+            type: object
+            properties:
+                status:
+                    type: string
+                envelope_id:
+                    type: string
+                template_id:
+                    description: Unique identifier of the template
+                    type: string
+                template_name:
+                    description: Name of the template
+                    type: string
+                document_url:
+                    description: URL of the uploaded document
+                    type: string
+            example:
+                status: signed
+                envelope_id: 123123-123123123-123123123-123123123
+                template_id: 123123123-123123123-123123123-123123
+                template_name: Docusign thingy
+                document_url: 'https://tg.com/document/id'
+        GuestSignPage:
+            title: Root Type for GuestSignPage
+            description: GuestSign Page on the Registration Portal
+            type: object
+            properties:
+                title:
+                    description: Title of the page
+                    type: string
+                id:
+                    format: int32
+                    description: Unique identifier
+                    type: integer
+                sequence:
+                    format: int32
+                    type: integer
+                data:
+                    $ref: '#/components/schemas/GuestSignData'
+                    properties:
+                        status:
+                            type: string
+                        document_name:
+                            type: string
+                        template_name:
+                            type: string
+                        document_url:
+                            type: string
+            example:
+                title: Please read info about COVID-19
+                id: 44
+                sequence: 4
+                data:
+                    status: signed
+                    document_name: COVID-19 - Gabriel Queiroz - 2020-01-01
+                    template_name: COVID-19
+                    document_url: 'https://tg.com/document/id'
+        GuestSignData:
+            title: Root Type for GuestSignData
+            description: ''
+            type: object
+            properties:
+                status:
+                    type: string
+                document_name:
+                    description: Name of the document
+                    type: string
+                template_name:
+                    description: Name of the template
+                    type: string
+                document_url:
+                    description: URL of the uploaded document
+                    type: string
+            example:
+                status: signed
+                document_name: COVID-19 - Gabriel Queiroz - 2020-01-01
+                template_name: COVID-19
+                document_url: 'https://tg.com/document/id'
+        BranchPage:
+            title: Root Type for BranchPage
+            description: Branch Page of a Registration Portal
+            type: object
+            properties:
+                title:
+                    description: Title of the page
+                    type: string
+                id:
+                    format: int32
+                    description: Unique identifier
+                    type: integer
+                sequence:
+                    format: int32
+                    type: integer
+                data:
+                    $ref: '#/components/schemas/BranchData'
+                    properties:
+                        key:
+                            format: int32
+                            type: integer
+                        value:
+                            type: string
+            example:
+                title: Are you here for an interview?
+                id: 77
+                sequence: 7
+                data:
+                    key: 1
+                    value: 'Yes'
+        BranchData:
+            title: Root Type for BranchData
+            description: ''
+            type: object
+            properties:
+                key:
+                    format: int32
+                    type: integer
+                value:
+                    type: string
+            example:
+                key: 1
+                value: 'Yes'
+        VideoPage:
+            title: Root Type for VideoPage
+            description: Video Page of a Registration Portal
+            type: object
+            properties:
+                title:
+                    description: Title of the Page
+                    type: string
+                id:
+                    format: int32
+                    description: Unique identifier
+                    type: integer
+                sequence:
+                    format: int32
+                    type: integer
+                data:
+                    $ref: '#/components/schemas/VideoData'
+                    properties:
+                        id:
+                            type: string
+                        src:
+                            type: string
+                        status:
+                            type: string
+            example:
+                title: Please watch the following welcome video
+                id: 88
+                sequence: 8
+                data:
+                    id: XYZ
+                    src: 'https://youtube.com/xyz'
+                    status: previously_watched
+        VideoData:
+            title: Root Type for VideoData
+            description: ''
+            type: object
+            properties:
+                id:
+                    description: Unique identifier
+                    type: string
+                src:
+                    description: URL source of the video
+                    type: string
+                status:
+                    type: string
+            example:
+                id: XYZ
+                src: 'https://youtube.com/xyz'
+                status: previously_watched
     parameters:
         idempotencyKey:
             name: Idempotency-Key

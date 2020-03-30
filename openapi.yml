@@ -2986,6 +2986,13 @@ paths:
         get:
             tags:
                 - Registration
+            parameters:
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
+                        type: string
+                    in: query
             responses:
                 '200':
                     content:
@@ -5683,14 +5690,6 @@ components:
                     format: date-time
                     description: Datetime when registration was created
                     type: string
-                invite_id:
-                    format: int32
-                    description: Invite unique identifier
-                    type: integer
-                visitor_id:
-                    format: int32
-                    description: Visitor unique identifier
-                    type: integer
                 name:
                     description: Guest's name
                     type: string
@@ -5708,157 +5707,99 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/GuestResponse'
+                invite:
+                    $ref: '#/components/schemas/Invite'
+                    description: Invite it belongs to
+                visitor:
+                    $ref: '#/components/schemas/Visitor'
+                    description: Visitor
             example:
-                id: 123123123
-                created_at: '2020-01-01T10:20:30'
-                invite_id: 123123
-                visitor_id: 123123
-                name: Gabe Queiroz
-                email: gqueirz@tg.com
-                company: TG
-                photo_url: 'https://tg.com/picture/jpg'
+                id: 79
+                created_at: '2018-02-10T09:30Z'
+                name: some text
+                email: some text
+                company: some text
+                photo_url: some text
                 guest_reponses:
                     -
-                        title: This is a form
-                        sequence: 1
-                        id: 1
-                        page_type: form_page
+                        title: some text
+                        sequence: 69
+                        id: 36
+                        page_type: some text
                         custom_fields:
                             -
-                                field_name: question_1
-                                field_value: Red Wine
+                                field_name: some text
+                                field_value: some text
                             -
-                                field_name: question_2
-                                field_value: White Wine
+                                field_name: some text
+                                field_value: some text
                     -
-                        title: This is another form
-                        sequence: 3
-                        id: 10
-                        page_type: form_page
+                        title: some text
+                        sequence: 64
+                        id: 20
+                        page_type: some text
                         custom_fields:
                             -
-                                field_name: question_3
-                                field_value: Postal Code
+                                field_name: some text
+                                field_value: some text
                             -
-                                field_name: question_4
-                                field_value: V3B0K9
-                    -
-                        title: Tell us a bit about yourself
-                        id: 33
-                        sequence: 3
-                        page_type: identity_page
-                        custom_fields:
-                            -
-                                field_name: email
-                                field_value: aguest@tg.com
-                            -
-                                field_name: company
-                                field_value: TG
-                            -
-                                field_name: fullname
-                                field_value: A Guest
-                            -
-                                field_name: mobile
-                                field_value: +1 123 123 1234
-                    -
-                        title: Please read info about COVID-19
-                        id: 44
-                        sequence: 4
-                        page_type: guest_sign_page
-                        custom_fields:
-                            -
-                                field_name: status
-                                field_value: signed
-                            -
-                                field_name: document_name
-                                field_value: COVID-19 - Gabriel Queiroz - 2020-01-01
-                            -
-                                field_name: template_name
-                                field_value: COVID-19
-                            -
-                                field_name: document_url
-                                field_value: 'https://tg.com/document/id'
-                    -
-                        title: Please read info about our security measures
-                        id: 44
-                        sequence: 4
-                        page_type: guest_sign_page
-                        custom_fields:
-                            -
-                                field_name: status
-                                field_value: declined
-                            -
-                                field_name: template_name
-                                field_value: COVID-19
-                    -
-                        title: Please read info about our security measures
-                        id: 44
-                        sequence: 4
-                        page_type: docusign_page
-                        custom_fields:
-                            -
-                                field_name: status
-                                field_value: signed
-                            -
-                                field_name: tempalte_id
-                                field_value: 1234-1234-1234-1234-1234
-                            -
-                                field_name: envelope_id
-                                field_value: 1234-1234-1234-1234-1234
-                            -
-                                field_name: template_name
-                                field_value: Docusign Document
-                            -
-                                field_name: document_url
-                                field_value: 'https://tg.com/document/id'
-                    -
-                        title: Are you here for an interview?
-                        id: 77
-                        sequence: 7
-                        page_type: branch_page
-                        custom_fields:
-                            -
-                                field_name: '1'
-                                field_value: 'Yes'
-                    -
-                        title: Select your nationality
-                        id: 88
-                        sequence: 8
-                        page_type: branch_page
-                        custom_fields:
-                            -
-                                field_name: '2'
-                                field_value: Canada
-                    -
-                        title: Please watch the following welcome video
-                        id: 88
-                        sequence: 8
-                        page_type: video_page
-                        custom_fields:
-                            -
-                                field_name: id
-                                field_value: XYZ
-                            -
-                                field_name: source
-                                field_value: 'https://youtube.com/xyz'
-                            -
-                                field_name: status
-                                field_value: watched
-                    -
-                        title: Please watch the following safety video
-                        id: 99
-                        sequence: 9
-                        page_type: video_page
-                        custom_fields:
-                            -
-                                field_name: id
-                                field_value: XYZ
-                            -
-                                field_name: source
-                                field_value: 'https://youtube.com/xyz'
-                            -
-                                field_name: status
-                                field_value: previously_watched
+                                field_name: some text
+                                field_value: some text
+                invite:
+                    id: 39
+                    first_name: some text
+                    last_name: some text
+                    start_date: '2018-02-10T09:30Z'
+                    location:
+                        id: 21
+                        name: some text
+                    watchlist_colour: GREEN
+                    hosts:
+                        -
+                            id: 16
+                            email: some text
+                            first_name: some text
+                            last_name: some text
+                            profile_pic_url: some text
+                            department: some text
+                            mobile_number: some text
+                        -
+                            id: 92
+                            email: some text
+                            first_name: some text
+                            last_name: some text
+                            profile_pic_url: some text
+                            department: some text
+                            mobile_number: some text
+                    invite_watchlist:
+                        id: 91
+                        external_colours:
+                            - some text
+                            - some text
+                        internal_colours:
+                            - some text
+                            - some text
+                    end_date: '2018-02-10T09:30Z'
+                    email: some text
+                    mobile_number: some text
+                visitor:
+                    id: 20
+                    active: true
+                    company: some text
+                    created_via: some text
+                    email: some text
+                    first_name: some text
+                    last_name: some text
+                    mobile: some text
+                    note: some text
+                    profile_pic_content_type: some text
+                    profile_pic_file_name: some text
+                    profile_pic_file_size: some text
+                    profile_pic_updated_at: some text
+                    watchlist_level: some text
+                    created_at: '2018-02-10T09:30Z'
+                    updated_at: '2018-02-10T09:30Z'
+                    account_id: 82
         GuestResponse:
             title: Root Type for GuestResponse
             description: The data collected from the response on a Registration
@@ -5930,6 +5871,67 @@ components:
             example:
                 field_name: question_1
                 field_value: Red Wine
+        Visitor:
+            title: Root Type for Visitor
+            description: Visitor information
+            type: object
+            properties:
+                id:
+                    format: int32
+                    type: integer
+                active:
+                    type: boolean
+                company:
+                    type: string
+                created_via:
+                    type: string
+                email:
+                    type: string
+                first_name:
+                    type: string
+                last_name:
+                    type: string
+                mobile:
+                    type: string
+                note:
+                    type: string
+                profile_pic_content_type:
+                    type: string
+                profile_pic_file_name:
+                    type: string
+                profile_pic_file_size:
+                    type: string
+                profile_pic_updated_at:
+                    type: string
+                watchlist_level:
+                    type: string
+                created_at:
+                    format: date-time
+                    type: string
+                updated_at:
+                    format: date-time
+                    type: string
+                account_id:
+                    format: int32
+                    type: integer
+            example:
+                id: 79
+                active: true
+                company: some text
+                created_via: some text
+                email: some text
+                first_name: some text
+                last_name: some text
+                mobile: some text
+                note: some text
+                profile_pic_content_type: some text
+                profile_pic_file_name: some text
+                profile_pic_file_size: some text
+                profile_pic_updated_at: some text
+                watchlist_level: some text
+                created_at: '2018-02-10T09:30Z'
+                updated_at: '2018-02-10T09:30Z'
+                account_id: 99
     parameters:
         idempotencyKey:
             name: Idempotency-Key

@@ -5672,7 +5672,7 @@ components:
                     description: ''
         Registration:
             title: Root Type for Registration
-            description: ''
+            description: The data of a Registration
             type: object
             properties:
                 id:
@@ -5861,7 +5861,7 @@ components:
                                 field_value: previously_watched
         GuestResponse:
             title: Root Type for GuestResponse
-            description: ''
+            description: The data collected from the response on a Registration
             type: object
             properties:
                 title:

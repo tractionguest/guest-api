@@ -2995,157 +2995,39 @@ paths:
                             examples:
                                 Default:
                                     value:
-                                        id: 47
-                                        created_at: {}
-                                        account_id: 87
-                                        visitor_id: 50
-                                        collected_information:
-                                            forms:
-                                                -
-                                                    title: some text
-                                                    sequence: 6
-                                                    id: 12
-                                                    data:
-                                                        -
-                                                            key: some text
-                                                            value: some text
-                                                        -
-                                                            key: some text
-                                                            value: some text
-                                                -
-                                                    title: some text
-                                                    sequence: 50
-                                                    id: 23
-                                                    data:
-                                                        -
-                                                            key: some text
-                                                            value: some text
-                                                        -
-                                                            key: some text
-                                                            value: some text
-                                            hosts:
-                                                -
-                                                    title: some text
-                                                    id: 42
-                                                    sequence: 6
-                                                    data:
-                                                        -
-                                                            fullname: some text
-                                                            department: some text
-                                                            email: some text
-                                                            profile_picture: some text
-                                                        -
-                                                            fullname: some text
-                                                            department: some text
-                                                            email: some text
-                                                            profile_picture: some text
-                                                -
-                                                    title: some text
-                                                    id: 99
-                                                    sequence: 11
-                                                    data:
-                                                        -
-                                                            fullname: some text
-                                                            department: some text
-                                                            email: some text
-                                                            profile_picture: some text
-                                                        -
-                                                            fullname: some text
-                                                            department: some text
-                                                            email: some text
-                                                            profile_picture: some text
-                                            identities:
-                                                -
-                                                    title: some text
-                                                    id: 71
-                                                    sequence: 20
-                                                    data:
-                                                        email: some text
-                                                        company: some text
-                                                        fullname: some text
-                                                        mobile: some text
-                                                -
-                                                    title: some text
-                                                    id: 27
-                                                    sequence: 6
-                                                    data:
-                                                        email: some text
-                                                        company: some text
-                                                        fullname: some text
-                                                        mobile: some text
-                                            guest_signs:
-                                                -
-                                                    title: some text
-                                                    id: 32
-                                                    sequence: 74
-                                                    data:
-                                                        status: some text
-                                                        document_name: some text
-                                                        template_name: some text
-                                                        document_url: some text
-                                                -
-                                                    title: some text
-                                                    id: 90
-                                                    sequence: 66
-                                                    data:
-                                                        status: some text
-                                                        document_name: some text
-                                                        template_name: some text
-                                                        document_url: some text
-                                            docusigns:
-                                                -
-                                                    title: some text
-                                                    id: 52
-                                                    sequence: 62
-                                                    data:
-                                                        status: some text
-                                                        envelope_id: some text
-                                                        template_id: some text
-                                                        template_name: some text
-                                                        document_url: some text
-                                                -
-                                                    title: some text
-                                                    id: 89
-                                                    sequence: 23
-                                                    data:
-                                                        status: some text
-                                                        envelope_id: some text
-                                                        template_id: some text
-                                                        template_name: some text
-                                                        document_url: some text
-                                            branches:
-                                                -
-                                                    title: some text
-                                                    id: 2
-                                                    sequence: 33
-                                                    data:
-                                                        key: 51
-                                                        value: some text
-                                                -
-                                                    title: some text
-                                                    id: 75
-                                                    sequence: 32
-                                                    data:
-                                                        key: 72
-                                                        value: some text
-                                            videos:
-                                                -
-                                                    title: some text
-                                                    id: 74
-                                                    sequence: 71
-                                                    data:
-                                                        id: some text
-                                                        src: some text
-                                                        status: some text
-                                                -
-                                                    title: some text
-                                                    id: 14
-                                                    sequence: 6
-                                                    data:
-                                                        id: some text
-                                                        src: some text
-                                                        status: some text
-                                        invite_id: 88
+                                        id: 96
+                                        created_at: '2018-02-10T09:30Z'
+                                        invite_id: 99
+                                        visitor_id: 44
+                                        name: some text
+                                        email: some text
+                                        company: some text
+                                        photo_url: some text
+                                        guest_reponses:
+                                            -
+                                                title: some text
+                                                sequence: 22
+                                                id: 47
+                                                page_type: some text
+                                                custom_fields:
+                                                    -
+                                                        field_name: some text
+                                                        field_value: some text
+                                                    -
+                                                        field_name: some text
+                                                        field_value: some text
+                                            -
+                                                title: some text
+                                                sequence: 48
+                                                id: 42
+                                                page_type: some text
+                                                custom_fields:
+                                                    -
+                                                        field_name: some text
+                                                        field_value: some text
+                                                    -
+                                                        field_name: some text
+                                                        field_value: some text
                     description: Successful response - returns a single `Registration`.
                 '400':
                     content:
@@ -5795,7 +5677,7 @@ components:
             properties:
                 id:
                     format: int32
-                    description: Unique identifier
+                    description: Registration unique identifier
                     type: integer
                 created_at:
                     format: date-time
@@ -5803,11 +5685,11 @@ components:
                     type: string
                 invite_id:
                     format: int32
-                    description: Id of the invite received
+                    description: Invite unique identifier
                     type: integer
                 visitor_id:
                     format: int32
-                    description: Id of visitor
+                    description: Visitor unique identifier
                     type: integer
                 name:
                     description: Guest's name
@@ -6040,8 +5922,10 @@ components:
             type: object
             properties:
                 field_name:
+                    description: Flex field key
                     type: string
                 field_value:
+                    description: Flex field value
                     type: string
             example:
                 field_name: question_1

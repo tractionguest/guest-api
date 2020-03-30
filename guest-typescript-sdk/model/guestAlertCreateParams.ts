@@ -9,18 +9,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { GuestAlertSigninSelectorsGuest } from './guestAlertSigninSelectors';
 
 
-/**
- * The root of the Pagination type\'s schema.
- */
-export interface PaginationGuest { 
-    totalRecords?: number;
-    currentOffset?: number;
-    nextOffset?: number;
+export interface GuestAlertCreateParamsGuest { 
     /**
-     * The last ID rendered, if the request included the \'after_id\' param.
+     * Plain text of the alert to be sent
      */
-    lastId?: number;
+    message: string;
+    /**
+     * Specify the broadcast channel, one of \'SMS\' and/or \'EMAIL\'
+     */
+    channels: Array<string>;
+    signinSelectors?: GuestAlertSigninSelectorsGuest;
 }
 

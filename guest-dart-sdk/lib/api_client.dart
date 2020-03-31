@@ -53,6 +53,12 @@ class ApiClient {
           return ErrorsList.fromJson(value);
         case 'ExternalWatchlistResult':
           return ExternalWatchlistResult.fromJson(value);
+        case 'GuestAlertCreateParams':
+          return GuestAlertCreateParams.fromJson(value);
+        case 'GuestAlertDetail':
+          return GuestAlertDetail.fromJson(value);
+        case 'GuestAlertSigninSelectors':
+          return GuestAlertSigninSelectors.fromJson(value);
         case 'Host':
           return Host.fromJson(value);
         case 'InternalWatchlistResult':
@@ -73,12 +79,6 @@ class ApiClient {
           return NotificationTrigger.fromJson(value);
         case 'NotificationTriggerCreateParams':
           return NotificationTriggerCreateParams.fromJson(value);
-        case 'NotificationsCreateParams':
-          return NotificationsCreateParams.fromJson(value);
-        case 'NotificationsHostFilterParams':
-          return NotificationsHostFilterParams.fromJson(value);
-        case 'NotificationsSigninFilterParams':
-          return NotificationsSigninFilterParams.fromJson(value);
         case 'PaginatedAuditLogsList':
           return PaginatedAuditLogsList.fromJson(value);
         case 'PaginatedEmailTemplatesList':

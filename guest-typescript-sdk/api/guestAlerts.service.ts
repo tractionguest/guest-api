@@ -19,7 +19,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { ErrorsListGuest } from '../model/errorsList';
-import { PaginatedEmailTemplatesListGuest } from '../model/paginatedEmailTemplatesList';
+import { GuestAlertCreateParamsGuest } from '../model/guestAlertCreateParams';
+import { GuestAlertDetailGuest } from '../model/guestAlertDetail';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -28,7 +29,7 @@ import { Configuration }                                     from '../configurat
 @Injectable({
   providedIn: 'root'
 })
-export class EmailTemplatesService {
+export class GuestAlertsService {
 
     protected basePath = 'https://mobile-api-refactor-admin.tractionguest.ca/api/v3';
     public defaultHeaders = new HttpHeaders();
@@ -61,28 +62,18 @@ export class EmailTemplatesService {
 
 
     /**
-     * List All EmailTemplates
-     * Gets a list of all &#x60;EmailTemplate&#x60; entities.
-     * @param limit Limits the results to a specified number, defaults to 50
-     * @param offset Offsets the results to a specified number, defaults to 0
-     * @param include A list of comma-separated related models to include
+     * Create Guest Alert
+     * Enqueues guest alerts via specified channels
+     * @param guestAlertCreateParamsGuest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getEmailTemplates(limit?: number, offset?: number, include?: string, observe?: 'body', reportProgress?: boolean): Observable<PaginatedEmailTemplatesListGuest>;
-    public getEmailTemplates(limit?: number, offset?: number, include?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PaginatedEmailTemplatesListGuest>>;
-    public getEmailTemplates(limit?: number, offset?: number, include?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PaginatedEmailTemplatesListGuest>>;
-    public getEmailTemplates(limit?: number, offset?: number, include?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (limit !== undefined && limit !== null) {
-            queryParameters = queryParameters.set('limit', <any>limit);
-        }
-        if (offset !== undefined && offset !== null) {
-            queryParameters = queryParameters.set('offset', <any>offset);
-        }
-        if (include !== undefined && include !== null) {
-            queryParameters = queryParameters.set('include', <any>include);
+    public createGuestAlert(guestAlertCreateParamsGuest: GuestAlertCreateParamsGuest, observe?: 'body', reportProgress?: boolean): Observable<GuestAlertDetailGuest>;
+    public createGuestAlert(guestAlertCreateParamsGuest: GuestAlertCreateParamsGuest, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GuestAlertDetailGuest>>;
+    public createGuestAlert(guestAlertCreateParamsGuest: GuestAlertCreateParamsGuest, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GuestAlertDetailGuest>>;
+    public createGuestAlert(guestAlertCreateParamsGuest: GuestAlertCreateParamsGuest, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (guestAlertCreateParamsGuest === null || guestAlertCreateParamsGuest === undefined) {
+            throw new Error('Required parameter guestAlertCreateParamsGuest was null or undefined when calling createGuestAlert.');
         }
 
         let headers = this.defaultHeaders;
@@ -99,11 +90,16 @@ export class EmailTemplatesService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            'application/json'
         ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
 
-        return this.httpClient.get<PaginatedEmailTemplatesListGuest>(`${this.configuration.basePath}/email_templates`,
+        return this.httpClient.post<GuestAlertDetailGuest>(`${this.configuration.basePath}/guest_alerts`,
+            guestAlertCreateParamsGuest,
             {
-                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

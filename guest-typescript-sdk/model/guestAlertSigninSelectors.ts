@@ -9,11 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { CustomFieldGuest } from './customField';
 
 
-export interface SigninDataGuest { 
-    name?: string;
-    customFields?: Array<CustomFieldGuest>;
+export interface GuestAlertSigninSelectorsGuest { 
+    isSignedOut?: boolean;
+    signinIds?: Array<number>;
+    locationIds?: Array<number>;
 }
 

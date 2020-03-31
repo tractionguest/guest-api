@@ -2972,18 +2972,38 @@ paths:
                 - GuestAlerts
             responses:
                 '201':
-                  content:
-                      application/json:
-                          schema:
-                              $ref: '#/components/schemas/GuestAlertDetail'
-                  description: Guest Alert has been scheduled for delivery
-                  '401':
-                      description: You don't have permission to create requested Guest Alerts
-                  '403':
-                      description: You do not have permission for this action
-                      operationId: createGuestAlert
-                      summary: Create Guest Alert
-                      description: Enqueues guest alerts via specified channels
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GuestAlertDetail'
+                    description: Guest Alert has been scheduled for delivery
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to create requested Guest Alerts
+                '403':
+                    description: You do not have permission for this action
+            operationId: createGuestAlert
+            summary: Create Guest Alert
+            description: Enqueues guest alerts via specified channels
     '/registrations/{registrationId}':
         summary: Path used to display a single Registration.
         description: The REST endpoint/path used to get single instances of a `Registration`.

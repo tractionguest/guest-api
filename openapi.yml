@@ -3011,8 +3011,8 @@ paths:
                                         guest_reponses:
                                             -
                                                 title: some text
-                                                sequence: 31
-                                                id: 19
+                                                sequence: 9
+                                                id: 46
                                                 page_type: some text
                                                 custom_fields:
                                                     -
@@ -3023,8 +3023,8 @@ paths:
                                                         field_value: some text
                                             -
                                                 title: some text
-                                                sequence: 96
-                                                id: 94
+                                                sequence: 8
+                                                id: 22
                                                 page_type: some text
                                                 custom_fields:
                                                     -
@@ -3034,17 +3034,17 @@ paths:
                                                         field_name: some text
                                                         field_value: some text
                                         invite:
-                                            id: 39
+                                            id: 96
                                             first_name: some text
                                             last_name: some text
                                             start_date: '2018-02-10T09:30Z'
                                             location:
-                                                id: 46
+                                                id: 95
                                                 name: some text
-                                            watchlist_colour: YELLOW
+                                            watchlist_colour: GREEN
                                             hosts:
                                                 -
-                                                    id: 76
+                                                    id: 61
                                                     email: some text
                                                     first_name: some text
                                                     last_name: some text
@@ -3052,7 +3052,7 @@ paths:
                                                     department: some text
                                                     mobile_number: some text
                                                 -
-                                                    id: 42
+                                                    id: 57
                                                     email: some text
                                                     first_name: some text
                                                     last_name: some text
@@ -3060,7 +3060,7 @@ paths:
                                                     department: some text
                                                     mobile_number: some text
                                             invite_watchlist:
-                                                id: 75
+                                                id: 7
                                                 external_colours:
                                                     - some text
                                                     - some text
@@ -3071,7 +3071,7 @@ paths:
                                             email: some text
                                             mobile_number: some text
                                         visitor:
-                                            id: 77
+                                            id: 7
                                             active: true
                                             company: some text
                                             created_via: some text
@@ -3087,7 +3087,6 @@ paths:
                                             watchlist_level: some text
                                             created_at: '2018-02-10T09:30Z'
                                             updated_at: '2018-02-10T09:30Z'
-                                            account_id: 36
                     description: Successful response - returns a single `Registration`.
                 '400':
                     content:
@@ -5964,9 +5963,6 @@ components:
                 updated_at:
                     format: date-time
                     type: string
-                account_id:
-                    format: int32
-                    type: integer
             example:
                 id: 79
                 active: true

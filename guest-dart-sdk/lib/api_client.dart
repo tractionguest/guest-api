@@ -53,12 +53,16 @@ class ApiClient {
           return ErrorsList.fromJson(value);
         case 'ExternalWatchlistResult':
           return ExternalWatchlistResult.fromJson(value);
+        case 'FlexField':
+          return FlexField.fromJson(value);
         case 'GuestAlertCreateParams':
           return GuestAlertCreateParams.fromJson(value);
         case 'GuestAlertDetail':
           return GuestAlertDetail.fromJson(value);
         case 'GuestAlertSigninSelectors':
           return GuestAlertSigninSelectors.fromJson(value);
+        case 'GuestResponse':
+          return GuestResponse.fromJson(value);
         case 'Host':
           return Host.fromJson(value);
         case 'InternalWatchlistResult':
@@ -97,6 +101,8 @@ class ApiClient {
           return Pagination.fromJson(value);
         case 'PermissionGroup':
           return PermissionGroup.fromJson(value);
+        case 'Registration':
+          return Registration.fromJson(value);
         case 'SignableDocument':
           return SignableDocument.fromJson(value);
         case 'Signin':
@@ -117,6 +123,8 @@ class ApiClient {
           return SimpleSignature.fromJson(value);
         case 'User':
           return User.fromJson(value);
+        case 'Visitor':
+          return Visitor.fromJson(value);
         case 'Watchlist':
           return Watchlist.fromJson(value);
         case 'WatchlistCreateParams':

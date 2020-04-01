@@ -3174,7 +3174,10 @@ paths:
                     description: The specified Registration was not found
             security:
                 -
-                    TractionGuestAuth: []
+                    TractionGuestAuth:
+                      - all
+                      - 'signin:*'
+                      - 'signin:read'
             operationId: getRegistration
             summary: Get a Registration
             description: Gets the details of a single instance of a `Registration`

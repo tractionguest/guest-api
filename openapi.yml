@@ -3026,7 +3026,7 @@ paths:
                             examples:
                                 Default:
                                     value:
-                                        id: "uuid"
+                                        id: uuid
                                         created_at: '2018-02-10T09:30Z'
                                         name: some text
                                         email: some text
@@ -3172,6 +3172,9 @@ paths:
                                                 code: some text
                                                 message: some text
                     description: The specified Registration was not found
+            security:
+                -
+                    TractionGuestAuth: []
             operationId: getRegistration
             summary: Get a Registration
             description: Gets the details of a single instance of a `Registration`
@@ -5719,7 +5722,7 @@ components:
                     $ref: '#/components/schemas/Visitor'
                     description: Visitor
             example:
-                id: "uuid"
+                id: uuid
                 created_at: '2018-02-10T09:30Z'
                 name: some text
                 email: some text
@@ -5821,6 +5824,13 @@ components:
                     type: integer
                 page_type:
                     description: Enum
+                    enum:
+                        - form_page
+                        - video_page
+                        - branch_page
+                        - docusign_page
+                        - guest_sign_page
+                        - identity_page
                     type: string
                 custom_fields:
                     description: Flex fields

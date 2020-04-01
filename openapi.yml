@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.10.4
+    version: 0.11.0
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -2774,7 +2774,7 @@ paths:
                 -
                     name: action_type
                     description: |
-                        The action performed by the user. Valid values include: 
+                        The action performed by the user. Valid values include:
                         - `create`
                         - `update`
                         - `destroy`
@@ -3004,6 +3004,194 @@ paths:
             operationId: createGuestAlert
             summary: Create Guest Alert
             description: Enqueues guest alerts via specified channels
+    '/registrations/{registrationId}':
+        summary: Path used to display a single Registration.
+        description: The REST endpoint/path used to get single instances of a `Registration`.
+        get:
+            tags:
+                - Registration
+            parameters:
+                -
+                    name: include
+                    description: A list of comma-separated related models to include
+                    schema:
+                        type: string
+                    in: query
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Registration'
+                            examples:
+                                Default:
+                                    value:
+                                        id: uuid
+                                        created_at: '2018-02-10T09:30Z'
+                                        name: some text
+                                        email: some text
+                                        company: some text
+                                        photo_url: some text
+                                        guest_reponses:
+                                            -
+                                                title: some text
+                                                sequence: 9
+                                                id: 46
+                                                page_type: some text
+                                                custom_fields:
+                                                    -
+                                                        field_name: some text
+                                                        field_value: some text
+                                                    -
+                                                        field_name: some text
+                                                        field_value: some text
+                                            -
+                                                title: some text
+                                                sequence: 8
+                                                id: 22
+                                                page_type: some text
+                                                custom_fields:
+                                                    -
+                                                        field_name: some text
+                                                        field_value: some text
+                                                    -
+                                                        field_name: some text
+                                                        field_value: some text
+                                        invite:
+                                            id: 96
+                                            first_name: some text
+                                            last_name: some text
+                                            start_date: '2018-02-10T09:30Z'
+                                            location:
+                                                id: 95
+                                                name: some text
+                                            watchlist_colour: GREEN
+                                            hosts:
+                                                -
+                                                    id: 61
+                                                    email: some text
+                                                    first_name: some text
+                                                    last_name: some text
+                                                    profile_pic_url: some text
+                                                    department: some text
+                                                    mobile_number: some text
+                                                -
+                                                    id: 57
+                                                    email: some text
+                                                    first_name: some text
+                                                    last_name: some text
+                                                    profile_pic_url: some text
+                                                    department: some text
+                                                    mobile_number: some text
+                                            invite_watchlist:
+                                                id: 7
+                                                external_colours:
+                                                    - some text
+                                                    - some text
+                                                internal_colours:
+                                                    - some text
+                                                    - some text
+                                            end_date: '2018-02-10T09:30Z'
+                                            email: some text
+                                            mobile_number: some text
+                                        visitor:
+                                            id: 7
+                                            active: true
+                                            company: some text
+                                            created_via: some text
+                                            email: some text
+                                            first_name: some text
+                                            last_name: some text
+                                            mobile: some text
+                                            note: some text
+                                            profile_pic_content_type: some text
+                                            profile_pic_file_name: some text
+                                            profile_pic_file_size: some text
+                                            profile_pic_updated_at: some text
+                                            watchlist_level: some text
+                                            created_at: '2018-02-10T09:30Z'
+                                            updated_at: '2018-02-10T09:30Z'
+                    description: Successful response - returns a single `Registration`.
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '403':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                Default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: You do not have permission for this action
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                Default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: The specified Registration was not found
+            security:
+                -
+                    TractionGuestAuth:
+                      - all
+                      - 'signin:*'
+                      - 'signin:read'
+            operationId: getRegistration
+            summary: Get a Registration
+            description: Gets the details of a single instance of a `Registration`
+        parameters:
+            -
+                examples:
+                    '1':
+                        value: '1'
+                name: registrationId
+                description: A unique identifier for `Registration`.
+                schema:
+                    type: string
+                in: path
+                required: true
 components:
     schemas:
         Host:
@@ -4315,28 +4503,6 @@ components:
                 is_signed_out: true
                 is_acknowledged: true
                 is_accounted_for: true
-        CustomField:
-            title: Root Type for CustomField
-            description: The root of the CustomField type's schema.
-            required:
-                - field_value
-                - field_name
-            type: object
-            properties:
-                format:
-                    description: The format type of the field
-                    enum:
-                        - string
-                field_name:
-                    description: What the field should be displayed/labeled as
-                    type: string
-                field_value:
-                    description: The value to be displayed for the field
-                    type: string
-            example:
-                format: {}
-                field_name: some text
-                field_value: some text
         SigninData:
             type: object
             properties:
@@ -5523,6 +5689,261 @@ components:
                 pagination:
                     $ref: '#/components/schemas/Pagination'
                     description: ''
+        Registration:
+            title: Root Type for Registration
+            description: The data of a Registration
+            type: object
+            properties:
+                id:
+                    description: Registration unique identifier
+                    type: string
+                created_at:
+                    format: date-time
+                    description: Datetime when registration was created
+                    type: string
+                name:
+                    description: Guest's name
+                    type: string
+                email:
+                    description: E-mail
+                    type: string
+                company:
+                    description: Company's name
+                    type: string
+                photo_url:
+                    description: URL of the uploaded photo
+                    type: string
+                guest_reponses:
+                    description: Response given by the guest
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/GuestResponse'
+                invite:
+                    $ref: '#/components/schemas/Invite'
+                    description: Invite it belongs to
+                visitor:
+                    $ref: '#/components/schemas/Visitor'
+                    description: Visitor
+            example:
+                id: uuid
+                created_at: '2018-02-10T09:30Z'
+                name: some text
+                email: some text
+                company: some text
+                photo_url: some text
+                guest_reponses:
+                    -
+                        title: some text
+                        sequence: 69
+                        id: 36
+                        page_type: some text
+                        custom_fields:
+                            -
+                                field_name: some text
+                                field_value: some text
+                            -
+                                field_name: some text
+                                field_value: some text
+                    -
+                        title: some text
+                        sequence: 64
+                        id: 20
+                        page_type: some text
+                        custom_fields:
+                            -
+                                field_name: some text
+                                field_value: some text
+                            -
+                                field_name: some text
+                                field_value: some text
+                invite:
+                    id: 39
+                    first_name: some text
+                    last_name: some text
+                    start_date: '2018-02-10T09:30Z'
+                    location:
+                        id: 21
+                        name: some text
+                    watchlist_colour: GREEN
+                    hosts:
+                        -
+                            id: 16
+                            email: some text
+                            first_name: some text
+                            last_name: some text
+                            profile_pic_url: some text
+                            department: some text
+                            mobile_number: some text
+                        -
+                            id: 92
+                            email: some text
+                            first_name: some text
+                            last_name: some text
+                            profile_pic_url: some text
+                            department: some text
+                            mobile_number: some text
+                    invite_watchlist:
+                        id: 91
+                        external_colours:
+                            - some text
+                            - some text
+                        internal_colours:
+                            - some text
+                            - some text
+                    end_date: '2018-02-10T09:30Z'
+                    email: some text
+                    mobile_number: some text
+                visitor:
+                    id: 20
+                    active: true
+                    company: some text
+                    created_via: some text
+                    email: some text
+                    first_name: some text
+                    last_name: some text
+                    mobile: some text
+                    note: some text
+                    profile_pic_content_type: some text
+                    profile_pic_file_name: some text
+                    profile_pic_file_size: some text
+                    profile_pic_updated_at: some text
+                    watchlist_level: some text
+                    created_at: '2018-02-10T09:30Z'
+                    updated_at: '2018-02-10T09:30Z'
+        GuestResponse:
+            title: Root Type for GuestResponse
+            description: The data collected from the response on a Registration
+            type: object
+            properties:
+                title:
+                    description: Page title
+                    type: string
+                sequence:
+                    format: int32
+                    type: integer
+                id:
+                    description: UUID
+                    type: string
+                page_type:
+                    description: Enum
+                    enum:
+                        - form_page
+                        - video_page
+                        - branch_page
+                        - docusign_page
+                        - guest_sign_page
+                        - identity_page
+                    type: string
+                custom_fields:
+                    description: Flex fields
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/FlexField'
+            example:
+                title: This is a form
+                sequence: 1
+                id: uuid
+                page_type: form_page
+                custom_fields:
+                    -
+                        field_name: question_1
+                        field_value: Red Wine
+                    -
+                        field_name: question_2
+                        field_value: White Wine
+        CustomField:
+            title: Root Type for CustomField
+            description: The root of the CustomField type's schema.
+            required:
+                - field_value
+                - field_name
+            type: object
+            properties:
+                format:
+                    description: The format type of the field
+                    enum:
+                        - string
+                field_name:
+                    description: What the field should be displayed/labeled as
+                    type: string
+                field_value:
+                    description: The value to be displayed for the field
+                    type: string
+            example:
+                format: {}
+                field_name: some text
+                field_value: some text
+        FlexField:
+            title: Root Type for FlexField
+            description: A custom field
+            type: object
+            properties:
+                field_name:
+                    description: Flex field key
+                    type: string
+                field_value:
+                    description: Flex field value
+                    type: string
+            example:
+                field_name: question_1
+                field_value: Red Wine
+        Visitor:
+            title: Root Type for Visitor
+            description: Visitor information
+            type: object
+            properties:
+                id:
+                    description: UUID
+                    type: string
+                active:
+                    type: boolean
+                company:
+                    type: string
+                created_via:
+                    type: string
+                email:
+                    type: string
+                first_name:
+                    type: string
+                last_name:
+                    type: string
+                mobile:
+                    type: string
+                note:
+                    type: string
+                profile_pic_content_type:
+                    type: string
+                profile_pic_file_name:
+                    type: string
+                profile_pic_file_size:
+                    type: string
+                profile_pic_updated_at:
+                    type: string
+                watchlist_level:
+                    type: string
+                created_at:
+                    format: date-time
+                    type: string
+                updated_at:
+                    format: date-time
+                    type: string
+            example:
+                id: uuid
+                active: true
+                company: some text
+                created_via: some text
+                email: some text
+                first_name: some text
+                last_name: some text
+                mobile: some text
+                note: some text
+                profile_pic_content_type: some text
+                profile_pic_file_name: some text
+                profile_pic_file_size: some text
+                profile_pic_updated_at: some text
+                watchlist_level: some text
+                created_at: '2018-02-10T09:30Z'
+                updated_at: '2018-02-10T09:30Z'
         GuestAlertCreateParams:
             description: ''
             required:

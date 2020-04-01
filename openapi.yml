@@ -5822,9 +5822,8 @@ components:
                     format: int32
                     type: integer
                 id:
-                    format: int32
-                    description: Unique identifier
-                    type: integer
+                    description: UUID
+                    type: string
                 page_type:
                     description: Enum
                     enum:
@@ -5843,7 +5842,7 @@ components:
             example:
                 title: This is a form
                 sequence: 1
-                id: 1
+                id: uuid
                 page_type: form_page
                 custom_fields:
                     -
@@ -5894,8 +5893,8 @@ components:
             type: object
             properties:
                 id:
-                    format: int32
-                    type: integer
+                    description: UUID
+                    type: string
                 active:
                     type: boolean
                 company:
@@ -5929,7 +5928,7 @@ components:
                     format: date-time
                     type: string
             example:
-                id: 79
+                id: uuid
                 active: true
                 company: some text
                 created_via: some text

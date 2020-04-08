@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.11.0
+    version: 0.11.1
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -3175,9 +3175,9 @@ paths:
             security:
                 -
                     TractionGuestAuth:
-                      - all
-                      - 'signin:*'
-                      - 'signin:read'
+                        - all
+                        - 'signin:*'
+                        - 'signin:read'
             operationId: getRegistration
             summary: Get a Registration
             description: Gets the details of a single instance of a `Registration`
@@ -3330,7 +3330,7 @@ components:
             required:
                 - id
                 - email
-                - mobile_access_enabled
+                - mobile_paid_features_enabled
             type: object
             properties:
                 id:
@@ -3349,8 +3349,8 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/PermissionGroup'
-                mobile_access_enabled:
-                    description: Identifies if user has access to mobile app features.
+                mobile_paid_features_enabled:
+                    description: Identifies if user has access to paid mobile app features.
                     type: boolean
             example:
                 id: 60

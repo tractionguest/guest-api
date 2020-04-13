@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.11.0
+    version: 0.11.1
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -1793,12 +1793,26 @@ paths:
                                     last_name: some text
                                     company: some text
                                     email: some text
+                            With Registration ID:
+                                value:
+                                    registration_id: '123531144'
+                                    guest_email_template_id: 47
+                                    host_email_template_id: 65
+                                    send_notifications: true
+                                    sms_message: some text
                 required: true
             tags:
                 - Signins
             parameters:
                 -
                     $ref: '#/components/parameters/idempotencyKey'
+                -
+                    name: registration_id
+                    description: UUID of a Registration
+                    schema:
+                        type: string
+                    in: query
+                    required: false
             responses:
                 '201':
                     content:
@@ -3175,9 +3189,9 @@ paths:
             security:
                 -
                     TractionGuestAuth:
-                      - all
-                      - 'signin:*'
-                      - 'signin:read'
+                        - all
+                        - 'signin:*'
+                        - 'signin:read'
             operationId: getRegistration
             summary: Get a Registration
             description: Gets the details of a single instance of a `Registration`

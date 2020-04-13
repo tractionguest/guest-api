@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.11.1
+    version: 0.11.0
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -1806,13 +1806,6 @@ paths:
             parameters:
                 -
                     $ref: '#/components/parameters/idempotencyKey'
-                -
-                    name: registration_id
-                    description: UUID of a Registration
-                    schema:
-                        type: string
-                    in: query
-                    required: false
             responses:
                 '201':
                     content:

@@ -4481,6 +4481,9 @@ components:
                     type: string
                 email:
                     type: string
+                registration_id:
+                    description: UUID of a Registration
+                    type: string
             example:
                 guest_email_template_id: 60
                 host_email_template_id: 50

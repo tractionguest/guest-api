@@ -4455,8 +4455,7 @@ components:
                                 - some text
                         end_date: '2018-02-10T09:30Z'
         SigninCreateParams:
-            required:
-                - location_id
+            required: []
             type: object
             properties:
                 guest_email_template_id:
@@ -4464,22 +4463,28 @@ components:
                 host_email_template_id:
                     type: integer
                 host_ids:
+                    description: 'Array of Hosts, ignored if `registration_id` is included'
                     type: array
                     items:
                         type: integer
                 location_id:
+                    description: 'ID of the Location where the Signin happened, ignored if `registration_id` is included'
                     type: integer
                 send_notifications:
                     type: boolean
                 sms_message:
                     type: string
                 first_name:
+                    description: 'First name, ignored if `registration_id` is included'
                     type: string
                 last_name:
+                    description: 'Last name, ignored if `registration_id` is included'
                     type: string
                 company:
+                    description: 'Company name, ignored if `registration_id` is included'
                     type: string
                 email:
+                    description: 'E-mail, ignored if `registration_id` is included'
                     type: string
                 registration_id:
                     description: UUID of a Registration

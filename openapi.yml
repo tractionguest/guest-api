@@ -1795,7 +1795,7 @@ paths:
                                     email: some text
                             With Registration ID:
                                 value:
-                                    registration_id: '123531144'
+                                    registration_id: '1234567'
                                     guest_email_template_id: 47
                                     host_email_template_id: 65
                                     send_notifications: true

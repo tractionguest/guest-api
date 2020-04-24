@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.11.0
+    version: 0.11.1
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -1793,6 +1793,13 @@ paths:
                                     last_name: some text
                                     company: some text
                                     email: some text
+                            with_registration:
+                                value:
+                                    registration_id: uuid
+                                    guest_email_template_id: 47
+                                    host_email_template_id: 65
+                                    send_notifications: true
+                                    sms_message: some text
                 required: true
             tags:
                 - Signins
@@ -3032,43 +3039,18 @@ paths:
                                         email: some text
                                         company: some text
                                         photo_url: some text
-                                        guest_reponses:
-                                            -
-                                                title: some text
-                                                sequence: 9
-                                                id: 46
-                                                page_type: some text
-                                                custom_fields:
-                                                    -
-                                                        field_name: some text
-                                                        field_value: some text
-                                                    -
-                                                        field_name: some text
-                                                        field_value: some text
-                                            -
-                                                title: some text
-                                                sequence: 8
-                                                id: 22
-                                                page_type: some text
-                                                custom_fields:
-                                                    -
-                                                        field_name: some text
-                                                        field_value: some text
-                                                    -
-                                                        field_name: some text
-                                                        field_value: some text
                                         invite:
-                                            id: 96
+                                            id: 67
                                             first_name: some text
                                             last_name: some text
                                             start_date: '2018-02-10T09:30Z'
                                             location:
-                                                id: 95
+                                                id: 22
                                                 name: some text
                                             watchlist_colour: GREEN
                                             hosts:
                                                 -
-                                                    id: 61
+                                                    id: 59
                                                     email: some text
                                                     first_name: some text
                                                     last_name: some text
@@ -3076,7 +3058,7 @@ paths:
                                                     department: some text
                                                     mobile_number: some text
                                                 -
-                                                    id: 57
+                                                    id: 18
                                                     email: some text
                                                     first_name: some text
                                                     last_name: some text
@@ -3084,7 +3066,7 @@ paths:
                                                     department: some text
                                                     mobile_number: some text
                                             invite_watchlist:
-                                                id: 7
+                                                id: 65
                                                 external_colours:
                                                     - some text
                                                     - some text
@@ -3095,7 +3077,7 @@ paths:
                                             email: some text
                                             mobile_number: some text
                                         visitor:
-                                            id: 7
+                                            id: some text
                                             active: true
                                             company: some text
                                             created_via: some text
@@ -3111,6 +3093,31 @@ paths:
                                             watchlist_level: some text
                                             created_at: '2018-02-10T09:30Z'
                                             updated_at: '2018-02-10T09:30Z'
+                                        guest_responses:
+                                            -
+                                                title: some text
+                                                sequence: 17
+                                                id: some text
+                                                page_type: branch_page
+                                                custom_fields:
+                                                    -
+                                                        field_name: some text
+                                                        field_value: some text
+                                                    -
+                                                        field_name: some text
+                                                        field_value: some text
+                                            -
+                                                title: some text
+                                                sequence: 29
+                                                id: some text
+                                                page_type: docusign_page
+                                                custom_fields:
+                                                    -
+                                                        field_name: some text
+                                                        field_value: some text
+                                                    -
+                                                        field_name: some text
+                                                        field_value: some text
                     description: Successful response - returns a single `Registration`.
                 '400':
                     content:
@@ -3175,9 +3182,9 @@ paths:
             security:
                 -
                     TractionGuestAuth:
-                      - all
-                      - 'signin:*'
-                      - 'signin:read'
+                        - all
+                        - 'signin:*'
+                        - 'signin:read'
             operationId: getRegistration
             summary: Get a Registration
             description: Gets the details of a single instance of a `Registration`
@@ -4448,8 +4455,8 @@ components:
                                 - some text
                         end_date: '2018-02-10T09:30Z'
         SigninCreateParams:
-            required:
-                - location_id
+            description: Params used to create a Signin
+            required: []
             type: object
             properties:
                 guest_email_template_id:
@@ -4457,22 +4464,32 @@ components:
                 host_email_template_id:
                     type: integer
                 host_ids:
+                    description: 'Array of Host ids, ignored if `registration_id` is included'
                     type: array
                     items:
                         type: integer
                 location_id:
+                    description: 'ID of the Location where the Signin happened, ignored if `registration_id` is included'
                     type: integer
                 send_notifications:
+                    description: Should send notification to host/guests?
                     type: boolean
                 sms_message:
                     type: string
                 first_name:
+                    description: 'First name, ignored if `registration_id` is included'
                     type: string
                 last_name:
+                    description: 'Last name, ignored if `registration_id` is included'
                     type: string
                 company:
+                    description: 'Company name, ignored if `registration_id` is included'
                     type: string
                 email:
+                    description: 'E-mail, ignored if `registration_id` is included'
+                    type: string
+                registration_id:
+                    description: UUID of a Registration
                     type: string
             example:
                 guest_email_template_id: 60
@@ -5713,17 +5730,17 @@ components:
                 photo_url:
                     description: URL of the uploaded photo
                     type: string
-                guest_reponses:
-                    description: Response given by the guest
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/GuestResponse'
                 invite:
                     $ref: '#/components/schemas/Invite'
                     description: Invite it belongs to
                 visitor:
                     $ref: '#/components/schemas/Visitor'
                     description: Visitor
+                guest_responses:
+                    description: Response given by the guest
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/GuestResponse'
             example:
                 id: uuid
                 created_at: '2018-02-10T09:30Z'
@@ -5731,43 +5748,18 @@ components:
                 email: some text
                 company: some text
                 photo_url: some text
-                guest_reponses:
-                    -
-                        title: some text
-                        sequence: 69
-                        id: 36
-                        page_type: some text
-                        custom_fields:
-                            -
-                                field_name: some text
-                                field_value: some text
-                            -
-                                field_name: some text
-                                field_value: some text
-                    -
-                        title: some text
-                        sequence: 64
-                        id: 20
-                        page_type: some text
-                        custom_fields:
-                            -
-                                field_name: some text
-                                field_value: some text
-                            -
-                                field_name: some text
-                                field_value: some text
                 invite:
-                    id: 39
+                    id: 51
                     first_name: some text
                     last_name: some text
                     start_date: '2018-02-10T09:30Z'
                     location:
-                        id: 21
+                        id: 67
                         name: some text
-                    watchlist_colour: GREEN
+                    watchlist_colour: YELLOW
                     hosts:
                         -
-                            id: 16
+                            id: 23
                             email: some text
                             first_name: some text
                             last_name: some text
@@ -5775,7 +5767,7 @@ components:
                             department: some text
                             mobile_number: some text
                         -
-                            id: 92
+                            id: 23
                             email: some text
                             first_name: some text
                             last_name: some text
@@ -5783,7 +5775,7 @@ components:
                             department: some text
                             mobile_number: some text
                     invite_watchlist:
-                        id: 91
+                        id: 70
                         external_colours:
                             - some text
                             - some text
@@ -5794,7 +5786,7 @@ components:
                     email: some text
                     mobile_number: some text
                 visitor:
-                    id: 20
+                    id: some text
                     active: true
                     company: some text
                     created_via: some text
@@ -5810,6 +5802,31 @@ components:
                     watchlist_level: some text
                     created_at: '2018-02-10T09:30Z'
                     updated_at: '2018-02-10T09:30Z'
+                guest_responses:
+                    -
+                        title: some text
+                        sequence: 43
+                        id: some text
+                        page_type: video_page
+                        custom_fields:
+                            -
+                                field_name: some text
+                                field_value: some text
+                            -
+                                field_name: some text
+                                field_value: some text
+                    -
+                        title: some text
+                        sequence: 35
+                        id: some text
+                        page_type: guest_sign_page
+                        custom_fields:
+                            -
+                                field_name: some text
+                                field_value: some text
+                            -
+                                field_name: some text
+                                field_value: some text
         GuestResponse:
             title: Root Type for GuestResponse
             description: The data collected from the response on a Registration

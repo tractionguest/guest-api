@@ -1,4 +1,5 @@
 {
   "packageName": "GuestSDK",
+  "projectName": "GuestSDK",
   "library": "alamofire"
 }

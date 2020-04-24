@@ -1793,9 +1793,9 @@ paths:
                                     last_name: some text
                                     company: some text
                                     email: some text
-                            With Registration ID:
+                            with_registration:
                                 value:
-                                    registration_id: '123531144'
+                                    registration_id: uuid
                                     guest_email_template_id: 47
                                     host_email_template_id: 65
                                     send_notifications: true
@@ -4455,6 +4455,7 @@ components:
                                 - some text
                         end_date: '2018-02-10T09:30Z'
         SigninCreateParams:
+            description: Params used to create a Signin
             required: []
             type: object
             properties:
@@ -4463,7 +4464,7 @@ components:
                 host_email_template_id:
                     type: integer
                 host_ids:
-                    description: 'Array of Hosts, ignored if `registration_id` is included'
+                    description: 'Array of Host ids, ignored if `registration_id` is included'
                     type: array
                     items:
                         type: integer
@@ -4471,6 +4472,7 @@ components:
                     description: 'ID of the Location where the Signin happened, ignored if `registration_id` is included'
                     type: integer
                 send_notifications:
+                    description: Should send notification to host/guests?
                     type: boolean
                 sms_message:
                     type: string

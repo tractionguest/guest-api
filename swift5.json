@@ -1,5 +1,6 @@
 {
   "packageName": "GuestSDK",
   "projectName": "GuestSDK",
-  "library": "alamofire"
+  "library": "alamofire",
+  "responseAs": "Result"
 }

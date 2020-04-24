@@ -14,9 +14,9 @@ Name | Type | Description | Notes
 **email** | **String** | E-mail | [optional] [default to null]
 **company** | **String** | Company&#39;s name | [optional] [default to null]
 **photoUrl** | **String** | URL of the uploaded photo | [optional] [default to null]
-**guestReponses** | [**List&lt;GuestResponse&gt;**](GuestResponse.md) | Response given by the guest | [optional] [default to []]
 **invite** | [**Invite**](Invite.md) |  | [optional] [default to null]
 **visitor** | [**Visitor**](Visitor.md) |  | [optional] [default to null]
+**guestResponses** | [**List&lt;GuestResponse&gt;**](GuestResponse.md) | Response given by the guest | [optional] [default to []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

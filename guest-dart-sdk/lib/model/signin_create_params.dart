@@ -5,27 +5,29 @@ class SigninCreateParams {
   int guestEmailTemplateId = null;
   
   int hostEmailTemplateId = null;
-  
+  /* Array of Host ids, ignored if `registration_id` is included */
   List<int> hostIds = [];
-  
+  /* ID of the Location where the Signin happened, ignored if `registration_id` is included */
   int locationId = null;
-  
+  /* Should send notification to host/guests? */
   bool sendNotifications = null;
   
   String smsMessage = null;
-  
+  /* First name, ignored if `registration_id` is included */
   String firstName = null;
-  
+  /* Last name, ignored if `registration_id` is included */
   String lastName = null;
-  
+  /* Company name, ignored if `registration_id` is included */
   String company = null;
-  
+  /* E-mail, ignored if `registration_id` is included */
   String email = null;
+  /* UUID of a Registration */
+  String registrationId = null;
   SigninCreateParams();
 
   @override
   String toString() {
-    return 'SigninCreateParams[guestEmailTemplateId=$guestEmailTemplateId, hostEmailTemplateId=$hostEmailTemplateId, hostIds=$hostIds, locationId=$locationId, sendNotifications=$sendNotifications, smsMessage=$smsMessage, firstName=$firstName, lastName=$lastName, company=$company, email=$email, ]';
+    return 'SigninCreateParams[guestEmailTemplateId=$guestEmailTemplateId, hostEmailTemplateId=$hostEmailTemplateId, hostIds=$hostIds, locationId=$locationId, sendNotifications=$sendNotifications, smsMessage=$smsMessage, firstName=$firstName, lastName=$lastName, company=$company, email=$email, registrationId=$registrationId, ]';
   }
 
   SigninCreateParams.fromJson(Map<String, dynamic> json) {
@@ -80,6 +82,11 @@ class SigninCreateParams {
     } else {
           email = json['email'];
     }
+    if (json['registration_id'] == null) {
+      registrationId = null;
+    } else {
+          registrationId = json['registration_id'];
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -104,6 +111,8 @@ class SigninCreateParams {
       json['company'] = company;
     if (email != null)
       json['email'] = email;
+    if (registrationId != null)
+      json['registration_id'] = registrationId;
     return json;
   }
 

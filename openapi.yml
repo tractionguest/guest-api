@@ -5130,11 +5130,12 @@ components:
                     format: int32
                     type: integer
                 external_colours:
-                    description: ''
+                    description: Deprecated
                     type: array
                     items:
                         type: string
                 internal_colours:
+                    description: Deprecated
                     type: array
                     items:
                         type: string

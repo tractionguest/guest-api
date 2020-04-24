@@ -22,6 +22,9 @@ script:
   - ./openapi-generator.sh validate -i openapi.yml
   - ./build-scripts/dart.sh
   - ./build-scripts/typescript-angular.sh
+  - ./build-scripts/swift.sh
+  - ./build-scripts/objc.sh
+  - ./build-scripts/android.sh
   - ./build-scripts/redoc.sh
  
 after_success:

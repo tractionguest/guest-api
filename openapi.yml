@@ -5044,7 +5044,7 @@ components:
                 host_email_template_id:
                     type: integer
                 host_ids:
-                    description: 'Array of Hosts, ignored if `registration_id` is included'
+                    description: 'Array of Host ids, ignored if `registration_id` is included'
                     type: array
                     items:
                         type: integer

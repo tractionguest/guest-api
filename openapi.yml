@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.11.2
+    version: 0.11.3
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -3547,14 +3547,11 @@ paths:
                             default:
                                 value:
                                     message: some text
-                                    channels:
-                                        - SMS
-                                        - EMAIL
-                                    signin_selectors:
-                                        signin_ids:
-                                            - 19
-                                            - 64
-                                        is_signed_out: false
+                                    sms: true
+                                    email: true
+                                    ids:
+                                        - 30
+                                        - 65
                 required: true
             tags:
                 - GuestAlerts
@@ -3564,6 +3561,14 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/GuestAlertDetail'
+                            examples:
+                                default:
+                                    value:
+                                        uuid: some text
+                                        id: 93
+                                        message: some text
+                                        sms: true
+                                        email: true
                     description: Guest Alert has been scheduled for delivery
                 '400':
                     content:
@@ -3780,6 +3785,68 @@ paths:
                     type: string
                 in: path
                 required: true
+    /location_alerts/:
+        summary: Broadcasts alerts to all guests by location(s) via specified channel
+        post:
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/GuestAlertCreateParams'
+                        examples:
+                            default:
+                                value:
+                                    message: some text
+                                    sms: true
+                                    email: true
+                                    ids:
+                                        - 11
+                                        - 69
+                required: true
+            tags:
+                - GuestAlerts
+            responses:
+                '201':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GuestAlertDetail'
+                            examples:
+                                default:
+                                    value:
+                                        uuid: some text
+                                        id: 25
+                                        message: some text
+                                        sms: true
+                                        email: true
+                    description: Guest Alert has been scheduled for delivery
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorsList'
+                            examples:
+                                default:
+                                    value:
+                                        errors:
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                                            -
+                                                domain: some text
+                                                attribute: some text
+                                                code: some text
+                                                message: some text
+                    description: A generic error
+                '401':
+                    description: You don't have permission to create requested Guest Alerts
+                '403':
+                    description: You do not have permission for this action
+            operationId: createLocationAlert
+            summary: Create Location Alert
+            description: Enqueues guest alerts by location(s) via specified channels
 components:
     schemas:
         Host:
@@ -6841,112 +6908,64 @@ components:
             description: ''
             required:
                 - message
-                - channels
+                - sms
+                - email
+                - ids
             type: object
             properties:
                 message:
                     description: Plain text of the alert to be sent
                     type: string
-                channels:
-                    description: 'Specify the broadcast channel, one of ''SMS'' and/or ''EMAIL'''
-                    type: array
-                    items:
-                        type: string
-                signin_selectors:
-                    $ref: '#/components/schemas/GuestAlertSigninSelectors'
-                    description: ''
-            example:
-                message: some text
-                channels:
-                    - SMS
-                    - EMAIL
-                signin_selectors:
-                    is_signed_out: true
-                    signin_ids:
-                        - 45
-                        - 91
-                    location_ids:
-                        - 46
-                        - 83
-        GuestAlertSigninSelectors:
-            description: ''
-            type: object
-            properties:
-                is_signed_out:
-                    description: ''
+                sms:
+                    description: Send notification by SMS
                     type: boolean
-                signin_ids:
-                    description: ''
-                    type: array
-                    items:
-                        type: integer
-                location_ids:
-                    description: ''
+                email:
+                    description: Send notification by email
+                    type: boolean
+                ids:
+                    description: 'Some model ids (location, signin)'
                     type: array
                     items:
                         type: integer
             example:
-                is_signed_out: false
-                signin_ids:
-                    - 26
-                    - 81
-                location_ids:
-                    - 40
-                    - 81
+                email: true
+                ids:
+                    - 1
+                    - 3
+                    - 6
+                message: some text
+                sms: false
         GuestAlertDetail:
             description: ''
             required:
-                - delivery_status
-                - channels
-                - pending_count
-                - failed_count
-                - sent_count
                 - uuid
+                - id
                 - message
+                - sms
+                - email
             type: object
             properties:
-                delivery_status:
-                    description: |+
-                        pending, success, partial success, or failure
-
-                    enum:
-                        - pending
-                        - success
-                        - partial_success
-                        - failure
+                uuid:
+                    description: The uuid of the guest_alert object
                     type: string
-                pending_count:
-                    description: |
-                        Count of pending messages
-                    type: integer
-                sent_count:
-                    description: |
-                        Count of successfully sent messages
-                    type: integer
-                failed_count:
-                    description: Count of messages that failed to be sent
+                id:
+                    description: The id of the alert
                     type: integer
                 message:
                     description: ''
                     type: string
-                uuid:
-                    description: The uuid of the guest_alert object
-                    type: string
-                channels:
-                    description: Channel used to send the message
-                    type: array
-                    items:
-                        type: string
+                sms:
+                    description: Send notification by SMS
+                    type: boolean
+                email:
+                    description: Send notification by email
+                    type: boolean
             example:
-                delivery_status: success
-                pending_count: 42
-                sent_count: 0
-                failed_count: 0
                 message: some text
-                uuid: some text
-                channels:
-                    - SMS
-                    - EMAIL
+                uuid: ASDF7A8SD7F9AS7F9SAG
+                id: 1
+                sms: true
+                email: false
     parameters:
         idempotencyKey:
             name: Idempotency-Key

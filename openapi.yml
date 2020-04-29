@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
     title: Traction Guest API
-    version: 0.11.2
+    version: 0.11.3
     description: 'A compelling story about a lone device, on a quest for its data.'
     contact:
         name: Brandon McKay
@@ -4073,6 +4073,9 @@ components:
                 mobile_number:
                     description: ''
                     type: string
+                registration:
+                    $ref: '#/components/schemas/Registration'
+                    description: ''
             example:
                 id: 59
                 first_name: some text
@@ -4880,6 +4883,9 @@ components:
                 mobile_number:
                     description: Phone number
                     type: string
+                registration:
+                    $ref: '#/components/schemas/Registration'
+                    description: The registration associated with this invite
             example:
                 id: 20
                 company: some text

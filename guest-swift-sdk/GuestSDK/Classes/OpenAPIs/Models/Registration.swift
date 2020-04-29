@@ -24,18 +24,18 @@ public struct Registration: Codable {
     /** URL of the uploaded photo */
     public var photoUrl: String?
     /** Response given by the guest */
-    public var guestReponses: [GuestResponse]?
+    public var guestResponses: [GuestResponse]?
     public var invite: Invite?
     public var visitor: Visitor?
 
-    public init(id: String?, createdAt: Date?, name: String?, email: String?, company: String?, photoUrl: String?, guestReponses: [GuestResponse]?, invite: Invite?, visitor: Visitor?) {
+    public init(id: String?, createdAt: Date?, name: String?, email: String?, company: String?, photoUrl: String?, guestResponses: [GuestResponse]?, invite: Invite?, visitor: Visitor?) {
         self.id = id
         self.createdAt = createdAt
         self.name = name
         self.email = email
         self.company = company
         self.photoUrl = photoUrl
-        self.guestReponses = guestReponses
+        self.guestResponses = guestResponses
         self.invite = invite
         self.visitor = visitor
     }
@@ -47,7 +47,7 @@ public struct Registration: Codable {
         case email
         case company
         case photoUrl = "photo_url"
-        case guestReponses = "guest_reponses"
+        case guestResponses = "guest_responses"
         case invite
         case visitor
     }

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **email** | **String** | E-mail | [optional] 
 **company** | **String** | Company&#39;s name | [optional] 
 **photoUrl** | **String** | URL of the uploaded photo | [optional] 
-**guestReponses** | [GuestResponse] | Response given by the guest | [optional] 
+**guestResponses** | [GuestResponse] | Response given by the guest | [optional] 
 **invite** | [**Invite**](Invite.md) |  | [optional] 
 **visitor** | [**Visitor**](Visitor.md) |  | [optional] 
 

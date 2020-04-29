@@ -14,7 +14,7 @@ class Registration {
   /* URL of the uploaded photo */
   String photoUrl = null;
   /* Response given by the guest */
-  List<GuestResponse> guestReponses = [];
+  List<GuestResponse> guestResponses = [];
   
   Invite invite = null;
   
@@ -23,7 +23,7 @@ class Registration {
 
   @override
   String toString() {
-    return 'Registration[id=$id, createdAt=$createdAt, name=$name, email=$email, company=$company, photoUrl=$photoUrl, guestReponses=$guestReponses, invite=$invite, visitor=$visitor, ]';
+    return 'Registration[id=$id, createdAt=$createdAt, name=$name, email=$email, company=$company, photoUrl=$photoUrl, guestResponses=$guestResponses, invite=$invite, visitor=$visitor, ]';
   }
 
   Registration.fromJson(Map<String, dynamic> json) {
@@ -58,10 +58,10 @@ class Registration {
     } else {
           photoUrl = json['photo_url'];
     }
-    if (json['guest_reponses'] == null) {
-      guestReponses = null;
+    if (json['guest_responses'] == null) {
+      guestResponses = null;
     } else {
-      guestReponses = GuestResponse.listFromJson(json['guest_reponses']);
+      guestResponses = GuestResponse.listFromJson(json['guest_responses']);
     }
     if (json['invite'] == null) {
       invite = null;
@@ -89,8 +89,8 @@ class Registration {
       json['company'] = company;
     if (photoUrl != null)
       json['photo_url'] = photoUrl;
-    if (guestReponses != null)
-      json['guest_reponses'] = guestReponses;
+    if (guestResponses != null)
+      json['guest_responses'] = guestResponses;
     if (invite != null)
       json['invite'] = invite;
     if (visitor != null)

@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.11.3
+  version: 0.11.4
   description: 'A compelling story about a lone device, on a quest for its data.'
   contact:
     name: Brandon McKay
@@ -3058,7 +3058,7 @@ paths:
                     email: some text
                     company: some text
                     photo_url: some text
-                    guest_reponses:
+                    guest_responses:
                       - title: some text
                         sequence: 9
                         id: 46
@@ -3762,7 +3762,7 @@ components:
           email: some text
           company: some text
           photo_url: some text
-          guest_reponses:
+          guest_responses:
             - title: some text
               sequence: 69
               id: 36
@@ -4595,7 +4595,7 @@ components:
           email: some text
           company: some text
           photo_url: some text
-          guest_reponses:
+          guest_responses:
             - title: some text
               sequence: 69
               id: 36
@@ -6382,7 +6382,7 @@ components:
         email: some text
         company: some text
         photo_url: some text
-        guest_reponses:
+        guest_responses:
           - title: some text
             sequence: 69
             id: 36
@@ -6473,7 +6473,7 @@ components:
         photo_url:
           description: URL of the uploaded photo
           type: string
-        guest_reponses:
+        guest_responses:
           type: array
           description: Response given by the guest
           items:

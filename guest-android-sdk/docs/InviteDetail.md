@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **inviteWatchlist** | [**InviteWatchlist**](InviteWatchlist.md) |  |  [optional]
 **emailTemplate** | [**EmailTemplate**](EmailTemplate.md) |  |  [optional]
 **mobileNumber** | **String** | Phone number |  [optional]
+**registration** | [**Registration**](Registration.md) |  |  [optional]
 
 
 ## Enum: WatchlistColourEnum

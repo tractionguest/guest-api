@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **inviteWatchlist** | [**InviteWatchlist**](InviteWatchlist.md) |  | [optional] [default to null]
 **emailTemplate** | [**EmailTemplate**](EmailTemplate.md) |  | [optional] [default to null]
 **mobileNumber** | **String** | Phone number | [optional] [default to null]
+**registration** | [**Registration**](Registration.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

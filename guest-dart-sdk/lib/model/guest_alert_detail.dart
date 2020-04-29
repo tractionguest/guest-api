@@ -1,7 +1,7 @@
 part of guest_sdk.api;
 
 class GuestAlertDetail {
-  /* pending, success, partial success, or failure   */
+  /* pending, success, partial success, or failure  */
   String deliveryStatus = null;
   //enum deliveryStatusEnum {  pending,  success,  partial_success,  failure,  };{
   /* Count of pending messages  */

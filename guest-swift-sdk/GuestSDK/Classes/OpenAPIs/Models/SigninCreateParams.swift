@@ -7,7 +7,7 @@
 
 import Foundation
 
-/** Params used to create a Signin */
+
 public struct SigninCreateParams: Codable { 
 
 
@@ -17,7 +17,6 @@ public struct SigninCreateParams: Codable {
     public var hostIds: [Int]?
     /** ID of the Location where the Signin happened, ignored if &#x60;registration_id&#x60; is included */
     public var locationId: Int?
-    /** Should send notification to host/guests? */
     public var sendNotifications: Bool?
     public var smsMessage: String?
     /** First name, ignored if &#x60;registration_id&#x60; is included */

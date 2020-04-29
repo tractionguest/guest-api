@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**deliveryStatus** | [**DeliveryStatusEnum**](#DeliveryStatusEnum) | pending, success, partial success, or failure   | 
+**deliveryStatus** | [**DeliveryStatusEnum**](#DeliveryStatusEnum) | pending, success, partial success, or failure  | 
 **pendingCount** | **Integer** | Count of pending messages  | 
 **sentCount** | **Integer** | Count of successfully sent messages  | 
 **failedCount** | **Integer** | Count of messages that failed to be sent | 

@@ -23,21 +23,21 @@ public struct Registration: Codable {
     public var company: String?
     /** URL of the uploaded photo */
     public var photoUrl: String?
+    /** Response given by the guest */
+    public var guestReponses: [GuestResponse]?
     public var invite: Invite?
     public var visitor: Visitor?
-    /** Response given by the guest */
-    public var guestResponses: [GuestResponse]?
 
-    public init(id: String?, createdAt: Date?, name: String?, email: String?, company: String?, photoUrl: String?, invite: Invite?, visitor: Visitor?, guestResponses: [GuestResponse]?) {
+    public init(id: String?, createdAt: Date?, name: String?, email: String?, company: String?, photoUrl: String?, guestReponses: [GuestResponse]?, invite: Invite?, visitor: Visitor?) {
         self.id = id
         self.createdAt = createdAt
         self.name = name
         self.email = email
         self.company = company
         self.photoUrl = photoUrl
+        self.guestReponses = guestReponses
         self.invite = invite
         self.visitor = visitor
-        self.guestResponses = guestResponses
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
@@ -47,9 +47,9 @@ public struct Registration: Codable {
         case email
         case company
         case photoUrl = "photo_url"
+        case guestReponses = "guest_reponses"
         case invite
         case visitor
-        case guestResponses = "guest_responses"
     }
 
 }

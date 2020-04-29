@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **endDate** | **NSDate*** |  | [optional] 
 **email** | **NSString*** |  | 
 **mobileNumber** | **NSString*** |  | [optional] 
+**registration** | [**TGRegistration***](TGRegistration.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

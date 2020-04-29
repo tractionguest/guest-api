@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **inviteWatchlist** | [**TGInviteWatchlist***](TGInviteWatchlist.md) |  | [optional] 
 **emailTemplate** | [**TGEmailTemplate***](TGEmailTemplate.md) |  | [optional] 
 **mobileNumber** | **NSString*** | Phone number | [optional] 
+**registration** | [**TGRegistration***](TGRegistration.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

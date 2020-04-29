@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **endDate** | **Date** |  | [optional] 
 **email** | **String** |  | 
 **mobileNumber** | **String** |  | [optional] 
+**registration** | [**Registration**](Registration.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

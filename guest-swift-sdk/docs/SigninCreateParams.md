@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **hostEmailTemplateId** | **Int** |  | [optional] 
 **hostIds** | **[Int]** | Array of Host ids, ignored if &#x60;registration_id&#x60; is included | [optional] 
 **locationId** | **Int** | ID of the Location where the Signin happened, ignored if &#x60;registration_id&#x60; is included | [optional] 
-**sendNotifications** | **Bool** | Should send notification to host/guests? | [optional] 
+**sendNotifications** | **Bool** |  | [optional] 
 **smsMessage** | **String** |  | [optional] 
 **firstName** | **String** | First name, ignored if &#x60;registration_id&#x60; is included | [optional] 
 **lastName** | **String** | Last name, ignored if &#x60;registration_id&#x60; is included | [optional] 

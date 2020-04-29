@@ -9,7 +9,7 @@ class SigninCreateParams {
   List<int> hostIds = [];
   /* ID of the Location where the Signin happened, ignored if `registration_id` is included */
   int locationId = null;
-  /* Should send notification to host/guests? */
+  
   bool sendNotifications = null;
   
   String smsMessage = null;

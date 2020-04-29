@@ -13,17 +13,17 @@ class Registration {
   String company = null;
   /* URL of the uploaded photo */
   String photoUrl = null;
+  /* Response given by the guest */
+  List<GuestResponse> guestReponses = [];
   
   Invite invite = null;
   
   Visitor visitor = null;
-  /* Response given by the guest */
-  List<GuestResponse> guestResponses = [];
   Registration();
 
   @override
   String toString() {
-    return 'Registration[id=$id, createdAt=$createdAt, name=$name, email=$email, company=$company, photoUrl=$photoUrl, invite=$invite, visitor=$visitor, guestResponses=$guestResponses, ]';
+    return 'Registration[id=$id, createdAt=$createdAt, name=$name, email=$email, company=$company, photoUrl=$photoUrl, guestReponses=$guestReponses, invite=$invite, visitor=$visitor, ]';
   }
 
   Registration.fromJson(Map<String, dynamic> json) {
@@ -58,6 +58,11 @@ class Registration {
     } else {
           photoUrl = json['photo_url'];
     }
+    if (json['guest_reponses'] == null) {
+      guestReponses = null;
+    } else {
+      guestReponses = GuestResponse.listFromJson(json['guest_reponses']);
+    }
     if (json['invite'] == null) {
       invite = null;
     } else {
@@ -67,11 +72,6 @@ class Registration {
       visitor = null;
     } else {
       visitor = new Visitor.fromJson(json['visitor']);
-    }
-    if (json['guest_responses'] == null) {
-      guestResponses = null;
-    } else {
-      guestResponses = GuestResponse.listFromJson(json['guest_responses']);
     }
   }
 
@@ -89,12 +89,12 @@ class Registration {
       json['company'] = company;
     if (photoUrl != null)
       json['photo_url'] = photoUrl;
+    if (guestReponses != null)
+      json['guest_reponses'] = guestReponses;
     if (invite != null)
       json['invite'] = invite;
     if (visitor != null)
       json['visitor'] = visitor;
-    if (guestResponses != null)
-      json['guest_responses'] = guestResponses;
     return json;
   }
 

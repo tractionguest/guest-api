@@ -3,15 +3,19 @@ part of guest_sdk.api;
 class InviteWatchlist {
   
   int id = null;
-  
+  /* Deprecated */
   List<String> externalColours = [];
-  
+  /* Deprecated */
   List<String> internalColours = [];
+  
+  List<ExternalWatchlistResult> external_ = [];
+  
+  List<InternalWatchlistResult> internal = [];
   InviteWatchlist();
 
   @override
   String toString() {
-    return 'InviteWatchlist[id=$id, externalColours=$externalColours, internalColours=$internalColours, ]';
+    return 'InviteWatchlist[id=$id, externalColours=$externalColours, internalColours=$internalColours, external_=$external_, internal=$internal, ]';
   }
 
   InviteWatchlist.fromJson(Map<String, dynamic> json) {
@@ -31,6 +35,16 @@ class InviteWatchlist {
     } else {
       internalColours = (json['internal_colours'] as List).cast<String>();
     }
+    if (json['external'] == null) {
+      external_ = null;
+    } else {
+      external_ = ExternalWatchlistResult.listFromJson(json['external']);
+    }
+    if (json['internal'] == null) {
+      internal = null;
+    } else {
+      internal = InternalWatchlistResult.listFromJson(json['internal']);
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -41,6 +55,10 @@ class InviteWatchlist {
       json['external_colours'] = externalColours;
     if (internalColours != null)
       json['internal_colours'] = internalColours;
+    if (external_ != null)
+      json['external'] = external_;
+    if (internal != null)
+      json['internal'] = internal;
     return json;
   }
 

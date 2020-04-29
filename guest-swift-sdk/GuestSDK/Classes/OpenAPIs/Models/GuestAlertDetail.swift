@@ -17,7 +17,7 @@ public struct GuestAlertDetail: Codable {
         case partialSuccess = "partial_success"
         case failure = "failure"
     }
-    /** pending, success, partial success, or failure   */
+    /** pending, success, partial success, or failure  */
     public var deliveryStatus: DeliveryStatus
     /** Count of pending messages  */
     public var pendingCount: Int

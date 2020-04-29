@@ -34,11 +34,13 @@ class InviteDetail {
   EmailTemplate emailTemplate = null;
   /* Phone number */
   String mobileNumber = null;
+  
+  Registration registration = null;
   InviteDetail();
 
   @override
   String toString() {
-    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlistColour=$watchlistColour, customFields=$customFields, notificationTriggers=$notificationTriggers, inviteWatchlist=$inviteWatchlist, emailTemplate=$emailTemplate, mobileNumber=$mobileNumber, ]';
+    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlistColour=$watchlistColour, customFields=$customFields, notificationTriggers=$notificationTriggers, inviteWatchlist=$inviteWatchlist, emailTemplate=$emailTemplate, mobileNumber=$mobileNumber, registration=$registration, ]';
   }
 
   InviteDetail.fromJson(Map<String, dynamic> json) {
@@ -123,6 +125,11 @@ class InviteDetail {
     } else {
           mobileNumber = json['mobile_number'];
     }
+    if (json['registration'] == null) {
+      registration = null;
+    } else {
+      registration = new Registration.fromJson(json['registration']);
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -159,6 +166,8 @@ class InviteDetail {
       json['email_template'] = emailTemplate;
     if (mobileNumber != null)
       json['mobile_number'] = mobileNumber;
+    if (registration != null)
+      json['registration'] = registration;
     return json;
   }
 

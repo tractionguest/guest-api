@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**deliveryStatus** | **NSString*** | pending, success, partial success, or failure   | 
+**deliveryStatus** | **NSString*** | pending, success, partial success, or failure  | 
 **pendingCount** | **NSNumber*** | Count of pending messages  | 
 **sentCount** | **NSNumber*** | Count of successfully sent messages  | 
 **failedCount** | **NSNumber*** | Count of messages that failed to be sent | 

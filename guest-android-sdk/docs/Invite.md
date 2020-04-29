@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **endDate** | [**Date**](Date.md) |  |  [optional]
 **email** | **String** |  | 
 **mobileNumber** | **String** |  |  [optional]
+**registration** | [**Registration**](Registration.md) |  |  [optional]
 
 
 ## Enum: WatchlistColourEnum

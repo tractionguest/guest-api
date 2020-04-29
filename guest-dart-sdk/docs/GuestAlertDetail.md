@@ -8,7 +8,7 @@ import 'package:guest_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**deliveryStatus** | **String** | pending, success, partial success, or failure   | [default to null]
+**deliveryStatus** | **String** | pending, success, partial success, or failure  | [default to null]
 **pendingCount** | **int** | Count of pending messages  | [default to null]
 **sentCount** | **int** | Count of successfully sent messages  | [default to null]
 **failedCount** | **int** | Count of messages that failed to be sent | [default to null]

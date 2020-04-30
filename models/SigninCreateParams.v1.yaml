@@ -32,19 +32,4 @@ properties:
     type: integer
   guest_email_template_id:
     type: integer
-x-examples:
-  default:
-    guest_email_template_id: 60
-    host_email_template_id: 50
-    host_ids:
-      - 36
-      - 76
-    location_id: 6
-    send_notifications: true
-    sms_message: some text
-    first_name: some text
-    last_name: some text
-    company: some text
-    email: some text
-required: []
-description: Params used to create a new Signin
+description: ''

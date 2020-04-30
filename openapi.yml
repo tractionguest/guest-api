@@ -491,7 +491,7 @@ paths:
       description: Gets the details of a single instance of a `Signin`.
     put:
       requestBody:
-        description: "The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`. `is_signed_out`, and `is_acknowledged` are pseudo attributes where once they are set to true, there's no going back."
+        description: "The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`. \n`is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible."
         content:
           application/json:
             schema:
@@ -2168,8 +2168,31 @@ paths:
       summary: List All Signins
       description: Gets a list of all `Signin` entities.
     post:
+      summary: ''
+      operationId: createSignin
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Signin.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '422':
+          description: Unprocessable Entity (WebDAV)
+      description: Creates a Signin
+      tags:
+        - Signins
       requestBody:
-        description: ""
         content:
           application/json:
             schema:
@@ -2192,202 +2215,14 @@ paths:
                   last_name: some text
                   company: some text
                   email: some text
-              from-registration:
+              registration:
                 value:
                   registration_id: '123531144'
                   guest_email_template_id: 47
                   host_email_template_id: 65
                   send_notifications: true
                   sms_message: some text
-      tags:
-        - Signins
-      parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: ./models/Signin.v1.yaml
-              examples:
-                default:
-                  value:
-                    id: 13
-                    company: some text
-                    email: some text
-                    first_name: some text
-                    is_accounted_for: true
-                    is_acknowledged: true
-                    last_name: some text
-                    location_name: some text
-                    signed_out_timestamp: '2018-02-10T09:30Z'
-                    signin_photo_url: some text
-                    signin_timestamp: '2018-02-10T09:30Z'
-                    hosts:
-                      - id: 82
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile_number: some text
-                        profile_pic_url: some text
-                      - id: 96
-                        email: some text
-                        first_name: some text
-                        last_name: some text
-                        mobile_number: some text
-                        profile_pic_url: some text
-                    signin_watchlist:
-                      id: 98
-                      external:
-                        - search_terms:
-                            name: some text
-                            company: some text
-                            city: some text
-                            country: some text
-                            state: some text
-                          integration: some text
-                          colour: GREEN
-                          matches:
-                            - id: some text
-                              alt_names:
-                                - some text
-                                - some text
-                              federal_register_notice: some text
-                              name: some text
-                              source_information_url: some text
-                              source_list_url: some text
-                              list: some text
-                              type: some text
-                              category: some text
-                              street1: some text
-                              street2: some text
-                              city: some text
-                              state: some text
-                              country: some text
-                              notes: some text
-                              frc: some text
-                              start: '2018-01-17'
-                              end: '2018-01-17'
-                              frserve: some text
-                              optional_ID: some text
-                              alert_type: some text
-                            - id: some text
-                              alt_names:
-                                - some text
-                                - some text
-                              federal_register_notice: some text
-                              name: some text
-                              source_information_url: some text
-                              source_list_url: some text
-                              list: some text
-                              type: some text
-                              category: some text
-                              street1: some text
-                              street2: some text
-                              city: some text
-                              state: some text
-                              country: some text
-                              notes: some text
-                              frc: some text
-                              start: '2018-01-17'
-                              end: '2018-01-17'
-                              frserve: some text
-                              optional_ID: some text
-                              alert_type: some text
-                        - search_terms:
-                            name: some text
-                            company: some text
-                            city: some text
-                            country: some text
-                            state: some text
-                          integration: some text
-                          colour: YELLOW
-                          matches:
-                            - id: some text
-                              alt_names:
-                                - some text
-                                - some text
-                              federal_register_notice: some text
-                              name: some text
-                              source_information_url: some text
-                              source_list_url: some text
-                              list: some text
-                              type: some text
-                              category: some text
-                              street1: some text
-                              street2: some text
-                              city: some text
-                              state: some text
-                              country: some text
-                              notes: some text
-                              frc: some text
-                              start: '2018-01-17'
-                              end: '2018-01-17'
-                              frserve: some text
-                              optional_ID: some text
-                              alert_type: some text
-                            - id: some text
-                              alt_names:
-                                - some text
-                                - some text
-                              federal_register_notice: some text
-                              name: some text
-                              source_information_url: some text
-                              source_list_url: some text
-                              list: some text
-                              type: some text
-                              category: some text
-                              street1: some text
-                              street2: some text
-                              city: some text
-                              state: some text
-                              country: some text
-                              notes: some text
-                              frc: some text
-                              start: '2018-01-17'
-                              end: '2018-01-17'
-                              frserve: some text
-                              optional_ID: some text
-                              alert_type: some text
-                      internal:
-                        - id: 63
-                          email: some text
-                          colour: some text
-                          last_name: some text
-                          first_name: some text
-                        - id: 30
-                          email: some text
-                          colour: some text
-                          last_name: some text
-                          first_name: some text
-          description: Successful response.
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: ./models/ErrorsList.v1.yaml
-              examples:
-                default:
-                  value:
-                    errors:
-                      - domain: some text
-                        attribute: some text
-                        code: some text
-                        message: some text
-                      - domain: some text
-                        attribute: some text
-                        code: some text
-                        message: some text
-          description: A generic error
-        '401':
-          description: "You don't have permission to create this Signin"
-        '403':
-          description: You do not have permission for this action
-        '422':
-          description: Your request was not formatted correctly
-      operationId: createSignin
-      summary: Create a Signin
-      description: Creates a new instance of a `Signin`.
+        description: Params for creating a Signin can omit certain fields if a `registration_id` is present.
   '/users/{userId}':
     summary: Path used to manage a single User.
     description: The REST endpoint/path used to get single instances of an `User` and their `PermissionBundle`s.

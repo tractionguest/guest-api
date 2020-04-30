@@ -1,0 +1,39 @@
+title: PaginatedWatchlistList
+type: object
+x-examples:
+  default:
+    pagination:
+      total_records: 24
+      current_offset: 58
+      next_offset: 38
+    watchlists:
+      - id: 2
+        colour: some text
+        email: some text
+        first_name: some text
+        last_name: some text
+        notes: some text
+        photo: some text
+        aliases:
+          - some text
+          - some text
+      - id: 96
+        colour: some text
+        email: some text
+        first_name: some text
+        last_name: some text
+        notes: some text
+        photo: some text
+        aliases:
+          - some text
+          - some text
+properties:
+  watchlists:
+    type: array
+    items:
+      $ref: ./Watchlist.v1.yaml
+  pagination:
+    $ref: ./Pagination.v1.yaml
+required:
+  - watchlists
+  - pagination

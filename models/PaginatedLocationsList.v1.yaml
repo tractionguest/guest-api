@@ -1,0 +1,12 @@
+title: PaginatedLocationsList
+type: object
+properties:
+  locations:
+    type: array
+    items:
+      $ref: ./Location.v1.yaml
+  pagination:
+    $ref: ./Pagination.v1.yaml
+required:
+  - locations
+  - pagination

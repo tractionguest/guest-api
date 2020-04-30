@@ -1,0 +1,288 @@
+title: SigninDetail
+type: object
+x-examples:
+  default:
+    id: 95
+    company: some text
+    email: some text
+    first_name: some text
+    is_accounted_for: true
+    is_acknowledged: true
+    last_name: some text
+    location_name: some text
+    mobile_number: some text
+    signed_out_timestamp: '2018-02-10T09:30Z'
+    signin_photo_url: some text
+    signin_timestamp: '2018-02-10T09:30Z'
+    is_signed_out: true
+    note: some text
+    signin_acknowledgement:
+      code: some text
+      acknowledged_at: '2018-02-10T09:30Z'
+      id: 31
+    signin_data:
+      - name: some text
+        custom_fields:
+          - format: string
+            field_name: some text
+            field_value: some text
+          - format: string
+            field_name: some text
+            field_value: some text
+      - name: some text
+        custom_fields:
+          - format: string
+            field_name: some text
+            field_value: some text
+          - format: string
+            field_name: some text
+            field_value: some text
+    hosts:
+      - id: 90
+        email: some text
+        first_name: some text
+        last_name: some text
+        mobile_number: some text
+        profile_pic_url: some text
+      - id: 1
+        email: some text
+        first_name: some text
+        last_name: some text
+        mobile_number: some text
+        profile_pic_url: some text
+    signin_watchlist:
+      id: 33
+      external:
+        - search_terms:
+            name: some text
+            company: some text
+            city: some text
+            country: some text
+            state: some text
+          integration: some text
+          colour: GREEN
+          matches:
+            - id: some text
+              alt_names:
+                - some text
+                - some text
+              federal_register_notice: some text
+              name: some text
+              source_information_url: some text
+              source_list_url: some text
+              list: some text
+              type: some text
+              category: some text
+              street1: some text
+              street2: some text
+              city: some text
+              state: some text
+              country: some text
+              notes: some text
+              frc: some text
+              start: '2018-01-17'
+              end: '2018-01-17'
+              frserve: some text
+              optional_ID: some text
+              alert_type: some text
+            - id: some text
+              alt_names:
+                - some text
+                - some text
+              federal_register_notice: some text
+              name: some text
+              source_information_url: some text
+              source_list_url: some text
+              list: some text
+              type: some text
+              category: some text
+              street1: some text
+              street2: some text
+              city: some text
+              state: some text
+              country: some text
+              notes: some text
+              frc: some text
+              start: '2018-01-17'
+              end: '2018-01-17'
+              frserve: some text
+              optional_ID: some text
+              alert_type: some text
+        - search_terms:
+            name: some text
+            company: some text
+            city: some text
+            country: some text
+            state: some text
+          integration: some text
+          colour: GREEN
+          matches:
+            - id: some text
+              alt_names:
+                - some text
+                - some text
+              federal_register_notice: some text
+              name: some text
+              source_information_url: some text
+              source_list_url: some text
+              list: some text
+              type: some text
+              category: some text
+              street1: some text
+              street2: some text
+              city: some text
+              state: some text
+              country: some text
+              notes: some text
+              frc: some text
+              start: '2018-01-17'
+              end: '2018-01-17'
+              frserve: some text
+              optional_ID: some text
+              alert_type: some text
+            - id: some text
+              alt_names:
+                - some text
+                - some text
+              federal_register_notice: some text
+              name: some text
+              source_information_url: some text
+              source_list_url: some text
+              list: some text
+              type: some text
+              category: some text
+              street1: some text
+              street2: some text
+              city: some text
+              state: some text
+              country: some text
+              notes: some text
+              frc: some text
+              start: '2018-01-17'
+              end: '2018-01-17'
+              frserve: some text
+              optional_ID: some text
+              alert_type: some text
+      internal:
+        - id: 9
+          email: some text
+          colour: some text
+          last_name: some text
+          first_name: some text
+        - id: 78
+          email: some text
+          colour: some text
+          last_name: some text
+          first_name: some text
+    documents:
+      - docusigns:
+          - template_id: some text
+            integration: some text
+            nda_status: some text
+            nda_signed_date: '2018-02-10T09:30Z'
+            envelope_id: some text
+            sequence: 88
+            docusign_id: some text
+            docusign_name: some text
+            title: some text
+          - template_id: some text
+            integration: some text
+            nda_status: some text
+            nda_signed_date: '2018-02-10T09:30Z'
+            envelope_id: some text
+            sequence: 9
+            docusign_id: some text
+            docusign_name: some text
+            title: some text
+        simple_signatures:
+          - status: some text
+            template_name: some text
+            id: some text
+            title: some text
+          - status: some text
+            template_name: some text
+            id: some text
+            title: some text
+      - docusigns:
+          - template_id: some text
+            integration: some text
+            nda_status: some text
+            nda_signed_date: '2018-02-10T09:30Z'
+            envelope_id: some text
+            sequence: 47
+            docusign_id: some text
+            docusign_name: some text
+            title: some text
+          - template_id: some text
+            integration: some text
+            nda_status: some text
+            nda_signed_date: '2018-02-10T09:30Z'
+            envelope_id: some text
+            sequence: 37
+            docusign_id: some text
+            docusign_name: some text
+            title: some text
+        simple_signatures:
+          - status: some text
+            template_name: some text
+            id: some text
+            title: some text
+          - status: some text
+            template_name: some text
+            id: some text
+            title: some text
+description: "The root of the Signin type's schema."
+properties:
+  id:
+    type: integer
+    format: int32
+  documents:
+    type: array
+    items:
+      $ref: ./SignableDocument.v1.yaml
+  signin_watchlist:
+    $ref: ./SigninWatchlist.v1.yaml
+  hosts:
+    type: array
+    items:
+      $ref: ./Host.v1.yaml
+  signin_data:
+    type: array
+    items:
+      $ref: ./SigninData.v1.yaml
+  signin_acknowledgement:
+    $ref: ./SigninAcknowledgement.v1.yaml
+  note:
+    type: string
+  is_signed_out:
+    description: A one-way method of Signing out a Signin
+    type: boolean
+  signin_timestamp:
+    format: date-time
+    type: string
+  signin_photo_url:
+    type: string
+  signed_out_timestamp:
+    format: date-time
+    type: string
+  mobile_number:
+    type: string
+  location_name:
+    type: string
+  last_name:
+    type: string
+  is_acknowledged:
+    description: |-
+      Whether this Signin has been acknowledged yet.
+      Can also be used as a one-way method of setting the Signin as acknowledged.
+    type: boolean
+  is_accounted_for:
+    type: boolean
+  first_name:
+    type: string
+  email:
+    type: string
+  company:
+    type: string
+required:
+  - id

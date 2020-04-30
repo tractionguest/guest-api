@@ -1,0 +1,21 @@
+title: WatchlistSearch
+description: ''
+type: object
+properties:
+  name:
+    type: string
+  company:
+    type: string
+  city:
+    type: string
+  country:
+    type: string
+  state:
+    type: string
+x-examples:
+  default:
+    name: Gabe Querioz
+    company: Traction
+    city: Burnaby
+    country: Canada
+    state: BC

@@ -1,0 +1,12 @@
+title: PaginatedEmailTemplatesList
+type: object
+properties:
+  pagination:
+    $ref: ./Pagination.v1.yaml
+  email_templates:
+    type: array
+    items:
+      $ref: ./EmailTemplate.v1.yaml
+required:
+  - pagination
+  - email_templates

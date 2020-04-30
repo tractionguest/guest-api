@@ -1,0 +1,19 @@
+title: SigninAcknowledgement
+description: "The root of the SigninAcknowledgement type's schema."
+required:
+  - id
+type: object
+properties:
+  code:
+    type: string
+  acknowledged_at:
+    format: date-time
+    type: string
+  id:
+    format: int32
+    type: integer
+x-examples:
+  default:
+    code: some text
+    acknowledged_at: '2018-02-10T09:30Z'
+    id: 10

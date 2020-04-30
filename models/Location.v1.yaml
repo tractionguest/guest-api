@@ -1,0 +1,18 @@
+title: Location
+description: "The root of the Location type's schema."
+required:
+  - id
+  - name
+type: object
+properties:
+  id:
+    format: int32
+    type: integer
+  name:
+    type: string
+x-examples:
+  default: |-
+    {
+      "id": 1,
+      "name": "Default"
+    }

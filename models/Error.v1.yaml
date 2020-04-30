@@ -1,0 +1,27 @@
+title: Error
+description: "The root of the Error type's schema."
+required:
+  - domain
+  - code
+type: object
+properties:
+  domain:
+    description: 'The name of the model with the error, or global if it is something outside a model'
+    type: string
+  attribute:
+    description: The model attribute where the error occured
+    type: string
+  code:
+    description: An error code reference for the specific error that occured
+    type: string
+  message:
+    description: A human readable error message that can be discarded for internationalization purposes
+    type: string
+x-examples:
+  default: |-
+    {
+      "domain": "model_name",
+      "attribute": "name",
+      "code": "cant_be_blank",
+      "message": "Words to use"
+    }

@@ -1,0 +1,68 @@
+title: AuditLog
+type: object
+description: "The root of the AuditLog type's schema."
+x-examples:
+  default:
+    id: 58
+    auditable_id: 31
+    auditable_type: some text
+    user_id: 83
+    username: some text
+    action: some text
+    audited_changes:
+      - field_name: result
+        field_value_before: '{}'
+        field_value_after: '{"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}'
+        format: json
+      - field_name: user_id
+        field_value_before: '1'
+        field_value_after: '2'
+        format: integer
+      - field_name: flag_enabled
+        field_value_after: 'true'
+        format: boolean
+    version: 56
+    comment: some text
+    remote_address: some text
+    request_uuid: some text
+    created_at: some texte
+properties:
+  id:
+    type: integer
+    description: ''
+  created_at:
+    description: ''
+    type: string
+  request_uuid:
+    description: ''
+    type: string
+  remote_address:
+    description: ''
+    type: string
+  comment:
+    description: ''
+    type: string
+  version:
+    description: ''
+    type: integer
+  audited_changes:
+    type: array
+    items:
+      $ref: ./AuditLogChange.v1.yaml
+  action:
+    description: ''
+    type: string
+  username:
+    description: ''
+    type: string
+  user_id:
+    description: ''
+    type: integer
+  auditable_type:
+    description: ''
+    type: string
+  auditable_id:
+    description: ''
+    type: integer
+required:
+  - id

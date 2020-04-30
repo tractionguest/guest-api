@@ -1,0 +1,19 @@
+title: Permission
+description: "The root of the Permission type's schema."
+type: object
+properties:
+  name:
+    type: string
+  visibility:
+    type: string
+  permissions:
+    type: array
+    items:
+      type: string
+x-examples:
+  default:
+    name: some text
+    visibility: some text
+    permissions:
+      - some text
+      - some text

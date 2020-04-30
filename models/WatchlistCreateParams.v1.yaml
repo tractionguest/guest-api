@@ -1,0 +1,33 @@
+title: WatchlistCreateParams
+type: object
+x-examples:
+  default:
+    colour: RED
+    email: bperson@example.com
+    first_name: Bad
+    last_name: Person
+    notes: "This is a bad person. Don't let them in"
+    aliases:
+      - Horrible Person
+      - Bad Guy
+description: Parameters required for updating or creating watchlist records
+properties:
+  aliases:
+    type: array
+    items:
+      type: string
+  notes:
+    type: string
+  last_name:
+    type: string
+  first_name:
+    type: string
+  email:
+    type: string
+  colour:
+    enum:
+      - RED
+      - YELLOW
+      - GREEN
+      - ORANGE
+    type: string

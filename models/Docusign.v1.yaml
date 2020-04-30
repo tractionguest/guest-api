@@ -1,0 +1,32 @@
+title: Docusign
+description: ''
+type: object
+properties:
+  template_id:
+    description: ''
+    type: string
+  integration:
+    description: ''
+    type: string
+  nda_status:
+    description: ''
+    type: string
+  nda_signed_date:
+    format: date-time
+    description: ''
+    type: string
+  envelope_id:
+    description: ''
+    type: string
+  sequence:
+    description: ''
+    type: string
+  docusign_id:
+    description: ''
+    type: string
+  docusign_name:
+    description: ''
+    type: string
+  title:
+    description: ''
+    type: string

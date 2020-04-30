@@ -1,0 +1,20 @@
+title: EmailTemplate
+description: "The root of the EmailTemplate type's schema."
+required:
+  - id
+type: object
+properties:
+  id:
+    format: int32
+    type: integer
+  name:
+    type: string
+  template_type:
+    type: string
+x-examples:
+  default: |-
+    {
+      "id": 1,
+      "name": "Template name",
+      "template_type": "typename"
+    }

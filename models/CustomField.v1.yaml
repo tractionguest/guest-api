@@ -1,0 +1,23 @@
+title: CustomField
+description: "The root of the CustomField type's schema."
+required:
+  - field_value
+  - field_name
+type: object
+properties:
+  format:
+    description: The format type of the field
+    type: string
+    enum:
+      - string
+  field_name:
+    description: What the field should be displayed/labeled as
+    type: string
+  field_value:
+    description: The value to be displayed for the field
+    type: string
+x-examples:
+  default:
+    format: string
+    field_name: some text
+    field_value: some text

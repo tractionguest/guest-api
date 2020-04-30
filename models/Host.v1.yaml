@@ -1,0 +1,32 @@
+title: Host
+description: A client host assigned to a Signin
+required:
+  - id
+type: object
+properties:
+  id:
+    format: int32
+    type: integer
+  email:
+    type: string
+  first_name:
+    type: string
+  last_name:
+    type: string
+  profile_pic_url:
+    type: string
+  department:
+    description: ''
+    type: string
+  mobile_number:
+    type: string
+x-examples:
+  default: |-
+    {
+      "id": 1,
+      "email": "name@email.com",
+      "first_name": "Frank",
+      "last_name": "Longbottom",
+      "mobile_number": "(604) 980-9933",
+      "profile_pic_url": "image.jpg"
+    }

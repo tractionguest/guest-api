@@ -1,0 +1,85 @@
+title: InviteCreateParams
+type: object
+x-examples:
+  default:
+    company: some text
+    email: some text
+    end_date: '2018-02-10T09:30Z'
+    last_name: some text
+    start_date: '2018-02-10T09:30Z'
+    title: some text
+    watchlist_colour: {}
+    host_ids:
+      - 63
+      - 49
+    custom_fields:
+      - format: {}
+        field_name: some text
+        field_value: some text
+      - format: {}
+        field_name: some text
+        field_value: some text
+    email_template_id: 18
+    mobile_number: some text
+    first_name: some text
+    notification_triggers:
+      - subject: some text
+        title: some text
+        message: some text
+        notification_group_names:
+          - some text
+          - some text
+        trigger_target: {}
+        trigger_span: {}
+        trigger_pointer: {}
+        event_offset: 63
+      - subject: some text
+        title: some text
+        message: some text
+        notification_group_names:
+          - some text
+          - some text
+        trigger_target: {}
+        trigger_span: {}
+        trigger_pointer: {}
+        event_offset: 41
+description: "The root of the InviteUpdateParams type's schema."
+properties:
+  mobile_number:
+    type: string
+  user_id:
+    description: Used for transfering ownership of an `Invite` to another member of the Account
+    type: integer
+  on_premise:
+    type: boolean
+  notification_triggers:
+    type: array
+    items:
+      $ref: ./NotificationTriggerCreateParams.v1.yaml
+  first_name:
+    type: string
+  email_template_id:
+    type: integer
+  custom_fields:
+    type: array
+    items:
+      $ref: ./CustomField.v1.yaml
+  host_ids:
+    type: array
+    items:
+      type: integer
+  title:
+    type: string
+  start_date:
+    format: date-time
+    description: ''
+    type: string
+  last_name:
+    type: string
+  end_date:
+    format: date-time
+    type: string
+  email:
+    type: string
+  company:
+    type: string

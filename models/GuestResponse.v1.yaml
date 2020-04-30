@@ -1,0 +1,39 @@
+title: GuestResponse
+type: object
+x-examples:
+  default:
+    title: This is a form
+    sequence: 1
+    id: uuid
+    page_type: form_page
+    custom_fields:
+      - field_name: question_1
+        field_value: Red Wine
+      - field_name: question_2
+        field_value: White Wine
+description: The data collected from the response on a Registration
+properties:
+  id:
+    type: string
+    description: UUID
+  custom_fields:
+    description: Flex fields
+    type: array
+    items:
+      $ref: ./FlexField.v1.yaml
+  page_type:
+    description: Enum
+    enum:
+      - form_page
+      - video_page
+      - branch_page
+      - docusign_page
+      - guest_sign_page
+      - identity_page
+    type: string
+  sequence:
+    format: int32
+    type: integer
+  title:
+    description: Page title
+    type: string

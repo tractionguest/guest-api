@@ -1,0 +1,13 @@
+title: PaginatedAuditLogsList
+type: object
+description: ''
+properties:
+  pagination:
+    $ref: ./Pagination.v1.yaml
+  audit_logs:
+    type: array
+    items:
+      $ref: ./AuditLog.v1.yaml
+required:
+  - pagination
+  - audit_logs

@@ -1,0 +1,28 @@
+title: InternalWatchlistResult
+description: ''
+required:
+  - colour
+type: object
+properties:
+  id:
+    description: ''
+    type: integer
+  email:
+    description: ''
+    type: string
+  colour:
+    description: ''
+    type: string
+  last_name:
+    description: ''
+    type: string
+  first_name:
+    description: ''
+    type: string
+x-examples:
+  default:
+    id: 40
+    email: some text
+    colour: some text
+    last_name: some text
+    first_name: some text

@@ -1,0 +1,86 @@
+title: InviteCreateParams
+type: object
+x-examples:
+  default:
+    company: some text
+    email: some text
+    end_date: '2018-02-10T09:30Z'
+    last_name: some text
+    start_date: '2018-02-10T09:30Z'
+    title: some text
+    watchlist_colour: GREEN
+    host_ids:
+      - 16
+      - 6
+    custom_fields:
+      - format: string
+        field_name: some text
+        field_value: some text
+      - format: string
+        field_name: some text
+        field_value: some text
+    email_template_id: 65
+    mobile_number: some text
+    first_name: some text
+    notification_triggers:
+      - offset_direction: AFTER
+        offset_type: days
+        offset_amount: 36
+        offset_origin: START
+        email_template_id: 16
+        notification_groups:
+          - some text
+          - some text
+      - offset_direction: BEFORE
+        offset_type: days
+        offset_amount: 83
+        offset_origin: START
+        email_template_id: 89
+        notification_groups:
+          - some text
+          - some text
+description: "The root of the InviteCreateParams type's schema."
+properties:
+  mobile_number:
+    type: string
+  notification_triggers:
+    type: array
+    items:
+      $ref: ./NotificationTriggerCreateParams.v1.yaml
+  first_name:
+    type: string
+  email_template_id:
+    type: integer
+  custom_fields:
+    type: array
+    items:
+      $ref: ./CustomField.v1.yaml
+  host_ids:
+    type: array
+    items:
+      type: integer
+  watchlist_colour:
+    enum:
+      - RED
+      - GREEN
+      - YELLOW
+      - ORANGE
+  title:
+    type: string
+  start_date:
+    format: date-time
+    description: The `start_date` is required for invitations to lobbies
+    type: string
+  last_name:
+    type: string
+  end_date:
+    format: date-time
+    type: string
+  email:
+    type: string
+  company:
+    type: string
+required:
+  - first_name
+  - last_name
+  - email

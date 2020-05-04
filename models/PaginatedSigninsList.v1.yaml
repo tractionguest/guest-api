@@ -1,0 +1,12 @@
+title: PaginatedSigninsList
+type: object
+properties:
+  pagination:
+    $ref: ./Pagination.v1.yaml
+  signins:
+    type: array
+    items:
+      $ref: ./Signin.v1.yaml
+required:
+  - pagination
+  - signins

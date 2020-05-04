@@ -1,0 +1,122 @@
+title: Invite
+type: object
+x-examples:
+  default:
+    id: 59
+    first_name: some text
+    last_name: some text
+    start_date: '2018-02-10T09:30Z'
+    location:
+      id: 54
+      name: some text
+    watchlist_colour: ORANGE
+    hosts:
+      - id: 29
+        email: some text
+        first_name: some text
+        last_name: some text
+        mobile_number: some text
+        profile_pic_url: some text
+      - id: 81
+        email: some text
+        first_name: some text
+        last_name: some text
+        mobile_number: some text
+        profile_pic_url: some text
+    invite_watchlist:
+      id: 4
+      external_colours:
+        - RED
+        - ORANGE
+      internal_colours:
+        - YELLOW
+        - GREEN
+    end_date: '2018-02-10T09:30Z'
+    email: some text
+    registration:
+      id: uuid
+      created_at: '2018-02-10T09:30Z'
+      name: some text
+      email: some text
+      company: some text
+      photo_url: some text
+      guest_responses:
+        - title: some text
+          sequence: 69
+          id: 36
+          page_type: some text
+          custom_fields:
+            - field_name: some text
+              field_value: some text
+            - field_name: some text
+              field_value: some text
+        - title: some text
+          sequence: 64
+          id: 20
+          page_type: some text
+          custom_fields:
+            - field_name: some text
+              field_value: some text
+            - field_name: some text
+              field_value: some text
+      visitor:
+        id: 20
+        active: true
+        company: some text
+        created_via: some text
+        email: some text
+        first_name: some text
+        last_name: some text
+        mobile: some text
+        note: some text
+        profile_pic_content_type: some text
+        profile_pic_file_name: some text
+        profile_pic_file_size: some text
+        profile_pic_updated_at: some text
+        watchlist_level: some text
+        created_at: '2018-02-10T09:30Z'
+        updated_at: '2018-02-10T09:30Z'
+    mobile_number: some text
+description: "The root of the Invite type's schema."
+properties:
+  id:
+    type: integer
+    format: int32
+  registration:
+    $ref: ./Registration.v1.yaml
+  mobile_number:
+    description: ''
+    type: string
+  email:
+    description: ''
+    type: string
+  end_date:
+    format: date-time
+    description: ''
+    type: string
+  invite_watchlist:
+    $ref: ./InviteWatchlist.v1.yaml
+  hosts:
+    type: array
+    items:
+      $ref: ./Host.v1.yaml
+  watchlist_colour:
+    enum:
+      - RED
+      - GREEN
+      - YELLOW
+      - ORANGE
+  location:
+    $ref: ./Location.v1.yaml
+  start_date:
+    format: date-time
+    type: string
+  last_name:
+    type: string
+  first_name:
+    type: string
+required:
+  - id
+  - email
+  - last_name
+  - first_name

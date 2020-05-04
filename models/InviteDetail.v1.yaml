@@ -1,0 +1,168 @@
+title: InviteDetail
+type: object
+x-examples:
+  default:
+    id: 20
+    company: some text
+    created_at: '2018-02-10T09:30Z'
+    email: some text
+    end_date: '2018-02-10T09:30Z'
+    first_name: some text
+    last_name: some text
+    start_date: '2018-02-10T09:30Z'
+    hosts:
+      - id: 35
+        email: some text
+        first_name: some text
+        last_name: some text
+        mobile_number: some text
+        profile_pic_url: some text
+      - id: 9
+        email: some text
+        first_name: some text
+        last_name: some text
+        mobile_number: some text
+        profile_pic_url: some text
+    location:
+      id: 10
+      name: some text
+    watchlist_colour: YELLOW
+    custom_fields:
+      - format: string
+        field_name: some text
+        field_value: some text
+      - format: string
+        field_name: some text
+        field_value: some text
+    notification_triggers:
+      - offset_direction: BEFORE
+        offset_amount: 77
+        offset_origin: START
+        email_template_id: 44
+        notification_groups:
+          - some text
+          - some text
+        offset_unit: days
+        email_template_name: some text
+      - offset_direction: BEFORE
+        offset_amount: 49
+        offset_origin: END
+        email_template_id: 15
+        notification_groups:
+          - some text
+          - some text
+        offset_unit: hours
+        email_template_name: some text
+    mobile_number: some text
+    invite_watchlist:
+      id: 4
+      external_colours:
+        - RED
+        - ORANGE
+      internal_colours:
+        - YELLOW
+        - GREEN
+    email_template:
+      id: 65
+      name: some text
+      template_type: some text
+    registration:
+      id: uuid
+      created_at: '2018-02-10T09:30Z'
+      name: some text
+      email: some text
+      company: some text
+      photo_url: some text
+      guest_responses:
+        - title: some text
+          sequence: 69
+          id: 36
+          page_type: some text
+          custom_fields:
+            - field_name: some text
+              field_value: some text
+            - field_name: some text
+              field_value: some text
+        - title: some text
+          sequence: 64
+          id: 20
+          page_type: some text
+          custom_fields:
+            - field_name: some text
+              field_value: some text
+            - field_name: some text
+              field_value: some text
+      visitor:
+        id: 20
+        active: true
+        company: some text
+        created_via: some text
+        email: some text
+        first_name: some text
+        last_name: some text
+        mobile: some text
+        note: some text
+        profile_pic_content_type: some text
+        profile_pic_file_name: some text
+        profile_pic_file_size: some text
+        profile_pic_updated_at: some text
+        watchlist_level: some text
+        created_at: '2018-02-10T09:30Z'
+        updated_at: '2018-02-10T09:30Z'
+description: "The root of the InviteDetail type's schema."
+properties:
+  id:
+    type: integer
+    format: int32
+  registration:
+    $ref: ./Registration.v1.yaml
+  mobile_number:
+    description: Phone number
+    type: string
+  email_template:
+    $ref: ./EmailTemplate.v1.yaml
+  invite_watchlist:
+    $ref: ./InviteWatchlist.v1.yaml
+  notification_triggers:
+    description: List of scheduled notifications for an invite
+    type: array
+    items:
+      $ref: ./NotificationTrigger.v1.yaml
+  custom_fields:
+    type: array
+    items:
+      $ref: ./CustomField.v1.yaml
+  watchlist_colour:
+    enum:
+      - RED
+      - GREEN
+      - YELLOW
+      - ORANGE
+  location:
+    $ref: ./Location.v1.yaml
+  hosts:
+    type: array
+    items:
+      $ref: ./Host.v1.yaml
+  start_date:
+    format: date-time
+    type: string
+  last_name:
+    type: string
+  first_name:
+    type: string
+  end_date:
+    format: date-time
+    type: string
+  email:
+    type: string
+  created_at:
+    format: date-time
+    type: string
+  company:
+    type: string
+required:
+  - id
+  - last_name
+  - first_name
+  - email

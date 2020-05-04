@@ -1,0 +1,44 @@
+title: User
+type: object
+x-examples:
+  default:
+    id: 60
+    first_name: some text
+    last_name: some text
+    email: some text
+    permission_groups:
+      - name: some text
+        visibility: some text
+        permissions:
+          - some text
+          - some text
+      - name: some text
+        visibility: some text
+        permissions:
+          - some text
+          - some text
+description: "The root of the User type's schema."
+properties:
+  id:
+    type: integer
+    format: int32
+  mobile_access_enabled:
+    description: Identifies if user has access to mobile app features.
+    type: boolean
+  permission_groups:
+    type: array
+    items:
+      $ref: ./PermissionGroup.v1.yaml
+  email:
+    description: ''
+    type: string
+  last_name:
+    description: ''
+    type: string
+  first_name:
+    description: ''
+    type: string
+required:
+  - id
+  - mobile_access_enabled
+  - email

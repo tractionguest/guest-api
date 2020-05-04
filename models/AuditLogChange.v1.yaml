@@ -1,0 +1,30 @@
+title: AuditLogChange
+description: ''
+type: object
+properties:
+  field_name:
+    description: What the field should be displayed/labeled as
+    type: string
+  field_value_before:
+    description: The value to be displayed for the field before changes
+    type: string
+  field_value_after:
+    description: The value to be displayed for the field after changes
+    type: string
+  format:
+    description: The format type of the field
+    enum:
+      - string
+      - boolean
+      - integer
+      - json
+      - no_value
+    type: string
+x-examples:
+  default: |-
+    {
+      "field_name": "result",
+      "field_value_before": "{}",
+      "field_value_after": '{"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}',
+      "format": "json"
+    }

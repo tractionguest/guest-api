@@ -1,0 +1,16 @@
+title: SimpleSignature
+description: ''
+type: object
+properties:
+  status:
+    description: ''
+    type: string
+  template_name:
+    description: ''
+    type: string
+  id:
+    description: ''
+    type: string
+  title:
+    description: ''
+    type: string

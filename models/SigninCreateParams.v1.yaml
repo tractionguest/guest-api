@@ -1,0 +1,35 @@
+title: SigninCreateParams
+type: object
+properties:
+  registration_id:
+    description: UUID of a Registration
+    type: string
+  email:
+    type: string
+    description: 'E-mail, ignored if `registration_id` is included'
+  company:
+    type: string
+    description: 'Company name, ignored if `registration_id` is included'
+  last_name:
+    type: string
+    description: 'Last name, ignored if `registration_id` is included'
+  first_name:
+    type: string
+    description: 'First name, ignored if `registration_id` is included'
+  sms_message:
+    type: string
+  send_notifications:
+    type: boolean
+  location_id:
+    type: integer
+    description: 'ID of the Location where the Signin happened, ignored if `registration_id` is included'
+  host_ids:
+    type: array
+    items:
+      type: integer
+    description: 'Array of Host ids, ignored if `registration_id` is included'
+  host_email_template_id:
+    type: integer
+  guest_email_template_id:
+    type: integer
+description: ''

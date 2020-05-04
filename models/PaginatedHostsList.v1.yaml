@@ -1,0 +1,12 @@
+title: PaginatedHostsList
+type: object
+properties:
+  pagination:
+    $ref: ./Pagination.v1.yaml
+  hosts:
+    type: array
+    items:
+      $ref: ./Host.v1.yaml
+required:
+  - pagination
+  - hosts

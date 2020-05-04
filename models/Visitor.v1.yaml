@@ -1,0 +1,57 @@
+title: Visitor
+description: Visitor information
+type: object
+x-examples:
+  default:
+    id: uuid
+    active: true
+    company: some text
+    created_via: some text
+    email: some text
+    first_name: some text
+    last_name: some text
+    mobile: some text
+    note: some text
+    profile_pic_content_type: some text
+    profile_pic_file_name: some text
+    profile_pic_file_size: some text
+    profile_pic_updated_at: some text
+    watchlist_level: some text
+    created_at: '2018-02-10T09:30Z'
+    updated_at: '2018-02-10T09:30Z'
+properties:
+  id:
+    description: UUID
+    type: string
+  active:
+    type: boolean
+  company:
+    type: string
+  created_via:
+    type: string
+  email:
+    type: string
+  first_name:
+    type: string
+  last_name:
+    type: string
+  mobile:
+    type: string
+  note:
+    type: string
+  profile_pic_content_type:
+    type: string
+  profile_pic_file_name:
+    type: string
+  profile_pic_file_size:
+    type: string
+  profile_pic_updated_at:
+    type: string
+  watchlist_level:
+    type: string
+  created_at:
+    format: date-time
+    type: string
+  updated_at:
+    format: date-time
+    type: string

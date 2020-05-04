@@ -1,0 +1,42 @@
+title: Watchlist
+type: object
+x-examples:
+  default:
+    id: 23
+    colour: GREEN
+    email: some text
+    first_name: some text
+    last_name: some text
+    notes: some text
+    photo: some text
+    aliases:
+      - some text
+      - some text
+description: "The root of the Watchlist type's schema."
+properties:
+  id:
+    type: integer
+    format: int32
+  aliases:
+    type: array
+    items:
+      type: string
+  photo:
+    type: string
+  notes:
+    type: string
+  last_name:
+    type: string
+  first_name:
+    type: string
+  email:
+    type: string
+  colour:
+    enum:
+      - RED
+      - YELLOW
+      - GREEN
+      - ORANGE
+    type: string
+required:
+  - id

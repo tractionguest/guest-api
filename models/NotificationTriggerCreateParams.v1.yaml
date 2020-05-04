@@ -1,0 +1,49 @@
+title: NotificationTrigger
+type: object
+x-examples:
+  default:
+    offset_direction: {}
+    offset_type: {}
+    offset_amount: 94
+    offset_origin: {}
+    email_template_id: 32
+    notification_groups:
+      - some text
+      - some text
+description: "The root of the NotificationTrigger type's schema."
+properties:
+  offset_unit:
+    description: Whether the offset should be calculated as `days` or `hours`
+    enum:
+      - days
+      - hours
+    type: string
+  notification_groups:
+    description: 'An array made of only `INVITEE`, `HOSTS, or `LEP` as possible string values'
+    type: array
+    items:
+      type: string
+  email_template_id:
+    type: integer
+  offset_origin:
+    description: 'Whether the offset should be calculated from the start, or finish of the event'
+    enum:
+      - START
+      - END
+    type: string
+  offset_amount:
+    description: The amount to offset the notification from the event
+    type: integer
+  offset_direction:
+    description: 'Whether the offset should be calculated for before, or after the event'
+    enum:
+      - BEFORE
+      - AFTER
+    type: string
+required:
+  - offset_unit
+  - notification_groups
+  - email_template_id
+  - offset_origin
+  - offset_amount
+  - offset_direction

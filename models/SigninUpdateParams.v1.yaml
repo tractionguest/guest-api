@@ -1,0 +1,17 @@
+title: SigninUpdateParams
+type: object
+properties:
+  is_signed_out:
+    description: 'Used to sign out the `Signin`, can only be set to `true`.'
+    type: boolean
+  is_acknowledged:
+    description: 'Used to acknowledge the `Signin`, can only be set to `true`.'
+    type: boolean
+  is_accounted_for:
+    description: Used when keeping track of people in emergency situations
+    type: boolean
+x-examples:
+  default:
+    is_signed_out: true
+    is_acknowledged: true
+    is_accounted_for: true

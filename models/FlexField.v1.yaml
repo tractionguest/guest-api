@@ -1,0 +1,14 @@
+title: FlexField
+description: A custom field
+type: object
+properties:
+  field_name:
+    description: Flex field key
+    type: string
+  field_value:
+    description: Flex field value
+    type: string
+x-examples:
+  default:
+    field_name: question_1
+    field_value: Red Wine

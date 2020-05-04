@@ -1,0 +1,19 @@
+title: SigninData
+type: object
+x-examples:
+  default:
+    name: some text
+    custom_fields:
+      - format: string
+        field_name: some text
+        field_value: some text
+      - format: string
+        field_name: some text
+        field_value: some text
+properties:
+  custom_fields:
+    type: array
+    items:
+      $ref: ./CustomField.v1.yaml
+  name:
+    type: string

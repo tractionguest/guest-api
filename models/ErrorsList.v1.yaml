@@ -1,0 +1,21 @@
+title: ErrorsList
+type: object
+x-examples:
+  default:
+    errors:
+      - domain: some text
+        attribute: some text
+        code: some text
+        message: some text
+      - domain: some text
+        attribute: some text
+        code: some text
+        message: some text
+description: A list of Errors that occured on the server
+properties:
+  errors:
+    type: array
+    items:
+      $ref: ./Error.v1.yaml
+required:
+  - errors

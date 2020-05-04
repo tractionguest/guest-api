@@ -2,7 +2,7 @@ openapi: 3.0.2
 info:
   title: Traction Guest API
   version: 0.11.4
-  description: 'A compelling story about a lone device, on a quest for its data.'
+  description: 'The leader in enterprise visitor management, empowers businesses across five continents and dozens of industries to keep people safe while creating connection in the contactless world.'
   contact:
     name: Brandon McKay
     url: 'https://tractionguest.com'
@@ -12,10 +12,10 @@ servers:
     variables:
       domain:
         enum:
-          - 'https://mobile-api-refactor-admin.tractionguest.ca/api/v3'
+          - 'https://tractionguest.ca/api/v3'
           - 'https://dravaqa.tractionguest.ca/api/v3'
-          - 'http://localhost:3000'
-        default: 'https://mobile-api-refactor-admin.tractionguest.ca/api/v3'
+          - 'http://localhost:3000/api/v3'
+        default: 'https://tractionguest.ca/api/v3'
 paths:
   /hosts:
     summary: Path used to manage the list of Hosts.
@@ -3308,7 +3308,7 @@ components:
       required: false
   securitySchemes:
     TractionGuestAuth:
-      openIdConnectUrl: 'https://mobile-api-refactor-admin.tractionguest.ca/.well-known/openid-configuration'
+      openIdConnectUrl: 'https://tractionguest.com/.well-known/openid-configuration'
       type: openIdConnect
 security:
   - TractionGuestAuth:

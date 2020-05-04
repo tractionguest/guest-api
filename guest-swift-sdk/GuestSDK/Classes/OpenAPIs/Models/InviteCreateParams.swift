@@ -11,57 +11,57 @@ import Foundation
 public struct InviteCreateParams: Codable { 
 
 
-    public enum WatchlistColour: String, Codable, CaseIterable {
-        case red = "RED"
-        case green = "GREEN"
-        case yellow = "YELLOW"
-        case orange = "ORANGE"
+    public enum WatchlistColour: Any, Codable, CaseIterable {
+        case red = RED
+        case green = GREEN
+        case yellow = YELLOW
+        case orange = ORANGE
     }
-    public var company: String?
-    public var email: String
-    public var endDate: Date?
-    public var lastName: String
+    public var mobileNumber: String?
+    public var notificationTriggers: [NotificationTriggerCreateParams]?
+    public var firstName: String
+    public var emailTemplateId: Int?
+    public var customFields: [CustomField]?
+    public var hostIds: [Int]?
+    public var watchlistColour: WatchlistColour?
+    public var title: String?
     /** The &#x60;start_date&#x60; is required for invitations to lobbies */
     public var startDate: Date?
-    public var title: String?
-    public var watchlistColour: WatchlistColour?
-    public var hostIds: [Int]?
-    public var customFields: [CustomField]?
-    public var emailTemplateId: Int?
-    public var firstName: String
-    public var notificationTriggers: [NotificationTriggerCreateParams]?
-    public var mobileNumber: String?
+    public var lastName: String
+    public var endDate: Date?
+    public var email: String
+    public var company: String?
 
-    public init(company: String?, email: String, endDate: Date?, lastName: String, startDate: Date?, title: String?, watchlistColour: WatchlistColour?, hostIds: [Int]?, customFields: [CustomField]?, emailTemplateId: Int?, firstName: String, notificationTriggers: [NotificationTriggerCreateParams]?, mobileNumber: String?) {
-        self.company = company
-        self.email = email
-        self.endDate = endDate
-        self.lastName = lastName
-        self.startDate = startDate
-        self.title = title
-        self.watchlistColour = watchlistColour
-        self.hostIds = hostIds
-        self.customFields = customFields
-        self.emailTemplateId = emailTemplateId
-        self.firstName = firstName
-        self.notificationTriggers = notificationTriggers
+    public init(mobileNumber: String?, notificationTriggers: [NotificationTriggerCreateParams]?, firstName: String, emailTemplateId: Int?, customFields: [CustomField]?, hostIds: [Int]?, watchlistColour: WatchlistColour?, title: String?, startDate: Date?, lastName: String, endDate: Date?, email: String, company: String?) {
         self.mobileNumber = mobileNumber
+        self.notificationTriggers = notificationTriggers
+        self.firstName = firstName
+        self.emailTemplateId = emailTemplateId
+        self.customFields = customFields
+        self.hostIds = hostIds
+        self.watchlistColour = watchlistColour
+        self.title = title
+        self.startDate = startDate
+        self.lastName = lastName
+        self.endDate = endDate
+        self.email = email
+        self.company = company
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case company
-        case email
-        case endDate = "end_date"
-        case lastName = "last_name"
-        case startDate = "start_date"
-        case title
-        case watchlistColour = "watchlist_colour"
-        case hostIds = "host_ids"
-        case customFields = "custom_fields"
-        case emailTemplateId = "email_template_id"
-        case firstName = "first_name"
-        case notificationTriggers = "notification_triggers"
         case mobileNumber = "mobile_number"
+        case notificationTriggers = "notification_triggers"
+        case firstName = "first_name"
+        case emailTemplateId = "email_template_id"
+        case customFields = "custom_fields"
+        case hostIds = "host_ids"
+        case watchlistColour = "watchlist_colour"
+        case title
+        case startDate = "start_date"
+        case lastName = "last_name"
+        case endDate = "end_date"
+        case email
+        case company
     }
 
 }

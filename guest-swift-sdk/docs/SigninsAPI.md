@@ -1,10 +1,10 @@
 # SigninsAPI
 
-All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api/v3*
+All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createSignin**](SigninsAPI.md#createsignin) | **POST** /signins | Create a Signin
+[**createSignin**](SigninsAPI.md#createsignin) | **POST** /signins | 
 [**getSignin**](SigninsAPI.md#getsignin) | **GET** /signins/{signinId} | Get a Signin
 [**getSignins**](SigninsAPI.md#getsignins) | **GET** /signins | List All Signins
 [**updateSignin**](SigninsAPI.md#updatesignin) | **PUT** /signins/{signinId} | Update a Signin attribute
@@ -12,23 +12,21 @@ Method | HTTP request | Description
 
 # **createSignin**
 ```swift
-    open class func createSignin(signinCreateParams: SigninCreateParams, idempotencyKey: String? = nil, completion: @escaping (_ data: Signin?, _ error: Error?) -> Void)
+    open class func createSignin(signinCreateParams: SigninCreateParams? = nil, completion: @escaping (_ data: Signin?, _ error: Error?) -> Void)
 ```
 
-Create a Signin
 
-Creates a new instance of a `Signin`.
+
+Creates a Signin
 
 ### Example 
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import GuestSDK
 
-let signinCreateParams = SigninCreateParams(guestEmailTemplateId: 123, hostEmailTemplateId: 123, hostIds: [123], locationId: 123, sendNotifications: false, smsMessage: "smsMessage_example", firstName: "firstName_example", lastName: "lastName_example", company: "company_example", email: "email_example", registrationId: "registrationId_example") // SigninCreateParams | A new `Signin` to be created.
-let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
+let signinCreateParams = SigninCreateParams(registrationId: "registrationId_example", email: "email_example", company: "company_example", lastName: "lastName_example", firstName: "firstName_example", smsMessage: "smsMessage_example", sendNotifications: false, locationId: 123, hostIds: [123], hostEmailTemplateId: 123, guestEmailTemplateId: 123) // SigninCreateParams | Params for creating a Signin can omit certain fields if a `registration_id` is present. (optional)
 
-// Create a Signin
-SigninsAPI.createSignin(signinCreateParams: signinCreateParams, idempotencyKey: idempotencyKey) { (response, error) in
+SigninsAPI.createSignin(signinCreateParams: signinCreateParams) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -44,8 +42,7 @@ SigninsAPI.createSignin(signinCreateParams: signinCreateParams, idempotencyKey: 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **signinCreateParams** | [**SigninCreateParams**](SigninCreateParams.md) | A new &#x60;Signin&#x60; to be created. | 
- **idempotencyKey** | **String** | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
+ **signinCreateParams** | [**SigninCreateParams**](SigninCreateParams.md) | Params for creating a Signin can omit certain fields if a &#x60;registration_id&#x60; is present. | [optional] 
 
 ### Return type
 
@@ -199,7 +196,7 @@ Update, acknowledge, or `Signout` a `Signin`
 import GuestSDK
 
 let signinId = "signinId_example" // String | A unique identifier for a `Signin`.
-let signinUpdateParams = SigninUpdateParams(isSignedOut: false, isAcknowledged: false, isAccountedFor: false) // SigninUpdateParams | The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`. `is_signed_out`, and `is_acknowledged` are pseudo attributes where once they are set to true, there's no going back.
+let signinUpdateParams = SigninUpdateParams(isSignedOut: false, isAcknowledged: false, isAccountedFor: false) // SigninUpdateParams | The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.  `is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible.
 let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
 // Update a Signin attribute
@@ -220,7 +217,7 @@ SigninsAPI.updateSignin(signinId: signinId, signinUpdateParams: signinUpdatePara
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **signinId** | **String** | A unique identifier for a &#x60;Signin&#x60;. | 
- **signinUpdateParams** | [**SigninUpdateParams**](SigninUpdateParams.md) | The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;. &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60; are pseudo attributes where once they are set to true, there&#39;s no going back. | 
+ **signinUpdateParams** | [**SigninUpdateParams**](SigninUpdateParams.md) | The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;.  &#x60;is_signed_out&#x60; and &#x60;is_acknowledged&#x60; are pseudo attributes that once set to true, are irreversible. | 
  **idempotencyKey** | **String** | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
 
 ### Return type

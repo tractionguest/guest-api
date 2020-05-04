@@ -2,36 +2,36 @@ part of guest_sdk.api;
 
 class PaginatedInvitesList {
   
-  Pagination pagination = null;
-  
   List<Invite> invites = [];
+  
+  Pagination pagination = null;
   PaginatedInvitesList();
 
   @override
   String toString() {
-    return 'PaginatedInvitesList[pagination=$pagination, invites=$invites, ]';
+    return 'PaginatedInvitesList[invites=$invites, pagination=$pagination, ]';
   }
 
   PaginatedInvitesList.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    if (json['pagination'] == null) {
-      pagination = null;
-    } else {
-      pagination = new Pagination.fromJson(json['pagination']);
-    }
     if (json['invites'] == null) {
       invites = null;
     } else {
       invites = Invite.listFromJson(json['invites']);
     }
+    if (json['pagination'] == null) {
+      pagination = null;
+    } else {
+      pagination = new Pagination.fromJson(json['pagination']);
+    }
   }
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (pagination != null)
-      json['pagination'] = pagination;
     if (invites != null)
       json['invites'] = invites;
+    if (pagination != null)
+      json['pagination'] = pagination;
     return json;
   }
 

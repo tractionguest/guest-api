@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"company": @"company", @"createdAt": @"created_at", @"email": @"email", @"endDate": @"end_date", @"firstName": @"first_name", @"lastName": @"last_name", @"startDate": @"start_date", @"hosts": @"hosts", @"location": @"location", @"watchlistColour": @"watchlist_colour", @"customFields": @"custom_fields", @"notificationTriggers": @"notification_triggers", @"inviteWatchlist": @"invite_watchlist", @"emailTemplate": @"email_template", @"mobileNumber": @"mobile_number", @"registration": @"registration" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"registration": @"registration", @"mobileNumber": @"mobile_number", @"emailTemplate": @"email_template", @"inviteWatchlist": @"invite_watchlist", @"notificationTriggers": @"notification_triggers", @"customFields": @"custom_fields", @"watchlistColour": @"watchlist_colour", @"location": @"location", @"hosts": @"hosts", @"startDate": @"start_date", @"lastName": @"last_name", @"firstName": @"first_name", @"endDate": @"end_date", @"email": @"email", @"createdAt": @"created_at", @"company": @"company" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"company", @"createdAt", @"endDate", @"startDate", @"hosts", @"location", @"watchlistColour", @"customFields", @"notificationTriggers", @"inviteWatchlist", @"emailTemplate", @"mobileNumber", @"registration"];
+  NSArray *optionalProperties = @[@"registration", @"mobileNumber", @"emailTemplate", @"inviteWatchlist", @"notificationTriggers", @"customFields", @"watchlistColour", @"location", @"hosts", @"startDate", @"endDate", @"createdAt", @"company"];
   return [optionalProperties containsObject:propertyName];
 }
 

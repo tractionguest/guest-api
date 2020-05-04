@@ -2,36 +2,36 @@ part of guest_sdk.api;
 
 class PaginatedWatchlistList {
   
-  Pagination pagination = null;
-  
   List<Watchlist> watchlists = [];
+  
+  Pagination pagination = null;
   PaginatedWatchlistList();
 
   @override
   String toString() {
-    return 'PaginatedWatchlistList[pagination=$pagination, watchlists=$watchlists, ]';
+    return 'PaginatedWatchlistList[watchlists=$watchlists, pagination=$pagination, ]';
   }
 
   PaginatedWatchlistList.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    if (json['pagination'] == null) {
-      pagination = null;
-    } else {
-      pagination = new Pagination.fromJson(json['pagination']);
-    }
     if (json['watchlists'] == null) {
       watchlists = null;
     } else {
       watchlists = Watchlist.listFromJson(json['watchlists']);
     }
+    if (json['pagination'] == null) {
+      pagination = null;
+    } else {
+      pagination = new Pagination.fromJson(json['pagination']);
+    }
   }
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (pagination != null)
-      json['pagination'] = pagination;
     if (watchlists != null)
       json['watchlists'] = watchlists;
+    if (pagination != null)
+      json['pagination'] = pagination;
     return json;
   }
 

@@ -1,23 +1,23 @@
 part of guest_sdk.api;
 
 class Docusign {
-  
+  /*  */
   String templateId = null;
-  
+  /*  */
   String integration = null;
-  
+  /*  */
   String ndaStatus = null;
-  
+  /*  */
   DateTime ndaSignedDate = null;
-  
+  /*  */
   String envelopeId = null;
-  
+  /*  */
   String sequence = null;
-  
+  /*  */
   String docusignId = null;
-  
+  /*  */
   String docusignName = null;
-  
+  /*  */
   String title = null;
   Docusign();
 

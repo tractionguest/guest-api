@@ -4,14 +4,14 @@ class SigninWatchlist {
   
   int id = null;
   
-  List<ExternalWatchlistResult> external_ = [];
-  
   List<InternalWatchlistResult> internal = [];
+  
+  List<ExternalWatchlistResult> external_ = [];
   SigninWatchlist();
 
   @override
   String toString() {
-    return 'SigninWatchlist[id=$id, external_=$external_, internal=$internal, ]';
+    return 'SigninWatchlist[id=$id, internal=$internal, external_=$external_, ]';
   }
 
   SigninWatchlist.fromJson(Map<String, dynamic> json) {
@@ -21,15 +21,15 @@ class SigninWatchlist {
     } else {
           id = json['id'];
     }
-    if (json['external'] == null) {
-      external_ = null;
-    } else {
-      external_ = ExternalWatchlistResult.listFromJson(json['external']);
-    }
     if (json['internal'] == null) {
       internal = null;
     } else {
       internal = InternalWatchlistResult.listFromJson(json['internal']);
+    }
+    if (json['external'] == null) {
+      external_ = null;
+    } else {
+      external_ = ExternalWatchlistResult.listFromJson(json['external']);
     }
   }
 
@@ -37,10 +37,10 @@ class SigninWatchlist {
     Map <String, dynamic> json = {};
     if (id != null)
       json['id'] = id;
-    if (external_ != null)
-      json['external'] = external_;
     if (internal != null)
       json['internal'] = internal;
+    if (external_ != null)
+      json['external'] = external_;
     return json;
   }
 

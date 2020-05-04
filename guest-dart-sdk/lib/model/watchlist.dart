@@ -4,25 +4,25 @@ class Watchlist {
   
   int id = null;
   
-  String colour = null;
-  //enum colourEnum {  RED,  YELLOW,  GREEN,  ORANGE,  };{
-  
-  String email = null;
-  
-  String firstName = null;
-  
-  String lastName = null;
-  
-  String notes = null;
+  List<String> aliases = [];
   
   String photo = null;
   
-  List<String> aliases = [];
+  String notes = null;
+  
+  String lastName = null;
+  
+  String firstName = null;
+  
+  String email = null;
+  
+  String colour = null;
+  //enum colourEnum {  RED,  YELLOW,  GREEN,  ORANGE,  };{
   Watchlist();
 
   @override
   String toString() {
-    return 'Watchlist[id=$id, colour=$colour, email=$email, firstName=$firstName, lastName=$lastName, notes=$notes, photo=$photo, aliases=$aliases, ]';
+    return 'Watchlist[id=$id, aliases=$aliases, photo=$photo, notes=$notes, lastName=$lastName, firstName=$firstName, email=$email, colour=$colour, ]';
   }
 
   Watchlist.fromJson(Map<String, dynamic> json) {
@@ -32,40 +32,40 @@ class Watchlist {
     } else {
           id = json['id'];
     }
-    if (json['colour'] == null) {
-      colour = null;
+    if (json['aliases'] == null) {
+      aliases = null;
     } else {
-          colour = json['colour'];
-    }
-    if (json['email'] == null) {
-      email = null;
-    } else {
-          email = json['email'];
-    }
-    if (json['first_name'] == null) {
-      firstName = null;
-    } else {
-          firstName = json['first_name'];
-    }
-    if (json['last_name'] == null) {
-      lastName = null;
-    } else {
-          lastName = json['last_name'];
-    }
-    if (json['notes'] == null) {
-      notes = null;
-    } else {
-          notes = json['notes'];
+      aliases = (json['aliases'] as List).cast<String>();
     }
     if (json['photo'] == null) {
       photo = null;
     } else {
           photo = json['photo'];
     }
-    if (json['aliases'] == null) {
-      aliases = null;
+    if (json['notes'] == null) {
+      notes = null;
     } else {
-      aliases = (json['aliases'] as List).cast<String>();
+          notes = json['notes'];
+    }
+    if (json['last_name'] == null) {
+      lastName = null;
+    } else {
+          lastName = json['last_name'];
+    }
+    if (json['first_name'] == null) {
+      firstName = null;
+    } else {
+          firstName = json['first_name'];
+    }
+    if (json['email'] == null) {
+      email = null;
+    } else {
+          email = json['email'];
+    }
+    if (json['colour'] == null) {
+      colour = null;
+    } else {
+          colour = json['colour'];
     }
   }
 
@@ -73,20 +73,20 @@ class Watchlist {
     Map <String, dynamic> json = {};
     if (id != null)
       json['id'] = id;
-    if (colour != null)
-      json['colour'] = colour;
-    if (email != null)
-      json['email'] = email;
-    if (firstName != null)
-      json['first_name'] = firstName;
-    if (lastName != null)
-      json['last_name'] = lastName;
-    if (notes != null)
-      json['notes'] = notes;
-    if (photo != null)
-      json['photo'] = photo;
     if (aliases != null)
       json['aliases'] = aliases;
+    if (photo != null)
+      json['photo'] = photo;
+    if (notes != null)
+      json['notes'] = notes;
+    if (lastName != null)
+      json['last_name'] = lastName;
+    if (firstName != null)
+      json['first_name'] = firstName;
+    if (email != null)
+      json['email'] = email;
+    if (colour != null)
+      json['colour'] = colour;
     return json;
   }
 

@@ -16,6 +16,7 @@ public struct Host: Codable {
     public var firstName: String?
     public var lastName: String?
     public var profilePicUrl: String?
+    /**  */
     public var department: String?
     public var mobileNumber: String?
 

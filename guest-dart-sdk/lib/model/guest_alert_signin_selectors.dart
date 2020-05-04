@@ -1,11 +1,11 @@
 part of guest_sdk.api;
 
 class GuestAlertSigninSelectors {
-  
+  /*  */
   bool isSignedOut = null;
-  
+  /*  */
   List<int> signinIds = [];
-  
+  /*  */
   List<int> locationIds = [];
   GuestAlertSigninSelectors();
 

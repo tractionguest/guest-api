@@ -3,19 +3,19 @@ part of guest_sdk.api;
 class InviteWatchlist {
   
   int id = null;
-  /* Deprecated */
-  List<String> externalColours = [];
-  /* Deprecated */
-  List<String> internalColours = [];
-  
-  List<ExternalWatchlistResult> external_ = [];
   
   List<InternalWatchlistResult> internal = [];
+  
+  List<ExternalWatchlistResult> external_ = [];
+  /* Deprecated */
+  List<String> internalColours = [];
+  /* Deprecated */
+  List<String> externalColours = [];
   InviteWatchlist();
 
   @override
   String toString() {
-    return 'InviteWatchlist[id=$id, externalColours=$externalColours, internalColours=$internalColours, external_=$external_, internal=$internal, ]';
+    return 'InviteWatchlist[id=$id, internal=$internal, external_=$external_, internalColours=$internalColours, externalColours=$externalColours, ]';
   }
 
   InviteWatchlist.fromJson(Map<String, dynamic> json) {
@@ -25,25 +25,25 @@ class InviteWatchlist {
     } else {
           id = json['id'];
     }
-    if (json['external_colours'] == null) {
-      externalColours = null;
+    if (json['internal'] == null) {
+      internal = null;
     } else {
-      externalColours = (json['external_colours'] as List).cast<String>();
-    }
-    if (json['internal_colours'] == null) {
-      internalColours = null;
-    } else {
-      internalColours = (json['internal_colours'] as List).cast<String>();
+      internal = InternalWatchlistResult.listFromJson(json['internal']);
     }
     if (json['external'] == null) {
       external_ = null;
     } else {
       external_ = ExternalWatchlistResult.listFromJson(json['external']);
     }
-    if (json['internal'] == null) {
-      internal = null;
+    if (json['internal_colours'] == null) {
+      internalColours = null;
     } else {
-      internal = InternalWatchlistResult.listFromJson(json['internal']);
+      internalColours = (json['internal_colours'] as List).cast<String>();
+    }
+    if (json['external_colours'] == null) {
+      externalColours = null;
+    } else {
+      externalColours = (json['external_colours'] as List).cast<String>();
     }
   }
 
@@ -51,14 +51,14 @@ class InviteWatchlist {
     Map <String, dynamic> json = {};
     if (id != null)
       json['id'] = id;
-    if (externalColours != null)
-      json['external_colours'] = externalColours;
-    if (internalColours != null)
-      json['internal_colours'] = internalColours;
-    if (external_ != null)
-      json['external'] = external_;
     if (internal != null)
       json['internal'] = internal;
+    if (external_ != null)
+      json['external'] = external_;
+    if (internalColours != null)
+      json['internal_colours'] = internalColours;
+    if (externalColours != null)
+      json['external_colours'] = externalColours;
     return json;
   }
 

@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"auditableId": @"auditable_id", @"auditableType": @"auditable_type", @"userId": @"user_id", @"username": @"username", @"action": @"action", @"auditedChanges": @"audited_changes", @"version": @"version", @"comment": @"comment", @"remoteAddress": @"remote_address", @"requestUuid": @"request_uuid", @"createdAt": @"created_at" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"createdAt": @"created_at", @"requestUuid": @"request_uuid", @"remoteAddress": @"remote_address", @"comment": @"comment", @"version": @"version", @"auditedChanges": @"audited_changes", @"action": @"action", @"username": @"username", @"userId": @"user_id", @"auditableType": @"auditable_type", @"auditableId": @"auditable_id" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"auditableId", @"auditableType", @"userId", @"username", @"action", @"auditedChanges", @"version", @"comment", @"remoteAddress", @"requestUuid", @"createdAt"];
+  NSArray *optionalProperties = @[@"createdAt", @"requestUuid", @"remoteAddress", @"comment", @"version", @"auditedChanges", @"action", @"username", @"userId", @"auditableType", @"auditableId"];
   return [optionalProperties containsObject:propertyName];
 }
 

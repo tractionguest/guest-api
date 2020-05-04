@@ -12,19 +12,19 @@ public struct SigninWatchlist: Codable {
 
 
     public var id: Int
-    public var external: [ExternalWatchlistResult]?
     public var _internal: [InternalWatchlistResult]?
+    public var external: [ExternalWatchlistResult]?
 
-    public init(id: Int, external: [ExternalWatchlistResult]?, _internal: [InternalWatchlistResult]?) {
+    public init(id: Int, _internal: [InternalWatchlistResult]?, external: [ExternalWatchlistResult]?) {
         self.id = id
-        self.external = external
         self._internal = _internal
+        self.external = external
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case id
-        case external
         case _internal = "internal"
+        case external
     }
 
 }

@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"guestEmailTemplateId": @"guest_email_template_id", @"hostEmailTemplateId": @"host_email_template_id", @"hostIds": @"host_ids", @"locationId": @"location_id", @"sendNotifications": @"send_notifications", @"smsMessage": @"sms_message", @"firstName": @"first_name", @"lastName": @"last_name", @"company": @"company", @"email": @"email", @"registrationId": @"registration_id" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"registrationId": @"registration_id", @"email": @"email", @"company": @"company", @"lastName": @"last_name", @"firstName": @"first_name", @"smsMessage": @"sms_message", @"sendNotifications": @"send_notifications", @"locationId": @"location_id", @"hostIds": @"host_ids", @"hostEmailTemplateId": @"host_email_template_id", @"guestEmailTemplateId": @"guest_email_template_id" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"guestEmailTemplateId", @"hostEmailTemplateId", @"hostIds", @"locationId", @"sendNotifications", @"smsMessage", @"firstName", @"lastName", @"company", @"email", @"registrationId"];
+  NSArray *optionalProperties = @[@"registrationId", @"email", @"company", @"lastName", @"firstName", @"smsMessage", @"sendNotifications", @"locationId", @"hostIds", @"hostEmailTemplateId", @"guestEmailTemplateId"];
   return [optionalProperties containsObject:propertyName];
 }
 

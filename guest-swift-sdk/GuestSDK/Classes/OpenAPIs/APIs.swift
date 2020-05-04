@@ -7,7 +7,7 @@
 import Foundation
 
 open class GuestSDKAPI {
-    public static var basePath = "https://mobile-api-refactor-admin.tractionguest.ca/api/v3"
+    public static var basePath = "https://tractionguest.ca/api/v3"
     public static var credential: URLCredential?
     public static var customHeaders: [String:String] = [:]
     public static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()

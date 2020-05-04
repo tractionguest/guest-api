@@ -4,33 +4,33 @@ class Invite {
   
   int id = null;
   
-  String firstName = null;
-  
-  String lastName = null;
-  
-  DateTime startDate = null;
-  
-  Location location = null;
-  
-  String watchlistColour = null;
-  //enum watchlistColourEnum {  RED,  GREEN,  YELLOW,  ORANGE,  };{
-  
-  List<Host> hosts = [];
+  Registration registration = null;
+  /*  */
+  String mobileNumber = null;
+  /*  */
+  String email = null;
+  /*  */
+  DateTime endDate = null;
   
   InviteWatchlist inviteWatchlist = null;
   
-  DateTime endDate = null;
+  List<Host> hosts = [];
   
-  String email = null;
+  Object watchlistColour = null;
+  //enum watchlistColourEnum {  RED,  GREEN,  YELLOW,  ORANGE,  };{
   
-  String mobileNumber = null;
+  Location location = null;
   
-  Registration registration = null;
+  DateTime startDate = null;
+  
+  String lastName = null;
+  
+  String firstName = null;
   Invite();
 
   @override
   String toString() {
-    return 'Invite[id=$id, firstName=$firstName, lastName=$lastName, startDate=$startDate, location=$location, watchlistColour=$watchlistColour, hosts=$hosts, inviteWatchlist=$inviteWatchlist, endDate=$endDate, email=$email, mobileNumber=$mobileNumber, registration=$registration, ]';
+    return 'Invite[id=$id, registration=$registration, mobileNumber=$mobileNumber, email=$email, endDate=$endDate, inviteWatchlist=$inviteWatchlist, hosts=$hosts, watchlistColour=$watchlistColour, location=$location, startDate=$startDate, lastName=$lastName, firstName=$firstName, ]';
   }
 
   Invite.fromJson(Map<String, dynamic> json) {
@@ -40,60 +40,60 @@ class Invite {
     } else {
           id = json['id'];
     }
-    if (json['first_name'] == null) {
-      firstName = null;
+    if (json['registration'] == null) {
+      registration = null;
     } else {
-          firstName = json['first_name'];
-    }
-    if (json['last_name'] == null) {
-      lastName = null;
-    } else {
-          lastName = json['last_name'];
-    }
-    if (json['start_date'] == null) {
-      startDate = null;
-    } else {
-      startDate = DateTime.parse(json['start_date']);
-    }
-    if (json['location'] == null) {
-      location = null;
-    } else {
-      location = new Location.fromJson(json['location']);
-    }
-    if (json['watchlist_colour'] == null) {
-      watchlistColour = null;
-    } else {
-          watchlistColour = json['watchlist_colour'];
-    }
-    if (json['hosts'] == null) {
-      hosts = null;
-    } else {
-      hosts = Host.listFromJson(json['hosts']);
-    }
-    if (json['invite_watchlist'] == null) {
-      inviteWatchlist = null;
-    } else {
-      inviteWatchlist = new InviteWatchlist.fromJson(json['invite_watchlist']);
-    }
-    if (json['end_date'] == null) {
-      endDate = null;
-    } else {
-      endDate = DateTime.parse(json['end_date']);
-    }
-    if (json['email'] == null) {
-      email = null;
-    } else {
-          email = json['email'];
+      registration = new Registration.fromJson(json['registration']);
     }
     if (json['mobile_number'] == null) {
       mobileNumber = null;
     } else {
           mobileNumber = json['mobile_number'];
     }
-    if (json['registration'] == null) {
-      registration = null;
+    if (json['email'] == null) {
+      email = null;
     } else {
-      registration = new Registration.fromJson(json['registration']);
+          email = json['email'];
+    }
+    if (json['end_date'] == null) {
+      endDate = null;
+    } else {
+      endDate = DateTime.parse(json['end_date']);
+    }
+    if (json['invite_watchlist'] == null) {
+      inviteWatchlist = null;
+    } else {
+      inviteWatchlist = new InviteWatchlist.fromJson(json['invite_watchlist']);
+    }
+    if (json['hosts'] == null) {
+      hosts = null;
+    } else {
+      hosts = Host.listFromJson(json['hosts']);
+    }
+    if (json['watchlist_colour'] == null) {
+      watchlistColour = null;
+    } else {
+          watchlistColour = json['watchlist_colour'];
+    }
+    if (json['location'] == null) {
+      location = null;
+    } else {
+      location = new Location.fromJson(json['location']);
+    }
+    if (json['start_date'] == null) {
+      startDate = null;
+    } else {
+      startDate = DateTime.parse(json['start_date']);
+    }
+    if (json['last_name'] == null) {
+      lastName = null;
+    } else {
+          lastName = json['last_name'];
+    }
+    if (json['first_name'] == null) {
+      firstName = null;
+    } else {
+          firstName = json['first_name'];
     }
   }
 
@@ -101,28 +101,28 @@ class Invite {
     Map <String, dynamic> json = {};
     if (id != null)
       json['id'] = id;
-    if (firstName != null)
-      json['first_name'] = firstName;
-    if (lastName != null)
-      json['last_name'] = lastName;
-    if (startDate != null)
-      json['start_date'] = startDate == null ? null : startDate.toUtc().toIso8601String();
-    if (location != null)
-      json['location'] = location;
-    if (watchlistColour != null)
-      json['watchlist_colour'] = watchlistColour;
-    if (hosts != null)
-      json['hosts'] = hosts;
-    if (inviteWatchlist != null)
-      json['invite_watchlist'] = inviteWatchlist;
-    if (endDate != null)
-      json['end_date'] = endDate == null ? null : endDate.toUtc().toIso8601String();
-    if (email != null)
-      json['email'] = email;
-    if (mobileNumber != null)
-      json['mobile_number'] = mobileNumber;
     if (registration != null)
       json['registration'] = registration;
+    if (mobileNumber != null)
+      json['mobile_number'] = mobileNumber;
+    if (email != null)
+      json['email'] = email;
+    if (endDate != null)
+      json['end_date'] = endDate == null ? null : endDate.toUtc().toIso8601String();
+    if (inviteWatchlist != null)
+      json['invite_watchlist'] = inviteWatchlist;
+    if (hosts != null)
+      json['hosts'] = hosts;
+    if (watchlistColour != null)
+      json['watchlist_colour'] = watchlistColour;
+    if (location != null)
+      json['location'] = location;
+    if (startDate != null)
+      json['start_date'] = startDate == null ? null : startDate.toUtc().toIso8601String();
+    if (lastName != null)
+      json['last_name'] = lastName;
+    if (firstName != null)
+      json['first_name'] = firstName;
     return json;
   }
 

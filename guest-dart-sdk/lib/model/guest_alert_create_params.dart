@@ -1,46 +1,46 @@
 part of guest_sdk.api;
 
 class GuestAlertCreateParams {
-  /* Plain text of the alert to be sent */
-  String message = null;
-  /* Specify the broadcast channel, one of 'SMS' and/or 'EMAIL' */
-  List<String> channels = [];
   
   GuestAlertSigninSelectors signinSelectors = null;
+  /* Specify the broadcast channel, one of 'SMS' and/or 'EMAIL' */
+  List<String> channels = [];
+  /* Plain text of the alert to be sent */
+  String message = null;
   GuestAlertCreateParams();
 
   @override
   String toString() {
-    return 'GuestAlertCreateParams[message=$message, channels=$channels, signinSelectors=$signinSelectors, ]';
+    return 'GuestAlertCreateParams[signinSelectors=$signinSelectors, channels=$channels, message=$message, ]';
   }
 
   GuestAlertCreateParams.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    if (json['message'] == null) {
-      message = null;
+    if (json['signin_selectors'] == null) {
+      signinSelectors = null;
     } else {
-          message = json['message'];
+      signinSelectors = new GuestAlertSigninSelectors.fromJson(json['signin_selectors']);
     }
     if (json['channels'] == null) {
       channels = null;
     } else {
       channels = (json['channels'] as List).cast<String>();
     }
-    if (json['signin_selectors'] == null) {
-      signinSelectors = null;
+    if (json['message'] == null) {
+      message = null;
     } else {
-      signinSelectors = new GuestAlertSigninSelectors.fromJson(json['signin_selectors']);
+          message = json['message'];
     }
   }
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (message != null)
-      json['message'] = message;
-    if (channels != null)
-      json['channels'] = channels;
     if (signinSelectors != null)
       json['signin_selectors'] = signinSelectors;
+    if (channels != null)
+      json['channels'] = channels;
+    if (message != null)
+      json['message'] = message;
     return json;
   }
 

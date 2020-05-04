@@ -7,12 +7,15 @@
 
 import Foundation
 
-
+/**  */
 public struct GuestAlertSigninSelectors: Codable { 
 
 
+    /**  */
     public var isSignedOut: Bool?
+    /**  */
     public var signinIds: [Int]?
+    /**  */
     public var locationIds: [Int]?
 
     public init(isSignedOut: Bool?, signinIds: [Int]?, locationIds: [Int]?) {

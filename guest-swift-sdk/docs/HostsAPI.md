@@ -1,6 +1,6 @@
 # HostsAPI
 
-All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api/v3*
+All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,6 +14,8 @@ Method | HTTP request | Description
 ```
 
 Create a Host
+
+Creates a Host
 
 ### Example 
 ```swift

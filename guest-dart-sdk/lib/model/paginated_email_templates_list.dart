@@ -2,36 +2,36 @@ part of guest_sdk.api;
 
 class PaginatedEmailTemplatesList {
   
-  List<EmailTemplate> emailTemplates = [];
-  
   Pagination pagination = null;
+  
+  List<EmailTemplate> emailTemplates = [];
   PaginatedEmailTemplatesList();
 
   @override
   String toString() {
-    return 'PaginatedEmailTemplatesList[emailTemplates=$emailTemplates, pagination=$pagination, ]';
+    return 'PaginatedEmailTemplatesList[pagination=$pagination, emailTemplates=$emailTemplates, ]';
   }
 
   PaginatedEmailTemplatesList.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    if (json['email_templates'] == null) {
-      emailTemplates = null;
-    } else {
-      emailTemplates = EmailTemplate.listFromJson(json['email_templates']);
-    }
     if (json['pagination'] == null) {
       pagination = null;
     } else {
       pagination = new Pagination.fromJson(json['pagination']);
     }
+    if (json['email_templates'] == null) {
+      emailTemplates = null;
+    } else {
+      emailTemplates = EmailTemplate.listFromJson(json['email_templates']);
+    }
   }
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (emailTemplates != null)
-      json['email_templates'] = emailTemplates;
     if (pagination != null)
       json['pagination'] = pagination;
+    if (emailTemplates != null)
+      json['email_templates'] = emailTemplates;
     return json;
   }
 

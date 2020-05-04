@@ -1,15 +1,15 @@
 part of guest_sdk.api;
 
 class InternalWatchlistResult {
-  
+  /*  */
   int id = null;
-  
+  /*  */
   String email = null;
-  
+  /*  */
   String colour = null;
-  
+  /*  */
   String lastName = null;
-  
+  /*  */
   String firstName = null;
   InternalWatchlistResult();
 

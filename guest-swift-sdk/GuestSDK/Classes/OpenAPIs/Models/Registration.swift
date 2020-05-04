@@ -13,43 +13,43 @@ public struct Registration: Codable {
 
     /** Registration unique identifier */
     public var id: String?
-    /** Datetime when registration was created */
-    public var createdAt: Date?
-    /** Guest&#39;s name */
-    public var name: String?
-    /** E-mail */
-    public var email: String?
-    /** Company&#39;s name */
-    public var company: String?
-    /** URL of the uploaded photo */
-    public var photoUrl: String?
+    public var visitor: Visitor?
+    public var invite: Invite?
     /** Response given by the guest */
     public var guestResponses: [GuestResponse]?
-    public var invite: Invite?
-    public var visitor: Visitor?
+    /** URL of the uploaded photo */
+    public var photoUrl: String?
+    /** Company&#39;s name */
+    public var company: String?
+    /** E-mail */
+    public var email: String?
+    /** Guest&#39;s name */
+    public var name: String?
+    /** Datetime when registration was created */
+    public var createdAt: Date?
 
-    public init(id: String?, createdAt: Date?, name: String?, email: String?, company: String?, photoUrl: String?, guestResponses: [GuestResponse]?, invite: Invite?, visitor: Visitor?) {
+    public init(id: String?, visitor: Visitor?, invite: Invite?, guestResponses: [GuestResponse]?, photoUrl: String?, company: String?, email: String?, name: String?, createdAt: Date?) {
         self.id = id
-        self.createdAt = createdAt
-        self.name = name
-        self.email = email
-        self.company = company
-        self.photoUrl = photoUrl
-        self.guestResponses = guestResponses
-        self.invite = invite
         self.visitor = visitor
+        self.invite = invite
+        self.guestResponses = guestResponses
+        self.photoUrl = photoUrl
+        self.company = company
+        self.email = email
+        self.name = name
+        self.createdAt = createdAt
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case id
-        case createdAt = "created_at"
-        case name
-        case email
-        case company
-        case photoUrl = "photo_url"
-        case guestResponses = "guest_responses"
-        case invite
         case visitor
+        case invite
+        case guestResponses = "guest_responses"
+        case photoUrl = "photo_url"
+        case company
+        case email
+        case name
+        case createdAt = "created_at"
     }
 
 }

@@ -12,27 +12,27 @@ public struct InviteWatchlist: Codable {
 
 
     public var id: Int
-    /** Deprecated */
-    public var externalColours: [String]?
+    public var _internal: [InternalWatchlistResult]?
+    public var external: [ExternalWatchlistResult]?
     /** Deprecated */
     public var internalColours: [String]?
-    public var external: [ExternalWatchlistResult]?
-    public var _internal: [InternalWatchlistResult]?
+    /** Deprecated */
+    public var externalColours: [String]?
 
-    public init(id: Int, externalColours: [String]?, internalColours: [String]?, external: [ExternalWatchlistResult]?, _internal: [InternalWatchlistResult]?) {
+    public init(id: Int, _internal: [InternalWatchlistResult]?, external: [ExternalWatchlistResult]?, internalColours: [String]?, externalColours: [String]?) {
         self.id = id
-        self.externalColours = externalColours
-        self.internalColours = internalColours
-        self.external = external
         self._internal = _internal
+        self.external = external
+        self.internalColours = internalColours
+        self.externalColours = externalColours
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case id
-        case externalColours = "external_colours"
-        case internalColours = "internal_colours"
-        case external
         case _internal = "internal"
+        case external
+        case internalColours = "internal_colours"
+        case externalColours = "external_colours"
     }
 
 }

@@ -2,73 +2,73 @@ part of guest_sdk.api;
 
 class WatchlistCreateParams {
   
-  String colour = null;
-  //enum colourEnum {  RED,  YELLOW,  GREEN,  ORANGE,  };{
-  
-  String email = null;
-  
-  String firstName = null;
-  
-  String lastName = null;
+  List<String> aliases = [];
   
   String notes = null;
   
-  List<String> aliases = [];
+  String lastName = null;
+  
+  String firstName = null;
+  
+  String email = null;
+  
+  String colour = null;
+  //enum colourEnum {  RED,  YELLOW,  GREEN,  ORANGE,  };{
   WatchlistCreateParams();
 
   @override
   String toString() {
-    return 'WatchlistCreateParams[colour=$colour, email=$email, firstName=$firstName, lastName=$lastName, notes=$notes, aliases=$aliases, ]';
+    return 'WatchlistCreateParams[aliases=$aliases, notes=$notes, lastName=$lastName, firstName=$firstName, email=$email, colour=$colour, ]';
   }
 
   WatchlistCreateParams.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    if (json['colour'] == null) {
-      colour = null;
+    if (json['aliases'] == null) {
+      aliases = null;
     } else {
-          colour = json['colour'];
-    }
-    if (json['email'] == null) {
-      email = null;
-    } else {
-          email = json['email'];
-    }
-    if (json['first_name'] == null) {
-      firstName = null;
-    } else {
-          firstName = json['first_name'];
-    }
-    if (json['last_name'] == null) {
-      lastName = null;
-    } else {
-          lastName = json['last_name'];
+      aliases = (json['aliases'] as List).cast<String>();
     }
     if (json['notes'] == null) {
       notes = null;
     } else {
           notes = json['notes'];
     }
-    if (json['aliases'] == null) {
-      aliases = null;
+    if (json['last_name'] == null) {
+      lastName = null;
     } else {
-      aliases = (json['aliases'] as List).cast<String>();
+          lastName = json['last_name'];
+    }
+    if (json['first_name'] == null) {
+      firstName = null;
+    } else {
+          firstName = json['first_name'];
+    }
+    if (json['email'] == null) {
+      email = null;
+    } else {
+          email = json['email'];
+    }
+    if (json['colour'] == null) {
+      colour = null;
+    } else {
+          colour = json['colour'];
     }
   }
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (colour != null)
-      json['colour'] = colour;
-    if (email != null)
-      json['email'] = email;
-    if (firstName != null)
-      json['first_name'] = firstName;
-    if (lastName != null)
-      json['last_name'] = lastName;
-    if (notes != null)
-      json['notes'] = notes;
     if (aliases != null)
       json['aliases'] = aliases;
+    if (notes != null)
+      json['notes'] = notes;
+    if (lastName != null)
+      json['last_name'] = lastName;
+    if (firstName != null)
+      json['first_name'] = firstName;
+    if (email != null)
+      json['email'] = email;
+    if (colour != null)
+      json['colour'] = colour;
     return json;
   }
 

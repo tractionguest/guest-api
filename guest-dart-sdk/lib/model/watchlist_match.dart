@@ -15,111 +15,111 @@ class WatchlistMatch {
   String sourceListUrl = null;
   
   String list = null;
-  
+  /*  */
   String type = null;
-  
+  /*  */
   String category = null;
-  
+  /*  */
   String street1 = null;
-  
+  /*  */
   String street2 = null;
-  
+  /*  */
   String city = null;
-  
+  /*  */
   String state = null;
-  
+  /*  */
   String country = null;
-  
+  /*  */
   String notes = null;
-  
+  /*  */
   String frc = null;
-  
+  /*  */
   String start = null;
-  
+  /*  */
   String end = null;
-  
+  /*  */
   String frserve = null;
-  
+  /*  */
   String optionalID = null;
-  
+  /*  */
   String alertType = null;
-  
+  /*  */
   String pairStatus = null;
-  
+  /*  */
   String pairReason = null;
-  
+  /*  */
   String pairComments = null;
-  
+  /*  */
   String applicationDisplayName = null;
-  
+  /*  */
   String applicationId = null;
-  
+  /*  */
   String clientId = null;
-  
+  /*  */
   String clientKey = null;
-  
+  /*  */
   String clientFullName = null;
-  
+  /*  */
   String listKey = null;
-  
+  /*  */
   String listName = null;
-  
+  /*  */
   String listId = null;
-  
+  /*  */
   String listVersion = null;
-  
+  /*  */
   String listModifyDate = null;
-  
+  /*  */
   String listProfileId = null;
-  
+  /*  */
   String listProfileKey = null;
-  
+  /*  */
   String linkSingleStringName = null;
-  
+  /*  */
   String listParentSingleStringName = null;
-  
+  /*  */
   String listCategory = null;
-  
+  /*  */
   String listPepCategory = null;
-  
+  /*  */
   String listDoBs = null;
-  
+  /*  */
   String listCountries = null;
-  
+  /*  */
   String rankString = null;
-  
+  /*  */
   String ranktype = null;
-  
+  /*  */
   String rankweight = null;
-  
+  /*  */
   String pairLoadDate = null;
-  
+  /*  */
   String eAddressTo = null;
-  
+  /*  */
   String eAddressCc = null;
-  
+  /*  */
   String origin = null;
-  
+  /*  */
   String secondsviewed = null;
-  
+  /*  */
   String initialUser = null;
-  
+  /*  */
   String isPairParentFlag = null;
-  
+  /*  */
   String pairMetSearchCriteriaFlag = null;
-  
+  /*  */
   String editableDueToAssignmentFlag = null;
-  
+  /*  */
   String modifyDate = null;
-  
+  /*  */
   String modifiedByUser = null;
-  
+  /*  */
   String pairReportType = null;
-  
+  /*  */
   String finscanCategory = null;
-  
+  /*  */
   String wrapperStatus = null;
-  
+  /*  */
   String sourceLists = null;
   WatchlistMatch();
 

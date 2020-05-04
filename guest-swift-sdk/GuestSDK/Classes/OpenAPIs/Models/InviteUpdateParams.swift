@@ -11,54 +11,55 @@ import Foundation
 public struct InviteUpdateParams: Codable { 
 
 
-    public var company: String?
-    public var email: String?
-    public var endDate: Date?
-    public var lastName: String?
-    public var startDate: Date?
-    public var title: String?
-    public var hostIds: [Int]?
-    public var customFields: [CustomField]?
-    public var emailTemplateId: Int?
-    public var firstName: String?
-    public var notificationTriggers: [NotificationTriggerCreateParams]?
-    public var onPremise: Bool?
+    public var mobileNumber: String?
     /** Used for transfering ownership of an &#x60;Invite&#x60; to another member of the Account */
     public var userId: Int?
-    public var mobileNumber: String?
+    public var onPremise: Bool?
+    public var notificationTriggers: [NotificationTriggerCreateParams]?
+    public var firstName: String?
+    public var emailTemplateId: Int?
+    public var customFields: [CustomField]?
+    public var hostIds: [Int]?
+    public var title: String?
+    /**  */
+    public var startDate: Date?
+    public var lastName: String?
+    public var endDate: Date?
+    public var email: String?
+    public var company: String?
 
-    public init(company: String?, email: String?, endDate: Date?, lastName: String?, startDate: Date?, title: String?, hostIds: [Int]?, customFields: [CustomField]?, emailTemplateId: Int?, firstName: String?, notificationTriggers: [NotificationTriggerCreateParams]?, onPremise: Bool?, userId: Int?, mobileNumber: String?) {
-        self.company = company
-        self.email = email
-        self.endDate = endDate
-        self.lastName = lastName
-        self.startDate = startDate
-        self.title = title
-        self.hostIds = hostIds
-        self.customFields = customFields
-        self.emailTemplateId = emailTemplateId
-        self.firstName = firstName
-        self.notificationTriggers = notificationTriggers
-        self.onPremise = onPremise
-        self.userId = userId
+    public init(mobileNumber: String?, userId: Int?, onPremise: Bool?, notificationTriggers: [NotificationTriggerCreateParams]?, firstName: String?, emailTemplateId: Int?, customFields: [CustomField]?, hostIds: [Int]?, title: String?, startDate: Date?, lastName: String?, endDate: Date?, email: String?, company: String?) {
         self.mobileNumber = mobileNumber
+        self.userId = userId
+        self.onPremise = onPremise
+        self.notificationTriggers = notificationTriggers
+        self.firstName = firstName
+        self.emailTemplateId = emailTemplateId
+        self.customFields = customFields
+        self.hostIds = hostIds
+        self.title = title
+        self.startDate = startDate
+        self.lastName = lastName
+        self.endDate = endDate
+        self.email = email
+        self.company = company
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case company
-        case email
-        case endDate = "end_date"
-        case lastName = "last_name"
-        case startDate = "start_date"
-        case title
-        case hostIds = "host_ids"
-        case customFields = "custom_fields"
-        case emailTemplateId = "email_template_id"
-        case firstName = "first_name"
-        case notificationTriggers = "notification_triggers"
-        case onPremise = "on_premise"
-        case userId = "user_id"
         case mobileNumber = "mobile_number"
+        case userId = "user_id"
+        case onPremise = "on_premise"
+        case notificationTriggers = "notification_triggers"
+        case firstName = "first_name"
+        case emailTemplateId = "email_template_id"
+        case customFields = "custom_fields"
+        case hostIds = "host_ids"
+        case title
+        case startDate = "start_date"
+        case lastName = "last_name"
+        case endDate = "end_date"
+        case email
+        case company
     }
 
 }

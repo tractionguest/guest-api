@@ -2,55 +2,55 @@ part of guest_sdk.api;
 
 class ExternalWatchlistResult {
   
-  WatchlistSearch searchTerms = null;
-  
-  String integration = null;
-  
+  List<WatchlistMatch> matches = [];
+  /*  */
   String colour = null;
   //enum colourEnum {  RED,  GREEN,  YELLOW,  ORANGE,  };{
+  /*  */
+  String integration = null;
   
-  List<WatchlistMatch> matches = [];
+  WatchlistSearch searchTerms = null;
   ExternalWatchlistResult();
 
   @override
   String toString() {
-    return 'ExternalWatchlistResult[searchTerms=$searchTerms, integration=$integration, colour=$colour, matches=$matches, ]';
+    return 'ExternalWatchlistResult[matches=$matches, colour=$colour, integration=$integration, searchTerms=$searchTerms, ]';
   }
 
   ExternalWatchlistResult.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    if (json['search_terms'] == null) {
-      searchTerms = null;
+    if (json['matches'] == null) {
+      matches = null;
     } else {
-      searchTerms = new WatchlistSearch.fromJson(json['search_terms']);
-    }
-    if (json['integration'] == null) {
-      integration = null;
-    } else {
-          integration = json['integration'];
+      matches = WatchlistMatch.listFromJson(json['matches']);
     }
     if (json['colour'] == null) {
       colour = null;
     } else {
           colour = json['colour'];
     }
-    if (json['matches'] == null) {
-      matches = null;
+    if (json['integration'] == null) {
+      integration = null;
     } else {
-      matches = WatchlistMatch.listFromJson(json['matches']);
+          integration = json['integration'];
+    }
+    if (json['search_terms'] == null) {
+      searchTerms = null;
+    } else {
+      searchTerms = new WatchlistSearch.fromJson(json['search_terms']);
     }
   }
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (searchTerms != null)
-      json['search_terms'] = searchTerms;
-    if (integration != null)
-      json['integration'] = integration;
-    if (colour != null)
-      json['colour'] = colour;
     if (matches != null)
       json['matches'] = matches;
+    if (colour != null)
+      json['colour'] = colour;
+    if (integration != null)
+      json['integration'] = integration;
+    if (searchTerms != null)
+      json['search_terms'] = searchTerms;
     return json;
   }
 

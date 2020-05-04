@@ -7,26 +7,26 @@
 
 import Foundation
 
-
+/**  */
 public struct GuestAlertCreateParams: Codable { 
 
 
-    /** Plain text of the alert to be sent */
-    public var message: String
+    public var signinSelectors: GuestAlertSigninSelectors?
     /** Specify the broadcast channel, one of &#39;SMS&#39; and/or &#39;EMAIL&#39; */
     public var channels: [String]
-    public var signinSelectors: GuestAlertSigninSelectors?
+    /** Plain text of the alert to be sent */
+    public var message: String
 
-    public init(message: String, channels: [String], signinSelectors: GuestAlertSigninSelectors?) {
-        self.message = message
-        self.channels = channels
+    public init(signinSelectors: GuestAlertSigninSelectors?, channels: [String], message: String) {
         self.signinSelectors = signinSelectors
+        self.channels = channels
+        self.message = message
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case message
-        case channels
         case signinSelectors = "signin_selectors"
+        case channels
+        case message
     }
 
 }

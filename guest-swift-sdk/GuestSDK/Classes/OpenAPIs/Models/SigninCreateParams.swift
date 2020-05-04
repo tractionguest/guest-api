@@ -7,55 +7,55 @@
 
 import Foundation
 
-
+/**  */
 public struct SigninCreateParams: Codable { 
 
 
-    public var guestEmailTemplateId: Int?
-    public var hostEmailTemplateId: Int?
-    /** Array of Host ids, ignored if &#x60;registration_id&#x60; is included */
-    public var hostIds: [Int]?
-    /** ID of the Location where the Signin happened, ignored if &#x60;registration_id&#x60; is included */
-    public var locationId: Int?
-    public var sendNotifications: Bool?
-    public var smsMessage: String?
-    /** First name, ignored if &#x60;registration_id&#x60; is included */
-    public var firstName: String?
-    /** Last name, ignored if &#x60;registration_id&#x60; is included */
-    public var lastName: String?
-    /** Company name, ignored if &#x60;registration_id&#x60; is included */
-    public var company: String?
-    /** E-mail, ignored if &#x60;registration_id&#x60; is included */
-    public var email: String?
     /** UUID of a Registration */
     public var registrationId: String?
+    /** E-mail, ignored if &#x60;registration_id&#x60; is included */
+    public var email: String?
+    /** Company name, ignored if &#x60;registration_id&#x60; is included */
+    public var company: String?
+    /** Last name, ignored if &#x60;registration_id&#x60; is included */
+    public var lastName: String?
+    /** First name, ignored if &#x60;registration_id&#x60; is included */
+    public var firstName: String?
+    public var smsMessage: String?
+    public var sendNotifications: Bool?
+    /** ID of the Location where the Signin happened, ignored if &#x60;registration_id&#x60; is included */
+    public var locationId: Int?
+    /** Array of Host ids, ignored if &#x60;registration_id&#x60; is included */
+    public var hostIds: [Int]?
+    public var hostEmailTemplateId: Int?
+    public var guestEmailTemplateId: Int?
 
-    public init(guestEmailTemplateId: Int?, hostEmailTemplateId: Int?, hostIds: [Int]?, locationId: Int?, sendNotifications: Bool?, smsMessage: String?, firstName: String?, lastName: String?, company: String?, email: String?, registrationId: String?) {
-        self.guestEmailTemplateId = guestEmailTemplateId
-        self.hostEmailTemplateId = hostEmailTemplateId
-        self.hostIds = hostIds
-        self.locationId = locationId
-        self.sendNotifications = sendNotifications
-        self.smsMessage = smsMessage
-        self.firstName = firstName
-        self.lastName = lastName
-        self.company = company
-        self.email = email
+    public init(registrationId: String?, email: String?, company: String?, lastName: String?, firstName: String?, smsMessage: String?, sendNotifications: Bool?, locationId: Int?, hostIds: [Int]?, hostEmailTemplateId: Int?, guestEmailTemplateId: Int?) {
         self.registrationId = registrationId
+        self.email = email
+        self.company = company
+        self.lastName = lastName
+        self.firstName = firstName
+        self.smsMessage = smsMessage
+        self.sendNotifications = sendNotifications
+        self.locationId = locationId
+        self.hostIds = hostIds
+        self.hostEmailTemplateId = hostEmailTemplateId
+        self.guestEmailTemplateId = guestEmailTemplateId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case guestEmailTemplateId = "guest_email_template_id"
-        case hostEmailTemplateId = "host_email_template_id"
-        case hostIds = "host_ids"
-        case locationId = "location_id"
-        case sendNotifications = "send_notifications"
-        case smsMessage = "sms_message"
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case company
-        case email
         case registrationId = "registration_id"
+        case email
+        case company
+        case lastName = "last_name"
+        case firstName = "first_name"
+        case smsMessage = "sms_message"
+        case sendNotifications = "send_notifications"
+        case locationId = "location_id"
+        case hostIds = "host_ids"
+        case hostEmailTemplateId = "host_email_template_id"
+        case guestEmailTemplateId = "guest_email_template_id"
     }
 
 }

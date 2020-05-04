@@ -9,7 +9,7 @@ class HostsApi {
 
   /// Create a Host
   ///
-  /// 
+  /// Creates a Host
   Future<Host> createHost(Host host, { String idempotencyKey }) async {
     Object postBody = host;
 

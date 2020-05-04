@@ -79,7 +79,7 @@ public class AuditLogsApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api/v3*
+All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -96,7 +96,7 @@ Class | Method | HTTP request | Description
 *InvitesApi* | [**updateInvite**](docs/InvitesApi.md#updateInvite) | **PUT** /invites/{inviteId} | Update a Invite
 *LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /locations | List All Locations
 *RegistrationApi* | [**getRegistration**](docs/RegistrationApi.md#getRegistration) | **GET** /registrations/{registrationId} | Get a Registration
-*SigninsApi* | [**createSignin**](docs/SigninsApi.md#createSignin) | **POST** /signins | Create a Signin
+*SigninsApi* | [**createSignin**](docs/SigninsApi.md#createSignin) | **POST** /signins | 
 *SigninsApi* | [**getSignin**](docs/SigninsApi.md#getSignin) | **GET** /signins/{signinId} | Get a Signin
 *SigninsApi* | [**getSignins**](docs/SigninsApi.md#getSignins) | **GET** /signins | List All Signins
 *SigninsApi* | [**updateSignin**](docs/SigninsApi.md#updateSignin) | **PUT** /signins/{signinId} | Update a Signin attribute

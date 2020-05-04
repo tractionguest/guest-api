@@ -7,16 +7,13 @@ class SigninsApi {
 
   SigninsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// Create a Signin
+  /// 
   ///
-  /// Creates a new instance of a &#x60;Signin&#x60;.
-  Future<Signin> createSignin(SigninCreateParams signinCreateParams, { String idempotencyKey }) async {
+  /// Creates a Signin
+  Future<Signin> createSignin({ SigninCreateParams signinCreateParams }) async {
     Object postBody = signinCreateParams;
 
     // verify required params are set
-    if(signinCreateParams == null) {
-     throw new ApiException(400, "Missing required param: signinCreateParams");
-    }
 
     // create path and map variables
     String path = "/signins".replaceAll("{format}","json");
@@ -25,7 +22,6 @@ class SigninsApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
-    headerParams["Idempotency-Key"] = idempotencyKey;
 
     List<String> contentTypes = ["application/json"];
 

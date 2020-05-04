@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"message": @"message", @"channels": @"channels", @"signinSelectors": @"signin_selectors" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"signinSelectors": @"signin_selectors", @"channels": @"channels", @"message": @"message" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"signinSelectors"];
+  NSArray *optionalProperties = @[@"signinSelectors", ];
   return [optionalProperties containsObject:propertyName];
 }
 

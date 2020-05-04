@@ -3,27 +3,27 @@ part of guest_sdk.api;
 class Registration {
   /* Registration unique identifier */
   String id = null;
-  /* Datetime when registration was created */
-  DateTime createdAt = null;
-  /* Guest's name */
-  String name = null;
-  /* E-mail */
-  String email = null;
-  /* Company's name */
-  String company = null;
-  /* URL of the uploaded photo */
-  String photoUrl = null;
-  /* Response given by the guest */
-  List<GuestResponse> guestResponses = [];
-  
-  Invite invite = null;
   
   Visitor visitor = null;
+  
+  Invite invite = null;
+  /* Response given by the guest */
+  List<GuestResponse> guestResponses = [];
+  /* URL of the uploaded photo */
+  String photoUrl = null;
+  /* Company's name */
+  String company = null;
+  /* E-mail */
+  String email = null;
+  /* Guest's name */
+  String name = null;
+  /* Datetime when registration was created */
+  DateTime createdAt = null;
   Registration();
 
   @override
   String toString() {
-    return 'Registration[id=$id, createdAt=$createdAt, name=$name, email=$email, company=$company, photoUrl=$photoUrl, guestResponses=$guestResponses, invite=$invite, visitor=$visitor, ]';
+    return 'Registration[id=$id, visitor=$visitor, invite=$invite, guestResponses=$guestResponses, photoUrl=$photoUrl, company=$company, email=$email, name=$name, createdAt=$createdAt, ]';
   }
 
   Registration.fromJson(Map<String, dynamic> json) {
@@ -33,45 +33,45 @@ class Registration {
     } else {
           id = json['id'];
     }
-    if (json['created_at'] == null) {
-      createdAt = null;
+    if (json['visitor'] == null) {
+      visitor = null;
     } else {
-      createdAt = DateTime.parse(json['created_at']);
-    }
-    if (json['name'] == null) {
-      name = null;
-    } else {
-          name = json['name'];
-    }
-    if (json['email'] == null) {
-      email = null;
-    } else {
-          email = json['email'];
-    }
-    if (json['company'] == null) {
-      company = null;
-    } else {
-          company = json['company'];
-    }
-    if (json['photo_url'] == null) {
-      photoUrl = null;
-    } else {
-          photoUrl = json['photo_url'];
-    }
-    if (json['guest_responses'] == null) {
-      guestResponses = null;
-    } else {
-      guestResponses = GuestResponse.listFromJson(json['guest_responses']);
+      visitor = new Visitor.fromJson(json['visitor']);
     }
     if (json['invite'] == null) {
       invite = null;
     } else {
       invite = new Invite.fromJson(json['invite']);
     }
-    if (json['visitor'] == null) {
-      visitor = null;
+    if (json['guest_responses'] == null) {
+      guestResponses = null;
     } else {
-      visitor = new Visitor.fromJson(json['visitor']);
+      guestResponses = GuestResponse.listFromJson(json['guest_responses']);
+    }
+    if (json['photo_url'] == null) {
+      photoUrl = null;
+    } else {
+          photoUrl = json['photo_url'];
+    }
+    if (json['company'] == null) {
+      company = null;
+    } else {
+          company = json['company'];
+    }
+    if (json['email'] == null) {
+      email = null;
+    } else {
+          email = json['email'];
+    }
+    if (json['name'] == null) {
+      name = null;
+    } else {
+          name = json['name'];
+    }
+    if (json['created_at'] == null) {
+      createdAt = null;
+    } else {
+      createdAt = DateTime.parse(json['created_at']);
     }
   }
 
@@ -79,22 +79,22 @@ class Registration {
     Map <String, dynamic> json = {};
     if (id != null)
       json['id'] = id;
-    if (createdAt != null)
-      json['created_at'] = createdAt == null ? null : createdAt.toUtc().toIso8601String();
-    if (name != null)
-      json['name'] = name;
-    if (email != null)
-      json['email'] = email;
-    if (company != null)
-      json['company'] = company;
-    if (photoUrl != null)
-      json['photo_url'] = photoUrl;
-    if (guestResponses != null)
-      json['guest_responses'] = guestResponses;
-    if (invite != null)
-      json['invite'] = invite;
     if (visitor != null)
       json['visitor'] = visitor;
+    if (invite != null)
+      json['invite'] = invite;
+    if (guestResponses != null)
+      json['guest_responses'] = guestResponses;
+    if (photoUrl != null)
+      json['photo_url'] = photoUrl;
+    if (company != null)
+      json['company'] = company;
+    if (email != null)
+      json['email'] = email;
+    if (name != null)
+      json['name'] = name;
+    if (createdAt != null)
+      json['created_at'] = createdAt == null ? null : createdAt.toUtc().toIso8601String();
     return json;
   }
 

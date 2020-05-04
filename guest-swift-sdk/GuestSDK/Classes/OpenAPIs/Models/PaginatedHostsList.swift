@@ -11,12 +11,12 @@ import Foundation
 public struct PaginatedHostsList: Codable { 
 
 
-    public var hosts: [Host]
     public var pagination: Pagination
+    public var hosts: [Host]
 
-    public init(hosts: [Host], pagination: Pagination) {
-        self.hosts = hosts
+    public init(pagination: Pagination, hosts: [Host]) {
         self.pagination = pagination
+        self.hosts = hosts
     }
 
 }

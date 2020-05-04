@@ -1,6 +1,6 @@
 # InvitesAPI
 
-All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api/v3*
+All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,7 +26,7 @@ Creates a new `Invite` for a specific `Location`.
 import GuestSDK
 
 let locationId = 987 // Int | A unique identifier for a `Location`.
-let inviteCreateParams = InviteCreateParams(company: "company_example", email: "email_example", endDate: Date(), lastName: "lastName_example", startDate: Date(), title: "title_example", watchlistColour: "watchlistColour_example", hostIds: [123], customFields: [CustomField(format: "format_example", fieldName: "fieldName_example", fieldValue: "fieldValue_example")], emailTemplateId: 123, firstName: "firstName_example", notificationTriggers: [NotificationTriggerCreateParams(offsetDirection: "offsetDirection_example", offsetAmount: 123, offsetOrigin: "offsetOrigin_example", emailTemplateId: 123, notificationGroups: ["notificationGroups_example"], offsetUnit: "offsetUnit_example")], mobileNumber: "mobileNumber_example") // InviteCreateParams | 
+let inviteCreateParams = InviteCreateParams(mobileNumber: "mobileNumber_example", notificationTriggers: [NotificationTriggerCreateParams(offsetUnit: "offsetUnit_example", notificationGroups: ["notificationGroups_example"], emailTemplateId: 123, offsetOrigin: "offsetOrigin_example", offsetAmount: 123, offsetDirection: "offsetDirection_example")], firstName: "firstName_example", emailTemplateId: 123, customFields: [CustomField(format: "format_example", fieldName: "fieldName_example", fieldValue: "fieldValue_example")], hostIds: [123], watchlistColour: 123, title: "title_example", startDate: Date(), lastName: "lastName_example", endDate: Date(), email: "email_example", company: "company_example") // InviteCreateParams | 
 let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
 // Creates an Invite
@@ -256,7 +256,7 @@ Updates an existing `Invite`.
 import GuestSDK
 
 let inviteId = "inviteId_example" // String | A unique identifier for a `Invite`.
-let inviteUpdateParams = InviteUpdateParams(company: "company_example", email: "email_example", endDate: Date(), lastName: "lastName_example", startDate: Date(), title: "title_example", hostIds: [123], customFields: [CustomField(format: "format_example", fieldName: "fieldName_example", fieldValue: "fieldValue_example")], emailTemplateId: 123, firstName: "firstName_example", notificationTriggers: [NotificationTriggerCreateParams(offsetDirection: "offsetDirection_example", offsetAmount: 123, offsetOrigin: "offsetOrigin_example", emailTemplateId: 123, notificationGroups: ["notificationGroups_example"], offsetUnit: "offsetUnit_example")], onPremise: false, userId: 123, mobileNumber: "mobileNumber_example") // InviteUpdateParams | Updated `Invite` information.
+let inviteUpdateParams = InviteUpdateParams(mobileNumber: "mobileNumber_example", userId: 123, onPremise: false, notificationTriggers: [NotificationTriggerCreateParams(offsetUnit: "offsetUnit_example", notificationGroups: ["notificationGroups_example"], emailTemplateId: 123, offsetOrigin: "offsetOrigin_example", offsetAmount: 123, offsetDirection: "offsetDirection_example")], firstName: "firstName_example", emailTemplateId: 123, customFields: [CustomField(format: "format_example", fieldName: "fieldName_example", fieldValue: "fieldValue_example")], hostIds: [123], title: "title_example", startDate: Date(), lastName: "lastName_example", endDate: Date(), email: "email_example", company: "company_example") // InviteUpdateParams | Updated `Invite` information.
 let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
 // Update a Invite

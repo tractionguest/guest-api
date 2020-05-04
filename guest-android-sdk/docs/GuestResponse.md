@@ -6,11 +6,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**title** | **String** | Page title |  [optional]
-**sequence** | **Integer** |  |  [optional]
 **id** | **String** | UUID |  [optional]
-**pageType** | [**PageTypeEnum**](#PageTypeEnum) | Enum |  [optional]
 **customFields** | [**List&lt;FlexField&gt;**](FlexField.md) | Flex fields |  [optional]
+**pageType** | [**PageTypeEnum**](#PageTypeEnum) | Enum |  [optional]
+**sequence** | **Integer** |  |  [optional]
+**title** | **String** | Page title |  [optional]
 
 
 ## Enum: PageTypeEnum

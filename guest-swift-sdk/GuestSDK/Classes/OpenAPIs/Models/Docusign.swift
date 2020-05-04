@@ -7,18 +7,27 @@
 
 import Foundation
 
-
+/**  */
 public struct Docusign: Codable { 
 
 
+    /**  */
     public var templateId: String?
+    /**  */
     public var integration: String?
+    /**  */
     public var ndaStatus: String?
+    /**  */
     public var ndaSignedDate: Date?
+    /**  */
     public var envelopeId: String?
+    /**  */
     public var sequence: String?
+    /**  */
     public var docusignId: String?
+    /**  */
     public var docusignName: String?
+    /**  */
     public var title: String?
 
     public init(templateId: String?, integration: String?, ndaStatus: String?, ndaSignedDate: Date?, envelopeId: String?, sequence: String?, docusignId: String?, docusignName: String?, title: String?) {

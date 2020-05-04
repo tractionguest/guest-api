@@ -12,29 +12,32 @@ public struct User: Codable {
 
 
     public var id: Int
-    public var firstName: String?
-    public var lastName: String?
-    public var email: String
-    public var permissionGroups: [PermissionGroup]?
     /** Identifies if user has access to mobile app features. */
     public var mobileAccessEnabled: Bool
+    public var permissionGroups: [PermissionGroup]?
+    /**  */
+    public var email: String
+    /**  */
+    public var lastName: String?
+    /**  */
+    public var firstName: String?
 
-    public init(id: Int, firstName: String?, lastName: String?, email: String, permissionGroups: [PermissionGroup]?, mobileAccessEnabled: Bool) {
+    public init(id: Int, mobileAccessEnabled: Bool, permissionGroups: [PermissionGroup]?, email: String, lastName: String?, firstName: String?) {
         self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
-        self.email = email
-        self.permissionGroups = permissionGroups
         self.mobileAccessEnabled = mobileAccessEnabled
+        self.permissionGroups = permissionGroups
+        self.email = email
+        self.lastName = lastName
+        self.firstName = firstName
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case id
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case email
-        case permissionGroups = "permission_groups"
         case mobileAccessEnabled = "mobile_access_enabled"
+        case permissionGroups = "permission_groups"
+        case email
+        case lastName = "last_name"
+        case firstName = "first_name"
     }
 
 }

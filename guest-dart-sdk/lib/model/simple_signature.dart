@@ -1,13 +1,13 @@
 part of guest_sdk.api;
 
 class SimpleSignature {
-  
+  /*  */
   String status = null;
-  
+  /*  */
   String templateName = null;
-  
+  /*  */
   String id = null;
-  
+  /*  */
   String title = null;
   SimpleSignature();
 

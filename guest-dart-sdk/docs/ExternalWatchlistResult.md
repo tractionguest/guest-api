@@ -8,10 +8,10 @@ import 'package:guest_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**searchTerms** | [**WatchlistSearch**](WatchlistSearch.md) |  | [optional] [default to null]
-**integration** | **String** |  | [optional] [default to null]
-**colour** | **String** |  | [optional] [default to null]
 **matches** | [**List&lt;WatchlistMatch&gt;**](WatchlistMatch.md) |  | [optional] [default to []]
+**colour** | **String** |  | [optional] [default to null]
+**integration** | **String** |  | [optional] [default to null]
+**searchTerms** | [**WatchlistSearch**](WatchlistSearch.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

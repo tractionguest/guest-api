@@ -11,17 +11,17 @@ import Foundation
 public struct SigninData: Codable { 
 
 
-    public var name: String?
     public var customFields: [CustomField]?
+    public var name: String?
 
-    public init(name: String?, customFields: [CustomField]?) {
-        self.name = name
+    public init(customFields: [CustomField]?, name: String?) {
         self.customFields = customFields
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case name
         case customFields = "custom_fields"
+        case name
     }
 
 }

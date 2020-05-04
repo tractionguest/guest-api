@@ -5,7 +5,7 @@
 import 'package:guest_sdk/api.dart';
 ```
 
-All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api/v3*
+All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

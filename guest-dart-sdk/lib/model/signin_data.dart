@@ -2,36 +2,36 @@ part of guest_sdk.api;
 
 class SigninData {
   
-  String name = null;
-  
   List<CustomField> customFields = [];
+  
+  String name = null;
   SigninData();
 
   @override
   String toString() {
-    return 'SigninData[name=$name, customFields=$customFields, ]';
+    return 'SigninData[customFields=$customFields, name=$name, ]';
   }
 
   SigninData.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    if (json['name'] == null) {
-      name = null;
-    } else {
-          name = json['name'];
-    }
     if (json['custom_fields'] == null) {
       customFields = null;
     } else {
       customFields = CustomField.listFromJson(json['custom_fields']);
     }
+    if (json['name'] == null) {
+      name = null;
+    } else {
+          name = json['name'];
+    }
   }
 
   Map<String, dynamic> toJson() {
     Map <String, dynamic> json = {};
-    if (name != null)
-      json['name'] = name;
     if (customFields != null)
       json['custom_fields'] = customFields;
+    if (name != null)
+      json['name'] = name;
     return json;
   }
 

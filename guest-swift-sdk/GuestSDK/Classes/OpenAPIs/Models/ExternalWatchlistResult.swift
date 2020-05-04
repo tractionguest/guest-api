@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+/**  */
 public struct ExternalWatchlistResult: Codable { 
 
 
@@ -17,23 +17,25 @@ public struct ExternalWatchlistResult: Codable {
         case yellow = "YELLOW"
         case orange = "ORANGE"
     }
-    public var searchTerms: WatchlistSearch?
-    public var integration: String?
-    public var colour: Colour?
     public var matches: [WatchlistMatch]?
+    /**  */
+    public var colour: Colour?
+    /**  */
+    public var integration: String?
+    public var searchTerms: WatchlistSearch?
 
-    public init(searchTerms: WatchlistSearch?, integration: String?, colour: Colour?, matches: [WatchlistMatch]?) {
-        self.searchTerms = searchTerms
-        self.integration = integration
-        self.colour = colour
+    public init(matches: [WatchlistMatch]?, colour: Colour?, integration: String?, searchTerms: WatchlistSearch?) {
         self.matches = matches
+        self.colour = colour
+        self.integration = integration
+        self.searchTerms = searchTerms
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case searchTerms = "search_terms"
-        case integration
-        case colour
         case matches
+        case colour
+        case integration
+        case searchTerms = "search_terms"
     }
 
 }

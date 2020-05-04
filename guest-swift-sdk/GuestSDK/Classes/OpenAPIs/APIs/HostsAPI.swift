@@ -32,6 +32,7 @@ open class HostsAPI {
     /**
      Create a Host
      - POST /hosts
+     - Creates a Host
      - :
        - type: openIdConnect
        - name: TractionGuestAuth

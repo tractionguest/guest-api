@@ -4,46 +4,46 @@ class SigninDetail {
   
   int id = null;
   
-  String company = null;
-  
-  String email = null;
-  
-  String firstName = null;
-  
-  bool isAccountedFor = null;
-  /* Whether this Signin has been acknowledged yet. Can also be used as a one-way method of setting the Signin as acknowledged. */
-  bool isAcknowledged = null;
-  
-  String lastName = null;
-  
-  String locationName = null;
-  
-  String mobileNumber = null;
-  
-  DateTime signedOutTimestamp = null;
-  
-  String signinPhotoUrl = null;
-  
-  DateTime signinTimestamp = null;
-  /* A one-way method of Signing out a Signin */
-  bool isSignedOut = null;
-  
-  String note = null;
-  
-  SigninAcknowledgement signinAcknowledgement = null;
-  
-  List<SigninData> signinData = [];
-  
-  List<Host> hosts = [];
+  List<SignableDocument> documents = [];
   
   SigninWatchlist signinWatchlist = null;
   
-  List<SignableDocument> documents = [];
+  List<Host> hosts = [];
+  
+  List<SigninData> signinData = [];
+  
+  SigninAcknowledgement signinAcknowledgement = null;
+  
+  String note = null;
+  /* A one-way method of Signing out a Signin */
+  bool isSignedOut = null;
+  
+  DateTime signinTimestamp = null;
+  
+  String signinPhotoUrl = null;
+  
+  DateTime signedOutTimestamp = null;
+  
+  String mobileNumber = null;
+  
+  String locationName = null;
+  
+  String lastName = null;
+  /* Whether this Signin has been acknowledged yet. Can also be used as a one-way method of setting the Signin as acknowledged. */
+  bool isAcknowledged = null;
+  
+  bool isAccountedFor = null;
+  
+  String firstName = null;
+  
+  String email = null;
+  
+  String company = null;
   SigninDetail();
 
   @override
   String toString() {
-    return 'SigninDetail[id=$id, company=$company, email=$email, firstName=$firstName, isAccountedFor=$isAccountedFor, isAcknowledged=$isAcknowledged, lastName=$lastName, locationName=$locationName, mobileNumber=$mobileNumber, signedOutTimestamp=$signedOutTimestamp, signinPhotoUrl=$signinPhotoUrl, signinTimestamp=$signinTimestamp, isSignedOut=$isSignedOut, note=$note, signinAcknowledgement=$signinAcknowledgement, signinData=$signinData, hosts=$hosts, signinWatchlist=$signinWatchlist, documents=$documents, ]';
+    return 'SigninDetail[id=$id, documents=$documents, signinWatchlist=$signinWatchlist, hosts=$hosts, signinData=$signinData, signinAcknowledgement=$signinAcknowledgement, note=$note, isSignedOut=$isSignedOut, signinTimestamp=$signinTimestamp, signinPhotoUrl=$signinPhotoUrl, signedOutTimestamp=$signedOutTimestamp, mobileNumber=$mobileNumber, locationName=$locationName, lastName=$lastName, isAcknowledged=$isAcknowledged, isAccountedFor=$isAccountedFor, firstName=$firstName, email=$email, company=$company, ]';
   }
 
   SigninDetail.fromJson(Map<String, dynamic> json) {
@@ -53,95 +53,95 @@ class SigninDetail {
     } else {
           id = json['id'];
     }
-    if (json['company'] == null) {
-      company = null;
+    if (json['documents'] == null) {
+      documents = null;
     } else {
-          company = json['company'];
-    }
-    if (json['email'] == null) {
-      email = null;
-    } else {
-          email = json['email'];
-    }
-    if (json['first_name'] == null) {
-      firstName = null;
-    } else {
-          firstName = json['first_name'];
-    }
-    if (json['is_accounted_for'] == null) {
-      isAccountedFor = null;
-    } else {
-          isAccountedFor = json['is_accounted_for'];
-    }
-    if (json['is_acknowledged'] == null) {
-      isAcknowledged = null;
-    } else {
-          isAcknowledged = json['is_acknowledged'];
-    }
-    if (json['last_name'] == null) {
-      lastName = null;
-    } else {
-          lastName = json['last_name'];
-    }
-    if (json['location_name'] == null) {
-      locationName = null;
-    } else {
-          locationName = json['location_name'];
-    }
-    if (json['mobile_number'] == null) {
-      mobileNumber = null;
-    } else {
-          mobileNumber = json['mobile_number'];
-    }
-    if (json['signed_out_timestamp'] == null) {
-      signedOutTimestamp = null;
-    } else {
-      signedOutTimestamp = DateTime.parse(json['signed_out_timestamp']);
-    }
-    if (json['signin_photo_url'] == null) {
-      signinPhotoUrl = null;
-    } else {
-          signinPhotoUrl = json['signin_photo_url'];
-    }
-    if (json['signin_timestamp'] == null) {
-      signinTimestamp = null;
-    } else {
-      signinTimestamp = DateTime.parse(json['signin_timestamp']);
-    }
-    if (json['is_signed_out'] == null) {
-      isSignedOut = null;
-    } else {
-          isSignedOut = json['is_signed_out'];
-    }
-    if (json['note'] == null) {
-      note = null;
-    } else {
-          note = json['note'];
-    }
-    if (json['signin_acknowledgement'] == null) {
-      signinAcknowledgement = null;
-    } else {
-      signinAcknowledgement = new SigninAcknowledgement.fromJson(json['signin_acknowledgement']);
-    }
-    if (json['signin_data'] == null) {
-      signinData = null;
-    } else {
-      signinData = SigninData.listFromJson(json['signin_data']);
-    }
-    if (json['hosts'] == null) {
-      hosts = null;
-    } else {
-      hosts = Host.listFromJson(json['hosts']);
+      documents = SignableDocument.listFromJson(json['documents']);
     }
     if (json['signin_watchlist'] == null) {
       signinWatchlist = null;
     } else {
       signinWatchlist = new SigninWatchlist.fromJson(json['signin_watchlist']);
     }
-    if (json['documents'] == null) {
-      documents = null;
+    if (json['hosts'] == null) {
+      hosts = null;
     } else {
-      documents = SignableDocument.listFromJson(json['documents']);
+      hosts = Host.listFromJson(json['hosts']);
+    }
+    if (json['signin_data'] == null) {
+      signinData = null;
+    } else {
+      signinData = SigninData.listFromJson(json['signin_data']);
+    }
+    if (json['signin_acknowledgement'] == null) {
+      signinAcknowledgement = null;
+    } else {
+      signinAcknowledgement = new SigninAcknowledgement.fromJson(json['signin_acknowledgement']);
+    }
+    if (json['note'] == null) {
+      note = null;
+    } else {
+          note = json['note'];
+    }
+    if (json['is_signed_out'] == null) {
+      isSignedOut = null;
+    } else {
+          isSignedOut = json['is_signed_out'];
+    }
+    if (json['signin_timestamp'] == null) {
+      signinTimestamp = null;
+    } else {
+      signinTimestamp = DateTime.parse(json['signin_timestamp']);
+    }
+    if (json['signin_photo_url'] == null) {
+      signinPhotoUrl = null;
+    } else {
+          signinPhotoUrl = json['signin_photo_url'];
+    }
+    if (json['signed_out_timestamp'] == null) {
+      signedOutTimestamp = null;
+    } else {
+      signedOutTimestamp = DateTime.parse(json['signed_out_timestamp']);
+    }
+    if (json['mobile_number'] == null) {
+      mobileNumber = null;
+    } else {
+          mobileNumber = json['mobile_number'];
+    }
+    if (json['location_name'] == null) {
+      locationName = null;
+    } else {
+          locationName = json['location_name'];
+    }
+    if (json['last_name'] == null) {
+      lastName = null;
+    } else {
+          lastName = json['last_name'];
+    }
+    if (json['is_acknowledged'] == null) {
+      isAcknowledged = null;
+    } else {
+          isAcknowledged = json['is_acknowledged'];
+    }
+    if (json['is_accounted_for'] == null) {
+      isAccountedFor = null;
+    } else {
+          isAccountedFor = json['is_accounted_for'];
+    }
+    if (json['first_name'] == null) {
+      firstName = null;
+    } else {
+          firstName = json['first_name'];
+    }
+    if (json['email'] == null) {
+      email = null;
+    } else {
+          email = json['email'];
+    }
+    if (json['company'] == null) {
+      company = null;
+    } else {
+          company = json['company'];
     }
   }
 
@@ -149,42 +149,42 @@ class SigninDetail {
     Map <String, dynamic> json = {};
     if (id != null)
       json['id'] = id;
-    if (company != null)
-      json['company'] = company;
-    if (email != null)
-      json['email'] = email;
-    if (firstName != null)
-      json['first_name'] = firstName;
-    if (isAccountedFor != null)
-      json['is_accounted_for'] = isAccountedFor;
-    if (isAcknowledged != null)
-      json['is_acknowledged'] = isAcknowledged;
-    if (lastName != null)
-      json['last_name'] = lastName;
-    if (locationName != null)
-      json['location_name'] = locationName;
-    if (mobileNumber != null)
-      json['mobile_number'] = mobileNumber;
-    if (signedOutTimestamp != null)
-      json['signed_out_timestamp'] = signedOutTimestamp == null ? null : signedOutTimestamp.toUtc().toIso8601String();
-    if (signinPhotoUrl != null)
-      json['signin_photo_url'] = signinPhotoUrl;
-    if (signinTimestamp != null)
-      json['signin_timestamp'] = signinTimestamp == null ? null : signinTimestamp.toUtc().toIso8601String();
-    if (isSignedOut != null)
-      json['is_signed_out'] = isSignedOut;
-    if (note != null)
-      json['note'] = note;
-    if (signinAcknowledgement != null)
-      json['signin_acknowledgement'] = signinAcknowledgement;
-    if (signinData != null)
-      json['signin_data'] = signinData;
-    if (hosts != null)
-      json['hosts'] = hosts;
-    if (signinWatchlist != null)
-      json['signin_watchlist'] = signinWatchlist;
     if (documents != null)
       json['documents'] = documents;
+    if (signinWatchlist != null)
+      json['signin_watchlist'] = signinWatchlist;
+    if (hosts != null)
+      json['hosts'] = hosts;
+    if (signinData != null)
+      json['signin_data'] = signinData;
+    if (signinAcknowledgement != null)
+      json['signin_acknowledgement'] = signinAcknowledgement;
+    if (note != null)
+      json['note'] = note;
+    if (isSignedOut != null)
+      json['is_signed_out'] = isSignedOut;
+    if (signinTimestamp != null)
+      json['signin_timestamp'] = signinTimestamp == null ? null : signinTimestamp.toUtc().toIso8601String();
+    if (signinPhotoUrl != null)
+      json['signin_photo_url'] = signinPhotoUrl;
+    if (signedOutTimestamp != null)
+      json['signed_out_timestamp'] = signedOutTimestamp == null ? null : signedOutTimestamp.toUtc().toIso8601String();
+    if (mobileNumber != null)
+      json['mobile_number'] = mobileNumber;
+    if (locationName != null)
+      json['location_name'] = locationName;
+    if (lastName != null)
+      json['last_name'] = lastName;
+    if (isAcknowledged != null)
+      json['is_acknowledged'] = isAcknowledged;
+    if (isAccountedFor != null)
+      json['is_accounted_for'] = isAccountedFor;
+    if (firstName != null)
+      json['first_name'] = firstName;
+    if (email != null)
+      json['email'] = email;
+    if (company != null)
+      json['company'] = company;
     return json;
   }
 

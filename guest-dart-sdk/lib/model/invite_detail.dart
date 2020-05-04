@@ -4,43 +4,43 @@ class InviteDetail {
   
   int id = null;
   
-  String company = null;
-  
-  DateTime createdAt = null;
-  
-  String email = null;
-  
-  DateTime endDate = null;
-  
-  String firstName = null;
-  
-  String lastName = null;
-  
-  DateTime startDate = null;
-  
-  List<Host> hosts = [];
-  
-  Location location = null;
-  
-  String watchlistColour = null;
-  //enum watchlistColourEnum {  RED,  GREEN,  YELLOW,  ORANGE,  };{
-  
-  List<CustomField> customFields = [];
-  /* List of scheduled notifications for an invite */
-  List<NotificationTrigger> notificationTriggers = [];
-  
-  InviteWatchlist inviteWatchlist = null;
-  
-  EmailTemplate emailTemplate = null;
+  Registration registration = null;
   /* Phone number */
   String mobileNumber = null;
   
-  Registration registration = null;
+  EmailTemplate emailTemplate = null;
+  
+  InviteWatchlist inviteWatchlist = null;
+  /* List of scheduled notifications for an invite */
+  List<NotificationTrigger> notificationTriggers = [];
+  
+  List<CustomField> customFields = [];
+  
+  Object watchlistColour = null;
+  //enum watchlistColourEnum {  RED,  GREEN,  YELLOW,  ORANGE,  };{
+  
+  Location location = null;
+  
+  List<Host> hosts = [];
+  
+  DateTime startDate = null;
+  
+  String lastName = null;
+  
+  String firstName = null;
+  
+  DateTime endDate = null;
+  
+  String email = null;
+  
+  DateTime createdAt = null;
+  
+  String company = null;
   InviteDetail();
 
   @override
   String toString() {
-    return 'InviteDetail[id=$id, company=$company, createdAt=$createdAt, email=$email, endDate=$endDate, firstName=$firstName, lastName=$lastName, startDate=$startDate, hosts=$hosts, location=$location, watchlistColour=$watchlistColour, customFields=$customFields, notificationTriggers=$notificationTriggers, inviteWatchlist=$inviteWatchlist, emailTemplate=$emailTemplate, mobileNumber=$mobileNumber, registration=$registration, ]';
+    return 'InviteDetail[id=$id, registration=$registration, mobileNumber=$mobileNumber, emailTemplate=$emailTemplate, inviteWatchlist=$inviteWatchlist, notificationTriggers=$notificationTriggers, customFields=$customFields, watchlistColour=$watchlistColour, location=$location, hosts=$hosts, startDate=$startDate, lastName=$lastName, firstName=$firstName, endDate=$endDate, email=$email, createdAt=$createdAt, company=$company, ]';
   }
 
   InviteDetail.fromJson(Map<String, dynamic> json) {
@@ -50,85 +50,85 @@ class InviteDetail {
     } else {
           id = json['id'];
     }
-    if (json['company'] == null) {
-      company = null;
+    if (json['registration'] == null) {
+      registration = null;
     } else {
-          company = json['company'];
-    }
-    if (json['created_at'] == null) {
-      createdAt = null;
-    } else {
-      createdAt = DateTime.parse(json['created_at']);
-    }
-    if (json['email'] == null) {
-      email = null;
-    } else {
-          email = json['email'];
-    }
-    if (json['end_date'] == null) {
-      endDate = null;
-    } else {
-      endDate = DateTime.parse(json['end_date']);
-    }
-    if (json['first_name'] == null) {
-      firstName = null;
-    } else {
-          firstName = json['first_name'];
-    }
-    if (json['last_name'] == null) {
-      lastName = null;
-    } else {
-          lastName = json['last_name'];
-    }
-    if (json['start_date'] == null) {
-      startDate = null;
-    } else {
-      startDate = DateTime.parse(json['start_date']);
-    }
-    if (json['hosts'] == null) {
-      hosts = null;
-    } else {
-      hosts = Host.listFromJson(json['hosts']);
-    }
-    if (json['location'] == null) {
-      location = null;
-    } else {
-      location = new Location.fromJson(json['location']);
-    }
-    if (json['watchlist_colour'] == null) {
-      watchlistColour = null;
-    } else {
-          watchlistColour = json['watchlist_colour'];
-    }
-    if (json['custom_fields'] == null) {
-      customFields = null;
-    } else {
-      customFields = CustomField.listFromJson(json['custom_fields']);
-    }
-    if (json['notification_triggers'] == null) {
-      notificationTriggers = null;
-    } else {
-      notificationTriggers = NotificationTrigger.listFromJson(json['notification_triggers']);
-    }
-    if (json['invite_watchlist'] == null) {
-      inviteWatchlist = null;
-    } else {
-      inviteWatchlist = new InviteWatchlist.fromJson(json['invite_watchlist']);
-    }
-    if (json['email_template'] == null) {
-      emailTemplate = null;
-    } else {
-      emailTemplate = new EmailTemplate.fromJson(json['email_template']);
+      registration = new Registration.fromJson(json['registration']);
     }
     if (json['mobile_number'] == null) {
       mobileNumber = null;
     } else {
           mobileNumber = json['mobile_number'];
     }
-    if (json['registration'] == null) {
-      registration = null;
+    if (json['email_template'] == null) {
+      emailTemplate = null;
     } else {
-      registration = new Registration.fromJson(json['registration']);
+      emailTemplate = new EmailTemplate.fromJson(json['email_template']);
+    }
+    if (json['invite_watchlist'] == null) {
+      inviteWatchlist = null;
+    } else {
+      inviteWatchlist = new InviteWatchlist.fromJson(json['invite_watchlist']);
+    }
+    if (json['notification_triggers'] == null) {
+      notificationTriggers = null;
+    } else {
+      notificationTriggers = NotificationTrigger.listFromJson(json['notification_triggers']);
+    }
+    if (json['custom_fields'] == null) {
+      customFields = null;
+    } else {
+      customFields = CustomField.listFromJson(json['custom_fields']);
+    }
+    if (json['watchlist_colour'] == null) {
+      watchlistColour = null;
+    } else {
+          watchlistColour = json['watchlist_colour'];
+    }
+    if (json['location'] == null) {
+      location = null;
+    } else {
+      location = new Location.fromJson(json['location']);
+    }
+    if (json['hosts'] == null) {
+      hosts = null;
+    } else {
+      hosts = Host.listFromJson(json['hosts']);
+    }
+    if (json['start_date'] == null) {
+      startDate = null;
+    } else {
+      startDate = DateTime.parse(json['start_date']);
+    }
+    if (json['last_name'] == null) {
+      lastName = null;
+    } else {
+          lastName = json['last_name'];
+    }
+    if (json['first_name'] == null) {
+      firstName = null;
+    } else {
+          firstName = json['first_name'];
+    }
+    if (json['end_date'] == null) {
+      endDate = null;
+    } else {
+      endDate = DateTime.parse(json['end_date']);
+    }
+    if (json['email'] == null) {
+      email = null;
+    } else {
+          email = json['email'];
+    }
+    if (json['created_at'] == null) {
+      createdAt = null;
+    } else {
+      createdAt = DateTime.parse(json['created_at']);
+    }
+    if (json['company'] == null) {
+      company = null;
+    } else {
+          company = json['company'];
     }
   }
 
@@ -136,38 +136,38 @@ class InviteDetail {
     Map <String, dynamic> json = {};
     if (id != null)
       json['id'] = id;
-    if (company != null)
-      json['company'] = company;
-    if (createdAt != null)
-      json['created_at'] = createdAt == null ? null : createdAt.toUtc().toIso8601String();
-    if (email != null)
-      json['email'] = email;
-    if (endDate != null)
-      json['end_date'] = endDate == null ? null : endDate.toUtc().toIso8601String();
-    if (firstName != null)
-      json['first_name'] = firstName;
-    if (lastName != null)
-      json['last_name'] = lastName;
-    if (startDate != null)
-      json['start_date'] = startDate == null ? null : startDate.toUtc().toIso8601String();
-    if (hosts != null)
-      json['hosts'] = hosts;
-    if (location != null)
-      json['location'] = location;
-    if (watchlistColour != null)
-      json['watchlist_colour'] = watchlistColour;
-    if (customFields != null)
-      json['custom_fields'] = customFields;
-    if (notificationTriggers != null)
-      json['notification_triggers'] = notificationTriggers;
-    if (inviteWatchlist != null)
-      json['invite_watchlist'] = inviteWatchlist;
-    if (emailTemplate != null)
-      json['email_template'] = emailTemplate;
-    if (mobileNumber != null)
-      json['mobile_number'] = mobileNumber;
     if (registration != null)
       json['registration'] = registration;
+    if (mobileNumber != null)
+      json['mobile_number'] = mobileNumber;
+    if (emailTemplate != null)
+      json['email_template'] = emailTemplate;
+    if (inviteWatchlist != null)
+      json['invite_watchlist'] = inviteWatchlist;
+    if (notificationTriggers != null)
+      json['notification_triggers'] = notificationTriggers;
+    if (customFields != null)
+      json['custom_fields'] = customFields;
+    if (watchlistColour != null)
+      json['watchlist_colour'] = watchlistColour;
+    if (location != null)
+      json['location'] = location;
+    if (hosts != null)
+      json['hosts'] = hosts;
+    if (startDate != null)
+      json['start_date'] = startDate == null ? null : startDate.toUtc().toIso8601String();
+    if (lastName != null)
+      json['last_name'] = lastName;
+    if (firstName != null)
+      json['first_name'] = firstName;
+    if (endDate != null)
+      json['end_date'] = endDate == null ? null : endDate.toUtc().toIso8601String();
+    if (email != null)
+      json['email'] = email;
+    if (createdAt != null)
+      json['created_at'] = createdAt == null ? null : createdAt.toUtc().toIso8601String();
+    if (company != null)
+      json['company'] = company;
     return json;
   }
 

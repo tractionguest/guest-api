@@ -1,6 +1,6 @@
 # GuestAlertsAPI
 
-All URIs are relative to *https://mobile-api-refactor-admin.tractionguest.ca/api/v3*
+All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,7 +21,7 @@ Enqueues guest alerts via specified channels
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import GuestSDK
 
-let guestAlertCreateParams = GuestAlertCreateParams(message: "message_example", channels: ["channels_example"], signinSelectors: GuestAlertSigninSelectors(isSignedOut: false, signinIds: [123], locationIds: [123])) // GuestAlertCreateParams | 
+let guestAlertCreateParams = GuestAlertCreateParams(signinSelectors: GuestAlertSigninSelectors(isSignedOut: false, signinIds: [123], locationIds: [123]), channels: ["channels_example"], message: "message_example") // GuestAlertCreateParams | 
 
 // Create Guest Alert
 GuestAlertsAPI.createGuestAlert(guestAlertCreateParams: guestAlertCreateParams) { (response, error) in

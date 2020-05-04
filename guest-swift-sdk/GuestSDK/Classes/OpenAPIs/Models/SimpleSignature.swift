@@ -7,13 +7,17 @@
 
 import Foundation
 
-
+/**  */
 public struct SimpleSignature: Codable { 
 
 
+    /**  */
     public var status: String?
+    /**  */
     public var templateName: String?
+    /**  */
     public var id: String?
+    /**  */
     public var title: String?
 
     public init(status: String?, templateName: String?, id: String?, title: String?) {

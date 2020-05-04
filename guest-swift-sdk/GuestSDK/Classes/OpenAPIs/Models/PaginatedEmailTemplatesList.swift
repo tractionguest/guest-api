@@ -11,17 +11,17 @@ import Foundation
 public struct PaginatedEmailTemplatesList: Codable { 
 
 
-    public var emailTemplates: [EmailTemplate]
     public var pagination: Pagination
+    public var emailTemplates: [EmailTemplate]
 
-    public init(emailTemplates: [EmailTemplate], pagination: Pagination) {
-        self.emailTemplates = emailTemplates
+    public init(pagination: Pagination, emailTemplates: [EmailTemplate]) {
         self.pagination = pagination
+        self.emailTemplates = emailTemplates
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case emailTemplates = "email_templates"
         case pagination
+        case emailTemplates = "email_templates"
     }
 
 }

@@ -7,21 +7,21 @@
 
 import Foundation
 
-
+/**  */
 public struct SignableDocument: Codable { 
 
 
-    public var docusigns: [Docusign]?
     public var simpleSignatures: [SimpleSignature]?
+    public var docusigns: [Docusign]?
 
-    public init(docusigns: [Docusign]?, simpleSignatures: [SimpleSignature]?) {
-        self.docusigns = docusigns
+    public init(simpleSignatures: [SimpleSignature]?, docusigns: [Docusign]?) {
         self.simpleSignatures = simpleSignatures
+        self.docusigns = docusigns
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case docusigns
         case simpleSignatures = "simple_signatures"
+        case docusigns
     }
 
 }

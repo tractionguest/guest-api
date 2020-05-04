@@ -11,47 +11,58 @@ import Foundation
 public struct AuditLog: Codable { 
 
 
+    /**  */
     public var id: Int
-    public var auditableId: Int?
-    public var auditableType: String?
-    public var userId: Int?
-    public var username: String?
-    public var action: String?
-    public var auditedChanges: [AuditLogChange]?
-    public var version: Int?
-    public var comment: String?
-    public var remoteAddress: String?
-    public var requestUuid: String?
+    /**  */
     public var createdAt: String?
+    /**  */
+    public var requestUuid: String?
+    /**  */
+    public var remoteAddress: String?
+    /**  */
+    public var comment: String?
+    /**  */
+    public var version: Int?
+    public var auditedChanges: [AuditLogChange]?
+    /**  */
+    public var action: String?
+    /**  */
+    public var username: String?
+    /**  */
+    public var userId: Int?
+    /**  */
+    public var auditableType: String?
+    /**  */
+    public var auditableId: Int?
 
-    public init(id: Int, auditableId: Int?, auditableType: String?, userId: Int?, username: String?, action: String?, auditedChanges: [AuditLogChange]?, version: Int?, comment: String?, remoteAddress: String?, requestUuid: String?, createdAt: String?) {
+    public init(id: Int, createdAt: String?, requestUuid: String?, remoteAddress: String?, comment: String?, version: Int?, auditedChanges: [AuditLogChange]?, action: String?, username: String?, userId: Int?, auditableType: String?, auditableId: Int?) {
         self.id = id
-        self.auditableId = auditableId
-        self.auditableType = auditableType
-        self.userId = userId
-        self.username = username
-        self.action = action
-        self.auditedChanges = auditedChanges
-        self.version = version
-        self.comment = comment
-        self.remoteAddress = remoteAddress
-        self.requestUuid = requestUuid
         self.createdAt = createdAt
+        self.requestUuid = requestUuid
+        self.remoteAddress = remoteAddress
+        self.comment = comment
+        self.version = version
+        self.auditedChanges = auditedChanges
+        self.action = action
+        self.username = username
+        self.userId = userId
+        self.auditableType = auditableType
+        self.auditableId = auditableId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case id
-        case auditableId = "auditable_id"
-        case auditableType = "auditable_type"
-        case userId = "user_id"
-        case username
-        case action
-        case auditedChanges = "audited_changes"
-        case version
-        case comment
-        case remoteAddress = "remote_address"
-        case requestUuid = "request_uuid"
         case createdAt = "created_at"
+        case requestUuid = "request_uuid"
+        case remoteAddress = "remote_address"
+        case comment
+        case version
+        case auditedChanges = "audited_changes"
+        case action
+        case username
+        case userId = "user_id"
+        case auditableType = "auditable_type"
+        case auditableId = "auditable_id"
     }
 
 }

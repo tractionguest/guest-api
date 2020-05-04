@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
     s.summary          = "Traction Guest API"
     s.description      = <<-DESC
-                         A compelling story about a lone device, on a quest for its data.
+                         The leader in enterprise visitor management, empowers businesses across five continents and dozens of industries to keep people safe while creating connection in the contactless world.
                          DESC
 
     s.platform     = :ios, '7.0'

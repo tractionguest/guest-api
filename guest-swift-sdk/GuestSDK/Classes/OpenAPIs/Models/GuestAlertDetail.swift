@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+/**  */
 public struct GuestAlertDetail: Codable { 
 
 
@@ -25,6 +25,7 @@ public struct GuestAlertDetail: Codable {
     public var sentCount: Int
     /** Count of messages that failed to be sent */
     public var failedCount: Int
+    /**  */
     public var message: String
     /** The uuid of the guest_alert object */
     public var uuid: String

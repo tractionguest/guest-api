@@ -55,28 +55,14 @@ NSInteger kTGSigninsApiMissingParamErrorCode = 234513;
 #pragma mark - Api Methods
 
 ///
-/// Create a Signin
-/// Creates a new instance of a `Signin`.
-///  @param signinCreateParams A new `Signin` to be created. 
-///
-///  @param idempotencyKey An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
+/// 
+/// Creates a Signin
+///  @param signinCreateParams Params for creating a Signin can omit certain fields if a `registration_id` is present. (optional)
 ///
 ///  @returns TGSignin*
 ///
 -(NSURLSessionTask*) createSigninWithSigninCreateParams: (TGSigninCreateParams*) signinCreateParams
-    idempotencyKey: (NSString*) idempotencyKey
     completionHandler: (void (^)(TGSignin* output, NSError* error)) handler {
-    // verify the required parameter 'signinCreateParams' is set
-    if (signinCreateParams == nil) {
-        NSParameterAssert(signinCreateParams);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"signinCreateParams"] };
-            NSError* error = [NSError errorWithDomain:kTGSigninsApiErrorDomain code:kTGSigninsApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/signins"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -84,9 +70,6 @@ NSInteger kTGSigninsApiMissingParamErrorCode = 234513;
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
-    if (idempotencyKey != nil) {
-        headerParams[@"Idempotency-Key"] = idempotencyKey;
-    }
     // HTTP header `Accept`
     NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
     if(acceptHeader.length > 0) {
@@ -322,7 +305,7 @@ NSInteger kTGSigninsApiMissingParamErrorCode = 234513;
 /// Update, acknowledge, or `Signout` a `Signin`
 ///  @param signinId A unique identifier for a `Signin`. 
 ///
-///  @param signinUpdateParams The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`. `is_signed_out`, and `is_acknowledged` are pseudo attributes where once they are set to true, there's no going back. 
+///  @param signinUpdateParams The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.  `is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible. 
 ///
 ///  @param idempotencyKey An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 ///

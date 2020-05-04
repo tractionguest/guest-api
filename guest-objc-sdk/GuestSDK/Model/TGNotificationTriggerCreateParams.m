@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"offsetDirection": @"offset_direction", @"offsetAmount": @"offset_amount", @"offsetOrigin": @"offset_origin", @"emailTemplateId": @"email_template_id", @"notificationGroups": @"notification_groups", @"offsetUnit": @"offset_unit" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"offsetUnit": @"offset_unit", @"notificationGroups": @"notification_groups", @"emailTemplateId": @"email_template_id", @"offsetOrigin": @"offset_origin", @"offsetAmount": @"offset_amount", @"offsetDirection": @"offset_direction" }];
 }
 
 /**

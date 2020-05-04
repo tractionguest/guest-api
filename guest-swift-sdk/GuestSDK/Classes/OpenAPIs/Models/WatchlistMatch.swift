@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+/**  */
 public struct WatchlistMatch: Codable { 
 
 
@@ -18,58 +18,111 @@ public struct WatchlistMatch: Codable {
     public var sourceInformationUrl: String?
     public var sourceListUrl: String?
     public var list: String
+    /**  */
     public var type: String?
+    /**  */
     public var category: String?
+    /**  */
     public var street1: String?
+    /**  */
     public var street2: String?
+    /**  */
     public var city: String?
+    /**  */
     public var state: String?
+    /**  */
     public var country: String?
+    /**  */
     public var notes: String?
+    /**  */
     public var frc: String?
+    /**  */
     public var start: String?
+    /**  */
     public var end: String?
+    /**  */
     public var frserve: String?
+    /**  */
     public var optionalID: String?
+    /**  */
     public var alertType: String?
+    /**  */
     public var pairStatus: String?
+    /**  */
     public var pairReason: String?
+    /**  */
     public var pairComments: String?
+    /**  */
     public var applicationDisplayName: String?
+    /**  */
     public var applicationId: String?
+    /**  */
     public var clientId: String?
+    /**  */
     public var clientKey: String?
+    /**  */
     public var clientFullName: String?
+    /**  */
     public var listKey: String?
+    /**  */
     public var listName: String?
+    /**  */
     public var listId: String?
+    /**  */
     public var listVersion: String?
+    /**  */
     public var listModifyDate: String?
+    /**  */
     public var listProfileId: String?
+    /**  */
     public var listProfileKey: String?
+    /**  */
     public var linkSingleStringName: String?
+    /**  */
     public var listParentSingleStringName: String?
+    /**  */
     public var listCategory: String?
+    /**  */
     public var listPepCategory: String?
+    /**  */
     public var listDoBs: String?
+    /**  */
     public var listCountries: String?
+    /**  */
     public var rankString: String?
+    /**  */
     public var ranktype: String?
+    /**  */
     public var rankweight: String?
+    /**  */
     public var pairLoadDate: String?
+    /**  */
     public var eAddressTo: String?
+    /**  */
     public var eAddressCc: String?
+    /**  */
     public var origin: String?
+    /**  */
     public var secondsviewed: String?
+    /**  */
     public var initialUser: String?
+    /**  */
     public var isPairParentFlag: String?
+    /**  */
     public var pairMetSearchCriteriaFlag: String?
+    /**  */
     public var editableDueToAssignmentFlag: String?
+    /**  */
     public var modifyDate: String?
+    /**  */
     public var modifiedByUser: String?
+    /**  */
     public var pairReportType: String?
+    /**  */
     public var finscanCategory: String?
+    /**  */
     public var wrapperStatus: String?
+    /**  */
     public var sourceLists: String?
 
     public init(id: String?, altNames: [String]?, federalRegisterNotice: String?, name: String, sourceInformationUrl: String?, sourceListUrl: String?, list: String, type: String?, category: String?, street1: String?, street2: String?, city: String?, state: String?, country: String?, notes: String?, frc: String?, start: String?, end: String?, frserve: String?, optionalID: String?, alertType: String?, pairStatus: String?, pairReason: String?, pairComments: String?, applicationDisplayName: String?, applicationId: String?, clientId: String?, clientKey: String?, clientFullName: String?, listKey: String?, listName: String?, listId: String?, listVersion: String?, listModifyDate: String?, listProfileId: String?, listProfileKey: String?, linkSingleStringName: String?, listParentSingleStringName: String?, listCategory: String?, listPepCategory: String?, listDoBs: String?, listCountries: String?, rankString: String?, ranktype: String?, rankweight: String?, pairLoadDate: String?, eAddressTo: String?, eAddressCc: String?, origin: String?, secondsviewed: String?, initialUser: String?, isPairParentFlag: String?, pairMetSearchCriteriaFlag: String?, editableDueToAssignmentFlag: String?, modifyDate: String?, modifiedByUser: String?, pairReportType: String?, finscanCategory: String?, wrapperStatus: String?, sourceLists: String?) {

@@ -3,21 +3,21 @@ part of guest_sdk.api;
 class User {
   
   int id = null;
-  
-  String firstName = null;
-  
-  String lastName = null;
-  
-  String email = null;
-  
-  List<PermissionGroup> permissionGroups = [];
   /* Identifies if user has access to mobile app features. */
   bool mobileAccessEnabled = null;
+  
+  List<PermissionGroup> permissionGroups = [];
+  /*  */
+  String email = null;
+  /*  */
+  String lastName = null;
+  /*  */
+  String firstName = null;
   User();
 
   @override
   String toString() {
-    return 'User[id=$id, firstName=$firstName, lastName=$lastName, email=$email, permissionGroups=$permissionGroups, mobileAccessEnabled=$mobileAccessEnabled, ]';
+    return 'User[id=$id, mobileAccessEnabled=$mobileAccessEnabled, permissionGroups=$permissionGroups, email=$email, lastName=$lastName, firstName=$firstName, ]';
   }
 
   User.fromJson(Map<String, dynamic> json) {
@@ -27,30 +27,30 @@ class User {
     } else {
           id = json['id'];
     }
-    if (json['first_name'] == null) {
-      firstName = null;
+    if (json['mobile_access_enabled'] == null) {
+      mobileAccessEnabled = null;
     } else {
-          firstName = json['first_name'];
-    }
-    if (json['last_name'] == null) {
-      lastName = null;
-    } else {
-          lastName = json['last_name'];
-    }
-    if (json['email'] == null) {
-      email = null;
-    } else {
-          email = json['email'];
+          mobileAccessEnabled = json['mobile_access_enabled'];
     }
     if (json['permission_groups'] == null) {
       permissionGroups = null;
     } else {
       permissionGroups = PermissionGroup.listFromJson(json['permission_groups']);
     }
-    if (json['mobile_access_enabled'] == null) {
-      mobileAccessEnabled = null;
+    if (json['email'] == null) {
+      email = null;
     } else {
-          mobileAccessEnabled = json['mobile_access_enabled'];
+          email = json['email'];
+    }
+    if (json['last_name'] == null) {
+      lastName = null;
+    } else {
+          lastName = json['last_name'];
+    }
+    if (json['first_name'] == null) {
+      firstName = null;
+    } else {
+          firstName = json['first_name'];
     }
   }
 
@@ -58,16 +58,16 @@ class User {
     Map <String, dynamic> json = {};
     if (id != null)
       json['id'] = id;
-    if (firstName != null)
-      json['first_name'] = firstName;
-    if (lastName != null)
-      json['last_name'] = lastName;
-    if (email != null)
-      json['email'] = email;
-    if (permissionGroups != null)
-      json['permission_groups'] = permissionGroups;
     if (mobileAccessEnabled != null)
       json['mobile_access_enabled'] = mobileAccessEnabled;
+    if (permissionGroups != null)
+      json['permission_groups'] = permissionGroups;
+    if (email != null)
+      json['email'] = email;
+    if (lastName != null)
+      json['last_name'] = lastName;
+    if (firstName != null)
+      json['first_name'] = firstName;
     return json;
   }
 

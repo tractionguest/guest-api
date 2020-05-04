@@ -19,30 +19,30 @@ public struct GuestResponse: Codable {
         case guestSignPage = "guest_sign_page"
         case identityPage = "identity_page"
     }
-    /** Page title */
-    public var title: String?
-    public var sequence: Int?
     /** UUID */
     public var id: String?
-    /** Enum */
-    public var pageType: PageType?
     /** Flex fields */
     public var customFields: [FlexField]?
+    /** Enum */
+    public var pageType: PageType?
+    public var sequence: Int?
+    /** Page title */
+    public var title: String?
 
-    public init(title: String?, sequence: Int?, id: String?, pageType: PageType?, customFields: [FlexField]?) {
-        self.title = title
-        self.sequence = sequence
+    public init(id: String?, customFields: [FlexField]?, pageType: PageType?, sequence: Int?, title: String?) {
         self.id = id
-        self.pageType = pageType
         self.customFields = customFields
+        self.pageType = pageType
+        self.sequence = sequence
+        self.title = title
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case title
-        case sequence
         case id
-        case pageType = "page_type"
         case customFields = "custom_fields"
+        case pageType = "page_type"
+        case sequence
+        case title
     }
 
 }

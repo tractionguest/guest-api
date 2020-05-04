@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**title** | **String** | Page title | [optional] 
-**sequence** | **Int** |  | [optional] 
 **id** | **String** | UUID | [optional] 
-**pageType** | **String** | Enum | [optional] 
 **customFields** | [FlexField] | Flex fields | [optional] 
+**pageType** | **String** | Enum | [optional] 
+**sequence** | **Int** |  | [optional] 
+**title** | **String** | Page title | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

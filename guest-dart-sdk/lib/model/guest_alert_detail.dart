@@ -10,7 +10,7 @@ class GuestAlertDetail {
   int sentCount = null;
   /* Count of messages that failed to be sent */
   int failedCount = null;
-  
+  /*  */
   String message = null;
   /* The uuid of the guest_alert object */
   String uuid = null;

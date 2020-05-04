@@ -11,53 +11,56 @@ import Foundation
 public struct Invite: Codable { 
 
 
-    public enum WatchlistColour: String, Codable, CaseIterable {
-        case red = "RED"
-        case green = "GREEN"
-        case yellow = "YELLOW"
-        case orange = "ORANGE"
+    public enum WatchlistColour: Any, Codable, CaseIterable {
+        case red = RED
+        case green = GREEN
+        case yellow = YELLOW
+        case orange = ORANGE
     }
     public var id: Int
-    public var firstName: String
-    public var lastName: String
-    public var startDate: Date?
-    public var location: Location?
-    public var watchlistColour: WatchlistColour?
-    public var hosts: [Host]?
-    public var inviteWatchlist: InviteWatchlist?
-    public var endDate: Date?
-    public var email: String
-    public var mobileNumber: String?
     public var registration: Registration?
+    /**  */
+    public var mobileNumber: String?
+    /**  */
+    public var email: String
+    /**  */
+    public var endDate: Date?
+    public var inviteWatchlist: InviteWatchlist?
+    public var hosts: [Host]?
+    public var watchlistColour: WatchlistColour?
+    public var location: Location?
+    public var startDate: Date?
+    public var lastName: String
+    public var firstName: String
 
-    public init(id: Int, firstName: String, lastName: String, startDate: Date?, location: Location?, watchlistColour: WatchlistColour?, hosts: [Host]?, inviteWatchlist: InviteWatchlist?, endDate: Date?, email: String, mobileNumber: String?, registration: Registration?) {
+    public init(id: Int, registration: Registration?, mobileNumber: String?, email: String, endDate: Date?, inviteWatchlist: InviteWatchlist?, hosts: [Host]?, watchlistColour: WatchlistColour?, location: Location?, startDate: Date?, lastName: String, firstName: String) {
         self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
-        self.startDate = startDate
-        self.location = location
-        self.watchlistColour = watchlistColour
-        self.hosts = hosts
-        self.inviteWatchlist = inviteWatchlist
-        self.endDate = endDate
-        self.email = email
-        self.mobileNumber = mobileNumber
         self.registration = registration
+        self.mobileNumber = mobileNumber
+        self.email = email
+        self.endDate = endDate
+        self.inviteWatchlist = inviteWatchlist
+        self.hosts = hosts
+        self.watchlistColour = watchlistColour
+        self.location = location
+        self.startDate = startDate
+        self.lastName = lastName
+        self.firstName = firstName
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case id
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case startDate = "start_date"
-        case location
-        case watchlistColour = "watchlist_colour"
-        case hosts
-        case inviteWatchlist = "invite_watchlist"
-        case endDate = "end_date"
-        case email
-        case mobileNumber = "mobile_number"
         case registration
+        case mobileNumber = "mobile_number"
+        case email
+        case endDate = "end_date"
+        case inviteWatchlist = "invite_watchlist"
+        case hosts
+        case watchlistColour = "watchlist_colour"
+        case location
+        case startDate = "start_date"
+        case lastName = "last_name"
+        case firstName = "first_name"
     }
 
 }

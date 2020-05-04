@@ -7,57 +7,58 @@
 
 import Foundation
 
-/** The root of the SigninLite type&#39;s schema. */
+
 public struct Signin: Codable { 
 
 
     public var id: Int
-    public var company: String?
-    public var email: String?
-    public var firstName: String?
-    public var isAccountedFor: Bool?
-    public var isAcknowledged: Bool?
-    public var lastName: String?
-    public var locationName: String?
-    public var signedOutTimestamp: Date?
-    public var signinPhotoUrl: String?
-    public var signinTimestamp: Date?
-    public var hosts: [Host]
-    public var signinWatchlist: SigninWatchlist?
+    /**  */
     public var mobileNumber: String?
+    public var signinWatchlist: SigninWatchlist?
+    public var hosts: [Host]
+    public var signinTimestamp: Date?
+    public var signinPhotoUrl: String?
+    public var signedOutTimestamp: Date?
+    public var locationName: String?
+    public var lastName: String?
+    public var isAcknowledged: Bool?
+    public var isAccountedFor: Bool?
+    public var firstName: String?
+    public var email: String?
+    public var company: String?
 
-    public init(id: Int, company: String?, email: String?, firstName: String?, isAccountedFor: Bool?, isAcknowledged: Bool?, lastName: String?, locationName: String?, signedOutTimestamp: Date?, signinPhotoUrl: String?, signinTimestamp: Date?, hosts: [Host], signinWatchlist: SigninWatchlist?, mobileNumber: String?) {
+    public init(id: Int, mobileNumber: String?, signinWatchlist: SigninWatchlist?, hosts: [Host], signinTimestamp: Date?, signinPhotoUrl: String?, signedOutTimestamp: Date?, locationName: String?, lastName: String?, isAcknowledged: Bool?, isAccountedFor: Bool?, firstName: String?, email: String?, company: String?) {
         self.id = id
-        self.company = company
-        self.email = email
-        self.firstName = firstName
-        self.isAccountedFor = isAccountedFor
-        self.isAcknowledged = isAcknowledged
-        self.lastName = lastName
-        self.locationName = locationName
-        self.signedOutTimestamp = signedOutTimestamp
-        self.signinPhotoUrl = signinPhotoUrl
-        self.signinTimestamp = signinTimestamp
-        self.hosts = hosts
-        self.signinWatchlist = signinWatchlist
         self.mobileNumber = mobileNumber
+        self.signinWatchlist = signinWatchlist
+        self.hosts = hosts
+        self.signinTimestamp = signinTimestamp
+        self.signinPhotoUrl = signinPhotoUrl
+        self.signedOutTimestamp = signedOutTimestamp
+        self.locationName = locationName
+        self.lastName = lastName
+        self.isAcknowledged = isAcknowledged
+        self.isAccountedFor = isAccountedFor
+        self.firstName = firstName
+        self.email = email
+        self.company = company
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case id
-        case company
-        case email
-        case firstName = "first_name"
-        case isAccountedFor = "is_accounted_for"
-        case isAcknowledged = "is_acknowledged"
-        case lastName = "last_name"
-        case locationName = "location_name"
-        case signedOutTimestamp = "signed_out_timestamp"
-        case signinPhotoUrl = "signin_photo_url"
-        case signinTimestamp = "signin_timestamp"
-        case hosts
-        case signinWatchlist = "signin_watchlist"
         case mobileNumber = "mobile_number"
+        case signinWatchlist = "signin_watchlist"
+        case hosts
+        case signinTimestamp = "signin_timestamp"
+        case signinPhotoUrl = "signin_photo_url"
+        case signedOutTimestamp = "signed_out_timestamp"
+        case locationName = "location_name"
+        case lastName = "last_name"
+        case isAcknowledged = "is_acknowledged"
+        case isAccountedFor = "is_accounted_for"
+        case firstName = "first_name"
+        case email
+        case company
     }
 
 }

@@ -7,21 +7,21 @@
 
 import Foundation
 
-
+/**  */
 public struct PaginatedAuditLogsList: Codable { 
 
 
-    public var auditLogs: [AuditLog]
     public var pagination: Pagination
+    public var auditLogs: [AuditLog]
 
-    public init(auditLogs: [AuditLog], pagination: Pagination) {
-        self.auditLogs = auditLogs
+    public init(pagination: Pagination, auditLogs: [AuditLog]) {
         self.pagination = pagination
+        self.auditLogs = auditLogs
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case auditLogs = "audit_logs"
         case pagination
+        case auditLogs = "audit_logs"
     }
 
 }

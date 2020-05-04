@@ -11,70 +11,70 @@ import Foundation
 public struct InviteDetail: Codable { 
 
 
-    public enum WatchlistColour: String, Codable, CaseIterable {
-        case red = "RED"
-        case green = "GREEN"
-        case yellow = "YELLOW"
-        case orange = "ORANGE"
+    public enum WatchlistColour: Any, Codable, CaseIterable {
+        case red = RED
+        case green = GREEN
+        case yellow = YELLOW
+        case orange = ORANGE
     }
     public var id: Int
-    public var company: String?
-    public var createdAt: Date?
-    public var email: String
-    public var endDate: Date?
-    public var firstName: String
-    public var lastName: String
-    public var startDate: Date?
-    public var hosts: [Host]?
-    public var location: Location?
-    public var watchlistColour: WatchlistColour?
-    public var customFields: [CustomField]?
-    /** List of scheduled notifications for an invite */
-    public var notificationTriggers: [NotificationTrigger]?
-    public var inviteWatchlist: InviteWatchlist?
-    public var emailTemplate: EmailTemplate?
+    public var registration: Registration?
     /** Phone number */
     public var mobileNumber: String?
-    public var registration: Registration?
+    public var emailTemplate: EmailTemplate?
+    public var inviteWatchlist: InviteWatchlist?
+    /** List of scheduled notifications for an invite */
+    public var notificationTriggers: [NotificationTrigger]?
+    public var customFields: [CustomField]?
+    public var watchlistColour: WatchlistColour?
+    public var location: Location?
+    public var hosts: [Host]?
+    public var startDate: Date?
+    public var lastName: String
+    public var firstName: String
+    public var endDate: Date?
+    public var email: String
+    public var createdAt: Date?
+    public var company: String?
 
-    public init(id: Int, company: String?, createdAt: Date?, email: String, endDate: Date?, firstName: String, lastName: String, startDate: Date?, hosts: [Host]?, location: Location?, watchlistColour: WatchlistColour?, customFields: [CustomField]?, notificationTriggers: [NotificationTrigger]?, inviteWatchlist: InviteWatchlist?, emailTemplate: EmailTemplate?, mobileNumber: String?, registration: Registration?) {
+    public init(id: Int, registration: Registration?, mobileNumber: String?, emailTemplate: EmailTemplate?, inviteWatchlist: InviteWatchlist?, notificationTriggers: [NotificationTrigger]?, customFields: [CustomField]?, watchlistColour: WatchlistColour?, location: Location?, hosts: [Host]?, startDate: Date?, lastName: String, firstName: String, endDate: Date?, email: String, createdAt: Date?, company: String?) {
         self.id = id
-        self.company = company
-        self.createdAt = createdAt
-        self.email = email
-        self.endDate = endDate
-        self.firstName = firstName
-        self.lastName = lastName
-        self.startDate = startDate
-        self.hosts = hosts
-        self.location = location
-        self.watchlistColour = watchlistColour
-        self.customFields = customFields
-        self.notificationTriggers = notificationTriggers
-        self.inviteWatchlist = inviteWatchlist
-        self.emailTemplate = emailTemplate
-        self.mobileNumber = mobileNumber
         self.registration = registration
+        self.mobileNumber = mobileNumber
+        self.emailTemplate = emailTemplate
+        self.inviteWatchlist = inviteWatchlist
+        self.notificationTriggers = notificationTriggers
+        self.customFields = customFields
+        self.watchlistColour = watchlistColour
+        self.location = location
+        self.hosts = hosts
+        self.startDate = startDate
+        self.lastName = lastName
+        self.firstName = firstName
+        self.endDate = endDate
+        self.email = email
+        self.createdAt = createdAt
+        self.company = company
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case id
-        case company
-        case createdAt = "created_at"
-        case email
-        case endDate = "end_date"
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case startDate = "start_date"
-        case hosts
-        case location
-        case watchlistColour = "watchlist_colour"
-        case customFields = "custom_fields"
-        case notificationTriggers = "notification_triggers"
-        case inviteWatchlist = "invite_watchlist"
-        case emailTemplate = "email_template"
-        case mobileNumber = "mobile_number"
         case registration
+        case mobileNumber = "mobile_number"
+        case emailTemplate = "email_template"
+        case inviteWatchlist = "invite_watchlist"
+        case notificationTriggers = "notification_triggers"
+        case customFields = "custom_fields"
+        case watchlistColour = "watchlist_colour"
+        case location
+        case hosts
+        case startDate = "start_date"
+        case lastName = "last_name"
+        case firstName = "first_name"
+        case endDate = "end_date"
+        case email
+        case createdAt = "created_at"
+        case company
     }
 
 }

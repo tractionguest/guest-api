@@ -11,15 +11,13 @@ import Foundation
 
 open class SigninsAPI {
     /**
-     Create a Signin
-     
-     - parameter signinCreateParams: (body) A new &#x60;Signin&#x60; to be created. 
-     - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
+
+     - parameter signinCreateParams: (body) Params for creating a Signin can omit certain fields if a &#x60;registration_id&#x60; is present. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
      */
-    open class func createSignin(signinCreateParams: SigninCreateParams, idempotencyKey: String? = nil, apiResponseQueue: DispatchQueue = GuestSDKAPI.apiResponseQueue, completion: @escaping ((_ result: Result<Signin, Error>) -> Void)) {
-        createSigninWithRequestBuilder(signinCreateParams: signinCreateParams, idempotencyKey: idempotencyKey).execute(apiResponseQueue) { result -> Void in
+    open class func createSignin(signinCreateParams: SigninCreateParams? = nil, apiResponseQueue: DispatchQueue = GuestSDKAPI.apiResponseQueue, completion: @escaping ((_ result: Result<Signin, Error>) -> Void)) {
+        createSigninWithRequestBuilder(signinCreateParams: signinCreateParams).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
                 completion(.success(response.body!))
@@ -30,30 +28,24 @@ open class SigninsAPI {
     }
 
     /**
-     Create a Signin
      - POST /signins
-     - Creates a new instance of a `Signin`.
+     - Creates a Signin
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter signinCreateParams: (body) A new &#x60;Signin&#x60; to be created. 
-     - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
+     - parameter signinCreateParams: (body) Params for creating a Signin can omit certain fields if a &#x60;registration_id&#x60; is present. (optional)
      - returns: RequestBuilder<Signin> 
      */
-    open class func createSigninWithRequestBuilder(signinCreateParams: SigninCreateParams, idempotencyKey: String? = nil) -> RequestBuilder<Signin> {
+    open class func createSigninWithRequestBuilder(signinCreateParams: SigninCreateParams? = nil) -> RequestBuilder<Signin> {
         let path = "/signins"
         let URLString = GuestSDKAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: signinCreateParams)
 
         let url = URLComponents(string: URLString)
-        let nillableHeaders: [String: Any?] = [
-            "Idempotency-Key": idempotencyKey?.encodeToJSON()
-        ]
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
 
         let requestBuilder: RequestBuilder<Signin>.Type = GuestSDKAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true, headers: headerParameters)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
     /**
@@ -189,7 +181,7 @@ open class SigninsAPI {
      Update a Signin attribute
      
      - parameter signinId: (path) A unique identifier for a &#x60;Signin&#x60;. 
-     - parameter signinUpdateParams: (body) The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;. &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60; are pseudo attributes where once they are set to true, there&#39;s no going back. 
+     - parameter signinUpdateParams: (body) The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;.  &#x60;is_signed_out&#x60; and &#x60;is_acknowledged&#x60; are pseudo attributes that once set to true, are irreversible. 
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
@@ -213,7 +205,7 @@ open class SigninsAPI {
        - type: openIdConnect
        - name: TractionGuestAuth
      - parameter signinId: (path) A unique identifier for a &#x60;Signin&#x60;. 
-     - parameter signinUpdateParams: (body) The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;. &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60; are pseudo attributes where once they are set to true, there&#39;s no going back. 
+     - parameter signinUpdateParams: (body) The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;.  &#x60;is_signed_out&#x60; and &#x60;is_acknowledged&#x60; are pseudo attributes that once set to true, are irreversible. 
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - returns: RequestBuilder<SigninDetail> 
      */

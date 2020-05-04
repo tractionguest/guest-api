@@ -15,9 +15,9 @@ public struct NotificationTrigger: Codable {
         case before = "BEFORE"
         case after = "AFTER"
     }
-    public enum OffsetOrigin: String, Codable, CaseIterable {
-        case start = "START"
-        case end = "END"
+    public enum OffsetOrigin: Any, Codable, CaseIterable {
+        case start = START
+        case end = END
     }
     public enum OffsetUnit: String, Codable, CaseIterable {
         case days = "days"

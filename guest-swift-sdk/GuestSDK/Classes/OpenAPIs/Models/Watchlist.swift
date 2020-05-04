@@ -18,34 +18,34 @@ public struct Watchlist: Codable {
         case orange = "ORANGE"
     }
     public var id: Int
-    public var colour: Colour?
-    public var email: String?
-    public var firstName: String?
-    public var lastName: String?
-    public var notes: String?
-    public var photo: String?
     public var aliases: [String]?
+    public var photo: String?
+    public var notes: String?
+    public var lastName: String?
+    public var firstName: String?
+    public var email: String?
+    public var colour: Colour?
 
-    public init(id: Int, colour: Colour?, email: String?, firstName: String?, lastName: String?, notes: String?, photo: String?, aliases: [String]?) {
+    public init(id: Int, aliases: [String]?, photo: String?, notes: String?, lastName: String?, firstName: String?, email: String?, colour: Colour?) {
         self.id = id
-        self.colour = colour
-        self.email = email
-        self.firstName = firstName
-        self.lastName = lastName
-        self.notes = notes
-        self.photo = photo
         self.aliases = aliases
+        self.photo = photo
+        self.notes = notes
+        self.lastName = lastName
+        self.firstName = firstName
+        self.email = email
+        self.colour = colour
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case id
-        case colour
-        case email
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case notes
-        case photo
         case aliases
+        case photo
+        case notes
+        case lastName = "last_name"
+        case firstName = "first_name"
+        case email
+        case colour
     }
 
 }

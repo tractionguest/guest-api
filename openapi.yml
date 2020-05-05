@@ -16,6 +16,10 @@ servers:
           - 'https://dravaqa.tractionguest.ca/api/v3'
           - 'http://localhost:3000/api/v3'
         default: 'https://tractionguest.ca/api/v3'
+  - url: 'https://tractionguest.com/api/v3'
+    description: Production
+  - url: 'http://localhost:3000/api/v3'
+    description: Local Development
 paths:
   /hosts:
     summary: Path used to manage the list of Hosts.
@@ -3095,7 +3099,9 @@ paths:
           description: The AuditLog does not exist
       operationId: getAuditLog
       summary: Get an AuditLog
-      description: Gets the details of a single instance of an `AuditLog`.
+      description: |-
+        Gets the details of a single instance of an `AuditLog`.
+        Wooot!
     parameters:
       - name: auditLogId
         description: A unique identifier for an `AuditLog`.

@@ -3607,11 +3607,25 @@ components:
     User:
       title: Root Type for User
       description: "The root of the User type's schema."
-      required:
-        - id
-        - email
-        - mobile_access_enabled
       type: object
+      example:
+        id: 60
+        first_name: some text
+        last_name: some text
+        email: some text
+        permission_groups:
+          - name: some text
+            visibility: some text
+            permissions:
+              - some text
+              - some text
+          - name: some text
+            visibility: some text
+            permissions:
+              - some text
+              - some text
+      x-examples:
+        example-1: {}
       properties:
         id:
           format: int32
@@ -3632,22 +3646,14 @@ components:
         mobile_access_enabled:
           description: Identifies if user has access to mobile app features.
           type: boolean
-      example:
-        id: 60
-        first_name: some text
-        last_name: some text
-        email: some text
-        permission_groups:
-          - name: some text
-            visibility: some text
-            permissions:
-              - some text
-              - some text
-          - name: some text
-            visibility: some text
-            permissions:
-              - some text
-              - some text
+        registration_portal_enabled:
+          type: boolean
+          description: Determines if the registration portal has been enabled for this account
+      required:
+        - id
+        - email
+        - mobile_access_enabled
+        - registration_portal_enabled
     Watchlist:
       title: Root Type for Watchlist
       description: "The root of the Watchlist type's schema."

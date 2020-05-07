@@ -1,0 +1,13 @@
+extends: spectral:oas
+rules:
+  tag-description: error
+  enforce-snake-paths:
+    description: Paths should use snakecase
+    message: "The path '{{property}}' can't use camelCase or hyphens"
+    type: style
+    given: "$.paths[*]~"
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "[A-Z-]"

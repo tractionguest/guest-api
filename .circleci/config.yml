@@ -7,4 +7,4 @@ jobs:
       - checkout
       - run:
           name: Lint yaml file
-          command: npx @stoplight/spectral lint openapi.yaml
+          command: npx @stoplight/spectral lint openapi.yml -- --ruleset=.spectral.yml --fail-severity=warn

@@ -23,16 +23,15 @@ function wrikeLink(wrikeId:string) {
 }
 
 function getUniqueWrikeIds() {
-  return ['woot'];
-  // const wrikeIds = danger.github.commits.reduce((acc, obj) => {
-  //     const msg = obj.commit.message;
-  //     const wrikeId = msg.match(/^\[\#(\d*)\]/);
-  //     if (wrikeId) {
-  //       acc.push(wrikeId[1]);
-  //     }
+  const wrikeIds = danger.github.commits.reduce((acc, obj) => {
+      const msg = obj.commit.message;
+      const wrikeId = msg.match(/^\[\#(\d*)\]/);
+      if (wrikeId) {
+        acc.push(wrikeId[1]);
+      }
 
-  //     return acc;
-  //   }, []);
+      return acc;
+    }, []);
 
-  // return [...new Set(wrikeIds)];
+  return [...new Set(wrikeIds)];
 }

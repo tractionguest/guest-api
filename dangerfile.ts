@@ -1,3 +1,9 @@
+import {
+  GitHubDSL,
+  danger,
+  message,
+  warn
+} from 'danger';
 /* Constants */
 const branchName = danger.github.pr.head.ref;
 
@@ -23,7 +29,8 @@ function wrikeLink(wrikeId:string) {
 }
 
 function getUniqueWrikeIds() {
-  const wrikeIds = danger.github.commits.reduce((acc, obj) => {
+  // const wrikeIds = danger.github.commits.reduce((acc, obj) => {
+  const wrikeIds = GitHubDSL.commits.reduce((acc, obj) => {
       const msg = obj.commit.message;
       const wrikeId = msg.match(/^\[\#(\d*)\]/);
       if (wrikeId) {

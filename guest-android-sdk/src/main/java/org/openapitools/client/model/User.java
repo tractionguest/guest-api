@@ -35,6 +35,8 @@ public class User {
   private String lastName = null;
   @SerializedName("first_name")
   private String firstName = null;
+  @SerializedName("registration_portal_enabled")
+  private Boolean registrationPortalEnabled = null;
 
   /**
    **/
@@ -90,14 +92,25 @@ public class User {
   }
 
   /**
-   * 
+   * Determines if the registration portal has been enabled for this account
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Determines if the registration portal has been enabled for this account")
   public String getFirstName() {
     return firstName;
   }
   public void setFirstName(String firstName) {
     this.firstName = firstName;
+  }
+
+  /**
+   * Determines if the registration portal has been enabled for this account
+   **/
+  @ApiModelProperty(required = true, value = "Determines if the registration portal has been enabled for this account")
+  public Boolean getRegistrationPortalEnabled() {
+    return registrationPortalEnabled;
+  }
+  public void setRegistrationPortalEnabled(Boolean registrationPortalEnabled) {
+    this.registrationPortalEnabled = registrationPortalEnabled;
   }
 
 
@@ -115,7 +128,8 @@ public class User {
         (this.permissionGroups == null ? user.permissionGroups == null : this.permissionGroups.equals(user.permissionGroups)) &&
         (this.email == null ? user.email == null : this.email.equals(user.email)) &&
         (this.lastName == null ? user.lastName == null : this.lastName.equals(user.lastName)) &&
-        (this.firstName == null ? user.firstName == null : this.firstName.equals(user.firstName));
+        (this.firstName == null ? user.firstName == null : this.firstName.equals(user.firstName)) &&
+        (this.registrationPortalEnabled == null ? user.registrationPortalEnabled == null : this.registrationPortalEnabled.equals(user.registrationPortalEnabled));
   }
 
   @Override
@@ -127,6 +141,7 @@ public class User {
     result = 31 * result + (this.email == null ? 0: this.email.hashCode());
     result = 31 * result + (this.lastName == null ? 0: this.lastName.hashCode());
     result = 31 * result + (this.firstName == null ? 0: this.firstName.hashCode());
+    result = 31 * result + (this.registrationPortalEnabled == null ? 0: this.registrationPortalEnabled.hashCode());
     return result;
   }
 
@@ -141,6 +156,7 @@ public class User {
     sb.append("  email: ").append(email).append("\n");
     sb.append("  lastName: ").append(lastName).append("\n");
     sb.append("  firstName: ").append(firstName).append("\n");
+    sb.append("  registrationPortalEnabled: ").append(registrationPortalEnabled).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

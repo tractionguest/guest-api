@@ -31,8 +31,12 @@ export interface UserGuest {
      */
     lastName?: string;
     /**
-     * 
+     * Determines if the registration portal has been enabled for this account
      */
     firstName?: string;
+    /**
+     * Determines if the registration portal has been enabled for this account
+     */
+    registrationPortalEnabled: boolean;
 }
 

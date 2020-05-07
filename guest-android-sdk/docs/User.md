@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **permissionGroups** | [**List&lt;PermissionGroup&gt;**](PermissionGroup.md) |  |  [optional]
 **email** | **String** |  | 
 **lastName** | **String** |  |  [optional]
-**firstName** | **String** |  |  [optional]
+**firstName** | **String** | Determines if the registration portal has been enabled for this account |  [optional]
+**registrationPortalEnabled** | **Boolean** | Determines if the registration portal has been enabled for this account | 
 
 
 

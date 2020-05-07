@@ -15,7 +15,7 @@ if (wrikeIds.length) {
 }
 
 // Remind to squash on un-squashed PRs
-if (danger.github.commits.length > 1 && isSinglePr) {
+if (danger.github.commits.length > 1) {
   message(
     `Remember to use the \`Squash and Merge\` button to merge!
     Always remember, your final commit message needs to start with a wrike ticket like, \`[#1234] Your commit message\`.`

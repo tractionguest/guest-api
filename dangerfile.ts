@@ -7,11 +7,6 @@ const wrikeIds = getUniqueWrikeIds();
 if (wrikeIds.length) {
   const mappedIds = wrikeIds.map(id => wrikeLink(id)).join(', ');
   message(`Associated Wrike Tickets:\n${mappedIds}`);
-} else {
-  warn(
-    `You don't seem to have any wrike tickets for this PR!
-    You need to add your wrike ticket to one of your commits, e.g., \`[#1234] Your commit message\``
-  );
 }
 
 // Remind to squash on un-squashed PRs
@@ -28,15 +23,16 @@ function wrikeLink(wrikeId:string) {
 }
 
 function getUniqueWrikeIds() {
-  const wrikeIds = danger.github.commits.reduce((acc, obj) => {
-      const msg = obj.commit.message;
-      const wrikeId = msg.match(/^\[\#(\d*)\]/);
-      if (wrikeId) {
-        acc.push(wrikeId[1]);
-      }
+  return ['woot'];
+  // const wrikeIds = danger.github.commits.reduce((acc, obj) => {
+  //     const msg = obj.commit.message;
+  //     const wrikeId = msg.match(/^\[\#(\d*)\]/);
+  //     if (wrikeId) {
+  //       acc.push(wrikeId[1]);
+  //     }
 
-      return acc;
-    }, []);
+  //     return acc;
+  //   }, []);
 
-  return [...new Set(wrikeIds)];
+  // return [...new Set(wrikeIds)];
 }

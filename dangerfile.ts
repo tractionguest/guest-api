@@ -24,7 +24,6 @@ function wrikeLink(wrikeId:string) {
 
 function getUniqueWrikeIds() {
   const commits = danger.github.commits;
-  console.log(commits.length);
   const wrikeIds = commits.reduce((acc, obj) => {
       const msg = obj.commit.message;
       const wrikeId = msg.match(/^\[\#(\d*)\]/);
@@ -35,5 +34,6 @@ function getUniqueWrikeIds() {
       return acc;
     }, []);
 
+  return wrikeIds;
   return [...new Set(wrikeIds)];
 }

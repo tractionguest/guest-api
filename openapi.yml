@@ -3134,6 +3134,14 @@ paths:
             application/json:
               schema:
                 $ref: ./models/EmergencyAlertDetail.v1.yaml
+              examples:
+                default:
+                  value:
+                    message: some text
+                    uuid: abc123-xyz789
+                    channels:
+                      - SMS
+                      - EMAIL
           description: Emergency Alert has been scheduled for delivery
         '400':
           content:
@@ -3157,6 +3165,8 @@ paths:
           description: "You don't have permission to create requested Emergency Alerts"
         '403':
           description: You do not have permission for this action
+        '404':
+          description: Not Found
       operationId: createEmergencyAlert
       summary: Create Emergency Alert
       description: Enqueues emergency alerts via specified channels for all signed in visitors

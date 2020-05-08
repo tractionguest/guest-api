@@ -1,0 +1,26 @@
+title: GuestAlertDetail
+description: ''
+type: object
+x-examples:
+  default:
+    message: some text
+    uuid: abc123-xyz789
+    channels:
+      - SMS
+      - EMAIL
+properties:
+  message:
+    description: ''
+    type: string
+  uuid:
+    description: The uuid of the guest_alert object
+    type: string
+  channels:
+    description: Channel used to send the message
+    type: array
+    items:
+      type: string
+required:
+  - message
+  - uuid
+  - channels

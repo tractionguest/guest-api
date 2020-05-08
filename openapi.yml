@@ -3103,14 +3103,14 @@ paths:
           type: string
         in: path
         required: true
-  /guest_alerts:
+  '/locations/{locationId}/emergency_alerts':
     summary: Broadcasts alerts to guests via specified channel
     post:
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ./models/GuestAlertCreateParams.v1.yaml
+              $ref: ./models/EmergencyAlertCreateParams.v1.yaml
             examples:
               default:
                 value:
@@ -3118,21 +3118,23 @@ paths:
                   channels:
                     - SMS
                     - EMAIL
-                  signin_selectors:
-                    signin_ids:
-                      - 19
-                      - 64
-                    is_signed_out: false
+          application/javascript:
+            schema:
+              type: object
+              properties: {}
+          application/xml:
+            schema:
+              type: object
+              properties: {}
         required: true
-      tags:
-        - GuestAlerts
+        description: ''
       responses:
         '201':
           content:
             application/json:
               schema:
-                $ref: ./models/GuestAlertDetail.v1.yaml
-          description: Guest Alert has been scheduled for delivery
+                $ref: ./models/EmergencyAlertDetail.v1.yaml
+          description: Emergency Alert has been scheduled for delivery
         '400':
           content:
             application/json:
@@ -3155,9 +3157,17 @@ paths:
           description: "You don't have permission to create requested Guest Alerts"
         '403':
           description: You do not have permission for this action
-      operationId: createGuestAlert
+      operationId: createEmergencyAlert
       summary: Create Guest Alert
-      description: Enqueues guest alerts via specified channels
+      description: Enqueues emergency alerts via specified channels for all signed in visitors
+      tags:
+        - EmergencyAlerts
+    parameters:
+      - schema:
+          type: string
+        name: locationId
+        in: path
+        required: true
   '/registrations/{registrationId}':
     summary: Path used to display a single Registration.
     description: The REST endpoint/path used to get single instances of a `Registration`.

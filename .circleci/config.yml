@@ -13,4 +13,4 @@ jobs:
           command: npm i --prefix=$HOME/.local -g @stoplight/cli
       - run:
           name: Publish docs
-          command: stoplight publish --token ${STOPLIGHT_API_KEY} --url https://stoplight.io/api
+          command: stoplight publish --token {STOPLIGHT_API_KEY} --url https://stoplight.io/api

@@ -8,10 +8,14 @@ info:
     url: 'https://tractionguest.com'
     email: bmckay@tractionguest.com
 servers:
-  - url: 'https://tractionguest.com/api/v3'
-    description: Production
-  - url: 'http://localhost:3000/api/v3'
-    description: Local Development
+  - url: '{domain}'
+    variables:
+      domain:
+        enum:
+          - 'https://tractionguest.ca/api/v3'
+          - 'https://dravaqa.tractionguest.ca/api/v3'
+          - 'http://localhost:3000/api/v3'
+        default: 'https://tractionguest.ca/api/v3'
 paths:
   /hosts:
     summary: Path used to manage the list of Hosts.

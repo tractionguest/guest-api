@@ -1,9 +1,9 @@
 /* Constants */
 const branchName = danger.github.pr.head.ref;
+const wrikeIds = getUniqueWrikeIds();
 
 /* Steps */
 // Attach Wrike tickets
-const wrikeIds = getUniqueWrikeIds();
 if (wrikeIds.length) {
   const mappedIds = wrikeIds.map(id => wrikeLink(id)).join(', ');
   message(`Associated Wrike Tickets:\n${mappedIds}`);

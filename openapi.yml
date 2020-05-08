@@ -3104,7 +3104,7 @@ paths:
         in: path
         required: true
   '/locations/{locationId}/emergency_alerts':
-    summary: Broadcasts alerts to guests via specified channel
+    summary: Broadcasts emergency alerts to guests via specified channel
     post:
       requestBody:
         content:
@@ -3154,11 +3154,11 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to create requested Guest Alerts"
+          description: "You don't have permission to create requested Emergency Alerts"
         '403':
           description: You do not have permission for this action
       operationId: createEmergencyAlert
-      summary: Create Guest Alert
+      summary: Create Emergency Alert
       description: Enqueues emergency alerts via specified channels for all signed in visitors
       tags:
         - EmergencyAlerts
@@ -3363,8 +3363,8 @@ tags:
     description: All endpoints related to the User model
   - name: Watchlists
     description: All endpoint related to the Watchlist model
-  - name: GuestAlerts
-    description: 'All endpoints relating to sending guest alerts '
+  - name: EmergencyAlerts
+    description: 'All endpoints relating to sending emergency alerts '
   - name: AuditLogs
     description: All endpoints related to the AuditLog model.
   - name: Registration

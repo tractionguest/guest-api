@@ -1,8 +1,12 @@
 /* Constants */
 const branchName = danger.github.pr.head.ref;
 const wrikeIds = getUniqueWrikeIds();
+const docsLink = `https://stoplight.io/p/docs/gh/tractionguest/guest-api/openapi.yml?srn=gh/tractionguest/guest-api/openapi.yml&group=${branchName}`;
+
 
 /* Steps */
+message(`<a href="${docsLink}" target=_blank>View docs for this page</a>`);
+
 // Attach Wrike tickets
 if (wrikeIds.length) {
   const mappedIds = wrikeIds.map(id => wrikeLink(id)).join(', ');

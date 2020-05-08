@@ -9,11 +9,8 @@ jobs:
           name: Lint yaml file
           command: npx @stoplight/spectral lint openapi.yml -- --ruleset=.spectral.yml --fail-severity=warn
       - run:
-          name: Set npm directory
-          command: npm set prefix=/home/circleci/npm && echo 'export PATH=$HOME/circleci/npm/bin:$PATH' >> /home/circleci/.bashrc
-      - run:
-          name: Set npm directory
-          command: npm i -g @stoplight/cli
+          name: Install stoplight CLI
+          command: npm i --prefix=$HOME/.local -g @stoplight/cli
       - run:
           name: Publish docs
           command: stoplight publish --token ${STOPLIGHT_API_KEY} --url https://stoplight.io/api

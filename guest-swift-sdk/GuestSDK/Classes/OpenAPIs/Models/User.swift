@@ -19,16 +19,19 @@ public struct User: Codable {
     public var email: String
     /**  */
     public var lastName: String?
-    /**  */
+    /** Determines if the registration portal has been enabled for this account */
     public var firstName: String?
+    /** Determines if the registration portal has been enabled for this account */
+    public var registrationPortalEnabled: Bool
 
-    public init(id: Int, mobileAccessEnabled: Bool, permissionGroups: [PermissionGroup]?, email: String, lastName: String?, firstName: String?) {
+    public init(id: Int, mobileAccessEnabled: Bool, permissionGroups: [PermissionGroup]?, email: String, lastName: String?, firstName: String?, registrationPortalEnabled: Bool) {
         self.id = id
         self.mobileAccessEnabled = mobileAccessEnabled
         self.permissionGroups = permissionGroups
         self.email = email
         self.lastName = lastName
         self.firstName = firstName
+        self.registrationPortalEnabled = registrationPortalEnabled
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
@@ -38,6 +41,7 @@ public struct User: Codable {
         case email
         case lastName = "last_name"
         case firstName = "first_name"
+        case registrationPortalEnabled = "registration_portal_enabled"
     }
 
 }

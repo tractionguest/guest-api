@@ -13,7 +13,8 @@ Name | Type | Description | Notes
 **permissionGroups** | [**List&lt;PermissionGroup&gt;**](PermissionGroup.md) |  | [optional] [default to []]
 **email** | **String** |  | [default to null]
 **lastName** | **String** |  | [optional] [default to null]
-**firstName** | **String** |  | [optional] [default to null]
+**firstName** | **String** | Determines if the registration portal has been enabled for this account | [optional] [default to null]
+**registrationPortalEnabled** | **bool** | Determines if the registration portal has been enabled for this account | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

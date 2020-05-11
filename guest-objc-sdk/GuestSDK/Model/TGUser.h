@@ -38,8 +38,11 @@
 /*  [optional]
  */
 @property(nonatomic) NSString* lastName;
-/*  [optional]
+/* Determines if the registration portal has been enabled for this account [optional]
  */
 @property(nonatomic) NSString* firstName;
+/* Determines if the registration portal has been enabled for this account 
+ */
+@property(nonatomic) NSNumber* registrationPortalEnabled;
 
 @end

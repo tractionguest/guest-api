@@ -11,13 +11,15 @@ class User {
   String email = null;
   /*  */
   String lastName = null;
-  /*  */
+  /* Determines if the registration portal has been enabled for this account */
   String firstName = null;
+  /* Determines if the registration portal has been enabled for this account */
+  bool registrationPortalEnabled = null;
   User();
 
   @override
   String toString() {
-    return 'User[id=$id, mobileAccessEnabled=$mobileAccessEnabled, permissionGroups=$permissionGroups, email=$email, lastName=$lastName, firstName=$firstName, ]';
+    return 'User[id=$id, mobileAccessEnabled=$mobileAccessEnabled, permissionGroups=$permissionGroups, email=$email, lastName=$lastName, firstName=$firstName, registrationPortalEnabled=$registrationPortalEnabled, ]';
   }
 
   User.fromJson(Map<String, dynamic> json) {
@@ -52,6 +54,11 @@ class User {
     } else {
           firstName = json['first_name'];
     }
+    if (json['registration_portal_enabled'] == null) {
+      registrationPortalEnabled = null;
+    } else {
+          registrationPortalEnabled = json['registration_portal_enabled'];
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -68,6 +75,8 @@ class User {
       json['last_name'] = lastName;
     if (firstName != null)
       json['first_name'] = firstName;
+    if (registrationPortalEnabled != null)
+      json['registration_portal_enabled'] = registrationPortalEnabled;
     return json;
   }
 

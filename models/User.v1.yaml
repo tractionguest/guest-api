@@ -36,9 +36,13 @@ properties:
     description: ''
     type: string
   first_name:
-    description: ''
+    description: Determines if the registration portal has been enabled for this account
     type: string
+  registration_portal_enabled:
+    type: boolean
+    description: Determines if the registration portal has been enabled for this account
 required:
   - id
   - mobile_access_enabled
   - email
+  - registration_portal_enabled

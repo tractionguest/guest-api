@@ -56,7 +56,7 @@ NSInteger kTGInvitesApiMissingParamErrorCode = 234513;
 ///
 /// Creates an Invite
 /// Creates a new `Invite` for a specific `Location`.
-///  @param locationId A unique identifier for a `Location`. 
+///  @param locationId  
 ///
 ///  @param inviteCreateParams  
 ///
@@ -64,7 +64,7 @@ NSInteger kTGInvitesApiMissingParamErrorCode = 234513;
 ///
 ///  @returns TGInviteDetail*
 ///
--(NSURLSessionTask*) createLocationInviteWithLocationId: (NSNumber*) locationId
+-(NSURLSessionTask*) createLocationInviteWithLocationId: (NSString*) locationId
     inviteCreateParams: (TGInviteCreateParams*) inviteCreateParams
     idempotencyKey: (NSString*) idempotencyKey
     completionHandler: (void (^)(TGInviteDetail* output, NSError* error)) handler {
@@ -90,11 +90,11 @@ NSInteger kTGInvitesApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/locations/{locationId}/invites"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/locations/{location_id}/invites"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (locationId != nil) {
-        pathParams[@"locationId"] = locationId;
+        pathParams[@"location_id"] = locationId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
@@ -145,7 +145,7 @@ NSInteger kTGInvitesApiMissingParamErrorCode = 234513;
 ///
 /// Deletes an Invite
 /// Deletes a single instance of `Invite`
-///  @param inviteId A unique identifier for a `Invite`. 
+///  @param inviteId  
 ///
 ///  @param idempotencyKey An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 ///
@@ -165,11 +165,11 @@ NSInteger kTGInvitesApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/invites/{inviteId}"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/invites/{invite_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (inviteId != nil) {
-        pathParams[@"inviteId"] = inviteId;
+        pathParams[@"invite_id"] = inviteId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
@@ -219,7 +219,7 @@ NSInteger kTGInvitesApiMissingParamErrorCode = 234513;
 ///
 /// Get a Invite
 /// Gets the details of a single instance of a `Invite`.
-///  @param inviteId A unique identifier for a `Invite`. 
+///  @param inviteId  
 ///
 ///  @param include A list of comma-separated related models to include (optional)
 ///
@@ -239,11 +239,11 @@ NSInteger kTGInvitesApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/invites/{inviteId}"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/invites/{invite_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (inviteId != nil) {
-        pathParams[@"inviteId"] = inviteId;
+        pathParams[@"invite_id"] = inviteId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
@@ -416,7 +416,7 @@ NSInteger kTGInvitesApiMissingParamErrorCode = 234513;
 ///
 /// Update a Invite
 /// Updates an existing `Invite`.
-///  @param inviteId A unique identifier for a `Invite`. 
+///  @param inviteId  
 ///
 ///  @param inviteUpdateParams Updated `Invite` information. 
 ///
@@ -450,11 +450,11 @@ NSInteger kTGInvitesApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/invites/{inviteId}"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/invites/{invite_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (inviteId != nil) {
-        pathParams[@"inviteId"] = inviteId;
+        pathParams[@"invite_id"] = inviteId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];

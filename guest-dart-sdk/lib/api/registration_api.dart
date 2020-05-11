@@ -19,7 +19,7 @@ class RegistrationApi {
     }
 
     // create path and map variables
-    String path = "/registrations/{registrationId}".replaceAll("{format}","json").replaceAll("{" + "registrationId" + "}", registrationId.toString());
+    String path = "/registrations/{registration_id}".replaceAll("{format}","json").replaceAll("{" + "registration_id" + "}", registrationId.toString());
 
     // query params
     List<QueryParam> queryParams = [];

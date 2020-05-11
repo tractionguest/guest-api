@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getCurrentUser**](UsersApi.md#getCurrentUser) | **GET** /users/{userId} | Get the current User
+[**getCurrentUser**](UsersApi.md#getCurrentUser) | **GET** /users/{user_id} | Get the current User
 
 
 
@@ -23,7 +23,7 @@ Gets the details of a single instance of the current &#x60;User&#x60;.
 //import GuestSDK.UsersApi;
 
 UsersApi apiInstance = new UsersApi();
-String userId = null; // String | The user ID, represented as a string. `\"current\"` can be used as a shortcut for the currently-authenticated user
+String userId = null; // String | 
 String include = null; // String | A list of comma-separated related models to include
 try {
     User result = apiInstance.getCurrentUser(userId, include);
@@ -39,7 +39,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**| The user ID, represented as a string. &#x60;\&quot;current\&quot;&#x60; can be used as a shortcut for the currently-authenticated user | [default to null]
+ **userId** | **String**|  | [default to null]
  **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
 
 ### Return type

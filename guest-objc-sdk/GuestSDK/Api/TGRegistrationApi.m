@@ -53,7 +53,7 @@ NSInteger kTGRegistrationApiMissingParamErrorCode = 234513;
 ///
 /// Get a Registration
 /// Gets the details of a single instance of a `Registration`
-///  @param registrationId A unique identifier for `Registration`. 
+///  @param registrationId  
 ///
 ///  @param include A list of comma-separated related models to include (optional)
 ///
@@ -73,11 +73,11 @@ NSInteger kTGRegistrationApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/registrations/{registrationId}"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/registrations/{registration_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (registrationId != nil) {
-        pathParams[@"registrationId"] = registrationId;
+        pathParams[@"registration_id"] = registrationId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];

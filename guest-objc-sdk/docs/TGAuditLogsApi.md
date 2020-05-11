@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAuditLog**](TGAuditLogsApi.md#getauditlog) | **GET** /audit_logs/{auditLogId} | Get an AuditLog
+[**getAuditLog**](TGAuditLogsApi.md#getauditlog) | **GET** /audit_logs/{audit_log_id} | Get an AuditLog
 [**getAuditLogs**](TGAuditLogsApi.md#getauditlogs) | **GET** /audit_logs | List All AuditLogs
 
 
@@ -23,7 +23,7 @@ Gets the details of a single instance of an `AuditLog`.
 TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
 
 
-NSString* auditLogId = @"auditLogId_example"; // A unique identifier for an `AuditLog`.
+NSString* auditLogId = @"auditLogId_example"; // 
 
 TGAuditLogsApi*apiInstance = [[TGAuditLogsApi alloc] init];
 
@@ -43,7 +43,7 @@ TGAuditLogsApi*apiInstance = [[TGAuditLogsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **auditLogId** | **NSString***| A unique identifier for an &#x60;AuditLog&#x60;. | 
+ **auditLogId** | **NSString***|  | 
 
 ### Return type
 

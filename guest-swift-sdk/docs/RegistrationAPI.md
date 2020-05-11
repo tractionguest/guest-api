@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getRegistration**](RegistrationAPI.md#getregistration) | **GET** /registrations/{registrationId} | Get a Registration
+[**getRegistration**](RegistrationAPI.md#getregistration) | **GET** /registrations/{registration_id} | Get a Registration
 
 
 # **getRegistration**
@@ -21,7 +21,7 @@ Gets the details of a single instance of a `Registration`
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import GuestSDK
 
-let registrationId = "registrationId_example" // String | A unique identifier for `Registration`.
+let registrationId = "registrationId_example" // String | 
 let include = "include_example" // String | A list of comma-separated related models to include (optional)
 
 // Get a Registration
@@ -41,7 +41,7 @@ RegistrationAPI.getRegistration(registrationId: registrationId, include: include
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **registrationId** | **String** | A unique identifier for &#x60;Registration&#x60;. | 
+ **registrationId** | **String** |  | 
  **include** | **String** | A list of comma-separated related models to include | [optional] 
 
 ### Return type

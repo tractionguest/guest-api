@@ -13,7 +13,7 @@ open class UsersAPI {
     /**
      Get the current User
      
-     - parameter userId: (path) The user ID, represented as a string. &#x60;\&quot;current\&quot;&#x60; can be used as a shortcut for the currently-authenticated user 
+     - parameter userId: (path)  
      - parameter include: (query) A list of comma-separated related models to include (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
@@ -31,20 +31,20 @@ open class UsersAPI {
 
     /**
      Get the current User
-     - GET /users/{userId}
+     - GET /users/{user_id}
      - Gets the details of a single instance of the current `User`.
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter userId: (path) The user ID, represented as a string. &#x60;\&quot;current\&quot;&#x60; can be used as a shortcut for the currently-authenticated user 
+     - parameter userId: (path)  
      - parameter include: (query) A list of comma-separated related models to include (optional)
      - returns: RequestBuilder<User> 
      */
     open class func getCurrentUserWithRequestBuilder(userId: String, include: String? = nil) -> RequestBuilder<User> {
-        var path = "/users/{userId}"
+        var path = "/users/{user_id}"
         let userIdPreEscape = "\(APIHelper.mapValueToPathItem(userId))"
         let userIdPostEscape = userIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{userId}", with: userIdPostEscape, options: .literal, range: nil)
+        path = path.replacingOccurrences(of: "{user_id}", with: userIdPostEscape, options: .literal, range: nil)
         let URLString = GuestSDKAPI.basePath + path
         let parameters: [String:Any]? = nil
         

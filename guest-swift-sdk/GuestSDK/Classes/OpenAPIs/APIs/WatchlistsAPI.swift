@@ -59,7 +59,7 @@ open class WatchlistsAPI {
     /**
      Deletes a Watchlist
      
-     - parameter watchlistId: (path) A unique identifier for a &#x60;Watchlist&#x60;. 
+     - parameter watchlistId: (path)  
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
@@ -77,20 +77,20 @@ open class WatchlistsAPI {
 
     /**
      Deletes a Watchlist
-     - DELETE /watchlists/{watchlistId}
+     - DELETE /watchlists/{watchlist_id}
      - Deletes a single instance of `Watchlist`
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter watchlistId: (path) A unique identifier for a &#x60;Watchlist&#x60;. 
+     - parameter watchlistId: (path)  
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func deleteWatchlistWithRequestBuilder(watchlistId: String, idempotencyKey: String? = nil) -> RequestBuilder<Void> {
-        var path = "/watchlists/{watchlistId}"
+        var path = "/watchlists/{watchlist_id}"
         let watchlistIdPreEscape = "\(APIHelper.mapValueToPathItem(watchlistId))"
         let watchlistIdPostEscape = watchlistIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{watchlistId}", with: watchlistIdPostEscape, options: .literal, range: nil)
+        path = path.replacingOccurrences(of: "{watchlist_id}", with: watchlistIdPostEscape, options: .literal, range: nil)
         let URLString = GuestSDKAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -108,7 +108,7 @@ open class WatchlistsAPI {
     /**
      Get a Watchlist
      
-     - parameter watchlistId: (path) A unique identifier for a &#x60;Watchlist&#x60;. 
+     - parameter watchlistId: (path)  
      - parameter include: (query) A list of comma-separated related models to include (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
@@ -126,20 +126,20 @@ open class WatchlistsAPI {
 
     /**
      Get a Watchlist
-     - GET /watchlists/{watchlistId}
+     - GET /watchlists/{watchlist_id}
      - Gets the details of a single instance of a `Watchlist`.
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter watchlistId: (path) A unique identifier for a &#x60;Watchlist&#x60;. 
+     - parameter watchlistId: (path)  
      - parameter include: (query) A list of comma-separated related models to include (optional)
      - returns: RequestBuilder<Watchlist> 
      */
     open class func getWatchlistWithRequestBuilder(watchlistId: String, include: String? = nil) -> RequestBuilder<Watchlist> {
-        var path = "/watchlists/{watchlistId}"
+        var path = "/watchlists/{watchlist_id}"
         let watchlistIdPreEscape = "\(APIHelper.mapValueToPathItem(watchlistId))"
         let watchlistIdPostEscape = watchlistIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{watchlistId}", with: watchlistIdPostEscape, options: .literal, range: nil)
+        path = path.replacingOccurrences(of: "{watchlist_id}", with: watchlistIdPostEscape, options: .literal, range: nil)
         let URLString = GuestSDKAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -211,7 +211,7 @@ open class WatchlistsAPI {
     /**
      Update a watchlist record
      
-     - parameter watchlistId: (path) A unique identifier for a &#x60;Watchlist&#x60;. 
+     - parameter watchlistId: (path)  
      - parameter watchlistCreateParams: (body) The watchlist record attributes to update 
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -230,21 +230,21 @@ open class WatchlistsAPI {
 
     /**
      Update a watchlist record
-     - PUT /watchlists/{watchlistId}
+     - PUT /watchlists/{watchlist_id}
      - Update an existing `Watchlist` record. Every operation against this endpoint is recorded in the audit log.
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter watchlistId: (path) A unique identifier for a &#x60;Watchlist&#x60;. 
+     - parameter watchlistId: (path)  
      - parameter watchlistCreateParams: (body) The watchlist record attributes to update 
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - returns: RequestBuilder<Watchlist> 
      */
     open class func updateWatchlistWithRequestBuilder(watchlistId: String, watchlistCreateParams: WatchlistCreateParams, idempotencyKey: String? = nil) -> RequestBuilder<Watchlist> {
-        var path = "/watchlists/{watchlistId}"
+        var path = "/watchlists/{watchlist_id}"
         let watchlistIdPreEscape = "\(APIHelper.mapValueToPathItem(watchlistId))"
         let watchlistIdPostEscape = watchlistIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{watchlistId}", with: watchlistIdPostEscape, options: .literal, range: nil)
+        path = path.replacingOccurrences(of: "{watchlist_id}", with: watchlistIdPostEscape, options: .literal, range: nil)
         let URLString = GuestSDKAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: watchlistCreateParams)
 

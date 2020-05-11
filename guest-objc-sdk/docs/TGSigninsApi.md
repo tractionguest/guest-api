@@ -5,9 +5,9 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createSignin**](TGSigninsApi.md#createsignin) | **POST** /signins | 
-[**getSignin**](TGSigninsApi.md#getsignin) | **GET** /signins/{signinId} | Get a Signin
+[**getSignin**](TGSigninsApi.md#getsignin) | **GET** /signins/{signin_id} | Get a Signin
 [**getSignins**](TGSigninsApi.md#getsignins) | **GET** /signins | List All Signins
-[**updateSignin**](TGSigninsApi.md#updatesignin) | **PUT** /signins/{signinId} | Update a Signin attribute
+[**updateSignin**](TGSigninsApi.md#updatesignin) | **PUT** /signins/{signin_id} | Update a Signin attribute
 
 
 # **createSignin**
@@ -77,7 +77,7 @@ Gets the details of a single instance of a `Signin`.
 TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
 
 
-NSString* signinId = @"signinId_example"; // A unique identifier for a `Signin`.
+NSString* signinId = @"signinId_example"; // 
 NSString* include = @"include_example"; // A list of comma-separated related models to include (optional)
 
 TGSigninsApi*apiInstance = [[TGSigninsApi alloc] init];
@@ -99,7 +99,7 @@ TGSigninsApi*apiInstance = [[TGSigninsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **signinId** | **NSString***| A unique identifier for a &#x60;Signin&#x60;. | 
+ **signinId** | **NSString***|  | 
  **include** | **NSString***| A list of comma-separated related models to include | [optional] 
 
 ### Return type
@@ -226,7 +226,7 @@ Update, acknowledge, or `Signout` a `Signin`
 TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
 
 
-NSString* signinId = @"signinId_example"; // A unique identifier for a `Signin`.
+NSString* signinId = @"signinId_example"; // 
 TGSigninUpdateParams* signinUpdateParams = {"is_signed_out":true,"is_acknowledged":true,"is_accounted_for":true}; // The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.  `is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible.
 NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
@@ -250,7 +250,7 @@ TGSigninsApi*apiInstance = [[TGSigninsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **signinId** | **NSString***| A unique identifier for a &#x60;Signin&#x60;. | 
+ **signinId** | **NSString***|  | 
  **signinUpdateParams** | [**TGSigninUpdateParams***](TGSigninUpdateParams.md)| The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;.  &#x60;is_signed_out&#x60; and &#x60;is_acknowledged&#x60; are pseudo attributes that once set to true, are irreversible. | 
  **idempotencyKey** | **NSString***| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
 

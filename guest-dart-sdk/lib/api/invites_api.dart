@@ -10,7 +10,7 @@ class InvitesApi {
   /// Creates an Invite
   ///
   /// Creates a new &#x60;Invite&#x60; for a specific &#x60;Location&#x60;.
-  Future<InviteDetail> createLocationInvite(int locationId, InviteCreateParams inviteCreateParams, { String idempotencyKey }) async {
+  Future<InviteDetail> createLocationInvite(String locationId, InviteCreateParams inviteCreateParams, { String idempotencyKey }) async {
     Object postBody = inviteCreateParams;
 
     // verify required params are set
@@ -22,7 +22,7 @@ class InvitesApi {
     }
 
     // create path and map variables
-    String path = "/locations/{locationId}/invites".replaceAll("{format}","json").replaceAll("{" + "locationId" + "}", locationId.toString());
+    String path = "/locations/{location_id}/invites".replaceAll("{format}","json").replaceAll("{" + "location_id" + "}", locationId.toString());
 
     // query params
     List<QueryParam> queryParams = [];
@@ -73,7 +73,7 @@ class InvitesApi {
     }
 
     // create path and map variables
-    String path = "/invites/{inviteId}".replaceAll("{format}","json").replaceAll("{" + "inviteId" + "}", inviteId.toString());
+    String path = "/invites/{invite_id}".replaceAll("{format}","json").replaceAll("{" + "invite_id" + "}", inviteId.toString());
 
     // query params
     List<QueryParam> queryParams = [];
@@ -123,7 +123,7 @@ class InvitesApi {
     }
 
     // create path and map variables
-    String path = "/invites/{inviteId}".replaceAll("{format}","json").replaceAll("{" + "inviteId" + "}", inviteId.toString());
+    String path = "/invites/{invite_id}".replaceAll("{format}","json").replaceAll("{" + "invite_id" + "}", inviteId.toString());
 
     // query params
     List<QueryParam> queryParams = [];
@@ -262,7 +262,7 @@ class InvitesApi {
     }
 
     // create path and map variables
-    String path = "/invites/{inviteId}".replaceAll("{format}","json").replaceAll("{" + "inviteId" + "}", inviteId.toString());
+    String path = "/invites/{invite_id}".replaceAll("{format}","json").replaceAll("{" + "invite_id" + "}", inviteId.toString());
 
     // query params
     List<QueryParam> queryParams = [];

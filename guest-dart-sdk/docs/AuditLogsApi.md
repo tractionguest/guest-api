@@ -9,7 +9,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAuditLog**](AuditLogsApi.md#getAuditLog) | **GET** /audit_logs/{auditLogId} | Get an AuditLog
+[**getAuditLog**](AuditLogsApi.md#getAuditLog) | **GET** /audit_logs/{audit_log_id} | Get an AuditLog
 [**getAuditLogs**](AuditLogsApi.md#getAuditLogs) | **GET** /audit_logs | List All AuditLogs
 
 
@@ -25,7 +25,7 @@ Gets the details of a single instance of an `AuditLog`.
 import 'package:guest_sdk/api.dart';
 
 var api_instance = new AuditLogsApi();
-var auditLogId = auditLogId_example; // String | A unique identifier for an `AuditLog`.
+var auditLogId = auditLogId_example; // String | 
 
 try { 
     var result = api_instance.getAuditLog(auditLogId);
@@ -39,7 +39,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **auditLogId** | **String**| A unique identifier for an &#x60;AuditLog&#x60;. | [default to null]
+ **auditLogId** | **String**|  | [default to null]
 
 ### Return type
 

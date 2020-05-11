@@ -4,16 +4,16 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLocationInvite**](TGInvitesApi.md#createlocationinvite) | **POST** /locations/{locationId}/invites | Creates an Invite
-[**deleteInvite**](TGInvitesApi.md#deleteinvite) | **DELETE** /invites/{inviteId} | Deletes an Invite
-[**getInvite**](TGInvitesApi.md#getinvite) | **GET** /invites/{inviteId} | Get a Invite
+[**createLocationInvite**](TGInvitesApi.md#createlocationinvite) | **POST** /locations/{location_id}/invites | Creates an Invite
+[**deleteInvite**](TGInvitesApi.md#deleteinvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
+[**getInvite**](TGInvitesApi.md#getinvite) | **GET** /invites/{invite_id} | Get a Invite
 [**getInvites**](TGInvitesApi.md#getinvites) | **GET** /invites | List All Invites
-[**updateInvite**](TGInvitesApi.md#updateinvite) | **PUT** /invites/{inviteId} | Update a Invite
+[**updateInvite**](TGInvitesApi.md#updateinvite) | **PUT** /invites/{invite_id} | Update a Invite
 
 
 # **createLocationInvite**
 ```objc
--(NSURLSessionTask*) createLocationInviteWithLocationId: (NSNumber*) locationId
+-(NSURLSessionTask*) createLocationInviteWithLocationId: (NSString*) locationId
     inviteCreateParams: (TGInviteCreateParams*) inviteCreateParams
     idempotencyKey: (NSString*) idempotencyKey
         completionHandler: (void (^)(TGInviteDetail* output, NSError* error)) handler;
@@ -28,7 +28,7 @@ Creates a new `Invite` for a specific `Location`.
 TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
 
 
-NSNumber* locationId = @56; // A unique identifier for a `Location`.
+NSString* locationId = @"locationId_example"; // 
 TGInviteCreateParams* inviteCreateParams = {"company":"some text","email":"some text","end_date":"2018-02-10T09:30Z","last_name":"some text","start_date":"2018-02-10T09:30Z","title":"some text","watchlist_colour":{},"host_ids":[96,2],"custom_fields":[{"format":{},"field_name":"some text","field_value":"some text"},{"format":{},"field_name":"some text","field_value":"some text"}],"email_template_id":53,"mobile_number":"some text","first_name":"some text","notification_triggers":[{"offset_direction":{},"offset_type":{},"offset_amount":34,"offset_origin":{},"email_template_id":63,"notification_groups":["some text","some text"]},{"offset_direction":{},"offset_type":{},"offset_amount":12,"offset_origin":{},"email_template_id":2,"notification_groups":["some text","some text"]}]}; // 
 NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
@@ -52,7 +52,7 @@ TGInvitesApi*apiInstance = [[TGInvitesApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **locationId** | **NSNumber***| A unique identifier for a &#x60;Location&#x60;. | 
+ **locationId** | **NSString***|  | 
  **inviteCreateParams** | [**TGInviteCreateParams***](TGInviteCreateParams.md)|  | 
  **idempotencyKey** | **NSString***| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
 
@@ -87,7 +87,7 @@ Deletes a single instance of `Invite`
 TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
 
 
-NSString* inviteId = @"inviteId_example"; // A unique identifier for a `Invite`.
+NSString* inviteId = @"inviteId_example"; // 
 NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
 TGInvitesApi*apiInstance = [[TGInvitesApi alloc] init];
@@ -106,7 +106,7 @@ TGInvitesApi*apiInstance = [[TGInvitesApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inviteId** | **NSString***| A unique identifier for a &#x60;Invite&#x60;. | 
+ **inviteId** | **NSString***|  | 
  **idempotencyKey** | **NSString***| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
 
 ### Return type
@@ -140,7 +140,7 @@ Gets the details of a single instance of a `Invite`.
 TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
 
 
-NSString* inviteId = @"inviteId_example"; // A unique identifier for a `Invite`.
+NSString* inviteId = @"inviteId_example"; // 
 NSString* include = @"include_example"; // A list of comma-separated related models to include (optional)
 
 TGInvitesApi*apiInstance = [[TGInvitesApi alloc] init];
@@ -162,7 +162,7 @@ TGInvitesApi*apiInstance = [[TGInvitesApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inviteId** | **NSString***| A unique identifier for a &#x60;Invite&#x60;. | 
+ **inviteId** | **NSString***|  | 
  **include** | **NSString***| A list of comma-separated related models to include | [optional] 
 
 ### Return type
@@ -293,7 +293,7 @@ Updates an existing `Invite`.
 TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
 
 
-NSString* inviteId = @"inviteId_example"; // A unique identifier for a `Invite`.
+NSString* inviteId = @"inviteId_example"; // 
 TGInviteUpdateParams* inviteUpdateParams = {"checked_in":true,"on_premise":true,"sent_email":"some text","user_id":45,"device_configuration_id":14}; // Updated `Invite` information.
 NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
@@ -317,7 +317,7 @@ TGInvitesApi*apiInstance = [[TGInvitesApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inviteId** | **NSString***| A unique identifier for a &#x60;Invite&#x60;. | 
+ **inviteId** | **NSString***|  | 
  **inviteUpdateParams** | [**TGInviteUpdateParams***](TGInviteUpdateParams.md)| Updated &#x60;Invite&#x60; information. | 
  **idempotencyKey** | **NSString***| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
 

@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getRegistration**](TGRegistrationApi.md#getregistration) | **GET** /registrations/{registrationId} | Get a Registration
+[**getRegistration**](TGRegistrationApi.md#getregistration) | **GET** /registrations/{registration_id} | Get a Registration
 
 
 # **getRegistration**
@@ -23,7 +23,7 @@ Gets the details of a single instance of a `Registration`
 TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
 
 
-NSString* registrationId = 1; // A unique identifier for `Registration`.
+NSString* registrationId = @"registrationId_example"; // 
 NSString* include = @"include_example"; // A list of comma-separated related models to include (optional)
 
 TGRegistrationApi*apiInstance = [[TGRegistrationApi alloc] init];
@@ -45,7 +45,7 @@ TGRegistrationApi*apiInstance = [[TGRegistrationApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **registrationId** | **NSString***| A unique identifier for &#x60;Registration&#x60;. | 
+ **registrationId** | **NSString***|  | 
  **include** | **NSString***| A list of comma-separated related models to include | [optional] 
 
 ### Return type

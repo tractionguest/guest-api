@@ -13,13 +13,13 @@ open class InvitesAPI {
     /**
      Creates an Invite
      
-     - parameter locationId: (path) A unique identifier for a &#x60;Location&#x60;. 
+     - parameter locationId: (path)  
      - parameter inviteCreateParams: (body)  
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
      */
-    open class func createLocationInvite(locationId: Int, inviteCreateParams: InviteCreateParams, idempotencyKey: String? = nil, apiResponseQueue: DispatchQueue = GuestSDKAPI.apiResponseQueue, completion: @escaping ((_ result: Result<InviteDetail, Error>) -> Void)) {
+    open class func createLocationInvite(locationId: String, inviteCreateParams: InviteCreateParams, idempotencyKey: String? = nil, apiResponseQueue: DispatchQueue = GuestSDKAPI.apiResponseQueue, completion: @escaping ((_ result: Result<InviteDetail, Error>) -> Void)) {
         createLocationInviteWithRequestBuilder(locationId: locationId, inviteCreateParams: inviteCreateParams, idempotencyKey: idempotencyKey).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -32,21 +32,21 @@ open class InvitesAPI {
 
     /**
      Creates an Invite
-     - POST /locations/{locationId}/invites
+     - POST /locations/{location_id}/invites
      - Creates a new `Invite` for a specific `Location`.
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter locationId: (path) A unique identifier for a &#x60;Location&#x60;. 
+     - parameter locationId: (path)  
      - parameter inviteCreateParams: (body)  
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - returns: RequestBuilder<InviteDetail> 
      */
-    open class func createLocationInviteWithRequestBuilder(locationId: Int, inviteCreateParams: InviteCreateParams, idempotencyKey: String? = nil) -> RequestBuilder<InviteDetail> {
-        var path = "/locations/{locationId}/invites"
+    open class func createLocationInviteWithRequestBuilder(locationId: String, inviteCreateParams: InviteCreateParams, idempotencyKey: String? = nil) -> RequestBuilder<InviteDetail> {
+        var path = "/locations/{location_id}/invites"
         let locationIdPreEscape = "\(APIHelper.mapValueToPathItem(locationId))"
         let locationIdPostEscape = locationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{locationId}", with: locationIdPostEscape, options: .literal, range: nil)
+        path = path.replacingOccurrences(of: "{location_id}", with: locationIdPostEscape, options: .literal, range: nil)
         let URLString = GuestSDKAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: inviteCreateParams)
 
@@ -64,7 +64,7 @@ open class InvitesAPI {
     /**
      Deletes an Invite
      
-     - parameter inviteId: (path) A unique identifier for a &#x60;Invite&#x60;. 
+     - parameter inviteId: (path)  
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
@@ -82,20 +82,20 @@ open class InvitesAPI {
 
     /**
      Deletes an Invite
-     - DELETE /invites/{inviteId}
+     - DELETE /invites/{invite_id}
      - Deletes a single instance of `Invite`
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter inviteId: (path) A unique identifier for a &#x60;Invite&#x60;. 
+     - parameter inviteId: (path)  
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func deleteInviteWithRequestBuilder(inviteId: String, idempotencyKey: String? = nil) -> RequestBuilder<Void> {
-        var path = "/invites/{inviteId}"
+        var path = "/invites/{invite_id}"
         let inviteIdPreEscape = "\(APIHelper.mapValueToPathItem(inviteId))"
         let inviteIdPostEscape = inviteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{inviteId}", with: inviteIdPostEscape, options: .literal, range: nil)
+        path = path.replacingOccurrences(of: "{invite_id}", with: inviteIdPostEscape, options: .literal, range: nil)
         let URLString = GuestSDKAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -113,7 +113,7 @@ open class InvitesAPI {
     /**
      Get a Invite
      
-     - parameter inviteId: (path) A unique identifier for a &#x60;Invite&#x60;. 
+     - parameter inviteId: (path)  
      - parameter include: (query) A list of comma-separated related models to include (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
@@ -131,20 +131,20 @@ open class InvitesAPI {
 
     /**
      Get a Invite
-     - GET /invites/{inviteId}
+     - GET /invites/{invite_id}
      - Gets the details of a single instance of a `Invite`.
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter inviteId: (path) A unique identifier for a &#x60;Invite&#x60;. 
+     - parameter inviteId: (path)  
      - parameter include: (query) A list of comma-separated related models to include (optional)
      - returns: RequestBuilder<InviteDetail> 
      */
     open class func getInviteWithRequestBuilder(inviteId: String, include: String? = nil) -> RequestBuilder<InviteDetail> {
-        var path = "/invites/{inviteId}"
+        var path = "/invites/{invite_id}"
         let inviteIdPreEscape = "\(APIHelper.mapValueToPathItem(inviteId))"
         let inviteIdPostEscape = inviteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{inviteId}", with: inviteIdPostEscape, options: .literal, range: nil)
+        path = path.replacingOccurrences(of: "{invite_id}", with: inviteIdPostEscape, options: .literal, range: nil)
         let URLString = GuestSDKAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -251,7 +251,7 @@ open class InvitesAPI {
     /**
      Update a Invite
      
-     - parameter inviteId: (path) A unique identifier for a &#x60;Invite&#x60;. 
+     - parameter inviteId: (path)  
      - parameter inviteUpdateParams: (body) Updated &#x60;Invite&#x60; information. 
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -270,21 +270,21 @@ open class InvitesAPI {
 
     /**
      Update a Invite
-     - PUT /invites/{inviteId}
+     - PUT /invites/{invite_id}
      - Updates an existing `Invite`.
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter inviteId: (path) A unique identifier for a &#x60;Invite&#x60;. 
+     - parameter inviteId: (path)  
      - parameter inviteUpdateParams: (body) Updated &#x60;Invite&#x60; information. 
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - returns: RequestBuilder<InviteDetail> 
      */
     open class func updateInviteWithRequestBuilder(inviteId: String, inviteUpdateParams: InviteUpdateParams, idempotencyKey: String? = nil) -> RequestBuilder<InviteDetail> {
-        var path = "/invites/{inviteId}"
+        var path = "/invites/{invite_id}"
         let inviteIdPreEscape = "\(APIHelper.mapValueToPathItem(inviteId))"
         let inviteIdPostEscape = inviteIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{inviteId}", with: inviteIdPostEscape, options: .literal, range: nil)
+        path = path.replacingOccurrences(of: "{invite_id}", with: inviteIdPostEscape, options: .literal, range: nil)
         let URLString = GuestSDKAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: inviteUpdateParams)
 

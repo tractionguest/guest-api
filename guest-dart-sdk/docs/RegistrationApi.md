@@ -9,7 +9,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getRegistration**](RegistrationApi.md#getRegistration) | **GET** /registrations/{registrationId} | Get a Registration
+[**getRegistration**](RegistrationApi.md#getRegistration) | **GET** /registrations/{registration_id} | Get a Registration
 
 
 # **getRegistration**
@@ -24,7 +24,7 @@ Gets the details of a single instance of a `Registration`
 import 'package:guest_sdk/api.dart';
 
 var api_instance = new RegistrationApi();
-var registrationId = 1; // String | A unique identifier for `Registration`.
+var registrationId = registrationId_example; // String | 
 var include = include_example; // String | A list of comma-separated related models to include
 
 try { 
@@ -39,7 +39,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **registrationId** | **String**| A unique identifier for &#x60;Registration&#x60;. | [default to null]
+ **registrationId** | **String**|  | [default to null]
  **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
 
 ### Return type

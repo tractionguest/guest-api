@@ -5,9 +5,9 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createSignin**](SigninsAPI.md#createsignin) | **POST** /signins | 
-[**getSignin**](SigninsAPI.md#getsignin) | **GET** /signins/{signinId} | Get a Signin
+[**getSignin**](SigninsAPI.md#getsignin) | **GET** /signins/{signin_id} | Get a Signin
 [**getSignins**](SigninsAPI.md#getsignins) | **GET** /signins | List All Signins
-[**updateSignin**](SigninsAPI.md#updatesignin) | **PUT** /signins/{signinId} | Update a Signin attribute
+[**updateSignin**](SigninsAPI.md#updatesignin) | **PUT** /signins/{signin_id} | Update a Signin attribute
 
 
 # **createSignin**
@@ -73,7 +73,7 @@ Gets the details of a single instance of a `Signin`.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import GuestSDK
 
-let signinId = "signinId_example" // String | A unique identifier for a `Signin`.
+let signinId = "signinId_example" // String | 
 let include = "include_example" // String | A list of comma-separated related models to include (optional)
 
 // Get a Signin
@@ -93,7 +93,7 @@ SigninsAPI.getSignin(signinId: signinId, include: include) { (response, error) i
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **signinId** | **String** | A unique identifier for a &#x60;Signin&#x60;. | 
+ **signinId** | **String** |  | 
  **include** | **String** | A list of comma-separated related models to include | [optional] 
 
 ### Return type
@@ -195,7 +195,7 @@ Update, acknowledge, or `Signout` a `Signin`
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import GuestSDK
 
-let signinId = "signinId_example" // String | A unique identifier for a `Signin`.
+let signinId = "signinId_example" // String | 
 let signinUpdateParams = SigninUpdateParams(isSignedOut: false, isAcknowledged: false, isAccountedFor: false) // SigninUpdateParams | The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.  `is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible.
 let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
@@ -216,7 +216,7 @@ SigninsAPI.updateSignin(signinId: signinId, signinUpdateParams: signinUpdatePara
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **signinId** | **String** | A unique identifier for a &#x60;Signin&#x60;. | 
+ **signinId** | **String** |  | 
  **signinUpdateParams** | [**SigninUpdateParams**](SigninUpdateParams.md) | The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;.  &#x60;is_signed_out&#x60; and &#x60;is_acknowledged&#x60; are pseudo attributes that once set to true, are irreversible. | 
  **idempotencyKey** | **String** | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
 

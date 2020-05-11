@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAuditLog**](AuditLogsApi.md#getAuditLog) | **GET** /audit_logs/{auditLogId} | Get an AuditLog
+[**getAuditLog**](AuditLogsApi.md#getAuditLog) | **GET** /audit_logs/{audit_log_id} | Get an AuditLog
 [**getAuditLogs**](AuditLogsApi.md#getAuditLogs) | **GET** /audit_logs | List All AuditLogs
 
 
@@ -24,7 +24,7 @@ Gets the details of a single instance of an &#x60;AuditLog&#x60;.
 //import GuestSDK.AuditLogsApi;
 
 AuditLogsApi apiInstance = new AuditLogsApi();
-String auditLogId = null; // String | A unique identifier for an `AuditLog`.
+String auditLogId = null; // String | 
 try {
     AuditLog result = apiInstance.getAuditLog(auditLogId);
     System.out.println(result);
@@ -39,7 +39,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **auditLogId** | **String**| A unique identifier for an &#x60;AuditLog&#x60;. | [default to null]
+ **auditLogId** | **String**|  | [default to null]
 
 ### Return type
 

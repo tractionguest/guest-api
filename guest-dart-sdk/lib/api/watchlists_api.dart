@@ -70,7 +70,7 @@ class WatchlistsApi {
     }
 
     // create path and map variables
-    String path = "/watchlists/{watchlistId}".replaceAll("{format}","json").replaceAll("{" + "watchlistId" + "}", watchlistId.toString());
+    String path = "/watchlists/{watchlist_id}".replaceAll("{format}","json").replaceAll("{" + "watchlist_id" + "}", watchlistId.toString());
 
     // query params
     List<QueryParam> queryParams = [];
@@ -120,7 +120,7 @@ class WatchlistsApi {
     }
 
     // create path and map variables
-    String path = "/watchlists/{watchlistId}".replaceAll("{format}","json").replaceAll("{" + "watchlistId" + "}", watchlistId.toString());
+    String path = "/watchlists/{watchlist_id}".replaceAll("{format}","json").replaceAll("{" + "watchlist_id" + "}", watchlistId.toString());
 
     // query params
     List<QueryParam> queryParams = [];
@@ -238,7 +238,7 @@ class WatchlistsApi {
     }
 
     // create path and map variables
-    String path = "/watchlists/{watchlistId}".replaceAll("{format}","json").replaceAll("{" + "watchlistId" + "}", watchlistId.toString());
+    String path = "/watchlists/{watchlist_id}".replaceAll("{format}","json").replaceAll("{" + "watchlist_id" + "}", watchlistId.toString());
 
     // query params
     List<QueryParam> queryParams = [];

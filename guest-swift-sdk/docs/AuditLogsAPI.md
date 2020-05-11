@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAuditLog**](AuditLogsAPI.md#getauditlog) | **GET** /audit_logs/{auditLogId} | Get an AuditLog
+[**getAuditLog**](AuditLogsAPI.md#getauditlog) | **GET** /audit_logs/{audit_log_id} | Get an AuditLog
 [**getAuditLogs**](AuditLogsAPI.md#getauditlogs) | **GET** /audit_logs | List All AuditLogs
 
 
@@ -22,7 +22,7 @@ Gets the details of a single instance of an `AuditLog`.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import GuestSDK
 
-let auditLogId = "auditLogId_example" // String | A unique identifier for an `AuditLog`.
+let auditLogId = "auditLogId_example" // String | 
 
 // Get an AuditLog
 AuditLogsAPI.getAuditLog(auditLogId: auditLogId) { (response, error) in
@@ -41,7 +41,7 @@ AuditLogsAPI.getAuditLog(auditLogId: auditLogId) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **auditLogId** | **String** | A unique identifier for an &#x60;AuditLog&#x60;. | 
+ **auditLogId** | **String** |  | 
 
 ### Return type
 

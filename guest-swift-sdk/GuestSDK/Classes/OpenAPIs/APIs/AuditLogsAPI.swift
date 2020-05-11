@@ -13,7 +13,7 @@ open class AuditLogsAPI {
     /**
      Get an AuditLog
      
-     - parameter auditLogId: (path) A unique identifier for an &#x60;AuditLog&#x60;. 
+     - parameter auditLogId: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
      */
@@ -30,19 +30,19 @@ open class AuditLogsAPI {
 
     /**
      Get an AuditLog
-     - GET /audit_logs/{auditLogId}
+     - GET /audit_logs/{audit_log_id}
      - Gets the details of a single instance of an `AuditLog`.
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter auditLogId: (path) A unique identifier for an &#x60;AuditLog&#x60;. 
+     - parameter auditLogId: (path)  
      - returns: RequestBuilder<AuditLog> 
      */
     open class func getAuditLogWithRequestBuilder(auditLogId: String) -> RequestBuilder<AuditLog> {
-        var path = "/audit_logs/{auditLogId}"
+        var path = "/audit_logs/{audit_log_id}"
         let auditLogIdPreEscape = "\(APIHelper.mapValueToPathItem(auditLogId))"
         let auditLogIdPostEscape = auditLogIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{auditLogId}", with: auditLogIdPostEscape, options: .literal, range: nil)
+        path = path.replacingOccurrences(of: "{audit_log_id}", with: auditLogIdPostEscape, options: .literal, range: nil)
         let URLString = GuestSDKAPI.basePath + path
         let parameters: [String:Any]? = nil
         

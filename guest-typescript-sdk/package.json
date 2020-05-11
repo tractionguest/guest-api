@@ -1,6 +1,6 @@
 {
   "name": "guest_sdk",
-  "version": "0.11.5",
+  "version": "0.11.6",
   "description": "OpenAPI client for guest_sdk",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [

@@ -10,9 +10,9 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createSignin**](SigninsApi.md#createSignin) | **POST** /signins | 
-[**getSignin**](SigninsApi.md#getSignin) | **GET** /signins/{signinId} | Get a Signin
+[**getSignin**](SigninsApi.md#getSignin) | **GET** /signins/{signin_id} | Get a Signin
 [**getSignins**](SigninsApi.md#getSignins) | **GET** /signins | List All Signins
-[**updateSignin**](SigninsApi.md#updateSignin) | **PUT** /signins/{signinId} | Update a Signin attribute
+[**updateSignin**](SigninsApi.md#updateSignin) | **PUT** /signins/{signin_id} | Update a Signin attribute
 
 
 # **createSignin**
@@ -70,7 +70,7 @@ Gets the details of a single instance of a `Signin`.
 import 'package:guest_sdk/api.dart';
 
 var api_instance = new SigninsApi();
-var signinId = signinId_example; // String | A unique identifier for a `Signin`.
+var signinId = signinId_example; // String | 
 var include = include_example; // String | A list of comma-separated related models to include
 
 try { 
@@ -85,7 +85,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **signinId** | **String**| A unique identifier for a &#x60;Signin&#x60;. | [default to null]
+ **signinId** | **String**|  | [default to null]
  **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
 
 ### Return type
@@ -178,7 +178,7 @@ Update, acknowledge, or `Signout` a `Signin`
 import 'package:guest_sdk/api.dart';
 
 var api_instance = new SigninsApi();
-var signinId = signinId_example; // String | A unique identifier for a `Signin`.
+var signinId = signinId_example; // String | 
 var signinUpdateParams = new SigninUpdateParams(); // SigninUpdateParams | The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.  `is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible.
 var idempotencyKey = idempotencyKey_example; // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored
 
@@ -194,7 +194,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **signinId** | **String**| A unique identifier for a &#x60;Signin&#x60;. | [default to null]
+ **signinId** | **String**|  | [default to null]
  **signinUpdateParams** | [**SigninUpdateParams**](SigninUpdateParams.md)| The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;.  &#x60;is_signed_out&#x60; and &#x60;is_acknowledged&#x60; are pseudo attributes that once set to true, are irreversible. | 
  **idempotencyKey** | **String**| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] [default to null]
 

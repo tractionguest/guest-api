@@ -112,7 +112,7 @@ NSInteger kTGSigninsApiMissingParamErrorCode = 234513;
 ///
 /// Get a Signin
 /// Gets the details of a single instance of a `Signin`.
-///  @param signinId A unique identifier for a `Signin`. 
+///  @param signinId  
 ///
 ///  @param include A list of comma-separated related models to include (optional)
 ///
@@ -132,11 +132,11 @@ NSInteger kTGSigninsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/signins/{signinId}"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/signins/{signin_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (signinId != nil) {
-        pathParams[@"signinId"] = signinId;
+        pathParams[@"signin_id"] = signinId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
@@ -303,7 +303,7 @@ NSInteger kTGSigninsApiMissingParamErrorCode = 234513;
 ///
 /// Update a Signin attribute
 /// Update, acknowledge, or `Signout` a `Signin`
-///  @param signinId A unique identifier for a `Signin`. 
+///  @param signinId  
 ///
 ///  @param signinUpdateParams The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.  `is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible. 
 ///
@@ -337,11 +337,11 @@ NSInteger kTGSigninsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/signins/{signinId}"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/signins/{signin_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (signinId != nil) {
-        pathParams[@"signinId"] = signinId;
+        pathParams[@"signin_id"] = signinId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];

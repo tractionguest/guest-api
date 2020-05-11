@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getCurrentUser**](TGUsersApi.md#getcurrentuser) | **GET** /users/{userId} | Get the current User
+[**getCurrentUser**](TGUsersApi.md#getcurrentuser) | **GET** /users/{user_id} | Get the current User
 
 
 # **getCurrentUser**
@@ -23,7 +23,7 @@ Gets the details of a single instance of the current `User`.
 TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
 
 
-NSString* userId = @"userId_example"; // The user ID, represented as a string. `\"current\"` can be used as a shortcut for the currently-authenticated user
+NSString* userId = @"userId_example"; // 
 NSString* include = @"include_example"; // A list of comma-separated related models to include (optional)
 
 TGUsersApi*apiInstance = [[TGUsersApi alloc] init];
@@ -45,7 +45,7 @@ TGUsersApi*apiInstance = [[TGUsersApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **NSString***| The user ID, represented as a string. &#x60;\&quot;current\&quot;&#x60; can be used as a shortcut for the currently-authenticated user | 
+ **userId** | **NSString***|  | 
  **include** | **NSString***| A list of comma-separated related models to include | [optional] 
 
 ### Return type

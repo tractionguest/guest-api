@@ -127,7 +127,7 @@ NSInteger kTGWatchlistsApiMissingParamErrorCode = 234513;
 ///
 /// Deletes a Watchlist
 /// Deletes a single instance of `Watchlist`
-///  @param watchlistId A unique identifier for a `Watchlist`. 
+///  @param watchlistId  
 ///
 ///  @param idempotencyKey An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 ///
@@ -147,11 +147,11 @@ NSInteger kTGWatchlistsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/watchlists/{watchlistId}"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/watchlists/{watchlist_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (watchlistId != nil) {
-        pathParams[@"watchlistId"] = watchlistId;
+        pathParams[@"watchlist_id"] = watchlistId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
@@ -201,7 +201,7 @@ NSInteger kTGWatchlistsApiMissingParamErrorCode = 234513;
 ///
 /// Get a Watchlist
 /// Gets the details of a single instance of a `Watchlist`.
-///  @param watchlistId A unique identifier for a `Watchlist`. 
+///  @param watchlistId  
 ///
 ///  @param include A list of comma-separated related models to include (optional)
 ///
@@ -221,11 +221,11 @@ NSInteger kTGWatchlistsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/watchlists/{watchlistId}"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/watchlists/{watchlist_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (watchlistId != nil) {
-        pathParams[@"watchlistId"] = watchlistId;
+        pathParams[@"watchlist_id"] = watchlistId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
@@ -356,7 +356,7 @@ NSInteger kTGWatchlistsApiMissingParamErrorCode = 234513;
 ///
 /// Update a watchlist record
 /// Update an existing `Watchlist` record. Every operation against this endpoint is recorded in the audit log.
-///  @param watchlistId A unique identifier for a `Watchlist`. 
+///  @param watchlistId  
 ///
 ///  @param watchlistCreateParams The watchlist record attributes to update 
 ///
@@ -390,11 +390,11 @@ NSInteger kTGWatchlistsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/watchlists/{watchlistId}"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/watchlists/{watchlist_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (watchlistId != nil) {
-        pathParams[@"watchlistId"] = watchlistId;
+        pathParams[@"watchlist_id"] = watchlistId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];

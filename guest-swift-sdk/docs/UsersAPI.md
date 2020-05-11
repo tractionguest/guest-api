@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getCurrentUser**](UsersAPI.md#getcurrentuser) | **GET** /users/{userId} | Get the current User
+[**getCurrentUser**](UsersAPI.md#getcurrentuser) | **GET** /users/{user_id} | Get the current User
 
 
 # **getCurrentUser**
@@ -21,7 +21,7 @@ Gets the details of a single instance of the current `User`.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import GuestSDK
 
-let userId = "userId_example" // String | The user ID, represented as a string. `\"current\"` can be used as a shortcut for the currently-authenticated user
+let userId = "userId_example" // String | 
 let include = "include_example" // String | A list of comma-separated related models to include (optional)
 
 // Get the current User
@@ -41,7 +41,7 @@ UsersAPI.getCurrentUser(userId: userId, include: include) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String** | The user ID, represented as a string. &#x60;\&quot;current\&quot;&#x60; can be used as a shortcut for the currently-authenticated user | 
+ **userId** | **String** |  | 
  **include** | **String** | A list of comma-separated related models to include | [optional] 
 
 ### Return type

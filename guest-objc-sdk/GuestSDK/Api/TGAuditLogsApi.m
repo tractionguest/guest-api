@@ -54,7 +54,7 @@ NSInteger kTGAuditLogsApiMissingParamErrorCode = 234513;
 ///
 /// Get an AuditLog
 /// Gets the details of a single instance of an `AuditLog`.
-///  @param auditLogId A unique identifier for an `AuditLog`. 
+///  @param auditLogId  
 ///
 ///  @returns TGAuditLog*
 ///
@@ -71,11 +71,11 @@ NSInteger kTGAuditLogsApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/audit_logs/{auditLogId}"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/audit_logs/{audit_log_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (auditLogId != nil) {
-        pathParams[@"auditLogId"] = auditLogId;
+        pathParams[@"audit_log_id"] = auditLogId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];

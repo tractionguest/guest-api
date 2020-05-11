@@ -4,16 +4,16 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLocationInvite**](InvitesAPI.md#createlocationinvite) | **POST** /locations/{locationId}/invites | Creates an Invite
-[**deleteInvite**](InvitesAPI.md#deleteinvite) | **DELETE** /invites/{inviteId} | Deletes an Invite
-[**getInvite**](InvitesAPI.md#getinvite) | **GET** /invites/{inviteId} | Get a Invite
+[**createLocationInvite**](InvitesAPI.md#createlocationinvite) | **POST** /locations/{location_id}/invites | Creates an Invite
+[**deleteInvite**](InvitesAPI.md#deleteinvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
+[**getInvite**](InvitesAPI.md#getinvite) | **GET** /invites/{invite_id} | Get a Invite
 [**getInvites**](InvitesAPI.md#getinvites) | **GET** /invites | List All Invites
-[**updateInvite**](InvitesAPI.md#updateinvite) | **PUT** /invites/{inviteId} | Update a Invite
+[**updateInvite**](InvitesAPI.md#updateinvite) | **PUT** /invites/{invite_id} | Update a Invite
 
 
 # **createLocationInvite**
 ```swift
-    open class func createLocationInvite(locationId: Int, inviteCreateParams: InviteCreateParams, idempotencyKey: String? = nil, completion: @escaping (_ data: InviteDetail?, _ error: Error?) -> Void)
+    open class func createLocationInvite(locationId: String, inviteCreateParams: InviteCreateParams, idempotencyKey: String? = nil, completion: @escaping (_ data: InviteDetail?, _ error: Error?) -> Void)
 ```
 
 Creates an Invite
@@ -25,7 +25,7 @@ Creates a new `Invite` for a specific `Location`.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import GuestSDK
 
-let locationId = 987 // Int | A unique identifier for a `Location`.
+let locationId = "locationId_example" // String | 
 let inviteCreateParams = InviteCreateParams(mobileNumber: "mobileNumber_example", notificationTriggers: [NotificationTriggerCreateParams(offsetUnit: "offsetUnit_example", notificationGroups: ["notificationGroups_example"], emailTemplateId: 123, offsetOrigin: "offsetOrigin_example", offsetAmount: 123, offsetDirection: "offsetDirection_example")], firstName: "firstName_example", emailTemplateId: 123, customFields: [CustomField(format: "format_example", fieldName: "fieldName_example", fieldValue: "fieldValue_example")], hostIds: [123], watchlistColour: 123, title: "title_example", startDate: Date(), lastName: "lastName_example", endDate: Date(), email: "email_example", company: "company_example") // InviteCreateParams | 
 let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
@@ -46,7 +46,7 @@ InvitesAPI.createLocationInvite(locationId: locationId, inviteCreateParams: invi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **locationId** | **Int** | A unique identifier for a &#x60;Location&#x60;. | 
+ **locationId** | **String** |  | 
  **inviteCreateParams** | [**InviteCreateParams**](InviteCreateParams.md) |  | 
  **idempotencyKey** | **String** | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
 
@@ -79,7 +79,7 @@ Deletes a single instance of `Invite`
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import GuestSDK
 
-let inviteId = "inviteId_example" // String | A unique identifier for a `Invite`.
+let inviteId = "inviteId_example" // String | 
 let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
 // Deletes an Invite
@@ -99,7 +99,7 @@ InvitesAPI.deleteInvite(inviteId: inviteId, idempotencyKey: idempotencyKey) { (r
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inviteId** | **String** | A unique identifier for a &#x60;Invite&#x60;. | 
+ **inviteId** | **String** |  | 
  **idempotencyKey** | **String** | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
 
 ### Return type
@@ -131,7 +131,7 @@ Gets the details of a single instance of a `Invite`.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import GuestSDK
 
-let inviteId = "inviteId_example" // String | A unique identifier for a `Invite`.
+let inviteId = "inviteId_example" // String | 
 let include = "include_example" // String | A list of comma-separated related models to include (optional)
 
 // Get a Invite
@@ -151,7 +151,7 @@ InvitesAPI.getInvite(inviteId: inviteId, include: include) { (response, error) i
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inviteId** | **String** | A unique identifier for a &#x60;Invite&#x60;. | 
+ **inviteId** | **String** |  | 
  **include** | **String** | A list of comma-separated related models to include | [optional] 
 
 ### Return type
@@ -255,7 +255,7 @@ Updates an existing `Invite`.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import GuestSDK
 
-let inviteId = "inviteId_example" // String | A unique identifier for a `Invite`.
+let inviteId = "inviteId_example" // String | 
 let inviteUpdateParams = InviteUpdateParams(mobileNumber: "mobileNumber_example", userId: 123, onPremise: false, notificationTriggers: [NotificationTriggerCreateParams(offsetUnit: "offsetUnit_example", notificationGroups: ["notificationGroups_example"], emailTemplateId: 123, offsetOrigin: "offsetOrigin_example", offsetAmount: 123, offsetDirection: "offsetDirection_example")], firstName: "firstName_example", emailTemplateId: 123, customFields: [CustomField(format: "format_example", fieldName: "fieldName_example", fieldValue: "fieldValue_example")], hostIds: [123], title: "title_example", startDate: Date(), lastName: "lastName_example", endDate: Date(), email: "email_example", company: "company_example") // InviteUpdateParams | Updated `Invite` information.
 let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
@@ -276,7 +276,7 @@ InvitesAPI.updateInvite(inviteId: inviteId, inviteUpdateParams: inviteUpdatePara
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inviteId** | **String** | A unique identifier for a &#x60;Invite&#x60;. | 
+ **inviteId** | **String** |  | 
  **inviteUpdateParams** | [**InviteUpdateParams**](InviteUpdateParams.md) | Updated &#x60;Invite&#x60; information. | 
  **idempotencyKey** | **String** | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
 

@@ -66,7 +66,7 @@ class SigninsApi {
     }
 
     // create path and map variables
-    String path = "/signins/{signinId}".replaceAll("{format}","json").replaceAll("{" + "signinId" + "}", signinId.toString());
+    String path = "/signins/{signin_id}".replaceAll("{format}","json").replaceAll("{" + "signin_id" + "}", signinId.toString());
 
     // query params
     List<QueryParam> queryParams = [];
@@ -202,7 +202,7 @@ class SigninsApi {
     }
 
     // create path and map variables
-    String path = "/signins/{signinId}".replaceAll("{format}","json").replaceAll("{" + "signinId" + "}", signinId.toString());
+    String path = "/signins/{signin_id}".replaceAll("{format}","json").replaceAll("{" + "signin_id" + "}", signinId.toString());
 
     // query params
     List<QueryParam> queryParams = [];

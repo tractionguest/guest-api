@@ -9,11 +9,11 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLocationInvite**](InvitesApi.md#createLocationInvite) | **POST** /locations/{locationId}/invites | Creates an Invite
-[**deleteInvite**](InvitesApi.md#deleteInvite) | **DELETE** /invites/{inviteId} | Deletes an Invite
-[**getInvite**](InvitesApi.md#getInvite) | **GET** /invites/{inviteId} | Get a Invite
+[**createLocationInvite**](InvitesApi.md#createLocationInvite) | **POST** /locations/{location_id}/invites | Creates an Invite
+[**deleteInvite**](InvitesApi.md#deleteInvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
+[**getInvite**](InvitesApi.md#getInvite) | **GET** /invites/{invite_id} | Get a Invite
 [**getInvites**](InvitesApi.md#getInvites) | **GET** /invites | List All Invites
-[**updateInvite**](InvitesApi.md#updateInvite) | **PUT** /invites/{inviteId} | Update a Invite
+[**updateInvite**](InvitesApi.md#updateInvite) | **PUT** /invites/{invite_id} | Update a Invite
 
 
 # **createLocationInvite**
@@ -28,7 +28,7 @@ Creates a new `Invite` for a specific `Location`.
 import 'package:guest_sdk/api.dart';
 
 var api_instance = new InvitesApi();
-var locationId = 56; // int | A unique identifier for a `Location`.
+var locationId = locationId_example; // String | 
 var inviteCreateParams = new InviteCreateParams(); // InviteCreateParams | 
 var idempotencyKey = idempotencyKey_example; // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored
 
@@ -44,7 +44,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **locationId** | **int**| A unique identifier for a &#x60;Location&#x60;. | [default to null]
+ **locationId** | **String**|  | [default to null]
  **inviteCreateParams** | [**InviteCreateParams**](InviteCreateParams.md)|  | 
  **idempotencyKey** | **String**| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] [default to null]
 
@@ -75,7 +75,7 @@ Deletes a single instance of `Invite`
 import 'package:guest_sdk/api.dart';
 
 var api_instance = new InvitesApi();
-var inviteId = inviteId_example; // String | A unique identifier for a `Invite`.
+var inviteId = inviteId_example; // String | 
 var idempotencyKey = idempotencyKey_example; // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored
 
 try { 
@@ -89,7 +89,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inviteId** | **String**| A unique identifier for a &#x60;Invite&#x60;. | [default to null]
+ **inviteId** | **String**|  | [default to null]
  **idempotencyKey** | **String**| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] [default to null]
 
 ### Return type
@@ -119,7 +119,7 @@ Gets the details of a single instance of a `Invite`.
 import 'package:guest_sdk/api.dart';
 
 var api_instance = new InvitesApi();
-var inviteId = inviteId_example; // String | A unique identifier for a `Invite`.
+var inviteId = inviteId_example; // String | 
 var include = include_example; // String | A list of comma-separated related models to include
 
 try { 
@@ -134,7 +134,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inviteId** | **String**| A unique identifier for a &#x60;Invite&#x60;. | [default to null]
+ **inviteId** | **String**|  | [default to null]
  **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
 
 ### Return type
@@ -229,7 +229,7 @@ Updates an existing `Invite`.
 import 'package:guest_sdk/api.dart';
 
 var api_instance = new InvitesApi();
-var inviteId = inviteId_example; // String | A unique identifier for a `Invite`.
+var inviteId = inviteId_example; // String | 
 var inviteUpdateParams = new InviteUpdateParams(); // InviteUpdateParams | Updated `Invite` information.
 var idempotencyKey = idempotencyKey_example; // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored
 
@@ -245,7 +245,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inviteId** | **String**| A unique identifier for a &#x60;Invite&#x60;. | [default to null]
+ **inviteId** | **String**|  | [default to null]
  **inviteUpdateParams** | [**InviteUpdateParams**](InviteUpdateParams.md)| Updated &#x60;Invite&#x60; information. | 
  **idempotencyKey** | **String**| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] [default to null]
 

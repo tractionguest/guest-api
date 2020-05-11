@@ -19,7 +19,7 @@ class UsersApi {
     }
 
     // create path and map variables
-    String path = "/users/{userId}".replaceAll("{format}","json").replaceAll("{" + "userId" + "}", userId.toString());
+    String path = "/users/{user_id}".replaceAll("{format}","json").replaceAll("{" + "user_id" + "}", userId.toString());
 
     // query params
     List<QueryParam> queryParams = [];

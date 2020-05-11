@@ -13,7 +13,7 @@ open class RegistrationAPI {
     /**
      Get a Registration
      
-     - parameter registrationId: (path) A unique identifier for &#x60;Registration&#x60;. 
+     - parameter registrationId: (path)  
      - parameter include: (query) A list of comma-separated related models to include (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
@@ -31,20 +31,20 @@ open class RegistrationAPI {
 
     /**
      Get a Registration
-     - GET /registrations/{registrationId}
+     - GET /registrations/{registration_id}
      - Gets the details of a single instance of a `Registration`
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter registrationId: (path) A unique identifier for &#x60;Registration&#x60;. 
+     - parameter registrationId: (path)  
      - parameter include: (query) A list of comma-separated related models to include (optional)
      - returns: RequestBuilder<Registration> 
      */
     open class func getRegistrationWithRequestBuilder(registrationId: String, include: String? = nil) -> RequestBuilder<Registration> {
-        var path = "/registrations/{registrationId}"
+        var path = "/registrations/{registration_id}"
         let registrationIdPreEscape = "\(APIHelper.mapValueToPathItem(registrationId))"
         let registrationIdPostEscape = registrationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{registrationId}", with: registrationIdPostEscape, options: .literal, range: nil)
+        path = path.replacingOccurrences(of: "{registration_id}", with: registrationIdPostEscape, options: .literal, range: nil)
         let URLString = GuestSDKAPI.basePath + path
         let parameters: [String:Any]? = nil
         

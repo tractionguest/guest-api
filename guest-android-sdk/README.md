@@ -64,7 +64,7 @@ public class AuditLogsApiExample {
 
     public static void main(String[] args) {
         AuditLogsApi apiInstance = new AuditLogsApi();
-        String auditLogId = null; // String | A unique identifier for an `AuditLog`.
+        String auditLogId = null; // String | 
         try {
             AuditLog result = apiInstance.getAuditLog(auditLogId);
             System.out.println(result);
@@ -83,29 +83,29 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AuditLogsApi* | [**getAuditLog**](docs/AuditLogsApi.md#getAuditLog) | **GET** /audit_logs/{auditLogId} | Get an AuditLog
+*AuditLogsApi* | [**getAuditLog**](docs/AuditLogsApi.md#getAuditLog) | **GET** /audit_logs/{audit_log_id} | Get an AuditLog
 *AuditLogsApi* | [**getAuditLogs**](docs/AuditLogsApi.md#getAuditLogs) | **GET** /audit_logs | List All AuditLogs
 *EmailTemplatesApi* | [**getEmailTemplates**](docs/EmailTemplatesApi.md#getEmailTemplates) | **GET** /email_templates | List All EmailTemplates
 *GuestAlertsApi* | [**createGuestAlert**](docs/GuestAlertsApi.md#createGuestAlert) | **POST** /guest_alerts | Create Guest Alert
 *HostsApi* | [**createHost**](docs/HostsApi.md#createHost) | **POST** /hosts | Create a Host
 *HostsApi* | [**getHosts**](docs/HostsApi.md#getHosts) | **GET** /hosts | List All Hosts
-*InvitesApi* | [**createLocationInvite**](docs/InvitesApi.md#createLocationInvite) | **POST** /locations/{locationId}/invites | Creates an Invite
-*InvitesApi* | [**deleteInvite**](docs/InvitesApi.md#deleteInvite) | **DELETE** /invites/{inviteId} | Deletes an Invite
-*InvitesApi* | [**getInvite**](docs/InvitesApi.md#getInvite) | **GET** /invites/{inviteId} | Get a Invite
+*InvitesApi* | [**createLocationInvite**](docs/InvitesApi.md#createLocationInvite) | **POST** /locations/{location_id}/invites | Creates an Invite
+*InvitesApi* | [**deleteInvite**](docs/InvitesApi.md#deleteInvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
+*InvitesApi* | [**getInvite**](docs/InvitesApi.md#getInvite) | **GET** /invites/{invite_id} | Get a Invite
 *InvitesApi* | [**getInvites**](docs/InvitesApi.md#getInvites) | **GET** /invites | List All Invites
-*InvitesApi* | [**updateInvite**](docs/InvitesApi.md#updateInvite) | **PUT** /invites/{inviteId} | Update a Invite
+*InvitesApi* | [**updateInvite**](docs/InvitesApi.md#updateInvite) | **PUT** /invites/{invite_id} | Update a Invite
 *LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /locations | List All Locations
-*RegistrationApi* | [**getRegistration**](docs/RegistrationApi.md#getRegistration) | **GET** /registrations/{registrationId} | Get a Registration
+*RegistrationApi* | [**getRegistration**](docs/RegistrationApi.md#getRegistration) | **GET** /registrations/{registration_id} | Get a Registration
 *SigninsApi* | [**createSignin**](docs/SigninsApi.md#createSignin) | **POST** /signins | 
-*SigninsApi* | [**getSignin**](docs/SigninsApi.md#getSignin) | **GET** /signins/{signinId} | Get a Signin
+*SigninsApi* | [**getSignin**](docs/SigninsApi.md#getSignin) | **GET** /signins/{signin_id} | Get a Signin
 *SigninsApi* | [**getSignins**](docs/SigninsApi.md#getSignins) | **GET** /signins | List All Signins
-*SigninsApi* | [**updateSignin**](docs/SigninsApi.md#updateSignin) | **PUT** /signins/{signinId} | Update a Signin attribute
-*UsersApi* | [**getCurrentUser**](docs/UsersApi.md#getCurrentUser) | **GET** /users/{userId} | Get the current User
+*SigninsApi* | [**updateSignin**](docs/SigninsApi.md#updateSignin) | **PUT** /signins/{signin_id} | Update a Signin attribute
+*UsersApi* | [**getCurrentUser**](docs/UsersApi.md#getCurrentUser) | **GET** /users/{user_id} | Get the current User
 *WatchlistsApi* | [**createWatchlist**](docs/WatchlistsApi.md#createWatchlist) | **POST** /watchlists | Create watchlist
-*WatchlistsApi* | [**deleteWatchlist**](docs/WatchlistsApi.md#deleteWatchlist) | **DELETE** /watchlists/{watchlistId} | Deletes a Watchlist
-*WatchlistsApi* | [**getWatchlist**](docs/WatchlistsApi.md#getWatchlist) | **GET** /watchlists/{watchlistId} | Get a Watchlist
+*WatchlistsApi* | [**deleteWatchlist**](docs/WatchlistsApi.md#deleteWatchlist) | **DELETE** /watchlists/{watchlist_id} | Deletes a Watchlist
+*WatchlistsApi* | [**getWatchlist**](docs/WatchlistsApi.md#getWatchlist) | **GET** /watchlists/{watchlist_id} | Get a Watchlist
 *WatchlistsApi* | [**getWatchlists**](docs/WatchlistsApi.md#getWatchlists) | **GET** /watchlists | List All Watchlists
-*WatchlistsApi* | [**updateWatchlist**](docs/WatchlistsApi.md#updateWatchlist) | **PUT** /watchlists/{watchlistId} | Update a watchlist record
+*WatchlistsApi* | [**updateWatchlist**](docs/WatchlistsApi.md#updateWatchlist) | **PUT** /watchlists/{watchlist_id} | Update a watchlist record
 
 
 ## Documentation for Models

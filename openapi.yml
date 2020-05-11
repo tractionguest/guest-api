@@ -211,7 +211,7 @@ paths:
       operationId: getEmailTemplates
       summary: List All EmailTemplates
       description: Gets a list of all `EmailTemplate` entities.
-  '/signins/{signinId}':
+  '/signins/{signin_id}':
     summary: Path used to manage a single Signin.
     description: The REST endpoint/path used to get single instances of an `Signin`.
     get:
@@ -776,10 +776,9 @@ paths:
       summary: Update a Signin attribute
       description: 'Update, acknowledge, or `Signout` a `Signin`'
     parameters:
-      - name: signinId
-        description: A unique identifier for a `Signin`.
-        schema:
+      - schema:
           type: string
+        name: signin_id
         in: path
         required: true
   /locations:
@@ -853,7 +852,7 @@ paths:
       operationId: getLocations
       summary: List All Locations
       description: Gets a list of all `Location` entities.
-  '/locations/{locationId}/invites':
+  '/locations/{location_id}/invites':
     summary: "Path used to manage a single Location's invites."
     description: The REST endpoint/path used to create single instances of an `Invite` for a specific `Location`.
     post:
@@ -1010,10 +1009,9 @@ paths:
       summary: Creates an Invite
       description: Creates a new `Invite` for a specific `Location`.
     parameters:
-      - name: locationId
-        description: A unique identifier for a `Location`.
-        schema:
-          type: integer
+      - schema:
+          type: string
+        name: location_id
         in: path
         required: true
   /invites:
@@ -2223,7 +2221,7 @@ paths:
                   send_notifications: true
                   sms_message: some text
         description: Params for creating a Signin can omit certain fields if a `registration_id` is present.
-  '/users/{userId}':
+  '/users/{user_id}':
     summary: Path used to manage a single User.
     description: The REST endpoint/path used to get single instances of an `User` and their `PermissionBundle`s.
     get:
@@ -2288,15 +2286,12 @@ paths:
       summary: Get the current User
       description: Gets the details of a single instance of the current `User`.
     parameters:
-      - name: userId
-        description: |-
-          The user ID, represented as a string.
-          `"current"` can be used as a shortcut for the currently-authenticated user
-        schema:
+      - schema:
           type: string
+        name: user_id
         in: path
         required: true
-  '/invites/{inviteId}':
+  '/invites/{invite_id}':
     summary: Path used to manage a single Invite.
     description: 'The REST endpoint/path used to get, update, and delete single instances of an `Invite`.  This path contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks, respectively.'
     get:
@@ -2560,13 +2555,12 @@ paths:
       summary: Deletes an Invite
       description: Deletes a single instance of `Invite`
     parameters:
-      - name: inviteId
-        description: A unique identifier for a `Invite`.
-        schema:
+      - schema:
           type: string
+        name: invite_id
         in: path
         required: true
-  '/watchlists/{watchlistId}':
+  '/watchlists/{watchlist_id}':
     summary: Path used to manage a single Watchlist.
     description: The REST endpoint/path used to get single instances of a `Watchlist`.
     get:
@@ -2722,10 +2716,9 @@ paths:
       summary: Deletes a Watchlist
       description: Deletes a single instance of `Watchlist`
     parameters:
-      - name: watchlistId
-        description: A unique identifier for a `Watchlist`.
-        schema:
+      - schema:
           type: string
+        name: watchlist_id
         in: path
         required: true
   /watchlists:
@@ -3038,7 +3031,7 @@ paths:
       operationId: getAuditLogs
       summary: List All AuditLogs
       description: Gets a list of all `AuditLog` entities.
-  '/audit_logs/{auditLogId}':
+  '/audit_logs/{audit_log_id}':
     summary: Path used to manage a single AuditLog.
     description: The REST endpoint/path used to get single instances of an `AuditLog`.
     get:
@@ -3097,10 +3090,9 @@ paths:
       summary: Get an AuditLog
       description: Gets the details of a single instance of an `AuditLog`.
     parameters:
-      - name: auditLogId
-        description: A unique identifier for an `AuditLog`.
-        schema:
+      - schema:
           type: string
+        name: audit_log_id
         in: path
         required: true
   '/locations/{locationId}/emergency_alerts':
@@ -3178,7 +3170,7 @@ paths:
         name: locationId
         in: path
         required: true
-  '/registrations/{registrationId}':
+  '/registrations/{registration_id}':
     summary: Path used to display a single Registration.
     description: The REST endpoint/path used to get single instances of a `Registration`.
     get:
@@ -3308,13 +3300,9 @@ paths:
       summary: Get a Registration
       description: Gets the details of a single instance of a `Registration`
     parameters:
-      - examples:
-          '1':
-            value: '1'
-        name: registrationId
-        description: A unique identifier for `Registration`.
-        schema:
+      - schema:
           type: string
+        name: registration_id
         in: path
         required: true
 components:

@@ -53,7 +53,7 @@ NSInteger kTGUsersApiMissingParamErrorCode = 234513;
 ///
 /// Get the current User
 /// Gets the details of a single instance of the current `User`.
-///  @param userId The user ID, represented as a string. `\"current\"` can be used as a shortcut for the currently-authenticated user 
+///  @param userId  
 ///
 ///  @param include A list of comma-separated related models to include (optional)
 ///
@@ -73,11 +73,11 @@ NSInteger kTGUsersApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/users/{userId}"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/users/{user_id}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (userId != nil) {
-        pathParams[@"userId"] = userId;
+        pathParams[@"user_id"] = userId;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];

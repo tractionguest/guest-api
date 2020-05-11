@@ -19,7 +19,7 @@ class AuditLogsApi {
     }
 
     // create path and map variables
-    String path = "/audit_logs/{auditLogId}".replaceAll("{format}","json").replaceAll("{" + "auditLogId" + "}", auditLogId.toString());
+    String path = "/audit_logs/{audit_log_id}".replaceAll("{format}","json").replaceAll("{" + "audit_log_id" + "}", auditLogId.toString());
 
     // query params
     List<QueryParam> queryParams = [];

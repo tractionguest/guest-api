@@ -9,7 +9,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getCurrentUser**](UsersApi.md#getCurrentUser) | **GET** /users/{userId} | Get the current User
+[**getCurrentUser**](UsersApi.md#getCurrentUser) | **GET** /users/{user_id} | Get the current User
 
 
 # **getCurrentUser**
@@ -24,7 +24,7 @@ Gets the details of a single instance of the current `User`.
 import 'package:guest_sdk/api.dart';
 
 var api_instance = new UsersApi();
-var userId = userId_example; // String | The user ID, represented as a string. `\"current\"` can be used as a shortcut for the currently-authenticated user
+var userId = userId_example; // String | 
 var include = include_example; // String | A list of comma-separated related models to include
 
 try { 
@@ -39,7 +39,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**| The user ID, represented as a string. &#x60;\&quot;current\&quot;&#x60; can be used as a shortcut for the currently-authenticated user | [default to null]
+ **userId** | **String**|  | [default to null]
  **include** | **String**| A list of comma-separated related models to include | [optional] [default to null]
 
 ### Return type

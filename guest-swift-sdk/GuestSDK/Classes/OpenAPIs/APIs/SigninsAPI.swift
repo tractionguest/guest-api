@@ -51,7 +51,7 @@ open class SigninsAPI {
     /**
      Get a Signin
      
-     - parameter signinId: (path) A unique identifier for a &#x60;Signin&#x60;. 
+     - parameter signinId: (path)  
      - parameter include: (query) A list of comma-separated related models to include (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
@@ -69,20 +69,20 @@ open class SigninsAPI {
 
     /**
      Get a Signin
-     - GET /signins/{signinId}
+     - GET /signins/{signin_id}
      - Gets the details of a single instance of a `Signin`.
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter signinId: (path) A unique identifier for a &#x60;Signin&#x60;. 
+     - parameter signinId: (path)  
      - parameter include: (query) A list of comma-separated related models to include (optional)
      - returns: RequestBuilder<SigninDetail> 
      */
     open class func getSigninWithRequestBuilder(signinId: String, include: String? = nil) -> RequestBuilder<SigninDetail> {
-        var path = "/signins/{signinId}"
+        var path = "/signins/{signin_id}"
         let signinIdPreEscape = "\(APIHelper.mapValueToPathItem(signinId))"
         let signinIdPostEscape = signinIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{signinId}", with: signinIdPostEscape, options: .literal, range: nil)
+        path = path.replacingOccurrences(of: "{signin_id}", with: signinIdPostEscape, options: .literal, range: nil)
         let URLString = GuestSDKAPI.basePath + path
         let parameters: [String:Any]? = nil
         
@@ -180,7 +180,7 @@ open class SigninsAPI {
     /**
      Update a Signin attribute
      
-     - parameter signinId: (path) A unique identifier for a &#x60;Signin&#x60;. 
+     - parameter signinId: (path)  
      - parameter signinUpdateParams: (body) The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;.  &#x60;is_signed_out&#x60; and &#x60;is_acknowledged&#x60; are pseudo attributes that once set to true, are irreversible. 
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -199,21 +199,21 @@ open class SigninsAPI {
 
     /**
      Update a Signin attribute
-     - PUT /signins/{signinId}
+     - PUT /signins/{signin_id}
      - Update, acknowledge, or `Signout` a `Signin`
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter signinId: (path) A unique identifier for a &#x60;Signin&#x60;. 
+     - parameter signinId: (path)  
      - parameter signinUpdateParams: (body) The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;.  &#x60;is_signed_out&#x60; and &#x60;is_acknowledged&#x60; are pseudo attributes that once set to true, are irreversible. 
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - returns: RequestBuilder<SigninDetail> 
      */
     open class func updateSigninWithRequestBuilder(signinId: String, signinUpdateParams: SigninUpdateParams, idempotencyKey: String? = nil) -> RequestBuilder<SigninDetail> {
-        var path = "/signins/{signinId}"
+        var path = "/signins/{signin_id}"
         let signinIdPreEscape = "\(APIHelper.mapValueToPathItem(signinId))"
         let signinIdPostEscape = signinIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{signinId}", with: signinIdPostEscape, options: .literal, range: nil)
+        path = path.replacingOccurrences(of: "{signin_id}", with: signinIdPostEscape, options: .literal, range: nil)
         let URLString = GuestSDKAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: signinUpdateParams)
 

@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "babel-node dangerfile.js"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "danger": "^10.2.0",
+    "danger-plugin-spellcheck": "^1.5.0"
+  }
+}

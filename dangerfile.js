@@ -1,8 +1,9 @@
+import spellcheck from 'danger-plugin-spellcheck';
+
 /* Constants */
 const branchName = danger.github.pr.head.ref;
 const wrikeIds = getUniqueWrikeIds();
 const docsLink = `https://stoplight.io/p/docs/gh/tractionguest/guest-api/openapi.yml?srn=gh/tractionguest/guest-api/openapi.yml&group=${branchName}`;
-
 
 /* Steps */
 message(`<a href="${docsLink}" target=_blank>View docs for this page</a>`);
@@ -26,8 +27,13 @@ if (danger.github.commits.length > 1) {
   );
 }
 
+// Run a spellcheck on all files
+spellcheck({
+  "ignore": ["spec", "github"]
+});
+
 /* Functions */
-function wrikeLink(wrikeId:string) {
+function wrikeLink(wrikeId) {
   return `<a href='https://www.wrike.com/open.htm?id=${wrikeId}' target="_blank">#${wrikeId}</a>`;
 }
 

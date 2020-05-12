@@ -25,4 +25,4 @@ jobs:
           command: npx @stoplight/spectral lint openapi.yml -- --ruleset=.spectral.yml --fail-severity=warn
       - run:
           name: Publish docs
-          command: npx @stoplight/cli publish --token {STOPLIGHT_API_KEY} --url https://stoplight.io/api
+          command: npx stoplight publish --token {STOPLIGHT_API_KEY} --url https://stoplight.io/api

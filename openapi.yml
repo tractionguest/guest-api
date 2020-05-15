@@ -3095,7 +3095,7 @@ paths:
         name: audit_log_id
         in: path
         required: true
-  '/locations/{locationId}/emergency_alerts':
+  '/locations/{location_id}/emergency_alerts':
     summary: Broadcasts emergency alerts to guests via specified channel
     post:
       requestBody:
@@ -3167,7 +3167,7 @@ paths:
     parameters:
       - schema:
           type: string
-        name: locationId
+        name: location_id
         in: path
         required: true
   '/registrations/{registration_id}':

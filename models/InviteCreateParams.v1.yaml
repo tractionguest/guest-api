@@ -20,6 +20,7 @@ x-examples:
         field_name: some text
         field_value: some text
     email_template_id: 65
+    group_visit_id: 12
     mobile_number: some text
     first_name: some text
     notification_triggers:
@@ -79,6 +80,8 @@ properties:
   email:
     type: string
   company:
+    type: string
+  group_visit_id:
     type: string
 required:
   - first_name

@@ -26,11 +26,13 @@ class Invite {
   String lastName = null;
   
   String firstName = null;
+  
+  GroupVisit groupVisit = null;
   Invite();
 
   @override
   String toString() {
-    return 'Invite[id=$id, registration=$registration, mobileNumber=$mobileNumber, email=$email, endDate=$endDate, inviteWatchlist=$inviteWatchlist, hosts=$hosts, watchlistColour=$watchlistColour, location=$location, startDate=$startDate, lastName=$lastName, firstName=$firstName, ]';
+    return 'Invite[id=$id, registration=$registration, mobileNumber=$mobileNumber, email=$email, endDate=$endDate, inviteWatchlist=$inviteWatchlist, hosts=$hosts, watchlistColour=$watchlistColour, location=$location, startDate=$startDate, lastName=$lastName, firstName=$firstName, groupVisit=$groupVisit, ]';
   }
 
   Invite.fromJson(Map<String, dynamic> json) {
@@ -95,6 +97,11 @@ class Invite {
     } else {
           firstName = json['first_name'];
     }
+    if (json['group_visit'] == null) {
+      groupVisit = null;
+    } else {
+      groupVisit = new GroupVisit.fromJson(json['group_visit']);
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -123,6 +130,8 @@ class Invite {
       json['last_name'] = lastName;
     if (firstName != null)
       json['first_name'] = firstName;
+    if (groupVisit != null)
+      json['group_visit'] = groupVisit;
     return json;
   }
 

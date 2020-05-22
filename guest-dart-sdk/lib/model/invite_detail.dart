@@ -36,11 +36,13 @@ class InviteDetail {
   DateTime createdAt = null;
   
   String company = null;
+  
+  GroupVisit groupVisit = null;
   InviteDetail();
 
   @override
   String toString() {
-    return 'InviteDetail[id=$id, registration=$registration, mobileNumber=$mobileNumber, emailTemplate=$emailTemplate, inviteWatchlist=$inviteWatchlist, notificationTriggers=$notificationTriggers, customFields=$customFields, watchlistColour=$watchlistColour, location=$location, hosts=$hosts, startDate=$startDate, lastName=$lastName, firstName=$firstName, endDate=$endDate, email=$email, createdAt=$createdAt, company=$company, ]';
+    return 'InviteDetail[id=$id, registration=$registration, mobileNumber=$mobileNumber, emailTemplate=$emailTemplate, inviteWatchlist=$inviteWatchlist, notificationTriggers=$notificationTriggers, customFields=$customFields, watchlistColour=$watchlistColour, location=$location, hosts=$hosts, startDate=$startDate, lastName=$lastName, firstName=$firstName, endDate=$endDate, email=$email, createdAt=$createdAt, company=$company, groupVisit=$groupVisit, ]';
   }
 
   InviteDetail.fromJson(Map<String, dynamic> json) {
@@ -130,6 +132,11 @@ class InviteDetail {
     } else {
           company = json['company'];
     }
+    if (json['group_visit'] == null) {
+      groupVisit = null;
+    } else {
+      groupVisit = new GroupVisit.fromJson(json['group_visit']);
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -168,6 +175,8 @@ class InviteDetail {
       json['created_at'] = createdAt == null ? null : createdAt.toUtc().toIso8601String();
     if (company != null)
       json['company'] = company;
+    if (groupVisit != null)
+      json['group_visit'] = groupVisit;
     return json;
   }
 

@@ -6,6 +6,7 @@ export * from './emailTemplate';
 export * from './errorsList';
 export * from './externalWatchlistResult';
 export * from './flexField';
+export * from './groupVisit';
 export * from './guestAlertCreateParams';
 export * from './guestAlertDetail';
 export * from './guestAlertSigninSelectors';

@@ -32,6 +32,7 @@ part 'model/error.dart';
 part 'model/errors_list.dart';
 part 'model/external_watchlist_result.dart';
 part 'model/flex_field.dart';
+part 'model/group_visit.dart';
 part 'model/guest_alert_create_params.dart';
 part 'model/guest_alert_detail.dart';
 part 'model/guest_alert_signin_selectors.dart';

@@ -32,8 +32,9 @@ public struct Invite: Codable {
     public var startDate: Date?
     public var lastName: String
     public var firstName: String
+    public var groupVisit: GroupVisit?
 
-    public init(id: Int, registration: Registration?, mobileNumber: String?, email: String, endDate: Date?, inviteWatchlist: InviteWatchlist?, hosts: [Host]?, watchlistColour: WatchlistColour?, location: Location?, startDate: Date?, lastName: String, firstName: String) {
+    public init(id: Int, registration: Registration?, mobileNumber: String?, email: String, endDate: Date?, inviteWatchlist: InviteWatchlist?, hosts: [Host]?, watchlistColour: WatchlistColour?, location: Location?, startDate: Date?, lastName: String, firstName: String, groupVisit: GroupVisit?) {
         self.id = id
         self.registration = registration
         self.mobileNumber = mobileNumber
@@ -46,6 +47,7 @@ public struct Invite: Codable {
         self.startDate = startDate
         self.lastName = lastName
         self.firstName = firstName
+        self.groupVisit = groupVisit
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
@@ -61,6 +63,7 @@ public struct Invite: Codable {
         case startDate = "start_date"
         case lastName = "last_name"
         case firstName = "first_name"
+        case groupVisit = "group_visit"
     }
 
 }

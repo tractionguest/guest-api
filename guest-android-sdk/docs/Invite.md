@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **startDate** | [**Date**](Date.md) |  |  [optional]
 **lastName** | **String** |  | 
 **firstName** | **String** |  | 
+**groupVisit** | [**GroupVisit**](GroupVisit.md) |  |  [optional]
 
 
 ## Enum: WatchlistColourEnum

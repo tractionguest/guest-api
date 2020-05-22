@@ -55,6 +55,8 @@ class ApiClient {
           return ExternalWatchlistResult.fromJson(value);
         case 'FlexField':
           return FlexField.fromJson(value);
+        case 'GroupVisit':
+          return GroupVisit.fromJson(value);
         case 'GuestAlertCreateParams':
           return GuestAlertCreateParams.fromJson(value);
         case 'GuestAlertDetail':

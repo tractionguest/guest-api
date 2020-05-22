@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **endDate** | [**Date**](Date.md) |  |  [optional]
 **email** | **String** |  | 
 **company** | **String** |  |  [optional]
+**groupVisitId** | **String** |  |  [optional]
 
 
 ## Enum: WatchlistColourEnum

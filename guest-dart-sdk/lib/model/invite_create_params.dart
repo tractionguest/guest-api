@@ -28,11 +28,13 @@ class InviteCreateParams {
   String email = null;
   
   String company = null;
+  
+  String groupVisitId = null;
   InviteCreateParams();
 
   @override
   String toString() {
-    return 'InviteCreateParams[mobileNumber=$mobileNumber, notificationTriggers=$notificationTriggers, firstName=$firstName, emailTemplateId=$emailTemplateId, customFields=$customFields, hostIds=$hostIds, watchlistColour=$watchlistColour, title=$title, startDate=$startDate, lastName=$lastName, endDate=$endDate, email=$email, company=$company, ]';
+    return 'InviteCreateParams[mobileNumber=$mobileNumber, notificationTriggers=$notificationTriggers, firstName=$firstName, emailTemplateId=$emailTemplateId, customFields=$customFields, hostIds=$hostIds, watchlistColour=$watchlistColour, title=$title, startDate=$startDate, lastName=$lastName, endDate=$endDate, email=$email, company=$company, groupVisitId=$groupVisitId, ]';
   }
 
   InviteCreateParams.fromJson(Map<String, dynamic> json) {
@@ -102,6 +104,11 @@ class InviteCreateParams {
     } else {
           company = json['company'];
     }
+    if (json['group_visit_id'] == null) {
+      groupVisitId = null;
+    } else {
+          groupVisitId = json['group_visit_id'];
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -132,6 +139,8 @@ class InviteCreateParams {
       json['email'] = email;
     if (company != null)
       json['company'] = company;
+    if (groupVisitId != null)
+      json['group_visit_id'] = groupVisitId;
     return json;
   }
 

@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
  - [ErrorsList](docs/ErrorsList.md)
  - [ExternalWatchlistResult](docs/ExternalWatchlistResult.md)
  - [FlexField](docs/FlexField.md)
+ - [GroupVisit](docs/GroupVisit.md)
  - [GuestAlertCreateParams](docs/GuestAlertCreateParams.md)
  - [GuestAlertDetail](docs/GuestAlertDetail.md)
  - [GuestAlertSigninSelectors](docs/GuestAlertSigninSelectors.md)

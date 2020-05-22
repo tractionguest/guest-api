@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **email** | **NSString*** |  | 
 **createdAt** | **NSDate*** |  | [optional] 
 **company** | **NSString*** |  | [optional] 
+**groupVisit** | [**TGGroupVisit***](TGGroupVisit.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

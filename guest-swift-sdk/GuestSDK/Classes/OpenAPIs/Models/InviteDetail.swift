@@ -36,8 +36,9 @@ public struct InviteDetail: Codable {
     public var email: String
     public var createdAt: Date?
     public var company: String?
+    public var groupVisit: GroupVisit?
 
-    public init(id: Int, registration: Registration?, mobileNumber: String?, emailTemplate: EmailTemplate?, inviteWatchlist: InviteWatchlist?, notificationTriggers: [NotificationTrigger]?, customFields: [CustomField]?, watchlistColour: WatchlistColour?, location: Location?, hosts: [Host]?, startDate: Date?, lastName: String, firstName: String, endDate: Date?, email: String, createdAt: Date?, company: String?) {
+    public init(id: Int, registration: Registration?, mobileNumber: String?, emailTemplate: EmailTemplate?, inviteWatchlist: InviteWatchlist?, notificationTriggers: [NotificationTrigger]?, customFields: [CustomField]?, watchlistColour: WatchlistColour?, location: Location?, hosts: [Host]?, startDate: Date?, lastName: String, firstName: String, endDate: Date?, email: String, createdAt: Date?, company: String?, groupVisit: GroupVisit?) {
         self.id = id
         self.registration = registration
         self.mobileNumber = mobileNumber
@@ -55,6 +56,7 @@ public struct InviteDetail: Codable {
         self.email = email
         self.createdAt = createdAt
         self.company = company
+        self.groupVisit = groupVisit
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
@@ -75,6 +77,7 @@ public struct InviteDetail: Codable {
         case email
         case createdAt = "created_at"
         case company
+        case groupVisit = "group_visit"
     }
 
 }

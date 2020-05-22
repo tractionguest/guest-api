@@ -1,36 +1,21 @@
-{
-  "title": "GroupVisit.v1.yaml",
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string"
-    },
-    "name": {
-      "type": "string"
-    },
-    "start_time": {
-      "type": "string"
-    },
-    "end_time": {
-      "type": "string"
-    },
-    "created_at": {
-      "type": "string"
-    },
-    "updated_at": {
-      "type": "string"
-    },
-    "location": {
-      "$ref": "./Location.v1.yaml"
-    },
-    "hosts": {
-      "type": [
-        "string",
-        "array"
-      ],
-      "items": {
-        "$ref": "./Host.v1.yaml"
-      }
-    }
-  }
-}
+title: GroupVisit
+type: object
+properties:
+  id:
+    type: integer
+  location:
+    $ref: ./Location.v1.yaml
+  hosts:
+    type: array
+    items:
+      $ref: ./Host.v1.yaml
+  name:
+    type: string
+  start_time:
+    type: string
+  end_time:
+    type: string
+  created_at:
+    type: string
+  updated_at:
+    type: string

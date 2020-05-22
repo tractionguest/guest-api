@@ -116,7 +116,7 @@ properties:
   first_name:
     type: string
   group_visit:
-    $ref: ./GroupVisit.v1.yaml.json
+    $ref: ./GroupVisit.v1.yaml
 required:
   - id
   - email

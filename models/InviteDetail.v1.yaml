@@ -162,7 +162,7 @@ properties:
   company:
     type: string
   group_visit:
-    $ref: ./GroupVisit.v1.yaml.json
+    $ref: ./GroupVisit.v1.yaml
 required:
   - id
   - last_name

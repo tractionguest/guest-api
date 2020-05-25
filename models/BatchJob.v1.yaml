@@ -1,0 +1,16 @@
+title: BatchJob
+type: object
+properties:
+  bid:
+    type: string
+  created_at:
+    type: string
+  status:
+    type: string
+  total_records:
+    type: integer
+  worker_name:
+    type: string
+  user:
+    $ref: ./User.v1.yaml
+description: ''

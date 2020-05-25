@@ -1,0 +1,7 @@
+title: WatchlistBatchCreateParams
+type: object
+properties:
+  watchlists:
+    type: array
+    items:
+      $ref: ./WatchlistCreateParams.v1.yaml

@@ -1,0 +1,26 @@
+title: HostCreateParams
+description: The params needed to create a new Host
+type: object
+properties:
+  email:
+    type: string
+  first_name:
+    type: string
+  last_name:
+    type: string
+  profile_pic_url:
+    type: string
+  department:
+    description: ''
+    type: string
+  mobile_number:
+    type: string
+x-examples:
+  default: |-
+    {
+      "email": "name@email.com",
+      "first_name": "Frank",
+      "last_name": "Longbottom",
+      "mobile_number": "(604) 980-9933",
+      "profile_pic_url": "image.jpg"
+    }

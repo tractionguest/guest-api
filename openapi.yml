@@ -97,7 +97,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/Host.v1.yaml
+              $ref: ./models/HostCreateParams.v1.yaml
             examples:
               default:
                 value:
@@ -139,7 +139,7 @@ paths:
       operationId: createHost
       summary: Create a Host
       description: Creates a Host
-  /email-templates:
+  /email_templates:
     summary: Path used to manage the list of EmailTemplates.
     description: The REST endpoint/path used to list zero or more `EmailTemplate` entities.  This path contains a `GET` operation to perform the list task.
     get:
@@ -1642,7 +1642,7 @@ paths:
       operationId: createWatchlist
       summary: Create watchlist
       description: 'Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log.'
-  /auditLogs:
+  /audit_logs:
     summary: Path used to manage the list of AuditLogs.
     description: The REST endpoint/path used to list zero or more `AuditLog` entities.  This path contains a `GET` operation to perform the list task.
     get:
@@ -1987,7 +1987,7 @@ paths:
         name: registration_id
         in: path
         required: true
-  '/audit_logs/{auditLogId}':
+  '/audit_logs/{audit_log_id}':
     summary: Path used to manage a single AuditLog.
     description: The REST endpoint/path used to get single instances of an `AuditLog`.
     get:
@@ -2048,7 +2048,7 @@ paths:
     parameters:
       - schema:
           type: string
-        name: auditLogId
+        name: audit_log_id
         in: path
         required: true
   '/watchlists/{watchlist_id}':
@@ -2212,6 +2212,28 @@ paths:
         name: watchlist_id
         in: path
         required: true
+    post:
+      summary: ''
+      operationId: createWatchlist
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Watchlist.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/WatchlistCreateParams.v1.yaml
+        description: ''
   '/invites/{invite_id}':
     summary: Path used to manage a single Invite.
     description: 'The REST endpoint/path used to get, update, and delete single instances of an `Invite`.  This path contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks, respectively.'
@@ -3283,6 +3305,52 @@ paths:
         name: signin_id
         in: path
         required: true
+  /hosts/batch:
+    post:
+      summary: ''
+      operationId: createHosts
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+  '/watchlists/{watchlist_id}/batch':
+    parameters:
+      - schema:
+          type: string
+        name: watchlist_id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: createWatchlists
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: ./models/BatchJob.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/WatchlistCreateParams.v1.yaml
+        description: ''
 components:
   parameters:
     idempotencyKey:

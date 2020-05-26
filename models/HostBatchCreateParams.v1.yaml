@@ -1,0 +1,7 @@
+title: HostBatchCreateParams
+type: object
+properties:
+  hosts:
+    type: array
+    items:
+      $ref: ./HostCreateParams.v1.yaml

@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.11.7
+  version: 0.11.8
   description: 'The leader in enterprise visitor management, empowers businesses across five continents and dozens of industries to keep people safe while creating connection in the contactless world.'
   contact:
     name: Brandon McKay
@@ -101,7 +101,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/Host.v1.yaml
+              $ref: ./models/HostCreateParams.v1.yaml
             examples:
               default:
                 value:
@@ -3285,6 +3285,61 @@ paths:
         name: registration_id
         in: path
         required: true
+  /watchlists/batch:
+    post:
+      summary: ''
+      operationId: createWatchlists
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: ./models/BatchJob.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/WatchlistBatchCreateParams.v1.yaml
+        description: ''
+      tags:
+        - Watchlists
+      description: 'Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.'
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+  /hosts/batch:
+    post:
+      summary: ''
+      operationId: createHosts
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: ./models/BatchJob.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      tags:
+        - Hosts
+      description: 'Creates a batch of `Host` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/HostBatchCreateParams.v1.yaml
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
 components:
   parameters:
     idempotencyKey:

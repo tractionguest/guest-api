@@ -13,13 +13,13 @@ open class HostsAPI {
     /**
      Create a Host
      
-     - parameter host: (body)  
+     - parameter hostCreateParams: (body)  
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
      */
-    open class func createHost(host: Host, idempotencyKey: String? = nil, apiResponseQueue: DispatchQueue = GuestSDKAPI.apiResponseQueue, completion: @escaping ((_ result: Result<Host, Error>) -> Void)) {
-        createHostWithRequestBuilder(host: host, idempotencyKey: idempotencyKey).execute(apiResponseQueue) { result -> Void in
+    open class func createHost(hostCreateParams: HostCreateParams, idempotencyKey: String? = nil, apiResponseQueue: DispatchQueue = GuestSDKAPI.apiResponseQueue, completion: @escaping ((_ result: Result<Host, Error>) -> Void)) {
+        createHostWithRequestBuilder(hostCreateParams: hostCreateParams, idempotencyKey: idempotencyKey).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
                 completion(.success(response.body!))
@@ -36,14 +36,14 @@ open class HostsAPI {
      - :
        - type: openIdConnect
        - name: TractionGuestAuth
-     - parameter host: (body)  
+     - parameter hostCreateParams: (body)  
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - returns: RequestBuilder<Host> 
      */
-    open class func createHostWithRequestBuilder(host: Host, idempotencyKey: String? = nil) -> RequestBuilder<Host> {
+    open class func createHostWithRequestBuilder(hostCreateParams: HostCreateParams, idempotencyKey: String? = nil) -> RequestBuilder<Host> {
         let path = "/hosts"
         let URLString = GuestSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: host)
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: hostCreateParams)
 
         let url = URLComponents(string: URLString)
         let nillableHeaders: [String: Any?] = [
@@ -52,6 +52,50 @@ open class HostsAPI {
         let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
 
         let requestBuilder: RequestBuilder<Host>.Type = GuestSDKAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true, headers: headerParameters)
+    }
+
+    /**
+
+     - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
+     - parameter hostBatchCreateParams: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the result
+     */
+    open class func createHosts(idempotencyKey: String? = nil, hostBatchCreateParams: HostBatchCreateParams? = nil, apiResponseQueue: DispatchQueue = GuestSDKAPI.apiResponseQueue, completion: @escaping ((_ result: Result<BatchJob, Error>) -> Void)) {
+        createHostsWithRequestBuilder(idempotencyKey: idempotencyKey, hostBatchCreateParams: hostBatchCreateParams).execute(apiResponseQueue) { result -> Void in
+            switch result {
+            case let .success(response):
+                completion(.success(response.body!))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    /**
+     - POST /hosts/batch
+     - Creates a batch of `Host` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
+     - :
+       - type: openIdConnect
+       - name: TractionGuestAuth
+     - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
+     - parameter hostBatchCreateParams: (body)  (optional)
+     - returns: RequestBuilder<BatchJob> 
+     */
+    open class func createHostsWithRequestBuilder(idempotencyKey: String? = nil, hostBatchCreateParams: HostBatchCreateParams? = nil) -> RequestBuilder<BatchJob> {
+        let path = "/hosts/batch"
+        let URLString = GuestSDKAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: hostBatchCreateParams)
+
+        let url = URLComponents(string: URLString)
+        let nillableHeaders: [String: Any?] = [
+            "Idempotency-Key": idempotencyKey?.encodeToJSON()
+        ]
+        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+
+        let requestBuilder: RequestBuilder<BatchJob>.Type = GuestSDKAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true, headers: headerParameters)
     }

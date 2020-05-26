@@ -41,6 +41,8 @@ class ApiClient {
           return AuditLog.fromJson(value);
         case 'AuditLogChange':
           return AuditLogChange.fromJson(value);
+        case 'BatchJob':
+          return BatchJob.fromJson(value);
         case 'CustomField':
           return CustomField.fromJson(value);
         case 'Docusign':
@@ -67,6 +69,10 @@ class ApiClient {
           return GuestResponse.fromJson(value);
         case 'Host':
           return Host.fromJson(value);
+        case 'HostBatchCreateParams':
+          return HostBatchCreateParams.fromJson(value);
+        case 'HostCreateParams':
+          return HostCreateParams.fromJson(value);
         case 'InternalWatchlistResult':
           return InternalWatchlistResult.fromJson(value);
         case 'Invite':
@@ -129,6 +135,8 @@ class ApiClient {
           return Visitor.fromJson(value);
         case 'Watchlist':
           return Watchlist.fromJson(value);
+        case 'WatchlistBatchCreateParams':
+          return WatchlistBatchCreateParams.fromJson(value);
         case 'WatchlistCreateParams':
           return WatchlistCreateParams.fromJson(value);
         case 'WatchlistMatch':

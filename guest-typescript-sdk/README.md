@@ -1,4 +1,4 @@
-## guest_sdk@0.11.7
+## guest_sdk@0.11.8
 
 ### Building
 
@@ -19,7 +19,7 @@ Navigate to the folder of your consuming project and run one of next commands.
 _published:_
 
 ```
-npm install guest_sdk@0.11.7 --save
+npm install guest_sdk@0.11.8 --save
 ```
 
 _without publishing (not recommended):_

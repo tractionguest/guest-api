@@ -88,6 +88,7 @@ Class | Method | HTTP request | Description
 *EmailTemplatesApi* | [**getEmailTemplates**](docs/EmailTemplatesApi.md#getEmailTemplates) | **GET** /email_templates | List All EmailTemplates
 *GuestAlertsApi* | [**createGuestAlert**](docs/GuestAlertsApi.md#createGuestAlert) | **POST** /guest_alerts | Create Guest Alert
 *HostsApi* | [**createHost**](docs/HostsApi.md#createHost) | **POST** /hosts | Create a Host
+*HostsApi* | [**createHosts**](docs/HostsApi.md#createHosts) | **POST** /hosts/batch | 
 *HostsApi* | [**getHosts**](docs/HostsApi.md#getHosts) | **GET** /hosts | List All Hosts
 *InvitesApi* | [**createLocationInvite**](docs/InvitesApi.md#createLocationInvite) | **POST** /locations/{location_id}/invites | Creates an Invite
 *InvitesApi* | [**deleteInvite**](docs/InvitesApi.md#deleteInvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
@@ -102,6 +103,7 @@ Class | Method | HTTP request | Description
 *SigninsApi* | [**updateSignin**](docs/SigninsApi.md#updateSignin) | **PUT** /signins/{signin_id} | Update a Signin attribute
 *UsersApi* | [**getCurrentUser**](docs/UsersApi.md#getCurrentUser) | **GET** /users/{user_id} | Get the current User
 *WatchlistsApi* | [**createWatchlist**](docs/WatchlistsApi.md#createWatchlist) | **POST** /watchlists | Create watchlist
+*WatchlistsApi* | [**createWatchlists**](docs/WatchlistsApi.md#createWatchlists) | **POST** /watchlists/batch | 
 *WatchlistsApi* | [**deleteWatchlist**](docs/WatchlistsApi.md#deleteWatchlist) | **DELETE** /watchlists/{watchlist_id} | Deletes a Watchlist
 *WatchlistsApi* | [**getWatchlist**](docs/WatchlistsApi.md#getWatchlist) | **GET** /watchlists/{watchlist_id} | Get a Watchlist
 *WatchlistsApi* | [**getWatchlists**](docs/WatchlistsApi.md#getWatchlists) | **GET** /watchlists | List All Watchlists
@@ -112,6 +114,7 @@ Class | Method | HTTP request | Description
 
  - [AuditLog](docs/AuditLog.md)
  - [AuditLogChange](docs/AuditLogChange.md)
+ - [BatchJob](docs/BatchJob.md)
  - [CustomField](docs/CustomField.md)
  - [Docusign](docs/Docusign.md)
  - [EmailTemplate](docs/EmailTemplate.md)
@@ -125,6 +128,8 @@ Class | Method | HTTP request | Description
  - [GuestAlertSigninSelectors](docs/GuestAlertSigninSelectors.md)
  - [GuestResponse](docs/GuestResponse.md)
  - [Host](docs/Host.md)
+ - [HostBatchCreateParams](docs/HostBatchCreateParams.md)
+ - [HostCreateParams](docs/HostCreateParams.md)
  - [InternalWatchlistResult](docs/InternalWatchlistResult.md)
  - [Invite](docs/Invite.md)
  - [InviteCreateParams](docs/InviteCreateParams.md)
@@ -156,6 +161,7 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [Visitor](docs/Visitor.md)
  - [Watchlist](docs/Watchlist.md)
+ - [WatchlistBatchCreateParams](docs/WatchlistBatchCreateParams.md)
  - [WatchlistCreateParams](docs/WatchlistCreateParams.md)
  - [WatchlistMatch](docs/WatchlistMatch.md)
  - [WatchlistSearch](docs/WatchlistSearch.md)

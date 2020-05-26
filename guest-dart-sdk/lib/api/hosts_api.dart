@@ -10,12 +10,12 @@ class HostsApi {
   /// Create a Host
   ///
   /// Creates a Host
-  Future<Host> createHost(Host host, { String idempotencyKey }) async {
-    Object postBody = host;
+  Future<Host> createHost(HostCreateParams hostCreateParams, { String idempotencyKey }) async {
+    Object postBody = hostCreateParams;
 
     // verify required params are set
-    if(host == null) {
-     throw new ApiException(400, "Missing required param: host");
+    if(hostCreateParams == null) {
+     throw new ApiException(400, "Missing required param: hostCreateParams");
     }
 
     // create path and map variables
@@ -54,6 +54,54 @@ class HostsApi {
       throw new ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
       return apiClient.deserialize(_decodeBodyBytes(response), 'Host') as Host;
+    } else {
+      return null;
+    }
+  }
+  /// 
+  ///
+  /// Creates a batch of &#x60;Host&#x60; records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
+  Future<BatchJob> createHosts({ String idempotencyKey, HostBatchCreateParams hostBatchCreateParams }) async {
+    Object postBody = hostBatchCreateParams;
+
+    // verify required params are set
+
+    // create path and map variables
+    String path = "/hosts/batch".replaceAll("{format}","json");
+
+    // query params
+    List<QueryParam> queryParams = [];
+    Map<String, String> headerParams = {};
+    Map<String, String> formParams = {};
+    headerParams["Idempotency-Key"] = idempotencyKey;
+
+    List<String> contentTypes = ["application/json"];
+
+    String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
+    List<String> authNames = ["TractionGuestAuth"];
+
+    if(contentType.startsWith("multipart/form-data")) {
+      bool hasFields = false;
+      MultipartRequest mp = new MultipartRequest(null, null);
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+    }
+
+    var response = await apiClient.invokeAPI(path,
+                                             'POST',
+                                             queryParams,
+                                             postBody,
+                                             headerParams,
+                                             formParams,
+                                             contentType,
+                                             authNames);
+
+    if(response.statusCode >= 400) {
+      throw new ApiException(response.statusCode, _decodeBodyBytes(response));
+    } else if(response.body != null) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'BatchJob') as BatchJob;
     } else {
       return null;
     }

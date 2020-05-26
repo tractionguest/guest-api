@@ -5,6 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createWatchlist**](WatchlistsAPI.md#createwatchlist) | **POST** /watchlists | Create watchlist
+[**createWatchlists**](WatchlistsAPI.md#createwatchlists) | **POST** /watchlists/batch | 
 [**deleteWatchlist**](WatchlistsAPI.md#deletewatchlist) | **DELETE** /watchlists/{watchlist_id} | Deletes a Watchlist
 [**getWatchlist**](WatchlistsAPI.md#getwatchlist) | **GET** /watchlists/{watchlist_id} | Get a Watchlist
 [**getWatchlists**](WatchlistsAPI.md#getwatchlists) | **GET** /watchlists | List All Watchlists
@@ -51,6 +52,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Watchlist**](Watchlist.md)
+
+### Authorization
+
+[TractionGuestAuth](../README.md#TractionGuestAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createWatchlists**
+```swift
+    open class func createWatchlists(idempotencyKey: String? = nil, watchlistBatchCreateParams: WatchlistBatchCreateParams? = nil, completion: @escaping (_ data: BatchJob?, _ error: Error?) -> Void)
+```
+
+
+
+Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import GuestSDK
+
+let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
+let watchlistBatchCreateParams = WatchlistBatchCreateParams(watchlists: [WatchlistCreateParams(aliases: ["aliases_example"], notes: "notes_example", lastName: "lastName_example", firstName: "firstName_example", email: "email_example", colour: "colour_example")]) // WatchlistBatchCreateParams |  (optional)
+
+WatchlistsAPI.createWatchlists(idempotencyKey: idempotencyKey, watchlistBatchCreateParams: watchlistBatchCreateParams) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **idempotencyKey** | **String** | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
+ **watchlistBatchCreateParams** | [**WatchlistBatchCreateParams**](WatchlistBatchCreateParams.md) |  | [optional] 
+
+### Return type
+
+[**BatchJob**](BatchJob.md)
 
 ### Authorization
 

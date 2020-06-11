@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.11.8
+  version: 0.11.9
   description: 'The leader in enterprise visitor management, empowers businesses across five continents and dozens of industries to keep people safe while creating connection in the contactless world.'
   contact:
     name: Brandon McKay
@@ -105,7 +105,6 @@ paths:
             examples:
               default:
                 value:
-                  id: 34
                   email: some text
                   first_name: some text
                   last_name: some text
@@ -126,7 +125,6 @@ paths:
               examples:
                 default:
                   value:
-                    id: 80
                     email: some text
                     first_name: some text
                     last_name: some text
@@ -3287,7 +3285,7 @@ paths:
         required: true
   /watchlists/batch:
     post:
-      summary: ''
+      summary: Create Multiple Watchlists
       operationId: createWatchlists
       responses:
         '202':
@@ -3315,7 +3313,7 @@ paths:
         - $ref: '#/components/parameters/idempotencyKey'
   /hosts/batch:
     post:
-      summary: ''
+      summary: Create Multiple Hosts
       operationId: createHosts
       responses:
         '202':
@@ -3324,6 +3322,14 @@ paths:
             application/json:
               schema:
                 $ref: ./models/BatchJob.v1.yaml
+              examples:
+                default:
+                  value:
+                    bid: 123
+                    created_at: date-string
+                    status: string
+                    total_records: 12
+                    worker_name: string
         '400':
           description: Bad Request
           content:
@@ -3340,6 +3346,54 @@ paths:
               $ref: ./models/HostBatchCreateParams.v1.yaml
       parameters:
         - $ref: '#/components/parameters/idempotencyKey'
+  /registrations:
+    get:
+      summary: List all Registrations
+      tags:
+        - Registration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/PaginatedRegistrationsList.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: Unauthorized
+      operationId: getRegistrations
+      description: Gets a list of all `Registration` entities.
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: 'Limits the results to a specified number, defaults to 50'
+        - schema:
+            type: integer
+          in: query
+          name: offset
+          description: 'Offsets the results to a specified number, defaults to 0'
+        - schema:
+            type: string
+          in: query
+          name: location_ids
+          description: A comma separated list of Location IDs
+        - schema:
+            type: string
+          in: query
+          name: created_before
+          description: Restricts results to only those that were created before the provided date
+        - schema:
+            type: string
+          in: query
+          name: created_after
+          description: Restricts results to only those that were created after the provided date
 components:
   parameters:
     idempotencyKey:

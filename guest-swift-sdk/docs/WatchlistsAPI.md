@@ -5,7 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createWatchlist**](WatchlistsAPI.md#createwatchlist) | **POST** /watchlists | Create watchlist
-[**createWatchlists**](WatchlistsAPI.md#createwatchlists) | **POST** /watchlists/batch | 
+[**createWatchlists**](WatchlistsAPI.md#createwatchlists) | **POST** /watchlists/batch | Create Multiple Watchlists
 [**deleteWatchlist**](WatchlistsAPI.md#deletewatchlist) | **DELETE** /watchlists/{watchlist_id} | Deletes a Watchlist
 [**getWatchlist**](WatchlistsAPI.md#getwatchlist) | **GET** /watchlists/{watchlist_id} | Get a Watchlist
 [**getWatchlists**](WatchlistsAPI.md#getwatchlists) | **GET** /watchlists | List All Watchlists
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
     open class func createWatchlists(idempotencyKey: String? = nil, watchlistBatchCreateParams: WatchlistBatchCreateParams? = nil, completion: @escaping (_ data: BatchJob?, _ error: Error?) -> Void)
 ```
 
-
+Create Multiple Watchlists
 
 Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
 
@@ -81,6 +81,7 @@ import GuestSDK
 let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 let watchlistBatchCreateParams = WatchlistBatchCreateParams(watchlists: [WatchlistCreateParams(aliases: ["aliases_example"], notes: "notes_example", lastName: "lastName_example", firstName: "firstName_example", email: "email_example", colour: "colour_example")]) // WatchlistBatchCreateParams |  (optional)
 
+// Create Multiple Watchlists
 WatchlistsAPI.createWatchlists(idempotencyKey: idempotencyKey, watchlistBatchCreateParams: watchlistBatchCreateParams) { (response, error) in
     guard error == nil else {
         print(error)

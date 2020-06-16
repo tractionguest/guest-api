@@ -10,7 +10,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createHost**](HostsApi.md#createHost) | **POST** /hosts | Create a Host
-[**createHosts**](HostsApi.md#createHosts) | **POST** /hosts/batch | 
+[**createHosts**](HostsApi.md#createHosts) | **POST** /hosts/batch | Create Multiple Hosts
 [**getHosts**](HostsApi.md#getHosts) | **GET** /hosts | List All Hosts
 
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 # **createHosts**
 > BatchJob createHosts(idempotencyKey, hostBatchCreateParams)
 
-
+Create Multiple Hosts
 
 Creates a batch of `Host` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
 

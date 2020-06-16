@@ -55,8 +55,6 @@ class ApiClient {
           return ErrorsList.fromJson(value);
         case 'ExternalWatchlistResult':
           return ExternalWatchlistResult.fromJson(value);
-        case 'FlexField':
-          return FlexField.fromJson(value);
         case 'GroupVisit':
           return GroupVisit.fromJson(value);
         case 'GuestAlertCreateParams':
@@ -101,6 +99,8 @@ class ApiClient {
           return PaginatedInvitesList.fromJson(value);
         case 'PaginatedLocationsList':
           return PaginatedLocationsList.fromJson(value);
+        case 'PaginatedRegistrationsList':
+          return PaginatedRegistrationsList.fromJson(value);
         case 'PaginatedSigninsList':
           return PaginatedSigninsList.fromJson(value);
         case 'PaginatedWatchlistList':

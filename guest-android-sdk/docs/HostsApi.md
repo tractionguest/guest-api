@@ -5,7 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createHost**](HostsApi.md#createHost) | **POST** /hosts | Create a Host
-[**createHosts**](HostsApi.md#createHosts) | **POST** /hosts/batch | 
+[**createHosts**](HostsApi.md#createHosts) | **POST** /hosts/batch | Create Multiple Hosts
 [**getHosts**](HostsApi.md#getHosts) | **GET** /hosts | List All Hosts
 
 
@@ -25,7 +25,7 @@ Creates a Host
 //import GuestSDK.HostsApi;
 
 HostsApi apiInstance = new HostsApi();
-HostCreateParams hostCreateParams = {"id":34,"email":"some text","first_name":"some text","last_name":"some text","profile_pic_url":"some text","department":"some text","mobile_number":"some text"}; // HostCreateParams | 
+HostCreateParams hostCreateParams = {"email":"some text","first_name":"some text","last_name":"some text","profile_pic_url":"some text","department":"some text","mobile_number":"some text"}; // HostCreateParams | 
 String idempotencyKey = null; // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored
 try {
     Host result = apiInstance.createHost(hostCreateParams, idempotencyKey);
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 > BatchJob createHosts(idempotencyKey, hostBatchCreateParams)
 
-
+Create Multiple Hosts
 
 Creates a batch of &#x60;Host&#x60; records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
 

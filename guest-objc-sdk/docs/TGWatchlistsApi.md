@@ -5,7 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createWatchlist**](TGWatchlistsApi.md#createwatchlist) | **POST** /watchlists | Create watchlist
-[**createWatchlists**](TGWatchlistsApi.md#createwatchlists) | **POST** /watchlists/batch | 
+[**createWatchlists**](TGWatchlistsApi.md#createwatchlists) | **POST** /watchlists/batch | Create Multiple Watchlists
 [**deleteWatchlist**](TGWatchlistsApi.md#deletewatchlist) | **DELETE** /watchlists/{watchlist_id} | Deletes a Watchlist
 [**getWatchlist**](TGWatchlistsApi.md#getwatchlist) | **GET** /watchlists/{watchlist_id} | Get a Watchlist
 [**getWatchlists**](TGWatchlistsApi.md#getwatchlists) | **GET** /watchlists | List All Watchlists
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGBatchJob* output, NSError* error)) handler;
 ```
 
-
+Create Multiple Watchlists
 
 Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
 
@@ -89,6 +89,7 @@ TGWatchlistBatchCreateParams* watchlistBatchCreateParams = [[TGWatchlistBatchCre
 
 TGWatchlistsApi*apiInstance = [[TGWatchlistsApi alloc] init];
 
+// Create Multiple Watchlists
 [apiInstance createWatchlistsWithIdempotencyKey:idempotencyKey
               watchlistBatchCreateParams:watchlistBatchCreateParams
           completionHandler: ^(TGBatchJob* output, NSError* error) {

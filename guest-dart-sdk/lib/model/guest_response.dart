@@ -4,7 +4,7 @@ class GuestResponse {
   /* UUID */
   String id = null;
   /* Flex fields */
-  List<FlexField> customFields = [];
+  List<CustomField> customFields = [];
   /* Enum */
   String pageType = null;
   //enum pageTypeEnum {  form_page,  video_page,  branch_page,  docusign_page,  guest_sign_page,  identity_page,  };{
@@ -29,7 +29,7 @@ class GuestResponse {
     if (json['custom_fields'] == null) {
       customFields = null;
     } else {
-      customFields = FlexField.listFromJson(json['custom_fields']);
+      customFields = CustomField.listFromJson(json['custom_fields']);
     }
     if (json['page_type'] == null) {
       pageType = null;

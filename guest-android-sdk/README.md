@@ -88,7 +88,7 @@ Class | Method | HTTP request | Description
 *EmailTemplatesApi* | [**getEmailTemplates**](docs/EmailTemplatesApi.md#getEmailTemplates) | **GET** /email_templates | List All EmailTemplates
 *GuestAlertsApi* | [**createGuestAlert**](docs/GuestAlertsApi.md#createGuestAlert) | **POST** /guest_alerts | Create Guest Alert
 *HostsApi* | [**createHost**](docs/HostsApi.md#createHost) | **POST** /hosts | Create a Host
-*HostsApi* | [**createHosts**](docs/HostsApi.md#createHosts) | **POST** /hosts/batch | 
+*HostsApi* | [**createHosts**](docs/HostsApi.md#createHosts) | **POST** /hosts/batch | Create Multiple Hosts
 *HostsApi* | [**getHosts**](docs/HostsApi.md#getHosts) | **GET** /hosts | List All Hosts
 *InvitesApi* | [**createLocationInvite**](docs/InvitesApi.md#createLocationInvite) | **POST** /locations/{location_id}/invites | Creates an Invite
 *InvitesApi* | [**deleteInvite**](docs/InvitesApi.md#deleteInvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
@@ -97,13 +97,14 @@ Class | Method | HTTP request | Description
 *InvitesApi* | [**updateInvite**](docs/InvitesApi.md#updateInvite) | **PUT** /invites/{invite_id} | Update a Invite
 *LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /locations | List All Locations
 *RegistrationApi* | [**getRegistration**](docs/RegistrationApi.md#getRegistration) | **GET** /registrations/{registration_id} | Get a Registration
+*RegistrationApi* | [**getRegistrations**](docs/RegistrationApi.md#getRegistrations) | **GET** /registrations | List all Registrations
 *SigninsApi* | [**createSignin**](docs/SigninsApi.md#createSignin) | **POST** /signins | 
 *SigninsApi* | [**getSignin**](docs/SigninsApi.md#getSignin) | **GET** /signins/{signin_id} | Get a Signin
 *SigninsApi* | [**getSignins**](docs/SigninsApi.md#getSignins) | **GET** /signins | List All Signins
 *SigninsApi* | [**updateSignin**](docs/SigninsApi.md#updateSignin) | **PUT** /signins/{signin_id} | Update a Signin attribute
 *UsersApi* | [**getCurrentUser**](docs/UsersApi.md#getCurrentUser) | **GET** /users/{user_id} | Get the current User
 *WatchlistsApi* | [**createWatchlist**](docs/WatchlistsApi.md#createWatchlist) | **POST** /watchlists | Create watchlist
-*WatchlistsApi* | [**createWatchlists**](docs/WatchlistsApi.md#createWatchlists) | **POST** /watchlists/batch | 
+*WatchlistsApi* | [**createWatchlists**](docs/WatchlistsApi.md#createWatchlists) | **POST** /watchlists/batch | Create Multiple Watchlists
 *WatchlistsApi* | [**deleteWatchlist**](docs/WatchlistsApi.md#deleteWatchlist) | **DELETE** /watchlists/{watchlist_id} | Deletes a Watchlist
 *WatchlistsApi* | [**getWatchlist**](docs/WatchlistsApi.md#getWatchlist) | **GET** /watchlists/{watchlist_id} | Get a Watchlist
 *WatchlistsApi* | [**getWatchlists**](docs/WatchlistsApi.md#getWatchlists) | **GET** /watchlists | List All Watchlists
@@ -121,7 +122,6 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [ErrorsList](docs/ErrorsList.md)
  - [ExternalWatchlistResult](docs/ExternalWatchlistResult.md)
- - [FlexField](docs/FlexField.md)
  - [GroupVisit](docs/GroupVisit.md)
  - [GuestAlertCreateParams](docs/GuestAlertCreateParams.md)
  - [GuestAlertDetail](docs/GuestAlertDetail.md)
@@ -144,6 +144,7 @@ Class | Method | HTTP request | Description
  - [PaginatedHostsList](docs/PaginatedHostsList.md)
  - [PaginatedInvitesList](docs/PaginatedInvitesList.md)
  - [PaginatedLocationsList](docs/PaginatedLocationsList.md)
+ - [PaginatedRegistrationsList](docs/PaginatedRegistrationsList.md)
  - [PaginatedSigninsList](docs/PaginatedSigninsList.md)
  - [PaginatedWatchlistList](docs/PaginatedWatchlistList.md)
  - [Pagination](docs/Pagination.md)

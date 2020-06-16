@@ -22,14 +22,14 @@ public struct GuestResponse: Codable {
     /** UUID */
     public var id: String?
     /** Flex fields */
-    public var customFields: [FlexField]?
+    public var customFields: [CustomField]?
     /** Enum */
     public var pageType: PageType?
     public var sequence: Int?
     /** Page title */
     public var title: String?
 
-    public init(id: String?, customFields: [FlexField]?, pageType: PageType?, sequence: Int?, title: String?) {
+    public init(id: String?, customFields: [CustomField]?, pageType: PageType?, sequence: Int?, title: String?) {
         self.id = id
         self.customFields = customFields
         self.pageType = pageType

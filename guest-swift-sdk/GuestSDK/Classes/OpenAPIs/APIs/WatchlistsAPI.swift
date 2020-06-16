@@ -57,7 +57,8 @@ open class WatchlistsAPI {
     }
 
     /**
-
+     Create Multiple Watchlists
+     
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - parameter watchlistBatchCreateParams: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -75,6 +76,7 @@ open class WatchlistsAPI {
     }
 
     /**
+     Create Multiple Watchlists
      - POST /watchlists/batch
      - Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
      - :

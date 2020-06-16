@@ -127,7 +127,7 @@ NSInteger kTGWatchlistsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// 
+/// Create Multiple Watchlists
 /// Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
 ///  @param idempotencyKey An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 ///

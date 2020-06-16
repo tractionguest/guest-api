@@ -5,7 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createWatchlist**](WatchlistsApi.md#createWatchlist) | **POST** /watchlists | Create watchlist
-[**createWatchlists**](WatchlistsApi.md#createWatchlists) | **POST** /watchlists/batch | 
+[**createWatchlists**](WatchlistsApi.md#createWatchlists) | **POST** /watchlists/batch | Create Multiple Watchlists
 [**deleteWatchlist**](WatchlistsApi.md#deleteWatchlist) | **DELETE** /watchlists/{watchlist_id} | Deletes a Watchlist
 [**getWatchlist**](WatchlistsApi.md#getWatchlist) | **GET** /watchlists/{watchlist_id} | Get a Watchlist
 [**getWatchlists**](WatchlistsApi.md#getWatchlists) | **GET** /watchlists | List All Watchlists
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 > BatchJob createWatchlists(idempotencyKey, watchlistBatchCreateParams)
 
-
+Create Multiple Watchlists
 
 Creates a batch of &#x60;Watchlist&#x60; records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
 

@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | UUID | [optional] 
-**customFields** | [FlexField] | Flex fields | [optional] 
+**customFields** | [CustomField] | Flex fields | [optional] 
 **pageType** | **String** | Enum | [optional] 
 **sequence** | **Int** |  | [optional] 
 **title** | **String** | Page title | [optional] 

@@ -5,6 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getRegistration**](RegistrationApi.md#getRegistration) | **GET** /registrations/{registration_id} | Get a Registration
+[**getRegistrations**](RegistrationApi.md#getRegistrations) | **GET** /registrations | List all Registrations
 
 
 
@@ -45,6 +46,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Registration**](Registration.md)
+
+### Authorization
+
+[TractionGuestAuth](../README.md#TractionGuestAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getRegistrations
+
+> PaginatedRegistrationsList getRegistrations(limit, offset, locationIds, createdBefore, createdAfter)
+
+List all Registrations
+
+Gets a list of all &#x60;Registration&#x60; entities.
+
+### Example
+
+```java
+// Import classes:
+//import GuestSDK.RegistrationApi;
+
+RegistrationApi apiInstance = new RegistrationApi();
+Integer limit = null; // Integer | Limits the results to a specified number, defaults to 50
+Integer offset = null; // Integer | Offsets the results to a specified number, defaults to 0
+String locationIds = null; // String | A comma separated list of Location IDs
+String createdBefore = null; // String | Restricts results to only those that were created before the provided date
+String createdAfter = null; // String | Restricts results to only those that were created after the provided date
+try {
+    PaginatedRegistrationsList result = apiInstance.getRegistrations(limit, offset, locationIds, createdBefore, createdAfter);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling RegistrationApi#getRegistrations");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **Integer**| Limits the results to a specified number, defaults to 50 | [optional] [default to null]
+ **offset** | **Integer**| Offsets the results to a specified number, defaults to 0 | [optional] [default to null]
+ **locationIds** | **String**| A comma separated list of Location IDs | [optional] [default to null]
+ **createdBefore** | **String**| Restricts results to only those that were created before the provided date | [optional] [default to null]
+ **createdAfter** | **String**| Restricts results to only those that were created after the provided date | [optional] [default to null]
+
+### Return type
+
+[**PaginatedRegistrationsList**](PaginatedRegistrationsList.md)
 
 ### Authorization
 

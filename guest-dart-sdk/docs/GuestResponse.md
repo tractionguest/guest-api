@@ -9,7 +9,7 @@ import 'package:guest_sdk/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | UUID | [optional] [default to null]
-**customFields** | [**List&lt;FlexField&gt;**](FlexField.md) | Flex fields | [optional] [default to []]
+**customFields** | [**List&lt;CustomField&gt;**](CustomField.md) | Flex fields | [optional] [default to []]
 **pageType** | **String** | Enum | [optional] [default to null]
 **sequence** | **int** |  | [optional] [default to null]
 **title** | **String** | Page title | [optional] [default to null]

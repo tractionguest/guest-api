@@ -5,7 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createHost**](HostsAPI.md#createhost) | **POST** /hosts | Create a Host
-[**createHosts**](HostsAPI.md#createhosts) | **POST** /hosts/batch | 
+[**createHosts**](HostsAPI.md#createhosts) | **POST** /hosts/batch | Create Multiple Hosts
 [**getHosts**](HostsAPI.md#gethosts) | **GET** /hosts | List All Hosts
 
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
     open class func createHosts(idempotencyKey: String? = nil, hostBatchCreateParams: HostBatchCreateParams? = nil, completion: @escaping (_ data: BatchJob?, _ error: Error?) -> Void)
 ```
 
-
+Create Multiple Hosts
 
 Creates a batch of `Host` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
 
@@ -78,6 +78,7 @@ import GuestSDK
 let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 let hostBatchCreateParams = HostBatchCreateParams(hosts: [HostCreateParams(email: "email_example", firstName: "firstName_example", lastName: "lastName_example", profilePicUrl: "profilePicUrl_example", department: "department_example", mobileNumber: "mobileNumber_example")]) // HostBatchCreateParams |  (optional)
 
+// Create Multiple Hosts
 HostsAPI.createHosts(idempotencyKey: idempotencyKey, hostBatchCreateParams: hostBatchCreateParams) { (response, error) in
     guard error == nil else {
         print(error)

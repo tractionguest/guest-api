@@ -5,6 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getRegistration**](TGRegistrationApi.md#getregistration) | **GET** /registrations/{registration_id} | Get a Registration
+[**getRegistrations**](TGRegistrationApi.md#getregistrations) | **GET** /registrations | List all Registrations
 
 
 # **getRegistration**
@@ -51,6 +52,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TGRegistration***](TGRegistration.md)
+
+### Authorization
+
+[TractionGuestAuth](../README.md#TractionGuestAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getRegistrations**
+```objc
+-(NSURLSessionTask*) getRegistrationsWithLimit: (NSNumber*) limit
+    offset: (NSNumber*) offset
+    locationIds: (NSString*) locationIds
+    createdBefore: (NSString*) createdBefore
+    createdAfter: (NSString*) createdAfter
+        completionHandler: (void (^)(TGPaginatedRegistrationsList* output, NSError* error)) handler;
+```
+
+List all Registrations
+
+Gets a list of all `Registration` entities.
+
+### Example 
+```objc
+TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
+
+
+NSNumber* limit = @56; // Limits the results to a specified number, defaults to 50 (optional)
+NSNumber* offset = @56; // Offsets the results to a specified number, defaults to 0 (optional)
+NSString* locationIds = @"locationIds_example"; // A comma separated list of Location IDs (optional)
+NSString* createdBefore = @"createdBefore_example"; // Restricts results to only those that were created before the provided date (optional)
+NSString* createdAfter = @"createdAfter_example"; // Restricts results to only those that were created after the provided date (optional)
+
+TGRegistrationApi*apiInstance = [[TGRegistrationApi alloc] init];
+
+// List all Registrations
+[apiInstance getRegistrationsWithLimit:limit
+              offset:offset
+              locationIds:locationIds
+              createdBefore:createdBefore
+              createdAfter:createdAfter
+          completionHandler: ^(TGPaginatedRegistrationsList* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling TGRegistrationApi->getRegistrations: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **NSNumber***| Limits the results to a specified number, defaults to 50 | [optional] 
+ **offset** | **NSNumber***| Offsets the results to a specified number, defaults to 0 | [optional] 
+ **locationIds** | **NSString***| A comma separated list of Location IDs | [optional] 
+ **createdBefore** | **NSString***| Restricts results to only those that were created before the provided date | [optional] 
+ **createdAfter** | **NSString***| Restricts results to only those that were created after the provided date | [optional] 
+
+### Return type
+
+[**TGPaginatedRegistrationsList***](TGPaginatedRegistrationsList.md)
 
 ### Authorization
 

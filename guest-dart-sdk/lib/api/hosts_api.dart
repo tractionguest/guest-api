@@ -58,7 +58,7 @@ class HostsApi {
       return null;
     }
   }
-  /// 
+  /// Create Multiple Hosts
   ///
   /// Creates a batch of &#x60;Host&#x60; records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
   Future<BatchJob> createHosts({ String idempotencyKey, HostBatchCreateParams hostBatchCreateParams }) async {

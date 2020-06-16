@@ -5,7 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createHost**](TGHostsApi.md#createhost) | **POST** /hosts | Create a Host
-[**createHosts**](TGHostsApi.md#createhosts) | **POST** /hosts/batch | 
+[**createHosts**](TGHostsApi.md#createhosts) | **POST** /hosts/batch | Create Multiple Hosts
 [**getHosts**](TGHostsApi.md#gethosts) | **GET** /hosts | List All Hosts
 
 
@@ -25,7 +25,7 @@ Creates a Host
 TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
 
 
-TGHostCreateParams* hostCreateParams = {"id":34,"email":"some text","first_name":"some text","last_name":"some text","profile_pic_url":"some text","department":"some text","mobile_number":"some text"}; // 
+TGHostCreateParams* hostCreateParams = {"email":"some text","first_name":"some text","last_name":"some text","profile_pic_url":"some text","department":"some text","mobile_number":"some text"}; // 
 NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
 TGHostsApi*apiInstance = [[TGHostsApi alloc] init];
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGBatchJob* output, NSError* error)) handler;
 ```
 
-
+Create Multiple Hosts
 
 Creates a batch of `Host` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
 
@@ -86,6 +86,7 @@ TGHostBatchCreateParams* hostBatchCreateParams = [[TGHostBatchCreateParams alloc
 
 TGHostsApi*apiInstance = [[TGHostsApi alloc] init];
 
+// Create Multiple Hosts
 [apiInstance createHostsWithIdempotencyKey:idempotencyKey
               hostBatchCreateParams:hostBatchCreateParams
           completionHandler: ^(TGBatchJob* output, NSError* error) {

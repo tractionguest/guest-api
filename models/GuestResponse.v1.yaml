@@ -20,7 +20,7 @@ properties:
     description: Flex fields
     type: array
     items:
-      $ref: ./FlexField.v1.yaml
+      $ref: ./CustomField.v1.yaml
   page_type:
     description: Enum
     enum:

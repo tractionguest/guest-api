@@ -1,0 +1,9 @@
+title: PaginatedRegistrationsList
+type: object
+properties:
+  registrations:
+    type: array
+    items:
+      $ref: ./Registration.v1.yaml
+  pagination:
+    $ref: ./Pagination.v1.yaml

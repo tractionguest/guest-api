@@ -66,6 +66,7 @@ properties:
       - GREEN
       - YELLOW
       - ORANGE
+    type: string
   title:
     type: string
   start_date:

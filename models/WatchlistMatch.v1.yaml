@@ -1,9 +1,16 @@
 title: WatchlistMatch
 description: ''
-required:
-  - name
-  - list
 type: object
+x-examples:
+  default:
+    id: e15a3751a3b4832ca48cf22c82e58ff49c904097
+    alt_names:
+      - woot
+    federal_register_notice: 58 FR 50382
+    name: 'Aero Systems, Inc.'
+    source_information_url: 'http://bit.ly/2shT1aS'
+    source_list_url: 'http://bit.ly/2J1IGWH'
+    list: ITAR Debarred (DTC) - State Department
 properties:
   id:
     type: string
@@ -180,13 +187,6 @@ properties:
   source_lists:
     description: ''
     type: string
-x-examples:
-  default:
-    id: e15a3751a3b4832ca48cf22c82e58ff49c904097
-    alt_names:
-      - woot
-    federal_register_notice: 58 FR 50382
-    name: 'Aero Systems, Inc.'
-    source_information_url: 'http://bit.ly/2shT1aS'
-    source_list_url: 'http://bit.ly/2J1IGWH'
-    list: ITAR Debarred (DTC) - State Department
+required:
+  - name
+  - list

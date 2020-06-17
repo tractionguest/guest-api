@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **emailTemplateId** | **NSNumber*** |  | [optional] 
 **customFields** | [**NSArray&lt;TGCustomField&gt;***](TGCustomField.md) |  | [optional] 
 **hostIds** | **NSArray&lt;NSNumber*&gt;*** |  | [optional] 
-**watchlistColour** | [**NSObject***](.md) |  | [optional] 
+**watchlistColour** | **NSString*** |  | [optional] 
 **title** | **NSString*** |  | [optional] 
 **startDate** | **NSDate*** | The &#x60;start_date&#x60; is required for invitations to lobbies | [optional] 
 **lastName** | **NSString*** |  | 

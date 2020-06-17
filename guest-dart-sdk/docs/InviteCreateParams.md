@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **emailTemplateId** | **int** |  | [optional] [default to null]
 **customFields** | [**List&lt;CustomField&gt;**](CustomField.md) |  | [optional] [default to []]
 **hostIds** | **List&lt;int&gt;** |  | [optional] [default to []]
-**watchlistColour** | [**Object**](.md) |  | [optional] [default to null]
+**watchlistColour** | **String** |  | [optional] [default to null]
 **title** | **String** |  | [optional] [default to null]
 **startDate** | [**DateTime**](DateTime.md) | The &#x60;start_date&#x60; is required for invitations to lobbies | [optional] [default to null]
 **lastName** | **String** |  | [default to null]

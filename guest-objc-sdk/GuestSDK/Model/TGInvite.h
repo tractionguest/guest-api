@@ -55,7 +55,7 @@
 
 @property(nonatomic) NSArray<TGHost>* hosts;
 
-@property(nonatomic) NSObject* watchlistColour;
+@property(nonatomic) NSString* watchlistColour;
 
 @property(nonatomic) TGLocation* location;
 

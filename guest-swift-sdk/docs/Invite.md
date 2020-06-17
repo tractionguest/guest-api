@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **endDate** | **Date** |  | [optional] 
 **inviteWatchlist** | [**InviteWatchlist**](InviteWatchlist.md) |  | [optional] 
 **hosts** | [Host] |  | [optional] 
-**watchlistColour** | [**Any**](.md) |  | [optional] 
+**watchlistColour** | **String** |  | [optional] 
 **location** | [**Location**](Location.md) |  | [optional] 
 **startDate** | **Date** |  | [optional] 
 **lastName** | **String** |  | 

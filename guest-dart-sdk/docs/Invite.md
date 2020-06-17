@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **endDate** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
 **inviteWatchlist** | [**InviteWatchlist**](InviteWatchlist.md) |  | [optional] [default to null]
 **hosts** | [**List&lt;Host&gt;**](Host.md) |  | [optional] [default to []]
-**watchlistColour** | [**Object**](.md) |  | [optional] [default to null]
+**watchlistColour** | **String** |  | [optional] [default to null]
 **location** | [**Location**](Location.md) |  | [optional] [default to null]
 **startDate** | [**DateTime**](DateTime.md) |  | [optional] [default to null]
 **lastName** | **String** |  | [default to null]

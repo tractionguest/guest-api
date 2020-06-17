@@ -14,7 +14,7 @@ class InviteCreateParams {
   
   List<int> hostIds = [];
   
-  Object watchlistColour = null;
+  String watchlistColour = null;
   //enum watchlistColourEnum {  RED,  GREEN,  YELLOW,  ORANGE,  };{
   
   String title = null;

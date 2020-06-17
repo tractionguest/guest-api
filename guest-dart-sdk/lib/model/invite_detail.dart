@@ -16,7 +16,7 @@ class InviteDetail {
   
   List<CustomField> customFields = [];
   
-  Object watchlistColour = null;
+  String watchlistColour = null;
   //enum watchlistColourEnum {  RED,  GREEN,  YELLOW,  ORANGE,  };{
   
   Location location = null;

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **inviteWatchlist** | [**TGInviteWatchlist***](TGInviteWatchlist.md) |  | [optional] 
 **notificationTriggers** | [**NSArray&lt;TGNotificationTrigger&gt;***](TGNotificationTrigger.md) | List of scheduled notifications for an invite | [optional] 
 **customFields** | [**NSArray&lt;TGCustomField&gt;***](TGCustomField.md) |  | [optional] 
-**watchlistColour** | [**NSObject***](.md) |  | [optional] 
+**watchlistColour** | **NSString*** |  | [optional] 
 **location** | [**TGLocation***](TGLocation.md) |  | [optional] 
 **hosts** | [**NSArray&lt;TGHost&gt;***](TGHost.md) |  | [optional] 
 **startDate** | **NSDate*** |  | [optional] 

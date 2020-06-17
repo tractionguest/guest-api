@@ -41,7 +41,7 @@
 
 @property(nonatomic) NSArray<NSNumber*>* hostIds;
 
-@property(nonatomic) NSObject* watchlistColour;
+@property(nonatomic) NSString* watchlistColour;
 
 @property(nonatomic) NSString* title;
 /* The `start_date` is required for invitations to lobbies [optional]

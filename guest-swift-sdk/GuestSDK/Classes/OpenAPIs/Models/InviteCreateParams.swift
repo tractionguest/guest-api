@@ -11,11 +11,11 @@ import Foundation
 public struct InviteCreateParams: Codable { 
 
 
-    public enum WatchlistColour: Any, Codable, CaseIterable {
-        case red = RED
-        case green = GREEN
-        case yellow = YELLOW
-        case orange = ORANGE
+    public enum WatchlistColour: String, Codable, CaseIterable {
+        case red = "RED"
+        case green = "GREEN"
+        case yellow = "YELLOW"
+        case orange = "ORANGE"
     }
     public var mobileNumber: String?
     public var notificationTriggers: [NotificationTriggerCreateParams]?

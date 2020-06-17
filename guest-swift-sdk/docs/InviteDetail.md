@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **inviteWatchlist** | [**InviteWatchlist**](InviteWatchlist.md) |  | [optional] 
 **notificationTriggers** | [NotificationTrigger] | List of scheduled notifications for an invite | [optional] 
 **customFields** | [CustomField] |  | [optional] 
-**watchlistColour** | [**Any**](.md) |  | [optional] 
+**watchlistColour** | **String** |  | [optional] 
 **location** | [**Location**](Location.md) |  | [optional] 
 **hosts** | [Host] |  | [optional] 
 **startDate** | **Date** |  | [optional] 

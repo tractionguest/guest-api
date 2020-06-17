@@ -63,7 +63,7 @@
 
 @property(nonatomic) NSArray<TGCustomField>* customFields;
 
-@property(nonatomic) NSObject* watchlistColour;
+@property(nonatomic) NSString* watchlistColour;
 
 @property(nonatomic) TGLocation* location;
 

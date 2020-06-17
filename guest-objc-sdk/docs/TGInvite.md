@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **endDate** | **NSDate*** |  | [optional] 
 **inviteWatchlist** | [**TGInviteWatchlist***](TGInviteWatchlist.md) |  | [optional] 
 **hosts** | [**NSArray&lt;TGHost&gt;***](TGHost.md) |  | [optional] 
-**watchlistColour** | [**NSObject***](.md) |  | [optional] 
+**watchlistColour** | **NSString*** |  | [optional] 
 **location** | [**TGLocation***](TGLocation.md) |  | [optional] 
 **startDate** | **NSDate*** |  | [optional] 
 **lastName** | **NSString*** |  | 

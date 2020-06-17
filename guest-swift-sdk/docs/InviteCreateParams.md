@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **emailTemplateId** | **Int** |  | [optional] 
 **customFields** | [CustomField] |  | [optional] 
 **hostIds** | **[Int]** |  | [optional] 
-**watchlistColour** | [**Any**](.md) |  | [optional] 
+**watchlistColour** | **String** |  | [optional] 
 **title** | **String** |  | [optional] 
 **startDate** | **Date** | The &#x60;start_date&#x60; is required for invitations to lobbies | [optional] 
 **lastName** | **String** |  | 

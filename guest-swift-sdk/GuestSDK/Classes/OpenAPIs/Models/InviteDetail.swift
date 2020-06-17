@@ -11,11 +11,11 @@ import Foundation
 public struct InviteDetail: Codable { 
 
 
-    public enum WatchlistColour: Any, Codable, CaseIterable {
-        case red = RED
-        case green = GREEN
-        case yellow = YELLOW
-        case orange = ORANGE
+    public enum WatchlistColour: String, Codable, CaseIterable {
+        case red = "RED"
+        case green = "GREEN"
+        case yellow = "YELLOW"
+        case orange = "ORANGE"
     }
     public var id: Int
     public var registration: Registration?

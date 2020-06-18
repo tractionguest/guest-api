@@ -32,11 +32,11 @@ properties:
   email:
     type: string
   colour:
+    type: string
     enum:
       - RED
       - YELLOW
       - GREEN
       - ORANGE
-    type: string
 required:
   - id

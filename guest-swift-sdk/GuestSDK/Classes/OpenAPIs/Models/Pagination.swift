@@ -16,12 +16,14 @@ public struct Pagination: Codable {
     public var nextOffset: Int?
     /** The last ID rendered, if the request included the &#39;after_id&#39; param. */
     public var lastId: Int?
+    public var limit: Int?
 
-    public init(totalRecords: Int?, currentOffset: Int?, nextOffset: Int?, lastId: Int?) {
+    public init(totalRecords: Int?, currentOffset: Int?, nextOffset: Int?, lastId: Int?, limit: Int?) {
         self.totalRecords = totalRecords
         self.currentOffset = currentOffset
         self.nextOffset = nextOffset
         self.lastId = lastId
+        self.limit = limit
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
@@ -29,6 +31,7 @@ public struct Pagination: Codable {
         case currentOffset = "current_offset"
         case nextOffset = "next_offset"
         case lastId = "last_id"
+        case limit
     }
 
 }

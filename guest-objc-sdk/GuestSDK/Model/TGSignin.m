@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"mobileNumber": @"mobile_number", @"signinWatchlist": @"signin_watchlist", @"hosts": @"hosts", @"signinTimestamp": @"signin_timestamp", @"signinPhotoUrl": @"signin_photo_url", @"signedOutTimestamp": @"signed_out_timestamp", @"locationName": @"location_name", @"lastName": @"last_name", @"isAcknowledged": @"is_acknowledged", @"isAccountedFor": @"is_accounted_for", @"firstName": @"first_name", @"email": @"email", @"company": @"company" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"mobileNumber": @"mobile_number", @"signinWatchlist": @"signin_watchlist", @"hosts": @"hosts", @"signinTimestamp": @"signin_timestamp", @"signinPhotoUrl": @"signin_photo_url", @"signedOutTimestamp": @"signed_out_timestamp", @"locationName": @"location_name", @"lastName": @"last_name", @"isAcknowledged": @"is_acknowledged", @"isAccountedFor": @"is_accounted_for", @"firstName": @"first_name", @"email": @"email", @"company": @"company", @"registration": @"registration" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"mobileNumber", @"signinWatchlist", @"signinTimestamp", @"signinPhotoUrl", @"signedOutTimestamp", @"locationName", @"lastName", @"isAcknowledged", @"isAccountedFor", @"firstName", @"email", @"company"];
+  NSArray *optionalProperties = @[@"mobileNumber", @"signinWatchlist", @"signinTimestamp", @"signinPhotoUrl", @"signedOutTimestamp", @"locationName", @"lastName", @"isAcknowledged", @"isAccountedFor", @"firstName", @"email", @"company", @"registration"];
   return [optionalProperties containsObject:propertyName];
 }
 

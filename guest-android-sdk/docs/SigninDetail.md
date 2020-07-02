@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **firstName** | **String** |  |  [optional]
 **email** | **String** |  |  [optional]
 **company** | **String** |  |  [optional]
+**registration** | [**Registration**](Registration.md) |  |  [optional]
 
 
 

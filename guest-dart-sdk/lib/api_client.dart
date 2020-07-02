@@ -63,8 +63,6 @@ class ApiClient {
           return GuestAlertDetail.fromJson(value);
         case 'GuestAlertSigninSelectors':
           return GuestAlertSigninSelectors.fromJson(value);
-        case 'GuestResponse':
-          return GuestResponse.fromJson(value);
         case 'Host':
           return Host.fromJson(value);
         case 'HostBatchCreateParams':

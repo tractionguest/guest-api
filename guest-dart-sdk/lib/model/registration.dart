@@ -7,8 +7,6 @@ class Registration {
   Visitor visitor = null;
   
   Invite invite = null;
-  /* Response given by the guest */
-  List<GuestResponse> guestResponses = [];
   /* URL of the uploaded photo */
   String photoUrl = null;
   /* Company's name */
@@ -19,11 +17,13 @@ class Registration {
   String name = null;
   /* Datetime when registration was created */
   DateTime createdAt = null;
+  
+  Signin signin = null;
   Registration();
 
   @override
   String toString() {
-    return 'Registration[id=$id, visitor=$visitor, invite=$invite, guestResponses=$guestResponses, photoUrl=$photoUrl, company=$company, email=$email, name=$name, createdAt=$createdAt, ]';
+    return 'Registration[id=$id, visitor=$visitor, invite=$invite, photoUrl=$photoUrl, company=$company, email=$email, name=$name, createdAt=$createdAt, signin=$signin, ]';
   }
 
   Registration.fromJson(Map<String, dynamic> json) {
@@ -42,11 +42,6 @@ class Registration {
       invite = null;
     } else {
       invite = new Invite.fromJson(json['invite']);
-    }
-    if (json['guest_responses'] == null) {
-      guestResponses = null;
-    } else {
-      guestResponses = GuestResponse.listFromJson(json['guest_responses']);
     }
     if (json['photo_url'] == null) {
       photoUrl = null;
@@ -73,6 +68,11 @@ class Registration {
     } else {
       createdAt = DateTime.parse(json['created_at']);
     }
+    if (json['signin'] == null) {
+      signin = null;
+    } else {
+      signin = new Signin.fromJson(json['signin']);
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -83,8 +83,6 @@ class Registration {
       json['visitor'] = visitor;
     if (invite != null)
       json['invite'] = invite;
-    if (guestResponses != null)
-      json['guest_responses'] = guestResponses;
     if (photoUrl != null)
       json['photo_url'] = photoUrl;
     if (company != null)
@@ -95,6 +93,8 @@ class Registration {
       json['name'] = name;
     if (createdAt != null)
       json['created_at'] = createdAt == null ? null : createdAt.toUtc().toIso8601String();
+    if (signin != null)
+      json['signin'] = signin;
     return json;
   }
 

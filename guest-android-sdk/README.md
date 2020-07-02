@@ -126,7 +126,6 @@ Class | Method | HTTP request | Description
  - [GuestAlertCreateParams](docs/GuestAlertCreateParams.md)
  - [GuestAlertDetail](docs/GuestAlertDetail.md)
  - [GuestAlertSigninSelectors](docs/GuestAlertSigninSelectors.md)
- - [GuestResponse](docs/GuestResponse.md)
  - [Host](docs/Host.md)
  - [HostBatchCreateParams](docs/HostBatchCreateParams.md)
  - [HostCreateParams](docs/HostCreateParams.md)

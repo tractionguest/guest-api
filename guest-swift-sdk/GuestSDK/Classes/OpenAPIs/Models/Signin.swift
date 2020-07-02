@@ -26,8 +26,9 @@ public struct Signin: Codable {
     public var firstName: String?
     public var email: String?
     public var company: String?
+    public var registration: Registration?
 
-    public init(id: Int, mobileNumber: String?, signinWatchlist: SigninWatchlist?, hosts: [Host], signinTimestamp: Date?, signinPhotoUrl: String?, signedOutTimestamp: Date?, locationName: String?, lastName: String?, isAcknowledged: Bool?, isAccountedFor: Bool?, firstName: String?, email: String?, company: String?) {
+    public init(id: Int, mobileNumber: String?, signinWatchlist: SigninWatchlist?, hosts: [Host], signinTimestamp: Date?, signinPhotoUrl: String?, signedOutTimestamp: Date?, locationName: String?, lastName: String?, isAcknowledged: Bool?, isAccountedFor: Bool?, firstName: String?, email: String?, company: String?, registration: Registration?) {
         self.id = id
         self.mobileNumber = mobileNumber
         self.signinWatchlist = signinWatchlist
@@ -42,6 +43,7 @@ public struct Signin: Codable {
         self.firstName = firstName
         self.email = email
         self.company = company
+        self.registration = registration
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
@@ -59,6 +61,7 @@ public struct Signin: Codable {
         case firstName = "first_name"
         case email
         case company
+        case registration
     }
 
 }

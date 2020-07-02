@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"documents": @"documents", @"signinWatchlist": @"signin_watchlist", @"hosts": @"hosts", @"signinData": @"signin_data", @"signinAcknowledgement": @"signin_acknowledgement", @"note": @"note", @"isSignedOut": @"is_signed_out", @"signinTimestamp": @"signin_timestamp", @"signinPhotoUrl": @"signin_photo_url", @"signedOutTimestamp": @"signed_out_timestamp", @"mobileNumber": @"mobile_number", @"locationName": @"location_name", @"lastName": @"last_name", @"isAcknowledged": @"is_acknowledged", @"isAccountedFor": @"is_accounted_for", @"firstName": @"first_name", @"email": @"email", @"company": @"company" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"documents": @"documents", @"signinWatchlist": @"signin_watchlist", @"hosts": @"hosts", @"signinData": @"signin_data", @"signinAcknowledgement": @"signin_acknowledgement", @"note": @"note", @"isSignedOut": @"is_signed_out", @"signinTimestamp": @"signin_timestamp", @"signinPhotoUrl": @"signin_photo_url", @"signedOutTimestamp": @"signed_out_timestamp", @"mobileNumber": @"mobile_number", @"locationName": @"location_name", @"lastName": @"last_name", @"isAcknowledged": @"is_acknowledged", @"isAccountedFor": @"is_accounted_for", @"firstName": @"first_name", @"email": @"email", @"company": @"company", @"registration": @"registration" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"documents", @"signinWatchlist", @"hosts", @"signinData", @"signinAcknowledgement", @"note", @"isSignedOut", @"signinTimestamp", @"signinPhotoUrl", @"signedOutTimestamp", @"mobileNumber", @"locationName", @"lastName", @"isAcknowledged", @"isAccountedFor", @"firstName", @"email", @"company"];
+  NSArray *optionalProperties = @[@"documents", @"signinWatchlist", @"hosts", @"signinData", @"signinAcknowledgement", @"note", @"isSignedOut", @"signinTimestamp", @"signinPhotoUrl", @"signedOutTimestamp", @"mobileNumber", @"locationName", @"lastName", @"isAcknowledged", @"isAccountedFor", @"firstName", @"email", @"company", @"registration"];
   return [optionalProperties containsObject:propertyName];
 }
 

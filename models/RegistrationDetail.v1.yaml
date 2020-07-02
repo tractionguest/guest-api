@@ -1,4 +1,4 @@
-title: Registration
+title: RegistrationDetail
 type: object
 x-examples:
   default:
@@ -88,6 +88,11 @@ properties:
     $ref: ./Visitor.v1.yaml
   invite:
     $ref: ./Invite.v1.yaml
+  guest_responses:
+    type: array
+    description: Response given by the guest
+    items:
+      $ref: ./GuestResponse.v1.yaml
   photo_url:
     description: URL of the uploaded photo
     type: string

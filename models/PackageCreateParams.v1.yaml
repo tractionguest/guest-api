@@ -1,0 +1,13 @@
+title: PackageCreateParams.v1
+type: object
+description: ''
+properties:
+  image:
+    description: Image file to be processed. Common file formats such as JPEG and PNG are supported.
+    type: file
+  location_id:
+    type: integer
+    description: The delivery location for the package.
+required:
+  - image
+  - location_id

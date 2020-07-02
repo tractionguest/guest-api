@@ -1,0 +1,7 @@
+title: PackageList.v1
+type: object
+properties:
+  packages:
+    type: array
+    items:
+      $ref: ./Package.v1.yaml

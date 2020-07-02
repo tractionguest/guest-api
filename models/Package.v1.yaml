@@ -1,0 +1,24 @@
+title: Package.v1
+type: object
+x-examples:
+  example-1: {}
+description: ''
+properties:
+  id:
+    type: integer
+  host:
+    $ref: ./Host.v1.yaml
+  location:
+    $ref: ./Location.v1.yaml
+  package_state:
+    type: string
+  carrier_name:
+    type: string
+  picked_up_at:
+    type: string
+  created_at:
+    type: string
+required:
+  - id
+  - location
+  - created_at

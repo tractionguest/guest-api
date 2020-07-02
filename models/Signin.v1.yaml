@@ -308,6 +308,7 @@ x-examples:
           colour: some text
           last_name: some text
           first_name: some text
+  example-2: {}
 properties:
   id:
     type: integer
@@ -346,3 +347,4 @@ properties:
 required:
   - id
   - hosts
+description: ''

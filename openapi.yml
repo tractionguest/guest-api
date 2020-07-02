@@ -3394,6 +3394,55 @@ paths:
           in: query
           name: created_after
           description: Restricts results to only those that were created after the provided date
+  /packages:
+    get:
+      summary: Get packages
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: ./models/PackageList.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      operationId: getPackages
+      description: Gets a list of `Package` entities.
+      tags:
+        - Package
+    post:
+      summary: Create package
+      operationId: createPackage
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Package.v1.yaml
+        '400':
+          description: Bad Request
+      description: Creates a `Package` entity by extracting information about the recipient and carrier from the given image file.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: ./models/PackageCreateParams.v1.yaml
+        description: ''
+      parameters: []
+      tags:
+        - Package
 components:
   parameters:
     idempotencyKey:
@@ -3407,6 +3456,7 @@ components:
     TractionGuestAuth:
       openIdConnectUrl: 'https://tractionguest.com/.well-known/openid-configuration'
       type: openIdConnect
+  schemas: {}
 security:
   - TractionGuestAuth:
       - all

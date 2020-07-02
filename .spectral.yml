@@ -11,16 +11,6 @@ rules:
       function: pattern
       functionOptions:
         notMatch: "[A-Z-]"
-  enforce-content-format:
-    description: Examples should be in application/json
-    message: "You can only use the application/json format"
-    type: style
-    given: "$..content.*~"
-    severity: error
-    then:
-      function: pattern
-      functionOptions:
-        match: "json$"
   validate-operation-ids:
     description: Ensures consistency of operationId values
     message: "All operationIds should be in lowerCamelCase"

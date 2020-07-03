@@ -1,6 +1,8 @@
 title: PackageCreateParams.v1
 type: object
 description: ''
+x-tags:
+  - Packages
 properties:
   location_id:
     type: integer
@@ -10,3 +12,4 @@ properties:
     format: binary
 required:
   - location_id
+  - image

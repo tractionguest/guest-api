@@ -3438,10 +3438,10 @@ paths:
       description: Creates a `Package` entity by extracting information about the recipient and carrier from the given image file.
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
               $ref: ./models/PackageCreateParams.v1.yaml
-        description: ''
+        description: Parameters for creating a package
 components:
   parameters:
     idempotencyKey:
@@ -3492,7 +3492,7 @@ tags:
   - name: Locations
     description: 'All endpoints relating to the Location model, aka. DeviceConfigurations'
   - name: Packages
-    description: 'All endpoints relating to the Packages model'
+    description: All endpoints relating to the Packages model
   - name: Parking
     description: 'All endpoint related to the parking feature, including the ParkingLot and ParkingStallRange models'
   - name: Signins

@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLocations**](LocationsAPI.md#getlocations) | **GET** /locations | List All Locations
+[**getLocations**](LocationsAPI.md#getlocations) | **GET** /locations | List all Locations
 
 
 # **getLocations**
@@ -12,7 +12,7 @@ Method | HTTP request | Description
     open class func getLocations(limit: Int? = nil, offset: Int? = nil, query: String? = nil, include: String? = nil, completion: @escaping (_ data: PaginatedLocationsList?, _ error: Error?) -> Void)
 ```
 
-List All Locations
+List all Locations
 
 Gets a list of all `Location` entities.
 
@@ -26,7 +26,7 @@ let offset = 987 // Int | Offsets the results to a specified number, defaults to
 let query = "query_example" // String | Queries by Location `name` (optional)
 let include = "include_example" // String | A list of comma-separated related models to include (optional)
 
-// List All Locations
+// List all Locations
 LocationsAPI.getLocations(limit: limit, offset: offset, query: query, include: include) { (response, error) in
     guard error == nil else {
         print(error)

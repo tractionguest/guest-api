@@ -5,8 +5,8 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createHost**](TGHostsApi.md#createhost) | **POST** /hosts | Create a Host
-[**createHosts**](TGHostsApi.md#createhosts) | **POST** /hosts/batch | Create Multiple Hosts
-[**getHosts**](TGHostsApi.md#gethosts) | **GET** /hosts | List All Hosts
+[**createHosts**](TGHostsApi.md#createhosts) | **POST** /hosts/batch | Create multiple Hosts
+[**getHosts**](TGHostsApi.md#gethosts) | **GET** /hosts | List all Hosts
 
 
 # **createHost**
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGBatchJob* output, NSError* error)) handler;
 ```
 
-Create Multiple Hosts
+Create multiple Hosts
 
 Creates a batch of `Host` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
 
@@ -86,7 +86,7 @@ TGHostBatchCreateParams* hostBatchCreateParams = [[TGHostBatchCreateParams alloc
 
 TGHostsApi*apiInstance = [[TGHostsApi alloc] init];
 
-// Create Multiple Hosts
+// Create multiple Hosts
 [apiInstance createHostsWithIdempotencyKey:idempotencyKey
               hostBatchCreateParams:hostBatchCreateParams
           completionHandler: ^(TGBatchJob* output, NSError* error) {
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGPaginatedHostsList* output, NSError* error)) handler;
 ```
 
-List All Hosts
+List all Hosts
 
 Gets a list of all `Host` entities.
 
@@ -146,7 +146,7 @@ NSString* include = @"include_example"; // A list of comma-separated related mod
 
 TGHostsApi*apiInstance = [[TGHostsApi alloc] init];
 
-// List All Hosts
+// List all Hosts
 [apiInstance getHostsWithQuery:query
               limit:limit
               offset:offset

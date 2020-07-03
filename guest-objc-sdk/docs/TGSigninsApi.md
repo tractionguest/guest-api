@@ -4,10 +4,10 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createSignin**](TGSigninsApi.md#createsignin) | **POST** /signins | 
+[**createSignin**](TGSigninsApi.md#createsignin) | **POST** /signins | Create Signin
 [**getSignin**](TGSigninsApi.md#getsignin) | **GET** /signins/{signin_id} | Get a Signin
-[**getSignins**](TGSigninsApi.md#getsignins) | **GET** /signins | List All Signins
-[**updateSignin**](TGSigninsApi.md#updatesignin) | **PUT** /signins/{signin_id} | Update a Signin attribute
+[**getSignins**](TGSigninsApi.md#getsignins) | **GET** /signins | List all Signins
+[**updateSignin**](TGSigninsApi.md#updatesignin) | **PUT** /signins/{signin_id} | Update a Signin
 
 
 # **createSignin**
@@ -16,7 +16,7 @@ Method | HTTP request | Description
         completionHandler: (void (^)(TGSignin* output, NSError* error)) handler;
 ```
 
-
+Create Signin
 
 Creates a Signin
 
@@ -29,6 +29,7 @@ TGSigninCreateParams* signinCreateParams = {"guest_email_template_id":47,"host_e
 
 TGSigninsApi*apiInstance = [[TGSigninsApi alloc] init];
 
+// Create Signin
 [apiInstance createSigninWithSigninCreateParams:signinCreateParams
           completionHandler: ^(TGSignin* output, NSError* error) {
                         if (output) {
@@ -133,7 +134,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGPaginatedSigninsList* output, NSError* error)) handler;
 ```
 
-List All Signins
+List all Signins
 
 Gets a list of all `Signin` entities.
 
@@ -156,7 +157,7 @@ NSString* include = @"include_example"; // A list of comma-separated related mod
 
 TGSigninsApi*apiInstance = [[TGSigninsApi alloc] init];
 
-// List All Signins
+// List all Signins
 [apiInstance getSigninsWithLocationIds:locationIds
               withColours:withColours
               query:query
@@ -217,7 +218,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGSigninDetail* output, NSError* error)) handler;
 ```
 
-Update a Signin attribute
+Update a Signin
 
 Update, acknowledge, or `Signout` a `Signin`
 
@@ -232,7 +233,7 @@ NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency
 
 TGSigninsApi*apiInstance = [[TGSigninsApi alloc] init];
 
-// Update a Signin attribute
+// Update a Signin
 [apiInstance updateSigninWithSigninId:signinId
               signinUpdateParams:signinUpdateParams
               idempotencyKey:idempotencyKey

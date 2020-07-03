@@ -11,7 +11,7 @@ import Foundation
 
 open class LocationsAPI {
     /**
-     List All Locations
+     List all Locations
      
      - parameter limit: (query) Limits the results to a specified number, defaults to 50 (optional)
      - parameter offset: (query) Offsets the results to a specified number, defaults to 0 (optional)
@@ -32,7 +32,7 @@ open class LocationsAPI {
     }
 
     /**
-     List All Locations
+     List all Locations
      - GET /locations
      - Gets a list of all `Location` entities.
      - :

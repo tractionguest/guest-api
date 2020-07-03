@@ -7,7 +7,7 @@ class LocationsApi {
 
   LocationsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// List All Locations
+  /// List all Locations
   ///
   /// Gets a list of all &#x60;Location&#x60; entities.
   Future<PaginatedLocationsList> getLocations({ int limit, int offset, String query, String include }) async {

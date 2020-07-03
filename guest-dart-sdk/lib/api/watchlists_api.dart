@@ -7,7 +7,7 @@ class WatchlistsApi {
 
   WatchlistsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// Create watchlist
+  /// Create Watchlist
   ///
   /// Create a new &#x60;Watchlist&#x60; record. Please note, every action taken against this endpoint is recorded in the audit log.
   Future<Watchlist> createWatchlist(WatchlistCreateParams watchlistCreateParams, { String idempotencyKey }) async {
@@ -58,7 +58,7 @@ class WatchlistsApi {
       return null;
     }
   }
-  /// Create Multiple Watchlists
+  /// Create multiple Watchlists
   ///
   /// Creates a batch of &#x60;Watchlist&#x60; records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
   Future<BatchJob> createWatchlists({ String idempotencyKey, WatchlistBatchCreateParams watchlistBatchCreateParams }) async {
@@ -209,7 +209,7 @@ class WatchlistsApi {
       return null;
     }
   }
-  /// List All Watchlists
+  /// List all Watchlists
   ///
   /// Gets a list of all &#x60;Watchlist&#x60; entities.
   Future<PaginatedWatchlistList> getWatchlists({ int limit, int offset, String query, String withColours, String include }) async {
@@ -271,7 +271,7 @@ class WatchlistsApi {
       return null;
     }
   }
-  /// Update a watchlist record
+  /// Update a Watchlist
   ///
   /// Update an existing &#x60;Watchlist&#x60; record. Every operation against this endpoint is recorded in the audit log.
   Future<Watchlist> updateWatchlist(String watchlistId, WatchlistCreateParams watchlistCreateParams, { String idempotencyKey }) async {

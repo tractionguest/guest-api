@@ -57,7 +57,7 @@ class AuditLogsApi {
       return null;
     }
   }
-  /// List All AuditLogs
+  /// List all AuditLogs
   ///
   /// Gets a list of all &#x60;AuditLog&#x60; entities.
   Future<PaginatedAuditLogsList> getAuditLogs({ int limit, int offset, String sortBy, int auditableId, String auditableType, String actionType, int userId }) async {

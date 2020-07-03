@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createGuestAlert**](GuestAlertsApi.md#createGuestAlert) | **POST** /guest_alerts | Create Guest Alert
+[**createGuestAlert**](GuestAlertsApi.md#createGuestAlert) | **POST** /guest_alerts | Create GuestAlert
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > GuestAlertDetail createGuestAlert(guestAlertCreateParams)
 
-Create Guest Alert
+Create GuestAlert
 
 Enqueues guest alerts via specified channels
 

@@ -120,7 +120,7 @@ NSInteger kTGAuditLogsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// List All AuditLogs
+/// List all AuditLogs
 /// Gets a list of all `AuditLog` entities.
 ///  @param limit Limits the results to a specified number, defaults to 50 (optional)
 ///

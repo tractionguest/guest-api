@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLocations**](LocationsApi.md#getLocations) | **GET** /locations | List All Locations
+[**getLocations**](LocationsApi.md#getLocations) | **GET** /locations | List all Locations
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > PaginatedLocationsList getLocations(limit, offset, query, include)
 
-List All Locations
+List all Locations
 
 Gets a list of all &#x60;Location&#x60; entities.
 

@@ -52,7 +52,7 @@ NSInteger kTGGuestAlertsApiMissingParamErrorCode = 234513;
 #pragma mark - Api Methods
 
 ///
-/// Create Guest Alert
+/// Create GuestAlert
 /// Enqueues guest alerts via specified channels
 ///  @param guestAlertCreateParams  
 ///

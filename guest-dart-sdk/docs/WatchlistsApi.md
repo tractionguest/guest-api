@@ -9,18 +9,18 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createWatchlist**](WatchlistsApi.md#createWatchlist) | **POST** /watchlists | Create watchlist
-[**createWatchlists**](WatchlistsApi.md#createWatchlists) | **POST** /watchlists/batch | Create Multiple Watchlists
+[**createWatchlist**](WatchlistsApi.md#createWatchlist) | **POST** /watchlists | Create Watchlist
+[**createWatchlists**](WatchlistsApi.md#createWatchlists) | **POST** /watchlists/batch | Create multiple Watchlists
 [**deleteWatchlist**](WatchlistsApi.md#deleteWatchlist) | **DELETE** /watchlists/{watchlist_id} | Deletes a Watchlist
 [**getWatchlist**](WatchlistsApi.md#getWatchlist) | **GET** /watchlists/{watchlist_id} | Get a Watchlist
-[**getWatchlists**](WatchlistsApi.md#getWatchlists) | **GET** /watchlists | List All Watchlists
-[**updateWatchlist**](WatchlistsApi.md#updateWatchlist) | **PUT** /watchlists/{watchlist_id} | Update a watchlist record
+[**getWatchlists**](WatchlistsApi.md#getWatchlists) | **GET** /watchlists | List all Watchlists
+[**updateWatchlist**](WatchlistsApi.md#updateWatchlist) | **PUT** /watchlists/{watchlist_id} | Update a Watchlist
 
 
 # **createWatchlist**
 > Watchlist createWatchlist(watchlistCreateParams, idempotencyKey)
 
-Create watchlist
+Create Watchlist
 
 Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log.
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 # **createWatchlists**
 > BatchJob createWatchlists(idempotencyKey, watchlistBatchCreateParams)
 
-Create Multiple Watchlists
+Create multiple Watchlists
 
 Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
 
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 # **getWatchlists**
 > PaginatedWatchlistList getWatchlists(limit, offset, query, withColours, include)
 
-List All Watchlists
+List all Watchlists
 
 Gets a list of all `Watchlist` entities.
 
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 # **updateWatchlist**
 > Watchlist updateWatchlist(watchlistId, watchlistCreateParams, idempotencyKey)
 
-Update a watchlist record
+Update a Watchlist
 
 Update an existing `Watchlist` record. Every operation against this endpoint is recorded in the audit log.
 

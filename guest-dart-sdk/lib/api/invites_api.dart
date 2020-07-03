@@ -7,7 +7,7 @@ class InvitesApi {
 
   InvitesApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// Creates an Invite
+  /// Create an Invite
   ///
   /// Creates a new &#x60;Invite&#x60; for a specific &#x60;Location&#x60;.
   Future<InviteDetail> createLocationInvite(String locationId, InviteCreateParams inviteCreateParams, { String idempotencyKey }) async {
@@ -111,7 +111,7 @@ class InvitesApi {
       return;
     }
   }
-  /// Get a Invite
+  /// Get an Invite
   ///
   /// Gets the details of a single instance of a &#x60;Invite&#x60;.
   Future<InviteDetail> getInvite(String inviteId, { String include }) async {
@@ -164,7 +164,7 @@ class InvitesApi {
       return null;
     }
   }
-  /// List All Invites
+  /// List all Invites
   ///
   /// Gets a list of all &#x60;Invite&#x60; entities.
   Future<PaginatedInvitesList> getInvites({ int limit, int offset, String query, String withColours, String locationIds, String sortBy, DateTime startsBefore, DateTime startsAfter, String include, bool isApproved, DateTime activeAfter, DateTime activeBefore }) async {
@@ -247,7 +247,7 @@ class InvitesApi {
       return null;
     }
   }
-  /// Update a Invite
+  /// Update an Invite
   ///
   /// Updates an existing &#x60;Invite&#x60;.
   Future<InviteDetail> updateInvite(String inviteId, InviteUpdateParams inviteUpdateParams, { String idempotencyKey }) async {

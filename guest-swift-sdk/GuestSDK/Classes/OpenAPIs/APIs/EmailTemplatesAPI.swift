@@ -11,7 +11,7 @@ import Foundation
 
 open class EmailTemplatesAPI {
     /**
-     List All EmailTemplates
+     List all EmailTemplates
      
      - parameter limit: (query) Limits the results to a specified number, defaults to 50 (optional)
      - parameter offset: (query) Offsets the results to a specified number, defaults to 0 (optional)
@@ -31,7 +31,7 @@ open class EmailTemplatesAPI {
     }
 
     /**
-     List All EmailTemplates
+     List all EmailTemplates
      - GET /email_templates
      - Gets a list of all `EmailTemplate` entities.
      - :

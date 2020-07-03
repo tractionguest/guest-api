@@ -5,8 +5,8 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createHost**](HostsAPI.md#createhost) | **POST** /hosts | Create a Host
-[**createHosts**](HostsAPI.md#createhosts) | **POST** /hosts/batch | Create Multiple Hosts
-[**getHosts**](HostsAPI.md#gethosts) | **GET** /hosts | List All Hosts
+[**createHosts**](HostsAPI.md#createhosts) | **POST** /hosts/batch | Create multiple Hosts
+[**getHosts**](HostsAPI.md#gethosts) | **GET** /hosts | List all Hosts
 
 
 # **createHost**
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
     open class func createHosts(idempotencyKey: String? = nil, hostBatchCreateParams: HostBatchCreateParams? = nil, completion: @escaping (_ data: BatchJob?, _ error: Error?) -> Void)
 ```
 
-Create Multiple Hosts
+Create multiple Hosts
 
 Creates a batch of `Host` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
 
@@ -78,7 +78,7 @@ import GuestSDK
 let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 let hostBatchCreateParams = HostBatchCreateParams(hosts: [HostCreateParams(email: "email_example", firstName: "firstName_example", lastName: "lastName_example", profilePicUrl: "profilePicUrl_example", department: "department_example", mobileNumber: "mobileNumber_example")]) // HostBatchCreateParams |  (optional)
 
-// Create Multiple Hosts
+// Create multiple Hosts
 HostsAPI.createHosts(idempotencyKey: idempotencyKey, hostBatchCreateParams: hostBatchCreateParams) { (response, error) in
     guard error == nil else {
         print(error)
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
     open class func getHosts(query: String? = nil, limit: Int? = nil, offset: Int? = nil, include: String? = nil, completion: @escaping (_ data: PaginatedHostsList?, _ error: Error?) -> Void)
 ```
 
-List All Hosts
+List all Hosts
 
 Gets a list of all `Host` entities.
 
@@ -132,7 +132,7 @@ let limit = 987 // Int | Limits the results to a specified number, defaults to 5
 let offset = 987 // Int | Offsets the results to a specified number, defaults to 0 (optional)
 let include = "include_example" // String | A list of comma-separated related models to include (optional)
 
-// List All Hosts
+// List all Hosts
 HostsAPI.getHosts(query: query, limit: limit, offset: offset, include: include) { (response, error) in
     guard error == nil else {
         print(error)

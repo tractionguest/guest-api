@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createGuestAlert**](GuestAlertsAPI.md#createguestalert) | **POST** /guest_alerts | Create Guest Alert
+[**createGuestAlert**](GuestAlertsAPI.md#createguestalert) | **POST** /guest_alerts | Create GuestAlert
 
 
 # **createGuestAlert**
@@ -12,7 +12,7 @@ Method | HTTP request | Description
     open class func createGuestAlert(guestAlertCreateParams: GuestAlertCreateParams, completion: @escaping (_ data: GuestAlertDetail?, _ error: Error?) -> Void)
 ```
 
-Create Guest Alert
+Create GuestAlert
 
 Enqueues guest alerts via specified channels
 
@@ -23,7 +23,7 @@ import GuestSDK
 
 let guestAlertCreateParams = GuestAlertCreateParams(signinSelectors: GuestAlertSigninSelectors(isSignedOut: false, signinIds: [123], locationIds: [123]), channels: ["channels_example"], message: "message_example") // GuestAlertCreateParams | 
 
-// Create Guest Alert
+// Create GuestAlert
 GuestAlertsAPI.createGuestAlert(guestAlertCreateParams: guestAlertCreateParams) { (response, error) in
     guard error == nil else {
         print(error)

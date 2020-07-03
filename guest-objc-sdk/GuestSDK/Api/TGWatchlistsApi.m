@@ -55,7 +55,7 @@ NSInteger kTGWatchlistsApiMissingParamErrorCode = 234513;
 #pragma mark - Api Methods
 
 ///
-/// Create watchlist
+/// Create Watchlist
 /// Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log.
 ///  @param watchlistCreateParams The new `Watchlist` to create 
 ///
@@ -127,7 +127,7 @@ NSInteger kTGWatchlistsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// Create Multiple Watchlists
+/// Create multiple Watchlists
 /// Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
 ///  @param idempotencyKey An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 ///
@@ -336,7 +336,7 @@ NSInteger kTGWatchlistsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// List All Watchlists
+/// List all Watchlists
 /// Gets a list of all `Watchlist` entities.
 ///  @param limit Limits the results to a specified number, defaults to 50 (optional)
 ///
@@ -417,7 +417,7 @@ NSInteger kTGWatchlistsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// Update a watchlist record
+/// Update a Watchlist
 /// Update an existing `Watchlist` record. Every operation against this endpoint is recorded in the audit log.
 ///  @param watchlistId  
 ///

@@ -54,7 +54,7 @@ open class AuditLogsAPI {
     }
 
     /**
-     List All AuditLogs
+     List all AuditLogs
      
      - parameter limit: (query) Limits the results to a specified number, defaults to 50 (optional)
      - parameter offset: (query) Offsets the results to a specified number, defaults to 0 (optional)
@@ -78,7 +78,7 @@ open class AuditLogsAPI {
     }
 
     /**
-     List All AuditLogs
+     List all AuditLogs
      - GET /audit_logs
      - Gets a list of all `AuditLog` entities.
      - :

@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getEmailTemplates**](EmailTemplatesAPI.md#getemailtemplates) | **GET** /email_templates | List All EmailTemplates
+[**getEmailTemplates**](EmailTemplatesAPI.md#getemailtemplates) | **GET** /email_templates | List all EmailTemplates
 
 
 # **getEmailTemplates**
@@ -12,7 +12,7 @@ Method | HTTP request | Description
     open class func getEmailTemplates(limit: Int? = nil, offset: Int? = nil, include: String? = nil, completion: @escaping (_ data: PaginatedEmailTemplatesList?, _ error: Error?) -> Void)
 ```
 
-List All EmailTemplates
+List all EmailTemplates
 
 Gets a list of all `EmailTemplate` entities.
 
@@ -25,7 +25,7 @@ let limit = 987 // Int | Limits the results to a specified number, defaults to 5
 let offset = 987 // Int | Offsets the results to a specified number, defaults to 0 (optional)
 let include = "include_example" // String | A list of comma-separated related models to include (optional)
 
-// List All EmailTemplates
+// List all EmailTemplates
 EmailTemplatesAPI.getEmailTemplates(limit: limit, offset: offset, include: include) { (response, error) in
     guard error == nil else {
         print(error)

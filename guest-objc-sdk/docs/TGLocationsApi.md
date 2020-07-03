@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLocations**](TGLocationsApi.md#getlocations) | **GET** /locations | List All Locations
+[**getLocations**](TGLocationsApi.md#getlocations) | **GET** /locations | List all Locations
 
 
 # **getLocations**
@@ -16,7 +16,7 @@ Method | HTTP request | Description
         completionHandler: (void (^)(TGPaginatedLocationsList* output, NSError* error)) handler;
 ```
 
-List All Locations
+List all Locations
 
 Gets a list of all `Location` entities.
 
@@ -32,7 +32,7 @@ NSString* include = @"include_example"; // A list of comma-separated related mod
 
 TGLocationsApi*apiInstance = [[TGLocationsApi alloc] init];
 
-// List All Locations
+// List all Locations
 [apiInstance getLocationsWithLimit:limit
               offset:offset
               query:query

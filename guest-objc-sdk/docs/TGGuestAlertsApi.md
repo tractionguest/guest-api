@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createGuestAlert**](TGGuestAlertsApi.md#createguestalert) | **POST** /guest_alerts | Create Guest Alert
+[**createGuestAlert**](TGGuestAlertsApi.md#createguestalert) | **POST** /guest_alerts | Create GuestAlert
 
 
 # **createGuestAlert**
@@ -13,7 +13,7 @@ Method | HTTP request | Description
         completionHandler: (void (^)(TGGuestAlertDetail* output, NSError* error)) handler;
 ```
 
-Create Guest Alert
+Create GuestAlert
 
 Enqueues guest alerts via specified channels
 
@@ -26,7 +26,7 @@ TGGuestAlertCreateParams* guestAlertCreateParams = {"message":"some text","chann
 
 TGGuestAlertsApi*apiInstance = [[TGGuestAlertsApi alloc] init];
 
-// Create Guest Alert
+// Create GuestAlert
 [apiInstance createGuestAlertWithGuestAlertCreateParams:guestAlertCreateParams
           completionHandler: ^(TGGuestAlertDetail* output, NSError* error) {
                         if (output) {

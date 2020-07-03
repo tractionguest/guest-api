@@ -51,7 +51,7 @@ NSInteger kTGLocationsApiMissingParamErrorCode = 234513;
 #pragma mark - Api Methods
 
 ///
-/// List All Locations
+/// List all Locations
 /// Gets a list of all `Location` entities.
 ///  @param limit Limits the results to a specified number, defaults to 50 (optional)
 ///

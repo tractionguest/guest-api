@@ -4,12 +4,12 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createWatchlist**](TGWatchlistsApi.md#createwatchlist) | **POST** /watchlists | Create watchlist
-[**createWatchlists**](TGWatchlistsApi.md#createwatchlists) | **POST** /watchlists/batch | Create Multiple Watchlists
+[**createWatchlist**](TGWatchlistsApi.md#createwatchlist) | **POST** /watchlists | Create Watchlist
+[**createWatchlists**](TGWatchlistsApi.md#createwatchlists) | **POST** /watchlists/batch | Create multiple Watchlists
 [**deleteWatchlist**](TGWatchlistsApi.md#deletewatchlist) | **DELETE** /watchlists/{watchlist_id} | Deletes a Watchlist
 [**getWatchlist**](TGWatchlistsApi.md#getwatchlist) | **GET** /watchlists/{watchlist_id} | Get a Watchlist
-[**getWatchlists**](TGWatchlistsApi.md#getwatchlists) | **GET** /watchlists | List All Watchlists
-[**updateWatchlist**](TGWatchlistsApi.md#updatewatchlist) | **PUT** /watchlists/{watchlist_id} | Update a watchlist record
+[**getWatchlists**](TGWatchlistsApi.md#getwatchlists) | **GET** /watchlists | List all Watchlists
+[**updateWatchlist**](TGWatchlistsApi.md#updatewatchlist) | **PUT** /watchlists/{watchlist_id} | Update a Watchlist
 
 
 # **createWatchlist**
@@ -19,7 +19,7 @@ Method | HTTP request | Description
         completionHandler: (void (^)(TGWatchlist* output, NSError* error)) handler;
 ```
 
-Create watchlist
+Create Watchlist
 
 Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log.
 
@@ -33,7 +33,7 @@ NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency
 
 TGWatchlistsApi*apiInstance = [[TGWatchlistsApi alloc] init];
 
-// Create watchlist
+// Create Watchlist
 [apiInstance createWatchlistWithWatchlistCreateParams:watchlistCreateParams
               idempotencyKey:idempotencyKey
           completionHandler: ^(TGWatchlist* output, NSError* error) {
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGBatchJob* output, NSError* error)) handler;
 ```
 
-Create Multiple Watchlists
+Create multiple Watchlists
 
 Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
 
@@ -89,7 +89,7 @@ TGWatchlistBatchCreateParams* watchlistBatchCreateParams = [[TGWatchlistBatchCre
 
 TGWatchlistsApi*apiInstance = [[TGWatchlistsApi alloc] init];
 
-// Create Multiple Watchlists
+// Create multiple Watchlists
 [apiInstance createWatchlistsWithIdempotencyKey:idempotencyKey
               watchlistBatchCreateParams:watchlistBatchCreateParams
           completionHandler: ^(TGBatchJob* output, NSError* error) {
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGPaginatedWatchlistList* output, NSError* error)) handler;
 ```
 
-List All Watchlists
+List all Watchlists
 
 Gets a list of all `Watchlist` entities.
 
@@ -260,7 +260,7 @@ NSString* include = @"include_example"; // A list of comma-separated related mod
 
 TGWatchlistsApi*apiInstance = [[TGWatchlistsApi alloc] init];
 
-// List All Watchlists
+// List all Watchlists
 [apiInstance getWatchlistsWithLimit:limit
               offset:offset
               query:query
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGWatchlist* output, NSError* error)) handler;
 ```
 
-Update a watchlist record
+Update a Watchlist
 
 Update an existing `Watchlist` record. Every operation against this endpoint is recorded in the audit log.
 
@@ -324,7 +324,7 @@ NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency
 
 TGWatchlistsApi*apiInstance = [[TGWatchlistsApi alloc] init];
 
-// Update a watchlist record
+// Update a Watchlist
 [apiInstance updateWatchlistWithWatchlistId:watchlistId
               watchlistCreateParams:watchlistCreateParams
               idempotencyKey:idempotencyKey

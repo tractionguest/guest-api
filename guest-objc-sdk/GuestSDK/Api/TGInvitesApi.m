@@ -54,7 +54,7 @@ NSInteger kTGInvitesApiMissingParamErrorCode = 234513;
 #pragma mark - Api Methods
 
 ///
-/// Creates an Invite
+/// Create an Invite
 /// Creates a new `Invite` for a specific `Location`.
 ///  @param locationId  
 ///
@@ -217,7 +217,7 @@ NSInteger kTGInvitesApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// Get a Invite
+/// Get an Invite
 /// Gets the details of a single instance of a `Invite`.
 ///  @param inviteId  
 ///
@@ -291,7 +291,7 @@ NSInteger kTGInvitesApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// List All Invites
+/// List all Invites
 /// Gets a list of all `Invite` entities.
 ///  @param limit Limits the results to a specified number, defaults to 50 (optional)
 ///
@@ -414,7 +414,7 @@ NSInteger kTGInvitesApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// Update a Invite
+/// Update an Invite
 /// Updates an existing `Invite`.
 ///  @param inviteId  
 ///

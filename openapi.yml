@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.11.10
+  version: 0.11.11
   description: 'The leader in enterprise visitor management, empowers businesses across five continents and dozens of industries to keep people safe while creating connection in the contactless world.'
   contact:
     name: Brandon McKay
@@ -94,7 +94,7 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: getHosts
-      summary: List All Hosts
+      summary: List all Hosts
       description: Gets a list of all `Host` entities.
     post:
       requestBody:
@@ -207,7 +207,7 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: getEmailTemplates
-      summary: List All EmailTemplates
+      summary: List all EmailTemplates
       description: Gets a list of all `EmailTemplate` entities.
   '/signins/{signin_id}':
     summary: Path used to manage a single Signin.
@@ -771,7 +771,7 @@ paths:
         '422':
           description: Your request was not formatted correctly
       operationId: updateSignin
-      summary: Update a Signin attribute
+      summary: Update a Signin
       description: 'Update, acknowledge, or `Signout` a `Signin`'
     parameters:
       - schema:
@@ -848,7 +848,7 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: getLocations
-      summary: List All Locations
+      summary: List all Locations
       description: Gets a list of all `Location` entities.
   '/locations/{location_id}/invites':
     summary: "Path used to manage a single Location's invites."
@@ -1004,7 +1004,7 @@ paths:
         '422':
           description: Your request was not formatted correctly
       operationId: createLocationInvite
-      summary: Creates an Invite
+      summary: Create an Invite
       description: Creates a new `Invite` for a specific `Location`.
     parameters:
       - schema:
@@ -1756,7 +1756,7 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: getInvites
-      summary: List All Invites
+      summary: List all Invites
       description: Gets a list of all `Invite` entities.
   /signins:
     summary: Path used to manage the list of Signins.
@@ -2161,10 +2161,10 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: getSignins
-      summary: List All Signins
+      summary: List all Signins
       description: Gets a list of all `Signin` entities.
     post:
-      summary: ''
+      summary: Create Signin
       operationId: createSignin
       responses:
         '201':
@@ -2400,7 +2400,7 @@ paths:
         '404':
           description: The Invite you are looking for does not exist
       operationId: getInvite
-      summary: Get a Invite
+      summary: Get an Invite
       description: Gets the details of a single instance of a `Invite`.
     put:
       requestBody:
@@ -2521,7 +2521,7 @@ paths:
         '422':
           description: Your request was not formatted correctly
       operationId: updateInvite
-      summary: Update a Invite
+      summary: Update an Invite
       description: Updates an existing `Invite`.
     delete:
       tags:
@@ -2677,7 +2677,7 @@ paths:
             - 'watchlists:*'
             - 'watchlists:write'
       operationId: updateWatchlist
-      summary: Update a watchlist record
+      summary: Update a Watchlist
       description: Update an existing `Watchlist` record. Every operation against this endpoint is recorded in the audit log.
     delete:
       tags:
@@ -2816,7 +2816,7 @@ paths:
             - 'watchlists:*'
             - 'watchlists:read'
       operationId: getWatchlists
-      summary: List All Watchlists
+      summary: List all Watchlists
       description: Gets a list of all `Watchlist` entities.
     post:
       requestBody:
@@ -2873,7 +2873,7 @@ paths:
             - 'watchlists:*'
             - 'watchlists:write'
       operationId: createWatchlist
-      summary: Create watchlist
+      summary: Create Watchlist
       description: 'Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log.'
   /audit_logs:
     summary: Path used to manage the list of AuditLogs.
@@ -3027,7 +3027,7 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: getAuditLogs
-      summary: List All AuditLogs
+      summary: List all AuditLogs
       description: Gets a list of all `AuditLog` entities.
   '/audit_logs/{audit_log_id}':
     summary: Path used to manage a single AuditLog.
@@ -3146,7 +3146,7 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: createGuestAlert
-      summary: Create Guest Alert
+      summary: Create GuestAlert
       description: Enqueues guest alerts via specified channels
   '/registrations/{registration_id}':
     summary: Path used to display a single Registration.
@@ -3285,7 +3285,7 @@ paths:
         required: true
   /watchlists/batch:
     post:
-      summary: Create Multiple Watchlists
+      summary: Create multiple Watchlists
       operationId: createWatchlists
       responses:
         '202':
@@ -3313,7 +3313,7 @@ paths:
         - $ref: '#/components/parameters/idempotencyKey'
   /hosts/batch:
     post:
-      summary: Create Multiple Hosts
+      summary: Create multiple Hosts
       operationId: createHosts
       responses:
         '202':
@@ -3442,8 +3442,6 @@ tags:
     description: 'All endpoints relating to the Invite model, aka. PreRegistrations'
   - name: Locations
     description: 'All endpoints relating to the Location model, aka. DeviceConfigurations'
-  - name: Parking
-    description: 'All endpoint related to the parking feature, including the ParkingLot and ParkingStallRange models'
   - name: Signins
     description: 'All endpoints related to models that track signing in and out of a location. E.g., Signin, Signout, SigninAcknowledgment models'
   - name: Users

@@ -3397,6 +3397,8 @@ paths:
   /packages:
     get:
       summary: Get packages
+      tags:
+        - Packages
       responses:
         '200':
           description: OK
@@ -3419,11 +3421,11 @@ paths:
                 $ref: ./models/ErrorsList.v1.yaml
       operationId: getPackages
       description: Gets a list of `Package` entities.
-      tags:
-        - Package
     post:
       summary: Create package
       operationId: createPackage
+      tags:
+        - Packages
       responses:
         '200':
           description: OK
@@ -3440,9 +3442,6 @@ paths:
             schema:
               $ref: ./models/PackageCreateParams.v1.yaml
         description: ''
-      parameters: []
-      tags:
-        - Package
 components:
   parameters:
     idempotencyKey:
@@ -3492,6 +3491,8 @@ tags:
     description: 'All endpoints relating to the Invite model, aka. PreRegistrations'
   - name: Locations
     description: 'All endpoints relating to the Location model, aka. DeviceConfigurations'
+  - name: Packages
+    description: 'All endpoints relating to the Packages model'
   - name: Parking
     description: 'All endpoint related to the parking feature, including the ParkingLot and ParkingStallRange models'
   - name: Signins

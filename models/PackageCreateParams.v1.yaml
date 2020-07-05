@@ -4,11 +4,11 @@ description: ''
 x-tags:
   - Packages
 properties:
-  image:
+  base64_image:
     type: string
     format: byte
   location_id:
     type: integer
 required:
-  - image
+  - base64_image
   - location_id

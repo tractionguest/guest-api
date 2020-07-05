@@ -6,7 +6,7 @@ description: ''
 properties:
   id:
     type: integer
-  host:
+  recipient:
     $ref: ./Host.v1.yaml
   location:
     $ref: ./Location.v1.yaml
@@ -17,6 +17,12 @@ properties:
   picked_up_at:
     type: string
   created_at:
+    type: string
+  image_url:
+    type: string
+  nlp_results:
+    type: string
+  ocr_result:
     type: string
 required:
   - id

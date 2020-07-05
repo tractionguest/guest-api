@@ -4,12 +4,11 @@ description: ''
 x-tags:
   - Packages
 properties:
-  location_id:
-    type: integer
-    description: The delivery location for the package.
   image:
     type: string
     format: byte
+  location_id:
+    type: integer
 required:
-  - location_id
   - image
+  - location_id

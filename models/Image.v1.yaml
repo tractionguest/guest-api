@@ -3,3 +3,4 @@ type: object
 properties:
   full_size_url:
     type: string
+    format: uri

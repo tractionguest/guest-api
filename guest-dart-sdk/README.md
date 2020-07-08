@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
  - [Host](docs//Host.md)
  - [HostBatchCreateParams](docs//HostBatchCreateParams.md)
  - [HostCreateParams](docs//HostCreateParams.md)
+ - [Image](docs//Image.md)
  - [InternalWatchlistResult](docs//InternalWatchlistResult.md)
  - [Invite](docs//Invite.md)
  - [InviteCreateParams](docs//InviteCreateParams.md)

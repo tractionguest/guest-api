@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **carrierName** | **String** |  | [optional] [default to null]
 **pickedUpAt** | **String** |  | [optional] [default to null]
 **createdAt** | **String** |  | [default to null]
-**imageUrl** | **String** |  | [optional] [default to null]
+**image** | [**Image**](Image.md) |  | [optional] [default to null]
 **nlpResults** | **String** |  | [optional] [default to null]
 **ocrResult** | **String** |  | [optional] [default to null]
 

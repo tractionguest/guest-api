@@ -16,7 +16,7 @@ class Package {
   
   String createdAt = null;
   
-  String imageUrl = null;
+  Image image = null;
   
   String nlpResults = null;
   
@@ -25,7 +25,7 @@ class Package {
 
   @override
   String toString() {
-    return 'Package[id=$id, recipient=$recipient, location=$location, packageState=$packageState, carrierName=$carrierName, pickedUpAt=$pickedUpAt, createdAt=$createdAt, imageUrl=$imageUrl, nlpResults=$nlpResults, ocrResult=$ocrResult, ]';
+    return 'Package[id=$id, recipient=$recipient, location=$location, packageState=$packageState, carrierName=$carrierName, pickedUpAt=$pickedUpAt, createdAt=$createdAt, image=$image, nlpResults=$nlpResults, ocrResult=$ocrResult, ]';
   }
 
   Package.fromJson(Map<String, dynamic> json) {
@@ -65,10 +65,10 @@ class Package {
     } else {
           createdAt = json['created_at'];
     }
-    if (json['image_url'] == null) {
-      imageUrl = null;
+    if (json['image'] == null) {
+      image = null;
     } else {
-          imageUrl = json['image_url'];
+      image = new Image.fromJson(json['image']);
     }
     if (json['nlp_results'] == null) {
       nlpResults = null;
@@ -98,8 +98,8 @@ class Package {
       json['picked_up_at'] = pickedUpAt;
     if (createdAt != null)
       json['created_at'] = createdAt;
-    if (imageUrl != null)
-      json['image_url'] = imageUrl;
+    if (image != null)
+      json['image'] = image;
     if (nlpResults != null)
       json['nlp_results'] = nlpResults;
     if (ocrResult != null)

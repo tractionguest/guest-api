@@ -41,6 +41,7 @@ part 'model/guest_response.dart';
 part 'model/host.dart';
 part 'model/host_batch_create_params.dart';
 part 'model/host_create_params.dart';
+part 'model/image.dart';
 part 'model/internal_watchlist_result.dart';
 part 'model/invite.dart';
 part 'model/invite_create_params.dart';

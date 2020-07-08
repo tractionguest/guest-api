@@ -71,6 +71,8 @@ class ApiClient {
           return HostBatchCreateParams.fromJson(value);
         case 'HostCreateParams':
           return HostCreateParams.fromJson(value);
+        case 'Image':
+          return Image.fromJson(value);
         case 'InternalWatchlistResult':
           return InternalWatchlistResult.fromJson(value);
         case 'Invite':

@@ -41,8 +41,8 @@ void main() {
       // TODO
     });
 
-    // String imageUrl (default value: null)
-    test('to test the property `imageUrl`', () async {
+    // Image image (default value: null)
+    test('to test the property `image`', () async {
       // TODO
     });
 

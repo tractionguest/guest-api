@@ -18,8 +18,8 @@ properties:
     type: string
   created_at:
     type: string
-  image_url:
-    type: string
+  image:
+    $ref: ./Image.v1.yaml
   nlp_results:
     type: string
   ocr_result:

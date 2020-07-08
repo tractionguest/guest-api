@@ -21,6 +21,12 @@ void main() {
       // TODO
     });
 
+    // The last ID rendered, if the request included the 'after_id' param.
+    // int lastId (default value: null)
+    test('to test the property `lastId`', () async {
+      // TODO
+    });
+
 
   });
 

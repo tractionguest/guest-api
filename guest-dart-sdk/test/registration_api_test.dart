@@ -16,5 +16,14 @@ void main() {
       // TODO
     });
 
+    // List all Registrations
+    //
+    // Gets a list of all `Registration` entities.
+    //
+    //Future<PaginatedRegistrationsList> getRegistrations({ int limit, int offset, String locationIds, String createdBefore, String createdAfter }) async 
+    test('test getRegistrations', () async {
+      // TODO
+    });
+
   });
 }

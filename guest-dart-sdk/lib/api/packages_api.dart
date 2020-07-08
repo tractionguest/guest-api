@@ -2,24 +2,21 @@ part of guest_sdk.api;
 
 
 
-class CredentialsApi {
+class PackagesApi {
   final ApiClient apiClient;
 
-  CredentialsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  PackagesApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// Creates credentials from login information
+  /// Create package
   ///
-  /// 
-  Future<Credential> createCredentials(CredentialCreateParams credentialCreateParams) async {
-    Object postBody = credentialCreateParams;
+  /// Creates a &#x60;Package&#x60; entity by extracting information about the recipient and carrier from the given image file.
+  Future<Package> createPackage({ PackageCreateParams packageCreateParams }) async {
+    Object postBody = packageCreateParams;
 
     // verify required params are set
-    if(credentialCreateParams == null) {
-     throw new ApiException(400, "Missing required param: credentialCreateParams");
-    }
 
     // create path and map variables
-    String path = "/credentials".replaceAll("{format}","json");
+    String path = "/packages".replaceAll("{format}","json");
 
     // query params
     List<QueryParam> queryParams = [];
@@ -29,7 +26,7 @@ class CredentialsApi {
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials", "TractionGuestAuth"];
+    List<String> authNames = ["TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -52,24 +49,21 @@ class CredentialsApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'Credential') as Credential;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'Package') as Package;
     } else {
       return null;
     }
   }
-  /// Deletes a mobile credential
+  /// Get packages
   ///
-  /// 
-  Future deleteCredential(String credentialId) async {
+  /// Gets a list of &#x60;Package&#x60; entities.
+  Future<PackageList> getPackages() async {
     Object postBody;
 
     // verify required params are set
-    if(credentialId == null) {
-     throw new ApiException(400, "Missing required param: credentialId");
-    }
 
     // create path and map variables
-    String path = "/credentials/{credentialId}".replaceAll("{format}","json").replaceAll("{" + "credentialId" + "}", credentialId.toString());
+    String path = "/packages".replaceAll("{format}","json");
 
     // query params
     List<QueryParam> queryParams = [];
@@ -79,7 +73,7 @@ class CredentialsApi {
     List<String> contentTypes = [];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = ["ApiCredentials"];
+    List<String> authNames = ["TractionGuestAuth"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -91,7 +85,7 @@ class CredentialsApi {
     }
 
     var response = await apiClient.invokeAPI(path,
-                                             'DELETE',
+                                             'GET',
                                              queryParams,
                                              postBody,
                                              headerParams,
@@ -102,8 +96,9 @@ class CredentialsApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'PackageList') as PackageList;
     } else {
-      return;
+      return null;
     }
   }
 }

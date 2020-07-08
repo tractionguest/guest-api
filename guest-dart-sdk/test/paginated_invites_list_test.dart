@@ -6,13 +6,13 @@ void main() {
   var instance = new Pet();
 
   group('test PaginatedInvitesList', () {
-    // Pagination pagination (default value: null)
-    test('to test the property `pagination`', () async {
+    // List<Invite> invites (default value: [])
+    test('to test the property `invites`', () async {
       // TODO
     });
 
-    // List<Invite> invites (default value: [])
-    test('to test the property `invites`', () async {
+    // Pagination pagination (default value: null)
+    test('to test the property `pagination`', () async {
       // TODO
     });
 

@@ -1,0 +1,5 @@
+title: Image.v1
+type: object
+properties:
+  full_size_url:
+    type: string

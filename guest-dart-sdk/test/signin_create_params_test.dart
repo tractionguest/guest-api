@@ -6,33 +6,33 @@ void main() {
   var instance = new Pet();
 
   group('test SigninCreateParams', () {
-    // int guestEmailTemplateId (default value: null)
-    test('to test the property `guestEmailTemplateId`', () async {
+    // UUID of a Registration
+    // String registrationId (default value: null)
+    test('to test the property `registrationId`', () async {
       // TODO
     });
 
-    // int hostEmailTemplateId (default value: null)
-    test('to test the property `hostEmailTemplateId`', () async {
+    // E-mail, ignored if `registration_id` is included
+    // String email (default value: null)
+    test('to test the property `email`', () async {
       // TODO
     });
 
-    // List<int> hostIds (default value: [])
-    test('to test the property `hostIds`', () async {
+    // Company name, ignored if `registration_id` is included
+    // String company (default value: null)
+    test('to test the property `company`', () async {
       // TODO
     });
 
-    // int locationId (default value: null)
-    test('to test the property `locationId`', () async {
+    // Last name, ignored if `registration_id` is included
+    // String lastName (default value: null)
+    test('to test the property `lastName`', () async {
       // TODO
     });
 
-    // bool sendNotifications (default value: null)
-    test('to test the property `sendNotifications`', () async {
-      // TODO
-    });
-
-    // List<Object> photos (default value: [])
-    test('to test the property `photos`', () async {
+    // First name, ignored if `registration_id` is included
+    // String firstName (default value: null)
+    test('to test the property `firstName`', () async {
       // TODO
     });
 
@@ -41,23 +41,30 @@ void main() {
       // TODO
     });
 
-    // String firstName (default value: null)
-    test('to test the property `firstName`', () async {
+    // bool sendNotifications (default value: null)
+    test('to test the property `sendNotifications`', () async {
       // TODO
     });
 
-    // String lastName (default value: null)
-    test('to test the property `lastName`', () async {
+    // ID of the Location where the Signin happened, ignored if `registration_id` is included
+    // int locationId (default value: null)
+    test('to test the property `locationId`', () async {
       // TODO
     });
 
-    // String company (default value: null)
-    test('to test the property `company`', () async {
+    // Array of Host ids, ignored if `registration_id` is included
+    // List<int> hostIds (default value: [])
+    test('to test the property `hostIds`', () async {
       // TODO
     });
 
-    // String email (default value: null)
-    test('to test the property `email`', () async {
+    // int hostEmailTemplateId (default value: null)
+    test('to test the property `hostEmailTemplateId`', () async {
+      // TODO
+    });
+
+    // int guestEmailTemplateId (default value: null)
+    test('to test the property `guestEmailTemplateId`', () async {
       // TODO
     });
 

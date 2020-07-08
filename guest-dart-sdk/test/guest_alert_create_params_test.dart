@@ -6,9 +6,8 @@ void main() {
   var instance = new Pet();
 
   group('test GuestAlertCreateParams', () {
-    // Plain text of the alert to be sent
-    // String message (default value: null)
-    test('to test the property `message`', () async {
+    // GuestAlertSigninSelectors signinSelectors (default value: null)
+    test('to test the property `signinSelectors`', () async {
       // TODO
     });
 
@@ -18,8 +17,9 @@ void main() {
       // TODO
     });
 
-    // GuestAlertSigninSelectors signinSelectors (default value: null)
-    test('to test the property `signinSelectors`', () async {
+    // Plain text of the alert to be sent
+    // String message (default value: null)
+    test('to test the property `message`', () async {
       // TODO
     });
 

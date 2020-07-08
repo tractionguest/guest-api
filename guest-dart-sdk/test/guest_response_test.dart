@@ -6,20 +6,15 @@ void main() {
   var instance = new Pet();
 
   group('test GuestResponse', () {
-    // Page title
-    // String title (default value: null)
-    test('to test the property `title`', () async {
-      // TODO
-    });
-
-    // int sequence (default value: null)
-    test('to test the property `sequence`', () async {
-      // TODO
-    });
-
     // UUID
     // String id (default value: null)
     test('to test the property `id`', () async {
+      // TODO
+    });
+
+    // Flex fields
+    // List<CustomField> customFields (default value: [])
+    test('to test the property `customFields`', () async {
       // TODO
     });
 
@@ -29,9 +24,14 @@ void main() {
       // TODO
     });
 
-    // Flex fields
-    // List<FlexField> customFields (default value: [])
-    test('to test the property `customFields`', () async {
+    // int sequence (default value: null)
+    test('to test the property `sequence`', () async {
+      // TODO
+    });
+
+    // Page title
+    // String title (default value: null)
+    test('to test the property `title`', () async {
       // TODO
     });
 

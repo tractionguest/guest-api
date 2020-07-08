@@ -17,7 +17,7 @@ Dart 1.20.0 or later OR Flutter 0.0.20 or later
 If this Dart package is published to Github, please include the following in pubspec.yaml
 ```
 name: guest_sdk
-version: 0.11.9
+version: 
 description: OpenAPI API client
 dependencies:
   guest_sdk:
@@ -76,6 +76,8 @@ Class | Method | HTTP request | Description
 *InvitesApi* | [**getInvites**](docs//InvitesApi.md#getinvites) | **GET** /invites | List All Invites
 *InvitesApi* | [**updateInvite**](docs//InvitesApi.md#updateinvite) | **PUT** /invites/{invite_id} | Update a Invite
 *LocationsApi* | [**getLocations**](docs//LocationsApi.md#getlocations) | **GET** /locations | List All Locations
+*PackagesApi* | [**createPackage**](docs//PackagesApi.md#createpackage) | **POST** /packages | Create package
+*PackagesApi* | [**getPackages**](docs//PackagesApi.md#getpackages) | **GET** /packages | Get packages
 *RegistrationApi* | [**getRegistration**](docs//RegistrationApi.md#getregistration) | **GET** /registrations/{registration_id} | Get a Registration
 *RegistrationApi* | [**getRegistrations**](docs//RegistrationApi.md#getregistrations) | **GET** /registrations | List all Registrations
 *SigninsApi* | [**createSignin**](docs//SigninsApi.md#createsignin) | **POST** /signins | 
@@ -119,6 +121,9 @@ Class | Method | HTTP request | Description
  - [Location](docs//Location.md)
  - [NotificationTrigger](docs//NotificationTrigger.md)
  - [NotificationTriggerCreateParams](docs//NotificationTriggerCreateParams.md)
+ - [Package](docs//Package.md)
+ - [PackageCreateParams](docs//PackageCreateParams.md)
+ - [PackageList](docs//PackageList.md)
  - [PaginatedAuditLogsList](docs//PaginatedAuditLogsList.md)
  - [PaginatedEmailTemplatesList](docs//PaginatedEmailTemplatesList.md)
  - [PaginatedHostsList](docs//PaginatedHostsList.md)

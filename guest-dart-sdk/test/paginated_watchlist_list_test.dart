@@ -6,13 +6,13 @@ void main() {
   var instance = new Pet();
 
   group('test PaginatedWatchlistList', () {
-    // Pagination pagination (default value: null)
-    test('to test the property `pagination`', () async {
+    // List<Watchlist> watchlists (default value: [])
+    test('to test the property `watchlists`', () async {
       // TODO
     });
 
-    // List<Watchlist> watchlists (default value: [])
-    test('to test the property `watchlists`', () async {
+    // Pagination pagination (default value: null)
+    test('to test the property `pagination`', () async {
       // TODO
     });
 

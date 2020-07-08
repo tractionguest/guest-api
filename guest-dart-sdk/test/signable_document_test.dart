@@ -6,13 +6,13 @@ void main() {
   var instance = new Pet();
 
   group('test SignableDocument', () {
-    // List<Docusign> docusigns (default value: [])
-    test('to test the property `docusigns`', () async {
+    // List<SimpleSignature> simpleSignatures (default value: [])
+    test('to test the property `simpleSignatures`', () async {
       // TODO
     });
 
-    // List<SimpleSignature> simpleSignatures (default value: [])
-    test('to test the property `simpleSignatures`', () async {
+    // List<Docusign> docusigns (default value: [])
+    test('to test the property `docusigns`', () async {
       // TODO
     });
 

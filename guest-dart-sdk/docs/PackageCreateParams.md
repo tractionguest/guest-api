@@ -1,4 +1,4 @@
-# guest_sdk.model.InputPage
+# guest_sdk.model.PackageCreateParams
 
 ## Load the model package
 ```dart
@@ -8,8 +8,8 @@ import 'package:guest_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | Eg: \&quot;form page\&quot;, \&quot;about you\&quot;, \&quot;etc\&quot; | [default to null]
-**customFields** | [**List&lt;CustomField&gt;**](CustomField.md) |  | [default to []]
+**base64Image** | **String** |  | [default to null]
+**locationId** | **int** |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

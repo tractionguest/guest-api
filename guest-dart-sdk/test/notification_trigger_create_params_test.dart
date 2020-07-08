@@ -6,26 +6,9 @@ void main() {
   var instance = new Pet();
 
   group('test NotificationTriggerCreateParams', () {
-    // Whether the offset should be calculated for before, or after the event
-    // String offsetDirection (default value: null)
-    test('to test the property `offsetDirection`', () async {
-      // TODO
-    });
-
-    // The amount to offset the notification from the event
-    // int offsetAmount (default value: null)
-    test('to test the property `offsetAmount`', () async {
-      // TODO
-    });
-
-    // Whether the offset should be calculated from the start, or finish of the event
-    // String offsetOrigin (default value: null)
-    test('to test the property `offsetOrigin`', () async {
-      // TODO
-    });
-
-    // int emailTemplateId (default value: null)
-    test('to test the property `emailTemplateId`', () async {
+    // Whether the offset should be calculated as `days` or `hours`
+    // String offsetUnit (default value: null)
+    test('to test the property `offsetUnit`', () async {
       // TODO
     });
 
@@ -35,9 +18,26 @@ void main() {
       // TODO
     });
 
-    // Whether the offset should be calculated as `days` or `hours`
-    // String offsetUnit (default value: null)
-    test('to test the property `offsetUnit`', () async {
+    // int emailTemplateId (default value: null)
+    test('to test the property `emailTemplateId`', () async {
+      // TODO
+    });
+
+    // Whether the offset should be calculated from the start, or finish of the event
+    // String offsetOrigin (default value: null)
+    test('to test the property `offsetOrigin`', () async {
+      // TODO
+    });
+
+    // The amount to offset the notification from the event
+    // int offsetAmount (default value: null)
+    test('to test the property `offsetAmount`', () async {
+      // TODO
+    });
+
+    // Whether the offset should be calculated for before, or after the event
+    // String offsetDirection (default value: null)
+    test('to test the property `offsetDirection`', () async {
       // TODO
     });
 

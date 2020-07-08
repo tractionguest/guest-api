@@ -1,0 +1,21 @@
+title: PaginatedPackageList
+type: object
+properties:
+  packages:
+    type: array
+    items:
+      $ref: ./Package.v1.yaml
+  pagination:
+    $ref: ./Pagination.v1.yaml
+required:
+  - packages
+  - pagination
+x-examples:
+  example-1:
+    packages:
+      - {}
+    pagination:
+      total_records: 16
+      current_offset: 31
+      next_offset: 20
+      last_id: 28

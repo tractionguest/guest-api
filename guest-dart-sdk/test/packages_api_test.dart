@@ -9,7 +9,7 @@ void main() {
   group('tests for PackagesApi', () {
     // Create package
     //
-    // Creates a `Package` entity by extracting information about the recipient and carrier from the given image file.
+    // Creates a [Package] entity by extracting information about the recipient and carrier from the given image file.
     //
     //Future<Package> createPackage({ PackageCreateParams packageCreateParams }) async 
     test('test createPackage', () async {
@@ -18,9 +18,9 @@ void main() {
 
     // Get packages
     //
-    // Gets a list of `Package` entities.
+    // Gets a list of [Package] entities.
     //
-    //Future<PackageList> getPackages() async 
+    //Future<PaginatedPackageList> getPackages({ String locationIds, int limit, int offset }) async 
     test('test getPackages', () async {
       // TODO
     });

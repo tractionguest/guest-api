@@ -55,8 +55,10 @@ properties:
     type: string
   picked_up_at:
     type: string
+    format: date-time
   created_at:
     type: string
+    format: date-time
   image:
     $ref: ./Image.v1.yaml
   nlp_results:

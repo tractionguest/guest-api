@@ -95,8 +95,6 @@ class ApiClient {
           return Package.fromJson(value);
         case 'PackageCreateParams':
           return PackageCreateParams.fromJson(value);
-        case 'PackageList':
-          return PackageList.fromJson(value);
         case 'PaginatedAuditLogsList':
           return PaginatedAuditLogsList.fromJson(value);
         case 'PaginatedEmailTemplatesList':
@@ -107,6 +105,8 @@ class ApiClient {
           return PaginatedInvitesList.fromJson(value);
         case 'PaginatedLocationsList':
           return PaginatedLocationsList.fromJson(value);
+        case 'PaginatedPackageList':
+          return PaginatedPackageList.fromJson(value);
         case 'PaginatedRegistrationsList':
           return PaginatedRegistrationsList.fromJson(value);
         case 'PaginatedSigninsList':

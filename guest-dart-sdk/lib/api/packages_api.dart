@@ -9,7 +9,7 @@ class PackagesApi {
 
   /// Create package
   ///
-  /// Creates a &#x60;Package&#x60; entity by extracting information about the recipient and carrier from the given image file.
+  /// Creates a [Package] entity by extracting information about the recipient and carrier from the given image file.
   Future<Package> createPackage({ PackageCreateParams packageCreateParams }) async {
     Object postBody = packageCreateParams;
 
@@ -56,8 +56,8 @@ class PackagesApi {
   }
   /// Get packages
   ///
-  /// Gets a list of &#x60;Package&#x60; entities.
-  Future<PackageList> getPackages() async {
+  /// Gets a list of [Package] entities.
+  Future<PaginatedPackageList> getPackages({ String locationIds, int limit, int offset }) async {
     Object postBody;
 
     // verify required params are set
@@ -69,6 +69,15 @@ class PackagesApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(locationIds != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "location_ids", locationIds));
+    }
+    if(limit != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "limit", limit));
+    }
+    if(offset != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "offset", offset));
+    }
 
     List<String> contentTypes = [];
 
@@ -96,7 +105,7 @@ class PackagesApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'PackageList') as PackageList;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'PaginatedPackageList') as PaginatedPackageList;
     } else {
       return null;
     }

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Create package
 
-Creates a `Package` entity by extracting information about the recipient and carrier from the given image file.
+Creates a [Package] entity by extracting information about the recipient and carrier from the given image file.
 
 ### Example 
 ```dart
@@ -57,20 +57,23 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getPackages**
-> PackageList getPackages()
+> PaginatedPackageList getPackages(locationIds, limit, offset)
 
 Get packages
 
-Gets a list of `Package` entities.
+Gets a list of [Package] entities.
 
 ### Example 
 ```dart
 import 'package:guest_sdk/api.dart';
 
 var api_instance = new PackagesApi();
+var locationIds = locationIds_example; // String | A comma separated list of Location ids for filtering. i.e. '[1, 2, 3]'
+var limit = 56; // int | Limits the results to a specified number, defaults to 50
+var offset = 56; // int | Offsets the results to a specified number, defaults to 0
 
 try { 
-    var result = api_instance.getPackages();
+    var result = api_instance.getPackages(locationIds, limit, offset);
     print(result);
 } catch (e) {
     print("Exception when calling PackagesApi->getPackages: $e\n");
@@ -78,11 +81,16 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **locationIds** | **String**| A comma separated list of Location ids for filtering. i.e. &#39;[1, 2, 3]&#39; | [optional] [default to null]
+ **limit** | **int**| Limits the results to a specified number, defaults to 50 | [optional] [default to null]
+ **offset** | **int**| Offsets the results to a specified number, defaults to 0 | [optional] [default to null]
 
 ### Return type
 
-[**PackageList**](PackageList.md)
+[**PaginatedPackageList**](PaginatedPackageList.md)
 
 ### Authorization
 

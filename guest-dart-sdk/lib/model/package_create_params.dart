@@ -1,9 +1,9 @@
 part of guest_sdk.api;
 
 class PackageCreateParams {
-  
+  /* Base64 encoded image on which to perform processing */
   String base64Image = null;
-  
+  /* Location id for where the package was delivered */
   int locationId = null;
   PackageCreateParams();
 

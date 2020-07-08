@@ -3406,7 +3406,42 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/PackageList.v1.yaml
+                $ref: ./models/PaginatedPackageList.v1.yaml
+              examples:
+                example:
+                  value:
+                    packages:
+                      - id: 70
+                        package_state: PICKED_UP
+                        recipient:
+                          id: 71
+                          email: somehost@gmail.com
+                          first_name: some
+                          last_name: host
+                          mobile_number: some text
+                          profile_pic_url: some text
+                          department: Marketing
+                        location:
+                          name: Default
+                          id: 1
+                        carrier_name: USPS
+                        created_at: '2018-02-10T09:30Z'
+                        picked_up_at: '2018-02-10T010:30Z'
+                        image_url: some text
+                      - id: 70
+                        package_state: PROCESSING
+                        recipient: null
+                        location:
+                          name: Default
+                          id: 1
+                        carrier_name: null
+                        created_at: '2018-02-10T09:30Z'
+                        picked_up_at: null
+                        image_url: some text
+                    pagination:
+                      total_records: 38
+                      current_offset: 31
+                      next_offset: 26
         '400':
           description: Bad Request
           content:
@@ -3420,7 +3455,23 @@ paths:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
       operationId: getPackages
-      description: Gets a list of `Package` entities.
+      description: 'Gets a list of [Package] entities.'
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: location_ids
+          description: "A comma separated list of Location ids for filtering. i.e. '[1, 2, 3]'"
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: 'Limits the results to a specified number, defaults to 50'
+        - schema:
+            type: integer
+          in: query
+          name: offset
+          description: 'Offsets the results to a specified number, defaults to 0'
     post:
       summary: Create package
       operationId: createPackage
@@ -3433,9 +3484,22 @@ paths:
             application/json:
               schema:
                 $ref: ./models/Package.v1.yaml
+              examples:
+                example-response:
+                  value:
+                    id: 70
+                    package_state: PROCESSING
+                    recipient: null
+                    location:
+                      name: Default
+                      id: 1
+                    carrier_name: null
+                    created_at: '2018-02-10T09:30Z'
+                    picked_up_at: null
+                    image_url: some text
         '400':
           description: Bad Request
-      description: Creates a `Package` entity by extracting information about the recipient and carrier from the given image file.
+      description: 'Creates a [Package] entity by extracting information about the recipient and carrier from the given image file.'
       requestBody:
         content:
           application/json:

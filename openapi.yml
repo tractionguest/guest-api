@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.11.11
+  version: 0.12.0
   description: 'The leader in enterprise visitor management, empowers businesses across five continents and dozens of industries to keep people safe while creating connection in the contactless world.'
   contact:
     name: Brandon McKay
@@ -3394,6 +3394,70 @@ paths:
           in: query
           name: created_after
           description: Restricts results to only those that were created after the provided date
+  '/locations/{location_id}':
+    parameters:
+      - schema:
+          type: string
+        name: location_id
+        in: path
+        required: true
+    put:
+      summary: Update Location
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: The Location has been updated.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Location.v1.yaml
+              examples:
+                default:
+                  value:
+                    id: 1
+                    name: Default
+                    max_capacity: 30
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+              examples:
+                default:
+                  value:
+                    errors:
+                      - domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+                      - domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+        '401':
+          description: "You don't have permission to update this Location"
+        '403':
+          description: You do not have permission for this action
+        '404':
+          description: The Location does not exist
+        '422':
+          description: Your request was not formatted correctly
+      operationId: updateLocation
+      description: Updates a `Location`.
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/LocationUpdateParams.v1.yaml
+            examples:
+              default:
+                value:
+                  max_capacity: 30
+        description: Updated `Location` information.
 components:
   parameters:
     idempotencyKey:

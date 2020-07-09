@@ -1,0 +1,10 @@
+title: LocationUpdateParams
+type: object
+x-tags:
+  - Locations
+x-examples:
+  default:
+    max_capacity: 30
+properties:
+  max_capacity:
+    type: integer

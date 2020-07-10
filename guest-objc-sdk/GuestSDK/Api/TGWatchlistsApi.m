@@ -1,11 +1,9 @@
 #import "TGWatchlistsApi.h"
 #import "TGQueryParamCollection.h"
 #import "TGApiClient.h"
-#import "TGBatchJob.h"
 #import "TGErrorsList.h"
 #import "TGPaginatedWatchlistList.h"
 #import "TGWatchlist.h"
-#import "TGWatchlistBatchCreateParams.h"
 #import "TGWatchlistCreateParams.h"
 
 
@@ -122,67 +120,6 @@ NSInteger kTGWatchlistsApiMissingParamErrorCode = 234513;
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
                                     handler((TGWatchlist*)data, error);
-                                }
-                            }];
-}
-
-///
-/// Create multiple Watchlists
-/// Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
-///  @param idempotencyKey An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
-///
-///  @param watchlistBatchCreateParams  (optional)
-///
-///  @returns TGBatchJob*
-///
--(NSURLSessionTask*) createWatchlistsWithIdempotencyKey: (NSString*) idempotencyKey
-    watchlistBatchCreateParams: (TGWatchlistBatchCreateParams*) watchlistBatchCreateParams
-    completionHandler: (void (^)(TGBatchJob* output, NSError* error)) handler {
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/watchlists/batch"];
-
-    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-
-    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
-    [headerParams addEntriesFromDictionary:self.defaultHeaders];
-    if (idempotencyKey != nil) {
-        headerParams[@"Idempotency-Key"] = idempotencyKey;
-    }
-    // HTTP header `Accept`
-    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
-    if(acceptHeader.length > 0) {
-        headerParams[@"Accept"] = acceptHeader;
-    }
-
-    // response content type
-    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
-
-    // request content type
-    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
-
-    // Authentication setting
-    NSArray *authSettings = @[@"TractionGuestAuth"];
-
-    id bodyParam = nil;
-    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = watchlistBatchCreateParams;
-
-    return [self.apiClient requestWithPath: resourcePath
-                                    method: @"POST"
-                                pathParams: pathParams
-                               queryParams: queryParams
-                                formParams: formParams
-                                     files: localVarFiles
-                                      body: bodyParam
-                              headerParams: headerParams
-                              authSettings: authSettings
-                        requestContentType: requestContentType
-                       responseContentType: responseContentType
-                              responseType: @"TGBatchJob*"
-                           completionBlock: ^(id data, NSError *error) {
-                                if(handler) {
-                                    handler((TGBatchJob*)data, error);
                                 }
                             }];
 }

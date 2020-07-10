@@ -104,7 +104,6 @@ Class | Method | HTTP request | Description
 *SigninsApi* | [**updateSignin**](docs/SigninsApi.md#updateSignin) | **PUT** /signins/{signin_id} | Update a Signin
 *UsersApi* | [**getCurrentUser**](docs/UsersApi.md#getCurrentUser) | **GET** /users/{user_id} | Get the current User
 *WatchlistsApi* | [**createWatchlist**](docs/WatchlistsApi.md#createWatchlist) | **POST** /watchlists | Create Watchlist
-*WatchlistsApi* | [**createWatchlists**](docs/WatchlistsApi.md#createWatchlists) | **POST** /watchlists/batch | Create multiple Watchlists
 *WatchlistsApi* | [**deleteWatchlist**](docs/WatchlistsApi.md#deleteWatchlist) | **DELETE** /watchlists/{watchlist_id} | Deletes a Watchlist
 *WatchlistsApi* | [**getWatchlist**](docs/WatchlistsApi.md#getWatchlist) | **GET** /watchlists/{watchlist_id} | Get a Watchlist
 *WatchlistsApi* | [**getWatchlists**](docs/WatchlistsApi.md#getWatchlists) | **GET** /watchlists | List all Watchlists
@@ -161,7 +160,6 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [Visitor](docs/Visitor.md)
  - [Watchlist](docs/Watchlist.md)
- - [WatchlistBatchCreateParams](docs/WatchlistBatchCreateParams.md)
  - [WatchlistCreateParams](docs/WatchlistCreateParams.md)
  - [WatchlistMatch](docs/WatchlistMatch.md)
  - [WatchlistSearch](docs/WatchlistSearch.md)

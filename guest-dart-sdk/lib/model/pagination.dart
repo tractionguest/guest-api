@@ -53,9 +53,7 @@ class Pagination {
       json['total_records'] = totalRecords;
     if (currentOffset != null)
       json['current_offset'] = currentOffset;
-    if (nextOffset != null)
       json['next_offset'] = nextOffset;
-    if (lastId != null)
       json['last_id'] = lastId;
     if (limit != null)
       json['limit'] = limit;

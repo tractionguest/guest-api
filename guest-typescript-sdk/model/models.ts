@@ -45,7 +45,6 @@ export * from './signinWatchlist';
 export * from './simpleSignature';
 export * from './user';
 export * from './visitor';
-export * from './watchlistBatchCreateParams';
 export * from './watchlistCreateParams';
 export * from './watchlist';
 export * from './watchlistMatch';

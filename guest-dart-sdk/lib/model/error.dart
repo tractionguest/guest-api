@@ -44,11 +44,9 @@ class Error {
     Map <String, dynamic> json = {};
     if (domain != null)
       json['domain'] = domain;
-    if (attribute != null)
       json['attribute'] = attribute;
     if (code != null)
       json['code'] = code;
-    if (message != null)
       json['message'] = message;
     return json;
   }

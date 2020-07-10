@@ -57,52 +57,6 @@ open class WatchlistsAPI {
     }
 
     /**
-     Create multiple Watchlists
-     
-     - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
-     - parameter watchlistBatchCreateParams: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the result
-     */
-    open class func createWatchlists(idempotencyKey: String? = nil, watchlistBatchCreateParams: WatchlistBatchCreateParams? = nil, apiResponseQueue: DispatchQueue = GuestSDKAPI.apiResponseQueue, completion: @escaping ((_ result: Result<BatchJob, Error>) -> Void)) {
-        createWatchlistsWithRequestBuilder(idempotencyKey: idempotencyKey, watchlistBatchCreateParams: watchlistBatchCreateParams).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                completion(.success(response.body!))
-            case let .failure(error):
-                completion(.failure(error))
-            }
-        }
-    }
-
-    /**
-     Create multiple Watchlists
-     - POST /watchlists/batch
-     - Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
-     - :
-       - type: openIdConnect
-       - name: TractionGuestAuth
-     - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
-     - parameter watchlistBatchCreateParams: (body)  (optional)
-     - returns: RequestBuilder<BatchJob> 
-     */
-    open class func createWatchlistsWithRequestBuilder(idempotencyKey: String? = nil, watchlistBatchCreateParams: WatchlistBatchCreateParams? = nil) -> RequestBuilder<BatchJob> {
-        let path = "/watchlists/batch"
-        let URLString = GuestSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: watchlistBatchCreateParams)
-
-        let url = URLComponents(string: URLString)
-        let nillableHeaders: [String: Any?] = [
-            "Idempotency-Key": idempotencyKey?.encodeToJSON()
-        ]
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
-
-        let requestBuilder: RequestBuilder<BatchJob>.Type = GuestSDKAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true, headers: headerParameters)
-    }
-
-    /**
      Deletes a Watchlist
      
      - parameter watchlistId: (path)  

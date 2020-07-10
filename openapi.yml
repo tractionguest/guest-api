@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.11.11
+  version: 0.11.12
   description: 'The leader in enterprise visitor management, empowers businesses across five continents and dozens of industries to keep people safe while creating connection in the contactless world.'
   contact:
     name: Brandon McKay
@@ -2590,30 +2590,13 @@ paths:
                       - some text
                       - some text
           description: Successful response - returns a single `Watchlist`.
-        '400':
+        4XX:
+          description: ''
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-              examples:
-                default:
-                  value:
-                    errors:
-                      - domain: some text
-                        attribute: some text
-                        code: some text
-                        message: some text
-                      - domain: some text
-                        attribute: some text
-                        code: some text
-                        message: some text
-          description: A generic error
-        '401':
-          description: "You don't have permission to view this Watchlist"
-        '403':
-          description: You do not have permission for this action
-        '404':
-          description: The Watchlist does not exist
+              examples: {}
       security:
         - TractionGuestAuth:
             - all
@@ -2665,12 +2648,12 @@ paths:
                       - some text
                       - some text
           description: The complete updated watchlist record
-        '400':
-          description: Bad Request
+        4XX:
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
+          description: Bad request
       security:
         - TractionGuestAuth:
             - all
@@ -2687,7 +2670,7 @@ paths:
       responses:
         '204':
           description: The Watchlist has been deleted
-        '400':
+        4XX:
           content:
             application/json:
               schema:
@@ -2704,7 +2687,7 @@ paths:
                         attribute: some text
                         code: some text
                         message: some text
-          description: There was an issue in trying to delete the Watchlist
+          description: Bad request
       security:
         - TractionGuestAuth:
             - all
@@ -2788,7 +2771,7 @@ paths:
                           - some text
                           - some text
           description: Successful response - returns an array of `Watchlist` entities.
-        '400':
+        4XX:
           content:
             application/json:
               schema:
@@ -2806,10 +2789,6 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
-          description: "You don't have permission to view these Watchlists"
-        '403':
-          description: You do not have permission for this action
       security:
         - TractionGuestAuth:
             - all
@@ -2861,12 +2840,12 @@ paths:
                       - some text
                       - some text
           description: The newly created `Watchlist`
-        '400':
-          description: Bad Request
+        4XX:
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
+          description: An error happened
       security:
         - TractionGuestAuth:
             - all
@@ -3283,34 +3262,6 @@ paths:
         name: registration_id
         in: path
         required: true
-  /watchlists/batch:
-    post:
-      summary: Create multiple Watchlists
-      operationId: createWatchlists
-      responses:
-        '202':
-          description: Accepted
-          content:
-            application/json:
-              schema:
-                $ref: ./models/BatchJob.v1.yaml
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: ./models/ErrorsList.v1.yaml
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ./models/WatchlistBatchCreateParams.v1.yaml
-        description: ''
-      tags:
-        - Watchlists
-      description: 'Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.'
-      parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
   /hosts/batch:
     post:
       summary: Create multiple Hosts

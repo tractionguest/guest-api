@@ -1,12 +1,12 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.11.12
+  version: 0.11.13
   description: 'The leader in enterprise visitor management, empowers businesses across five continents and dozens of industries to keep people safe while creating connection in the contactless world.'
   contact:
-    name: Brandon McKay
+    name: Support
     url: 'https://tractionguest.com'
-    email: bmckay@tractionguest.com
+    email: support@tractionguest.com
 servers:
   - url: '{domain}'
     variables:

@@ -71,7 +71,6 @@ part 'model/simple_signature.dart';
 part 'model/user.dart';
 part 'model/visitor.dart';
 part 'model/watchlist.dart';
-part 'model/watchlist_batch_create_params.dart';
 part 'model/watchlist_create_params.dart';
 part 'model/watchlist_match.dart';
 part 'model/watchlist_search.dart';

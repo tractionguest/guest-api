@@ -133,8 +133,6 @@ class ApiClient {
           return Visitor.fromJson(value);
         case 'Watchlist':
           return Watchlist.fromJson(value);
-        case 'WatchlistBatchCreateParams':
-          return WatchlistBatchCreateParams.fromJson(value);
         case 'WatchlistCreateParams':
           return WatchlistCreateParams.fromJson(value);
         case 'WatchlistMatch':

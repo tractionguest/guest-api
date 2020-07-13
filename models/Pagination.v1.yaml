@@ -18,9 +18,11 @@ properties:
   next_offset:
     format: int32
     type: integer
+    nullable: true
   last_id:
     format: int32
     description: "The last ID rendered, if the request included the 'after_id' param."
     type: integer
+    nullable: true
   limit:
     type: integer

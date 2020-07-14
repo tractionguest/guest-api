@@ -11,8 +11,7 @@ properties:
   name:
     type: string
 x-examples:
-  default: |-
-    {
-      "id": 1,
-      "name": "Default"
-    }
+  default:
+    id: 1
+    name: Default
+    max_capacity: 30

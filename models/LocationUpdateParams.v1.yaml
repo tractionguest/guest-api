@@ -11,4 +11,4 @@ properties:
     type: integer
   timezone:
     type: string
-    description: 'IANA timezone designations is followed here, since that’s the only reliable way to maintain consistent time throughout the year'
+    description: IANA timezone designations

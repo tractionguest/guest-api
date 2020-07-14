@@ -2,9 +2,20 @@ openapi: 3.0.2
 info:
   title: Traction Guest API
   version: 0.11.13
-  description: 'The leader in enterprise visitor management, empowers businesses across five continents and dozens of industries to keep people safe while creating connection in the contactless world.'
+  description: |
+    The Traction Guest API is currently in **closed beta**. We're still building, testing, and fixing bugs.
+
+    If you're interested in helping us get to version 1.0, contact your CS team representative. Only paid accounts are elligible.
+
+    # Slack
+
+    Do you have Slack? Would you like a more direct way to get your Traction Guest API questions answered?
+
+    Ask to be added to our API Slack channel!
+
+    Talk to your CS team representative, or send an email to the API support email above, and we'll add you.
   contact:
-    name: Support
+    name: API Support
     url: 'https://tractionguest.com'
     email: support@tractionguest.com
 servers:

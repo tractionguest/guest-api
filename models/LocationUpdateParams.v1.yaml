@@ -5,6 +5,9 @@ x-tags:
 x-examples:
   default:
     max_capacity: 30
+    timezone: 'Central Time (US & Canada)'
 properties:
   max_capacity:
     type: integer
+  timezone:
+    type: string

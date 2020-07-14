@@ -3369,6 +3369,8 @@ paths:
                     id: 1
                     name: Default
                     max_capacity: 30
+                    timezone: 'Central Time (US & Canada)'
+                    timezone_valid: true
         '400':
           description: A generic error
           content:
@@ -3408,6 +3410,7 @@ paths:
               default:
                 value:
                   max_capacity: 30
+                  timezone: 'Central Time (US & Canada)'
         description: Updated `Location` information.
 components:
   parameters:

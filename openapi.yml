@@ -3410,7 +3410,7 @@ paths:
               default:
                 value:
                   max_capacity: 30
-                  timezone: 'Central Time (US & Canada)'
+                  timezone: America/Vancouver
         description: Updated `Location` information.
 components:
   parameters:

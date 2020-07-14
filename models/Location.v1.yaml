@@ -7,7 +7,7 @@ x-examples:
     name: Default
     max_capacity: 30
     timezone_valid: true
-    timezone: 'Central Time (US & Canada)'
+    timezone: America/Vancouver
 properties:
   id:
     format: int32

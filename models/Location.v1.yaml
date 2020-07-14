@@ -1,17 +1,20 @@
 title: Location
 description: "The root of the Location type's schema."
-required:
-  - id
-  - name
 type: object
+x-examples:
+  default:
+    id: 1
+    name: Default
+    max_capacity: 30
+    timezone_valid: true
 properties:
   id:
     format: int32
     type: integer
   name:
     type: string
-x-examples:
-  default:
-    id: 1
-    name: Default
-    max_capacity: 30
+  timezone_valid:
+    type: boolean
+required:
+  - id
+  - name

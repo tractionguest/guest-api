@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.11.13
+  version: 0.11.12
   description: |
     The Traction Guest API is currently in **closed beta**.
     We're still building, testing, and fixing bugs.

@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getPackages**
-> PaginatedPackageList getPackages(locationIds, limit, offset)
+> PaginatedPackagesList getPackages(locationIds, limit, offset)
 
 Get packages
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedPackageList**](PaginatedPackageList.md)
+[**PaginatedPackagesList**](PaginatedPackagesList.md)
 
 ### Authorization
 

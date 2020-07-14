@@ -20,7 +20,7 @@ void main() {
     //
     // Gets a list of [Package] entities.
     //
-    //Future<PaginatedPackageList> getPackages({ String locationIds, int limit, int offset }) async 
+    //Future<PaginatedPackagesList> getPackages({ String locationIds, int limit, int offset }) async 
     test('test getPackages', () async {
       // TODO
     });

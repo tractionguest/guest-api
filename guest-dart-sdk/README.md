@@ -129,7 +129,7 @@ Class | Method | HTTP request | Description
  - [PaginatedHostsList](docs//PaginatedHostsList.md)
  - [PaginatedInvitesList](docs//PaginatedInvitesList.md)
  - [PaginatedLocationsList](docs//PaginatedLocationsList.md)
- - [PaginatedPackageList](docs//PaginatedPackageList.md)
+ - [PaginatedPackagesList](docs//PaginatedPackagesList.md)
  - [PaginatedRegistrationsList](docs//PaginatedRegistrationsList.md)
  - [PaginatedSigninsList](docs//PaginatedSigninsList.md)
  - [PaginatedWatchlistList](docs//PaginatedWatchlistList.md)

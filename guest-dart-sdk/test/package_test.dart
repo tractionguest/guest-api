@@ -31,12 +31,12 @@ void main() {
       // TODO
     });
 
-    // String pickedUpAt (default value: null)
+    // DateTime pickedUpAt (default value: null)
     test('to test the property `pickedUpAt`', () async {
       // TODO
     });
 
-    // String createdAt (default value: null)
+    // DateTime createdAt (default value: null)
     test('to test the property `createdAt`', () async {
       // TODO
     });

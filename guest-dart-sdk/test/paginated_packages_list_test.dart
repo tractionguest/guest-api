@@ -1,11 +1,11 @@
 import 'package:guest_sdk/api.dart';
 import 'package:test/test.dart';
 
-// tests for PaginatedPackageList
+// tests for PaginatedPackagesList
 void main() {
   var instance = new Pet();
 
-  group('test PaginatedPackageList', () {
+  group('test PaginatedPackagesList', () {
     // List<Package> packages (default value: [])
     test('to test the property `packages`', () async {
       // TODO

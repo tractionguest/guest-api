@@ -1,25 +1,25 @@
 part of guest_sdk.api;
 
 class Package {
-  
+
   int id = null;
-  
+
   Host recipient = null;
-  
+
   Location location = null;
-  
+
   String packageState = null;
-  
+
   String carrierName = null;
-  
-  String pickedUpAt = null;
-  
-  String createdAt = null;
-  
+
+  DateTime pickedUpAt = null;
+
+  DateTime createdAt = null;
+
   Image image = null;
-  
+
   String nlpResults = null;
-  
+
   String ocrResult = null;
   Package();
 
@@ -58,12 +58,12 @@ class Package {
     if (json['picked_up_at'] == null) {
       pickedUpAt = null;
     } else {
-          pickedUpAt = json['picked_up_at'];
+      pickedUpAt = DateTime.parse(json['picked_up_at']);
     }
     if (json['created_at'] == null) {
       createdAt = null;
     } else {
-          createdAt = json['created_at'];
+      createdAt = DateTime.parse(json['created_at']);
     }
     if (json['image'] == null) {
       image = null;
@@ -95,9 +95,9 @@ class Package {
     if (carrierName != null)
       json['carrier_name'] = carrierName;
     if (pickedUpAt != null)
-      json['picked_up_at'] = pickedUpAt;
+      json['picked_up_at'] = pickedUpAt == null ? null : pickedUpAt.toUtc().toIso8601String();
     if (createdAt != null)
-      json['created_at'] = createdAt;
+      json['created_at'] = createdAt == null ? null : createdAt.toUtc().toIso8601String();
     if (image != null)
       json['image'] = image;
     if (nlpResults != null)
@@ -119,4 +119,3 @@ class Package {
     return map;
   }
 }
-

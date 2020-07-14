@@ -1,4 +1,4 @@
-# guest_sdk.model.PaginatedPackageList
+# guest_sdk.model.PaginatedPackagesList
 
 ## Load the model package
 ```dart

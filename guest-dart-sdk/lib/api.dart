@@ -58,7 +58,7 @@ part 'model/paginated_email_templates_list.dart';
 part 'model/paginated_hosts_list.dart';
 part 'model/paginated_invites_list.dart';
 part 'model/paginated_locations_list.dart';
-part 'model/paginated_package_list.dart';
+part 'model/paginated_packages_list.dart';
 part 'model/paginated_registrations_list.dart';
 part 'model/paginated_signins_list.dart';
 part 'model/paginated_watchlist_list.dart';

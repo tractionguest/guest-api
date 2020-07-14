@@ -1,18 +1,18 @@
 part of guest_sdk.api;
 
-class PaginatedPackageList {
+class PaginatedPackagesList {
   
   List<Package> packages = [];
   
   Pagination pagination = null;
-  PaginatedPackageList();
+  PaginatedPackagesList();
 
   @override
   String toString() {
-    return 'PaginatedPackageList[packages=$packages, pagination=$pagination, ]';
+    return 'PaginatedPackagesList[packages=$packages, pagination=$pagination, ]';
   }
 
-  PaginatedPackageList.fromJson(Map<String, dynamic> json) {
+  PaginatedPackagesList.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
     if (json['packages'] == null) {
       packages = null;
@@ -35,14 +35,14 @@ class PaginatedPackageList {
     return json;
   }
 
-  static List<PaginatedPackageList> listFromJson(List<dynamic> json) {
-    return json == null ? new List<PaginatedPackageList>() : json.map((value) => new PaginatedPackageList.fromJson(value)).toList();
+  static List<PaginatedPackagesList> listFromJson(List<dynamic> json) {
+    return json == null ? new List<PaginatedPackagesList>() : json.map((value) => new PaginatedPackagesList.fromJson(value)).toList();
   }
 
-  static Map<String, PaginatedPackageList> mapFromJson(Map<String, dynamic> json) {
-    var map = new Map<String, PaginatedPackageList>();
+  static Map<String, PaginatedPackagesList> mapFromJson(Map<String, dynamic> json) {
+    var map = new Map<String, PaginatedPackagesList>();
     if (json != null && json.isNotEmpty) {
-      json.forEach((String key, dynamic value) => map[key] = new PaginatedPackageList.fromJson(value));
+      json.forEach((String key, dynamic value) => map[key] = new PaginatedPackagesList.fromJson(value));
     }
     return map;
   }

@@ -57,7 +57,7 @@ class PackagesApi {
   /// Get packages
   ///
   /// Gets a list of [Package] entities.
-  Future<PaginatedPackageList> getPackages({ String locationIds, int limit, int offset }) async {
+  Future<PaginatedPackagesList> getPackages({ String locationIds, int limit, int offset }) async {
     Object postBody;
 
     // verify required params are set
@@ -105,7 +105,7 @@ class PackagesApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'PaginatedPackageList') as PaginatedPackageList;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'PaginatedPackagesList') as PaginatedPackagesList;
     } else {
       return null;
     }

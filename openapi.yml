@@ -3369,7 +3369,7 @@ paths:
                     id: 1
                     name: Default
                     max_capacity: 30
-                    timezone: 'Central Time (US & Canada)'
+                    timezone: America/Vancouver
                     timezone_valid: true
         '400':
           description: A generic error

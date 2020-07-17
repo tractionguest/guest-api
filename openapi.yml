@@ -3336,8 +3336,7 @@ paths:
           application/json:
             schema:
               $ref: ./models/HostBatchCreateParams.v1.yaml
-            examples:
-              example-1: {}
+            examples: {}
       parameters:
         - $ref: '#/components/parameters/idempotencyKey'
   /registrations:

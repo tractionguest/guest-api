@@ -3400,7 +3400,7 @@ paths:
         - Capacities
       responses:
         '200':
-          description: 'Successful response returns the current number of signins, expected invites, max_capacity of the location and expected invites for the next 6 hours.'
+          description: 'Successful response returns the current number of signins, expected invites and expected invites for the next N number of hours.'
           content:
             application/json:
               schema:

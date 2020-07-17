@@ -22,15 +22,6 @@ properties:
     items:
       $ref: ./CustomField.v1.yaml
   page_type:
-    description: Enum
-    enum:
-      - form_page
-      - video_page
-      - branch_page
-      - docusign_page
-      - guest_sign_page
-      - identity_page
-      - simplesignature_page
     type: string
   sequence:
     format: int32

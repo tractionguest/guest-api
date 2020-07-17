@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **getRegistration**
 ```swift
-    open class func getRegistration(registrationId: String, include: String? = nil, completion: @escaping (_ data: Registration?, _ error: Error?) -> Void)
+    open class func getRegistration(registrationId: String, include: String? = nil, completion: @escaping (_ data: RegistrationDetail?, _ error: Error?) -> Void)
 ```
 
 Get a Registration
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Registration**](Registration.md)
+[**RegistrationDetail**](RegistrationDetail.md)
 
 ### Authorization
 

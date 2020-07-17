@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## getRegistration
 
-> Registration getRegistration(registrationId, include)
+> RegistrationDetail getRegistration(registrationId, include)
 
 Get a Registration
 
@@ -27,7 +27,7 @@ RegistrationApi apiInstance = new RegistrationApi();
 String registrationId = null; // String | 
 String include = null; // String | A list of comma-separated related models to include
 try {
-    Registration result = apiInstance.getRegistration(registrationId, include);
+    RegistrationDetail result = apiInstance.getRegistration(registrationId, include);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RegistrationApi#getRegistration");
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Registration**](Registration.md)
+[**RegistrationDetail**](RegistrationDetail.md)
 
 ### Authorization
 

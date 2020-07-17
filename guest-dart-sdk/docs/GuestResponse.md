@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | UUID | [optional] [default to null]
 **customFields** | [**List&lt;CustomField&gt;**](CustomField.md) | Flex fields | [optional] [default to []]
-**pageType** | **String** | Enum | [optional] [default to null]
+**pageType** | **String** |  | [optional] [default to null]
 **sequence** | **int** |  | [optional] [default to null]
 **title** | **String** | Page title | [optional] [default to null]
 

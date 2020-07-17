@@ -3,7 +3,7 @@
 #import "TGApiClient.h"
 #import "TGErrorsList.h"
 #import "TGPaginatedRegistrationsList.h"
-#import "TGRegistration.h"
+#import "TGRegistrationDetail.h"
 
 
 @interface TGRegistrationApi ()
@@ -58,11 +58,11 @@ NSInteger kTGRegistrationApiMissingParamErrorCode = 234513;
 ///
 ///  @param include A list of comma-separated related models to include (optional)
 ///
-///  @returns TGRegistration*
+///  @returns TGRegistrationDetail*
 ///
 -(NSURLSessionTask*) getRegistrationWithRegistrationId: (NSString*) registrationId
     include: (NSString*) include
-    completionHandler: (void (^)(TGRegistration* output, NSError* error)) handler {
+    completionHandler: (void (^)(TGRegistrationDetail* output, NSError* error)) handler {
     // verify the required parameter 'registrationId' is set
     if (registrationId == nil) {
         NSParameterAssert(registrationId);
@@ -117,10 +117,10 @@ NSInteger kTGRegistrationApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"TGRegistration*"
+                              responseType: @"TGRegistrationDetail*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((TGRegistration*)data, error);
+                                    handler((TGRegistrationDetail*)data, error);
                                 }
                             }];
 }

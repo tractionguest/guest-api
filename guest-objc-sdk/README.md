@@ -94,6 +94,7 @@ Import the following:
 #import <GuestSDK/TGGuestAlertCreateParams.h>
 #import <GuestSDK/TGGuestAlertDetail.h>
 #import <GuestSDK/TGGuestAlertSigninSelectors.h>
+#import <GuestSDK/TGGuestResponse.h>
 #import <GuestSDK/TGHost.h>
 #import <GuestSDK/TGHostBatchCreateParams.h>
 #import <GuestSDK/TGHostCreateParams.h>
@@ -117,6 +118,7 @@ Import the following:
 #import <GuestSDK/TGPagination.h>
 #import <GuestSDK/TGPermissionGroup.h>
 #import <GuestSDK/TGRegistration.h>
+#import <GuestSDK/TGRegistrationDetail.h>
 #import <GuestSDK/TGSignableDocument.h>
 #import <GuestSDK/TGSignin.h>
 #import <GuestSDK/TGSigninAcknowledgement.h>
@@ -224,6 +226,7 @@ Class | Method | HTTP request | Description
  - [TGGuestAlertCreateParams](docs/TGGuestAlertCreateParams.md)
  - [TGGuestAlertDetail](docs/TGGuestAlertDetail.md)
  - [TGGuestAlertSigninSelectors](docs/TGGuestAlertSigninSelectors.md)
+ - [TGGuestResponse](docs/TGGuestResponse.md)
  - [TGHost](docs/TGHost.md)
  - [TGHostBatchCreateParams](docs/TGHostBatchCreateParams.md)
  - [TGHostCreateParams](docs/TGHostCreateParams.md)
@@ -247,6 +250,7 @@ Class | Method | HTTP request | Description
  - [TGPagination](docs/TGPagination.md)
  - [TGPermissionGroup](docs/TGPermissionGroup.md)
  - [TGRegistration](docs/TGRegistration.md)
+ - [TGRegistrationDetail](docs/TGRegistrationDetail.md)
  - [TGSignableDocument](docs/TGSignableDocument.md)
  - [TGSignin](docs/TGSignin.md)
  - [TGSigninAcknowledgement](docs/TGSigninAcknowledgement.md)

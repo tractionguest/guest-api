@@ -26,7 +26,7 @@ export interface CustomFieldGuest {
     /**
      * The value to be displayed for the field
      */
-    fieldValue: string;
+    fieldValue: string | null;
     id?: string;
 }
 export namespace CustomFieldGuest {

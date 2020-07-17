@@ -14,29 +14,52 @@
 */
 
 
-#import "TGCustomField.h"
-@protocol TGCustomField;
-@class TGCustomField;
+#import "TGGuestResponse.h"
+#import "TGInvite.h"
+#import "TGSignin.h"
+#import "TGVisitor.h"
+@protocol TGGuestResponse;
+@class TGGuestResponse;
+@protocol TGInvite;
+@class TGInvite;
+@protocol TGSignin;
+@class TGSignin;
+@protocol TGVisitor;
+@class TGVisitor;
 
 
 
-@protocol TGGuestResponse
+@protocol TGRegistrationDetail
 @end
 
-@interface TGGuestResponse : TGObject
+@interface TGRegistrationDetail : TGObject
 
-/* UUID [optional]
+/* Registration unique identifier 
  */
 @property(nonatomic) NSString* _id;
-/* Flex fields [optional]
- */
-@property(nonatomic) NSArray<TGCustomField>* customFields;
 
-@property(nonatomic) NSString* pageType;
+@property(nonatomic) TGVisitor* visitor;
 
-@property(nonatomic) NSNumber* sequence;
-/* Page title [optional]
+@property(nonatomic) TGInvite* invite;
+/* Response given by the guest [optional]
  */
-@property(nonatomic) NSString* title;
+@property(nonatomic) NSArray<TGGuestResponse>* guestResponses;
+/* URL of the uploaded photo [optional]
+ */
+@property(nonatomic) NSString* photoUrl;
+/* Company's name [optional]
+ */
+@property(nonatomic) NSString* company;
+/* E-mail [optional]
+ */
+@property(nonatomic) NSString* email;
+/* Guest's name [optional]
+ */
+@property(nonatomic) NSString* name;
+/* Datetime when registration was created 
+ */
+@property(nonatomic) NSDate* createdAt;
+
+@property(nonatomic) TGSignin* signin;
 
 @end

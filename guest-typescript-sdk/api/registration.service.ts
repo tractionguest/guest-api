@@ -20,7 +20,7 @@ import { Observable }                                        from 'rxjs';
 
 import { ErrorsListGuest } from '../model/errorsList';
 import { PaginatedRegistrationsListGuest } from '../model/paginatedRegistrationsList';
-import { RegistrationGuest } from '../model/registration';
+import { RegistrationDetailGuest } from '../model/registrationDetail';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -69,9 +69,9 @@ export class RegistrationService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getRegistration(registrationId: string, include?: string, observe?: 'body', reportProgress?: boolean): Observable<RegistrationGuest>;
-    public getRegistration(registrationId: string, include?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<RegistrationGuest>>;
-    public getRegistration(registrationId: string, include?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<RegistrationGuest>>;
+    public getRegistration(registrationId: string, include?: string, observe?: 'body', reportProgress?: boolean): Observable<RegistrationDetailGuest>;
+    public getRegistration(registrationId: string, include?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<RegistrationDetailGuest>>;
+    public getRegistration(registrationId: string, include?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<RegistrationDetailGuest>>;
     public getRegistration(registrationId: string, include?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
         if (registrationId === null || registrationId === undefined) {
             throw new Error('Required parameter registrationId was null or undefined when calling getRegistration.');
@@ -98,7 +98,7 @@ export class RegistrationService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<RegistrationGuest>(`${this.configuration.basePath}/registrations/${encodeURIComponent(String(registrationId))}`,
+        return this.httpClient.get<RegistrationDetailGuest>(`${this.configuration.basePath}/registrations/${encodeURIComponent(String(registrationId))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

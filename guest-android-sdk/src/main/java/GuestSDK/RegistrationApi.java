@@ -25,7 +25,7 @@ import com.android.volley.VolleyError;
 
 import org.openapitools.client.model.ErrorsList;
 import org.openapitools.client.model.PaginatedRegistrationsList;
-import org.openapitools.client.model.Registration;
+import org.openapitools.client.model.RegistrationDetail;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -62,9 +62,9 @@ public class RegistrationApi {
   * Gets the details of a single instance of a &#x60;Registration&#x60;
    * @param registrationId 
    * @param include A list of comma-separated related models to include
-   * @return Registration
+   * @return RegistrationDetail
   */
-  public Registration getRegistration (String registrationId, String include) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public RegistrationDetail getRegistration (String registrationId, String include) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'registrationId' is set
     if (registrationId == null) {
@@ -100,7 +100,7 @@ public class RegistrationApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (Registration) ApiInvoker.deserialize(localVarResponse, "", Registration.class);
+         return (RegistrationDetail) ApiInvoker.deserialize(localVarResponse, "", RegistrationDetail.class);
       } else {
          return null;
       }
@@ -126,7 +126,7 @@ public class RegistrationApi {
    * Gets the details of a single instance of a &#x60;Registration&#x60;
    * @param registrationId    * @param include A list of comma-separated related models to include
   */
-  public void getRegistration (String registrationId, String include, final Response.Listener<Registration> responseListener, final Response.ErrorListener errorListener) {
+  public void getRegistration (String registrationId, String include, final Response.Listener<RegistrationDetail> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'registrationId' is set
@@ -172,7 +172,7 @@ public class RegistrationApi {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((Registration) ApiInvoker.deserialize(localVarResponse,  "", Registration.class));
+              responseListener.onResponse((RegistrationDetail) ApiInvoker.deserialize(localVarResponse,  "", RegistrationDetail.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }

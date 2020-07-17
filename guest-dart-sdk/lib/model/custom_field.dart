@@ -47,7 +47,6 @@ class CustomField {
       json['format'] = format;
     if (fieldName != null)
       json['field_name'] = fieldName;
-    if (fieldValue != null)
       json['field_value'] = fieldValue;
     if (id != null)
       json['id'] = id;

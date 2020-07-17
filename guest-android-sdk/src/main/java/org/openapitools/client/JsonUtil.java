@@ -109,6 +109,10 @@ public class JsonUtil {
       return new TypeToken<List<GuestAlertSigninSelectors>>(){}.getType();
     }
     
+    if ("GuestResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<List<GuestResponse>>(){}.getType();
+    }
+    
     if ("Host".equalsIgnoreCase(className)) {
       return new TypeToken<List<Host>>(){}.getType();
     }
@@ -199,6 +203,10 @@ public class JsonUtil {
     
     if ("Registration".equalsIgnoreCase(className)) {
       return new TypeToken<List<Registration>>(){}.getType();
+    }
+    
+    if ("RegistrationDetail".equalsIgnoreCase(className)) {
+      return new TypeToken<List<RegistrationDetail>>(){}.getType();
     }
     
     if ("SignableDocument".equalsIgnoreCase(className)) {
@@ -319,6 +327,10 @@ public class JsonUtil {
       return new TypeToken<GuestAlertSigninSelectors>(){}.getType();
     }
     
+    if ("GuestResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<GuestResponse>(){}.getType();
+    }
+    
     if ("Host".equalsIgnoreCase(className)) {
       return new TypeToken<Host>(){}.getType();
     }
@@ -409,6 +421,10 @@ public class JsonUtil {
     
     if ("Registration".equalsIgnoreCase(className)) {
       return new TypeToken<Registration>(){}.getType();
+    }
+    
+    if ("RegistrationDetail".equalsIgnoreCase(className)) {
+      return new TypeToken<RegistrationDetail>(){}.getType();
     }
     
     if ("SignableDocument".equalsIgnoreCase(className)) {

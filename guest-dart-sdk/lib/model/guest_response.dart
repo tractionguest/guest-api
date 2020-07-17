@@ -5,9 +5,8 @@ class GuestResponse {
   String id = null;
   /* Flex fields */
   List<CustomField> customFields = [];
-  /* Enum */
+  
   String pageType = null;
-  //enum pageTypeEnum {  form_page,  video_page,  branch_page,  docusign_page,  guest_sign_page,  identity_page,  };{
   
   int sequence = null;
   /* Page title */

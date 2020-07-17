@@ -12,7 +12,7 @@ Method | HTTP request | Description
 ```objc
 -(NSURLSessionTask*) getRegistrationWithRegistrationId: (NSString*) registrationId
     include: (NSString*) include
-        completionHandler: (void (^)(TGRegistration* output, NSError* error)) handler;
+        completionHandler: (void (^)(TGRegistrationDetail* output, NSError* error)) handler;
 ```
 
 Get a Registration
@@ -32,7 +32,7 @@ TGRegistrationApi*apiInstance = [[TGRegistrationApi alloc] init];
 // Get a Registration
 [apiInstance getRegistrationWithRegistrationId:registrationId
               include:include
-          completionHandler: ^(TGRegistration* output, NSError* error) {
+          completionHandler: ^(TGRegistrationDetail* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TGRegistration***](TGRegistration.md)
+[**TGRegistrationDetail***](TGRegistrationDetail.md)
 
 ### Authorization
 

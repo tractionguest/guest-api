@@ -1,12 +1,14 @@
 part of guest_sdk.api;
 
-class Registration {
+class RegistrationDetail {
   /* Registration unique identifier */
   String id = null;
   
   Visitor visitor = null;
   
   Invite invite = null;
+  /* Response given by the guest */
+  List<GuestResponse> guestResponses = [];
   /* URL of the uploaded photo */
   String photoUrl = null;
   /* Company's name */
@@ -19,14 +21,14 @@ class Registration {
   DateTime createdAt = null;
   
   Signin signin = null;
-  Registration();
+  RegistrationDetail();
 
   @override
   String toString() {
-    return 'Registration[id=$id, visitor=$visitor, invite=$invite, photoUrl=$photoUrl, company=$company, email=$email, name=$name, createdAt=$createdAt, signin=$signin, ]';
+    return 'RegistrationDetail[id=$id, visitor=$visitor, invite=$invite, guestResponses=$guestResponses, photoUrl=$photoUrl, company=$company, email=$email, name=$name, createdAt=$createdAt, signin=$signin, ]';
   }
 
-  Registration.fromJson(Map<String, dynamic> json) {
+  RegistrationDetail.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
     if (json['id'] == null) {
       id = null;
@@ -42,6 +44,11 @@ class Registration {
       invite = null;
     } else {
       invite = new Invite.fromJson(json['invite']);
+    }
+    if (json['guest_responses'] == null) {
+      guestResponses = null;
+    } else {
+      guestResponses = GuestResponse.listFromJson(json['guest_responses']);
     }
     if (json['photo_url'] == null) {
       photoUrl = null;
@@ -83,6 +90,8 @@ class Registration {
       json['visitor'] = visitor;
     if (invite != null)
       json['invite'] = invite;
+    if (guestResponses != null)
+      json['guest_responses'] = guestResponses;
       json['photo_url'] = photoUrl;
       json['company'] = company;
       json['email'] = email;
@@ -94,14 +103,14 @@ class Registration {
     return json;
   }
 
-  static List<Registration> listFromJson(List<dynamic> json) {
-    return json == null ? new List<Registration>() : json.map((value) => new Registration.fromJson(value)).toList();
+  static List<RegistrationDetail> listFromJson(List<dynamic> json) {
+    return json == null ? new List<RegistrationDetail>() : json.map((value) => new RegistrationDetail.fromJson(value)).toList();
   }
 
-  static Map<String, Registration> mapFromJson(Map<String, dynamic> json) {
-    var map = new Map<String, Registration>();
+  static Map<String, RegistrationDetail> mapFromJson(Map<String, dynamic> json) {
+    var map = new Map<String, RegistrationDetail>();
     if (json != null && json.isNotEmpty) {
-      json.forEach((String key, dynamic value) => map[key] = new Registration.fromJson(value));
+      json.forEach((String key, dynamic value) => map[key] = new RegistrationDetail.fromJson(value));
     }
     return map;
   }

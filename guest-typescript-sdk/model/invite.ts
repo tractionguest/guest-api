@@ -25,22 +25,22 @@ export interface InviteGuest {
     /**
      * 
      */
-    mobileNumber?: string;
+    mobileNumber?: string | null;
     /**
      * 
      */
-    email: string;
+    email: string | null;
     /**
      * 
      */
-    endDate?: Date;
+    endDate?: Date | null;
     inviteWatchlist?: InviteWatchlistGuest;
     hosts?: Array<HostGuest>;
-    watchlistColour?: InviteGuest.WatchlistColourGuestEnum;
+    watchlistColour?: InviteGuest.WatchlistColourGuestEnum | null;
     location?: LocationGuest;
     startDate?: Date;
-    lastName: string;
-    firstName: string;
+    lastName: string | null;
+    firstName: string | null;
     groupVisit?: GroupVisitGuest;
 }
 export namespace InviteGuest {

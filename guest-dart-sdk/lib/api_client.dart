@@ -63,6 +63,8 @@ class ApiClient {
           return GuestAlertDetail.fromJson(value);
         case 'GuestAlertSigninSelectors':
           return GuestAlertSigninSelectors.fromJson(value);
+        case 'GuestResponse':
+          return GuestResponse.fromJson(value);
         case 'Host':
           return Host.fromJson(value);
         case 'HostBatchCreateParams':
@@ -109,6 +111,8 @@ class ApiClient {
           return PermissionGroup.fromJson(value);
         case 'Registration':
           return Registration.fromJson(value);
+        case 'RegistrationDetail':
+          return RegistrationDetail.fromJson(value);
         case 'SignableDocument':
           return SignableDocument.fromJson(value);
         case 'Signin':

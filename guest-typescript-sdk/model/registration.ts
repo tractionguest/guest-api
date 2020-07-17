@@ -27,19 +27,19 @@ export interface RegistrationGuest {
     /**
      * URL of the uploaded photo
      */
-    photoUrl?: string;
+    photoUrl?: string | null;
     /**
      * Company\'s name
      */
-    company?: string;
+    company?: string | null;
     /**
      * E-mail
      */
-    email?: string;
+    email?: string | null;
     /**
      * Guest\'s name
      */
-    name?: string;
+    name?: string | null;
     /**
      * Datetime when registration was created
      */

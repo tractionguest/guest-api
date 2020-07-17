@@ -30,6 +30,7 @@ properties:
       - docusign_page
       - guest_sign_page
       - identity_page
+      - simplesignature_page
     type: string
   sequence:
     format: int32

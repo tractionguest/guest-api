@@ -1,7 +1,5 @@
 title: MaxCapacityResponse
 type: object
-x-tags:
-  - MaxCapacities
 properties:
   signins_count:
     type: integer
@@ -28,3 +26,4 @@ x-examples:
       - 3
       - 6
       - 5
+description: "The root of the MaxCapacityResponse's schema."

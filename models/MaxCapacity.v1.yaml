@@ -1,7 +1,5 @@
 title: MaxCapacity
 type: object
-x-tags:
-  - MaxCapacities
 properties:
   local_time:
     type: string
@@ -11,3 +9,4 @@ required:
 x-examples:
   default:
     local_time: '2020-07-16T17:05:08-07:00'
+description: "The root of the MaxCapacity's schema."

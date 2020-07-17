@@ -10,7 +10,7 @@ class RegistrationApi {
   /// Get a Registration
   ///
   /// Gets the details of a single instance of a &#x60;Registration&#x60;
-  Future<Registration> getRegistration(String registrationId, { String include }) async {
+  Future<RegistrationDetail> getRegistration(String registrationId, { String include }) async {
     Object postBody;
 
     // verify required params are set
@@ -55,7 +55,7 @@ class RegistrationApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'Registration') as Registration;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'RegistrationDetail') as RegistrationDetail;
     } else {
       return null;
     }

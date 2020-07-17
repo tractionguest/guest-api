@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "TGErrorsList.h"
 #import "TGPaginatedRegistrationsList.h"
-#import "TGRegistration.h"
+#import "TGRegistrationDetail.h"
 #import "TGApi.h"
 
 /**
@@ -36,10 +36,10 @@ extern NSInteger kTGRegistrationApiMissingParamErrorCode;
 ///  code:403 message:"You do not have permission for this action",
 ///  code:404 message:"The specified Registration was not found"
 ///
-/// @return TGRegistration*
+/// @return TGRegistrationDetail*
 -(NSURLSessionTask*) getRegistrationWithRegistrationId: (NSString*) registrationId
     include: (NSString*) include
-    completionHandler: (void (^)(TGRegistration* output, NSError* error)) handler;
+    completionHandler: (void (^)(TGRegistrationDetail* output, NSError* error)) handler;
 
 
 /// List all Registrations

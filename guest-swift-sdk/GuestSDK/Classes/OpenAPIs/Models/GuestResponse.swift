@@ -11,25 +11,16 @@ import Foundation
 public struct GuestResponse: Codable { 
 
 
-    public enum PageType: String, Codable, CaseIterable {
-        case formPage = "form_page"
-        case videoPage = "video_page"
-        case branchPage = "branch_page"
-        case docusignPage = "docusign_page"
-        case guestSignPage = "guest_sign_page"
-        case identityPage = "identity_page"
-    }
     /** UUID */
     public var id: String?
     /** Flex fields */
     public var customFields: [CustomField]?
-    /** Enum */
-    public var pageType: PageType?
+    public var pageType: String?
     public var sequence: Int?
     /** Page title */
     public var title: String?
 
-    public init(id: String?, customFields: [CustomField]?, pageType: PageType?, sequence: Int?, title: String?) {
+    public init(id: String?, customFields: [CustomField]?, pageType: String?, sequence: Int?, title: String?) {
         self.id = id
         self.customFields = customFields
         self.pageType = pageType

@@ -110,25 +110,19 @@ class Invite {
       json['id'] = id;
     if (registration != null)
       json['registration'] = registration;
-    if (mobileNumber != null)
       json['mobile_number'] = mobileNumber;
-    if (email != null)
       json['email'] = email;
-    if (endDate != null)
       json['end_date'] = endDate == null ? null : endDate.toUtc().toIso8601String();
     if (inviteWatchlist != null)
       json['invite_watchlist'] = inviteWatchlist;
     if (hosts != null)
       json['hosts'] = hosts;
-    if (watchlistColour != null)
       json['watchlist_colour'] = watchlistColour;
     if (location != null)
       json['location'] = location;
     if (startDate != null)
       json['start_date'] = startDate == null ? null : startDate.toUtc().toIso8601String();
-    if (lastName != null)
       json['last_name'] = lastName;
-    if (firstName != null)
       json['first_name'] = firstName;
     if (groupVisit != null)
       json['group_visit'] = groupVisit;

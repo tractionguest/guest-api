@@ -9,26 +9,46 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { CustomFieldGuest } from './customField';
+import { GuestResponseGuest } from './guestResponse';
+import { InviteGuest } from './invite';
+import { SigninGuest } from './signin';
+import { VisitorGuest } from './visitor';
 
 
 /**
- * The data collected from the response on a Registration
+ * The data of a Registration
  */
-export interface GuestResponseGuest { 
+export interface RegistrationDetailGuest { 
     /**
-     * UUID
+     * Registration unique identifier
      */
-    id?: string;
+    id: string;
+    visitor?: VisitorGuest;
+    invite?: InviteGuest;
     /**
-     * Flex fields
+     * Response given by the guest
      */
-    customFields?: Array<CustomFieldGuest>;
-    pageType?: string;
-    sequence?: number;
+    guestResponses?: Array<GuestResponseGuest>;
     /**
-     * Page title
+     * URL of the uploaded photo
      */
-    title?: string;
+    photoUrl?: string | null;
+    /**
+     * Company\'s name
+     */
+    company?: string | null;
+    /**
+     * E-mail
+     */
+    email?: string | null;
+    /**
+     * Guest\'s name
+     */
+    name?: string | null;
+    /**
+     * Datetime when registration was created
+     */
+    createdAt: Date;
+    signin?: SigninGuest;
 }
 

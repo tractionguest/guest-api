@@ -18,7 +18,7 @@ open class RegistrationAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
      */
-    open class func getRegistration(registrationId: String, include: String? = nil, apiResponseQueue: DispatchQueue = GuestSDKAPI.apiResponseQueue, completion: @escaping ((_ result: Result<Registration, Error>) -> Void)) {
+    open class func getRegistration(registrationId: String, include: String? = nil, apiResponseQueue: DispatchQueue = GuestSDKAPI.apiResponseQueue, completion: @escaping ((_ result: Result<RegistrationDetail, Error>) -> Void)) {
         getRegistrationWithRequestBuilder(registrationId: registrationId, include: include).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -38,9 +38,9 @@ open class RegistrationAPI {
        - name: TractionGuestAuth
      - parameter registrationId: (path)  
      - parameter include: (query) A list of comma-separated related models to include (optional)
-     - returns: RequestBuilder<Registration> 
+     - returns: RequestBuilder<RegistrationDetail> 
      */
-    open class func getRegistrationWithRequestBuilder(registrationId: String, include: String? = nil) -> RequestBuilder<Registration> {
+    open class func getRegistrationWithRequestBuilder(registrationId: String, include: String? = nil) -> RequestBuilder<RegistrationDetail> {
         var path = "/registrations/{registration_id}"
         let registrationIdPreEscape = "\(APIHelper.mapValueToPathItem(registrationId))"
         let registrationIdPostEscape = registrationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -53,7 +53,7 @@ open class RegistrationAPI {
             "include": include?.encodeToJSON()
         ])
 
-        let requestBuilder: RequestBuilder<Registration>.Type = GuestSDKAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<RegistrationDetail>.Type = GuestSDKAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

@@ -1,5 +1,35 @@
 title: CapacityResponse
 type: object
+x-examples:
+  default:
+    signins_count: 189
+    invites_expected_next_hour: 1
+    invites_by_hour:
+      - range_start: '2020-07-17T00:59:59.999Z'
+        range_end: '2020-07-17T01:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T01:59:59.999Z'
+        range_end: '2020-07-17T02:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T02:59:59.999Z'
+        range_end: '2020-07-17T03:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T03:59:59.999Z'
+        range_end: '2020-07-17T04:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T04:59:59.999Z'
+        range_end: '2020-07-17T05:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T05:59:59.999Z'
+        range_end: '2020-07-17T06:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T06:59:59.999Z'
+        range_end: '2020-07-17T07:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T07:59:59.999Z'
+        range_end: '2020-07-17T08:59:59.999Z'
+        expected_visitors: 1
+description: "The root of the CapacityResponse's schema."
 properties:
   signins_count:
     type: integer
@@ -7,23 +37,7 @@ properties:
   invites_expected_next_hour:
     type: integer
     description: The number of people expected in the next 60 mins from the current time.
-  max_capacity:
-    type: integer
-    description: The maximum capacity of a location.
-  chart_data:
+  invites_by_hour:
     type: array
-    description: Expected people in the next 6 hours
     items:
-      type: integer
-x-examples:
-  default:
-    signins_count: 10
-    invites_expected_next_hour: 7
-    max_capacity: 50
-    chart_data:
-      - 10
-      - 5
-      - 3
-      - 6
-      - 5
-description: "The root of the CapacityResponse's schema."
+      $ref: ./CapacityByHourResponse.v1.yaml

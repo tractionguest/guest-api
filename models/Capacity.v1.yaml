@@ -1,4 +1,4 @@
-title: MaxCapacity
+title: Capacity
 type: object
 properties:
   local_time:
@@ -9,4 +9,4 @@ required:
 x-examples:
   default:
     local_time: '2020-07-16T17:05:08-07:00'
-description: "The root of the MaxCapacity's schema."
+description: "The root of the Capacity's schema."

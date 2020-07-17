@@ -3386,7 +3386,7 @@ paths:
           in: query
           name: created_after
           description: Restricts results to only those that were created after the provided date
-  '/locations/{location_id}/max_capacities':
+  '/locations/{location_id}/capacities':
     parameters:
       - schema:
           type: string
@@ -3394,16 +3394,16 @@ paths:
         in: path
         required: true
     get:
-      summary: Get the maximum capacity details for a location
+      summary: Get the capacity details for a location
       tags:
-        - MaxCapacities
+        - Capacities
       responses:
         '200':
           description: 'Successful response returns the current number of signins, expected invites, max_capacity of the location and expected invites for the next 6 hours.'
           content:
             application/json:
               schema:
-                $ref: ./models/MaxCapacityResponse.v1.yaml
+                $ref: ./models/CapacityResponse.v1.yaml
               examples:
                 default:
                   value:
@@ -3438,7 +3438,7 @@ paths:
           description: "You don't have permission to view the details of the location's capacity."
         '403':
           description: You do not have permission for this action
-      operationId: getLocationMaximumCapacity
+      operationId: getLocationCapacity
       description: Gets the details of the capacity in a location.
       parameters:
         - schema:
@@ -3450,7 +3450,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/MaxCapacity.v1.yaml
+              $ref: ./models/Capacity.v1.yaml
             examples:
               default:
                 value:

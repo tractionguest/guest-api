@@ -1,4 +1,4 @@
-title: MaxCapacityResponse
+title: CapacityResponse
 type: object
 properties:
   signins_count:
@@ -26,4 +26,4 @@ x-examples:
       - 3
       - 6
       - 5
-description: "The root of the MaxCapacityResponse's schema."
+description: "The root of the CapacityResponse's schema."

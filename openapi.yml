@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.11.13
+  version: 0.11.14
   description: |
     The Traction Guest API is currently in **closed beta**.
     We're still building, testing, and fixing bugs.
@@ -88,7 +88,45 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/PaginatedHostsList.v1.yaml
+                title: PaginatedHostsList
+                type: object
+                properties:
+                  pagination:
+                    title: Pagination
+                    description: "The root of the Pagination type's schema."
+                    type: object
+                    x-examples:
+                      default:
+                        total_records: 16
+                        current_offset: 31
+                        next_offset: 20
+                        last_id: 28
+                        limit: 20
+                    properties:
+                      total_records:
+                        format: int32
+                        type: integer
+                      current_offset:
+                        format: int32
+                        type: integer
+                      next_offset:
+                        format: int32
+                        type: integer
+                        nullable: true
+                      last_id:
+                        format: int32
+                        description: "The last ID rendered, if the request included the 'after_id' param."
+                        type: integer
+                        nullable: true
+                      limit:
+                        type: integer
+                  hosts:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1hosts/post/responses/201/content/application~1json/schema'
+                required:
+                  - pagination
+                  - hosts
               examples:
                 default:
                   value:
@@ -114,7 +152,55 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                title: ErrorsList
+                type: object
+                x-examples:
+                  default:
+                    errors:
+                      - domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+                      - domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+                description: A list of Errors that occured on the server
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      title: Error
+                      description: "The root of the Error type's schema."
+                      required:
+                        - domain
+                        - code
+                      type: object
+                      properties:
+                        domain:
+                          description: 'The name of the model with the error, or global if it is something outside a model'
+                          type: string
+                        attribute:
+                          description: The model attribute where the error occured
+                          type: string
+                          nullable: true
+                        code:
+                          description: An error code reference for the specific error that occured
+                          type: string
+                        message:
+                          description: A human readable error message that can be discarded for internationalization purposes
+                          type: string
+                          nullable: true
+                      x-examples:
+                        default: |-
+                          {
+                            "domain": "model_name",
+                            "attribute": "name",
+                            "code": "cant_be_blank",
+                            "message": "Words to use"
+                          }
+                required:
+                  - errors
               examples:
                 default:
                   value:
@@ -140,7 +226,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/HostCreateParams.v1.yaml
+              title: HostCreateParams
+              description: The params needed to create a new Host
+              type: object
+              properties:
+                email:
+                  type: string
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                profile_pic_url:
+                  type: string
+                department:
+                  description: ''
+                  type: string
+                mobile_number:
+                  type: string
+              x-examples:
+                default: "{\n  \"email\": \"name@email.com\",\n  \"first_name\": \"Frank\",\n  \"last_name\": \"Longbottom\",\n  \"mobile_number\": \"(604) 980-9933\",\n  \"profile_pic_url\": \"image.jpg\"\n} "
             examples:
               default:
                 value:
@@ -160,7 +264,38 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/Host.v1.yaml
+                title: Host
+                description: A client host assigned to a Signin
+                required:
+                  - id
+                type: object
+                properties:
+                  id:
+                    format: int32
+                    type: integer
+                  email:
+                    type: string
+                  first_name:
+                    type: string
+                  last_name:
+                    type: string
+                  profile_pic_url:
+                    type: string
+                  department:
+                    description: ''
+                    type: string
+                  mobile_number:
+                    type: string
+                x-examples:
+                  default: |-
+                    {
+                      "id": 1,
+                      "email": "name@email.com",
+                      "first_name": "Frank",
+                      "last_name": "Longbottom",
+                      "mobile_number": "(604) 980-9933",
+                      "profile_pic_url": "image.jpg"
+                    }
               examples:
                 default:
                   value:
@@ -176,7 +311,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
       operationId: createHost
       summary: Create a Host
       description: Creates a Host
@@ -207,7 +342,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/PaginatedEmailTemplatesList.v1.yaml
+                title: PaginatedEmailTemplatesList
+                type: object
+                properties:
+                  pagination:
+                    $ref: '#/paths/~1hosts/get/responses/200/content/application~1json/schema/properties/pagination'
+                  email_templates:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/email_template'
+                required:
+                  - pagination
+                  - email_templates
               examples:
                 default:
                   value:
@@ -227,7 +373,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -265,7 +411,419 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/SigninDetail.v1.yaml
+                title: SigninDetail
+                type: object
+                x-examples:
+                  default:
+                    id: 95
+                    company: some text
+                    email: some text
+                    first_name: some text
+                    is_accounted_for: true
+                    is_acknowledged: true
+                    last_name: some text
+                    location_name: some text
+                    mobile_number: some text
+                    signed_out_timestamp: '2018-02-10T09:30Z'
+                    signin_photo_url: some text
+                    signin_timestamp: '2018-02-10T09:30Z'
+                    is_signed_out: true
+                    note: some text
+                    signin_acknowledgement:
+                      code: some text
+                      acknowledged_at: '2018-02-10T09:30Z'
+                      id: 31
+                    signin_data:
+                      - name: some text
+                        custom_fields:
+                          - format: string
+                            field_name: some text
+                            field_value: some text
+                          - format: string
+                            field_name: some text
+                            field_value: some text
+                      - name: some text
+                        custom_fields:
+                          - format: string
+                            field_name: some text
+                            field_value: some text
+                          - format: string
+                            field_name: some text
+                            field_value: some text
+                    hosts:
+                      - id: 90
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile_number: some text
+                        profile_pic_url: some text
+                      - id: 1
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile_number: some text
+                        profile_pic_url: some text
+                    signin_watchlist:
+                      id: 33
+                      external:
+                        - search_terms:
+                            name: some text
+                            company: some text
+                            city: some text
+                            country: some text
+                            state: some text
+                          integration: some text
+                          colour: GREEN
+                          matches:
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: '2018-01-17'
+                              end: '2018-01-17'
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: '2018-01-17'
+                              end: '2018-01-17'
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                        - search_terms:
+                            name: some text
+                            company: some text
+                            city: some text
+                            country: some text
+                            state: some text
+                          integration: some text
+                          colour: GREEN
+                          matches:
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: '2018-01-17'
+                              end: '2018-01-17'
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: '2018-01-17'
+                              end: '2018-01-17'
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                      internal:
+                        - id: 9
+                          email: some text
+                          colour: some text
+                          last_name: some text
+                          first_name: some text
+                        - id: 78
+                          email: some text
+                          colour: some text
+                          last_name: some text
+                          first_name: some text
+                    documents:
+                      - docusigns:
+                          - template_id: some text
+                            integration: some text
+                            nda_status: some text
+                            nda_signed_date: '2018-02-10T09:30Z'
+                            envelope_id: some text
+                            sequence: 88
+                            docusign_id: some text
+                            docusign_name: some text
+                            title: some text
+                          - template_id: some text
+                            integration: some text
+                            nda_status: some text
+                            nda_signed_date: '2018-02-10T09:30Z'
+                            envelope_id: some text
+                            sequence: 9
+                            docusign_id: some text
+                            docusign_name: some text
+                            title: some text
+                        simple_signatures:
+                          - status: some text
+                            template_name: some text
+                            id: some text
+                            title: some text
+                          - status: some text
+                            template_name: some text
+                            id: some text
+                            title: some text
+                      - docusigns:
+                          - template_id: some text
+                            integration: some text
+                            nda_status: some text
+                            nda_signed_date: '2018-02-10T09:30Z'
+                            envelope_id: some text
+                            sequence: 47
+                            docusign_id: some text
+                            docusign_name: some text
+                            title: some text
+                          - template_id: some text
+                            integration: some text
+                            nda_status: some text
+                            nda_signed_date: '2018-02-10T09:30Z'
+                            envelope_id: some text
+                            sequence: 37
+                            docusign_id: some text
+                            docusign_name: some text
+                            title: some text
+                        simple_signatures:
+                          - status: some text
+                            template_name: some text
+                            id: some text
+                            title: some text
+                          - status: some text
+                            template_name: some text
+                            id: some text
+                            title: some text
+                description: "The root of the Signin type's schema."
+                properties:
+                  id:
+                    type: integer
+                    format: int32
+                  documents:
+                    type: array
+                    items:
+                      title: SignableDocument
+                      type: object
+                      x-examples:
+                        default:
+                          docusigns:
+                            - template_id: some text
+                              integration: some text
+                              nda_status: some text
+                              nda_signed_date: '2018-02-10T09:30Z'
+                              envelope_id: some text
+                              sequence: 80
+                              docusign_id: some text
+                              docusign_name: some text
+                              title: some text
+                            - template_id: some text
+                              integration: some text
+                              nda_status: some text
+                              nda_signed_date: '2018-02-10T09:30Z'
+                              envelope_id: some text
+                              sequence: 88
+                              docusign_id: some text
+                              docusign_name: some text
+                              title: some text
+                          simple_signatures:
+                            - status: some text
+                              template_name: some text
+                              id: some text
+                              title: some text
+                            - status: some text
+                              template_name: some text
+                              id: some text
+                              title: some text
+                      description: ''
+                      properties:
+                        simple_signatures:
+                          type: array
+                          items:
+                            title: SimpleSignature
+                            description: ''
+                            type: object
+                            properties:
+                              status:
+                                description: ''
+                                type: string
+                              template_name:
+                                description: ''
+                                type: string
+                              id:
+                                description: ''
+                                type: string
+                              title:
+                                description: ''
+                                type: string
+                        docusigns:
+                          type: array
+                          items:
+                            title: Docusign
+                            description: ''
+                            type: object
+                            properties:
+                              template_id:
+                                description: ''
+                                type: string
+                              integration:
+                                description: ''
+                                type: string
+                              nda_status:
+                                description: ''
+                                type: string
+                              nda_signed_date:
+                                format: date-time
+                                description: ''
+                                type: string
+                              envelope_id:
+                                description: ''
+                                type: string
+                              sequence:
+                                description: ''
+                                type: string
+                              docusign_id:
+                                description: ''
+                                type: string
+                              docusign_name:
+                                description: ''
+                                type: string
+                              title:
+                                description: ''
+                                type: string
+                  signin_watchlist:
+                    $ref: '#/paths/~1signins/post/responses/201/content/application~1json/schema/properties/signin_watchlist'
+                  hosts:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1hosts/post/responses/201/content/application~1json/schema'
+                  signin_data:
+                    type: array
+                    items:
+                      title: SigninData
+                      type: object
+                      x-examples:
+                        default:
+                          name: some text
+                          custom_fields:
+                            - format: string
+                              field_name: some text
+                              field_value: some text
+                            - format: string
+                              field_name: some text
+                              field_value: some text
+                      properties:
+                        custom_fields:
+                          type: array
+                          items:
+                            $ref: '#/paths/~1invites~1%7Binvite_id%7D/put/requestBody/content/application~1json/schema/properties/custom_fields/items'
+                        name:
+                          type: string
+                  signin_acknowledgement:
+                    title: SigninAcknowledgement
+                    description: "The root of the SigninAcknowledgement type's schema."
+                    required:
+                      - id
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                      acknowledged_at:
+                        format: date-time
+                        type: string
+                      id:
+                        format: int32
+                        type: integer
+                    x-examples:
+                      default:
+                        code: some text
+                        acknowledged_at: '2018-02-10T09:30Z'
+                        id: 10
+                  note:
+                    type: string
+                  is_signed_out:
+                    description: A one-way method of Signing out a Signin
+                    type: boolean
+                  signin_timestamp:
+                    format: date-time
+                    type: string
+                  signin_photo_url:
+                    type: string
+                  signed_out_timestamp:
+                    format: date-time
+                    type: string
+                  mobile_number:
+                    type: string
+                  location_name:
+                    type: string
+                  last_name:
+                    type: string
+                  is_acknowledged:
+                    description: |-
+                      Whether this Signin has been acknowledged yet.
+                      Can also be used as a one-way method of setting the Signin as acknowledged.
+                    type: boolean
+                  is_accounted_for:
+                    type: boolean
+                  first_name:
+                    type: string
+                  email:
+                    type: string
+                  company:
+                    type: string
+                  registration:
+                    $ref: '#/paths/~1signins/post/responses/201/content/application~1json/schema/properties/registration'
+                required:
+                  - id
               examples:
                 default:
                   value:
@@ -503,7 +1061,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -532,7 +1090,23 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/SigninUpdateParams.v1.yaml
+              title: SigninUpdateParams
+              type: object
+              properties:
+                is_signed_out:
+                  description: 'Used to sign out the `Signin`, can only be set to `true`.'
+                  type: boolean
+                is_acknowledged:
+                  description: 'Used to acknowledge the `Signin`, can only be set to `true`.'
+                  type: boolean
+                is_accounted_for:
+                  description: Used when keeping track of people in emergency situations
+                  type: boolean
+              x-examples:
+                default:
+                  is_signed_out: true
+                  is_acknowledged: true
+                  is_accounted_for: true
             examples:
               default:
                 value:
@@ -549,7 +1123,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/SigninDetail.v1.yaml
+                $ref: '#/paths/~1signins~1%7Bsignin_id%7D/get/responses/200/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -787,7 +1361,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -850,7 +1424,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/PaginatedLocationsList.v1.yaml
+                title: PaginatedLocationsList
+                type: object
+                properties:
+                  locations:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/location'
+                  pagination:
+                    $ref: '#/paths/~1hosts/get/responses/200/content/application~1json/schema/properties/pagination'
+                required:
+                  - locations
+                  - pagination
               examples:
                 default:
                   value:
@@ -868,7 +1453,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -897,7 +1482,96 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/InviteCreateParams.v1.yaml
+              title: InviteCreateParams
+              type: object
+              x-examples:
+                default:
+                  company: some text
+                  email: some text
+                  end_date: '2018-02-10T09:30Z'
+                  last_name: some text
+                  start_date: '2018-02-10T09:30Z'
+                  title: some text
+                  watchlist_colour: GREEN
+                  host_ids:
+                    - 16
+                    - 6
+                  custom_fields:
+                    - format: string
+                      field_name: some text
+                      field_value: some text
+                    - format: string
+                      field_name: some text
+                      field_value: some text
+                  email_template_id: 65
+                  group_visit_id: 12
+                  mobile_number: some text
+                  first_name: some text
+                  notification_triggers:
+                    - offset_direction: AFTER
+                      offset_type: days
+                      offset_amount: 36
+                      offset_origin: START
+                      email_template_id: 16
+                      notification_groups:
+                        - some text
+                        - some text
+                    - offset_direction: BEFORE
+                      offset_type: days
+                      offset_amount: 83
+                      offset_origin: START
+                      email_template_id: 89
+                      notification_groups:
+                        - some text
+                        - some text
+              description: "The root of the InviteCreateParams type's schema."
+              properties:
+                mobile_number:
+                  type: string
+                notification_triggers:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1invites~1%7Binvite_id%7D/put/requestBody/content/application~1json/schema/properties/notification_triggers/items'
+                first_name:
+                  type: string
+                email_template_id:
+                  type: integer
+                custom_fields:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1invites~1%7Binvite_id%7D/put/requestBody/content/application~1json/schema/properties/custom_fields/items'
+                host_ids:
+                  type: array
+                  items:
+                    type: integer
+                watchlist_colour:
+                  enum:
+                    - RED
+                    - GREEN
+                    - YELLOW
+                    - ORANGE
+                  type: string
+                title:
+                  type: string
+                start_date:
+                  format: date-time
+                  description: The `start_date` is required for invitations to lobbies
+                  type: string
+                last_name:
+                  type: string
+                end_date:
+                  format: date-time
+                  type: string
+                email:
+                  type: string
+                company:
+                  type: string
+                group_visit_id:
+                  type: string
+              required:
+                - first_name
+                - last_name
+                - email
             examples:
               default:
                 value:
@@ -948,7 +1622,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/InviteDetail.v1.yaml
+                $ref: '#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -1020,7 +1694,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -1137,7 +1811,85 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/PaginatedInvitesList.v1.yaml
+                title: PaginatedInvitesList
+                type: object
+                x-examples:
+                  default:
+                    pagination:
+                      total_records: 75
+                      current_offset: 17
+                      next_offset: 56
+                    invites:
+                      - id: 89
+                        first_name: some text
+                        last_name: some text
+                        start_date: '2018-02-10T09:30Z'
+                        location:
+                          id: 1
+                          name: some text
+                        watchlist_colour: YELLOW
+                        hosts:
+                          - id: 13
+                            email: some text
+                            first_name: some text
+                            last_name: some text
+                            mobile_number: some text
+                            profile_pic_url: some text
+                          - id: 11
+                            email: some text
+                            first_name: some text
+                            last_name: some text
+                            mobile_number: some text
+                            profile_pic_url: some text
+                        invite_watchlist:
+                          id: 14
+                          external_colours:
+                            - some text
+                            - some text
+                          internal_colours:
+                            - some text
+                            - some text
+                        end_date: '2018-02-10T09:30Z'
+                      - id: 18
+                        first_name: some text
+                        last_name: some text
+                        start_date: '2018-02-10T09:30Z'
+                        location:
+                          id: 13
+                          name: some text
+                        watchlist_colour: ORANGE
+                        hosts:
+                          - id: 81
+                            email: some text
+                            first_name: some text
+                            last_name: some text
+                            mobile_number: some text
+                            profile_pic_url: some text
+                          - id: 50
+                            email: some text
+                            first_name: some text
+                            last_name: some text
+                            mobile_number: some text
+                            profile_pic_url: some text
+                        invite_watchlist:
+                          id: 74
+                          external_colours:
+                            - some text
+                            - some text
+                          internal_colours:
+                            - some text
+                            - some text
+                        end_date: '2018-02-10T09:30Z'
+                properties:
+                  invites:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1registrations~1%7Bregistration_id%7D/get/responses/200/content/application~1json/schema/properties/invite'
+                  pagination:
+                    $ref: '#/paths/~1hosts/get/responses/200/content/application~1json/schema/properties/pagination'
+                required:
+                  - invites
+                  - pagination
               examples:
                 default:
                   value:
@@ -1776,7 +2528,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -1871,7 +2623,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/PaginatedSigninsList.v1.yaml
+                title: PaginatedSigninsList
+                type: object
+                properties:
+                  pagination:
+                    $ref: '#/paths/~1hosts/get/responses/200/content/application~1json/schema/properties/pagination'
+                  signins:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1signins/post/responses/201/content/application~1json/schema'
+                required:
+                  - pagination
+                  - signins
               examples:
                 default:
                   value:
@@ -2181,7 +2944,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -2211,13 +2974,1012 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/Signin.v1.yaml
+                title: Signin
+                type: object
+                x-examples:
+                  default:
+                    id: 89
+                    company: some text
+                    email: some text
+                    first_name: some text
+                    is_accounted_for: true
+                    is_acknowledged: true
+                    last_name: some text
+                    location_name: some text
+                    signed_out_timestamp: '2018-02-10T09:30Z'
+                    signin_photo_url: some text
+                    signin_timestamp: '2018-02-10T09:30Z'
+                    hosts:
+                      - id: 51
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile_number: some text
+                        profile_pic_url: some text
+                        department: some text
+                      - id: 23
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile_number: some text
+                        profile_pic_url: some text
+                        department: some text
+                    signin_watchlist:
+                      id: 92
+                      external:
+                        - search_terms:
+                            name: some text
+                            company: some text
+                            city: some text
+                            country: some text
+                            state: some text
+                          integration: some text
+                          colour: RED
+                          matches:
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: some text
+                              end: some text
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                              pair_status: some text
+                              pair_reason: some text
+                              pair_comments: some text
+                              application_display_name: some text
+                              application_id: some text
+                              client_id: some text
+                              client_key: some text
+                              client_full_name: some text
+                              list_key: some text
+                              list_name: some text
+                              list_id: some text
+                              list_version: some text
+                              list_modify_date: some text
+                              list_profile_id: some text
+                              list_profile_key: some text
+                              link_single_string_name: some text
+                              list_parent_single_string_name: some text
+                              list_category: some text
+                              list_pep_category: some text
+                              list_do_bs: some text
+                              list_countries: some text
+                              rank_string: some text
+                              ranktype: some text
+                              rankweight: some text
+                              pair_load_date: some text
+                              e_address_to: some text
+                              e_address_cc: some text
+                              origin: some text
+                              secondsviewed: some text
+                              initial_user: some text
+                              is_pair_parent_flag: some text
+                              pair_met_search_criteria_flag: some text
+                              editable_due_to_assignment_flag: some text
+                              modify_date: some text
+                              modified_by_user: some text
+                              pair_report_type: some text
+                              finscan_category: some text
+                              wrapper_status: some text
+                              source_lists: some text
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: some text
+                              end: some text
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                              pair_status: some text
+                              pair_reason: some text
+                              pair_comments: some text
+                              application_display_name: some text
+                              application_id: some text
+                              client_id: some text
+                              client_key: some text
+                              client_full_name: some text
+                              list_key: some text
+                              list_name: some text
+                              list_id: some text
+                              list_version: some text
+                              list_modify_date: some text
+                              list_profile_id: some text
+                              list_profile_key: some text
+                              link_single_string_name: some text
+                              list_parent_single_string_name: some text
+                              list_category: some text
+                              list_pep_category: some text
+                              list_do_bs: some text
+                              list_countries: some text
+                              rank_string: some text
+                              ranktype: some text
+                              rankweight: some text
+                              pair_load_date: some text
+                              e_address_to: some text
+                              e_address_cc: some text
+                              origin: some text
+                              secondsviewed: some text
+                              initial_user: some text
+                              is_pair_parent_flag: some text
+                              pair_met_search_criteria_flag: some text
+                              editable_due_to_assignment_flag: some text
+                              modify_date: some text
+                              modified_by_user: some text
+                              pair_report_type: some text
+                              finscan_category: some text
+                              wrapper_status: some text
+                              source_lists: some text
+                        - search_terms:
+                            name: some text
+                            company: some text
+                            city: some text
+                            country: some text
+                            state: some text
+                          integration: some text
+                          colour: YELLOW
+                          matches:
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: some text
+                              end: some text
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                              pair_status: some text
+                              pair_reason: some text
+                              pair_comments: some text
+                              application_display_name: some text
+                              application_id: some text
+                              client_id: some text
+                              client_key: some text
+                              client_full_name: some text
+                              list_key: some text
+                              list_name: some text
+                              list_id: some text
+                              list_version: some text
+                              list_modify_date: some text
+                              list_profile_id: some text
+                              list_profile_key: some text
+                              link_single_string_name: some text
+                              list_parent_single_string_name: some text
+                              list_category: some text
+                              list_pep_category: some text
+                              list_do_bs: some text
+                              list_countries: some text
+                              rank_string: some text
+                              ranktype: some text
+                              rankweight: some text
+                              pair_load_date: some text
+                              e_address_to: some text
+                              e_address_cc: some text
+                              origin: some text
+                              secondsviewed: some text
+                              initial_user: some text
+                              is_pair_parent_flag: some text
+                              pair_met_search_criteria_flag: some text
+                              editable_due_to_assignment_flag: some text
+                              modify_date: some text
+                              modified_by_user: some text
+                              pair_report_type: some text
+                              finscan_category: some text
+                              wrapper_status: some text
+                              source_lists: some text
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: some text
+                              end: some text
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                              pair_status: some text
+                              pair_reason: some text
+                              pair_comments: some text
+                              application_display_name: some text
+                              application_id: some text
+                              client_id: some text
+                              client_key: some text
+                              client_full_name: some text
+                              list_key: some text
+                              list_name: some text
+                              list_id: some text
+                              list_version: some text
+                              list_modify_date: some text
+                              list_profile_id: some text
+                              list_profile_key: some text
+                              link_single_string_name: some text
+                              list_parent_single_string_name: some text
+                              list_category: some text
+                              list_pep_category: some text
+                              list_do_bs: some text
+                              list_countries: some text
+                              rank_string: some text
+                              ranktype: some text
+                              rankweight: some text
+                              pair_load_date: some text
+                              e_address_to: some text
+                              e_address_cc: some text
+                              origin: some text
+                              secondsviewed: some text
+                              initial_user: some text
+                              is_pair_parent_flag: some text
+                              pair_met_search_criteria_flag: some text
+                              editable_due_to_assignment_flag: some text
+                              modify_date: some text
+                              modified_by_user: some text
+                              pair_report_type: some text
+                              finscan_category: some text
+                              wrapper_status: some text
+                              source_lists: some text
+                      internal:
+                        - id: 92
+                          email: some text
+                          colour: some text
+                          last_name: some text
+                          first_name: some text
+                        - id: 92
+                          email: some text
+                          colour: some text
+                          last_name: some text
+                          first_name: some text
+                properties:
+                  id:
+                    type: integer
+                    format: int32
+                  mobile_number:
+                    description: ''
+                    type: string
+                  signin_watchlist:
+                    title: SigninWatchlist
+                    type: object
+                    x-examples:
+                      default:
+                        id: 6
+                        external:
+                          - search_terms:
+                              name: some text
+                              company: some text
+                              city: some text
+                              country: some text
+                              state: some text
+                            integration: some text
+                            colour: YELLOW
+                            matches:
+                              - id: some text
+                                alt_names:
+                                  - some text
+                                  - some text
+                                federal_register_notice: some text
+                                name: some text
+                                source_information_url: some text
+                                source_list_url: some text
+                                list: some text
+                                type: some text
+                                category: some text
+                                street1: some text
+                                street2: some text
+                                city: some text
+                                state: some text
+                                country: some text
+                                notes: some text
+                                frc: some text
+                                start: '2018-01-17'
+                                end: '2018-01-17'
+                                frserve: some text
+                                optional_ID: some text
+                                alert_type: some text
+                              - id: some text
+                                alt_names:
+                                  - some text
+                                  - some text
+                                federal_register_notice: some text
+                                name: some text
+                                source_information_url: some text
+                                source_list_url: some text
+                                list: some text
+                                type: some text
+                                category: some text
+                                street1: some text
+                                street2: some text
+                                city: some text
+                                state: some text
+                                country: some text
+                                notes: some text
+                                frc: some text
+                                start: '2018-01-17'
+                                end: '2018-01-17'
+                                frserve: some text
+                                optional_ID: some text
+                                alert_type: some text
+                          - search_terms:
+                              name: some text
+                              company: some text
+                              city: some text
+                              country: some text
+                              state: some text
+                            integration: some text
+                            colour: RED
+                            matches:
+                              - id: some text
+                                alt_names:
+                                  - some text
+                                  - some text
+                                federal_register_notice: some text
+                                name: some text
+                                source_information_url: some text
+                                source_list_url: some text
+                                list: some text
+                                type: some text
+                                category: some text
+                                street1: some text
+                                street2: some text
+                                city: some text
+                                state: some text
+                                country: some text
+                                notes: some text
+                                frc: some text
+                                start: '2018-01-17'
+                                end: '2018-01-17'
+                                frserve: some text
+                                optional_ID: some text
+                                alert_type: some text
+                              - id: some text
+                                alt_names:
+                                  - some text
+                                  - some text
+                                federal_register_notice: some text
+                                name: some text
+                                source_information_url: some text
+                                source_list_url: some text
+                                list: some text
+                                type: some text
+                                category: some text
+                                street1: some text
+                                street2: some text
+                                city: some text
+                                state: some text
+                                country: some text
+                                notes: some text
+                                frc: some text
+                                start: '2018-01-17'
+                                end: '2018-01-17'
+                                frserve: some text
+                                optional_ID: some text
+                                alert_type: some text
+                        internal:
+                          - id: 11
+                            email: some text
+                            colour: GREEN
+                            last_name: some text
+                            first_name: some text
+                          - id: 21
+                            email: some text
+                            colour: RED
+                            last_name: some text
+                            first_name: some text
+                    description: "The root of the SigninWatchlist type's schema."
+                    properties:
+                      id:
+                        type: integer
+                        format: int32
+                      internal:
+                        type: array
+                        items:
+                          title: InternalWatchlistResult
+                          description: ''
+                          required:
+                            - colour
+                          type: object
+                          properties:
+                            id:
+                              description: ''
+                              type: integer
+                            email:
+                              description: ''
+                              type: string
+                            colour:
+                              description: ''
+                              type: string
+                            last_name:
+                              description: ''
+                              type: string
+                            first_name:
+                              description: ''
+                              type: string
+                          x-examples:
+                            default:
+                              id: 40
+                              email: some text
+                              colour: some text
+                              last_name: some text
+                              first_name: some text
+                      external:
+                        type: array
+                        items:
+                          title: ExternalWatchlistResult
+                          type: object
+                          x-examples:
+                            default:
+                              search_terms:
+                                name: some text
+                                company: some text
+                                city: some text
+                                country: some text
+                                state: some text
+                              integration: some text
+                              colour: RED
+                              matches:
+                                - id: some text
+                                  alt_names:
+                                    - some text
+                                    - some text
+                                  federal_register_notice: some text
+                                  name: some text
+                                  source_information_url: some text
+                                  source_list_url: some text
+                                  list: some text
+                                  type: some text
+                                  category: some text
+                                  street1: some text
+                                  street2: some text
+                                  city: some text
+                                  state: some text
+                                  country: some text
+                                  notes: some text
+                                  frc: some text
+                                  start: some text
+                                  end: some text
+                                  frserve: some text
+                                  optional_ID: some text
+                                  alert_type: some text
+                                  pair_status: some text
+                                  pair_reason: some text
+                                  pair_comments: some text
+                                  application_display_name: some text
+                                  application_id: some text
+                                  client_id: some text
+                                  client_key: some text
+                                  client_full_name: some text
+                                  list_key: some text
+                                  list_name: some text
+                                  list_id: some text
+                                  list_version: some text
+                                  list_modify_date: some text
+                                  list_profile_id: some text
+                                  list_profile_key: some text
+                                  link_single_string_name: some text
+                                  list_parent_single_string_name: some text
+                                  list_category: some text
+                                  list_pep_category: some text
+                                  list_do_bs: some text
+                                  list_countries: some text
+                                  rank_string: some text
+                                  ranktype: some text
+                                  rankweight: some text
+                                  pair_load_date: some text
+                                  e_address_to: some text
+                                  e_address_cc: some text
+                                  origin: some text
+                                  secondsviewed: some text
+                                  initial_user: some text
+                                  is_pair_parent_flag: some text
+                                  pair_met_search_criteria_flag: some text
+                                  editable_due_to_assignment_flag: some text
+                                  modify_date: some text
+                                  modified_by_user: some text
+                                  pair_report_type: some text
+                                  finscan_category: some text
+                                  wrapper_status: some text
+                                  source_lists: some text
+                                - id: some text
+                                  alt_names:
+                                    - some text
+                                    - some text
+                                  federal_register_notice: some text
+                                  name: some text
+                                  source_information_url: some text
+                                  source_list_url: some text
+                                  list: some text
+                                  type: some text
+                                  category: some text
+                                  street1: some text
+                                  street2: some text
+                                  city: some text
+                                  state: some text
+                                  country: some text
+                                  notes: some text
+                                  frc: some text
+                                  start: some text
+                                  end: some text
+                                  frserve: some text
+                                  optional_ID: some text
+                                  alert_type: some text
+                                  pair_status: some text
+                                  pair_reason: some text
+                                  pair_comments: some text
+                                  application_display_name: some text
+                                  application_id: some text
+                                  client_id: some text
+                                  client_key: some text
+                                  client_full_name: some text
+                                  list_key: some text
+                                  list_name: some text
+                                  list_id: some text
+                                  list_version: some text
+                                  list_modify_date: some text
+                                  list_profile_id: some text
+                                  list_profile_key: some text
+                                  link_single_string_name: some text
+                                  list_parent_single_string_name: some text
+                                  list_category: some text
+                                  list_pep_category: some text
+                                  list_do_bs: some text
+                                  list_countries: some text
+                                  rank_string: some text
+                                  ranktype: some text
+                                  rankweight: some text
+                                  pair_load_date: some text
+                                  e_address_to: some text
+                                  e_address_cc: some text
+                                  origin: some text
+                                  secondsviewed: some text
+                                  initial_user: some text
+                                  is_pair_parent_flag: some text
+                                  pair_met_search_criteria_flag: some text
+                                  editable_due_to_assignment_flag: some text
+                                  modify_date: some text
+                                  modified_by_user: some text
+                                  pair_report_type: some text
+                                  finscan_category: some text
+                                  wrapper_status: some text
+                                  source_lists: some text
+                          description: ''
+                          properties:
+                            matches:
+                              type: array
+                              items:
+                                title: WatchlistMatch
+                                description: ''
+                                type: object
+                                x-examples:
+                                  default:
+                                    id: e15a3751a3b4832ca48cf22c82e58ff49c904097
+                                    alt_names:
+                                      - woot
+                                    federal_register_notice: 58 FR 50382
+                                    name: 'Aero Systems, Inc.'
+                                    source_information_url: 'http://bit.ly/2shT1aS'
+                                    source_list_url: 'http://bit.ly/2J1IGWH'
+                                    list: ITAR Debarred (DTC) - State Department
+                                properties:
+                                  id:
+                                    type: string
+                                  alt_names:
+                                    type: array
+                                    items:
+                                      type: string
+                                  federal_register_notice:
+                                    type: string
+                                  name:
+                                    type: string
+                                  source_information_url:
+                                    type: string
+                                  source_list_url:
+                                    type: string
+                                  list:
+                                    type: string
+                                  type:
+                                    description: ''
+                                    type: string
+                                  category:
+                                    description: ''
+                                    type: string
+                                  street1:
+                                    description: ''
+                                    type: string
+                                  street2:
+                                    description: ''
+                                    type: string
+                                  city:
+                                    description: ''
+                                    type: string
+                                  state:
+                                    description: ''
+                                    type: string
+                                  country:
+                                    description: ''
+                                    type: string
+                                  notes:
+                                    description: ''
+                                    type: string
+                                  frc:
+                                    description: ''
+                                    type: string
+                                  start:
+                                    description: ''
+                                    type: string
+                                  end:
+                                    description: ''
+                                    type: string
+                                  frserve:
+                                    description: ''
+                                    type: string
+                                  optional_ID:
+                                    description: ''
+                                    type: string
+                                  alert_type:
+                                    description: ''
+                                    type: string
+                                  pair_status:
+                                    description: ''
+                                    type: string
+                                  pair_reason:
+                                    description: ''
+                                    type: string
+                                  pair_comments:
+                                    description: ''
+                                    type: string
+                                  application_display_name:
+                                    description: ''
+                                    type: string
+                                  application_id:
+                                    description: ''
+                                    type: string
+                                  client_id:
+                                    description: ''
+                                    type: string
+                                  client_key:
+                                    description: ''
+                                    type: string
+                                  client_full_name:
+                                    description: ''
+                                    type: string
+                                  list_key:
+                                    description: ''
+                                    type: string
+                                  list_name:
+                                    description: ''
+                                    type: string
+                                  list_id:
+                                    description: ''
+                                    type: string
+                                  list_version:
+                                    description: ''
+                                    type: string
+                                  list_modify_date:
+                                    description: ''
+                                    type: string
+                                  list_profile_id:
+                                    description: ''
+                                    type: string
+                                  list_profile_key:
+                                    description: ''
+                                    type: string
+                                  link_single_string_name:
+                                    description: ''
+                                    type: string
+                                  list_parent_single_string_name:
+                                    description: ''
+                                    type: string
+                                  list_category:
+                                    description: ''
+                                    type: string
+                                  list_pep_category:
+                                    description: ''
+                                    type: string
+                                  list_do_bs:
+                                    description: ''
+                                    type: string
+                                  list_countries:
+                                    description: ''
+                                    type: string
+                                  rank_string:
+                                    description: ''
+                                    type: string
+                                  ranktype:
+                                    description: ''
+                                    type: string
+                                  rankweight:
+                                    description: ''
+                                    type: string
+                                  pair_load_date:
+                                    description: ''
+                                    type: string
+                                  e_address_to:
+                                    description: ''
+                                    type: string
+                                  e_address_cc:
+                                    description: ''
+                                    type: string
+                                  origin:
+                                    description: ''
+                                    type: string
+                                  secondsviewed:
+                                    description: ''
+                                    type: string
+                                  initial_user:
+                                    description: ''
+                                    type: string
+                                  is_pair_parent_flag:
+                                    description: ''
+                                    type: string
+                                  pair_met_search_criteria_flag:
+                                    description: ''
+                                    type: string
+                                  editable_due_to_assignment_flag:
+                                    description: ''
+                                    type: string
+                                  modify_date:
+                                    description: ''
+                                    type: string
+                                  modified_by_user:
+                                    description: ''
+                                    type: string
+                                  pair_report_type:
+                                    description: ''
+                                    type: string
+                                  finscan_category:
+                                    description: ''
+                                    type: string
+                                  wrapper_status:
+                                    description: ''
+                                    type: string
+                                  source_lists:
+                                    description: ''
+                                    type: string
+                                required:
+                                  - name
+                                  - list
+                            colour:
+                              description: ''
+                              enum:
+                                - RED
+                                - GREEN
+                                - YELLOW
+                                - ORANGE
+                              type: string
+                            integration:
+                              description: ''
+                              type: string
+                            search_terms:
+                              title: WatchlistSearch
+                              description: ''
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                company:
+                                  type: string
+                                city:
+                                  type: string
+                                country:
+                                  type: string
+                                state:
+                                  type: string
+                              x-examples:
+                                default:
+                                  name: Gabe Querioz
+                                  company: Traction
+                                  city: Burnaby
+                                  country: Canada
+                                  state: BC
+                    required:
+                      - id
+                  hosts:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1hosts/post/responses/201/content/application~1json/schema'
+                  signin_timestamp:
+                    format: date-time
+                    type: string
+                  signin_photo_url:
+                    type: string
+                  signed_out_timestamp:
+                    format: date-time
+                    type: string
+                  location_name:
+                    type: string
+                  last_name:
+                    type: string
+                  is_acknowledged:
+                    type: boolean
+                  is_accounted_for:
+                    type: boolean
+                  first_name:
+                    type: string
+                  email:
+                    type: string
+                  company:
+                    type: string
+                  registration:
+                    title: Registration
+                    type: object
+                    x-examples:
+                      default:
+                        id: uuid
+                        created_at: '2018-02-10T09:30Z'
+                        name: some text
+                        email: some text
+                        company: some text
+                        photo_url: some text
+                        guest_responses:
+                          - title: some text
+                            sequence: 69
+                            id: 36
+                            page_type: some text
+                            custom_fields:
+                              - field_name: some text
+                                field_value: some text
+                              - field_name: some text
+                                field_value: some text
+                          - title: some text
+                            sequence: 64
+                            id: 20
+                            page_type: some text
+                            custom_fields:
+                              - field_name: some text
+                                field_value: some text
+                              - field_name: some text
+                                field_value: some text
+                        invite:
+                          id: 39
+                          first_name: some text
+                          last_name: some text
+                          start_date: '2018-02-10T09:30Z'
+                          location:
+                            id: 21
+                            name: some text
+                          watchlist_colour: GREEN
+                          hosts:
+                            - id: 16
+                              email: some text
+                              first_name: some text
+                              last_name: some text
+                              profile_pic_url: some text
+                              department: some text
+                              mobile_number: some text
+                            - id: 92
+                              email: some text
+                              first_name: some text
+                              last_name: some text
+                              profile_pic_url: some text
+                              department: some text
+                              mobile_number: some text
+                          invite_watchlist:
+                            id: 91
+                            external_colours:
+                              - some text
+                              - some text
+                            internal_colours:
+                              - some text
+                              - some text
+                          end_date: '2018-02-10T09:30Z'
+                          email: some text
+                          mobile_number: some text
+                        visitor:
+                          id: 20
+                          active: true
+                          company: some text
+                          created_via: some text
+                          email: some text
+                          first_name: some text
+                          last_name: some text
+                          mobile: some text
+                          note: some text
+                          profile_pic_content_type: some text
+                          profile_pic_file_name: some text
+                          profile_pic_file_size: some text
+                          profile_pic_updated_at: some text
+                          watchlist_level: some text
+                          created_at: '2018-02-10T09:30Z'
+                          updated_at: '2018-02-10T09:30Z'
+                    description: The data of a Registration
+                    properties:
+                      id:
+                        type: string
+                        description: Registration unique identifier
+                      visitor:
+                        $ref: '#/paths/~1registrations~1%7Bregistration_id%7D/get/responses/200/content/application~1json/schema/properties/visitor'
+                      invite:
+                        $ref: '#/paths/~1registrations~1%7Bregistration_id%7D/get/responses/200/content/application~1json/schema/properties/invite'
+                        nullable: true
+                      photo_url:
+                        description: URL of the uploaded photo
+                        type: string
+                        nullable: true
+                      company:
+                        description: "Company's name"
+                        type: string
+                        nullable: true
+                      email:
+                        description: E-mail
+                        type: string
+                        nullable: true
+                      name:
+                        description: "Guest's name"
+                        type: string
+                        nullable: true
+                      created_at:
+                        format: date-time
+                        description: Datetime when registration was created
+                        type: string
+                      signin:
+                        $ref: '#/paths/~1signins/post/responses/201/content/application~1json/schema'
+                        nullable: true
+                    required:
+                      - id
+                      - created_at
+                required:
+                  - id
+                  - hosts
         '400':
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
         '401':
           description: Unauthorized
         '403':
@@ -2231,7 +3993,41 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/SigninCreateParams.v1.yaml
+              title: SigninCreateParams
+              type: object
+              properties:
+                registration_id:
+                  description: UUID of a Registration
+                  type: string
+                email:
+                  type: string
+                  description: 'E-mail, ignored if `registration_id` is included'
+                company:
+                  type: string
+                  description: 'Company name, ignored if `registration_id` is included'
+                last_name:
+                  type: string
+                  description: 'Last name, ignored if `registration_id` is included'
+                first_name:
+                  type: string
+                  description: 'First name, ignored if `registration_id` is included'
+                sms_message:
+                  type: string
+                send_notifications:
+                  type: boolean
+                location_id:
+                  type: integer
+                  description: 'ID of the Location where the Signin happened, ignored if `registration_id` is included'
+                host_ids:
+                  type: array
+                  items:
+                    type: integer
+                  description: 'Array of Host ids, ignored if `registration_id` is included'
+                host_email_template_id:
+                  type: integer
+                guest_email_template_id:
+                  type: integer
+              description: ''
             examples:
               default:
                 value:
@@ -2275,7 +4071,72 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/User.v1.yaml
+                title: User
+                type: object
+                x-examples:
+                  default:
+                    id: 60
+                    first_name: some text
+                    last_name: some text
+                    email: some text
+                    permission_groups:
+                      - name: some text
+                        visibility: some text
+                        permissions:
+                          - some text
+                          - some text
+                      - name: some text
+                        visibility: some text
+                        permissions:
+                          - some text
+                          - some text
+                description: "The root of the User type's schema."
+                properties:
+                  id:
+                    type: integer
+                    format: int32
+                  mobile_access_enabled:
+                    description: Identifies if user has access to mobile app features.
+                    type: boolean
+                  permission_groups:
+                    type: array
+                    items:
+                      title: Permission
+                      description: "The root of the Permission type's schema."
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        visibility:
+                          type: string
+                        permissions:
+                          type: array
+                          items:
+                            type: string
+                      x-examples:
+                        default:
+                          name: some text
+                          visibility: some text
+                          permissions:
+                            - some text
+                            - some text
+                  email:
+                    description: ''
+                    type: string
+                  last_name:
+                    description: ''
+                    type: string
+                  first_name:
+                    description: Determines if the registration portal has been enabled for this account
+                    type: string
+                  registration_portal_enabled:
+                    type: boolean
+                    description: Determines if the registration portal has been enabled for this account
+                required:
+                  - id
+                  - mobile_access_enabled
+                  - email
+                  - registration_portal_enabled
               examples:
                 default:
                   value:
@@ -2299,7 +4160,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -2345,7 +4206,580 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/InviteDetail.v1.yaml
+                title: InviteDetail
+                type: object
+                x-examples:
+                  default:
+                    id: 20
+                    company: some text
+                    created_at: '2018-02-10T09:30Z'
+                    email: some text
+                    end_date: '2018-02-10T09:30Z'
+                    first_name: some text
+                    last_name: some text
+                    start_date: '2018-02-10T09:30Z'
+                    hosts:
+                      - id: 35
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile_number: some text
+                        profile_pic_url: some text
+                      - id: 9
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile_number: some text
+                        profile_pic_url: some text
+                    location:
+                      id: 10
+                      name: some text
+                    watchlist_colour: YELLOW
+                    custom_fields:
+                      - format: string
+                        field_name: some text
+                        field_value: some text
+                      - format: string
+                        field_name: some text
+                        field_value: some text
+                    notification_triggers:
+                      - offset_direction: BEFORE
+                        offset_amount: 77
+                        offset_origin: START
+                        email_template_id: 44
+                        notification_groups:
+                          - some text
+                          - some text
+                        offset_unit: days
+                        email_template_name: some text
+                      - offset_direction: BEFORE
+                        offset_amount: 49
+                        offset_origin: END
+                        email_template_id: 15
+                        notification_groups:
+                          - some text
+                          - some text
+                        offset_unit: hours
+                        email_template_name: some text
+                    mobile_number: some text
+                    invite_watchlist:
+                      id: 4
+                      external_colours:
+                        - RED
+                        - ORANGE
+                      internal_colours:
+                        - YELLOW
+                        - GREEN
+                    email_template:
+                      id: 65
+                      name: some text
+                      template_type: some text
+                    registration:
+                      id: uuid
+                      created_at: '2018-02-10T09:30Z'
+                      name: some text
+                      email: some text
+                      company: some text
+                      photo_url: some text
+                      visitor:
+                        id: 20
+                        active: true
+                        company: some text
+                        created_via: some text
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile: some text
+                        note: some text
+                        profile_pic_content_type: some text
+                        profile_pic_file_name: some text
+                        profile_pic_file_size: some text
+                        profile_pic_updated_at: some text
+                        watchlist_level: some text
+                        created_at: '2018-02-10T09:30Z'
+                        updated_at: '2018-02-10T09:30Z'
+                description: "The root of the InviteDetail type's schema."
+                properties:
+                  id:
+                    type: integer
+                    format: int32
+                  registration:
+                    $ref: '#/paths/~1signins/post/responses/201/content/application~1json/schema/properties/registration'
+                  mobile_number:
+                    description: Phone number
+                    type: string
+                  email_template:
+                    title: EmailTemplate
+                    description: "The root of the EmailTemplate type's schema."
+                    required:
+                      - id
+                    type: object
+                    properties:
+                      id:
+                        format: int32
+                        type: integer
+                      name:
+                        type: string
+                      template_type:
+                        type: string
+                    x-examples:
+                      default: |-
+                        {
+                          "id": 1,
+                          "name": "Template name",
+                          "template_type": "typename"
+                        }
+                  invite_watchlist:
+                    title: InviteWatchlist
+                    type: object
+                    x-examples:
+                      default:
+                        id: 4
+                        external_colours:
+                          - RED
+                          - ORANGE
+                        internal_colours:
+                          - YELLOW
+                          - GREEN
+                        external:
+                          - search_terms:
+                              name: some text
+                              company: some text
+                              city: some text
+                              country: some text
+                              state: some text
+                            integration: some text
+                            colour: YELLOW
+                            matches:
+                              - id: some text
+                                alt_names:
+                                  - some text
+                                  - some text
+                                federal_register_notice: some text
+                                name: some text
+                                source_information_url: some text
+                                source_list_url: some text
+                                list: some text
+                                type: some text
+                                category: some text
+                                street1: some text
+                                street2: some text
+                                city: some text
+                                state: some text
+                                country: some text
+                                notes: some text
+                                frc: some text
+                                start: some text
+                                end: some text
+                                frserve: some text
+                                optional_ID: some text
+                                alert_type: some text
+                                pair_status: some text
+                                pair_reason: some text
+                                pair_comments: some text
+                                application_display_name: some text
+                                application_id: some text
+                                client_id: some text
+                                client_key: some text
+                                client_full_name: some text
+                                list_key: some text
+                                list_name: some text
+                                list_id: some text
+                                list_version: some text
+                                list_modify_date: some text
+                                list_profile_id: some text
+                                list_profile_key: some text
+                                link_single_string_name: some text
+                                list_parent_single_string_name: some text
+                                list_category: some text
+                                list_pep_category: some text
+                                list_do_bs: some text
+                                list_countries: some text
+                                rank_string: some text
+                                ranktype: some text
+                                rankweight: some text
+                                pair_load_date: some text
+                                e_address_to: some text
+                                e_address_cc: some text
+                                origin: some text
+                                secondsviewed: some text
+                                initial_user: some text
+                                is_pair_parent_flag: some text
+                                pair_met_search_criteria_flag: some text
+                                editable_due_to_assignment_flag: some text
+                                modify_date: some text
+                                modified_by_user: some text
+                                pair_report_type: some text
+                                finscan_category: some text
+                                wrapper_status: some text
+                                source_lists: some text
+                              - id: some text
+                                alt_names:
+                                  - some text
+                                  - some text
+                                federal_register_notice: some text
+                                name: some text
+                                source_information_url: some text
+                                source_list_url: some text
+                                list: some text
+                                type: some text
+                                category: some text
+                                street1: some text
+                                street2: some text
+                                city: some text
+                                state: some text
+                                country: some text
+                                notes: some text
+                                frc: some text
+                                start: some text
+                                end: some text
+                                frserve: some text
+                                optional_ID: some text
+                                alert_type: some text
+                                pair_status: some text
+                                pair_reason: some text
+                                pair_comments: some text
+                                application_display_name: some text
+                                application_id: some text
+                                client_id: some text
+                                client_key: some text
+                                client_full_name: some text
+                                list_key: some text
+                                list_name: some text
+                                list_id: some text
+                                list_version: some text
+                                list_modify_date: some text
+                                list_profile_id: some text
+                                list_profile_key: some text
+                                link_single_string_name: some text
+                                list_parent_single_string_name: some text
+                                list_category: some text
+                                list_pep_category: some text
+                                list_do_bs: some text
+                                list_countries: some text
+                                rank_string: some text
+                                ranktype: some text
+                                rankweight: some text
+                                pair_load_date: some text
+                                e_address_to: some text
+                                e_address_cc: some text
+                                origin: some text
+                                secondsviewed: some text
+                                initial_user: some text
+                                is_pair_parent_flag: some text
+                                pair_met_search_criteria_flag: some text
+                                editable_due_to_assignment_flag: some text
+                                modify_date: some text
+                                modified_by_user: some text
+                                pair_report_type: some text
+                                finscan_category: some text
+                                wrapper_status: some text
+                                source_lists: some text
+                          - search_terms:
+                              name: some text
+                              company: some text
+                              city: some text
+                              country: some text
+                              state: some text
+                            integration: some text
+                            colour: YELLOW
+                            matches:
+                              - id: some text
+                                alt_names:
+                                  - some text
+                                  - some text
+                                federal_register_notice: some text
+                                name: some text
+                                source_information_url: some text
+                                source_list_url: some text
+                                list: some text
+                                type: some text
+                                category: some text
+                                street1: some text
+                                street2: some text
+                                city: some text
+                                state: some text
+                                country: some text
+                                notes: some text
+                                frc: some text
+                                start: some text
+                                end: some text
+                                frserve: some text
+                                optional_ID: some text
+                                alert_type: some text
+                                pair_status: some text
+                                pair_reason: some text
+                                pair_comments: some text
+                                application_display_name: some text
+                                application_id: some text
+                                client_id: some text
+                                client_key: some text
+                                client_full_name: some text
+                                list_key: some text
+                                list_name: some text
+                                list_id: some text
+                                list_version: some text
+                                list_modify_date: some text
+                                list_profile_id: some text
+                                list_profile_key: some text
+                                link_single_string_name: some text
+                                list_parent_single_string_name: some text
+                                list_category: some text
+                                list_pep_category: some text
+                                list_do_bs: some text
+                                list_countries: some text
+                                rank_string: some text
+                                ranktype: some text
+                                rankweight: some text
+                                pair_load_date: some text
+                                e_address_to: some text
+                                e_address_cc: some text
+                                origin: some text
+                                secondsviewed: some text
+                                initial_user: some text
+                                is_pair_parent_flag: some text
+                                pair_met_search_criteria_flag: some text
+                                editable_due_to_assignment_flag: some text
+                                modify_date: some text
+                                modified_by_user: some text
+                                pair_report_type: some text
+                                finscan_category: some text
+                                wrapper_status: some text
+                                source_lists: some text
+                              - id: some text
+                                alt_names:
+                                  - some text
+                                  - some text
+                                federal_register_notice: some text
+                                name: some text
+                                source_information_url: some text
+                                source_list_url: some text
+                                list: some text
+                                type: some text
+                                category: some text
+                                street1: some text
+                                street2: some text
+                                city: some text
+                                state: some text
+                                country: some text
+                                notes: some text
+                                frc: some text
+                                start: some text
+                                end: some text
+                                frserve: some text
+                                optional_ID: some text
+                                alert_type: some text
+                                pair_status: some text
+                                pair_reason: some text
+                                pair_comments: some text
+                                application_display_name: some text
+                                application_id: some text
+                                client_id: some text
+                                client_key: some text
+                                client_full_name: some text
+                                list_key: some text
+                                list_name: some text
+                                list_id: some text
+                                list_version: some text
+                                list_modify_date: some text
+                                list_profile_id: some text
+                                list_profile_key: some text
+                                link_single_string_name: some text
+                                list_parent_single_string_name: some text
+                                list_category: some text
+                                list_pep_category: some text
+                                list_do_bs: some text
+                                list_countries: some text
+                                rank_string: some text
+                                ranktype: some text
+                                rankweight: some text
+                                pair_load_date: some text
+                                e_address_to: some text
+                                e_address_cc: some text
+                                origin: some text
+                                secondsviewed: some text
+                                initial_user: some text
+                                is_pair_parent_flag: some text
+                                pair_met_search_criteria_flag: some text
+                                editable_due_to_assignment_flag: some text
+                                modify_date: some text
+                                modified_by_user: some text
+                                pair_report_type: some text
+                                finscan_category: some text
+                                wrapper_status: some text
+                                source_lists: some text
+                        internal:
+                          - id: 55
+                            email: some text
+                            colour: some text
+                            last_name: some text
+                            first_name: some text
+                          - id: 60
+                            email: some text
+                            colour: some text
+                            last_name: some text
+                            first_name: some text
+                    description: "The root of the InviteWatchlist type's schema."
+                    properties:
+                      id:
+                        type: integer
+                        format: int32
+                      internal:
+                        type: array
+                        items:
+                          $ref: '#/paths/~1signins/post/responses/201/content/application~1json/schema/properties/signin_watchlist/properties/internal/items'
+                      external:
+                        type: array
+                        items:
+                          $ref: '#/paths/~1signins/post/responses/201/content/application~1json/schema/properties/signin_watchlist/properties/external/items'
+                      internal_colours:
+                        type: array
+                        description: Deprecated
+                        items:
+                          type: string
+                      external_colours:
+                        description: Deprecated
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - id
+                  notification_triggers:
+                    description: List of scheduled notifications for an invite
+                    type: array
+                    items:
+                      title: NotificationTrigger
+                      description: "The root of the NotificationTrigger type's schema."
+                      required:
+                        - offset_unit
+                        - offset_origin
+                        - offset_direction
+                        - offset_amount
+                        - notification_groups
+                        - email_template_id
+                        - email_template_name
+                      type: object
+                      properties:
+                        offset_direction:
+                          description: 'Whether the offset should be calculated for before, or after the event'
+                          type: string
+                          enum:
+                            - BEFORE
+                            - AFTER
+                        offset_amount:
+                          description: The amount to offset the notification from the event
+                          type: integer
+                        offset_origin:
+                          description: 'Whether the offset should be calculated from the start, or finish of the event'
+                          enum:
+                            - START
+                            - END
+                        email_template_id:
+                          type: integer
+                        notification_groups:
+                          description: 'An array made of only `INVITEE`, `HOSTS, or `LEP` as possible string values'
+                          type: array
+                          items:
+                            type: string
+                        offset_unit:
+                          description: Whether the offset should be calculated as `days` or `hours`
+                          type: string
+                          enum:
+                            - days
+                            - hours
+                        email_template_name:
+                          description: |-
+                            The name of the EmailTemplate associated with the NotificationTrigger.
+                            This is only given from the server, not used as a create param.
+                          type: string
+                      x-examples:
+                        default:
+                          offset_direction: {}
+                          offset_type: {}
+                          offset_amount: 94
+                          offset_origin: {}
+                          email_template_id: 32
+                          notification_groups:
+                            - some text
+                            - some text
+                  custom_fields:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1invites~1%7Binvite_id%7D/put/requestBody/content/application~1json/schema/properties/custom_fields/items'
+                  watchlist_colour:
+                    enum:
+                      - RED
+                      - GREEN
+                      - YELLOW
+                      - ORANGE
+                    type: string
+                  location:
+                    title: Location
+                    description: "The root of the Location type's schema."
+                    required:
+                      - id
+                      - name
+                    type: object
+                    properties:
+                      id:
+                        format: int32
+                        type: integer
+                      name:
+                        type: string
+                    x-examples:
+                      default: |-
+                        {
+                          "id": 1,
+                          "name": "Default"
+                        }
+                  hosts:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1hosts/post/responses/201/content/application~1json/schema'
+                  start_date:
+                    format: date-time
+                    type: string
+                  last_name:
+                    type: string
+                  first_name:
+                    type: string
+                  end_date:
+                    format: date-time
+                    type: string
+                  email:
+                    type: string
+                  created_at:
+                    format: date-time
+                    type: string
+                  company:
+                    type: string
+                  group_visit:
+                    title: GroupVisit
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      location:
+                        $ref: '#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/location'
+                      hosts:
+                        type: array
+                        items:
+                          $ref: '#/paths/~1hosts/post/responses/201/content/application~1json/schema'
+                      name:
+                        type: string
+                      start_time:
+                        type: string
+                      end_time:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                required:
+                  - id
+                  - last_name
+                  - first_name
+                  - email
               examples:
                 default:
                   value:
@@ -2418,7 +4852,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -2447,7 +4881,164 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/InviteUpdateParams.v1.yaml
+              title: InviteCreateParams
+              type: object
+              x-examples:
+                default:
+                  company: some text
+                  email: some text
+                  end_date: '2018-02-10T09:30Z'
+                  last_name: some text
+                  start_date: '2018-02-10T09:30Z'
+                  title: some text
+                  watchlist_colour: {}
+                  host_ids:
+                    - 63
+                    - 49
+                  custom_fields:
+                    - format: {}
+                      field_name: some text
+                      field_value: some text
+                    - format: {}
+                      field_name: some text
+                      field_value: some text
+                  email_template_id: 18
+                  mobile_number: some text
+                  first_name: some text
+                  notification_triggers:
+                    - subject: some text
+                      title: some text
+                      message: some text
+                      notification_group_names:
+                        - some text
+                        - some text
+                      trigger_target: {}
+                      trigger_span: {}
+                      trigger_pointer: {}
+                      event_offset: 63
+                    - subject: some text
+                      title: some text
+                      message: some text
+                      notification_group_names:
+                        - some text
+                        - some text
+                      trigger_target: {}
+                      trigger_span: {}
+                      trigger_pointer: {}
+                      event_offset: 41
+              description: "The root of the InviteUpdateParams type's schema."
+              properties:
+                mobile_number:
+                  type: string
+                user_id:
+                  description: Used for transfering ownership of an `Invite` to another member of the Account
+                  type: integer
+                on_premise:
+                  type: boolean
+                notification_triggers:
+                  type: array
+                  items:
+                    title: NotificationTrigger
+                    type: object
+                    x-examples:
+                      default:
+                        offset_direction: {}
+                        offset_type: {}
+                        offset_amount: 94
+                        offset_origin: {}
+                        email_template_id: 32
+                        notification_groups:
+                          - some text
+                          - some text
+                    description: "The root of the NotificationTrigger type's schema."
+                    properties:
+                      offset_unit:
+                        description: Whether the offset should be calculated as `days` or `hours`
+                        enum:
+                          - days
+                          - hours
+                        type: string
+                      notification_groups:
+                        description: 'An array made of only `INVITEE`, `HOSTS, or `LEP` as possible string values'
+                        type: array
+                        items:
+                          type: string
+                      email_template_id:
+                        type: integer
+                      offset_origin:
+                        description: 'Whether the offset should be calculated from the start, or finish of the event'
+                        enum:
+                          - START
+                          - END
+                        type: string
+                      offset_amount:
+                        description: The amount to offset the notification from the event
+                        type: integer
+                      offset_direction:
+                        description: 'Whether the offset should be calculated for before, or after the event'
+                        enum:
+                          - BEFORE
+                          - AFTER
+                        type: string
+                    required:
+                      - offset_unit
+                      - notification_groups
+                      - email_template_id
+                      - offset_origin
+                      - offset_amount
+                      - offset_direction
+                first_name:
+                  type: string
+                email_template_id:
+                  type: integer
+                custom_fields:
+                  type: array
+                  items:
+                    title: CustomField
+                    description: "The root of the CustomField type's schema."
+                    type: object
+                    x-examples:
+                      default:
+                        format: string
+                        field_name: some text
+                        field_value: some text
+                    properties:
+                      format:
+                        description: The format type of the field
+                        type: string
+                        enum:
+                          - string
+                      field_name:
+                        description: What the field should be displayed/labeled as
+                        type: string
+                      field_value:
+                        description: The value to be displayed for the field
+                        type: string
+                        nullable: true
+                      id:
+                        type: string
+                    required:
+                      - field_name
+                      - field_value
+                host_ids:
+                  type: array
+                  items:
+                    type: integer
+                title:
+                  type: string
+                start_date:
+                  format: date-time
+                  description: ''
+                  type: string
+                last_name:
+                  type: string
+                end_date:
+                  format: date-time
+                  type: string
+                email:
+                  type: string
+                company:
+                  type: string
             examples:
               default:
                 value:
@@ -2466,7 +5057,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/InviteDetail.v1.yaml
+                $ref: '#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -2537,7 +5128,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -2574,7 +5165,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -2614,7 +5205,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/Watchlist.v1.yaml
+                $ref: '#/paths/~1watchlists/post/responses/201/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -2634,7 +5225,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples: {}
       security:
         - TractionGuestAuth:
@@ -2650,7 +5241,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/WatchlistCreateParams.v1.yaml
+              $ref: '#/paths/~1watchlists/post/requestBody/content/application~1json/schema'
             examples:
               NewWatchlist:
                 value:
@@ -2672,7 +5263,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/Watchlist.v1.yaml
+                $ref: '#/paths/~1watchlists/post/responses/201/content/application~1json/schema'
               examples:
                 UpdatedWatchlist:
                   value:
@@ -2691,7 +5282,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
           description: Bad request
       security:
         - TractionGuestAuth:
@@ -2713,7 +5304,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -2780,7 +5371,45 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/PaginatedWatchlistList.v1.yaml
+                title: PaginatedWatchlistList
+                type: object
+                x-examples:
+                  default:
+                    pagination:
+                      total_records: 24
+                      current_offset: 58
+                      next_offset: 38
+                    watchlists:
+                      - id: 2
+                        colour: some text
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        notes: some text
+                        photo: some text
+                        aliases:
+                          - some text
+                          - some text
+                      - id: 96
+                        colour: some text
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        notes: some text
+                        photo: some text
+                        aliases:
+                          - some text
+                          - some text
+                properties:
+                  watchlists:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1watchlists/post/responses/201/content/application~1json/schema'
+                  pagination:
+                    $ref: '#/paths/~1hosts/get/responses/200/content/application~1json/schema/properties/pagination'
+                required:
+                  - watchlists
+                  - pagination
               examples:
                 default:
                   value:
@@ -2814,7 +5443,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -2842,7 +5471,39 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/WatchlistCreateParams.v1.yaml
+              title: WatchlistCreateParams
+              type: object
+              x-examples:
+                default:
+                  colour: RED
+                  email: bperson@example.com
+                  first_name: Bad
+                  last_name: Person
+                  notes: "This is a bad person. Don't let them in"
+                  aliases:
+                    - Horrible Person
+                    - Bad Guy
+              description: Parameters required for updating or creating watchlist records
+              properties:
+                aliases:
+                  type: array
+                  items:
+                    type: string
+                notes:
+                  type: string
+                last_name:
+                  type: string
+                first_name:
+                  type: string
+                email:
+                  type: string
+                colour:
+                  enum:
+                    - RED
+                    - YELLOW
+                    - GREEN
+                    - ORANGE
+                  type: string
             examples:
               NewWatchlist:
                 value:
@@ -2864,7 +5525,48 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/Watchlist.v1.yaml
+                title: Watchlist
+                type: object
+                x-examples:
+                  default:
+                    id: 23
+                    colour: GREEN
+                    email: some text
+                    first_name: some text
+                    last_name: some text
+                    notes: some text
+                    photo: some text
+                    aliases:
+                      - some text
+                      - some text
+                description: "The root of the Watchlist type's schema."
+                properties:
+                  id:
+                    type: integer
+                    format: int32
+                  aliases:
+                    type: array
+                    items:
+                      type: string
+                  photo:
+                    type: string
+                  notes:
+                    type: string
+                  last_name:
+                    type: string
+                  first_name:
+                    type: string
+                  email:
+                    type: string
+                  colour:
+                    type: string
+                    enum:
+                      - RED
+                      - YELLOW
+                      - GREEN
+                      - ORANGE
+                required:
+                  - id
               examples:
                 NewWatchlist:
                   value:
@@ -2883,7 +5585,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
           description: An error happened
       security:
         - TractionGuestAuth:
@@ -2969,7 +5671,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/PaginatedAuditLogsList.v1.yaml
+                title: PaginatedAuditLogsList
+                type: object
+                description: ''
+                properties:
+                  pagination:
+                    $ref: '#/paths/~1hosts/get/responses/200/content/application~1json/schema/properties/pagination'
+                  audit_logs:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1audit_logs~1%7Baudit_log_id%7D/get/responses/200/content/application~1json/schema'
+                required:
+                  - pagination
+                  - audit_logs
               examples:
                 default:
                   value:
@@ -3026,7 +5740,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -3058,7 +5772,103 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/AuditLog.v1.yaml
+                title: AuditLog
+                type: object
+                description: "The root of the AuditLog type's schema."
+                x-examples:
+                  default:
+                    id: 58
+                    auditable_id: 31
+                    auditable_type: some text
+                    user_id: 83
+                    username: some text
+                    action: some text
+                    audited_changes:
+                      - field_name: result
+                        field_value_before: '{}'
+                        field_value_after: '{"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}'
+                        format: json
+                      - field_name: user_id
+                        field_value_before: '1'
+                        field_value_after: '2'
+                        format: integer
+                      - field_name: flag_enabled
+                        field_value_after: 'true'
+                        format: boolean
+                    version: 56
+                    comment: some text
+                    remote_address: some text
+                    request_uuid: some text
+                    created_at: some texte
+                properties:
+                  id:
+                    type: integer
+                    description: ''
+                  created_at:
+                    description: ''
+                    type: string
+                  request_uuid:
+                    description: ''
+                    type: string
+                  remote_address:
+                    description: ''
+                    type: string
+                  comment:
+                    description: ''
+                    type: string
+                  version:
+                    description: ''
+                    type: integer
+                  audited_changes:
+                    type: array
+                    items:
+                      title: AuditLogChange
+                      description: ''
+                      type: object
+                      properties:
+                        field_name:
+                          description: What the field should be displayed/labeled as
+                          type: string
+                        field_value_before:
+                          description: The value to be displayed for the field before changes
+                          type: string
+                        field_value_after:
+                          description: The value to be displayed for the field after changes
+                          type: string
+                        format:
+                          description: The format type of the field
+                          enum:
+                            - string
+                            - boolean
+                            - integer
+                            - json
+                            - no_value
+                          type: string
+                      x-examples:
+                        default: |-
+                          {
+                            "field_name": "result",
+                            "field_value_before": "{}",
+                            "field_value_after": '{"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}',
+                            "format": "json"
+                          }
+                  action:
+                    description: ''
+                    type: string
+                  username:
+                    description: ''
+                    type: string
+                  user_id:
+                    description: ''
+                    type: integer
+                  auditable_type:
+                    description: ''
+                    type: string
+                  auditable_id:
+                    description: ''
+                    type: integer
+                required:
+                  - id
               examples:
                 default:
                   value:
@@ -3095,7 +5905,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
         '401':
           description: "You don't have permission to view this AuditLog"
         '403':
@@ -3118,7 +5928,62 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/GuestAlertCreateParams.v1.yaml
+              title: GuestAlertCreateParams
+              type: object
+              x-examples:
+                default:
+                  message: some text
+                  channels:
+                    - SMS
+                    - EMAIL
+                  signin_selectors:
+                    is_signed_out: true
+                    signin_ids:
+                      - 45
+                      - 91
+                    location_ids:
+                      - 46
+                      - 83
+              description: ''
+              properties:
+                signin_selectors:
+                  title: GuestAlertSigninSelectors
+                  description: ''
+                  type: object
+                  properties:
+                    is_signed_out:
+                      description: ''
+                      type: boolean
+                    signin_ids:
+                      description: ''
+                      type: array
+                      items:
+                        type: integer
+                    location_ids:
+                      description: ''
+                      type: array
+                      items:
+                        type: integer
+                  x-examples:
+                    default:
+                      is_signed_out: false
+                      signin_ids:
+                        - 26
+                        - 81
+                      location_ids:
+                        - 40
+                        - 81
+                channels:
+                  description: "Specify the broadcast channel, one of 'SMS' and/or 'EMAIL'"
+                  type: array
+                  items:
+                    type: string
+                message:
+                  description: Plain text of the alert to be sent
+                  type: string
+              required:
+                - channels
+                - message
             examples:
               default:
                 value:
@@ -3139,13 +6004,66 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/GuestAlertDetail.v1.yaml
+                title: GuestAlertDetail
+                description: ''
+                required:
+                  - delivery_status
+                  - channels
+                  - pending_count
+                  - failed_count
+                  - sent_count
+                  - uuid
+                  - message
+                type: object
+                properties:
+                  delivery_status:
+                    description: |
+                      pending, success, partial success, or failure
+                    enum:
+                      - pending
+                      - success
+                      - partial_success
+                      - failure
+                    type: string
+                  pending_count:
+                    description: |
+                      Count of pending messages
+                    type: integer
+                  sent_count:
+                    description: |
+                      Count of successfully sent messages
+                    type: integer
+                  failed_count:
+                    description: Count of messages that failed to be sent
+                    type: integer
+                  message:
+                    description: ''
+                    type: string
+                  uuid:
+                    description: The uuid of the guest_alert object
+                    type: string
+                  channels:
+                    description: Channel used to send the message
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  default:
+                    delivery_status: success
+                    pending_count: 42
+                    sent_count: 0
+                    failed_count: 0
+                    message: some text
+                    uuid: some text
+                    channels:
+                      - SMS
+                      - EMAIL
           description: Guest Alert has been scheduled for delivery
         '400':
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -3183,7 +6101,345 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/RegistrationDetail.v1.yaml
+                title: RegistrationDetail
+                type: object
+                x-examples:
+                  default:
+                    id: uuid
+                    created_at: '2018-02-10T09:30Z'
+                    name: some text
+                    email: some text
+                    company: some text
+                    photo_url: some text
+                    guest_responses:
+                      - title: some text
+                        sequence: 69
+                        id: 36
+                        page_type: some text
+                        custom_fields:
+                          - field_name: some text
+                            field_value: some text
+                          - field_name: some text
+                            field_value: some text
+                      - title: some text
+                        sequence: 64
+                        id: 20
+                        page_type: some text
+                        custom_fields:
+                          - field_name: some text
+                            field_value: some text
+                          - field_name: some text
+                            field_value: some text
+                    invite:
+                      id: 39
+                      first_name: some text
+                      last_name: some text
+                      start_date: '2018-02-10T09:30Z'
+                      location:
+                        id: 21
+                        name: some text
+                      watchlist_colour: GREEN
+                      hosts:
+                        - id: 16
+                          email: some text
+                          first_name: some text
+                          last_name: some text
+                          profile_pic_url: some text
+                          department: some text
+                          mobile_number: some text
+                        - id: 92
+                          email: some text
+                          first_name: some text
+                          last_name: some text
+                          profile_pic_url: some text
+                          department: some text
+                          mobile_number: some text
+                      invite_watchlist:
+                        id: 91
+                        external_colours:
+                          - some text
+                          - some text
+                        internal_colours:
+                          - some text
+                          - some text
+                      end_date: '2018-02-10T09:30Z'
+                      email: some text
+                      mobile_number: some text
+                    visitor:
+                      id: 20
+                      active: true
+                      company: some text
+                      created_via: some text
+                      email: some text
+                      first_name: some text
+                      last_name: some text
+                      mobile: some text
+                      note: some text
+                      profile_pic_content_type: some text
+                      profile_pic_file_name: some text
+                      profile_pic_file_size: some text
+                      profile_pic_updated_at: some text
+                      watchlist_level: some text
+                      created_at: '2018-02-10T09:30Z'
+                      updated_at: '2018-02-10T09:30Z'
+                description: The data of a Registration
+                properties:
+                  id:
+                    type: string
+                    description: Registration unique identifier
+                  visitor:
+                    title: Visitor
+                    description: Visitor information
+                    type: object
+                    x-examples:
+                      default:
+                        id: uuid
+                        active: true
+                        company: some text
+                        created_via: some text
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile: some text
+                        note: some text
+                        profile_pic_content_type: some text
+                        profile_pic_file_name: some text
+                        profile_pic_file_size: some text
+                        profile_pic_updated_at: some text
+                        watchlist_level: some text
+                        created_at: '2018-02-10T09:30Z'
+                        updated_at: '2018-02-10T09:30Z'
+                    properties:
+                      id:
+                        description: UUID
+                        type: string
+                      active:
+                        type: boolean
+                      company:
+                        type: string
+                      created_via:
+                        type: string
+                      email:
+                        type: string
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      mobile:
+                        type: string
+                      note:
+                        type: string
+                      profile_pic_content_type:
+                        type: string
+                      profile_pic_file_name:
+                        type: string
+                      profile_pic_file_size:
+                        type: string
+                      profile_pic_updated_at:
+                        type: string
+                      watchlist_level:
+                        type: string
+                      created_at:
+                        format: date-time
+                        type: string
+                      updated_at:
+                        format: date-time
+                        type: string
+                  invite:
+                    title: Invite
+                    type: object
+                    x-examples:
+                      default:
+                        id: 59
+                        first_name: some text
+                        last_name: some text
+                        start_date: '2018-02-10T09:30Z'
+                        location:
+                          id: 54
+                          name: some text
+                        watchlist_colour: ORANGE
+                        hosts:
+                          - id: 29
+                            email: some text
+                            first_name: some text
+                            last_name: some text
+                            mobile_number: some text
+                            profile_pic_url: some text
+                          - id: 81
+                            email: some text
+                            first_name: some text
+                            last_name: some text
+                            mobile_number: some text
+                            profile_pic_url: some text
+                        invite_watchlist:
+                          id: 4
+                          external_colours:
+                            - RED
+                            - ORANGE
+                          internal_colours:
+                            - YELLOW
+                            - GREEN
+                        end_date: '2018-02-10T09:30Z'
+                        email: some text
+                        registration:
+                          id: uuid
+                          created_at: '2018-02-10T09:30Z'
+                          name: some text
+                          email: some text
+                          company: some text
+                          photo_url: some text
+                          guest_responses:
+                            - title: some text
+                              sequence: 69
+                              id: 36
+                              page_type: some text
+                              custom_fields:
+                                - field_name: some text
+                                  field_value: some text
+                                - field_name: some text
+                                  field_value: some text
+                            - title: some text
+                              sequence: 64
+                              id: 20
+                              page_type: some text
+                              custom_fields:
+                                - field_name: some text
+                                  field_value: some text
+                                - field_name: some text
+                                  field_value: some text
+                          visitor:
+                            id: 20
+                            active: true
+                            company: some text
+                            created_via: some text
+                            email: some text
+                            first_name: some text
+                            last_name: some text
+                            mobile: some text
+                            note: some text
+                            profile_pic_content_type: some text
+                            profile_pic_file_name: some text
+                            profile_pic_file_size: some text
+                            profile_pic_updated_at: some text
+                            watchlist_level: some text
+                            created_at: '2018-02-10T09:30Z'
+                            updated_at: '2018-02-10T09:30Z'
+                        mobile_number: some text
+                    description: "The root of the Invite type's schema."
+                    properties:
+                      id:
+                        type: integer
+                        format: int32
+                      registration:
+                        $ref: '#/paths/~1signins/post/responses/201/content/application~1json/schema/properties/registration'
+                        nullable: true
+                      mobile_number:
+                        description: ''
+                        type: string
+                        nullable: true
+                      email:
+                        description: ''
+                        type: string
+                        nullable: true
+                      end_date:
+                        format: date-time
+                        description: ''
+                        type: string
+                        nullable: true
+                      invite_watchlist:
+                        $ref: '#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/invite_watchlist'
+                        nullable: true
+                      hosts:
+                        type: array
+                        items:
+                          $ref: '#/paths/~1hosts/post/responses/201/content/application~1json/schema'
+                      watchlist_colour:
+                        enum:
+                          - RED
+                          - GREEN
+                          - YELLOW
+                          - ORANGE
+                        type: string
+                        nullable: true
+                      location:
+                        $ref: '#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/location'
+                      start_date:
+                        format: date-time
+                        type: string
+                      last_name:
+                        type: string
+                        nullable: true
+                      first_name:
+                        type: string
+                        nullable: true
+                      group_visit:
+                        $ref: '#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/group_visit'
+                        nullable: true
+                    required:
+                      - id
+                      - email
+                      - last_name
+                      - first_name
+                  guest_responses:
+                    type: array
+                    description: Response given by the guest
+                    items:
+                      title: GuestResponse
+                      type: object
+                      x-examples:
+                        default:
+                          title: This is a form
+                          sequence: 1
+                          id: uuid
+                          page_type: form_page
+                          custom_fields:
+                            - field_name: question_1
+                              field_value: Red Wine
+                            - field_name: question_2
+                              field_value: White Wine
+                      description: The data collected from the response on a Registration
+                      properties:
+                        id:
+                          type: integer
+                          description: UUID
+                        custom_fields:
+                          description: Flex fields
+                          type: array
+                          items:
+                            $ref: '#/paths/~1invites~1%7Binvite_id%7D/put/requestBody/content/application~1json/schema/properties/custom_fields/items'
+                        page_type:
+                          type: string
+                        sequence:
+                          format: int32
+                          type: integer
+                        title:
+                          description: Page title
+                          type: string
+                  photo_url:
+                    description: URL of the uploaded photo
+                    type: string
+                    nullable: true
+                  company:
+                    description: "Company's name"
+                    type: string
+                    nullable: true
+                  email:
+                    description: E-mail
+                    type: string
+                    nullable: true
+                  name:
+                    description: "Guest's name"
+                    type: string
+                    nullable: true
+                  created_at:
+                    format: date-time
+                    description: Datetime when registration was created
+                    type: string
+                  signin:
+                    $ref: '#/paths/~1signins/post/responses/201/content/application~1json/schema'
+                required:
+                  - id
+                  - created_at
               examples:
                 Default:
                   value:
@@ -3269,7 +6525,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
               examples:
                 default:
                   value:
@@ -3311,7 +6567,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/BatchJob.v1.yaml
+                title: BatchJob
+                type: object
+                properties:
+                  bid:
+                    type: string
+                  created_at:
+                    type: string
+                  status:
+                    type: string
+                  total_records:
+                    type: integer
+                  worker_name:
+                    type: string
+                  user:
+                    $ref: '#/paths/~1users~1%7Buser_id%7D/get/responses/200/content/application~1json/schema'
+                description: ''
               examples:
                 default:
                   value:
@@ -3325,7 +6596,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
       tags:
         - Hosts
       description: 'Creates a batch of `Host` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.'
@@ -3333,7 +6604,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/HostBatchCreateParams.v1.yaml
+              title: HostBatchCreateParams
+              type: object
+              properties:
+                hosts:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1hosts/post/requestBody/content/application~1json/schema'
       parameters:
         - $ref: '#/components/parameters/idempotencyKey'
   /registrations:
@@ -3347,13 +6624,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/PaginatedRegistrationsList.v1.yaml
+                title: PaginatedRegistrationsList
+                type: object
+                properties:
+                  registrations:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1signins/post/responses/201/content/application~1json/schema/properties/registration'
+                  pagination:
+                    $ref: '#/paths/~1hosts/get/responses/200/content/application~1json/schema/properties/pagination'
         '400':
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: '#/paths/~1hosts/get/responses/400/content/application~1json/schema'
         '401':
           description: Unauthorized
       operationId: getRegistrations

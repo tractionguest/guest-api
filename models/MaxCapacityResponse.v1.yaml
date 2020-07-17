@@ -1,0 +1,30 @@
+title: MaxCapacityResponse.v1
+type: object
+x-tags:
+  - MaxCapacities
+properties:
+  signins_count:
+    type: integer
+    description: The number of people currently present in the location
+  invites_expected_next_hour:
+    type: integer
+    description: The number of people expected in the next 60 mins from the current time.
+  max_capacity:
+    type: integer
+    description: The maximum capacity of a location.
+  chart_data:
+    type: array
+    description: Expected people in the next 6 hours
+    items:
+      type: integer
+x-examples:
+  default:
+    signins_count: 10
+    invites_expected_next_hour: 7
+    max_capacity: 50
+    chart_data:
+      - 10
+      - 5
+      - 3
+      - 6
+      - 5

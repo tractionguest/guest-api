@@ -3384,6 +3384,84 @@ paths:
           in: query
           name: created_after
           description: Restricts results to only those that were created after the provided date
+  '/locations/{location_id}/max_capacities':
+    parameters:
+      - schema:
+          type: string
+        name: location_id
+        in: path
+        required: true
+    get:
+      summary: Get the maximum capacity details for a location
+      tags:
+        - MaxCapacities
+      responses:
+        '200':
+          description: 'Successful response returns the current number of signins, expected invites, max_capacity of the location and expected invites for the next 6 hours.'
+          content:
+            application/json:
+              schema:
+                $ref: ./models/MaxCapacityResponse.v1.yaml
+              examples:
+                default:
+                  value:
+                    signins_count: 10
+                    invites_expected_next_hour: 7
+                    max_capacity: 50
+                    chart_data:
+                      - 10
+                      - 5
+                      - 3
+                      - 6
+                      - 5
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+              examples:
+                default:
+                  value:
+                    errors:
+                      - domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+                      - domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+        '401':
+          description: "You don't have permission to view the details of the location's capacity."
+        '403':
+          description: You do not have permission for this action
+      operationId: get-locations-location_id-max_capacities
+      description: Gets the details of the capacity in a location.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: local_time
+          description: Current local time with offset value.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/MaxCapacity.v1.yaml
+            examples:
+              default:
+                value:
+                  local_time: '2020-07-16T17:05:08-07:00'
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
+        description: Input the current local time with offset value
 components:
   parameters:
     idempotencyKey:

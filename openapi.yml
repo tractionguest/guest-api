@@ -3334,6 +3334,8 @@ paths:
           application/json:
             schema:
               $ref: ./models/HostBatchCreateParams.v1.yaml
+            examples:
+              example-1: {}
       parameters:
         - $ref: '#/components/parameters/idempotencyKey'
   /registrations:
@@ -3436,7 +3438,7 @@ paths:
           description: "You don't have permission to view the details of the location's capacity."
         '403':
           description: You do not have permission for this action
-      operationId: get-locations-location_id-max_capacities
+      operationId: getLocationMaximumCapacity
       description: Gets the details of the capacity in a location.
       parameters:
         - schema:
@@ -3453,15 +3455,7 @@ paths:
               default:
                 value:
                   local_time: '2020-07-16T17:05:08-07:00'
-          application/xml:
-            schema:
-              type: object
-              properties: {}
-          multipart/form-data:
-            schema:
-              type: object
-              properties: {}
-        description: Input the current local time with offset value
+        description: Local time with offset value
 components:
   parameters:
     idempotencyKey:

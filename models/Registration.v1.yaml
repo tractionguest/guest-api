@@ -86,7 +86,6 @@ properties:
     description: Registration unique identifier
   visitor:
     $ref: ./Visitor.v1.yaml
-    nullable: true
   invite:
     $ref: ./Invite.v1.yaml
     nullable: true

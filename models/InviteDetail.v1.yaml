@@ -73,25 +73,6 @@ x-examples:
       email: some text
       company: some text
       photo_url: some text
-      guest_responses:
-        - title: some text
-          sequence: 69
-          id: 36
-          page_type: some text
-          custom_fields:
-            - field_name: some text
-              field_value: some text
-            - field_name: some text
-              field_value: some text
-        - title: some text
-          sequence: 64
-          id: 20
-          page_type: some text
-          custom_fields:
-            - field_name: some text
-              field_value: some text
-            - field_name: some text
-              field_value: some text
       visitor:
         id: 20
         active: true

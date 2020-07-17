@@ -1,4 +1,4 @@
-title: MaxCapacityResponse.v1
+title: MaxCapacityResponse
 type: object
 x-tags:
   - MaxCapacities

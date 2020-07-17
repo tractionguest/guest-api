@@ -9,7 +9,7 @@ class CustomField {
   /* The value to be displayed for the field */
   String fieldValue = null;
   
-  String id = null;
+  int id = null;
   CustomField();
 
   @override

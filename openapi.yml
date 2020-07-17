@@ -3473,7 +3473,9 @@ paths:
             examples:
               default:
                 value:
-                  local_time: '2020-07-16T17:05:08-07:00'
+                  timestamp: '2020-07-16T17:05:08-07:00'
+                  timezone: America/Vancouver
+                  hours_to_calculate: 8
         description: Local time with offset value
 components:
   parameters:

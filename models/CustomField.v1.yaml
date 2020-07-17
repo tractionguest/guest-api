@@ -18,6 +18,7 @@ properties:
   field_value:
     description: The value to be displayed for the field
     type: string
+    nullable: true
   id:
     type: string
 required:

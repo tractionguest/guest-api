@@ -96,15 +96,19 @@ properties:
   photo_url:
     description: URL of the uploaded photo
     type: string
+    nullable: true
   company:
     description: "Company's name"
     type: string
+    nullable: true
   email:
     description: E-mail
     type: string
+    nullable: true
   name:
     description: "Guest's name"
     type: string
+    nullable: true
   created_at:
     format: date-time
     description: Datetime when registration was created

@@ -3183,7 +3183,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/Registration.v1.yaml
+                $ref: ./models/RegistrationDetail.v1.yaml
               examples:
                 Default:
                   value:

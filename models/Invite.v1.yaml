@@ -84,18 +84,23 @@ properties:
     format: int32
   registration:
     $ref: ./Registration.v1.yaml
+    nullable: true
   mobile_number:
     description: ''
     type: string
+    nullable: true
   email:
     description: ''
     type: string
+    nullable: true
   end_date:
     format: date-time
     description: ''
     type: string
+    nullable: true
   invite_watchlist:
     $ref: ./InviteWatchlist.v1.yaml
+    nullable: true
   hosts:
     type: array
     items:
@@ -107,6 +112,7 @@ properties:
       - YELLOW
       - ORANGE
     type: string
+    nullable: true
   location:
     $ref: ./Location.v1.yaml
   start_date:
@@ -114,10 +120,13 @@ properties:
     type: string
   last_name:
     type: string
+    nullable: true
   first_name:
     type: string
+    nullable: true
   group_visit:
     $ref: ./GroupVisit.v1.yaml
+    nullable: true
 required:
   - id
   - email

@@ -20,9 +20,9 @@ public struct CustomField: Codable {
     public var fieldName: String
     /** The value to be displayed for the field */
     public var fieldValue: String?
-    public var id: String?
+    public var id: Int?
 
-    public init(format: Format?, fieldName: String, fieldValue: String?, id: String?) {
+    public init(format: Format?, fieldName: String, fieldValue: String?, id: Int?) {
         self.format = format
         self.fieldName = fieldName
         self.fieldValue = fieldValue

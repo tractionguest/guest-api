@@ -11,7 +11,9 @@ x-examples:
 properties:
   range_start:
     type: string
+    format: date-time
   range_end:
     type: string
+    format: date-time
   expected_visitors:
     type: integer

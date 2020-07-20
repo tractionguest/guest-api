@@ -3461,20 +3461,13 @@ paths:
       description: Gets the details of the capacity in a location.
       parameters:
         - schema:
-            type: string
+            type: integer
+            minimum: 1
+            maximum: 24
+            default: 8
           in: query
-          name: local_time
-          description: Current local time with offset value.
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ./models/Capacity.v1.yaml
-            examples:
-              default:
-                value:
-                  hours_to_calculate: 8
-        description: Local time with offset value
+          name: hours_to_calculate
+          description: 'The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8.'
 components:
   parameters:
     idempotencyKey:

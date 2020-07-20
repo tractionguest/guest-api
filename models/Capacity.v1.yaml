@@ -2,20 +2,11 @@ title: Capacity
 type: object
 x-examples:
   default:
-    timestamp: '2020-07-16T17:05:08-07:00'
-    timezone: America/Vancouver
     hours_to_calculate: 8
 description: "The root of the Capacity's schema."
 properties:
-  timestamp:
-    type: string
-    description: 'Current local time with offset Eg: "2020-07-16T17:05:08-07:00"'
   hours_to_calculate:
     type: number
     description: expected number of visitors to be calculated for the next N number of hours
-  timezone:
-    type: string
-    description: IANA timezone designations
 required:
-  - timestamp
   - hours_to_calculate

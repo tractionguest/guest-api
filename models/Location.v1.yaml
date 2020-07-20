@@ -14,6 +14,7 @@ properties:
     type: string
   max_capacity:
     type: integer
+    nullable: true
     description: Maximum capacity of a location
 required:
   - id

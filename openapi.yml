@@ -3470,7 +3470,7 @@ paths:
             type: string
           in: query
           name: timestamp
-          description: 'ISO8601 timestamp to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: "2020-07-16T17:05:08-07:00"'
+          description: 'ISO8601 timestamp(includes the offset value) to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: "2020-07-16T17:05:08-07:00"'
   '/locations/{location_id}/capacity_summaries':
     parameters:
       - schema:

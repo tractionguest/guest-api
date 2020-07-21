@@ -2,8 +2,6 @@ title: CapacityResponse
 type: object
 x-examples:
   default:
-    signins_count: 189
-    invites_expected_next_hour: 1
     invites_by_hour:
       - range_start: '2020-07-17T00:59:59.999Z'
         range_end: '2020-07-17T01:59:59.999Z'
@@ -31,12 +29,6 @@ x-examples:
         expected_visitors: 1
 description: "The root of the CapacityResponse's schema."
 properties:
-  signins_count:
-    type: integer
-    description: The number of people currently present in the location
-  invites_expected_next_hour:
-    type: integer
-    description: The number of people expected in the next 60 mins from the current time.
   invites_by_hour:
     type: array
     items:

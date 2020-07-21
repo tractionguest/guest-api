@@ -3400,7 +3400,7 @@ paths:
         - Capacities
       responses:
         '200':
-          description: 'Successful response returns the current number of signins, expected invites and expected invites for the next N number of hours.'
+          description: Successful response returns the expected invites for the next N number of hours.
           content:
             application/json:
               schema:
@@ -3408,8 +3408,6 @@ paths:
               examples:
                 default:
                   value:
-                    signins_count: 189
-                    invites_expected_next_hour: 1
                     invites_by_hour:
                       - range_start: '2020-07-17T00:59:59.999Z'
                         range_end: '2020-07-17T01:59:59.999Z'
@@ -3458,7 +3456,7 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: getLocationCapacity
-      description: Gets the details of the capacity in a location.
+      description: Gets the details of the future capacity in a location.
       parameters:
         - schema:
             type: integer
@@ -3468,6 +3466,46 @@ paths:
           in: query
           name: hours_to_calculate
           description: 'The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8.'
+        - schema:
+            type: string
+          in: query
+          name: timestamp
+          description: ISO8601 timestamp to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided.
+  '/locations/{location_id}/capacity_summaries':
+    parameters:
+      - schema:
+          type: string
+        name: location_id
+        in: path
+        required: true
+    get:
+      summary: Get the current capacity details for a location
+      tags:
+        - Capacities
+      responses:
+        '200':
+          description: Successful response returns the current_signins and expected invites for the next hour.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/CapacitySummary.v1.yaml
+              examples:
+                default:
+                  value:
+                    signins_count: 189
+                    invites_expected_next_hour: 1
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: "You don't have permission to view the details of the location's capacity."
+        '403':
+          description: You do not have permission for this action
+      operationId: getLocationCapacitySummary
+      description: Get details of current capacity in a location
 components:
   parameters:
     idempotencyKey:

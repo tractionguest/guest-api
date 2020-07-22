@@ -1,0 +1,35 @@
+title: CapacityResponse
+type: object
+x-examples:
+  default:
+    invites_by_hour:
+      - range_start: '2020-07-17T00:59:59.999Z'
+        range_end: '2020-07-17T01:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T01:59:59.999Z'
+        range_end: '2020-07-17T02:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T02:59:59.999Z'
+        range_end: '2020-07-17T03:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T03:59:59.999Z'
+        range_end: '2020-07-17T04:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T04:59:59.999Z'
+        range_end: '2020-07-17T05:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T05:59:59.999Z'
+        range_end: '2020-07-17T06:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T06:59:59.999Z'
+        range_end: '2020-07-17T07:59:59.999Z'
+        expected_visitors: 0
+      - range_start: '2020-07-17T07:59:59.999Z'
+        range_end: '2020-07-17T08:59:59.999Z'
+        expected_visitors: 1
+description: "The root of the CapacityResponse's schema."
+properties:
+  invites_by_hour:
+    type: array
+    items:
+      $ref: ./CapacityByHourResponse.v1.yaml

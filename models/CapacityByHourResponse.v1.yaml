@@ -1,0 +1,19 @@
+title: CapacityByHourResponse
+type: object
+x-tags:
+  - Capacities
+description: "The root of the CapacityByHour's schema."
+x-examples:
+  default:
+    range_start: '2020-07-17T01:59:59.999Z'
+    range_end: '2020-07-17T02:59:59.999Z'
+    expected_visitors: 0
+properties:
+  range_start:
+    type: string
+    format: date-time
+  range_end:
+    type: string
+    format: date-time
+  expected_visitors:
+    type: integer

@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.11.14
+  version: 0.12.0
   description: |
     The Traction Guest API is currently in **closed beta**.
     We're still building, testing, and fixing bugs.
@@ -861,8 +861,10 @@ paths:
                     locations:
                       - id: 28
                         name: Default
+                        max_capacity: 40
                       - id: 97
                         name: Rogers Arena
+                        max_capacity: 45
           description: Successful response - returns an array of `Location` entities.
         '400':
           content:
@@ -3334,6 +3336,7 @@ paths:
           application/json:
             schema:
               $ref: ./models/HostBatchCreateParams.v1.yaml
+            examples: {}
       parameters:
         - $ref: '#/components/parameters/idempotencyKey'
   /registrations:
@@ -3384,6 +3387,125 @@ paths:
           in: query
           name: created_after
           description: Restricts results to only those that were created after the provided date
+  '/locations/{location_id}/capacities':
+    parameters:
+      - schema:
+          type: string
+        name: location_id
+        in: path
+        required: true
+    get:
+      summary: Get the capacity details for a location
+      tags:
+        - Capacities
+      responses:
+        '200':
+          description: Successful response returns the expected invites for the next N number of hours.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/CapacityResponse.v1.yaml
+              examples:
+                default:
+                  value:
+                    invites_by_hour:
+                      - range_start: '2020-07-17T00:59:59.999Z'
+                        range_end: '2020-07-17T01:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T01:59:59.999Z'
+                        range_end: '2020-07-17T02:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T02:59:59.999Z'
+                        range_end: '2020-07-17T03:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T03:59:59.999Z'
+                        range_end: '2020-07-17T04:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T04:59:59.999Z'
+                        range_end: '2020-07-17T05:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T05:59:59.999Z'
+                        range_end: '2020-07-17T06:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T06:59:59.999Z'
+                        range_end: '2020-07-17T07:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T07:59:59.999Z'
+                        range_end: '2020-07-17T08:59:59.999Z'
+                        expected_visitors: 1
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+              examples:
+                default:
+                  value:
+                    errors:
+                      - domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+                      - domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+        '401':
+          description: "You don't have permission to view the details of the location's capacity."
+        '403':
+          description: You do not have permission for this action
+      operationId: getLocationCapacity
+      description: Gets the details of the future capacity in a location.
+      parameters:
+        - schema:
+            type: integer
+            minimum: 1
+            maximum: 24
+            default: 8
+          in: query
+          name: hours_to_calculate
+          description: 'The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8.'
+        - schema:
+            type: string
+          in: query
+          name: timestamp
+          description: 'ISO8601 timestamp(includes the offset value) to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: "2020-07-16T17:05:08-07:00"'
+  '/locations/{location_id}/capacity_summaries':
+    parameters:
+      - schema:
+          type: string
+        name: location_id
+        in: path
+        required: true
+    get:
+      summary: Get the current capacity details for a location
+      tags:
+        - Capacities
+      responses:
+        '200':
+          description: Successful response returns the current_signins and expected invites for the next hour.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/CapacitySummary.v1.yaml
+              examples:
+                default:
+                  value:
+                    signins_count: 189
+                    invites_expected_next_hour: 1
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: "You don't have permission to view the details of the location's capacity."
+        '403':
+          description: You do not have permission for this action
+      operationId: getLocationCapacitySummary
+      description: Get details of current capacity in a location
 components:
   parameters:
     idempotencyKey:

@@ -1,18 +1,26 @@
 title: Location
 description: "The root of the Location type's schema."
-required:
-  - id
-  - name
 type: object
+x-examples:
+  default:
+    id: 1
+    name: Default
+    max_capacity: 30
+    timezone: America/Vancouver
 properties:
   id:
     format: int32
     type: integer
   name:
     type: string
-x-examples:
-  default: |-
-    {
-      "id": 1,
-      "name": "Default"
-    }
+  max_capacity:
+    type: integer
+    nullable: true
+    description: Maximum capacity of a location
+  timezone:
+    type: string
+    nullable: true
+    description: ' IANA timezone designations'
+required:
+  - id
+  - name

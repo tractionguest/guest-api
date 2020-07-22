@@ -1,0 +1,14 @@
+title: CapacitySummary
+type: object
+x-tags:
+  - Capacities
+x-examples:
+  default:
+    signins_count: 189
+    invites_expected_next_hour: 1
+properties:
+  signins_count:
+    type: integer
+  invites_expected_next_hour:
+    type: integer
+description: "The root of the CapacitySummary's schema."

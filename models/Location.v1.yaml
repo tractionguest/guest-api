@@ -19,6 +19,7 @@ properties:
     description: Maximum capacity of a location
   timezone:
     type: string
+    nullable: true
     description: ' IANA timezone designations'
 required:
   - id

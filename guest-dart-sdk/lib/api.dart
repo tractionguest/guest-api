@@ -13,6 +13,7 @@ part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 
 part 'api/audit_logs_api.dart';
+part 'api/capacities_api.dart';
 part 'api/email_templates_api.dart';
 part 'api/guest_alerts_api.dart';
 part 'api/hosts_api.dart';
@@ -26,6 +27,9 @@ part 'api/watchlists_api.dart';
 part 'model/audit_log.dart';
 part 'model/audit_log_change.dart';
 part 'model/batch_job.dart';
+part 'model/capacity_by_hour_response.dart';
+part 'model/capacity_response.dart';
+part 'model/capacity_summary.dart';
 part 'model/custom_field.dart';
 part 'model/docusign.dart';
 part 'model/email_template.dart';

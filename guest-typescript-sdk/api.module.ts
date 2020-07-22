@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 
 import { AuditLogsService } from './api/auditLogs.service';
+import { CapacitiesService } from './api/capacities.service';
 import { EmailTemplatesService } from './api/emailTemplates.service';
 import { GuestAlertsService } from './api/guestAlerts.service';
 import { HostsService } from './api/hosts.service';
@@ -20,6 +21,7 @@ import { WatchlistsService } from './api/watchlists.service';
   exports:      [],
   providers: [
     AuditLogsService,
+    CapacitiesService,
     EmailTemplatesService,
     GuestAlertsService,
     HostsService,

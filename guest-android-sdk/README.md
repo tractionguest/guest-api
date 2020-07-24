@@ -85,8 +85,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AuditLogsApi* | [**getAuditLog**](docs/AuditLogsApi.md#getAuditLog) | **GET** /audit_logs/{audit_log_id} | Get an AuditLog
 *AuditLogsApi* | [**getAuditLogs**](docs/AuditLogsApi.md#getAuditLogs) | **GET** /audit_logs | List all AuditLogs
-*CapacitiesApi* | [**getLocationCapacity**](docs/CapacitiesApi.md#getLocationCapacity) | **GET** /locations/{location_id}/capacities | Get the capacity details for a location
-*CapacitiesApi* | [**getLocationCapacitySummary**](docs/CapacitiesApi.md#getLocationCapacitySummary) | **GET** /locations/{location_id}/capacity_summaries | Get the current capacity details for a location
+*CapacitiesApi* | [**getLocationCapacity**](docs/CapacitiesApi.md#getLocationCapacity) | **GET** /locations/{location_id}/capacity_forecasts | Get the capacity details for a location
+*CapacitiesApi* | [**getLocationCapacitySummary**](docs/CapacitiesApi.md#getLocationCapacitySummary) | **GET** /locations/{location_id}/capacities | Get the current capacity details for a location
 *EmailTemplatesApi* | [**getEmailTemplates**](docs/EmailTemplatesApi.md#getEmailTemplates) | **GET** /email_templates | List all EmailTemplates
 *GuestAlertsApi* | [**createGuestAlert**](docs/GuestAlertsApi.md#createGuestAlert) | **POST** /guest_alerts | Create GuestAlert
 *HostsApi* | [**createHost**](docs/HostsApi.md#createHost) | **POST** /hosts | Create a Host
@@ -97,6 +97,7 @@ Class | Method | HTTP request | Description
 *InvitesApi* | [**getInvite**](docs/InvitesApi.md#getInvite) | **GET** /invites/{invite_id} | Get an Invite
 *InvitesApi* | [**getInvites**](docs/InvitesApi.md#getInvites) | **GET** /invites | List all Invites
 *InvitesApi* | [**updateInvite**](docs/InvitesApi.md#updateInvite) | **PUT** /invites/{invite_id} | Update an Invite
+*LocationsApi* | [**getLocation**](docs/LocationsApi.md#getLocation) | **GET** /locations/{location_id} | Get the details of a location
 *LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /locations | List all Locations
 *RegistrationApi* | [**getRegistration**](docs/RegistrationApi.md#getRegistration) | **GET** /registrations/{registration_id} | Get a Registration
 *RegistrationApi* | [**getRegistrations**](docs/RegistrationApi.md#getRegistrations) | **GET** /registrations | List all Registrations
@@ -117,9 +118,9 @@ Class | Method | HTTP request | Description
  - [AuditLog](docs/AuditLog.md)
  - [AuditLogChange](docs/AuditLogChange.md)
  - [BatchJob](docs/BatchJob.md)
+ - [Capacity](docs/Capacity.md)
  - [CapacityByHourResponse](docs/CapacityByHourResponse.md)
- - [CapacityResponse](docs/CapacityResponse.md)
- - [CapacitySummary](docs/CapacitySummary.md)
+ - [CapacityForecast](docs/CapacityForecast.md)
  - [CustomField](docs/CustomField.md)
  - [Docusign](docs/Docusign.md)
  - [EmailTemplate](docs/EmailTemplate.md)

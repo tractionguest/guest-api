@@ -9,12 +9,12 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLocationCapacity**](CapacitiesApi.md#getLocationCapacity) | **GET** /locations/{location_id}/capacities | Get the capacity details for a location
-[**getLocationCapacitySummary**](CapacitiesApi.md#getLocationCapacitySummary) | **GET** /locations/{location_id}/capacity_summaries | Get the current capacity details for a location
+[**getLocationCapacity**](CapacitiesApi.md#getLocationCapacity) | **GET** /locations/{location_id}/capacity_forecasts | Get the capacity details for a location
+[**getLocationCapacitySummary**](CapacitiesApi.md#getLocationCapacitySummary) | **GET** /locations/{location_id}/capacities | Get the current capacity details for a location
 
 
 # **getLocationCapacity**
-> CapacityResponse getLocationCapacity(locationId, hoursToCalculate, timestamp)
+> CapacityForecast getLocationCapacity(locationId, hoursToForecast, timestamp)
 
 Get the capacity details for a location
 
@@ -26,11 +26,11 @@ import 'package:guest_sdk/api.dart';
 
 var api_instance = new CapacitiesApi();
 var locationId = locationId_example; // String | 
-var hoursToCalculate = 56; // int | The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8.
+var hoursToForecast = 56; // int | The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8.
 var timestamp = timestamp_example; // String | ISO8601 timestamp(includes the offset value) to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: \"2020-07-16T17:05:08-07:00\"
 
 try { 
-    var result = api_instance.getLocationCapacity(locationId, hoursToCalculate, timestamp);
+    var result = api_instance.getLocationCapacity(locationId, hoursToForecast, timestamp);
     print(result);
 } catch (e) {
     print("Exception when calling CapacitiesApi->getLocationCapacity: $e\n");
@@ -42,12 +42,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String**|  | [default to null]
- **hoursToCalculate** | **int**| The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8. | [optional] [default to 8]
+ **hoursToForecast** | **int**| The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8. | [optional] [default to 8]
  **timestamp** | **String**| ISO8601 timestamp(includes the offset value) to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: \&quot;2020-07-16T17:05:08-07:00\&quot; | [optional] [default to null]
 
 ### Return type
 
-[**CapacityResponse**](CapacityResponse.md)
+[**CapacityForecast**](CapacityForecast.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLocationCapacitySummary**
-> CapacitySummary getLocationCapacitySummary(locationId)
+> Capacity getLocationCapacitySummary(locationId)
 
 Get the current capacity details for a location
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CapacitySummary**](CapacitySummary.md)
+[**Capacity**](Capacity.md)
 
 ### Authorization
 

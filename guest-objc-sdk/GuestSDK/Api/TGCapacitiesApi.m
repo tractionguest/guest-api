@@ -1,8 +1,8 @@
 #import "TGCapacitiesApi.h"
 #import "TGQueryParamCollection.h"
 #import "TGApiClient.h"
-#import "TGCapacityResponse.h"
-#import "TGCapacitySummary.h"
+#import "TGCapacity.h"
+#import "TGCapacityForecast.h"
 #import "TGErrorsList.h"
 
 
@@ -56,16 +56,16 @@ NSInteger kTGCapacitiesApiMissingParamErrorCode = 234513;
 /// Gets the details of the future capacity in a location.
 ///  @param locationId  
 ///
-///  @param hoursToCalculate The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8. (optional, default to @8)
+///  @param hoursToForecast The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8. (optional, default to @8)
 ///
 ///  @param timestamp ISO8601 timestamp(includes the offset value) to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: \"2020-07-16T17:05:08-07:00\" (optional)
 ///
-///  @returns TGCapacityResponse*
+///  @returns TGCapacityForecast*
 ///
 -(NSURLSessionTask*) getLocationCapacityWithLocationId: (NSString*) locationId
-    hoursToCalculate: (NSNumber*) hoursToCalculate
+    hoursToForecast: (NSNumber*) hoursToForecast
     timestamp: (NSString*) timestamp
-    completionHandler: (void (^)(TGCapacityResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(TGCapacityForecast* output, NSError* error)) handler {
     // verify the required parameter 'locationId' is set
     if (locationId == nil) {
         NSParameterAssert(locationId);
@@ -77,7 +77,7 @@ NSInteger kTGCapacitiesApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/locations/{location_id}/capacities"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/locations/{location_id}/capacity_forecasts"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (locationId != nil) {
@@ -85,8 +85,8 @@ NSInteger kTGCapacitiesApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    if (hoursToCalculate != nil) {
-        queryParams[@"hours_to_calculate"] = hoursToCalculate;
+    if (hoursToForecast != nil) {
+        queryParams[@"hours_to_forecast"] = hoursToForecast;
     }
     if (timestamp != nil) {
         queryParams[@"timestamp"] = timestamp;
@@ -123,10 +123,10 @@ NSInteger kTGCapacitiesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"TGCapacityResponse*"
+                              responseType: @"TGCapacityForecast*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((TGCapacityResponse*)data, error);
+                                    handler((TGCapacityForecast*)data, error);
                                 }
                             }];
 }
@@ -136,10 +136,10 @@ NSInteger kTGCapacitiesApiMissingParamErrorCode = 234513;
 /// Get details of current capacity in a location
 ///  @param locationId  
 ///
-///  @returns TGCapacitySummary*
+///  @returns TGCapacity*
 ///
 -(NSURLSessionTask*) getLocationCapacitySummaryWithLocationId: (NSString*) locationId
-    completionHandler: (void (^)(TGCapacitySummary* output, NSError* error)) handler {
+    completionHandler: (void (^)(TGCapacity* output, NSError* error)) handler {
     // verify the required parameter 'locationId' is set
     if (locationId == nil) {
         NSParameterAssert(locationId);
@@ -151,7 +151,7 @@ NSInteger kTGCapacitiesApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/locations/{location_id}/capacity_summaries"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/locations/{location_id}/capacities"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
     if (locationId != nil) {
@@ -191,10 +191,10 @@ NSInteger kTGCapacitiesApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"TGCapacitySummary*"
+                              responseType: @"TGCapacity*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((TGCapacitySummary*)data, error);
+                                    handler((TGCapacity*)data, error);
                                 }
                             }];
 }

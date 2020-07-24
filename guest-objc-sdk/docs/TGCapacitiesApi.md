@@ -4,16 +4,16 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLocationCapacity**](TGCapacitiesApi.md#getlocationcapacity) | **GET** /locations/{location_id}/capacities | Get the capacity details for a location
-[**getLocationCapacitySummary**](TGCapacitiesApi.md#getlocationcapacitysummary) | **GET** /locations/{location_id}/capacity_summaries | Get the current capacity details for a location
+[**getLocationCapacity**](TGCapacitiesApi.md#getlocationcapacity) | **GET** /locations/{location_id}/capacity_forecasts | Get the capacity details for a location
+[**getLocationCapacitySummary**](TGCapacitiesApi.md#getlocationcapacitysummary) | **GET** /locations/{location_id}/capacities | Get the current capacity details for a location
 
 
 # **getLocationCapacity**
 ```objc
 -(NSURLSessionTask*) getLocationCapacityWithLocationId: (NSString*) locationId
-    hoursToCalculate: (NSNumber*) hoursToCalculate
+    hoursToForecast: (NSNumber*) hoursToForecast
     timestamp: (NSString*) timestamp
-        completionHandler: (void (^)(TGCapacityResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(TGCapacityForecast* output, NSError* error)) handler;
 ```
 
 Get the capacity details for a location
@@ -26,16 +26,16 @@ TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
 
 
 NSString* locationId = @"locationId_example"; // 
-NSNumber* hoursToCalculate = @8; // The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8. (optional) (default to @8)
+NSNumber* hoursToForecast = @8; // The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8. (optional) (default to @8)
 NSString* timestamp = @"timestamp_example"; // ISO8601 timestamp(includes the offset value) to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: \"2020-07-16T17:05:08-07:00\" (optional)
 
 TGCapacitiesApi*apiInstance = [[TGCapacitiesApi alloc] init];
 
 // Get the capacity details for a location
 [apiInstance getLocationCapacityWithLocationId:locationId
-              hoursToCalculate:hoursToCalculate
+              hoursToForecast:hoursToForecast
               timestamp:timestamp
-          completionHandler: ^(TGCapacityResponse* output, NSError* error) {
+          completionHandler: ^(TGCapacityForecast* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -50,12 +50,12 @@ TGCapacitiesApi*apiInstance = [[TGCapacitiesApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **NSString***|  | 
- **hoursToCalculate** | **NSNumber***| The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8. | [optional] [default to @8]
+ **hoursToForecast** | **NSNumber***| The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8. | [optional] [default to @8]
  **timestamp** | **NSString***| ISO8601 timestamp(includes the offset value) to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: \&quot;2020-07-16T17:05:08-07:00\&quot; | [optional] 
 
 ### Return type
 
-[**TGCapacityResponse***](TGCapacityResponse.md)
+[**TGCapacityForecast***](TGCapacityForecast.md)
 
 ### Authorization
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 # **getLocationCapacitySummary**
 ```objc
 -(NSURLSessionTask*) getLocationCapacitySummaryWithLocationId: (NSString*) locationId
-        completionHandler: (void (^)(TGCapacitySummary* output, NSError* error)) handler;
+        completionHandler: (void (^)(TGCapacity* output, NSError* error)) handler;
 ```
 
 Get the current capacity details for a location
@@ -89,7 +89,7 @@ TGCapacitiesApi*apiInstance = [[TGCapacitiesApi alloc] init];
 
 // Get the current capacity details for a location
 [apiInstance getLocationCapacitySummaryWithLocationId:locationId
-          completionHandler: ^(TGCapacitySummary* output, NSError* error) {
+          completionHandler: ^(TGCapacity* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TGCapacitySummary***](TGCapacitySummary.md)
+[**TGCapacity***](TGCapacity.md)
 
 ### Authorization
 

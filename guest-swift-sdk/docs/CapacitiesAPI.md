@@ -4,13 +4,13 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLocationCapacity**](CapacitiesAPI.md#getlocationcapacity) | **GET** /locations/{location_id}/capacities | Get the capacity details for a location
-[**getLocationCapacitySummary**](CapacitiesAPI.md#getlocationcapacitysummary) | **GET** /locations/{location_id}/capacity_summaries | Get the current capacity details for a location
+[**getLocationCapacity**](CapacitiesAPI.md#getlocationcapacity) | **GET** /locations/{location_id}/capacity_forecasts | Get the capacity details for a location
+[**getLocationCapacitySummary**](CapacitiesAPI.md#getlocationcapacitysummary) | **GET** /locations/{location_id}/capacities | Get the current capacity details for a location
 
 
 # **getLocationCapacity**
 ```swift
-    open class func getLocationCapacity(locationId: String, hoursToCalculate: Int? = nil, timestamp: String? = nil, completion: @escaping (_ data: CapacityResponse?, _ error: Error?) -> Void)
+    open class func getLocationCapacity(locationId: String, hoursToForecast: Int? = nil, timestamp: String? = nil, completion: @escaping (_ data: CapacityForecast?, _ error: Error?) -> Void)
 ```
 
 Get the capacity details for a location
@@ -23,11 +23,11 @@ Gets the details of the future capacity in a location.
 import GuestSDK
 
 let locationId = "locationId_example" // String | 
-let hoursToCalculate = 987 // Int | The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8. (optional) (default to 8)
+let hoursToForecast = 987 // Int | The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8. (optional) (default to 8)
 let timestamp = "timestamp_example" // String | ISO8601 timestamp(includes the offset value) to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: \"2020-07-16T17:05:08-07:00\" (optional)
 
 // Get the capacity details for a location
-CapacitiesAPI.getLocationCapacity(locationId: locationId, hoursToCalculate: hoursToCalculate, timestamp: timestamp) { (response, error) in
+CapacitiesAPI.getLocationCapacity(locationId: locationId, hoursToForecast: hoursToForecast, timestamp: timestamp) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -44,12 +44,12 @@ CapacitiesAPI.getLocationCapacity(locationId: locationId, hoursToCalculate: hour
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locationId** | **String** |  | 
- **hoursToCalculate** | **Int** | The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8. | [optional] [default to 8]
+ **hoursToForecast** | **Int** | The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8. | [optional] [default to 8]
  **timestamp** | **String** | ISO8601 timestamp(includes the offset value) to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: \&quot;2020-07-16T17:05:08-07:00\&quot; | [optional] 
 
 ### Return type
 
-[**CapacityResponse**](CapacityResponse.md)
+[**CapacityForecast**](CapacityForecast.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 # **getLocationCapacitySummary**
 ```swift
-    open class func getLocationCapacitySummary(locationId: String, completion: @escaping (_ data: CapacitySummary?, _ error: Error?) -> Void)
+    open class func getLocationCapacitySummary(locationId: String, completion: @escaping (_ data: Capacity?, _ error: Error?) -> Void)
 ```
 
 Get the current capacity details for a location
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CapacitySummary**](CapacitySummary.md)
+[**Capacity**](Capacity.md)
 
 ### Authorization
 

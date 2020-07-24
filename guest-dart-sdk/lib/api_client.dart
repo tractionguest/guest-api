@@ -43,12 +43,12 @@ class ApiClient {
           return AuditLogChange.fromJson(value);
         case 'BatchJob':
           return BatchJob.fromJson(value);
+        case 'Capacity':
+          return Capacity.fromJson(value);
         case 'CapacityByHourResponse':
           return CapacityByHourResponse.fromJson(value);
-        case 'CapacityResponse':
-          return CapacityResponse.fromJson(value);
-        case 'CapacitySummary':
-          return CapacitySummary.fromJson(value);
+        case 'CapacityForecast':
+          return CapacityForecast.fromJson(value);
         case 'CustomField':
           return CustomField.fromJson(value);
         case 'Docusign':

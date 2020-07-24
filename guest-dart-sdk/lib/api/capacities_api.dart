@@ -10,7 +10,7 @@ class CapacitiesApi {
   /// Get the capacity details for a location
   ///
   /// Gets the details of the future capacity in a location.
-  Future<CapacityResponse> getLocationCapacity(String locationId, { int hoursToCalculate, String timestamp }) async {
+  Future<CapacityForecast> getLocationCapacity(String locationId, { int hoursToForecast, String timestamp }) async {
     Object postBody;
 
     // verify required params are set
@@ -19,14 +19,14 @@ class CapacitiesApi {
     }
 
     // create path and map variables
-    String path = "/locations/{location_id}/capacities".replaceAll("{format}","json").replaceAll("{" + "location_id" + "}", locationId.toString());
+    String path = "/locations/{location_id}/capacity_forecasts".replaceAll("{format}","json").replaceAll("{" + "location_id" + "}", locationId.toString());
 
     // query params
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
-    if(hoursToCalculate != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "hours_to_calculate", hoursToCalculate));
+    if(hoursToForecast != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "hours_to_forecast", hoursToForecast));
     }
     if(timestamp != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "timestamp", timestamp));
@@ -58,7 +58,7 @@ class CapacitiesApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'CapacityResponse') as CapacityResponse;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'CapacityForecast') as CapacityForecast;
     } else {
       return null;
     }
@@ -66,7 +66,7 @@ class CapacitiesApi {
   /// Get the current capacity details for a location
   ///
   /// Get details of current capacity in a location
-  Future<CapacitySummary> getLocationCapacitySummary(String locationId) async {
+  Future<Capacity> getLocationCapacitySummary(String locationId) async {
     Object postBody;
 
     // verify required params are set
@@ -75,7 +75,7 @@ class CapacitiesApi {
     }
 
     // create path and map variables
-    String path = "/locations/{location_id}/capacity_summaries".replaceAll("{format}","json").replaceAll("{" + "location_id" + "}", locationId.toString());
+    String path = "/locations/{location_id}/capacities".replaceAll("{format}","json").replaceAll("{" + "location_id" + "}", locationId.toString());
 
     // query params
     List<QueryParam> queryParams = [];
@@ -108,7 +108,7 @@ class CapacitiesApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'CapacitySummary') as CapacitySummary;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'Capacity') as Capacity;
     } else {
       return null;
     }

@@ -3543,7 +3543,7 @@ paths:
           description: You do not have permission for this action
         '404':
           description: The Location does not exist
-      operationId: GetLocation
+      operationId: getLocation
       description: Gets details of a single instance of `Location`.
 components:
   parameters:

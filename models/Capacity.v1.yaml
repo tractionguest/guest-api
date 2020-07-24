@@ -1,4 +1,4 @@
-title: CapacitySummary
+title: Capacity
 type: object
 x-tags:
   - Capacities
@@ -11,4 +11,4 @@ properties:
     type: integer
   invites_expected_next_hour:
     type: integer
-description: "The root of the CapacitySummary's schema."
+description: "The root of the Capacity's schema."

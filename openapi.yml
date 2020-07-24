@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.12.0
+  version: 0.12.1
   description: |
     The Traction Guest API is currently in **closed beta**.
     We're still building, testing, and fixing bugs.
@@ -3387,7 +3387,7 @@ paths:
           in: query
           name: created_after
           description: Restricts results to only those that were created after the provided date
-  '/locations/{location_id}/capacities':
+  '/locations/{location_id}/capacity_forecasts':
     parameters:
       - schema:
           type: string
@@ -3404,7 +3404,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/CapacityResponse.v1.yaml
+                $ref: ./models/CapacityForecast.v1.yaml
               examples:
                 default:
                   value:
@@ -3464,14 +3464,14 @@ paths:
             maximum: 24
             default: 8
           in: query
-          name: hours_to_calculate
+          name: hours_to_forecast
           description: 'The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8.'
         - schema:
             type: string
           in: query
           name: timestamp
           description: 'ISO8601 timestamp(includes the offset value) to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: "2020-07-16T17:05:08-07:00"'
-  '/locations/{location_id}/capacity_summaries':
+  '/locations/{location_id}/capacities':
     parameters:
       - schema:
           type: string
@@ -3488,7 +3488,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/CapacitySummary.v1.yaml
+                $ref: ./models/Capacity.v1.yaml
               examples:
                 default:
                   value:
@@ -3506,6 +3506,45 @@ paths:
           description: You do not have permission for this action
       operationId: getLocationCapacitySummary
       description: Get details of current capacity in a location
+  '/locations/{location_id}':
+    parameters:
+      - schema:
+          type: string
+        name: location_id
+        in: path
+        required: true
+    get:
+      summary: Get the details of a location
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: Successful response - returns a single `Location`.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Location.v1.yaml
+              examples:
+                default:
+                  value:
+                    id: 1
+                    name: Default
+                    max_capacity: 30
+                    timezone: America/Vancouver
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: "You don't have permission to view this Location"
+        '403':
+          description: You do not have permission for this action
+        '404':
+          description: The Location does not exist
+      operationId: getLocation
+      description: Gets details of a single instance of `Location`.
 components:
   parameters:
     idempotencyKey:

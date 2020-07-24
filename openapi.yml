@@ -3506,6 +3506,45 @@ paths:
           description: You do not have permission for this action
       operationId: getLocationCapacitySummary
       description: Get details of current capacity in a location
+  '/locations/{location_id}':
+    parameters:
+      - schema:
+          type: string
+        name: location_id
+        in: path
+        required: true
+    get:
+      summary: Get the details of a location
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: Successful response - returns a single `Location`.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Location.v1.yaml
+              examples:
+                default:
+                  value:
+                    id: 1
+                    name: Default
+                    max_capacity: 30
+                    timezone: America/Vancouver
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: "You don't have permission to view this Location"
+        '403':
+          description: You do not have permission for this action
+        '404':
+          description: The Location does not exist
+      operationId: GetLocation
+      description: Gets details of a single instance of `Location`.
 components:
   parameters:
     idempotencyKey:

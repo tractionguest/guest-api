@@ -3387,7 +3387,7 @@ paths:
           in: query
           name: created_after
           description: Restricts results to only those that were created after the provided date
-  '/locations/{location_id}/capacities':
+  '/locations/{location_id}/capacity_forecasts':
     parameters:
       - schema:
           type: string
@@ -3404,7 +3404,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/CapacityResponse.v1.yaml
+                $ref: ./models/CapacityForecast.v1.yaml
               examples:
                 default:
                   value:
@@ -3464,14 +3464,14 @@ paths:
             maximum: 24
             default: 8
           in: query
-          name: hours_to_calculate
+          name: hours_to_forecast
           description: 'The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8.'
         - schema:
             type: string
           in: query
           name: timestamp
           description: 'ISO8601 timestamp(includes the offset value) to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: "2020-07-16T17:05:08-07:00"'
-  '/locations/{location_id}/capacity_summaries':
+  '/locations/{location_id}/capacities':
     parameters:
       - schema:
           type: string
@@ -3488,7 +3488,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/CapacitySummary.v1.yaml
+                $ref: ./models/Capacity.v1.yaml
               examples:
                 default:
                   value:

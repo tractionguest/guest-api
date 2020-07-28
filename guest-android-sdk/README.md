@@ -85,8 +85,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AuditLogsApi* | [**getAuditLog**](docs/AuditLogsApi.md#getAuditLog) | **GET** /audit_logs/{audit_log_id} | Get an AuditLog
 *AuditLogsApi* | [**getAuditLogs**](docs/AuditLogsApi.md#getAuditLogs) | **GET** /audit_logs | List all AuditLogs
-*CapacitiesApi* | [**getLocationCapacity**](docs/CapacitiesApi.md#getLocationCapacity) | **GET** /locations/{location_id}/capacity_forecasts | Get the capacity details for a location
-*CapacitiesApi* | [**getLocationCapacitySummary**](docs/CapacitiesApi.md#getLocationCapacitySummary) | **GET** /locations/{location_id}/capacities | Get the current capacity details for a location
+*CapacitiesApi* | [**getCapacity**](docs/CapacitiesApi.md#getCapacity) | **GET** /locations/{location_id}/capacities | Get the current capacity details for a location
+*CapacitiesApi* | [**getCapacityForecast**](docs/CapacitiesApi.md#getCapacityForecast) | **GET** /locations/{location_id}/capacity_forecasts | Get the capacity details for a location
 *EmailTemplatesApi* | [**getEmailTemplates**](docs/EmailTemplatesApi.md#getEmailTemplates) | **GET** /email_templates | List all EmailTemplates
 *GuestAlertsApi* | [**createGuestAlert**](docs/GuestAlertsApi.md#createGuestAlert) | **POST** /guest_alerts | Create GuestAlert
 *HostsApi* | [**createHost**](docs/HostsApi.md#createHost) | **POST** /hosts | Create a Host

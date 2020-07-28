@@ -4,13 +4,65 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLocationCapacity**](TGCapacitiesApi.md#getlocationcapacity) | **GET** /locations/{location_id}/capacity_forecasts | Get the capacity details for a location
-[**getLocationCapacitySummary**](TGCapacitiesApi.md#getlocationcapacitysummary) | **GET** /locations/{location_id}/capacities | Get the current capacity details for a location
+[**getCapacity**](TGCapacitiesApi.md#getcapacity) | **GET** /locations/{location_id}/capacities | Get the current capacity details for a location
+[**getCapacityForecast**](TGCapacitiesApi.md#getcapacityforecast) | **GET** /locations/{location_id}/capacity_forecasts | Get the capacity details for a location
 
 
-# **getLocationCapacity**
+# **getCapacity**
 ```objc
--(NSURLSessionTask*) getLocationCapacityWithLocationId: (NSString*) locationId
+-(NSURLSessionTask*) getCapacityWithLocationId: (NSString*) locationId
+        completionHandler: (void (^)(TGCapacity* output, NSError* error)) handler;
+```
+
+Get the current capacity details for a location
+
+Get details of current capacity in a location
+
+### Example 
+```objc
+TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
+
+
+NSString* locationId = @"locationId_example"; // 
+
+TGCapacitiesApi*apiInstance = [[TGCapacitiesApi alloc] init];
+
+// Get the current capacity details for a location
+[apiInstance getCapacityWithLocationId:locationId
+          completionHandler: ^(TGCapacity* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling TGCapacitiesApi->getCapacity: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **locationId** | **NSString***|  | 
+
+### Return type
+
+[**TGCapacity***](TGCapacity.md)
+
+### Authorization
+
+[TractionGuestAuth](../README.md#TractionGuestAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCapacityForecast**
+```objc
+-(NSURLSessionTask*) getCapacityForecastWithLocationId: (NSString*) locationId
     hoursToForecast: (NSNumber*) hoursToForecast
     timestamp: (NSString*) timestamp
         completionHandler: (void (^)(TGCapacityForecast* output, NSError* error)) handler;
@@ -32,7 +84,7 @@ NSString* timestamp = @"timestamp_example"; // ISO8601 timestamp(includes the of
 TGCapacitiesApi*apiInstance = [[TGCapacitiesApi alloc] init];
 
 // Get the capacity details for a location
-[apiInstance getLocationCapacityWithLocationId:locationId
+[apiInstance getCapacityForecastWithLocationId:locationId
               hoursToForecast:hoursToForecast
               timestamp:timestamp
           completionHandler: ^(TGCapacityForecast* output, NSError* error) {
@@ -40,7 +92,7 @@ TGCapacitiesApi*apiInstance = [[TGCapacitiesApi alloc] init];
                             NSLog(@"%@", output);
                         }
                         if (error) {
-                            NSLog(@"Error calling TGCapacitiesApi->getLocationCapacity: %@", error);
+                            NSLog(@"Error calling TGCapacitiesApi->getCapacityForecast: %@", error);
                         }
                     }];
 ```
@@ -56,58 +108,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TGCapacityForecast***](TGCapacityForecast.md)
-
-### Authorization
-
-[TractionGuestAuth](../README.md#TractionGuestAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getLocationCapacitySummary**
-```objc
--(NSURLSessionTask*) getLocationCapacitySummaryWithLocationId: (NSString*) locationId
-        completionHandler: (void (^)(TGCapacity* output, NSError* error)) handler;
-```
-
-Get the current capacity details for a location
-
-Get details of current capacity in a location
-
-### Example 
-```objc
-TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
-
-
-NSString* locationId = @"locationId_example"; // 
-
-TGCapacitiesApi*apiInstance = [[TGCapacitiesApi alloc] init];
-
-// Get the current capacity details for a location
-[apiInstance getLocationCapacitySummaryWithLocationId:locationId
-          completionHandler: ^(TGCapacity* output, NSError* error) {
-                        if (output) {
-                            NSLog(@"%@", output);
-                        }
-                        if (error) {
-                            NSLog(@"Error calling TGCapacitiesApi->getLocationCapacitySummary: %@", error);
-                        }
-                    }];
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **locationId** | **NSString***|  | 
-
-### Return type
-
-[**TGCapacity***](TGCapacity.md)
 
 ### Authorization
 

@@ -52,6 +52,74 @@ NSInteger kTGCapacitiesApiMissingParamErrorCode = 234513;
 #pragma mark - Api Methods
 
 ///
+/// Get the current capacity details for a location
+/// Get details of current capacity in a location
+///  @param locationId  
+///
+///  @returns TGCapacity*
+///
+-(NSURLSessionTask*) getCapacityWithLocationId: (NSString*) locationId
+    completionHandler: (void (^)(TGCapacity* output, NSError* error)) handler {
+    // verify the required parameter 'locationId' is set
+    if (locationId == nil) {
+        NSParameterAssert(locationId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"locationId"] };
+            NSError* error = [NSError errorWithDomain:kTGCapacitiesApiErrorDomain code:kTGCapacitiesApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/locations/{location_id}/capacities"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (locationId != nil) {
+        pathParams[@"location_id"] = locationId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"TractionGuestAuth"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"GET"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"TGCapacity*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((TGCapacity*)data, error);
+                                }
+                            }];
+}
+
+///
 /// Get the capacity details for a location
 /// Gets the details of the future capacity in a location.
 ///  @param locationId  
@@ -62,7 +130,7 @@ NSInteger kTGCapacitiesApiMissingParamErrorCode = 234513;
 ///
 ///  @returns TGCapacityForecast*
 ///
--(NSURLSessionTask*) getLocationCapacityWithLocationId: (NSString*) locationId
+-(NSURLSessionTask*) getCapacityForecastWithLocationId: (NSString*) locationId
     hoursToForecast: (NSNumber*) hoursToForecast
     timestamp: (NSString*) timestamp
     completionHandler: (void (^)(TGCapacityForecast* output, NSError* error)) handler {
@@ -127,74 +195,6 @@ NSInteger kTGCapacitiesApiMissingParamErrorCode = 234513;
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
                                     handler((TGCapacityForecast*)data, error);
-                                }
-                            }];
-}
-
-///
-/// Get the current capacity details for a location
-/// Get details of current capacity in a location
-///  @param locationId  
-///
-///  @returns TGCapacity*
-///
--(NSURLSessionTask*) getLocationCapacitySummaryWithLocationId: (NSString*) locationId
-    completionHandler: (void (^)(TGCapacity* output, NSError* error)) handler {
-    // verify the required parameter 'locationId' is set
-    if (locationId == nil) {
-        NSParameterAssert(locationId);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"locationId"] };
-            NSError* error = [NSError errorWithDomain:kTGCapacitiesApiErrorDomain code:kTGCapacitiesApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/locations/{location_id}/capacities"];
-
-    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (locationId != nil) {
-        pathParams[@"location_id"] = locationId;
-    }
-
-    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
-    [headerParams addEntriesFromDictionary:self.defaultHeaders];
-    // HTTP header `Accept`
-    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
-    if(acceptHeader.length > 0) {
-        headerParams[@"Accept"] = acceptHeader;
-    }
-
-    // response content type
-    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
-
-    // request content type
-    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
-
-    // Authentication setting
-    NSArray *authSettings = @[@"TractionGuestAuth"];
-
-    id bodyParam = nil;
-    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-
-    return [self.apiClient requestWithPath: resourcePath
-                                    method: @"GET"
-                                pathParams: pathParams
-                               queryParams: queryParams
-                                formParams: formParams
-                                     files: localVarFiles
-                                      body: bodyParam
-                              headerParams: headerParams
-                              authSettings: authSettings
-                        requestContentType: requestContentType
-                       responseContentType: responseContentType
-                              responseType: @"TGCapacity*"
-                           completionBlock: ^(id data, NSError *error) {
-                                if(handler) {
-                                    handler((TGCapacity*)data, error);
                                 }
                             }];
 }

@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.12.2
+  version: 0.12.3
   description: |
     The Traction Guest API is currently in **closed beta**.
     We're still building, testing, and fixing bugs.
@@ -886,6 +886,10 @@ paths:
           description: A generic error
         '401':
           description: "You don't have permission to view these Locations"
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
         '403':
           description: You do not have permission for this action
       operationId: getLocations
@@ -3453,6 +3457,10 @@ paths:
                         message: some text
         '401':
           description: "You don't have permission to view the details of the location's capacity."
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
         '403':
           description: You do not have permission for this action
       operationId: getCapacityForecast
@@ -3502,6 +3510,10 @@ paths:
                 $ref: ./models/ErrorsList.v1.yaml
         '401':
           description: "You don't have permission to view the details of the location's capacity."
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
         '403':
           description: You do not have permission for this action
       operationId: getCapacity
@@ -3537,8 +3549,13 @@ paths:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
+              examples: {}
         '401':
           description: "You don't have permission to view this Location"
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
         '403':
           description: You do not have permission for this action
         '404':

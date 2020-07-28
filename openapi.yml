@@ -3455,7 +3455,7 @@ paths:
           description: "You don't have permission to view the details of the location's capacity."
         '403':
           description: You do not have permission for this action
-      operationId: getLocationCapacity
+      operationId: getCapacityForecast
       description: Gets the details of the future capacity in a location.
       parameters:
         - schema:
@@ -3504,7 +3504,7 @@ paths:
           description: "You don't have permission to view the details of the location's capacity."
         '403':
           description: You do not have permission for this action
-      operationId: getLocationCapacitySummary
+      operationId: getCapacity
       description: Get details of current capacity in a location
   '/locations/{location_id}':
     parameters:

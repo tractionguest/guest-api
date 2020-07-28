@@ -3622,3 +3622,5 @@ tags:
     description: All endpoints related to the AuditLog model.
   - name: Registration
     description: All endpoints related to the Registration model.
+  - name: Capacities
+    description: All endpoints related to the Capacity model.

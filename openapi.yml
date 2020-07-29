@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.12.3
+  version: 0.13.0
   x-logo:
     url: "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png"
     backgroundColor: "#FFFFFF"
@@ -1808,6 +1808,122 @@ paths:
       operationId: getInvites
       summary: List all Invites
       description: Gets a list of all `Invite` entities.
+  '/registrations/{registration_id}/invites':
+    summary: "Path used to create an `Invite` from `Registration` data."
+    description: "The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task."
+    post:
+      tags:
+        - Invites
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: ./models/InviteDetail.v1.yaml
+              examples:
+                default:
+                  value:
+                    id: 93
+                    company: some text
+                    created_at: '2018-02-10T09:30Z'
+                    email: some text
+                    end_date: '2018-02-10T09:30Z'
+                    first_name: some text
+                    last_name: some text
+                    start_date: '2018-02-10T09:30Z'
+                    hosts:
+                      - id: 23
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile_number: some text
+                        profile_pic_url: some text
+                      - id: 33
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        mobile_number: some text
+                        profile_pic_url: some text
+                    location:
+                      id: 20
+                      name: some text
+                    watchlist_colour: YELLOW
+                    template:
+                      id: 15
+                      name: some text
+                      template_type: some text
+                    custom_fields:
+                      - format: string
+                        field_name: some text
+                        field_value: some text
+                      - format: string
+                        field_name: some text
+                        field_value: some text
+                    notification_triggers:
+                      - offset_direction: AFTER
+                        offset_amount: 66
+                        offset_origin: END
+                        email_template_id: 80
+                        notification_groups:
+                          - some text
+                          - some text
+                        offset_unit: hours
+                        email_template_name: some text
+                      - offset_direction: BEFORE
+                        offset_amount: 21
+                        offset_origin: END
+                        email_template_id: 30
+                        notification_groups:
+                          - some text
+                          - some text
+                        offset_unit: days
+                        email_template_name: some text
+                    mobile_number: some text
+                    invite_watchlist:
+                      id: 3
+                      external_colours:
+                        - some text
+                      internal_colours:
+                        - some text
+                        - some text
+          description: Created an `Invite` from the given `Registration` UUID.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+              examples:
+                default:
+                  value:
+                    errors:
+                      - domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+                      - domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+          description: A generic error
+        '401':
+          description: "You don't have permission to create this Invite"
+        '403':
+          description: You do not have permission for this action
+        '404':
+          description: The Location does not exist
+        '422':
+          description: Your request was not formatted correctly
+      operationId: createRegistrationInvite
+      summary: Create an Invite from a Registration
+      description: Creates a new `Invite` from `Registration` data.
+    parameters:
+      - schema:
+          type: string
+        name: registration_id
+        in: path
+        required: true
   /signins:
     summary: Path used to manage the list of Signins.
     description: 'The REST endpoint/path used to list and create zero or more `Signin` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.'

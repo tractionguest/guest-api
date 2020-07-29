@@ -47,6 +47,7 @@ properties:
     type: integer
   recipient:
     $ref: ./Host.v1.yaml
+    nullable: true
   location:
     $ref: ./Location.v1.yaml
   package_state:
@@ -56,6 +57,7 @@ properties:
   picked_up_at:
     type: string
     format: date-time
+    nullable: true
   created_at:
     type: string
     format: date-time

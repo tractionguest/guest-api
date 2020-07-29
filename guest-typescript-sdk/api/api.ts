@@ -1,5 +1,7 @@
 export * from './auditLogs.service';
 import { AuditLogsService } from './auditLogs.service';
+export * from './capacities.service';
+import { CapacitiesService } from './capacities.service';
 export * from './emailTemplates.service';
 import { EmailTemplatesService } from './emailTemplates.service';
 export * from './guestAlerts.service';
@@ -18,4 +20,4 @@ export * from './users.service';
 import { UsersService } from './users.service';
 export * from './watchlists.service';
 import { WatchlistsService } from './watchlists.service';
-export const APIS = [AuditLogsService, EmailTemplatesService, GuestAlertsService, HostsService, InvitesService, LocationsService, RegistrationService, SigninsService, UsersService, WatchlistsService];
+export const APIS = [AuditLogsService, CapacitiesService, EmailTemplatesService, GuestAlertsService, HostsService, InvitesService, LocationsService, RegistrationService, SigninsService, UsersService, WatchlistsService];

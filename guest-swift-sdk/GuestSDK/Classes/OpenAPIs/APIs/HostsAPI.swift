@@ -57,7 +57,7 @@ open class HostsAPI {
     }
 
     /**
-     Create Multiple Hosts
+     Create multiple Hosts
      
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
      - parameter hostBatchCreateParams: (body)  (optional)
@@ -76,7 +76,7 @@ open class HostsAPI {
     }
 
     /**
-     Create Multiple Hosts
+     Create multiple Hosts
      - POST /hosts/batch
      - Creates a batch of `Host` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
      - :
@@ -103,7 +103,7 @@ open class HostsAPI {
     }
 
     /**
-     List All Hosts
+     List all Hosts
      
      - parameter query: (query) Will filter by &#x60;first_name&#x60;, &#x60;last_name&#x60;, and &#x60;email&#x60; (optional)
      - parameter limit: (query) Limits the results to a specified number, defaults to 50 (optional)
@@ -124,7 +124,7 @@ open class HostsAPI {
     }
 
     /**
-     List All Hosts
+     List all Hosts
      - GET /hosts
      - Gets a list of all `Host` entities.
      - :

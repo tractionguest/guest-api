@@ -4,15 +4,62 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLocations**](LocationsApi.md#getLocations) | **GET** /locations | List All Locations
+[**getLocation**](LocationsApi.md#getLocation) | **GET** /locations/{location_id} | Get the details of a location
+[**getLocations**](LocationsApi.md#getLocations) | **GET** /locations | List all Locations
 
+
+
+## getLocation
+
+> Location getLocation(locationId)
+
+Get the details of a location
+
+Gets details of a single instance of &#x60;Location&#x60;.
+
+### Example
+
+```java
+// Import classes:
+//import GuestSDK.LocationsApi;
+
+LocationsApi apiInstance = new LocationsApi();
+String locationId = null; // String | 
+try {
+    Location result = apiInstance.getLocation(locationId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LocationsApi#getLocation");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **locationId** | **String**|  | [default to null]
+
+### Return type
+
+[**Location**](Location.md)
+
+### Authorization
+
+[TractionGuestAuth](../README.md#TractionGuestAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## getLocations
 
 > PaginatedLocationsList getLocations(limit, offset, query, include)
 
-List All Locations
+List all Locations
 
 Gets a list of all &#x60;Location&#x60; entities.
 

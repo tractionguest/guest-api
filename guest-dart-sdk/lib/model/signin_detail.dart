@@ -39,11 +39,13 @@ class SigninDetail {
   String email = null;
   
   String company = null;
+  
+  Registration registration = null;
   SigninDetail();
 
   @override
   String toString() {
-    return 'SigninDetail[id=$id, documents=$documents, signinWatchlist=$signinWatchlist, hosts=$hosts, signinData=$signinData, signinAcknowledgement=$signinAcknowledgement, note=$note, isSignedOut=$isSignedOut, signinTimestamp=$signinTimestamp, signinPhotoUrl=$signinPhotoUrl, signedOutTimestamp=$signedOutTimestamp, mobileNumber=$mobileNumber, locationName=$locationName, lastName=$lastName, isAcknowledged=$isAcknowledged, isAccountedFor=$isAccountedFor, firstName=$firstName, email=$email, company=$company, ]';
+    return 'SigninDetail[id=$id, documents=$documents, signinWatchlist=$signinWatchlist, hosts=$hosts, signinData=$signinData, signinAcknowledgement=$signinAcknowledgement, note=$note, isSignedOut=$isSignedOut, signinTimestamp=$signinTimestamp, signinPhotoUrl=$signinPhotoUrl, signedOutTimestamp=$signedOutTimestamp, mobileNumber=$mobileNumber, locationName=$locationName, lastName=$lastName, isAcknowledged=$isAcknowledged, isAccountedFor=$isAccountedFor, firstName=$firstName, email=$email, company=$company, registration=$registration, ]';
   }
 
   SigninDetail.fromJson(Map<String, dynamic> json) {
@@ -143,6 +145,11 @@ class SigninDetail {
     } else {
           company = json['company'];
     }
+    if (json['registration'] == null) {
+      registration = null;
+    } else {
+      registration = new Registration.fromJson(json['registration']);
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -185,6 +192,8 @@ class SigninDetail {
       json['email'] = email;
     if (company != null)
       json['company'] = company;
+    if (registration != null)
+      json['registration'] = registration;
     return json;
   }
 

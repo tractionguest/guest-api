@@ -9,17 +9,17 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLocationInvite**](InvitesApi.md#createLocationInvite) | **POST** /locations/{location_id}/invites | Creates an Invite
+[**createLocationInvite**](InvitesApi.md#createLocationInvite) | **POST** /locations/{location_id}/invites | Create an Invite
 [**deleteInvite**](InvitesApi.md#deleteInvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
-[**getInvite**](InvitesApi.md#getInvite) | **GET** /invites/{invite_id} | Get a Invite
-[**getInvites**](InvitesApi.md#getInvites) | **GET** /invites | List All Invites
-[**updateInvite**](InvitesApi.md#updateInvite) | **PUT** /invites/{invite_id} | Update a Invite
+[**getInvite**](InvitesApi.md#getInvite) | **GET** /invites/{invite_id} | Get an Invite
+[**getInvites**](InvitesApi.md#getInvites) | **GET** /invites | List all Invites
+[**updateInvite**](InvitesApi.md#updateInvite) | **PUT** /invites/{invite_id} | Update an Invite
 
 
 # **createLocationInvite**
 > InviteDetail createLocationInvite(locationId, inviteCreateParams, idempotencyKey)
 
-Creates an Invite
+Create an Invite
 
 Creates a new `Invite` for a specific `Location`.
 
@@ -110,7 +110,7 @@ void (empty response body)
 # **getInvite**
 > InviteDetail getInvite(inviteId, include)
 
-Get a Invite
+Get an Invite
 
 Gets the details of a single instance of a `Invite`.
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 # **getInvites**
 > PaginatedInvitesList getInvites(limit, offset, query, withColours, locationIds, sortBy, startsBefore, startsAfter, include, isApproved, activeAfter, activeBefore)
 
-List All Invites
+List all Invites
 
 Gets a list of all `Invite` entities.
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 # **updateInvite**
 > InviteDetail updateInvite(inviteId, inviteUpdateParams, idempotencyKey)
 
-Update a Invite
+Update an Invite
 
 Updates an existing `Invite`.
 

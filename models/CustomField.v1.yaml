@@ -1,9 +1,11 @@
 title: CustomField
 description: "The root of the CustomField type's schema."
-required:
-  - field_value
-  - field_name
 type: object
+x-examples:
+  default:
+    format: string
+    field_name: some text
+    field_value: some text
 properties:
   format:
     description: The format type of the field
@@ -16,8 +18,9 @@ properties:
   field_value:
     description: The value to be displayed for the field
     type: string
-x-examples:
-  default:
-    format: string
-    field_name: some text
-    field_value: some text
+    nullable: true
+  id:
+    type: integer
+required:
+  - field_name
+  - field_value

@@ -5,11 +5,15 @@ class Location {
   int id = null;
   
   String name = null;
+  /* Maximum capacity of a location */
+  int maxCapacity = null;
+  /*  IANA timezone designations */
+  String timezone = null;
   Location();
 
   @override
   String toString() {
-    return 'Location[id=$id, name=$name, ]';
+    return 'Location[id=$id, name=$name, maxCapacity=$maxCapacity, timezone=$timezone, ]';
   }
 
   Location.fromJson(Map<String, dynamic> json) {
@@ -24,6 +28,16 @@ class Location {
     } else {
           name = json['name'];
     }
+    if (json['max_capacity'] == null) {
+      maxCapacity = null;
+    } else {
+          maxCapacity = json['max_capacity'];
+    }
+    if (json['timezone'] == null) {
+      timezone = null;
+    } else {
+          timezone = json['timezone'];
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -32,6 +46,8 @@ class Location {
       json['id'] = id;
     if (name != null)
       json['name'] = name;
+      json['max_capacity'] = maxCapacity;
+      json['timezone'] = timezone;
     return json;
   }
 

@@ -19,18 +19,21 @@ public struct CustomField: Codable {
     /** What the field should be displayed/labeled as */
     public var fieldName: String
     /** The value to be displayed for the field */
-    public var fieldValue: String
+    public var fieldValue: String?
+    public var id: Int?
 
-    public init(format: Format?, fieldName: String, fieldValue: String) {
+    public init(format: Format?, fieldName: String, fieldValue: String?, id: Int?) {
         self.format = format
         self.fieldName = fieldName
         self.fieldValue = fieldValue
+        self.id = id
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case format
         case fieldName = "field_name"
         case fieldValue = "field_value"
+        case id
     }
 
 }

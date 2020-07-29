@@ -5,7 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAuditLog**](TGAuditLogsApi.md#getauditlog) | **GET** /audit_logs/{audit_log_id} | Get an AuditLog
-[**getAuditLogs**](TGAuditLogsApi.md#getauditlogs) | **GET** /audit_logs | List All AuditLogs
+[**getAuditLogs**](TGAuditLogsApi.md#getauditlogs) | **GET** /audit_logs | List all AuditLogs
 
 
 # **getAuditLog**
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGPaginatedAuditLogsList* output, NSError* error)) handler;
 ```
 
-List All AuditLogs
+List all AuditLogs
 
 Gets a list of all `AuditLog` entities.
 
@@ -91,7 +91,7 @@ NSNumber* userId = @56; // The ID of the user who performed the database change 
 
 TGAuditLogsApi*apiInstance = [[TGAuditLogsApi alloc] init];
 
-// List All AuditLogs
+// List all AuditLogs
 [apiInstance getAuditLogsWithLimit:limit
               offset:offset
               sortBy:sortBy

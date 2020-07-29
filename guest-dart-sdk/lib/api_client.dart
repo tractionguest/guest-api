@@ -43,6 +43,12 @@ class ApiClient {
           return AuditLogChange.fromJson(value);
         case 'BatchJob':
           return BatchJob.fromJson(value);
+        case 'Capacity':
+          return Capacity.fromJson(value);
+        case 'CapacityByHourResponse':
+          return CapacityByHourResponse.fromJson(value);
+        case 'CapacityForecast':
+          return CapacityForecast.fromJson(value);
         case 'CustomField':
           return CustomField.fromJson(value);
         case 'Docusign':
@@ -119,6 +125,8 @@ class ApiClient {
           return PermissionGroup.fromJson(value);
         case 'Registration':
           return Registration.fromJson(value);
+        case 'RegistrationDetail':
+          return RegistrationDetail.fromJson(value);
         case 'SignableDocument':
           return SignableDocument.fromJson(value);
         case 'Signin':
@@ -143,8 +151,6 @@ class ApiClient {
           return Visitor.fromJson(value);
         case 'Watchlist':
           return Watchlist.fromJson(value);
-        case 'WatchlistBatchCreateParams':
-          return WatchlistBatchCreateParams.fromJson(value);
         case 'WatchlistCreateParams':
           return WatchlistCreateParams.fromJson(value);
         case 'WatchlistMatch':

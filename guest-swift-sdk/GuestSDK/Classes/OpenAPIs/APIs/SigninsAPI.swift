@@ -11,7 +11,8 @@ import Foundation
 
 open class SigninsAPI {
     /**
-
+     Create Signin
+     
      - parameter signinCreateParams: (body) Params for creating a Signin can omit certain fields if a &#x60;registration_id&#x60; is present. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the result
@@ -28,6 +29,7 @@ open class SigninsAPI {
     }
 
     /**
+     Create Signin
      - POST /signins
      - Creates a Signin
      - :
@@ -105,7 +107,7 @@ open class SigninsAPI {
     }
 
     /**
-     List All Signins
+     List all Signins
      
      - parameter locationIds: (query) A comma separated list of Location IDs (optional)
      - parameter withColours: (query) A comma separated list of case-insensitive colour values. i.e., &#x60;red&#x60;, &#x60;green&#x60;, &#x60;yellow&#x60;, and &#x60;orange&#x60; (optional)
@@ -133,7 +135,7 @@ open class SigninsAPI {
     }
 
     /**
-     List All Signins
+     List all Signins
      - GET /signins
      - Gets a list of all `Signin` entities.
      - :
@@ -178,7 +180,7 @@ open class SigninsAPI {
     }
 
     /**
-     Update a Signin attribute
+     Update a Signin
      
      - parameter signinId: (path)  
      - parameter signinUpdateParams: (body) The only updatable values for a &#x60;Signin&#x60; are &#x60;badge_number&#x60;, &#x60;badge_returned&#x60;, &#x60;is_accounted_for&#x60;, &#x60;is_signed_out&#x60;, and &#x60;is_acknowledged&#x60;.  &#x60;is_signed_out&#x60; and &#x60;is_acknowledged&#x60; are pseudo attributes that once set to true, are irreversible. 
@@ -198,7 +200,7 @@ open class SigninsAPI {
     }
 
     /**
-     Update a Signin attribute
+     Update a Signin
      - PUT /signins/{signin_id}
      - Update, acknowledge, or `Signout` a `Signin`
      - :

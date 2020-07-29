@@ -4,7 +4,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getEmailTemplates**](TGEmailTemplatesApi.md#getemailtemplates) | **GET** /email_templates | List All EmailTemplates
+[**getEmailTemplates**](TGEmailTemplatesApi.md#getemailtemplates) | **GET** /email_templates | List all EmailTemplates
 
 
 # **getEmailTemplates**
@@ -15,7 +15,7 @@ Method | HTTP request | Description
         completionHandler: (void (^)(TGPaginatedEmailTemplatesList* output, NSError* error)) handler;
 ```
 
-List All EmailTemplates
+List all EmailTemplates
 
 Gets a list of all `EmailTemplate` entities.
 
@@ -30,7 +30,7 @@ NSString* include = @"include_example"; // A list of comma-separated related mod
 
 TGEmailTemplatesApi*apiInstance = [[TGEmailTemplatesApi alloc] init];
 
-// List All EmailTemplates
+// List all EmailTemplates
 [apiInstance getEmailTemplatesWithLimit:limit
               offset:offset
               include:include

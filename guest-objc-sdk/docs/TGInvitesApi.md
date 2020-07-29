@@ -4,11 +4,11 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLocationInvite**](TGInvitesApi.md#createlocationinvite) | **POST** /locations/{location_id}/invites | Creates an Invite
+[**createLocationInvite**](TGInvitesApi.md#createlocationinvite) | **POST** /locations/{location_id}/invites | Create an Invite
 [**deleteInvite**](TGInvitesApi.md#deleteinvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
-[**getInvite**](TGInvitesApi.md#getinvite) | **GET** /invites/{invite_id} | Get a Invite
-[**getInvites**](TGInvitesApi.md#getinvites) | **GET** /invites | List All Invites
-[**updateInvite**](TGInvitesApi.md#updateinvite) | **PUT** /invites/{invite_id} | Update a Invite
+[**getInvite**](TGInvitesApi.md#getinvite) | **GET** /invites/{invite_id} | Get an Invite
+[**getInvites**](TGInvitesApi.md#getinvites) | **GET** /invites | List all Invites
+[**updateInvite**](TGInvitesApi.md#updateinvite) | **PUT** /invites/{invite_id} | Update an Invite
 
 
 # **createLocationInvite**
@@ -19,7 +19,7 @@ Method | HTTP request | Description
         completionHandler: (void (^)(TGInviteDetail* output, NSError* error)) handler;
 ```
 
-Creates an Invite
+Create an Invite
 
 Creates a new `Invite` for a specific `Location`.
 
@@ -34,7 +34,7 @@ NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency
 
 TGInvitesApi*apiInstance = [[TGInvitesApi alloc] init];
 
-// Creates an Invite
+// Create an Invite
 [apiInstance createLocationInviteWithLocationId:locationId
               inviteCreateParams:inviteCreateParams
               idempotencyKey:idempotencyKey
@@ -131,7 +131,7 @@ void (empty response body)
         completionHandler: (void (^)(TGInviteDetail* output, NSError* error)) handler;
 ```
 
-Get a Invite
+Get an Invite
 
 Gets the details of a single instance of a `Invite`.
 
@@ -145,7 +145,7 @@ NSString* include = @"include_example"; // A list of comma-separated related mod
 
 TGInvitesApi*apiInstance = [[TGInvitesApi alloc] init];
 
-// Get a Invite
+// Get an Invite
 [apiInstance getInviteWithInviteId:inviteId
               include:include
           completionHandler: ^(TGInviteDetail* output, NSError* error) {
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGPaginatedInvitesList* output, NSError* error)) handler;
 ```
 
-List All Invites
+List all Invites
 
 Gets a list of all `Invite` entities.
 
@@ -221,7 +221,7 @@ NSDate* activeBefore = @"2013-10-20T19:20:30+01:00"; // Checks that an invite ha
 
 TGInvitesApi*apiInstance = [[TGInvitesApi alloc] init];
 
-// List All Invites
+// List all Invites
 [apiInstance getInvitesWithLimit:limit
               offset:offset
               query:query
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGInviteDetail* output, NSError* error)) handler;
 ```
 
-Update a Invite
+Update an Invite
 
 Updates an existing `Invite`.
 
@@ -299,7 +299,7 @@ NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency
 
 TGInvitesApi*apiInstance = [[TGInvitesApi alloc] init];
 
-// Update a Invite
+// Update an Invite
 [apiInstance updateInviteWithInviteId:inviteId
               inviteUpdateParams:inviteUpdateParams
               idempotencyKey:idempotencyKey

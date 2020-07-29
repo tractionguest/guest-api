@@ -11,7 +11,7 @@ import Foundation
 
 open class WatchlistsAPI {
     /**
-     Create watchlist
+     Create Watchlist
      
      - parameter watchlistCreateParams: (body) The new &#x60;Watchlist&#x60; to create 
      - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
@@ -30,7 +30,7 @@ open class WatchlistsAPI {
     }
 
     /**
-     Create watchlist
+     Create Watchlist
      - POST /watchlists
      - Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log.
      - :
@@ -52,52 +52,6 @@ open class WatchlistsAPI {
         let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
 
         let requestBuilder: RequestBuilder<Watchlist>.Type = GuestSDKAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true, headers: headerParameters)
-    }
-
-    /**
-     Create Multiple Watchlists
-     
-     - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
-     - parameter watchlistBatchCreateParams: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the result
-     */
-    open class func createWatchlists(idempotencyKey: String? = nil, watchlistBatchCreateParams: WatchlistBatchCreateParams? = nil, apiResponseQueue: DispatchQueue = GuestSDKAPI.apiResponseQueue, completion: @escaping ((_ result: Result<BatchJob, Error>) -> Void)) {
-        createWatchlistsWithRequestBuilder(idempotencyKey: idempotencyKey, watchlistBatchCreateParams: watchlistBatchCreateParams).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                completion(.success(response.body!))
-            case let .failure(error):
-                completion(.failure(error))
-            }
-        }
-    }
-
-    /**
-     Create Multiple Watchlists
-     - POST /watchlists/batch
-     - Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
-     - :
-       - type: openIdConnect
-       - name: TractionGuestAuth
-     - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
-     - parameter watchlistBatchCreateParams: (body)  (optional)
-     - returns: RequestBuilder<BatchJob> 
-     */
-    open class func createWatchlistsWithRequestBuilder(idempotencyKey: String? = nil, watchlistBatchCreateParams: WatchlistBatchCreateParams? = nil) -> RequestBuilder<BatchJob> {
-        let path = "/watchlists/batch"
-        let URLString = GuestSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: watchlistBatchCreateParams)
-
-        let url = URLComponents(string: URLString)
-        let nillableHeaders: [String: Any?] = [
-            "Idempotency-Key": idempotencyKey?.encodeToJSON()
-        ]
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
-
-        let requestBuilder: RequestBuilder<BatchJob>.Type = GuestSDKAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true, headers: headerParameters)
     }
@@ -200,7 +154,7 @@ open class WatchlistsAPI {
     }
 
     /**
-     List All Watchlists
+     List all Watchlists
      
      - parameter limit: (query) Limits the results to a specified number, defaults to 50 (optional)
      - parameter offset: (query) Offsets the results to a specified number, defaults to 0 (optional)
@@ -222,7 +176,7 @@ open class WatchlistsAPI {
     }
 
     /**
-     List All Watchlists
+     List all Watchlists
      - GET /watchlists
      - Gets a list of all `Watchlist` entities.
      - :
@@ -255,7 +209,7 @@ open class WatchlistsAPI {
     }
 
     /**
-     Update a watchlist record
+     Update a Watchlist
      
      - parameter watchlistId: (path)  
      - parameter watchlistCreateParams: (body) The watchlist record attributes to update 
@@ -275,7 +229,7 @@ open class WatchlistsAPI {
     }
 
     /**
-     Update a watchlist record
+     Update a Watchlist
      - PUT /watchlists/{watchlist_id}
      - Update an existing `Watchlist` record. Every operation against this endpoint is recorded in the audit log.
      - :

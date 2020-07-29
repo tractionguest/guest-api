@@ -8,11 +8,13 @@ class CustomField {
   String fieldName = null;
   /* The value to be displayed for the field */
   String fieldValue = null;
+  
+  int id = null;
   CustomField();
 
   @override
   String toString() {
-    return 'CustomField[format=$format, fieldName=$fieldName, fieldValue=$fieldValue, ]';
+    return 'CustomField[format=$format, fieldName=$fieldName, fieldValue=$fieldValue, id=$id, ]';
   }
 
   CustomField.fromJson(Map<String, dynamic> json) {
@@ -32,6 +34,11 @@ class CustomField {
     } else {
           fieldValue = json['field_value'];
     }
+    if (json['id'] == null) {
+      id = null;
+    } else {
+          id = json['id'];
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -40,8 +47,9 @@ class CustomField {
       json['format'] = format;
     if (fieldName != null)
       json['field_name'] = fieldName;
-    if (fieldValue != null)
       json['field_value'] = fieldValue;
+    if (id != null)
+      json['id'] = id;
     return json;
   }
 

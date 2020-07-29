@@ -5,7 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAuditLog**](AuditLogsApi.md#getAuditLog) | **GET** /audit_logs/{audit_log_id} | Get an AuditLog
-[**getAuditLogs**](AuditLogsApi.md#getAuditLogs) | **GET** /audit_logs | List All AuditLogs
+[**getAuditLogs**](AuditLogsApi.md#getAuditLogs) | **GET** /audit_logs | List all AuditLogs
 
 
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 > PaginatedAuditLogsList getAuditLogs(limit, offset, sortBy, auditableId, auditableType, actionType, userId)
 
-List All AuditLogs
+List all AuditLogs
 
 Gets a list of all &#x60;AuditLog&#x60; entities.
 

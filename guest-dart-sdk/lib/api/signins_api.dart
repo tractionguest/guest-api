@@ -7,7 +7,7 @@ class SigninsApi {
 
   SigninsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// 
+  /// Create Signin
   ///
   /// Creates a Signin
   Future<Signin> createSignin({ SigninCreateParams signinCreateParams }) async {
@@ -107,7 +107,7 @@ class SigninsApi {
       return null;
     }
   }
-  /// List All Signins
+  /// List all Signins
   ///
   /// Gets a list of all &#x60;Signin&#x60; entities.
   Future<PaginatedSigninsList> getSignins({ String locationIds, String withColours, String query, bool withAcknowledged, bool withSignedIn, DateTime signinBefore, DateTime signinAfter, int limit, int offset, String querySort, String include }) async {
@@ -187,7 +187,7 @@ class SigninsApi {
       return null;
     }
   }
-  /// Update a Signin attribute
+  /// Update a Signin
   ///
   /// Update, acknowledge, or &#x60;Signout&#x60; a &#x60;Signin&#x60;
   Future<SigninDetail> updateSignin(String signinId, SigninUpdateParams signinUpdateParams, { String idempotencyKey }) async {

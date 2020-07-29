@@ -55,7 +55,7 @@ NSInteger kTGSigninsApiMissingParamErrorCode = 234513;
 #pragma mark - Api Methods
 
 ///
-/// 
+/// Create Signin
 /// Creates a Signin
 ///  @param signinCreateParams Params for creating a Signin can omit certain fields if a `registration_id` is present. (optional)
 ///
@@ -184,7 +184,7 @@ NSInteger kTGSigninsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// List All Signins
+/// List all Signins
 /// Gets a list of all `Signin` entities.
 ///  @param locationIds A comma separated list of Location IDs (optional)
 ///
@@ -301,7 +301,7 @@ NSInteger kTGSigninsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// Update a Signin attribute
+/// Update a Signin
 /// Update, acknowledge, or `Signout` a `Signin`
 ///  @param signinId  
 ///

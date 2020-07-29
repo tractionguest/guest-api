@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **currentOffset** | **Integer** |  |  [optional]
 **nextOffset** | **Integer** |  |  [optional]
 **lastId** | **Integer** | The last ID rendered, if the request included the &#39;after_id&#39; param. |  [optional]
+**limit** | **Integer** |  |  [optional]
 
 
 

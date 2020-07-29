@@ -4,11 +4,11 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLocationInvite**](InvitesAPI.md#createlocationinvite) | **POST** /locations/{location_id}/invites | Creates an Invite
+[**createLocationInvite**](InvitesAPI.md#createlocationinvite) | **POST** /locations/{location_id}/invites | Create an Invite
 [**deleteInvite**](InvitesAPI.md#deleteinvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
-[**getInvite**](InvitesAPI.md#getinvite) | **GET** /invites/{invite_id} | Get a Invite
-[**getInvites**](InvitesAPI.md#getinvites) | **GET** /invites | List All Invites
-[**updateInvite**](InvitesAPI.md#updateinvite) | **PUT** /invites/{invite_id} | Update a Invite
+[**getInvite**](InvitesAPI.md#getinvite) | **GET** /invites/{invite_id} | Get an Invite
+[**getInvites**](InvitesAPI.md#getinvites) | **GET** /invites | List all Invites
+[**updateInvite**](InvitesAPI.md#updateinvite) | **PUT** /invites/{invite_id} | Update an Invite
 
 
 # **createLocationInvite**
@@ -16,7 +16,7 @@ Method | HTTP request | Description
     open class func createLocationInvite(locationId: String, inviteCreateParams: InviteCreateParams, idempotencyKey: String? = nil, completion: @escaping (_ data: InviteDetail?, _ error: Error?) -> Void)
 ```
 
-Creates an Invite
+Create an Invite
 
 Creates a new `Invite` for a specific `Location`.
 
@@ -26,10 +26,10 @@ Creates a new `Invite` for a specific `Location`.
 import GuestSDK
 
 let locationId = "locationId_example" // String | 
-let inviteCreateParams = InviteCreateParams(mobileNumber: "mobileNumber_example", notificationTriggers: [NotificationTriggerCreateParams(offsetUnit: "offsetUnit_example", notificationGroups: ["notificationGroups_example"], emailTemplateId: 123, offsetOrigin: "offsetOrigin_example", offsetAmount: 123, offsetDirection: "offsetDirection_example")], firstName: "firstName_example", emailTemplateId: 123, customFields: [CustomField(format: "format_example", fieldName: "fieldName_example", fieldValue: "fieldValue_example")], hostIds: [123], watchlistColour: "watchlistColour_example", title: "title_example", startDate: Date(), lastName: "lastName_example", endDate: Date(), email: "email_example", company: "company_example", groupVisitId: "groupVisitId_example") // InviteCreateParams | 
+let inviteCreateParams = InviteCreateParams(mobileNumber: "mobileNumber_example", notificationTriggers: [NotificationTriggerCreateParams(offsetUnit: "offsetUnit_example", notificationGroups: ["notificationGroups_example"], emailTemplateId: 123, offsetOrigin: "offsetOrigin_example", offsetAmount: 123, offsetDirection: "offsetDirection_example")], firstName: "firstName_example", emailTemplateId: 123, customFields: [CustomField(format: "format_example", fieldName: "fieldName_example", fieldValue: "fieldValue_example", id: 123)], hostIds: [123], watchlistColour: "watchlistColour_example", title: "title_example", startDate: Date(), lastName: "lastName_example", endDate: Date(), email: "email_example", company: "company_example", groupVisitId: "groupVisitId_example") // InviteCreateParams | 
 let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
-// Creates an Invite
+// Create an Invite
 InvitesAPI.createLocationInvite(locationId: locationId, inviteCreateParams: inviteCreateParams, idempotencyKey: idempotencyKey) { (response, error) in
     guard error == nil else {
         print(error)
@@ -122,7 +122,7 @@ Void (empty response body)
     open class func getInvite(inviteId: String, include: String? = nil, completion: @escaping (_ data: InviteDetail?, _ error: Error?) -> Void)
 ```
 
-Get a Invite
+Get an Invite
 
 Gets the details of a single instance of a `Invite`.
 
@@ -134,7 +134,7 @@ import GuestSDK
 let inviteId = "inviteId_example" // String | 
 let include = "include_example" // String | A list of comma-separated related models to include (optional)
 
-// Get a Invite
+// Get an Invite
 InvitesAPI.getInvite(inviteId: inviteId, include: include) { (response, error) in
     guard error == nil else {
         print(error)
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
     open class func getInvites(limit: Int? = nil, offset: Int? = nil, query: String? = nil, withColours: String? = nil, locationIds: String? = nil, sortBy: SortBy_getInvites? = nil, startsBefore: Date? = nil, startsAfter: Date? = nil, include: String? = nil, isApproved: Bool? = nil, activeAfter: Date? = nil, activeBefore: Date? = nil, completion: @escaping (_ data: PaginatedInvitesList?, _ error: Error?) -> Void)
 ```
 
-List All Invites
+List all Invites
 
 Gets a list of all `Invite` entities.
 
@@ -196,7 +196,7 @@ let isApproved = true // Bool | True to return approved and auto approved invite
 let activeAfter = Date() // Date | Checks that an invite hasn't yet started, or has started and is still active after a specified time (optional)
 let activeBefore = Date() // Date | Checks that an invite hasn't ended before a specified time (optional)
 
-// List All Invites
+// List all Invites
 InvitesAPI.getInvites(limit: limit, offset: offset, query: query, withColours: withColours, locationIds: locationIds, sortBy: sortBy, startsBefore: startsBefore, startsAfter: startsAfter, include: include, isApproved: isApproved, activeAfter: activeAfter, activeBefore: activeBefore) { (response, error) in
     guard error == nil else {
         print(error)
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
     open class func updateInvite(inviteId: String, inviteUpdateParams: InviteUpdateParams, idempotencyKey: String? = nil, completion: @escaping (_ data: InviteDetail?, _ error: Error?) -> Void)
 ```
 
-Update a Invite
+Update an Invite
 
 Updates an existing `Invite`.
 
@@ -256,10 +256,10 @@ Updates an existing `Invite`.
 import GuestSDK
 
 let inviteId = "inviteId_example" // String | 
-let inviteUpdateParams = InviteUpdateParams(mobileNumber: "mobileNumber_example", userId: 123, onPremise: false, notificationTriggers: [NotificationTriggerCreateParams(offsetUnit: "offsetUnit_example", notificationGroups: ["notificationGroups_example"], emailTemplateId: 123, offsetOrigin: "offsetOrigin_example", offsetAmount: 123, offsetDirection: "offsetDirection_example")], firstName: "firstName_example", emailTemplateId: 123, customFields: [CustomField(format: "format_example", fieldName: "fieldName_example", fieldValue: "fieldValue_example")], hostIds: [123], title: "title_example", startDate: Date(), lastName: "lastName_example", endDate: Date(), email: "email_example", company: "company_example") // InviteUpdateParams | Updated `Invite` information.
+let inviteUpdateParams = InviteUpdateParams(mobileNumber: "mobileNumber_example", userId: 123, onPremise: false, notificationTriggers: [NotificationTriggerCreateParams(offsetUnit: "offsetUnit_example", notificationGroups: ["notificationGroups_example"], emailTemplateId: 123, offsetOrigin: "offsetOrigin_example", offsetAmount: 123, offsetDirection: "offsetDirection_example")], firstName: "firstName_example", emailTemplateId: 123, customFields: [CustomField(format: "format_example", fieldName: "fieldName_example", fieldValue: "fieldValue_example", id: 123)], hostIds: [123], title: "title_example", startDate: Date(), lastName: "lastName_example", endDate: Date(), email: "email_example", company: "company_example") // InviteUpdateParams | Updated `Invite` information.
 let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
-// Update a Invite
+// Update an Invite
 InvitesAPI.updateInvite(inviteId: inviteId, inviteUpdateParams: inviteUpdateParams, idempotencyKey: idempotencyKey) { (response, error) in
     guard error == nil else {
         print(error)

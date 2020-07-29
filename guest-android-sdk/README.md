@@ -84,31 +84,33 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AuditLogsApi* | [**getAuditLog**](docs/AuditLogsApi.md#getAuditLog) | **GET** /audit_logs/{audit_log_id} | Get an AuditLog
-*AuditLogsApi* | [**getAuditLogs**](docs/AuditLogsApi.md#getAuditLogs) | **GET** /audit_logs | List All AuditLogs
-*EmailTemplatesApi* | [**getEmailTemplates**](docs/EmailTemplatesApi.md#getEmailTemplates) | **GET** /email_templates | List All EmailTemplates
-*GuestAlertsApi* | [**createGuestAlert**](docs/GuestAlertsApi.md#createGuestAlert) | **POST** /guest_alerts | Create Guest Alert
+*AuditLogsApi* | [**getAuditLogs**](docs/AuditLogsApi.md#getAuditLogs) | **GET** /audit_logs | List all AuditLogs
+*CapacitiesApi* | [**getCapacity**](docs/CapacitiesApi.md#getCapacity) | **GET** /locations/{location_id}/capacities | Get the current capacity details for a location
+*CapacitiesApi* | [**getCapacityForecast**](docs/CapacitiesApi.md#getCapacityForecast) | **GET** /locations/{location_id}/capacity_forecasts | Get the capacity details for a location
+*EmailTemplatesApi* | [**getEmailTemplates**](docs/EmailTemplatesApi.md#getEmailTemplates) | **GET** /email_templates | List all EmailTemplates
+*GuestAlertsApi* | [**createGuestAlert**](docs/GuestAlertsApi.md#createGuestAlert) | **POST** /guest_alerts | Create GuestAlert
 *HostsApi* | [**createHost**](docs/HostsApi.md#createHost) | **POST** /hosts | Create a Host
-*HostsApi* | [**createHosts**](docs/HostsApi.md#createHosts) | **POST** /hosts/batch | Create Multiple Hosts
-*HostsApi* | [**getHosts**](docs/HostsApi.md#getHosts) | **GET** /hosts | List All Hosts
-*InvitesApi* | [**createLocationInvite**](docs/InvitesApi.md#createLocationInvite) | **POST** /locations/{location_id}/invites | Creates an Invite
+*HostsApi* | [**createHosts**](docs/HostsApi.md#createHosts) | **POST** /hosts/batch | Create multiple Hosts
+*HostsApi* | [**getHosts**](docs/HostsApi.md#getHosts) | **GET** /hosts | List all Hosts
+*InvitesApi* | [**createLocationInvite**](docs/InvitesApi.md#createLocationInvite) | **POST** /locations/{location_id}/invites | Create an Invite
 *InvitesApi* | [**deleteInvite**](docs/InvitesApi.md#deleteInvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
-*InvitesApi* | [**getInvite**](docs/InvitesApi.md#getInvite) | **GET** /invites/{invite_id} | Get a Invite
-*InvitesApi* | [**getInvites**](docs/InvitesApi.md#getInvites) | **GET** /invites | List All Invites
-*InvitesApi* | [**updateInvite**](docs/InvitesApi.md#updateInvite) | **PUT** /invites/{invite_id} | Update a Invite
-*LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /locations | List All Locations
+*InvitesApi* | [**getInvite**](docs/InvitesApi.md#getInvite) | **GET** /invites/{invite_id} | Get an Invite
+*InvitesApi* | [**getInvites**](docs/InvitesApi.md#getInvites) | **GET** /invites | List all Invites
+*InvitesApi* | [**updateInvite**](docs/InvitesApi.md#updateInvite) | **PUT** /invites/{invite_id} | Update an Invite
+*LocationsApi* | [**getLocation**](docs/LocationsApi.md#getLocation) | **GET** /locations/{location_id} | Get the details of a location
+*LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /locations | List all Locations
 *RegistrationApi* | [**getRegistration**](docs/RegistrationApi.md#getRegistration) | **GET** /registrations/{registration_id} | Get a Registration
 *RegistrationApi* | [**getRegistrations**](docs/RegistrationApi.md#getRegistrations) | **GET** /registrations | List all Registrations
-*SigninsApi* | [**createSignin**](docs/SigninsApi.md#createSignin) | **POST** /signins | 
+*SigninsApi* | [**createSignin**](docs/SigninsApi.md#createSignin) | **POST** /signins | Create Signin
 *SigninsApi* | [**getSignin**](docs/SigninsApi.md#getSignin) | **GET** /signins/{signin_id} | Get a Signin
-*SigninsApi* | [**getSignins**](docs/SigninsApi.md#getSignins) | **GET** /signins | List All Signins
-*SigninsApi* | [**updateSignin**](docs/SigninsApi.md#updateSignin) | **PUT** /signins/{signin_id} | Update a Signin attribute
+*SigninsApi* | [**getSignins**](docs/SigninsApi.md#getSignins) | **GET** /signins | List all Signins
+*SigninsApi* | [**updateSignin**](docs/SigninsApi.md#updateSignin) | **PUT** /signins/{signin_id} | Update a Signin
 *UsersApi* | [**getCurrentUser**](docs/UsersApi.md#getCurrentUser) | **GET** /users/{user_id} | Get the current User
-*WatchlistsApi* | [**createWatchlist**](docs/WatchlistsApi.md#createWatchlist) | **POST** /watchlists | Create watchlist
-*WatchlistsApi* | [**createWatchlists**](docs/WatchlistsApi.md#createWatchlists) | **POST** /watchlists/batch | Create Multiple Watchlists
+*WatchlistsApi* | [**createWatchlist**](docs/WatchlistsApi.md#createWatchlist) | **POST** /watchlists | Create Watchlist
 *WatchlistsApi* | [**deleteWatchlist**](docs/WatchlistsApi.md#deleteWatchlist) | **DELETE** /watchlists/{watchlist_id} | Deletes a Watchlist
 *WatchlistsApi* | [**getWatchlist**](docs/WatchlistsApi.md#getWatchlist) | **GET** /watchlists/{watchlist_id} | Get a Watchlist
-*WatchlistsApi* | [**getWatchlists**](docs/WatchlistsApi.md#getWatchlists) | **GET** /watchlists | List All Watchlists
-*WatchlistsApi* | [**updateWatchlist**](docs/WatchlistsApi.md#updateWatchlist) | **PUT** /watchlists/{watchlist_id} | Update a watchlist record
+*WatchlistsApi* | [**getWatchlists**](docs/WatchlistsApi.md#getWatchlists) | **GET** /watchlists | List all Watchlists
+*WatchlistsApi* | [**updateWatchlist**](docs/WatchlistsApi.md#updateWatchlist) | **PUT** /watchlists/{watchlist_id} | Update a Watchlist
 
 
 ## Documentation for Models
@@ -116,6 +118,9 @@ Class | Method | HTTP request | Description
  - [AuditLog](docs/AuditLog.md)
  - [AuditLogChange](docs/AuditLogChange.md)
  - [BatchJob](docs/BatchJob.md)
+ - [Capacity](docs/Capacity.md)
+ - [CapacityByHourResponse](docs/CapacityByHourResponse.md)
+ - [CapacityForecast](docs/CapacityForecast.md)
  - [CustomField](docs/CustomField.md)
  - [Docusign](docs/Docusign.md)
  - [EmailTemplate](docs/EmailTemplate.md)
@@ -150,6 +155,7 @@ Class | Method | HTTP request | Description
  - [Pagination](docs/Pagination.md)
  - [PermissionGroup](docs/PermissionGroup.md)
  - [Registration](docs/Registration.md)
+ - [RegistrationDetail](docs/RegistrationDetail.md)
  - [SignableDocument](docs/SignableDocument.md)
  - [Signin](docs/Signin.md)
  - [SigninAcknowledgement](docs/SigninAcknowledgement.md)
@@ -162,7 +168,6 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [Visitor](docs/Visitor.md)
  - [Watchlist](docs/Watchlist.md)
- - [WatchlistBatchCreateParams](docs/WatchlistBatchCreateParams.md)
  - [WatchlistCreateParams](docs/WatchlistCreateParams.md)
  - [WatchlistMatch](docs/WatchlistMatch.md)
  - [WatchlistSearch](docs/WatchlistSearch.md)
@@ -181,5 +186,5 @@ It's recommended to create an instance of `ApiClient` per thread in a multithrea
 
 ## Author
 
-bmckay@tractionguest.com
+support@tractionguest.com
 

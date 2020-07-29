@@ -11,7 +11,7 @@ import Foundation
 
 open class InvitesAPI {
     /**
-     Creates an Invite
+     Create an Invite
      
      - parameter locationId: (path)  
      - parameter inviteCreateParams: (body)  
@@ -31,7 +31,7 @@ open class InvitesAPI {
     }
 
     /**
-     Creates an Invite
+     Create an Invite
      - POST /locations/{location_id}/invites
      - Creates a new `Invite` for a specific `Location`.
      - :
@@ -111,7 +111,7 @@ open class InvitesAPI {
     }
 
     /**
-     Get a Invite
+     Get an Invite
      
      - parameter inviteId: (path)  
      - parameter include: (query) A list of comma-separated related models to include (optional)
@@ -130,7 +130,7 @@ open class InvitesAPI {
     }
 
     /**
-     Get a Invite
+     Get an Invite
      - GET /invites/{invite_id}
      - Gets the details of a single instance of a `Invite`.
      - :
@@ -173,7 +173,7 @@ open class InvitesAPI {
     }
 
     /**
-     List All Invites
+     List all Invites
      
      - parameter limit: (query) Limits the results to a specified number, defaults to 50 (optional)
      - parameter offset: (query) Offsets the results to a specified number, defaults to 0 (optional)
@@ -202,7 +202,7 @@ open class InvitesAPI {
     }
 
     /**
-     List All Invites
+     List all Invites
      - GET /invites
      - Gets a list of all `Invite` entities.
      - :
@@ -249,7 +249,7 @@ open class InvitesAPI {
     }
 
     /**
-     Update a Invite
+     Update an Invite
      
      - parameter inviteId: (path)  
      - parameter inviteUpdateParams: (body) Updated &#x60;Invite&#x60; information. 
@@ -269,7 +269,7 @@ open class InvitesAPI {
     }
 
     /**
-     Update a Invite
+     Update an Invite
      - PUT /invites/{invite_id}
      - Updates an existing `Invite`.
      - :

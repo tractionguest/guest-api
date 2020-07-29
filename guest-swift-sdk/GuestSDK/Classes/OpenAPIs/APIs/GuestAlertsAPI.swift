@@ -11,7 +11,7 @@ import Foundation
 
 open class GuestAlertsAPI {
     /**
-     Create Guest Alert
+     Create GuestAlert
      
      - parameter guestAlertCreateParams: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -29,7 +29,7 @@ open class GuestAlertsAPI {
     }
 
     /**
-     Create Guest Alert
+     Create GuestAlert
      - POST /guest_alerts
      - Enqueues guest alerts via specified channels
      - :

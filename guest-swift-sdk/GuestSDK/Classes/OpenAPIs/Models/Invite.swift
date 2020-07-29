@@ -22,7 +22,7 @@ public struct Invite: Codable {
     /**  */
     public var mobileNumber: String?
     /**  */
-    public var email: String
+    public var email: String?
     /**  */
     public var endDate: Date?
     public var inviteWatchlist: InviteWatchlist?
@@ -30,11 +30,11 @@ public struct Invite: Codable {
     public var watchlistColour: WatchlistColour?
     public var location: Location?
     public var startDate: Date?
-    public var lastName: String
-    public var firstName: String
+    public var lastName: String?
+    public var firstName: String?
     public var groupVisit: GroupVisit?
 
-    public init(id: Int, registration: Registration?, mobileNumber: String?, email: String, endDate: Date?, inviteWatchlist: InviteWatchlist?, hosts: [Host]?, watchlistColour: WatchlistColour?, location: Location?, startDate: Date?, lastName: String, firstName: String, groupVisit: GroupVisit?) {
+    public init(id: Int, registration: Registration?, mobileNumber: String?, email: String?, endDate: Date?, inviteWatchlist: InviteWatchlist?, hosts: [Host]?, watchlistColour: WatchlistColour?, location: Location?, startDate: Date?, lastName: String?, firstName: String?, groupVisit: GroupVisit?) {
         self.id = id
         self.registration = registration
         self.mobileNumber = mobileNumber

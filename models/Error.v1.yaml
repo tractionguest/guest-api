@@ -11,12 +11,14 @@ properties:
   attribute:
     description: The model attribute where the error occured
     type: string
+    nullable: true
   code:
     description: An error code reference for the specific error that occured
     type: string
   message:
     description: A human readable error message that can be discarded for internationalization purposes
     type: string
+    nullable: true
 x-examples:
   default: |-
     {

@@ -4,12 +4,11 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createWatchlist**](TGWatchlistsApi.md#createwatchlist) | **POST** /watchlists | Create watchlist
-[**createWatchlists**](TGWatchlistsApi.md#createwatchlists) | **POST** /watchlists/batch | Create Multiple Watchlists
+[**createWatchlist**](TGWatchlistsApi.md#createwatchlist) | **POST** /watchlists | Create Watchlist
 [**deleteWatchlist**](TGWatchlistsApi.md#deletewatchlist) | **DELETE** /watchlists/{watchlist_id} | Deletes a Watchlist
 [**getWatchlist**](TGWatchlistsApi.md#getwatchlist) | **GET** /watchlists/{watchlist_id} | Get a Watchlist
-[**getWatchlists**](TGWatchlistsApi.md#getwatchlists) | **GET** /watchlists | List All Watchlists
-[**updateWatchlist**](TGWatchlistsApi.md#updatewatchlist) | **PUT** /watchlists/{watchlist_id} | Update a watchlist record
+[**getWatchlists**](TGWatchlistsApi.md#getwatchlists) | **GET** /watchlists | List all Watchlists
+[**updateWatchlist**](TGWatchlistsApi.md#updatewatchlist) | **PUT** /watchlists/{watchlist_id} | Update a Watchlist
 
 
 # **createWatchlist**
@@ -19,7 +18,7 @@ Method | HTTP request | Description
         completionHandler: (void (^)(TGWatchlist* output, NSError* error)) handler;
 ```
 
-Create watchlist
+Create Watchlist
 
 Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log.
 
@@ -33,7 +32,7 @@ NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency
 
 TGWatchlistsApi*apiInstance = [[TGWatchlistsApi alloc] init];
 
-// Create watchlist
+// Create Watchlist
 [apiInstance createWatchlistWithWatchlistCreateParams:watchlistCreateParams
               idempotencyKey:idempotencyKey
           completionHandler: ^(TGWatchlist* output, NSError* error) {
@@ -56,62 +55,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TGWatchlist***](TGWatchlist.md)
-
-### Authorization
-
-[TractionGuestAuth](../README.md#TractionGuestAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createWatchlists**
-```objc
--(NSURLSessionTask*) createWatchlistsWithIdempotencyKey: (NSString*) idempotencyKey
-    watchlistBatchCreateParams: (TGWatchlistBatchCreateParams*) watchlistBatchCreateParams
-        completionHandler: (void (^)(TGBatchJob* output, NSError* error)) handler;
-```
-
-Create Multiple Watchlists
-
-Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
-
-### Example 
-```objc
-TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
-
-
-NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
-TGWatchlistBatchCreateParams* watchlistBatchCreateParams = [[TGWatchlistBatchCreateParams alloc] init]; //  (optional)
-
-TGWatchlistsApi*apiInstance = [[TGWatchlistsApi alloc] init];
-
-// Create Multiple Watchlists
-[apiInstance createWatchlistsWithIdempotencyKey:idempotencyKey
-              watchlistBatchCreateParams:watchlistBatchCreateParams
-          completionHandler: ^(TGBatchJob* output, NSError* error) {
-                        if (output) {
-                            NSLog(@"%@", output);
-                        }
-                        if (error) {
-                            NSLog(@"Error calling TGWatchlistsApi->createWatchlists: %@", error);
-                        }
-                    }];
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idempotencyKey** | **NSString***| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
- **watchlistBatchCreateParams** | [**TGWatchlistBatchCreateParams***](TGWatchlistBatchCreateParams.md)|  | [optional] 
-
-### Return type
-
-[**TGBatchJob***](TGBatchJob.md)
 
 ### Authorization
 
@@ -243,7 +186,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGPaginatedWatchlistList* output, NSError* error)) handler;
 ```
 
-List All Watchlists
+List all Watchlists
 
 Gets a list of all `Watchlist` entities.
 
@@ -260,7 +203,7 @@ NSString* include = @"include_example"; // A list of comma-separated related mod
 
 TGWatchlistsApi*apiInstance = [[TGWatchlistsApi alloc] init];
 
-// List All Watchlists
+// List all Watchlists
 [apiInstance getWatchlistsWithLimit:limit
               offset:offset
               query:query
@@ -309,7 +252,7 @@ Name | Type | Description  | Notes
         completionHandler: (void (^)(TGWatchlist* output, NSError* error)) handler;
 ```
 
-Update a watchlist record
+Update a Watchlist
 
 Update an existing `Watchlist` record. Every operation against this endpoint is recorded in the audit log.
 
@@ -324,7 +267,7 @@ NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency
 
 TGWatchlistsApi*apiInstance = [[TGWatchlistsApi alloc] init];
 
-// Update a watchlist record
+// Update a Watchlist
 [apiInstance updateWatchlistWithWatchlistId:watchlistId
               watchlistCreateParams:watchlistCreateParams
               idempotencyKey:idempotencyKey

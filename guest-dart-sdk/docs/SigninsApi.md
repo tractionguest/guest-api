@@ -9,16 +9,16 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createSignin**](SigninsApi.md#createSignin) | **POST** /signins | 
+[**createSignin**](SigninsApi.md#createSignin) | **POST** /signins | Create Signin
 [**getSignin**](SigninsApi.md#getSignin) | **GET** /signins/{signin_id} | Get a Signin
-[**getSignins**](SigninsApi.md#getSignins) | **GET** /signins | List All Signins
-[**updateSignin**](SigninsApi.md#updateSignin) | **PUT** /signins/{signin_id} | Update a Signin attribute
+[**getSignins**](SigninsApi.md#getSignins) | **GET** /signins | List all Signins
+[**updateSignin**](SigninsApi.md#updateSignin) | **PUT** /signins/{signin_id} | Update a Signin
 
 
 # **createSignin**
 > Signin createSignin(signinCreateParams)
 
-
+Create Signin
 
 Creates a Signin
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 # **getSignins**
 > PaginatedSigninsList getSignins(locationIds, withColours, query, withAcknowledged, withSignedIn, signinBefore, signinAfter, limit, offset, querySort, include)
 
-List All Signins
+List all Signins
 
 Gets a list of all `Signin` entities.
 
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 # **updateSignin**
 > SigninDetail updateSignin(signinId, signinUpdateParams, idempotencyKey)
 
-Update a Signin attribute
+Update a Signin
 
 Update, acknowledge, or `Signout` a `Signin`
 

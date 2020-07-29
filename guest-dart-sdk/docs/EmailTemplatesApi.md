@@ -9,13 +9,13 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getEmailTemplates**](EmailTemplatesApi.md#getEmailTemplates) | **GET** /email_templates | List All EmailTemplates
+[**getEmailTemplates**](EmailTemplatesApi.md#getEmailTemplates) | **GET** /email_templates | List all EmailTemplates
 
 
 # **getEmailTemplates**
 > PaginatedEmailTemplatesList getEmailTemplates(limit, offset, include)
 
-List All EmailTemplates
+List all EmailTemplates
 
 Gets a list of all `EmailTemplate` entities.
 

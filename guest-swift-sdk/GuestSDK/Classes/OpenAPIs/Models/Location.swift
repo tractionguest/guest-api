@@ -13,10 +13,23 @@ public struct Location: Codable {
 
     public var id: Int
     public var name: String
+    /** Maximum capacity of a location */
+    public var maxCapacity: Int?
+    /**  IANA timezone designations */
+    public var timezone: String?
 
-    public init(id: Int, name: String) {
+    public init(id: Int, name: String, maxCapacity: Int?, timezone: String?) {
         self.id = id
         self.name = name
+        self.maxCapacity = maxCapacity
+        self.timezone = timezone
+    }
+
+    public enum CodingKeys: String, CodingKey, CaseIterable { 
+        case id
+        case name
+        case maxCapacity = "max_capacity"
+        case timezone
     }
 
 }

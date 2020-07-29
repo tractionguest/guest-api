@@ -4,10 +4,10 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createSignin**](SigninsAPI.md#createsignin) | **POST** /signins | 
+[**createSignin**](SigninsAPI.md#createsignin) | **POST** /signins | Create Signin
 [**getSignin**](SigninsAPI.md#getsignin) | **GET** /signins/{signin_id} | Get a Signin
-[**getSignins**](SigninsAPI.md#getsignins) | **GET** /signins | List All Signins
-[**updateSignin**](SigninsAPI.md#updatesignin) | **PUT** /signins/{signin_id} | Update a Signin attribute
+[**getSignins**](SigninsAPI.md#getsignins) | **GET** /signins | List all Signins
+[**updateSignin**](SigninsAPI.md#updatesignin) | **PUT** /signins/{signin_id} | Update a Signin
 
 
 # **createSignin**
@@ -15,7 +15,7 @@ Method | HTTP request | Description
     open class func createSignin(signinCreateParams: SigninCreateParams? = nil, completion: @escaping (_ data: Signin?, _ error: Error?) -> Void)
 ```
 
-
+Create Signin
 
 Creates a Signin
 
@@ -26,6 +26,7 @@ import GuestSDK
 
 let signinCreateParams = SigninCreateParams(registrationId: "registrationId_example", email: "email_example", company: "company_example", lastName: "lastName_example", firstName: "firstName_example", smsMessage: "smsMessage_example", sendNotifications: false, locationId: 123, hostIds: [123], hostEmailTemplateId: 123, guestEmailTemplateId: 123) // SigninCreateParams | Params for creating a Signin can omit certain fields if a `registration_id` is present. (optional)
 
+// Create Signin
 SigninsAPI.createSignin(signinCreateParams: signinCreateParams) { (response, error) in
     guard error == nil else {
         print(error)
@@ -116,7 +117,7 @@ Name | Type | Description  | Notes
     open class func getSignins(locationIds: String? = nil, withColours: String? = nil, query: String? = nil, withAcknowledged: Bool? = nil, withSignedIn: Bool? = nil, signinBefore: Date? = nil, signinAfter: Date? = nil, limit: Int? = nil, offset: Int? = nil, querySort: QuerySort_getSignins? = nil, include: String? = nil, completion: @escaping (_ data: PaginatedSigninsList?, _ error: Error?) -> Void)
 ```
 
-List All Signins
+List all Signins
 
 Gets a list of all `Signin` entities.
 
@@ -137,7 +138,7 @@ let offset = 987 // Int | Offsets the results to a specified number, defaults to
 let querySort = "querySort_example" // String | Allows you to override ordering by most relevant results when querying (optional)
 let include = "include_example" // String | A list of comma-separated related models to include (optional)
 
-// List All Signins
+// List all Signins
 SigninsAPI.getSignins(locationIds: locationIds, withColours: withColours, query: query, withAcknowledged: withAcknowledged, withSignedIn: withSignedIn, signinBefore: signinBefore, signinAfter: signinAfter, limit: limit, offset: offset, querySort: querySort, include: include) { (response, error) in
     guard error == nil else {
         print(error)
@@ -186,7 +187,7 @@ Name | Type | Description  | Notes
     open class func updateSignin(signinId: String, signinUpdateParams: SigninUpdateParams, idempotencyKey: String? = nil, completion: @escaping (_ data: SigninDetail?, _ error: Error?) -> Void)
 ```
 
-Update a Signin attribute
+Update a Signin
 
 Update, acknowledge, or `Signout` a `Signin`
 
@@ -199,7 +200,7 @@ let signinId = "signinId_example" // String |
 let signinUpdateParams = SigninUpdateParams(isSignedOut: false, isAcknowledged: false, isAccountedFor: false) // SigninUpdateParams | The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.  `is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible.
 let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
 
-// Update a Signin attribute
+// Update a Signin
 SigninsAPI.updateSignin(signinId: signinId, signinUpdateParams: signinUpdateParams, idempotencyKey: idempotencyKey) { (response, error) in
     guard error == nil else {
         print(error)

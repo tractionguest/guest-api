@@ -3,10 +3,51 @@ info:
   title: Traction Guest API
   version: 0.11.9
   description: 'The leader in enterprise visitor management, empowers businesses across five continents and dozens of industries to keep people safe while creating connection in the contactless world.'
+  version: 0.12.2
+  description: |
+    The Traction Guest API is currently in **closed beta**.
+    We're still building, testing, and fixing bugs.
+
+    If you're interested in helping us get to version 1.0.0, contact your CS team representative.
+    Only paid accounts are elligible.
+
+    # Slack
+
+    Do you have Slack?
+    Want faster answers to Traction Guest API questions?
+
+    Ask to be added to the Traction Guest API Slack channel!
+
+    Talk to your CS team representative, or send an email to the API support email above, and we'll add you.
+
+    # Versioning
+
+    This API follows [semantic versioning](https://semver.org/), which follows the `Major`.`Minor`.`Patch` format.
+    In short:
+
+    * The `Major` number increments when potentially incompatible changes are made.
+    * The `Minor` number increments when backwards-compatible additions are made.
+    * The `Patch` number increments when backwards-compatible bug-fixes are made.
+
+    So, once the API is out of closed beta, and has reached version 1.0.0, some things may change.
+
+    **However**, the developers at Traction Guest strive to keep things running smoothly for our clients.
+    We plan to **deprecate and warn** before making any potentially breaking changes;
+    you may receive messages that follow the format
+    "this is deprecated, and will be removed in version X.X.X, which is scheduled for release on or after 20XX-01-01."
+    Please note that the deprecation message format and content may change.
+
+    At this time, we are not planning to make older or 'legacy' versions of the API available, going forward.
+
+    # Getting Started
+
+    Would you like your team to be a part of closed beta testing?
+    Talk to your CS team representative.
+    We'll walk you through the process of enabling API access and provisioning your account.
   contact:
-    name: Brandon McKay
+    name: API Support
     url: 'https://tractionguest.com'
-    email: bmckay@tractionguest.com
+    email: support@tractionguest.com
 servers:
   - url: '{domain}'
     variables:
@@ -94,7 +135,7 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: getHosts
-      summary: List All Hosts
+      summary: List all Hosts
       description: Gets a list of all `Host` entities.
     post:
       requestBody:
@@ -207,7 +248,7 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: getEmailTemplates
-      summary: List All EmailTemplates
+      summary: List all EmailTemplates
       description: Gets a list of all `EmailTemplate` entities.
   '/signins/{signin_id}':
     summary: Path used to manage a single Signin.
@@ -771,7 +812,7 @@ paths:
         '422':
           description: Your request was not formatted correctly
       operationId: updateSignin
-      summary: Update a Signin attribute
+      summary: Update a Signin
       description: 'Update, acknowledge, or `Signout` a `Signin`'
     parameters:
       - schema:
@@ -822,8 +863,10 @@ paths:
                     locations:
                       - id: 28
                         name: Default
+                        max_capacity: 40
                       - id: 97
                         name: Rogers Arena
+                        max_capacity: 45
           description: Successful response - returns an array of `Location` entities.
         '400':
           content:
@@ -848,7 +891,7 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: getLocations
-      summary: List All Locations
+      summary: List all Locations
       description: Gets a list of all `Location` entities.
   '/locations/{location_id}/invites':
     summary: "Path used to manage a single Location's invites."
@@ -1004,7 +1047,7 @@ paths:
         '422':
           description: Your request was not formatted correctly
       operationId: createLocationInvite
-      summary: Creates an Invite
+      summary: Create an Invite
       description: Creates a new `Invite` for a specific `Location`.
     parameters:
       - schema:
@@ -1756,7 +1799,7 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: getInvites
-      summary: List All Invites
+      summary: List all Invites
       description: Gets a list of all `Invite` entities.
   /signins:
     summary: Path used to manage the list of Signins.
@@ -2161,10 +2204,10 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: getSignins
-      summary: List All Signins
+      summary: List all Signins
       description: Gets a list of all `Signin` entities.
     post:
-      summary: ''
+      summary: Create Signin
       operationId: createSignin
       responses:
         '201':
@@ -2400,7 +2443,7 @@ paths:
         '404':
           description: The Invite you are looking for does not exist
       operationId: getInvite
-      summary: Get a Invite
+      summary: Get an Invite
       description: Gets the details of a single instance of a `Invite`.
     put:
       requestBody:
@@ -2521,7 +2564,7 @@ paths:
         '422':
           description: Your request was not formatted correctly
       operationId: updateInvite
-      summary: Update a Invite
+      summary: Update an Invite
       description: Updates an existing `Invite`.
     delete:
       tags:
@@ -2590,30 +2633,13 @@ paths:
                       - some text
                       - some text
           description: Successful response - returns a single `Watchlist`.
-        '400':
+        4XX:
+          description: ''
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-              examples:
-                default:
-                  value:
-                    errors:
-                      - domain: some text
-                        attribute: some text
-                        code: some text
-                        message: some text
-                      - domain: some text
-                        attribute: some text
-                        code: some text
-                        message: some text
-          description: A generic error
-        '401':
-          description: "You don't have permission to view this Watchlist"
-        '403':
-          description: You do not have permission for this action
-        '404':
-          description: The Watchlist does not exist
+              examples: {}
       security:
         - TractionGuestAuth:
             - all
@@ -2665,19 +2691,19 @@ paths:
                       - some text
                       - some text
           description: The complete updated watchlist record
-        '400':
-          description: Bad Request
+        4XX:
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
+          description: Bad request
       security:
         - TractionGuestAuth:
             - all
             - 'watchlists:*'
             - 'watchlists:write'
       operationId: updateWatchlist
-      summary: Update a watchlist record
+      summary: Update a Watchlist
       description: Update an existing `Watchlist` record. Every operation against this endpoint is recorded in the audit log.
     delete:
       tags:
@@ -2687,7 +2713,7 @@ paths:
       responses:
         '204':
           description: The Watchlist has been deleted
-        '400':
+        4XX:
           content:
             application/json:
               schema:
@@ -2704,7 +2730,7 @@ paths:
                         attribute: some text
                         code: some text
                         message: some text
-          description: There was an issue in trying to delete the Watchlist
+          description: Bad request
       security:
         - TractionGuestAuth:
             - all
@@ -2788,7 +2814,7 @@ paths:
                           - some text
                           - some text
           description: Successful response - returns an array of `Watchlist` entities.
-        '400':
+        4XX:
           content:
             application/json:
               schema:
@@ -2806,17 +2832,13 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
-          description: "You don't have permission to view these Watchlists"
-        '403':
-          description: You do not have permission for this action
       security:
         - TractionGuestAuth:
             - all
             - 'watchlists:*'
             - 'watchlists:read'
       operationId: getWatchlists
-      summary: List All Watchlists
+      summary: List all Watchlists
       description: Gets a list of all `Watchlist` entities.
     post:
       requestBody:
@@ -2861,19 +2883,19 @@ paths:
                       - some text
                       - some text
           description: The newly created `Watchlist`
-        '400':
-          description: Bad Request
+        4XX:
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
+          description: An error happened
       security:
         - TractionGuestAuth:
             - all
             - 'watchlists:*'
             - 'watchlists:write'
       operationId: createWatchlist
-      summary: Create watchlist
+      summary: Create Watchlist
       description: 'Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log.'
   /audit_logs:
     summary: Path used to manage the list of AuditLogs.
@@ -3027,7 +3049,7 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: getAuditLogs
-      summary: List All AuditLogs
+      summary: List all AuditLogs
       description: Gets a list of all `AuditLog` entities.
   '/audit_logs/{audit_log_id}':
     summary: Path used to manage a single AuditLog.
@@ -3146,7 +3168,7 @@ paths:
         '403':
           description: You do not have permission for this action
       operationId: createGuestAlert
-      summary: Create Guest Alert
+      summary: Create GuestAlert
       description: Enqueues guest alerts via specified channels
   '/registrations/{registration_id}':
     summary: Path used to display a single Registration.
@@ -3165,7 +3187,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/Registration.v1.yaml
+                $ref: ./models/RegistrationDetail.v1.yaml
               examples:
                 Default:
                   value:
@@ -3283,37 +3305,9 @@ paths:
         name: registration_id
         in: path
         required: true
-  /watchlists/batch:
-    post:
-      summary: Create Multiple Watchlists
-      operationId: createWatchlists
-      responses:
-        '202':
-          description: Accepted
-          content:
-            application/json:
-              schema:
-                $ref: ./models/BatchJob.v1.yaml
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: ./models/ErrorsList.v1.yaml
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ./models/WatchlistBatchCreateParams.v1.yaml
-        description: ''
-      tags:
-        - Watchlists
-      description: 'Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.'
-      parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
   /hosts/batch:
     post:
-      summary: Create Multiple Hosts
+      summary: Create multiple Hosts
       operationId: createHosts
       responses:
         '202':
@@ -3344,6 +3338,7 @@ paths:
           application/json:
             schema:
               $ref: ./models/HostBatchCreateParams.v1.yaml
+            examples: {}
       parameters:
         - $ref: '#/components/parameters/idempotencyKey'
   /registrations:
@@ -3394,6 +3389,164 @@ paths:
           in: query
           name: created_after
           description: Restricts results to only those that were created after the provided date
+  '/locations/{location_id}/capacity_forecasts':
+    parameters:
+      - schema:
+          type: string
+        name: location_id
+        in: path
+        required: true
+    get:
+      summary: Get the capacity details for a location
+      tags:
+        - Capacities
+      responses:
+        '200':
+          description: Successful response returns the expected invites for the next N number of hours.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/CapacityForecast.v1.yaml
+              examples:
+                default:
+                  value:
+                    invites_by_hour:
+                      - range_start: '2020-07-17T00:59:59.999Z'
+                        range_end: '2020-07-17T01:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T01:59:59.999Z'
+                        range_end: '2020-07-17T02:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T02:59:59.999Z'
+                        range_end: '2020-07-17T03:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T03:59:59.999Z'
+                        range_end: '2020-07-17T04:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T04:59:59.999Z'
+                        range_end: '2020-07-17T05:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T05:59:59.999Z'
+                        range_end: '2020-07-17T06:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T06:59:59.999Z'
+                        range_end: '2020-07-17T07:59:59.999Z'
+                        expected_visitors: 0
+                      - range_start: '2020-07-17T07:59:59.999Z'
+                        range_end: '2020-07-17T08:59:59.999Z'
+                        expected_visitors: 1
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+              examples:
+                default:
+                  value:
+                    errors:
+                      - domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+                      - domain: some text
+                        attribute: some text
+                        code: some text
+                        message: some text
+        '401':
+          description: "You don't have permission to view the details of the location's capacity."
+        '403':
+          description: You do not have permission for this action
+      operationId: getCapacityForecast
+      description: Gets the details of the future capacity in a location.
+      parameters:
+        - schema:
+            type: integer
+            minimum: 1
+            maximum: 24
+            default: 8
+          in: query
+          name: hours_to_forecast
+          description: 'The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8.'
+        - schema:
+            type: string
+          in: query
+          name: timestamp
+          description: 'ISO8601 timestamp(includes the offset value) to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: "2020-07-16T17:05:08-07:00"'
+  '/locations/{location_id}/capacities':
+    parameters:
+      - schema:
+          type: string
+        name: location_id
+        in: path
+        required: true
+    get:
+      summary: Get the current capacity details for a location
+      tags:
+        - Capacities
+      responses:
+        '200':
+          description: Successful response returns the current_signins and expected invites for the next hour.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Capacity.v1.yaml
+              examples:
+                default:
+                  value:
+                    signins_count: 189
+                    invites_expected_next_hour: 1
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: "You don't have permission to view the details of the location's capacity."
+        '403':
+          description: You do not have permission for this action
+      operationId: getCapacity
+      description: Get details of current capacity in a location
+  '/locations/{location_id}':
+    parameters:
+      - schema:
+          type: string
+        name: location_id
+        in: path
+        required: true
+    get:
+      summary: Get the details of a location
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: Successful response - returns a single `Location`.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Location.v1.yaml
+              examples:
+                default:
+                  value:
+                    id: 1
+                    name: Default
+                    max_capacity: 30
+                    timezone: America/Vancouver
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: "You don't have permission to view this Location"
+        '403':
+          description: You do not have permission for this action
+        '404':
+          description: The Location does not exist
+      operationId: getLocation
+      description: Gets details of a single instance of `Location`.
   /packages:
     get:
       summary: Get packages

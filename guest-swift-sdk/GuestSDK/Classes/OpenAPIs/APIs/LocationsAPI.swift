@@ -11,7 +11,50 @@ import Foundation
 
 open class LocationsAPI {
     /**
-     List All Locations
+     Get the details of a location
+     
+     - parameter locationId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the result
+     */
+    open class func getLocation(locationId: String, apiResponseQueue: DispatchQueue = GuestSDKAPI.apiResponseQueue, completion: @escaping ((_ result: Result<Location, Error>) -> Void)) {
+        getLocationWithRequestBuilder(locationId: locationId).execute(apiResponseQueue) { result -> Void in
+            switch result {
+            case let .success(response):
+                completion(.success(response.body!))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    /**
+     Get the details of a location
+     - GET /locations/{location_id}
+     - Gets details of a single instance of `Location`.
+     - :
+       - type: openIdConnect
+       - name: TractionGuestAuth
+     - parameter locationId: (path)  
+     - returns: RequestBuilder<Location> 
+     */
+    open class func getLocationWithRequestBuilder(locationId: String) -> RequestBuilder<Location> {
+        var path = "/locations/{location_id}"
+        let locationIdPreEscape = "\(APIHelper.mapValueToPathItem(locationId))"
+        let locationIdPostEscape = locationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{location_id}", with: locationIdPostEscape, options: .literal, range: nil)
+        let URLString = GuestSDKAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<Location>.Type = GuestSDKAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     List all Locations
      
      - parameter limit: (query) Limits the results to a specified number, defaults to 50 (optional)
      - parameter offset: (query) Offsets the results to a specified number, defaults to 0 (optional)
@@ -32,7 +75,7 @@ open class LocationsAPI {
     }
 
     /**
-     List All Locations
+     List all Locations
      - GET /locations
      - Gets a list of all `Location` entities.
      - :

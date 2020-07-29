@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **getRegistration**
-> Registration getRegistration(registrationId, include)
+> RegistrationDetail getRegistration(registrationId, include)
 
 Get a Registration
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Registration**](Registration.md)
+[**RegistrationDetail**](RegistrationDetail.md)
 
 ### Authorization
 

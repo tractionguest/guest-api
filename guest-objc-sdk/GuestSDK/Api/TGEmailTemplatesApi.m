@@ -51,7 +51,7 @@ NSInteger kTGEmailTemplatesApiMissingParamErrorCode = 234513;
 #pragma mark - Api Methods
 
 ///
-/// List All EmailTemplates
+/// List all EmailTemplates
 /// Gets a list of all `EmailTemplate` entities.
 ///  @param limit Limits the results to a specified number, defaults to 50 (optional)
 ///

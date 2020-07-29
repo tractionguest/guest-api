@@ -7,7 +7,7 @@ class GuestAlertsApi {
 
   GuestAlertsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// Create Guest Alert
+  /// Create GuestAlert
   ///
   /// Enqueues guest alerts via specified channels
   Future<GuestAlertDetail> createGuestAlert(GuestAlertCreateParams guestAlertCreateParams) async {

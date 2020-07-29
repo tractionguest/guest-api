@@ -1,6 +1,13 @@
 title: Pagination
 description: "The root of the Pagination type's schema."
 type: object
+x-examples:
+  default:
+    total_records: 16
+    current_offset: 31
+    next_offset: 20
+    last_id: 28
+    limit: 20
 properties:
   total_records:
     format: int32
@@ -11,13 +18,11 @@ properties:
   next_offset:
     format: int32
     type: integer
+    nullable: true
   last_id:
     format: int32
     description: "The last ID rendered, if the request included the 'after_id' param."
     type: integer
-x-examples:
-  default:
-    total_records: 16
-    current_offset: 31
-    next_offset: 20
-    last_id: 28
+    nullable: true
+  limit:
+    type: integer

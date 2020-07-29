@@ -1,0 +1,120 @@
+title: RegistrationDetail
+type: object
+x-examples:
+  default:
+    id: uuid
+    created_at: '2018-02-10T09:30Z'
+    name: some text
+    email: some text
+    company: some text
+    photo_url: some text
+    guest_responses:
+      - title: some text
+        sequence: 69
+        id: 36
+        page_type: some text
+        custom_fields:
+          - field_name: some text
+            field_value: some text
+          - field_name: some text
+            field_value: some text
+      - title: some text
+        sequence: 64
+        id: 20
+        page_type: some text
+        custom_fields:
+          - field_name: some text
+            field_value: some text
+          - field_name: some text
+            field_value: some text
+    invite:
+      id: 39
+      first_name: some text
+      last_name: some text
+      start_date: '2018-02-10T09:30Z'
+      location:
+        id: 21
+        name: some text
+      watchlist_colour: GREEN
+      hosts:
+        - id: 16
+          email: some text
+          first_name: some text
+          last_name: some text
+          profile_pic_url: some text
+          department: some text
+          mobile_number: some text
+        - id: 92
+          email: some text
+          first_name: some text
+          last_name: some text
+          profile_pic_url: some text
+          department: some text
+          mobile_number: some text
+      invite_watchlist:
+        id: 91
+        external_colours:
+          - some text
+          - some text
+        internal_colours:
+          - some text
+          - some text
+      end_date: '2018-02-10T09:30Z'
+      email: some text
+      mobile_number: some text
+    visitor:
+      id: 20
+      active: true
+      company: some text
+      created_via: some text
+      email: some text
+      first_name: some text
+      last_name: some text
+      mobile: some text
+      note: some text
+      profile_pic_content_type: some text
+      profile_pic_file_name: some text
+      profile_pic_file_size: some text
+      profile_pic_updated_at: some text
+      watchlist_level: some text
+      created_at: '2018-02-10T09:30Z'
+      updated_at: '2018-02-10T09:30Z'
+description: The data of a Registration
+properties:
+  id:
+    type: string
+    description: Registration unique identifier
+  visitor:
+    $ref: ./Visitor.v1.yaml
+  invite:
+    $ref: ./Invite.v1.yaml
+  guest_responses:
+    type: array
+    description: Response given by the guest
+    items:
+      $ref: ./GuestResponse.v1.yaml
+  photo_url:
+    description: URL of the uploaded photo
+    type: string
+    nullable: true
+  company:
+    description: "Company's name"
+    type: string
+    nullable: true
+  email:
+    description: E-mail
+    type: string
+    nullable: true
+  name:
+    description: "Guest's name"
+    type: string
+    nullable: true
+  created_at:
+    format: date-time
+    description: Datetime when registration was created
+    type: string
+  signin:
+    $ref: ./Signin.v1.yaml
+required:
+  - id
+  - created_at

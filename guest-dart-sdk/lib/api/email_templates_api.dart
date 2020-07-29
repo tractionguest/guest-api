@@ -7,7 +7,7 @@ class EmailTemplatesApi {
 
   EmailTemplatesApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// List All EmailTemplates
+  /// List all EmailTemplates
   ///
   /// Gets a list of all &#x60;EmailTemplate&#x60; entities.
   Future<PaginatedEmailTemplatesList> getEmailTemplates({ int limit, int offset, String include }) async {

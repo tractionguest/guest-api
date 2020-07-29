@@ -5,7 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAuditLog**](AuditLogsAPI.md#getauditlog) | **GET** /audit_logs/{audit_log_id} | Get an AuditLog
-[**getAuditLogs**](AuditLogsAPI.md#getauditlogs) | **GET** /audit_logs | List All AuditLogs
+[**getAuditLogs**](AuditLogsAPI.md#getauditlogs) | **GET** /audit_logs | List all AuditLogs
 
 
 # **getAuditLog**
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
     open class func getAuditLogs(limit: Int? = nil, offset: Int? = nil, sortBy: String? = nil, auditableId: Int? = nil, auditableType: String? = nil, actionType: String? = nil, userId: Int? = nil, completion: @escaping (_ data: PaginatedAuditLogsList?, _ error: Error?) -> Void)
 ```
 
-List All AuditLogs
+List all AuditLogs
 
 Gets a list of all `AuditLog` entities.
 
@@ -80,7 +80,7 @@ let auditableType = "auditableType_example" // String | The name of the model th
 let actionType = "actionType_example" // String | The action performed by the user. Valid values include: - `create` - `update` - `destroy`  (optional)
 let userId = 987 // Int | The ID of the user who performed the database change (optional)
 
-// List All AuditLogs
+// List all AuditLogs
 AuditLogsAPI.getAuditLogs(limit: limit, offset: offset, sortBy: sortBy, auditableId: auditableId, auditableType: auditableType, actionType: actionType, userId: userId) { (response, error) in
     guard error == nil else {
         print(error)

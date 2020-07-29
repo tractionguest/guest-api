@@ -56,6 +56,7 @@ properties:
   picked_up_at:
     type: string
     format: date-time
+    nullable: true
   created_at:
     type: string
     format: date-time

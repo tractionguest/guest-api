@@ -5,6 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createLocationInvite**](TGInvitesApi.md#createlocationinvite) | **POST** /locations/{location_id}/invites | Create an Invite
+[**createRegistrationInvite**](TGInvitesApi.md#createregistrationinvite) | **POST** /registrations/{registration_id}/invites | Create an Invite from a Registration
 [**deleteInvite**](TGInvitesApi.md#deleteinvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
 [**getInvite**](TGInvitesApi.md#getinvite) | **GET** /invites/{invite_id} | Get an Invite
 [**getInvites**](TGInvitesApi.md#getinvites) | **GET** /invites | List all Invites
@@ -67,6 +68,62 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createRegistrationInvite**
+```objc
+-(NSURLSessionTask*) createRegistrationInviteWithRegistrationId: (NSString*) registrationId
+    idempotencyKey: (NSString*) idempotencyKey
+        completionHandler: (void (^)(TGInviteDetail* output, NSError* error)) handler;
+```
+
+Create an Invite from a Registration
+
+Creates a new `Invite` from `Registration` data.
+
+### Example 
+```objc
+TGDefaultConfiguration *apiConfig = [TGDefaultConfiguration sharedConfig];
+
+
+NSString* registrationId = @"registrationId_example"; // 
+NSString* idempotencyKey = @"idempotencyKey_example"; // An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
+
+TGInvitesApi*apiInstance = [[TGInvitesApi alloc] init];
+
+// Create an Invite from a Registration
+[apiInstance createRegistrationInviteWithRegistrationId:registrationId
+              idempotencyKey:idempotencyKey
+          completionHandler: ^(TGInviteDetail* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling TGInvitesApi->createRegistrationInvite: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **registrationId** | **NSString***|  | 
+ **idempotencyKey** | **NSString***| An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
+
+### Return type
+
+[**TGInviteDetail***](TGInviteDetail.md)
+
+### Authorization
+
+[TractionGuestAuth](../README.md#TractionGuestAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

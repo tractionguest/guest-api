@@ -61,6 +61,57 @@ class InvitesApi {
       return null;
     }
   }
+  /// Create an Invite from a Registration
+  ///
+  /// Creates a new &#x60;Invite&#x60; from &#x60;Registration&#x60; data.
+  Future<InviteDetail> createRegistrationInvite(String registrationId, { String idempotencyKey }) async {
+    Object postBody;
+
+    // verify required params are set
+    if(registrationId == null) {
+     throw new ApiException(400, "Missing required param: registrationId");
+    }
+
+    // create path and map variables
+    String path = "/registrations/{registration_id}/invites".replaceAll("{format}","json").replaceAll("{" + "registration_id" + "}", registrationId.toString());
+
+    // query params
+    List<QueryParam> queryParams = [];
+    Map<String, String> headerParams = {};
+    Map<String, String> formParams = {};
+    headerParams["Idempotency-Key"] = idempotencyKey;
+
+    List<String> contentTypes = [];
+
+    String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
+    List<String> authNames = ["TractionGuestAuth"];
+
+    if(contentType.startsWith("multipart/form-data")) {
+      bool hasFields = false;
+      MultipartRequest mp = new MultipartRequest(null, null);
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+    }
+
+    var response = await apiClient.invokeAPI(path,
+                                             'POST',
+                                             queryParams,
+                                             postBody,
+                                             headerParams,
+                                             formParams,
+                                             contentType,
+                                             authNames);
+
+    if(response.statusCode >= 400) {
+      throw new ApiException(response.statusCode, _decodeBodyBytes(response));
+    } else if(response.body != null) {
+      return apiClient.deserialize(_decodeBodyBytes(response), 'InviteDetail') as InviteDetail;
+    } else {
+      return null;
+    }
+  }
   /// Deletes an Invite
   ///
   /// Deletes a single instance of &#x60;Invite&#x60;

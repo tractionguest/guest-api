@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
 *HostsApi* | [**createHosts**](docs/HostsApi.md#createHosts) | **POST** /hosts/batch | Create multiple Hosts
 *HostsApi* | [**getHosts**](docs/HostsApi.md#getHosts) | **GET** /hosts | List all Hosts
 *InvitesApi* | [**createLocationInvite**](docs/InvitesApi.md#createLocationInvite) | **POST** /locations/{location_id}/invites | Create an Invite
+*InvitesApi* | [**createRegistrationInvite**](docs/InvitesApi.md#createRegistrationInvite) | **POST** /registrations/{registration_id}/invites | Create an Invite from a Registration
 *InvitesApi* | [**deleteInvite**](docs/InvitesApi.md#deleteInvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
 *InvitesApi* | [**getInvite**](docs/InvitesApi.md#getInvite) | **GET** /invites/{invite_id} | Get an Invite
 *InvitesApi* | [**getInvites**](docs/InvitesApi.md#getInvites) | **GET** /invites | List all Invites

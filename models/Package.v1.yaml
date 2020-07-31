@@ -48,7 +48,7 @@ properties:
   recipient:
     oneOf:
       - $ref: ./Host.v1.yaml
-      - type: 'string'
+      - type: string
         nullable: true
   location:
     $ref: ./Location.v1.yaml
@@ -62,13 +62,9 @@ properties:
     nullable: true
   created_at:
     type: string
-    format: date-time  
+    format: date-time
   image:
     $ref: ./Image.v1.yaml
-  nlp_results:
-    type: string
-  ocr_result:
-    type: string
 required:
   - id
   - location

@@ -41,6 +41,7 @@ x-examples:
     created_at: '2018-02-10T09:30Z'
     picked_up_at: null
     image_url: some text
+  recipient-matched-example: {}
 description: "Root for a Package type's schema"
 properties:
   id:
@@ -54,8 +55,16 @@ properties:
     $ref: ./Location.v1.yaml
   package_state:
     type: string
+    description: "this can be one of the following states: 'processing', 'recipient_matched', 'needs_attention' or 'picked_up'"
+    default: processing
+    enum:
+      - processing
+      - recipient_matched
+      - needs_attention
+      - picked_up
   carrier_name:
     type: string
+    description: 'A carrier name that gets detected on the shipping label. i.e. USPS, Purolator, DHL, Canada Post, Royal Mail, etc... '
   picked_up_at:
     type: string
     format: date-time
@@ -68,4 +77,5 @@ properties:
 required:
   - id
   - location
+  - package_state
   - created_at

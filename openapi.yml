@@ -3692,13 +3692,6 @@ paths:
       operationId: getPackage
       description: Gets the details of a single instance of a Package
       parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ./models/PackageUpdateParams.v1.yaml
-            examples:
-              example-1: {}
     put:
       summary: ''
       operationId: updatePackage
@@ -3724,6 +3717,12 @@ paths:
 
       tags:
         - Packages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/PackageUpdateParams.v1.yaml
+        description: ''
 components:
   parameters:
     idempotencyKey:

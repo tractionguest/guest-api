@@ -3593,26 +3593,23 @@ paths:
                       total_records: 38
                       current_offset: 31
                       next_offset: 26
-        '400':
-          description: Bad Request
+        4XX:
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: ./models/ErrorsList.v1.yaml
+          description: ''
       operationId: getPackages
       description: 'Gets a list of [Package] entities.'
       parameters:
         - schema:
             type: string
+            example: '1,2,3'
           in: query
           name: location_ids
-          description: "A comma separated list of Location ids for filtering. i.e. '1,2,3'"
+          description: |-
+            A comma separated list of Location ids for filtering. i.e. '1,2,3'
+            Will return all packages from all locations if none are specified
         - schema:
             type: integer
             minimum: 1
@@ -3625,6 +3622,19 @@ paths:
           in: query
           name: offset
           description: 'Offsets the results to a specified number, defaults to 0'
+        - schema:
+            type: string
+            example: 'recipient, location, image'
+          in: query
+          name: include
+          description: "A list of comma-separated related models to include. Possible values: 'recipient', 'location', 'image'"
+        - schema:
+            type: boolean
+            default: ''
+          in: query
+          name: is_picked_up
+          description: 'Filters packages by their "picked_up" state. Null value by default will return all packages by default. false will return all packages that do not have a package_state = "picked_up". true will return packages that have package_state = "picked_up"'
+          allowEmptyValue: true
     post:
       summary: Create package
       operationId: createPackage
@@ -3659,6 +3669,51 @@ paths:
             schema:
               $ref: ./models/PackageCreateParams.v1.yaml
         description: Parameters for creating a package
+  '/packages/{package_id}':
+    parameters:
+      - schema:
+          type: string
+        name: package_id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      operationId: getPackage
+      description: Gets the details of a single instance of a Package
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/PackageUpdateParams.v1.yaml
+            examples:
+              example-1: {}
+    put:
+      summary: ''
+      operationId: updatePackage
+      responses:
+        '200':
+          description: OK
+      description: |+
+        Update/Edit information about a Package.
+
+        picked_up - changes the package_state to picked up and assigns non null value to picked_up_at
+
+        recipient_id - update the package's intended recipient. Changes package_state to 'recipient_matched' if a match hasn't been found and notifies host about their package via email. A previous recipient will stop getting notifications
+
+        carrier_name - change/update the package's carrier/courier information
+
+
+
 components:
   parameters:
     idempotencyKey:

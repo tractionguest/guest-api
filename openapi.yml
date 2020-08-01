@@ -3687,6 +3687,7 @@ paths:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
+          description: User submission error
       operationId: getPackage
       description: Gets the details of a single instance of a Package
       parameters: []
@@ -3703,6 +3704,12 @@ paths:
       responses:
         '200':
           description: OK
+        4XX:
+          description: User submission error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
       description: |+
         Update/Edit information about a Package.
 

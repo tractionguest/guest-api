@@ -3722,6 +3722,8 @@ paths:
 
 
 
+      tags:
+        - Packages
 components:
   parameters:
     idempotencyKey:

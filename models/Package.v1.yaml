@@ -47,10 +47,7 @@ properties:
   id:
     type: integer
   recipient:
-    oneOf:
-      - $ref: ./Host.v1.yaml
-      - type: string
-        nullable: true
+    $ref: ./Host.v1.yaml
   location:
     $ref: ./Location.v1.yaml
   package_state:

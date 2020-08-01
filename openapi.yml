@@ -3677,7 +3677,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get Package
       tags:
         - Packages
       responses:
@@ -3693,7 +3693,7 @@ paths:
       description: Gets the details of a single instance of a Package
       parameters: []
     put:
-      summary: ''
+      summary: Update Package
       operationId: updatePackage
       responses:
         '200':

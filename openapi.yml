@@ -3613,12 +3613,14 @@ paths:
         - schema:
             type: integer
             minimum: 1
+            default: 50
           in: query
           name: limit
           description: 'Limits the results to a specified number, defaults to 50'
         - schema:
             type: integer
             minimum: 0
+            default: 0
           in: query
           name: offset
           description: 'Offsets the results to a specified number, defaults to 0'
@@ -3630,11 +3632,9 @@ paths:
           description: "A list of comma-separated related models to include. Possible values: 'recipient', 'location', 'image'"
         - schema:
             type: boolean
-            default: ''
           in: query
           name: picked_up
           description: 'Filters packages by their "picked_up" state. Null value by default will return all packages by default. false will return all packages that do not have a package_state = "picked_up". true will return packages that have package_state = "picked_up"'
-          allowEmptyValue: true
         - schema:
             type: string
           in: query

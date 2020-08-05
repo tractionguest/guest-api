@@ -3579,7 +3579,7 @@ paths:
                         created_at: '2018-02-10T09:30Z'
                         picked_up_at: '2018-02-10T010:30Z'
                         image_url: some text
-                      - id: 70
+                      - id: 71
                         package_state: PROCESSING
                         recipient: null
                         location:
@@ -3613,12 +3613,14 @@ paths:
         - schema:
             type: integer
             minimum: 1
+            default: 50
           in: query
           name: limit
           description: 'Limits the results to a specified number, defaults to 50'
         - schema:
             type: integer
             minimum: 0
+            default: 0
           in: query
           name: offset
           description: 'Offsets the results to a specified number, defaults to 0'
@@ -3630,7 +3632,6 @@ paths:
           description: "A list of comma-separated related models to include. Possible values: 'recipient', 'location', 'image'"
         - schema:
             type: boolean
-            default: ''
           in: query
           name: picked_up
           description: 'Filters packages by their "picked_up" state..'
@@ -3688,6 +3689,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Package.v1.yaml
         4XX:
           content:
             application/json:

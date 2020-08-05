@@ -3624,7 +3624,7 @@ paths:
           description: 'Offsets the results to a specified number, defaults to 0'
         - schema:
             type: string
-            example: 'recipient, location, image'
+            example: 'recipient,location,image'
           in: query
           name: include
           description: "A list of comma-separated related models to include. Possible values: 'recipient', 'location', 'image'"
@@ -3633,7 +3633,7 @@ paths:
             default: ''
           in: query
           name: picked_up
-          description: 'Filters packages by their "picked_up" state. Null value by default will return all packages by default. false will return all packages that do not have a package_state = "picked_up". true will return packages that have package_state = "picked_up"'
+          description: 'Filters packages by their "picked_up" state..'
           allowEmptyValue: false
         - schema:
             type: string

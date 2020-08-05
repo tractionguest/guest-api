@@ -3635,6 +3635,11 @@ paths:
           name: is_picked_up
           description: 'Filters packages by their "picked_up" state. Null value by default will return all packages by default. false will return all packages that do not have a package_state = "picked_up". true will return packages that have package_state = "picked_up"'
           allowEmptyValue: true
+        - schema:
+            type: string
+          in: query
+          name: query
+          description: Searches for packages by recipient name
     post:
       summary: Create package
       operationId: createPackage

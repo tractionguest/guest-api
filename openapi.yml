@@ -3172,8 +3172,6 @@ paths:
     summary: Path used to display a single Registration.
     description: The REST endpoint/path used to get single instances of a `Registration`.
     get:
-      tags:
-        - Registration
       parameters:
         - name: include
           description: A list of comma-separated related models to include
@@ -3266,7 +3264,7 @@ paths:
                             field_value: some text
                           - field_name: some text
                             field_value: some text
-          description: Successful response - returns a single `Registration`.
+          description: Successful response - returns a single `RegistrationDetail`.
         '400':
           content:
             application/json:
@@ -3297,6 +3295,8 @@ paths:
       operationId: getRegistration
       summary: Get a Registration
       description: Gets the details of a single instance of a `Registration`
+      tags:
+        - Registrations
     parameters:
       - schema:
           type: string
@@ -3342,8 +3342,6 @@ paths:
   /registrations:
     get:
       summary: List all Registrations
-      tags:
-        - Registration
       responses:
         '200':
           description: OK
@@ -3387,6 +3385,8 @@ paths:
           in: query
           name: created_after
           description: Restricts results to only those that were created after the provided date
+      tags:
+        - Registrations
   '/locations/{location_id}/capacity_forecasts':
     parameters:
       - schema:
@@ -3668,6 +3668,10 @@ paths:
                     image_url: some text
         '400':
           description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
       description: 'Creates a [Package] entity by extracting information about the recipient and carrier from the given image file.'
       requestBody:
         content:
@@ -3688,7 +3692,7 @@ paths:
         - Packages
       responses:
         '200':
-          description: OK
+          description: ''
           content:
             application/json:
               schema:
@@ -3701,13 +3705,23 @@ paths:
           description: User submission error
       operationId: getPackage
       description: Gets the details of a single instance of a Package
-      parameters: []
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: include
+          description: |
+            A list of comma-separated related models to include
     put:
       summary: Update Package
       operationId: updatePackage
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Package.v1.yaml
         4XX:
           description: User submission error
           content:
@@ -3733,6 +3747,27 @@ paths:
             schema:
               $ref: ./models/PackageUpdateParams.v1.yaml
         description: ''
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+    delete:
+      summary: ''
+      operationId: deletePackage
+      responses:
+        '204':
+          description: The package has been deleted
+        4XX:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      description: Delete a pacakge
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+      security:
+        - TractionGuestAuth: []
+      tags:
+        - Packages
 components:
   parameters:
     idempotencyKey:
@@ -3796,5 +3831,7 @@ tags:
     description: 'All endpoints relating to sending guest alerts '
   - name: AuditLogs
     description: All endpoints related to the AuditLog model.
-  - name: Registration
-    description: All endpoints related to the Registration model.
+  - name: Registrations
+    description: All endpoints related to Registrations.
+  - name: Capacities
+    description: All endpoints related to Capacity management.

@@ -1,9 +1,13 @@
 import spellcheck from 'danger-plugin-spellcheck';
+import { fail } from 'danger';
 
 /* Constants */
 const branchName = danger.github.pr.head.ref;
 const wrikeIds = getUniqueWrikeIds();
 const docsLink = `https://stoplight.io/p/docs/gh/tractionguest/guest-api/openapi.yml?srn=gh/tractionguest/guest-api/openapi.yml&group=${branchName}`;
+const isDevelopBranch = branchName == 'develop';
+const versioningLabels = ['patch', 'minor', 'major'];
+const hasVersionLabel = danger.github.pr.labels.some(label => versioningLabels.includes(label));
 
 /* Steps */
 message(`<a href="${docsLink}" target=_blank>View docs for this page</a>`);
@@ -19,18 +23,17 @@ if (wrikeIds.length) {
   );
 }
 
+if (!(isDevelopBranch || hasVersionLabel)) {
+  fail(`You need to specify a versioning label from one of \`${versioningLabels.join("`, `")}\`!`);
+}
+
 // Remind to squash on un-squashed PRs
 if (danger.github.commits.length > 1) {
   message(
-    `Remember to use the \`Squash and Merge\` button to merge!
+    `Remember to use the \`Squash and Merge\` button to merge for single PRs!
     Always remember, your final commit message needs to start with a wrike ticket like, \`[#1234] Your commit message\`.`
   );
 }
-
-// Run a spellcheck on all files
-spellcheck({
-  "ignore": ["spec", "github"]
-});
 
 /* Functions */
 function wrikeLink(wrikeId) {

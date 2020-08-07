@@ -1,1 +1,10 @@
 addAssignees: author
+useReviewGroups: true
+numberOfReviewers: 2
+reviewGroups:
+  backend:
+    - brandonjmckay
+    - stevenallen05
+  mobile:
+    - baldys
+    - fernandojinzenji

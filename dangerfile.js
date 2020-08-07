@@ -1,3 +1,5 @@
+const { message } = require("danger");
+
 /* Constants */
 const branchName = danger.github.pr.head.ref;
 const wrikeIds = getUniqueWrikeIds();
@@ -5,7 +7,6 @@ const docsLink = `https://stoplight.io/p/docs/gh/tractionguest/guest-api/openapi
 const isDevelopBranch = branchName == 'develop';
 const versioningLabels = ['patch', 'minor', 'major'];
 const hasVersionLabel = danger.github.pr.labels.some(label => versioningLabels.includes(label));
-
 
 /* Steps */
 message(`<a href="${docsLink}" target=_blank>View docs for this page</a>`);
@@ -21,8 +22,12 @@ if (wrikeIds.length) {
   );
 }
 
+const versionLabelList = `${versioningLabels.slice(0, versioningLabels.length -1).join(', ')}, or ${versioningLabels.slice(-1)}`;
 if (!(isDevelopBranch || hasVersionLabel)) {
-  fail(`You need to specify a versioning label from one of \`${versioningLabels.join("`, `")}\`!`);
+  fail(`You need to specify a versioning label! :raised_hand:
+  Use one of ${versionLabelList} to indicate how much the API version should be bumped.`);
+} else if (hasVersionLabel && !isDevelopBranch) {
+  message(`Nice! You've specified a versioning label :+1:`);
 }
 
 // Remind to squash on un-squashed PRs

@@ -1,6 +1,3 @@
-import spellcheck from 'danger-plugin-spellcheck';
-import { fail } from 'danger';
-
 /* Constants */
 const branchName = danger.github.pr.head.ref;
 const wrikeIds = getUniqueWrikeIds();

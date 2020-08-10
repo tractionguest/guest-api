@@ -1,0 +1,12 @@
+title: PaginatedGroupVisitList
+type: object
+properties:
+  pagination:
+    $ref: ./Pagination.v1.yaml
+  group_visits:
+    type: array
+    items:
+      $ref: ./GroupVisit.v1.yaml
+required:
+  - pagination
+  - group_visits

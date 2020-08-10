@@ -1,0 +1,24 @@
+title: GroupVisitUpdateParams
+type: object
+description: "The root of the GroupVisitUpdateParams type's schema."
+properties:
+  name:
+    type: string
+  start_time:
+    type: string
+  end_time:
+    type: string
+  location_id:
+    type: integer
+  registration_limit:
+    type: integer
+  manual_registration_approval:
+    type: boolean
+  host_ids:
+    type: array
+    items:
+      type: integer
+  invite_ids:
+    type: array
+    items:
+      type: integer

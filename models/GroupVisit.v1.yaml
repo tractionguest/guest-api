@@ -19,3 +19,6 @@ properties:
     type: string
   updated_at:
     type: string
+  registration_limit:
+    type: int
+description: "The root of the GroupVisit type's schema."

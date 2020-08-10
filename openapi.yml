@@ -3,10 +3,10 @@ info:
   title: Traction Guest API
   version: 0.13.0
   x-logo:
-    url: "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png"
-    backgroundColor: "#FFFFFF"
-    altText: "Traction Guest logo"
-    href: "https://tractionguest.com"
+    url: 'https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png'
+    backgroundColor: '#FFFFFF'
+    altText: Traction Guest logo
+    href: 'https://tractionguest.com'
   description: |
     The Traction Guest API is currently in **closed beta**.
     We're still building, testing, and fixing bugs.
@@ -1809,8 +1809,8 @@ paths:
       summary: List all Invites
       description: Gets a list of all `Invite` entities.
   '/registrations/{registration_id}/invites':
-    summary: "Path used to create an `Invite` from `Registration` data."
-    description: "The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task."
+    summary: Path used to create an `Invite` from `Registration` data.
+    description: The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task.
     post:
       tags:
         - Invites
@@ -3683,6 +3683,99 @@ paths:
           description: The Location does not exist
       operationId: getLocation
       description: Gets details of a single instance of `Location`.
+  /group_visits:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/PaginatedGroupVisitList.v1.yaml
+              examples:
+                default: {}
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      operationId: get-group_visits
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: 'Limits the results to a specified number, defaults to 50'
+        - schema:
+            type: integer
+          in: query
+          name: offset
+          description: 'Offsets the results to a specified number, defaults to 0'
+        - schema:
+            type: string
+          in: query
+          name: include
+          description: A list of comma-separated related models to include
+        - schema:
+            type: array
+          in: query
+          name: location_ids
+          description: A list of locations to filter the GroupVisit by
+      description: Gets a list of all `GroupVisit` entities.
+    post:
+      summary: ''
+      operationId: post-group_visits
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      description: Creates a `GroupVisit`
+      security:
+        - TractionGuestAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+    put:
+      summary: ''
+      operationId: put-group_visits
+      responses:
+        '200':
+          description: OK
+      description: Updates a `GroupVisit`
+    delete:
+      summary: ''
+      operationId: delete-group_visits
+      responses:
+        '200':
+          description: OK
+      description: Deletes a `GroupVisit`
+  '/group_visits/{group_visit_id}':
+    parameters:
+      - schema:
+          type: string
+        name: group_visit_id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-group_visits-group_visit_id
 components:
   parameters:
     idempotencyKey:

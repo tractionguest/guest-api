@@ -8,9 +8,10 @@ const isDevelopBranch = branchName == 'develop';
 const versioningLabels = ['patch', 'minor', 'major'];
 const hasVersionLabel = danger.github.pr.labels.some(label => versioningLabels.includes(label));
 
-message(`PR keys: ${Object.keys(danger.github.pr)}`);
+message(`Label obj: ${danger.github.pr.labels}`);
 message(`PR Label keys: ${Object.keys(danger.github.pr.labels)}`);
 message(`Label type: ${typeof danger.github.pr.labels}`);
+message(`Label: ${danger.github.pr.labels[0]}`);
 /* Steps */
 message(`<a href="${docsLink}" target=_blank>View docs for this page</a>`);
 

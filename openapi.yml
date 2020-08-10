@@ -3808,7 +3808,7 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
-      operationId: getGroupVisitsGroupVisitId
+      operationId: getGroupVisit
       description: Gets a single instance of a `GroupVisit`.
 components:
   parameters:

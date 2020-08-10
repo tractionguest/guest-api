@@ -9,7 +9,7 @@ const versioningLabels = ['patch', 'minor', 'major'];
 const hasVersionLabel = danger.github.pr.labels.some(label => versioningLabels.includes(label));
 
 message(`Label obj: ${danger.github.pr.labels}`);
-message(`PR Label keys: ${Object.keys(danger.github.pr.labels)}`);
+message(`PR Label keys: ${getLabels()}`);
 message(`Label type: ${typeof danger.github.pr.labels}`);
 message(`Label keys: ${Object.keys(danger.github.pr.labels[0])}`);
 /* Steps */
@@ -69,7 +69,9 @@ function getUniqueWrikeIds() {
   return wrikeIds;
 }
 
-// function getLabels() {
-//   const labelLength = Object.keys(danger.github.pr.labels).length;
-//   labelLength.map(labelKey => danger.github.pr.labels[labelKey]);
-// }
+function getLabels() {
+  const labelHash = danger.github.pr.labels;
+  const labelLength = Object.keys(labelHash).length;
+
+  return labelLength.map(labelKey => labelHash[labelKey]['name']);
+}

@@ -3702,6 +3702,10 @@ paths:
                 properties: {}
         '400':
           description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
         '401':
           description: Unauthorized
         '403':
@@ -3735,6 +3739,10 @@ paths:
       responses:
         '201':
           description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ./models/GroupVisit.v1.yaml
         '400':
           description: Bad Request
         '401':
@@ -3774,7 +3782,26 @@ paths:
     get:
       summary: Your GET endpoint
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/GroupVisit.v1.yaml
+              examples: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
       operationId: get-group_visits-group_visit_id
 components:
   parameters:

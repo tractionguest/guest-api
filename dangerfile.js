@@ -32,7 +32,7 @@ if (isDevelopBranch) {
 // Enforce version labeling
 if (isFeatureBranch && !hasVersionLabel) {
   fail(`You need to specify a versioning label! :raised_hand:
-  Use one of ${versionLabelList} to indicate how much the API version should be bumped.`);
+  Use one of ${versionLabelList} to indicate how much the API version should be bumped for your work.`);
 } else if (isFeatureBranch && hasVersionLabel) {
   message(`Nice! You've specified a versioning label :+1:`);
 }

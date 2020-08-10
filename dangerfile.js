@@ -1,4 +1,4 @@
-const { message } = require("danger");
+const { message, danger } = require("danger");
 
 /* Constants */
 const branchName = danger.github.pr.head.ref;
@@ -11,7 +11,7 @@ const hasVersionLabel = danger.github.pr.labels.some(label => versioningLabels.i
 message(`Label obj: ${danger.github.pr.labels}`);
 message(`PR Label keys: ${Object.keys(danger.github.pr.labels)}`);
 message(`Label type: ${typeof danger.github.pr.labels}`);
-message(`Label: ${danger.github.pr.labels[0]}`);
+message(`Label keys: ${Object.keys(danger.github.pr.labels[0])}`);
 /* Steps */
 message(`<a href="${docsLink}" target=_blank>View docs for this page</a>`);
 
@@ -68,3 +68,8 @@ function getUniqueWrikeIds() {
 
   return wrikeIds;
 }
+
+// function getLabels() {
+//   const labelLength = Object.keys(danger.github.pr.labels).length;
+//   labelLength.map(labelKey => danger.github.pr.labels[labelKey]);
+// }

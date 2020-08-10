@@ -76,6 +76,6 @@ function getLabels() {
 
   return indexedArray.map(labelKey => {
     message(`indexedArray: ${labelKey}, ${labelHash[labelKey]}`);
-    return labelHash[labelKey]['name'];
+    return labelHash[labelKey].name;
   });
 }

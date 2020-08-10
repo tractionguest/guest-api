@@ -3703,8 +3703,16 @@ paths:
                 $ref: ./models/ErrorsList.v1.yaml
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
       operationId: getGroupVisits
       parameters:
         - schema:
@@ -3804,10 +3812,22 @@ paths:
                 $ref: ./models/ErrorsList.v1.yaml
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
       operationId: getGroupVisit
       description: Gets a single instance of a `GroupVisit`.
 components:

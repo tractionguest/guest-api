@@ -72,6 +72,7 @@ function getUniqueWrikeIds() {
 function getLabels() {
   const labelHash = danger.github.pr.labels;
   const labelLength = Object.keys(labelHash).length;
+  const indexedArray = Array.from(Array(labelLength), (_, i) => i + 1);
 
-  return labelLength.map(labelKey => labelHash[labelKey]['name']);
+  return indexedArray.map(labelKey => labelHash[labelKey]['name']);
 }

@@ -5,10 +5,11 @@ const branchName = danger.github.pr.head.ref;
 const wrikeIds = getUniqueWrikeIds();
 const docsLink = `https://stoplight.io/p/docs/gh/tractionguest/guest-api/openapi.yml?srn=gh/tractionguest/guest-api/openapi.yml&group=${branchName}`;
 const isDevelopBranch = branchName == 'develop';
+const isFeatureBranch = !isDevelopBranch && branchName != 'master';
 const versioningLabels = ['patch', 'minor', 'major'];
-const hasVersionLabel = getLabels().some(label => versioningLabels.includes(label));
+const hasVersionLabel = getPrLabels().some(label => versioningLabels.includes(label));
+const versionLabelList = `${versioningLabels.slice(0, versioningLabels.length -1).join(', ')}, or ${versioningLabels.slice(-1)}`;
 
-message(`PR Label keys: ${getLabels()}`);
 /* Steps */
 message(`<a href="${docsLink}" target=_blank>View docs for this page</a>`);
 
@@ -29,12 +30,10 @@ if (isDevelopBranch) {
 }
 
 // Enforce version labeling
-const versionLabelList = `${versioningLabels.slice(0, versioningLabels.length -1).join(', ')}, or ${versioningLabels.slice(-1)}`;
-if (!(isDevelopBranch || hasVersionLabel)) {
-  // FIXME make me fail
-  warn(`You need to specify a versioning label! :raised_hand:
+if (isFeatureBranch && !hasVersionLabel) {
+  fail(`You need to specify a versioning label! :raised_hand:
   Use one of ${versionLabelList} to indicate how much the API version should be bumped.`);
-} else if (hasVersionLabel && !isDevelopBranch) {
+} else if (isFeatureBranch && hasVersionLabel) {
   message(`Nice! You've specified a versioning label :+1:`);
 }
 
@@ -66,7 +65,7 @@ function getUniqueWrikeIds() {
   return wrikeIds;
 }
 
-function getLabels() {
+function getPrLabels() {
   const labelHash = danger.github.pr.labels;
   const labelLength = Object.keys(labelHash).length;
   const indexedArray = Array.from(Array(labelLength), (_, i) => i);

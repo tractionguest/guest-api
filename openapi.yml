@@ -3694,12 +3694,7 @@ paths:
             application/json:
               schema:
                 $ref: ./models/PaginatedGroupVisitList.v1.yaml
-              examples:
-                default: {}
-            application/xml:
-              schema:
-                type: object
-                properties: {}
+              examples: {}
         '400':
           description: Bad Request
           content:
@@ -3710,7 +3705,7 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
-      operationId: get-group_visits
+      operationId: getGroupVisits
       parameters:
         - schema:
             type: integer
@@ -3735,7 +3730,7 @@ paths:
       description: Gets a list of all `GroupVisit` entities.
     post:
       summary: ''
-      operationId: post-group_visits
+      operationId: postGroupVisits
       responses:
         '201':
           description: Created
@@ -3758,20 +3753,30 @@ paths:
             schema:
               type: object
               properties: {}
+      tags:
+        - GroupVisits
     put:
       summary: ''
-      operationId: put-group_visits
+      operationId: putGroupVisits
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/GroupVisit.v1.yaml
       description: Updates a `GroupVisit`
+      tags:
+        - GroupVisits
     delete:
       summary: ''
-      operationId: delete-group_visits
+      operationId: deleteGroupVisits
       responses:
         '200':
           description: OK
       description: Deletes a `GroupVisit`
+      tags:
+        - GroupVisits
   '/group_visits/{group_visit_id}':
     parameters:
       - schema:
@@ -3781,7 +3786,8 @@ paths:
         required: true
     get:
       summary: Your GET endpoint
-      tags: []
+      tags:
+        - GroupVisits
       responses:
         '200':
           description: OK
@@ -3802,7 +3808,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
-      operationId: get-group_visits-group_visit_id
+      operationId: getGroupVisitsGroupVisitId
+      description: Gets a single instance of a `GroupVisit`.
 components:
   parameters:
     idempotencyKey:

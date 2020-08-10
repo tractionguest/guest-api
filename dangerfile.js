@@ -74,7 +74,7 @@ function getLabels() {
   const labelLength = Object.keys(labelHash).length;
   const indexedArray = Array.from(Array(labelLength), (_, i) => i + 1);
 
-  return forEach.map(labelKey => {
+  return indexedArray.forEach(labelKey => {
     message(`indexedArray: ${labelKey}, ${labelHash[labelKey]}`);
     // return labelHash[labelKey].name;
   });

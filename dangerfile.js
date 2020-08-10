@@ -9,6 +9,7 @@ const versioningLabels = ['patch', 'minor', 'major'];
 const hasVersionLabel = danger.github.pr.labels.some(label => versioningLabels.includes(label));
 
 message(`PR Labels: ${Object.keys(danger.github.pr).join(', ')}`);
+message(`Label type: ${typeof danger.github.pr.labels}`);
 /* Steps */
 message(`<a href="${docsLink}" target=_blank>View docs for this page</a>`);
 
@@ -31,7 +32,8 @@ if (isDevelopBranch) {
 // Enforce version labeling
 const versionLabelList = `${versioningLabels.slice(0, versioningLabels.length -1).join(', ')}, or ${versioningLabels.slice(-1)}`;
 if (!(isDevelopBranch || hasVersionLabel)) {
-  fail(`You need to specify a versioning label! :raised_hand:
+  // FIXME make me fail
+  warn(`You need to specify a versioning label! :raised_hand:
   Use one of ${versionLabelList} to indicate how much the API version should be bumped.`);
 } else if (hasVersionLabel && !isDevelopBranch) {
   message(`Nice! You've specified a versioning label :+1:`);

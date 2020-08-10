@@ -8,7 +8,7 @@ const isDevelopBranch = branchName == 'develop';
 const isFeatureBranch = !isDevelopBranch && branchName != 'master';
 const versioningLabels = ['patch', 'minor', 'major'];
 const hasVersionLabel = getPrLabels().some(label => versioningLabels.includes(label));
-const versionLabelList = `${versioningLabels.slice(0, versioningLabels.length -1).join(', ')}, or ${versioningLabels.slice(-1)}`;
+const versionLabelList = `\`${versioningLabels.slice(0, versioningLabels.length -1).join('`, `')}, or \`${versioningLabels.slice(-1)}\``;
 
 /* Steps */
 message(`<a href="${docsLink}" target=_blank>View docs for this page</a>`);

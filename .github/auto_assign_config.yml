@@ -1,7 +1,7 @@
 addAssignees: author
 addReviewers: true
+numberOfReviewers: 1
 useReviewGroups: true
-numberOfReviewers: 2
 reviewGroups:
   backend:
     - brandonjmckay

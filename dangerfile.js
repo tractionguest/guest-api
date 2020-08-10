@@ -8,7 +8,7 @@ const isDevelopBranch = branchName == 'develop';
 const versioningLabels = ['patch', 'minor', 'major'];
 const hasVersionLabel = danger.github.pr.labels.some(label => versioningLabels.includes(label));
 
-
+message(`PR Labels: ${danger.github.pr.labels.join(', ')}`);
 /* Steps */
 message(`<a href="${docsLink}" target=_blank>View docs for this page</a>`);
 
@@ -23,6 +23,12 @@ if (wrikeIds.length) {
   );
 }
 
+// Version bump reminder
+if (isDevelopBranch) {
+  warn(`Be sure to bump the version number appropriately before merging!`);
+}
+
+// Enforce version labeling
 const versionLabelList = `${versioningLabels.slice(0, versioningLabels.length -1).join(', ')}, or ${versioningLabels.slice(-1)}`;
 if (!(isDevelopBranch || hasVersionLabel)) {
   fail(`You need to specify a versioning label! :raised_hand:

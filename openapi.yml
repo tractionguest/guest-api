@@ -3632,9 +3632,11 @@ paths:
                         image:
                           full_size_url: 'https://i.pravatar.cc/'
                     pagination:
-                      total_records: 120
-                      current_offset: 50
-                      next_offset: 100
+                      total_records: 5
+                      current_offset: 0
+                      next_offset: null
+                      last_id: null
+                      limit: 20
         4XX:
           content:
             application/json:

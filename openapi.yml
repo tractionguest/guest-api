@@ -3563,36 +3563,78 @@ paths:
                   value:
                     packages:
                       - id: 70
-                        package_state: PICKED_UP
+                        package_state: picked_up
                         recipient:
-                          id: 71
-                          email: somehost@gmail.com
-                          first_name: some
-                          last_name: host
-                          mobile_number: some text
-                          profile_pic_url: some text
-                          department: Marketing
+                          id: 5
+                          email: tsala@tractionguest.com
+                          first_name: Tatiane
+                          last_name: Sala
+                          mobile_number: (604)111-1111
+                          profile_pic_url: 'https://i.pravatar.cc/'
+                          department: Development
                         location:
-                          name: Default
-                          id: 1
-                        carrier_name: USPS
-                        created_at: '2018-02-10T09:30Z'
-                        picked_up_at: '2018-02-10T010:30Z'
-                        image_url: some text
+                          name: Vancouver
+                          id: 2
+                        carrier_name: Purolator
+                        created_at: '2020-08-11T09:30Z'
+                        picked_up_at: '2020-08-11T010:30Z'
+                        image:
+                          full_size_url: 'https://i.pravatar.cc/'
                       - id: 71
-                        package_state: PROCESSING
+                        package_state: processing
+                        recipient: null
+                        location:
+                          name: Burnaby
+                          id: 3
+                        carrier_name: null
+                        created_at: '2020-08-09T09:30Z'
+                        picked_up_at: null
+                        image:
+                          full_size_url: 'https://i.pravatar.cc/'
+                      - id: 72
+                        package_state: processing
+                        recipient: null
+                        location:
+                          name: Vancouver
+                          id: 2
+                        carrier_name: null
+                        created_at: '2020-08-08T09:30Z'
+                        picked_up_at: null
+                        image:
+                          full_size_url: 'https://i.pravatar.cc/'
+                      - id: 73
+                        package_state: needs_attention
                         recipient: null
                         location:
                           name: Default
                           id: 1
                         carrier_name: null
-                        created_at: '2018-02-10T09:30Z'
+                        created_at: '2020-08-0709:30Z'
                         picked_up_at: null
-                        image_url: some text
+                        image:
+                          full_size_url: 'https://i.pravatar.cc/'
+                      - id: 74
+                        package_state: recipient_matched
+                        recipient:
+                          id: 4
+                          email: vbaldys@tractionguest.com
+                          first_name: Veronica
+                          last_name: Baldys
+                          mobile_number: (604)999-5982
+                          profile_pic_url: 'https://i.pravatar.cc/'
+                          department: Development
+                        location:
+                          name: Vancouver
+                          id: 2
+                        carrier_name: Canada Post
+                        created_at: '2020-08-07T09:30Z'
+                        picked_up_at: null
+                        image:
+                          full_size_url: 'https://i.pravatar.cc/'
                     pagination:
-                      total_records: 38
-                      current_offset: 31
-                      next_offset: 26
+                      total_records: 120
+                      current_offset: 50
+                      next_offset: 100
         4XX:
           content:
             application/json:

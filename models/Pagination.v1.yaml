@@ -15,6 +15,7 @@ properties:
   current_offset:
     format: int32
     type: integer
+    nullable: true
   next_offset:
     format: int32
     type: integer

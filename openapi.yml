@@ -3,10 +3,10 @@ info:
   title: Traction Guest API
   version: 0.13.0
   x-logo:
-    url: "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png"
-    backgroundColor: "#FFFFFF"
-    altText: "Traction Guest logo"
-    href: "https://tractionguest.com"
+    url: 'https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png'
+    backgroundColor: '#FFFFFF'
+    altText: Traction Guest logo
+    href: 'https://tractionguest.com'
   description: |
     The Traction Guest API is currently in **closed beta**.
     We're still building, testing, and fixing bugs.
@@ -1809,8 +1809,8 @@ paths:
       summary: List all Invites
       description: Gets a list of all `Invite` entities.
   '/registrations/{registration_id}/invites':
-    summary: "Path used to create an `Invite` from `Registration` data."
-    description: "The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task."
+    summary: Path used to create an `Invite` from `Registration` data.
+    description: The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task.
     post:
       tags:
         - Invites
@@ -3149,7 +3149,7 @@ paths:
                       current_offset: 71
                       next_offset: 27
           description: Successful response - returns an array of `AuditLog` entities.
-        '400':
+        4XX:
           content:
             application/json:
               schema:
@@ -3167,10 +3167,6 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
-          description: "You don't have permission to view this AuditLog"
-        '403':
-          description: You do not have permission for this action
       operationId: getAuditLogs
       summary: List all AuditLogs
       description: Gets a list of all `AuditLog` entities.

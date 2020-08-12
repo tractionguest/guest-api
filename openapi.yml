@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.13.1
+  version: 0.13.0
   x-logo:
     url: 'https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png'
     backgroundColor: '#FFFFFF'
@@ -3213,18 +3213,12 @@ paths:
                     request_uuid: some text
                     created_at: some text
           description: Successful response - returns a single `AuditLog`.
-        '400':
+        4XX:
           description: A generic error
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '401':
-          description: "You don't have permission to view this AuditLog"
-        '403':
-          description: You do not have permission for this action
-        '404':
-          description: The AuditLog does not exist
       operationId: getAuditLog
       summary: Get an AuditLog
       description: Gets the details of a single instance of an `AuditLog`.

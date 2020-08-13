@@ -3517,11 +3517,6 @@ paths:
           in: query
           name: needs_confirmation
           description: "A confirmed `Registration` is one with an associated `Invite`. This filter returns those without an `Invite` when true, and those with an `Invite` when false."
-        - schema:
-            type: integer
-          in: query
-          name: group_visit_id
-          description: Restricts results to only those that are associated to a given group visit (in development).
   '/locations/{location_id}/capacity_forecasts':
     parameters:
       - schema:

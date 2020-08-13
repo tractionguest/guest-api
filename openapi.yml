@@ -3521,7 +3521,7 @@ paths:
             type: integer
           in: query
           name: group_visit_id
-          description: Restricts results to only those that are associated to a given group visit (in development).
+          description: Filters to only those associated with a given `GroupVisit` (in development).
   '/locations/{location_id}/capacity_forecasts':
     parameters:
       - schema:

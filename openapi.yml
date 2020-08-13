@@ -3512,6 +3512,11 @@ paths:
           in: query
           name: created_after
           description: Restricts results to only those that were created after the provided date
+        - schema:
+            type: integer
+          in: query
+          name: group_visit_id
+          description: Filters to only those associated with a given `GroupVisit`.
   '/locations/{location_id}/capacity_forecasts':
     parameters:
       - schema:

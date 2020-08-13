@@ -3512,6 +3512,16 @@ paths:
           in: query
           name: created_after
           description: Restricts results to only those that were created after the provided date
+        - schema:
+            type: boolean
+          in: query
+          name: needs_confirmation
+          description: Restricts results to only those that do not have an associated invite, and therefore need confirmation.
+        - schema:
+            type: integer
+          in: query
+          name: group_visit_id
+          description: Restricts results to only those that are associated to a given group visit (in development).
   '/locations/{location_id}/capacity_forecasts':
     parameters:
       - schema:

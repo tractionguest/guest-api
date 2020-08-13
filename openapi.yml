@@ -3516,7 +3516,7 @@ paths:
             type: boolean
           in: query
           name: needs_confirmation
-          description: Restricts results to only those that do not have an associated invite, and therefore need confirmation.
+          description: Restricts results to only those that do not have an associated invite (`needs_confirmation: true`) or do have an associated invite (`needs_confirmation: false`).
         - schema:
             type: integer
           in: query

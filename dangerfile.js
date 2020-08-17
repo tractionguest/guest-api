@@ -3,7 +3,7 @@ const { message, danger } = require("danger");
 /* Constants */
 const branchName = danger.github.pr.head.ref;
 const wrikeIds = getUniqueWrikeIds();
-const docsLink = `https://stoplight.io/p/docs/gh/tractionguest/guest-api/openapi.yml?srn=gh/tractionguest/guest-api/openapi.yml&group=${branchName}`;
+const docsLink = `https://tractionguest.stoplight.io/docs/guest-api/branches/${branchName}/openapi.yml`;
 const isDevelopBranch = branchName == 'develop';
 const isFeatureBranch = !isDevelopBranch && branchName != 'master';
 const versioningLabels = ['patch', 'minor', 'major'];
@@ -11,7 +11,7 @@ const hasVersionLabel = getPrLabels().some(label => versioningLabels.includes(la
 const versionLabelList = `\`${versioningLabels.slice(0, versioningLabels.length -1).join('`, `')}\`, or \`${versioningLabels.slice(-1)}\``;
 
 /* Steps */
-message(`<a href="${docsLink}" target=_blank>View docs for this page</a>`);
+message(`<a href="${docsLink}" target="_blank">View docs for this page</a> <em>(You'll need to have access to see this version of the docs)</em>`);
 
 // Attach Wrike tickets
 if (wrikeIds.length) {

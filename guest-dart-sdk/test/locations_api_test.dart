@@ -7,20 +7,20 @@ void main() {
   var instance = new LocationsApi();
 
   group('tests for LocationsApi', () {
-    // Get the details of a location
+    // Creates an Invite
     //
-    // Gets details of a single instance of `Location`.
+    // Creates a new `Invite` for a specific `Location`.
     //
-    //Future<Location> getLocation(String locationId) async 
-    test('test getLocation', () async {
+    //Future<Invite> createLocationInvite(String locationId, Invite invite) async 
+    test('test createLocationInvite', () async {
       // TODO
     });
 
-    // List all Locations
+    // List All Locations
     //
     // Gets a list of all `Location` entities.
     //
-    //Future<PaginatedLocationsList> getLocations({ int limit, int offset, String query, String include }) async 
+    //Future<PaginatedLocationsList> getLocations() async 
     test('test getLocations', () async {
       // TODO
     });

@@ -18,7 +18,16 @@ void main() {
       // TODO
     });
 
-    // Used when keeping track of people in emergency situations
+    // String badgeNumber (default value: null)
+    test('to test the property `badgeNumber`', () async {
+      // TODO
+    });
+
+    // bool badgeReturned (default value: null)
+    test('to test the property `badgeReturned`', () async {
+      // TODO
+    });
+
     // bool isAccountedFor (default value: null)
     test('to test the property `isAccountedFor`', () async {
       // TODO

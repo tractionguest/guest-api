@@ -7,11 +7,11 @@ void main() {
   var instance = new SigninsApi();
 
   group('tests for SigninsApi', () {
-    // Create Signin
+    // Create a Signin
     //
-    // Creates a Signin
+    // Creates a new instance of a `Signin`.
     //
-    //Future<Signin> createSignin({ SigninCreateParams signinCreateParams }) async 
+    //Future<Signin> createSignin(SigninCreateParams signinCreateParams) async 
     test('test createSignin', () async {
       // TODO
     });
@@ -20,25 +20,25 @@ void main() {
     //
     // Gets the details of a single instance of a `Signin`.
     //
-    //Future<SigninDetail> getSignin(String signinId, { String include }) async 
+    //Future<SigninDetail> getSignin(String signinId) async 
     test('test getSignin', () async {
       // TODO
     });
 
-    // List all Signins
+    // List All Signins
     //
     // Gets a list of all `Signin` entities.
     //
-    //Future<PaginatedSigninsList> getSignins({ String locationIds, String withColours, String query, bool withAcknowledged, bool withSignedIn, DateTime signinBefore, DateTime signinAfter, int limit, int offset, String querySort, String include }) async 
+    //Future<PaginatedSigninsList> getSignins() async 
     test('test getSignins', () async {
       // TODO
     });
 
-    // Update a Signin
+    // Update a Signin attribute
     //
     // Update, acknowledge, or `Signout` a `Signin`
     //
-    //Future<SigninDetail> updateSignin(String signinId, SigninUpdateParams signinUpdateParams, { String idempotencyKey }) async 
+    //Future<SigninDetail> updateSignin(String signinId, SigninUpdateParams signinUpdateParams) async 
     test('test updateSignin', () async {
       // TODO
     });

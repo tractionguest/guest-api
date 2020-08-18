@@ -11,59 +11,8 @@ void main() {
       // TODO
     });
 
-    // 
-    // String mobileNumber (default value: null)
-    test('to test the property `mobileNumber`', () async {
-      // TODO
-    });
-
-    // SigninWatchlist signinWatchlist (default value: null)
-    test('to test the property `signinWatchlist`', () async {
-      // TODO
-    });
-
-    // List<Host> hosts (default value: [])
-    test('to test the property `hosts`', () async {
-      // TODO
-    });
-
-    // DateTime signinTimestamp (default value: null)
-    test('to test the property `signinTimestamp`', () async {
-      // TODO
-    });
-
-    // String signinPhotoUrl (default value: null)
-    test('to test the property `signinPhotoUrl`', () async {
-      // TODO
-    });
-
-    // DateTime signedOutTimestamp (default value: null)
-    test('to test the property `signedOutTimestamp`', () async {
-      // TODO
-    });
-
-    // String locationName (default value: null)
-    test('to test the property `locationName`', () async {
-      // TODO
-    });
-
-    // String lastName (default value: null)
-    test('to test the property `lastName`', () async {
-      // TODO
-    });
-
-    // bool isAcknowledged (default value: null)
-    test('to test the property `isAcknowledged`', () async {
-      // TODO
-    });
-
-    // bool isAccountedFor (default value: null)
-    test('to test the property `isAccountedFor`', () async {
-      // TODO
-    });
-
-    // String firstName (default value: null)
-    test('to test the property `firstName`', () async {
+    // String company (default value: null)
+    test('to test the property `company`', () async {
       // TODO
     });
 
@@ -72,13 +21,53 @@ void main() {
       // TODO
     });
 
-    // String company (default value: null)
-    test('to test the property `company`', () async {
+    // String firstName (default value: null)
+    test('to test the property `firstName`', () async {
       // TODO
     });
 
-    // Registration registration (default value: null)
-    test('to test the property `registration`', () async {
+    // bool isAccountedFor (default value: null)
+    test('to test the property `isAccountedFor`', () async {
+      // TODO
+    });
+
+    // bool isAcknowledged (default value: null)
+    test('to test the property `isAcknowledged`', () async {
+      // TODO
+    });
+
+    // String lastName (default value: null)
+    test('to test the property `lastName`', () async {
+      // TODO
+    });
+
+    // String locationName (default value: null)
+    test('to test the property `locationName`', () async {
+      // TODO
+    });
+
+    // DateTime signedOutTimestamp (default value: null)
+    test('to test the property `signedOutTimestamp`', () async {
+      // TODO
+    });
+
+    // String signinPhotoUrl (default value: null)
+    test('to test the property `signinPhotoUrl`', () async {
+      // TODO
+    });
+
+    // DateTime signinTimestamp (default value: null)
+    test('to test the property `signinTimestamp`', () async {
+      // TODO
+    });
+
+    // SigninWatchlist watchlist (default value: null)
+    test('to test the property `watchlist`', () async {
+      // TODO
+    });
+
+    // bool isSignedOut (default value: null)
+    test('to test the property `isSignedOut`', () async {
       // TODO
     });
 

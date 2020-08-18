@@ -75,19 +75,13 @@ Class | Method | HTTP request | Description
 *InvitesApi* | [**createLocationInvite**](docs//InvitesApi.md#createlocationinvite) | **POST** /locations/{location_id}/invites | Create an Invite
 *InvitesApi* | [**createRegistrationInvite**](docs//InvitesApi.md#createregistrationinvite) | **POST** /registrations/{registration_id}/invites | Create an Invite from a Registration
 *InvitesApi* | [**deleteInvite**](docs//InvitesApi.md#deleteinvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
-*InvitesApi* | [**getInvite**](docs//InvitesApi.md#getinvite) | **GET** /invites/{invite_id} | Get a Invite
-*InvitesApi* | [**getInvites**](docs//InvitesApi.md#getinvites) | **GET** /invites | List All Invites
-*InvitesApi* | [**updateInvite**](docs//InvitesApi.md#updateinvite) | **PUT** /invites/{invite_id} | Update a Invite
-*LocationsApi* | [**getLocations**](docs//LocationsApi.md#getlocations) | **GET** /locations | List All Locations
+*InvitesApi* | [**getInvite**](docs//InvitesApi.md#getinvite) | **GET** /invites/{invite_id} | Get an Invite
+*InvitesApi* | [**getInvites**](docs//InvitesApi.md#getinvites) | **GET** /invites | List all Invites
+*InvitesApi* | [**updateInvite**](docs//InvitesApi.md#updateinvite) | **PUT** /invites/{invite_id} | Update an Invite
 *LocationsApi* | [**getLocation**](docs//LocationsApi.md#getlocation) | **GET** /locations/{location_id} | Get the details of a location
 *LocationsApi* | [**getLocations**](docs//LocationsApi.md#getlocations) | **GET** /locations | List all Locations
-*PackagesApi* | [**createPackage**](docs//PackagesApi.md#createpackage) | **POST** /packages | Create package
-*PackagesApi* | [**deletePackage**](docs//PackagesApi.md#deletepackage) | **DELETE** /packages/{package_id} | 
-*PackagesApi* | [**getPackage**](docs//PackagesApi.md#getpackage) | **GET** /packages/{package_id} | Get Package
-*PackagesApi* | [**getPackages**](docs//PackagesApi.md#getpackages) | **GET** /packages | Get packages
-*PackagesApi* | [**updatePackage**](docs//PackagesApi.md#updatepackage) | **PUT** /packages/{package_id} | Update Package
-*RegistrationsApi* | [**getRegistration**](docs//RegistrationsApi.md#getregistration) | **GET** /registrations/{registration_id} | Get a Registration
-*RegistrationsApi* | [**getRegistrations**](docs//RegistrationsApi.md#getregistrations) | **GET** /registrations | List all Registrations
+*RegistrationApi* | [**getRegistration**](docs//RegistrationApi.md#getregistration) | **GET** /registrations/{registration_id} | Get a Registration
+*RegistrationApi* | [**getRegistrations**](docs//RegistrationApi.md#getregistrations) | **GET** /registrations | List all Registrations
 *SigninsApi* | [**createSignin**](docs//SigninsApi.md#createsignin) | **POST** /signins | Create Signin
 *SigninsApi* | [**getSignin**](docs//SigninsApi.md#getsignin) | **GET** /signins/{signin_id} | Get a Signin
 *SigninsApi* | [**getSignins**](docs//SigninsApi.md#getsignins) | **GET** /signins | List all Signins
@@ -122,7 +116,6 @@ Class | Method | HTTP request | Description
  - [Host](docs//Host.md)
  - [HostBatchCreateParams](docs//HostBatchCreateParams.md)
  - [HostCreateParams](docs//HostCreateParams.md)
- - [Image](docs//Image.md)
  - [InternalWatchlistResult](docs//InternalWatchlistResult.md)
  - [Invite](docs//Invite.md)
  - [InviteCreateParams](docs//InviteCreateParams.md)
@@ -132,15 +125,11 @@ Class | Method | HTTP request | Description
  - [Location](docs//Location.md)
  - [NotificationTrigger](docs//NotificationTrigger.md)
  - [NotificationTriggerCreateParams](docs//NotificationTriggerCreateParams.md)
- - [Package](docs//Package.md)
- - [PackageCreateParams](docs//PackageCreateParams.md)
- - [PackageUpdateParams](docs//PackageUpdateParams.md)
  - [PaginatedAuditLogsList](docs//PaginatedAuditLogsList.md)
  - [PaginatedEmailTemplatesList](docs//PaginatedEmailTemplatesList.md)
  - [PaginatedHostsList](docs//PaginatedHostsList.md)
  - [PaginatedInvitesList](docs//PaginatedInvitesList.md)
  - [PaginatedLocationsList](docs//PaginatedLocationsList.md)
- - [PaginatedPackagesList](docs//PaginatedPackagesList.md)
  - [PaginatedRegistrationsList](docs//PaginatedRegistrationsList.md)
  - [PaginatedSigninsList](docs//PaginatedSigninsList.md)
  - [PaginatedWatchlistList](docs//PaginatedWatchlistList.md)

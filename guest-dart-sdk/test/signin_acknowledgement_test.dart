@@ -21,6 +21,11 @@ void main() {
       // TODO
     });
 
+    // SigninDetail signin (default value: null)
+    test('to test the property `signin`', () async {
+      // TODO
+    });
+
 
   });
 

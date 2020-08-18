@@ -12,31 +12,9 @@ void main() {
       // TODO
     });
 
-    // Visitor visitor (default value: null)
-    test('to test the property `visitor`', () async {
-      // TODO
-    });
-
-    // Invite invite (default value: null)
-    test('to test the property `invite`', () async {
-      // TODO
-    });
-
-    // URL of the uploaded photo
-    // String photoUrl (default value: null)
-    test('to test the property `photoUrl`', () async {
-      // TODO
-    });
-
-    // Company's name
-    // String company (default value: null)
-    test('to test the property `company`', () async {
-      // TODO
-    });
-
-    // E-mail
-    // String email (default value: null)
-    test('to test the property `email`', () async {
+    // Datetime when registration was created
+    // DateTime createdAt (default value: null)
+    test('to test the property `createdAt`', () async {
       // TODO
     });
 
@@ -46,14 +24,37 @@ void main() {
       // TODO
     });
 
-    // Datetime when registration was created
-    // DateTime createdAt (default value: null)
-    test('to test the property `createdAt`', () async {
+    // E-mail
+    // String email (default value: null)
+    test('to test the property `email`', () async {
       // TODO
     });
 
-    // Signin signin (default value: null)
-    test('to test the property `signin`', () async {
+    // Company's name
+    // String company (default value: null)
+    test('to test the property `company`', () async {
+      // TODO
+    });
+
+    // URL of the uploaded photo
+    // String photoUrl (default value: null)
+    test('to test the property `photoUrl`', () async {
+      // TODO
+    });
+
+    // Response given by the guest
+    // List<GuestResponse> guestReponses (default value: [])
+    test('to test the property `guestReponses`', () async {
+      // TODO
+    });
+
+    // Invite invite (default value: null)
+    test('to test the property `invite`', () async {
+      // TODO
+    });
+
+    // Visitor visitor (default value: null)
+    test('to test the property `visitor`', () async {
       // TODO
     });
 

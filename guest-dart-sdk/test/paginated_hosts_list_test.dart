@@ -6,13 +6,13 @@ void main() {
   var instance = new Pet();
 
   group('test PaginatedHostsList', () {
-    // Pagination pagination (default value: null)
-    test('to test the property `pagination`', () async {
+    // List<Host> hosts (default value: [])
+    test('to test the property `hosts`', () async {
       // TODO
     });
 
-    // List<Host> hosts (default value: [])
-    test('to test the property `hosts`', () async {
+    // Pagination pagination (default value: null)
+    test('to test the property `pagination`', () async {
       // TODO
     });
 

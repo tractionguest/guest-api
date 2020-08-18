@@ -11,51 +11,8 @@ void main() {
       // TODO
     });
 
-    // Registration registration (default value: null)
-    test('to test the property `registration`', () async {
-      // TODO
-    });
-
-    // 
-    // String mobileNumber (default value: null)
-    test('to test the property `mobileNumber`', () async {
-      // TODO
-    });
-
-    // 
-    // String email (default value: null)
-    test('to test the property `email`', () async {
-      // TODO
-    });
-
-    // 
-    // DateTime endDate (default value: null)
-    test('to test the property `endDate`', () async {
-      // TODO
-    });
-
-    // InviteWatchlist inviteWatchlist (default value: null)
-    test('to test the property `inviteWatchlist`', () async {
-      // TODO
-    });
-
-    // List<Host> hosts (default value: [])
-    test('to test the property `hosts`', () async {
-      // TODO
-    });
-
-    // String watchlistColour (default value: null)
-    test('to test the property `watchlistColour`', () async {
-      // TODO
-    });
-
-    // Location location (default value: null)
-    test('to test the property `location`', () async {
-      // TODO
-    });
-
-    // DateTime startDate (default value: null)
-    test('to test the property `startDate`', () async {
+    // String firstName (default value: null)
+    test('to test the property `firstName`', () async {
       // TODO
     });
 
@@ -64,13 +21,23 @@ void main() {
       // TODO
     });
 
-    // String firstName (default value: null)
-    test('to test the property `firstName`', () async {
+    // DateTime startDate (default value: null)
+    test('to test the property `startDate`', () async {
       // TODO
     });
 
-    // GroupVisit groupVisit (default value: null)
-    test('to test the property `groupVisit`', () async {
+    // Location location (default value: null)
+    test('to test the property `location`', () async {
+      // TODO
+    });
+
+    // Watchlist watchlist (default value: null)
+    test('to test the property `watchlist`', () async {
+      // TODO
+    });
+
+    // String watchlistColour (default value: null)
+    test('to test the property `watchlistColour`', () async {
       // TODO
     });
 

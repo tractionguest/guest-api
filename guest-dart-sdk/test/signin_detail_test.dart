@@ -11,69 +11,23 @@ void main() {
       // TODO
     });
 
-    // List<SignableDocument> documents (default value: [])
-    test('to test the property `documents`', () async {
+    // String company (default value: null)
+    test('to test the property `company`', () async {
       // TODO
     });
 
-    // SigninWatchlist signinWatchlist (default value: null)
-    test('to test the property `signinWatchlist`', () async {
+    // String email (default value: null)
+    test('to test the property `email`', () async {
       // TODO
     });
 
-    // List<Host> hosts (default value: [])
-    test('to test the property `hosts`', () async {
+    // String firstName (default value: null)
+    test('to test the property `firstName`', () async {
       // TODO
     });
 
-    // List<SigninData> signinData (default value: [])
-    test('to test the property `signinData`', () async {
-      // TODO
-    });
-
-    // SigninAcknowledgement signinAcknowledgement (default value: null)
-    test('to test the property `signinAcknowledgement`', () async {
-      // TODO
-    });
-
-    // String note (default value: null)
-    test('to test the property `note`', () async {
-      // TODO
-    });
-
-    // A one-way method of Signing out a Signin
-    // bool isSignedOut (default value: null)
-    test('to test the property `isSignedOut`', () async {
-      // TODO
-    });
-
-    // DateTime signinTimestamp (default value: null)
-    test('to test the property `signinTimestamp`', () async {
-      // TODO
-    });
-
-    // String signinPhotoUrl (default value: null)
-    test('to test the property `signinPhotoUrl`', () async {
-      // TODO
-    });
-
-    // DateTime signedOutTimestamp (default value: null)
-    test('to test the property `signedOutTimestamp`', () async {
-      // TODO
-    });
-
-    // String mobileNumber (default value: null)
-    test('to test the property `mobileNumber`', () async {
-      // TODO
-    });
-
-    // String locationName (default value: null)
-    test('to test the property `locationName`', () async {
-      // TODO
-    });
-
-    // String lastName (default value: null)
-    test('to test the property `lastName`', () async {
+    // bool isAccountedFor (default value: null)
+    test('to test the property `isAccountedFor`', () async {
       // TODO
     });
 
@@ -83,28 +37,59 @@ void main() {
       // TODO
     });
 
-    // bool isAccountedFor (default value: null)
-    test('to test the property `isAccountedFor`', () async {
+    // String lastName (default value: null)
+    test('to test the property `lastName`', () async {
       // TODO
     });
 
-    // String firstName (default value: null)
-    test('to test the property `firstName`', () async {
+    // String locationName (default value: null)
+    test('to test the property `locationName`', () async {
       // TODO
     });
 
-    // String email (default value: null)
-    test('to test the property `email`', () async {
+    // String mobileNumber (default value: null)
+    test('to test the property `mobileNumber`', () async {
       // TODO
     });
 
-    // String company (default value: null)
-    test('to test the property `company`', () async {
+    // DateTime signedOutTimestamp (default value: null)
+    test('to test the property `signedOutTimestamp`', () async {
       // TODO
     });
 
-    // Registration registration (default value: null)
-    test('to test the property `registration`', () async {
+    // String signinPhotoUrl (default value: null)
+    test('to test the property `signinPhotoUrl`', () async {
+      // TODO
+    });
+
+    // DateTime signinTimestamp (default value: null)
+    test('to test the property `signinTimestamp`', () async {
+      // TODO
+    });
+
+    // SigninWatchlist watchlist (default value: null)
+    test('to test the property `watchlist`', () async {
+      // TODO
+    });
+
+    // SigninParsedInfo parsedInfo (default value: null)
+    test('to test the property `parsedInfo`', () async {
+      // TODO
+    });
+
+    // A one-way method of Signing out a Signin
+    // bool isSignedOut (default value: null)
+    test('to test the property `isSignedOut`', () async {
+      // TODO
+    });
+
+    // String note (default value: null)
+    test('to test the property `note`', () async {
+      // TODO
+    });
+
+    // SigninAcknowledgement signinAcknowledgement (default value: null)
+    test('to test the property `signinAcknowledgement`', () async {
       // TODO
     });
 

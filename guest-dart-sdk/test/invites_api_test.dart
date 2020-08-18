@@ -7,47 +7,38 @@ void main() {
   var instance = new InvitesApi();
 
   group('tests for InvitesApi', () {
-    // Create an Invite
+    // Creates an Invite
     //
     // Creates a new `Invite` for a specific `Location`.
     //
-    //Future<InviteDetail> createLocationInvite(String locationId, InviteCreateParams inviteCreateParams, { String idempotencyKey }) async 
+    //Future<Invite> createLocationInvite(String locationId, Invite invite) async 
     test('test createLocationInvite', () async {
       // TODO
     });
 
-    // Deletes an Invite
-    //
-    // Deletes a single instance of `Invite`
-    //
-    //Future deleteInvite(String inviteId, { String idempotencyKey }) async 
-    test('test deleteInvite', () async {
-      // TODO
-    });
-
-    // Get an Invite
+    // Get a Invite
     //
     // Gets the details of a single instance of a `Invite`.
     //
-    //Future<InviteDetail> getInvite(String inviteId, { String include }) async 
+    //Future<InviteDetail> getInvite(String inviteId) async 
     test('test getInvite', () async {
       // TODO
     });
 
-    // List all Invites
+    // List All Invites
     //
     // Gets a list of all `Invite` entities.
     //
-    //Future<PaginatedInvitesList> getInvites({ int limit, int offset, String query, String withColours, String locationIds, String sortBy, DateTime startsBefore, DateTime startsAfter, String include, bool isApproved, DateTime activeAfter, DateTime activeBefore }) async 
+    //Future<PaginatedInvitesList> getInvites() async 
     test('test getInvites', () async {
       // TODO
     });
 
-    // Update an Invite
+    // Update a Invite
     //
     // Updates an existing `Invite`.
     //
-    //Future<InviteDetail> updateInvite(String inviteId, InviteUpdateParams inviteUpdateParams, { String idempotencyKey }) async 
+    //Future<InviteDetail> updateInvite(String inviteId, InviteUpdateParams inviteUpdateParams) async 
     test('test updateInvite', () async {
       // TODO
     });

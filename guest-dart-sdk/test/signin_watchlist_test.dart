@@ -11,13 +11,13 @@ void main() {
       // TODO
     });
 
-    // List<InternalWatchlistResult> internal (default value: [])
-    test('to test the property `internal`', () async {
+    // List<Object> external_ (default value: [])
+    test('to test the property `external_`', () async {
       // TODO
     });
 
-    // List<ExternalWatchlistResult> external_ (default value: [])
-    test('to test the property `external_`', () async {
+    // List<Object> internal (default value: [])
+    test('to test the property `internal`', () async {
       // TODO
     });
 

@@ -18,7 +18,6 @@ void main() {
       // TODO
     });
 
-    // Enum
     // String pageType (default value: null)
     test('to test the property `pageType`', () async {
       // TODO

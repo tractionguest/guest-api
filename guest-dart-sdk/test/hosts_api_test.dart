@@ -16,7 +16,7 @@ void main() {
       // TODO
     });
 
-    // Create Multiple Hosts
+    // Create multiple Hosts
     //
     // Creates a batch of `Host` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
     //
@@ -25,7 +25,7 @@ void main() {
       // TODO
     });
 
-    // List All Hosts
+    // List all Hosts
     //
     // Gets a list of all `Host` entities.
     //

@@ -1,4 +1,4 @@
-# guest_sdk.api.RegistrationApi
+# guest_sdk.api.RegistrationsApi
 
 ## Load the API package
 ```dart
@@ -9,8 +9,8 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getRegistration**](RegistrationApi.md#getRegistration) | **GET** /registrations/{registration_id} | Get a Registration
-[**getRegistrations**](RegistrationApi.md#getRegistrations) | **GET** /registrations | List all Registrations
+[**getRegistration**](RegistrationsApi.md#getRegistration) | **GET** /registrations/{registration_id} | Get a Registration
+[**getRegistrations**](RegistrationsApi.md#getRegistrations) | **GET** /registrations | List all Registrations
 
 
 # **getRegistration**
@@ -24,7 +24,7 @@ Gets the details of a single instance of a `Registration`
 ```dart
 import 'package:guest_sdk/api.dart';
 
-var api_instance = new RegistrationApi();
+var api_instance = new RegistrationsApi();
 var registrationId = registrationId_example; // String | 
 var include = include_example; // String | A list of comma-separated related models to include
 
@@ -32,7 +32,7 @@ try {
     var result = api_instance.getRegistration(registrationId, include);
     print(result);
 } catch (e) {
-    print("Exception when calling RegistrationApi->getRegistration: $e\n");
+    print("Exception when calling RegistrationsApi->getRegistration: $e\n");
 }
 ```
 
@@ -69,7 +69,7 @@ Gets a list of all `Registration` entities.
 ```dart
 import 'package:guest_sdk/api.dart';
 
-var api_instance = new RegistrationApi();
+var api_instance = new RegistrationsApi();
 var limit = 56; // int | Limits the results to a specified number, defaults to 50
 var offset = 56; // int | Offsets the results to a specified number, defaults to 0
 var locationIds = locationIds_example; // String | A comma separated list of Location IDs
@@ -80,7 +80,7 @@ try {
     var result = api_instance.getRegistrations(limit, offset, locationIds, createdBefore, createdAfter);
     print(result);
 } catch (e) {
-    print("Exception when calling RegistrationApi->getRegistrations: $e\n");
+    print("Exception when calling RegistrationsApi->getRegistrations: $e\n");
 }
 ```
 

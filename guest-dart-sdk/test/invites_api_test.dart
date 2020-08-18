@@ -7,7 +7,7 @@ void main() {
   var instance = new InvitesApi();
 
   group('tests for InvitesApi', () {
-    // Creates an Invite
+    // Create an Invite
     //
     // Creates a new `Invite` for a specific `Location`.
     //
@@ -25,7 +25,7 @@ void main() {
       // TODO
     });
 
-    // Get a Invite
+    // Get an Invite
     //
     // Gets the details of a single instance of a `Invite`.
     //
@@ -34,7 +34,7 @@ void main() {
       // TODO
     });
 
-    // List All Invites
+    // List all Invites
     //
     // Gets a list of all `Invite` entities.
     //
@@ -43,7 +43,7 @@ void main() {
       // TODO
     });
 
-    // Update a Invite
+    // Update an Invite
     //
     // Updates an existing `Invite`.
     //

@@ -22,12 +22,6 @@ void main() {
       // TODO
     });
 
-    // Response given by the guest
-    // List<GuestResponse> guestResponses (default value: [])
-    test('to test the property `guestResponses`', () async {
-      // TODO
-    });
-
     // URL of the uploaded photo
     // String photoUrl (default value: null)
     test('to test the property `photoUrl`', () async {
@@ -55,6 +49,11 @@ void main() {
     // Datetime when registration was created
     // DateTime createdAt (default value: null)
     test('to test the property `createdAt`', () async {
+      // TODO
+    });
+
+    // Signin signin (default value: null)
+    test('to test the property `signin`', () async {
       // TODO
     });
 

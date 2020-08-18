@@ -103,6 +103,11 @@ void main() {
       // TODO
     });
 
+    // Registration registration (default value: null)
+    test('to test the property `registration`', () async {
+      // TODO
+    });
+
 
   });
 

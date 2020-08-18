@@ -7,7 +7,7 @@ void main() {
   var instance = new EmailTemplatesApi();
 
   group('tests for EmailTemplatesApi', () {
-    // List All EmailTemplates
+    // List all EmailTemplates
     //
     // Gets a list of all `EmailTemplate` entities.
     //

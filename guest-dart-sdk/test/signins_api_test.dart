@@ -7,6 +7,8 @@ void main() {
   var instance = new SigninsApi();
 
   group('tests for SigninsApi', () {
+    // Create Signin
+    //
     // Creates a Signin
     //
     //Future<Signin> createSignin({ SigninCreateParams signinCreateParams }) async 
@@ -23,7 +25,7 @@ void main() {
       // TODO
     });
 
-    // List All Signins
+    // List all Signins
     //
     // Gets a list of all `Signin` entities.
     //
@@ -32,7 +34,7 @@ void main() {
       // TODO
     });
 
-    // Update a Signin attribute
+    // Update a Signin
     //
     // Update, acknowledge, or `Signout` a `Signin`
     //

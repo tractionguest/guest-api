@@ -17,7 +17,7 @@ Dart 1.20.0 or later OR Flutter 0.0.20 or later
 If this Dart package is published to Github, please include the following in pubspec.yaml
 ```
 name: guest_sdk
-version: 0.12.2
+version: 
 description: OpenAPI API client
 dependencies:
   guest_sdk:
@@ -74,15 +74,18 @@ Class | Method | HTTP request | Description
 *HostsApi* | [**getHosts**](docs//HostsApi.md#gethosts) | **GET** /hosts | List all Hosts
 *InvitesApi* | [**createLocationInvite**](docs//InvitesApi.md#createlocationinvite) | **POST** /locations/{location_id}/invites | Create an Invite
 *InvitesApi* | [**deleteInvite**](docs//InvitesApi.md#deleteinvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
-*InvitesApi* | [**getInvite**](docs//InvitesApi.md#getinvite) | **GET** /invites/{invite_id} | Get a Invite
-*InvitesApi* | [**getInvites**](docs//InvitesApi.md#getinvites) | **GET** /invites | List All Invites
-*InvitesApi* | [**updateInvite**](docs//InvitesApi.md#updateinvite) | **PUT** /invites/{invite_id} | Update a Invite
-*LocationsApi* | [**getLocations**](docs//LocationsApi.md#getlocations) | **GET** /locations | List All Locations
+*InvitesApi* | [**getInvite**](docs//InvitesApi.md#getinvite) | **GET** /invites/{invite_id} | Get an Invite
+*InvitesApi* | [**getInvites**](docs//InvitesApi.md#getinvites) | **GET** /invites | List all Invites
+*InvitesApi* | [**updateInvite**](docs//InvitesApi.md#updateinvite) | **PUT** /invites/{invite_id} | Update an Invite
 *LocationsApi* | [**getLocation**](docs//LocationsApi.md#getlocation) | **GET** /locations/{location_id} | Get the details of a location
+*LocationsApi* | [**getLocations**](docs//LocationsApi.md#getlocations) | **GET** /locations | List all Locations
 *PackagesApi* | [**createPackage**](docs//PackagesApi.md#createpackage) | **POST** /packages | Create package
+*PackagesApi* | [**deletePackage**](docs//PackagesApi.md#deletepackage) | **DELETE** /packages/{package_id} | 
+*PackagesApi* | [**getPackage**](docs//PackagesApi.md#getpackage) | **GET** /packages/{package_id} | Get Package
 *PackagesApi* | [**getPackages**](docs//PackagesApi.md#getpackages) | **GET** /packages | Get packages
-*RegistrationApi* | [**getRegistration**](docs//RegistrationApi.md#getregistration) | **GET** /registrations/{registration_id} | Get a Registration
-*RegistrationApi* | [**getRegistrations**](docs//RegistrationApi.md#getregistrations) | **GET** /registrations | List all Registrations
+*PackagesApi* | [**updatePackage**](docs//PackagesApi.md#updatepackage) | **PUT** /packages/{package_id} | Update Package
+*RegistrationsApi* | [**getRegistration**](docs//RegistrationsApi.md#getregistration) | **GET** /registrations/{registration_id} | Get a Registration
+*RegistrationsApi* | [**getRegistrations**](docs//RegistrationsApi.md#getregistrations) | **GET** /registrations | List all Registrations
 *SigninsApi* | [**createSignin**](docs//SigninsApi.md#createsignin) | **POST** /signins | Create Signin
 *SigninsApi* | [**getSignin**](docs//SigninsApi.md#getsignin) | **GET** /signins/{signin_id} | Get a Signin
 *SigninsApi* | [**getSignins**](docs//SigninsApi.md#getsignins) | **GET** /signins | List all Signins
@@ -129,6 +132,7 @@ Class | Method | HTTP request | Description
  - [NotificationTriggerCreateParams](docs//NotificationTriggerCreateParams.md)
  - [Package](docs//Package.md)
  - [PackageCreateParams](docs//PackageCreateParams.md)
+ - [PackageUpdateParams](docs//PackageUpdateParams.md)
  - [PaginatedAuditLogsList](docs//PaginatedAuditLogsList.md)
  - [PaginatedEmailTemplatesList](docs//PaginatedEmailTemplatesList.md)
  - [PaginatedHostsList](docs//PaginatedHostsList.md)

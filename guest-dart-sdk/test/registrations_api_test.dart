@@ -2,16 +2,16 @@ import 'package:guest_sdk/api.dart';
 import 'package:test/test.dart';
 
 
-/// tests for RegistrationApi
+/// tests for RegistrationsApi
 void main() {
-  var instance = new RegistrationApi();
+  var instance = new RegistrationsApi();
 
-  group('tests for RegistrationApi', () {
+  group('tests for RegistrationsApi', () {
     // Get a Registration
     //
     // Gets the details of a single instance of a `Registration`
     //
-    //Future<Registration> getRegistration(String registrationId, { String include }) async 
+    //Future<RegistrationDetail> getRegistration(String registrationId, { String include }) async 
     test('test getRegistration', () async {
       // TODO
     });

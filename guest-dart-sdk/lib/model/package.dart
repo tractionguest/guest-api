@@ -1,31 +1,28 @@
 part of guest_sdk.api;
 
 class Package {
-
+  
   int id = null;
-
+  
   Host recipient = null;
-
+  
   Location location = null;
-
+  /* this can be one of the following states: 'processing', 'recipient_matched', 'needs_attention' or 'picked_up' */
   String packageState = null;
-
+  //enum packageStateEnum {  processing,  recipient_matched,  needs_attention,  picked_up,  };{
+  /* A carrier name that gets detected on the shipping label. i.e. USPS, Purolator, DHL, Canada Post, Royal Mail, etc...  */
   String carrierName = null;
-
+  
   DateTime pickedUpAt = null;
-
+  
   DateTime createdAt = null;
-
+  
   Image image = null;
-
-  String nlpResults = null;
-
-  String ocrResult = null;
   Package();
 
   @override
   String toString() {
-    return 'Package[id=$id, recipient=$recipient, location=$location, packageState=$packageState, carrierName=$carrierName, pickedUpAt=$pickedUpAt, createdAt=$createdAt, image=$image, nlpResults=$nlpResults, ocrResult=$ocrResult, ]';
+    return 'Package[id=$id, recipient=$recipient, location=$location, packageState=$packageState, carrierName=$carrierName, pickedUpAt=$pickedUpAt, createdAt=$createdAt, image=$image, ]';
   }
 
   Package.fromJson(Map<String, dynamic> json) {
@@ -70,16 +67,6 @@ class Package {
     } else {
       image = new Image.fromJson(json['image']);
     }
-    if (json['nlp_results'] == null) {
-      nlpResults = null;
-    } else {
-          nlpResults = json['nlp_results'];
-    }
-    if (json['ocr_result'] == null) {
-      ocrResult = null;
-    } else {
-          ocrResult = json['ocr_result'];
-    }
   }
 
   Map<String, dynamic> toJson() {
@@ -94,16 +81,11 @@ class Package {
       json['package_state'] = packageState;
     if (carrierName != null)
       json['carrier_name'] = carrierName;
-    if (pickedUpAt != null)
       json['picked_up_at'] = pickedUpAt == null ? null : pickedUpAt.toUtc().toIso8601String();
     if (createdAt != null)
       json['created_at'] = createdAt == null ? null : createdAt.toUtc().toIso8601String();
     if (image != null)
       json['image'] = image;
-    if (nlpResults != null)
-      json['nlp_results'] = nlpResults;
-    if (ocrResult != null)
-      json['ocr_result'] = ocrResult;
     return json;
   }
 
@@ -119,3 +101,4 @@ class Package {
     return map;
   }
 }
+

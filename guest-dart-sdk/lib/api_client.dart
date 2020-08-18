@@ -101,6 +101,8 @@ class ApiClient {
           return Package.fromJson(value);
         case 'PackageCreateParams':
           return PackageCreateParams.fromJson(value);
+        case 'PackageUpdateParams':
+          return PackageUpdateParams.fromJson(value);
         case 'PaginatedAuditLogsList':
           return PaginatedAuditLogsList.fromJson(value);
         case 'PaginatedEmailTemplatesList':

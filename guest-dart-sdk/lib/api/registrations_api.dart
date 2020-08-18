@@ -2,10 +2,10 @@ part of guest_sdk.api;
 
 
 
-class RegistrationApi {
+class RegistrationsApi {
   final ApiClient apiClient;
 
-  RegistrationApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  RegistrationsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   /// Get a Registration
   ///

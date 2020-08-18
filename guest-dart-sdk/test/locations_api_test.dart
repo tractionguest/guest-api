@@ -7,7 +7,16 @@ void main() {
   var instance = new LocationsApi();
 
   group('tests for LocationsApi', () {
-    // List All Locations
+    // Get the details of a location
+    //
+    // Gets details of a single instance of `Location`.
+    //
+    //Future<Location> getLocation(String locationId) async 
+    test('test getLocation', () async {
+      // TODO
+    });
+
+    // List all Locations
     //
     // Gets a list of all `Location` entities.
     //

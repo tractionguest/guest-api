@@ -21,11 +21,13 @@ void main() {
       // TODO
     });
 
+    // this can be one of the following states: 'processing', 'recipient_matched', 'needs_attention' or 'picked_up'
     // String packageState (default value: null)
     test('to test the property `packageState`', () async {
       // TODO
     });
 
+    // A carrier name that gets detected on the shipping label. i.e. USPS, Purolator, DHL, Canada Post, Royal Mail, etc... 
     // String carrierName (default value: null)
     test('to test the property `carrierName`', () async {
       // TODO
@@ -43,16 +45,6 @@ void main() {
 
     // Image image (default value: null)
     test('to test the property `image`', () async {
-      // TODO
-    });
-
-    // String nlpResults (default value: null)
-    test('to test the property `nlpResults`', () async {
-      // TODO
-    });
-
-    // String ocrResult (default value: null)
-    test('to test the property `ocrResult`', () async {
       // TODO
     });
 

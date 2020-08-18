@@ -7,21 +7,12 @@ void main() {
   var instance = new WatchlistsApi();
 
   group('tests for WatchlistsApi', () {
-    // Create watchlist
+    // Create Watchlist
     //
     // Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log.
     //
     //Future<Watchlist> createWatchlist(WatchlistCreateParams watchlistCreateParams, { String idempotencyKey }) async 
     test('test createWatchlist', () async {
-      // TODO
-    });
-
-    // Create Multiple Watchlists
-    //
-    // Creates a batch of `Watchlist` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.
-    //
-    //Future<BatchJob> createWatchlists({ String idempotencyKey, WatchlistBatchCreateParams watchlistBatchCreateParams }) async 
-    test('test createWatchlists', () async {
       // TODO
     });
 
@@ -43,7 +34,7 @@ void main() {
       // TODO
     });
 
-    // List All Watchlists
+    // List all Watchlists
     //
     // Gets a list of all `Watchlist` entities.
     //
@@ -52,7 +43,7 @@ void main() {
       // TODO
     });
 
-    // Update a watchlist record
+    // Update a Watchlist
     //
     // Update an existing `Watchlist` record. Every operation against this endpoint is recorded in the audit log.
     //

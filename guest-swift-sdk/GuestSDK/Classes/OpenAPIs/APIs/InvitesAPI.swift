@@ -62,6 +62,55 @@ open class InvitesAPI {
     }
 
     /**
+     Create an Invite from a Registration
+     
+     - parameter registrationId: (path)  
+     - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the result
+     */
+    open class func createRegistrationInvite(registrationId: String, idempotencyKey: String? = nil, apiResponseQueue: DispatchQueue = GuestSDKAPI.apiResponseQueue, completion: @escaping ((_ result: Result<InviteDetail, Error>) -> Void)) {
+        createRegistrationInviteWithRequestBuilder(registrationId: registrationId, idempotencyKey: idempotencyKey).execute(apiResponseQueue) { result -> Void in
+            switch result {
+            case let .success(response):
+                completion(.success(response.body!))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    /**
+     Create an Invite from a Registration
+     - POST /registrations/{registration_id}/invites
+     - Creates a new `Invite` from `Registration` data.
+     - :
+       - type: openIdConnect
+       - name: TractionGuestAuth
+     - parameter registrationId: (path)  
+     - parameter idempotencyKey: (header) An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored (optional)
+     - returns: RequestBuilder<InviteDetail> 
+     */
+    open class func createRegistrationInviteWithRequestBuilder(registrationId: String, idempotencyKey: String? = nil) -> RequestBuilder<InviteDetail> {
+        var path = "/registrations/{registration_id}/invites"
+        let registrationIdPreEscape = "\(APIHelper.mapValueToPathItem(registrationId))"
+        let registrationIdPostEscape = registrationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{registration_id}", with: registrationIdPostEscape, options: .literal, range: nil)
+        let URLString = GuestSDKAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+        let nillableHeaders: [String: Any?] = [
+            "Idempotency-Key": idempotencyKey?.encodeToJSON()
+        ]
+        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+
+        let requestBuilder: RequestBuilder<InviteDetail>.Type = GuestSDKAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false, headers: headerParameters)
+    }
+
+    /**
      Deletes an Invite
      
      - parameter inviteId: (path)  

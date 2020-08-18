@@ -5,6 +5,7 @@ All URIs are relative to *https://tractionguest.ca/api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createLocationInvite**](InvitesAPI.md#createlocationinvite) | **POST** /locations/{location_id}/invites | Create an Invite
+[**createRegistrationInvite**](InvitesAPI.md#createregistrationinvite) | **POST** /registrations/{registration_id}/invites | Create an Invite from a Registration
 [**deleteInvite**](InvitesAPI.md#deleteinvite) | **DELETE** /invites/{invite_id} | Deletes an Invite
 [**getInvite**](InvitesAPI.md#getinvite) | **GET** /invites/{invite_id} | Get an Invite
 [**getInvites**](InvitesAPI.md#getinvites) | **GET** /invites | List all Invites
@@ -61,6 +62,58 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createRegistrationInvite**
+```swift
+    open class func createRegistrationInvite(registrationId: String, idempotencyKey: String? = nil, completion: @escaping (_ data: InviteDetail?, _ error: Error?) -> Void)
+```
+
+Create an Invite from a Registration
+
+Creates a new `Invite` from `Registration` data.
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import GuestSDK
+
+let registrationId = "registrationId_example" // String | 
+let idempotencyKey = "idempotencyKey_example" // String | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored (optional)
+
+// Create an Invite from a Registration
+InvitesAPI.createRegistrationInvite(registrationId: registrationId, idempotencyKey: idempotencyKey) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **registrationId** | **String** |  | 
+ **idempotencyKey** | **String** | An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it&#39;s submitted. We store idempotency keys for only 24 hours. Any &#x60;Idempotency-Key&#x60; shorter than 10 characters will be ignored | [optional] 
+
+### Return type
+
+[**InviteDetail**](InviteDetail.md)
+
+### Authorization
+
+[TractionGuestAuth](../README.md#TractionGuestAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

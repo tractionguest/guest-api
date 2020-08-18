@@ -23,10 +23,7 @@ jobs:
       - run:
           name: Lint yaml file
           command: npx @stoplight/spectral lint openapi.yml -- --ruleset=.spectral.yml --fail-severity=warn
-      # Commented out until I can figure out why it fails :/
-      # - run:
-      #     name: Install stoplight CLI
-      #     command: npm i --prefix=$HOME/.local -g @stoplight/cli
+      # Seems to work now, but is moot under their new system :|
       # - run:
       #     name: Publish docs
-      #     command: stoplight publish --token {STOPLIGHT_API_KEY} --url https://stoplight.io/api
+      #     command: npx @stoplight/cli@4 push --ci-token d57d5d93-0ea3-49f5-b87c-3b1b79993ac9 --url https://tractionguest.stoplight.io

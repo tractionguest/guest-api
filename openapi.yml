@@ -3704,7 +3704,7 @@ paths:
                         package_state: picked_up
                         recipient:
                           id: 5
-                          email: tsala@tractionguest.com
+                          email: tsala@example.com
                           first_name: Tatiane
                           last_name: Sala
                           mobile_number: (604)111-1111
@@ -3755,7 +3755,7 @@ paths:
                         package_state: recipient_matched
                         recipient:
                           id: 4
-                          email: vbaldys@tractionguest.com
+                          email: vbaldys@example.com
                           first_name: Veronica
                           last_name: Baldys
                           mobile_number: (604)999-5982

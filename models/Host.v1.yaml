@@ -1,5 +1,5 @@
 title: Host
-description: "The root of the Host type's schema."
+description: A client host assigned to a Signin
 required:
   - id
 type: object

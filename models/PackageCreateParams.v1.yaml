@@ -1,6 +1,6 @@
 title: PackageCreateParams.v1
 type: object
-description: "Root of a PackageCreateParams type's schema. \n[base64_image] string is provided, intented to be an encoded image of a shipping label. The image will be processed to determine the package's intended recipient. If a match is found between the recipient and an existing host, they will subsequently be notified about the arrival of their package, at the [location_id] specified. \n\n"
+description: "A [base64_image] string is provided as an encoded image of a shipping label. The image will be processed to determine the package's intended recipient. If a match is found between the recipient and an existing host, they'll be notified about the arrival of their package at the [location_id] specified."
 x-tags:
   - Packages
 properties:

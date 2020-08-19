@@ -19,3 +19,4 @@ properties:
     type: string
   updated_at:
     type: string
+description: ''

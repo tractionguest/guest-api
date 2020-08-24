@@ -308,13 +308,11 @@ x-examples:
           colour: some text
           last_name: some text
           first_name: some text
-  example-2: {}
 properties:
   id:
     type: integer
     format: int32
   mobile_number:
-    description: ''
     type: string
   signin_watchlist:
     $ref: ./SigninWatchlist.v1.yaml

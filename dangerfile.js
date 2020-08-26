@@ -17,11 +17,6 @@ message(`<a href="${docsLink}" target="_blank">View docs for this page</a> <em>(
 if (wrikeIds.length) {
   const mappedIds = wrikeIds.map(id => wrikeLink(id)).join(', ');
   message(`Associated Wrike Tickets:\n${mappedIds}`);
-} else {
-  warn(
-    `You don't seem to have any wrike tickets for this PR!
-    You need to add your wrike ticket to one of your commits, e.g., \`[#1234] Your commit message\``
-  );
 }
 
 // Version bump reminder

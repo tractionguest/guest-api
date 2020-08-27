@@ -3662,9 +3662,10 @@ paths:
       description: Gets details of a single instance of `Location`.
   /invites/batch_delete:
     post:
-      summary: InvitesBatchDelete
+      summary: Delete Multiple Invites
       tags:
         - Invites
+        - Batches
       responses:
         '202':
           description: Accepted

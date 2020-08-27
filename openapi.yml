@@ -3,16 +3,16 @@ info:
   title: Traction Guest API
   version: 0.13.0
   x-logo:
-    url: "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png"
-    backgroundColor: "#FFFFFF"
-    altText: "Traction Guest"
-    href: "https://tractionguest.com"
+    url: 'https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png'
+    backgroundColor: '#FFFFFF'
+    altText: Traction Guest
+    href: 'https://tractionguest.com'
   description: |
     The Traction Guest API is currently under limited release to select customers as we gather and iterate on feedback.
 
     # Getting Started
     If you are interested in getting early access to the API, please send us an email to [support@tractionguest.com](mailto:support@tractionguest.com).
-    
+
     We will also add you to our Slack channel where you can ask questions and get further help.
 
     # Terms and Conditions
@@ -1786,8 +1786,8 @@ paths:
       summary: List all Invites
       description: Gets a list of all `Invite` entities.
   '/registrations/{registration_id}/invites':
-    summary: "Path used to create an `Invite` from `Registration` data."
-    description: "The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task."
+    summary: Path used to create an `Invite` from `Registration` data.
+    description: The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task.
     post:
       tags:
         - Invites
@@ -3660,6 +3660,26 @@ paths:
           description: The Location does not exist
       operationId: getLocation
       description: Gets details of a single instance of `Location`.
+  /invites/batch_delete:
+    post:
+      summary: InvitesBatchDelete
+      tags:
+        - Invites
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: ./models/BatchJob.v1.yaml
+      operationId: batchDeleteInvites
+      description: 'Queues up a "delete" background task for one or more `Invite` entities.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/DeleteList.v1.yaml
+        description: ''
 components:
   parameters:
     idempotencyKey:
@@ -3705,7 +3725,7 @@ tags:
   - name: Hosts
     description: All endpoints relating to the Host model
   - name: Invites
-    description: 'All endpoints relating to the Invite model'
+    description: All endpoints relating to the Invite model
   - name: Locations
     description: 'All endpoints relating to the Location model, aka. DeviceConfigurations'
   - name: Signins

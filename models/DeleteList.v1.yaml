@@ -1,0 +1,14 @@
+title: DeleteList
+type: object
+x-tags:
+  - Invites
+x-examples:
+  default:
+    delete_ids:
+      - an_id_string
+      - another_id_string
+properties:
+  delete_ids:
+    type: array
+    items:
+      type: string

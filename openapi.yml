@@ -3680,6 +3680,26 @@ paths:
             schema:
               $ref: ./models/DeleteList.v1.yaml
         description: ''
+  '/batches/{batch_id}':
+    parameters:
+      - schema:
+          type: string
+        name: batch_id
+        in: path
+        required: true
+    get:
+      summary: Get a BatchJob
+      tags:
+        - Batches
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/BatchJob.v1.yaml
+      operationId: getBatch
+      description: Retrieve a given `BatchJob` entity.
 components:
   parameters:
     idempotencyKey:

@@ -3701,6 +3701,10 @@ paths:
                 $ref: ./models/BatchJob.v1.yaml
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
       operationId: getBatch
       description: Retrieve a given `BatchJob` entity.
 components:

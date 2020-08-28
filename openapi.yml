@@ -3699,6 +3699,8 @@ paths:
             application/json:
               schema:
                 $ref: ./models/BatchJob.v1.yaml
+        '404':
+          description: Not Found
       operationId: getBatch
       description: Retrieve a given `BatchJob` entity.
 components:

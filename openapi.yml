@@ -146,6 +146,7 @@ paths:
               examples:
                 default:
                   value:
+                    id: 1
                     email: some text
                     first_name: some text
                     last_name: some text
@@ -3419,7 +3420,7 @@ paths:
               examples:
                 default:
                   value:
-                    bid: 123
+                    bid: string
                     created_at: date-string
                     status: string
                     total_records: 12
@@ -3692,7 +3693,7 @@ paths:
                           id: 2
                         carrier_name: Purolator
                         created_at: '2020-08-11T09:30Z'
-                        picked_up_at: '2020-08-11T010:30Z'
+                        picked_up_at: '2020-08-11T10:30Z'
                         image:
                           full_size_url: 'https://i.pravatar.cc/'
                       - id: 71

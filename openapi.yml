@@ -2385,6 +2385,7 @@ paths:
                 default:
                   value:
                     id: 61
+                    mobile_access_enabled: true
                     first_name: some text
                     last_name: some text
                     email: some text

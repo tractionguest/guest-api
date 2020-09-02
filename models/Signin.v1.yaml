@@ -313,7 +313,6 @@ properties:
     type: integer
     format: int32
   mobile_number:
-    description: ''
     type: string
   signin_watchlist:
     $ref: ./SigninWatchlist.v1.yaml

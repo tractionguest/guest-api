@@ -901,10 +901,10 @@ paths:
                     - 96
                     - 2
                   custom_fields:
-                    - format: {}
+                    - format: string
                       field_name: some text
                       field_value: some text
-                    - format: {}
+                    - format: string
                       field_name: some text
                       field_value: some text
                   email_template_id: 53

@@ -912,7 +912,7 @@ paths:
                   first_name: some text
                   notification_triggers:
                     - offset_direction: {}
-                      offset_unit: days
+                      offset_unit: "days"
                       offset_amount: 34
                       offset_origin: {}
                       email_template_id: 63
@@ -920,7 +920,7 @@ paths:
                         - some text
                         - some text
                     - offset_direction: {}
-                      offset_unit: hours
+                      offset_unit: "hours"
                       offset_amount: 12
                       offset_origin: {}
                       email_template_id: 2

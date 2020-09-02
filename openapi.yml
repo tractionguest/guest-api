@@ -3700,7 +3700,7 @@ paths:
                           full_size_url: 'https://i.pravatar.cc/'
                       - id: 71
                         package_state: processing
-                        recipient: object
+                        recipient: null
                         location:
                           name: Burnaby
                           id: 3
@@ -3819,8 +3819,8 @@ paths:
                 example-response:
                   value:
                     id: 70
-                    package_state: PROCESSING
-                    recipient: object
+                    package_state: processing
+                    recipient: null
                     location:
                       name: Default
                       id: 1

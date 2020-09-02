@@ -896,7 +896,7 @@ paths:
                   last_name: some text
                   start_date: '2018-02-10T09:30Z'
                   title: some text
-                  watchlist_colour: {}
+                  watchlist_colour: string
                   host_ids:
                     - 96
                     - 2
@@ -3700,7 +3700,7 @@ paths:
                           full_size_url: 'https://i.pravatar.cc/'
                       - id: 71
                         package_state: processing
-                        recipient: {}
+                        recipient: object
                         location:
                           name: Burnaby
                           id: 3
@@ -3722,7 +3722,7 @@ paths:
                           full_size_url: 'https://i.pravatar.cc/'
                       - id: 73
                         package_state: needs_attention
-                        recipient: {}
+                        recipient: object
                         location:
                           name: Default
                           id: 1

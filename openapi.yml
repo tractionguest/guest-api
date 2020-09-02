@@ -38,6 +38,32 @@ servers:
           - 'http://localhost:3000/api/v3'
         default: 'https://tractionguest.ca/api/v3'
 paths:
+  '/batches/{batch_id}':
+    parameters:
+      - schema:
+          type: string
+        name: batch_id
+        in: path
+        required: true
+    get:
+      summary: Get a BatchJob
+      tags:
+        - Batches
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/BatchJob.v1.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      operationId: getBatch
+      description: Retrieve a given `BatchJob` entity.
   /hosts:
     summary: Path used to manage the list of Hosts.
     description: 'The REST endpoint/path used to list and create zero or more `Host` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.'
@@ -1785,6 +1811,33 @@ paths:
       operationId: getInvites
       summary: List all Invites
       description: Gets a list of all `Invite` entities.
+  /invites/batch_delete:
+    post:
+      summary: Delete Multiple Invites
+      tags:
+        - Invites
+        - Batches
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: ./models/BatchJob.v1.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      operationId: batchDeleteInvites
+      description: 'Queues up a "delete" background task for one or more `Invite` entities.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/IdentifierList.v1.yaml
+        description: ''
   '/registrations/{registration_id}/invites':
     summary: Path used to create an `Invite` from `Registration` data.
     description: The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task.
@@ -3660,59 +3713,6 @@ paths:
           description: The Location does not exist
       operationId: getLocation
       description: Gets details of a single instance of `Location`.
-  /invites/batch_delete:
-    post:
-      summary: Delete Multiple Invites
-      tags:
-        - Invites
-        - Batches
-      responses:
-        '202':
-          description: Accepted
-          content:
-            application/json:
-              schema:
-                $ref: ./models/BatchJob.v1.yaml
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: ./models/ErrorsList.v1.yaml
-      operationId: batchDeleteInvites
-      description: 'Queues up a "delete" background task for one or more `Invite` entities.'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ./models/IdentifierList.v1.yaml
-        description: ''
-  '/batches/{batch_id}':
-    parameters:
-      - schema:
-          type: string
-        name: batch_id
-        in: path
-        required: true
-    get:
-      summary: Get a BatchJob
-      tags:
-        - Batches
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ./models/BatchJob.v1.yaml
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: ./models/ErrorsList.v1.yaml
-      operationId: getBatch
-      description: Retrieve a given `BatchJob` entity.
 components:
   parameters:
     idempotencyKey:

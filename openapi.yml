@@ -912,7 +912,7 @@ paths:
                   first_name: some text
                   notification_triggers:
                     - offset_direction: {}
-                      offset_type: {}
+                      offset_unit: {}
                       offset_amount: 34
                       offset_origin: {}
                       email_template_id: 63
@@ -920,7 +920,7 @@ paths:
                         - some text
                         - some text
                     - offset_direction: {}
-                      offset_type: {}
+                      offset_unit: {}
                       offset_amount: 12
                       offset_origin: {}
                       email_template_id: 2
@@ -2385,6 +2385,7 @@ paths:
                 default:
                   value:
                     id: 61
+                    registration_portal_enabled: true
                     mobile_access_enabled: true
                     first_name: some text
                     last_name: some text
@@ -3699,7 +3700,7 @@ paths:
                           full_size_url: 'https://i.pravatar.cc/'
                       - id: 71
                         package_state: processing
-                        recipient: null
+                        recipient: {}
                         location:
                           name: Burnaby
                           id: 3
@@ -3721,7 +3722,7 @@ paths:
                           full_size_url: 'https://i.pravatar.cc/'
                       - id: 73
                         package_state: needs_attention
-                        recipient: null
+                        recipient: {}
                         location:
                           name: Default
                           id: 1

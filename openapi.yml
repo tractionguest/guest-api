@@ -3695,7 +3695,7 @@ paths:
                           id: 2
                         carrier_name: Purolator
                         created_at: '2020-08-11T09:30Z'
-                        picked_up_at: '2020-08-11T10:30Z'
+                        picked_up_at: date-time
                         image:
                           full_size_url: 'https://i.pravatar.cc/'
                       - id: 71
@@ -3706,7 +3706,7 @@ paths:
                           id: 3
                         carrier_name: null
                         created_at: '2020-08-09T09:30Z'
-                        picked_up_at: null
+                        picked_up_at: date-time
                         image:
                           full_size_url: 'https://i.pravatar.cc/'
                       - id: 72

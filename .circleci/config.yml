@@ -22,7 +22,8 @@ jobs:
           command: yarn danger ci
       - run:
           name: Lint yaml file
-          command: npx @stoplight/spectral lint openapi.yml -- --ruleset=.spectral.yml --fail-severity=warn
+          command: npx @stoplight/spectral lint openapi.yml --ruleset=.spectral.yml --fail-severity=warn --verbose --skip-rule=oas3-valid-oas-content-example
+          # command: docker run --rm -it @stoplight/spectral lint openapi.yml -- --ruleset=.spectral.yml --fail-severity=warn
       # Seems to work now, but is moot under their new system :|
       # - run:
       #     name: Publish docs

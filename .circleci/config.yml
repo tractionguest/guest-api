@@ -17,9 +17,9 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      - run:
-          name: Danger
-          command: yarn danger ci
+      # - run:
+      #     name: Danger
+      #     command: yarn danger ci
       - run:
           name: Lint yaml file
           command: npx @stoplight/spectral lint openapi.yml -- --ruleset=.spectral.yml --fail-severity=warn

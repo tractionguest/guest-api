@@ -3685,7 +3685,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ./models/DeleteList.v1.yaml
+              $ref: ./models/IdentifierList.v1.yaml
         description: ''
   '/batches/{batch_id}':
     parameters:

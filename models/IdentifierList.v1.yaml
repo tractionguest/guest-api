@@ -1,14 +1,14 @@
-title: DeleteList
+title: IdentifierList
 type: object
 x-tags:
   - Invites
 x-examples:
   default:
-    delete_ids:
+    ids:
       - an_id_string
       - another_id_string
 properties:
-  delete_ids:
+  ids:
     type: array
     items:
       type: string

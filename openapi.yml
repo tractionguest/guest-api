@@ -3712,7 +3712,7 @@ paths:
                       #     full_size_url: 'https://i.pravatar.cc/'
                       - id: 72
                         package_state: processing
-                        recipient: null
+                        recipient: object
                         location:
                           name: Vancouver
                           id: 2

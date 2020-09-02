@@ -28,6 +28,7 @@ jobs:
       - run:
           name: Danger
           command: yarn danger ci
+      - lint
       - run:
           name: Lint yaml file with npx
           command: npx @stoplight/spectral lint openapi.yml --ruleset=.spectral.yml --fail-severity=warn --verbose --skip-rule=oas3-valid-oas-content-example

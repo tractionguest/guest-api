@@ -892,7 +892,7 @@ paths:
                 value:
                   company: some text
                   email: some text
-                  end_date: '2018-02-10T09:30Z'
+                  end_date: '2020-07-17T01:59:59.999Z'
                   last_name: some text
                   start_date: '2020-07-17T01:59:59.999Z'
                   title: some text
@@ -943,12 +943,12 @@ paths:
                   value:
                     id: 93
                     company: some text
-                    created_at: '2018-02-10T09:30Z'
+                    created_at: '2020-07-17T01:59:59.999Z'
                     email: some text
-                    end_date: '2018-02-10T09:30Z'
+                    end_date: '2020-07-17T01:59:59.999Z'
                     first_name: some text
                     last_name: some text
-                    start_date: '2018-02-10T09:30Z'
+                    start_date: '2020-07-17T01:59:59.999Z'
                     hosts:
                       - id: 23
                         email: some text
@@ -1445,7 +1445,7 @@ paths:
                               colour: some text
                               last_name: some text
                               first_name: some text
-                        end_date: '2018-02-10T09:30Z'
+                        end_date: '2020-07-17T01:59:59.999Z'
                         email: some text
                         mobile_number: some text
                       - id: 0
@@ -1757,7 +1757,7 @@ paths:
                               colour: some text
                               last_name: some text
                               first_name: some text
-                        end_date: '2018-02-10T09:30Z'
+                        end_date: '2020-07-17T01:59:59.999Z'
                         email: some text
                         mobile_number: some text
           description: Successful response - returns an array of `Invite` entities.
@@ -1805,12 +1805,12 @@ paths:
                   value:
                     id: 93
                     company: some text
-                    created_at: '2018-02-10T09:30Z'
+                    created_at: '2020-07-17T01:59:59.999Z'
                     email: some text
-                    end_date: '2018-02-10T09:30Z'
+                    end_date: '2020-07-17T01:59:59.999Z'
                     first_name: some text
                     last_name: some text
-                    start_date: '2018-02-10T09:30Z'
+                    start_date: '2020-07-17T01:59:59.999Z'
                     hosts:
                       - id: 23
                         email: some text
@@ -2458,12 +2458,12 @@ paths:
                   value:
                     id: 2
                     company: some text
-                    created_at: '2018-02-10T09:30Z'
+                    created_at: '2020-07-17T01:59:59.999Z'
                     email: some text
-                    end_date: '2018-02-10T09:30Z'
+                    end_date: '2020-07-17T01:59:59.999Z'
                     first_name: some text
                     last_name: some text
-                    start_date: '2018-02-10T09:30Z'
+                    start_date: '2020-07-17T01:59:59.999Z'
                     hosts:
                       - id: 68
                         email: some text
@@ -2579,12 +2579,12 @@ paths:
                   value:
                     id: 54
                     company: some text
-                    created_at: '2018-02-10T09:30Z'
+                    created_at: '2020-07-17T01:59:59.999Z'
                     email: some text
-                    end_date: '2018-02-10T09:30Z'
+                    end_date: '2020-07-17T01:59:59.999Z'
                     first_name: some text
                     last_name: some text
-                    start_date: '2018-02-10T09:30Z'
+                    start_date: '2020-07-17T01:59:59.999Z'
                     hosts:
                       - id: 64
                         email: some text
@@ -3330,7 +3330,7 @@ paths:
                         internal_colours:
                           - some text
                           - some text
-                      end_date: '2018-02-10T09:30Z'
+                      end_date: '2020-07-17T01:59:59.999Z'
                       email: some text
                       mobile_number: some text
                     visitor:
@@ -3694,8 +3694,8 @@ paths:
                           name: Vancouver
                           id: 2
                         carrier_name: Purolator
-                        created_at: '2020-08-11T09:30Z'
-                        picked_up_at: '2020-08-11T09:30Z'
+                        created_at: '2020-08-11T01:59:59.999Z'
+                        picked_up_at: '2020-08-17T01:59:59.999Z'
                         image:
                           full_size_url: 'https://i.pravatar.cc/'
                       - id: 71
@@ -3705,7 +3705,7 @@ paths:
                           name: Burnaby
                           id: 3
                         carrier_name: null
-                        created_at: '2020-08-09T09:30Z'
+                        created_at: '2020-07-17T01:59:59.999Z'
                         picked_up_at: date-time
                         image:
                           full_size_url: 'https://i.pravatar.cc/'
@@ -3716,7 +3716,7 @@ paths:
                           name: Vancouver
                           id: 2
                         carrier_name: null
-                        created_at: '2020-08-08T09:30Z'
+                        created_at: '2020-08-19T01:59:59.999Z'
                         picked_up_at: null
                         image:
                           full_size_url: 'https://i.pravatar.cc/'
@@ -3727,7 +3727,7 @@ paths:
                           name: Default
                           id: 1
                         carrier_name: null
-                        created_at: '2020-08-0709:30Z'
+                        created_at: '2020-09-18T01:59:59.999Z'
                         picked_up_at: null
                         image:
                           full_size_url: 'https://i.pravatar.cc/'
@@ -3745,7 +3745,7 @@ paths:
                           name: Vancouver
                           id: 2
                         carrier_name: Canada Post
-                        created_at: '2020-08-07T09:30Z'
+                        created_at: '2020-07-18T01:59:59.999Z'
                         picked_up_at: null
                         image:
                           full_size_url: 'https://i.pravatar.cc/'

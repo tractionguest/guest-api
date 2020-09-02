@@ -16,7 +16,7 @@ rules:
     message: "You can only use the application/json format"
     type: style
     given: "$..content.*~"
-    severity: warn
+    severity: error
     then:
       function: pattern
       functionOptions:

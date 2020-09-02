@@ -7,11 +7,11 @@ void main() {
   var instance = new EmailTemplatesApi();
 
   group('tests for EmailTemplatesApi', () {
-    // List All EmailTemplates
+    // List all EmailTemplates
     //
     // Gets a list of all `EmailTemplate` entities.
     //
-    //Future<PaginatedEmailTemplatesList> getEmailTemplates() async 
+    //Future<PaginatedEmailTemplatesList> getEmailTemplates({ int limit, int offset, String include }) async 
     test('test getEmailTemplates', () async {
       // TODO
     });

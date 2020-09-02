@@ -16,6 +16,18 @@ void main() {
       // TODO
     });
 
+    // Maximum capacity of a location
+    // int maxCapacity (default value: null)
+    test('to test the property `maxCapacity`', () async {
+      // TODO
+    });
+
+    //  IANA timezone designations
+    // String timezone (default value: null)
+    test('to test the property `timezone`', () async {
+      // TODO
+    });
+
 
   });
 

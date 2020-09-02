@@ -16,7 +16,7 @@ void main() {
       // TODO
     });
 
-    // List All AuditLogs
+    // List all AuditLogs
     //
     // Gets a list of all `AuditLog` entities.
     //

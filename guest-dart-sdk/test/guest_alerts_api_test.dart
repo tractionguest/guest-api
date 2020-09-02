@@ -7,7 +7,7 @@ void main() {
   var instance = new GuestAlertsApi();
 
   group('tests for GuestAlertsApi', () {
-    // Create Guest Alert
+    // Create GuestAlert
     //
     // Enqueues guest alerts via specified channels
     //

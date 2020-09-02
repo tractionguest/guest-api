@@ -11,53 +11,35 @@ void main() {
       // TODO
     });
 
-    // String company (default value: null)
-    test('to test the property `company`', () async {
+    // Registration registration (default value: null)
+    test('to test the property `registration`', () async {
       // TODO
     });
 
-    // DateTime createdAt (default value: null)
-    test('to test the property `createdAt`', () async {
+    // Phone number
+    // String mobileNumber (default value: null)
+    test('to test the property `mobileNumber`', () async {
       // TODO
     });
 
-    // String email (default value: null)
-    test('to test the property `email`', () async {
+    // EmailTemplate emailTemplate (default value: null)
+    test('to test the property `emailTemplate`', () async {
       // TODO
     });
 
-    // DateTime endDate (default value: null)
-    test('to test the property `endDate`', () async {
+    // InviteWatchlist inviteWatchlist (default value: null)
+    test('to test the property `inviteWatchlist`', () async {
       // TODO
     });
 
-    // String firstName (default value: null)
-    test('to test the property `firstName`', () async {
+    // List of scheduled notifications for an invite
+    // List<NotificationTrigger> notificationTriggers (default value: [])
+    test('to test the property `notificationTriggers`', () async {
       // TODO
     });
 
-    // String lastName (default value: null)
-    test('to test the property `lastName`', () async {
-      // TODO
-    });
-
-    // DateTime startDate (default value: null)
-    test('to test the property `startDate`', () async {
-      // TODO
-    });
-
-    // List<Host> hosts (default value: [])
-    test('to test the property `hosts`', () async {
-      // TODO
-    });
-
-    // Location location (default value: null)
-    test('to test the property `location`', () async {
-      // TODO
-    });
-
-    // Watchlist watchlist (default value: null)
-    test('to test the property `watchlist`', () async {
+    // List<CustomField> customFields (default value: [])
+    test('to test the property `customFields`', () async {
       // TODO
     });
 
@@ -66,13 +48,53 @@ void main() {
       // TODO
     });
 
-    // String country (default value: null)
-    test('to test the property `country`', () async {
+    // Location location (default value: null)
+    test('to test the property `location`', () async {
       // TODO
     });
 
-    // EmailTemplate template (default value: null)
-    test('to test the property `template`', () async {
+    // List<Host> hosts (default value: [])
+    test('to test the property `hosts`', () async {
+      // TODO
+    });
+
+    // DateTime startDate (default value: null)
+    test('to test the property `startDate`', () async {
+      // TODO
+    });
+
+    // String lastName (default value: null)
+    test('to test the property `lastName`', () async {
+      // TODO
+    });
+
+    // String firstName (default value: null)
+    test('to test the property `firstName`', () async {
+      // TODO
+    });
+
+    // DateTime endDate (default value: null)
+    test('to test the property `endDate`', () async {
+      // TODO
+    });
+
+    // String email (default value: null)
+    test('to test the property `email`', () async {
+      // TODO
+    });
+
+    // DateTime createdAt (default value: null)
+    test('to test the property `createdAt`', () async {
+      // TODO
+    });
+
+    // String company (default value: null)
+    test('to test the property `company`', () async {
+      // TODO
+    });
+
+    // GroupVisit groupVisit (default value: null)
+    test('to test the property `groupVisit`', () async {
       // TODO
     });
 

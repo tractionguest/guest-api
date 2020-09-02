@@ -77,6 +77,8 @@ class ApiClient {
           return HostBatchCreateParams.fromJson(value);
         case 'HostCreateParams':
           return HostCreateParams.fromJson(value);
+        case 'Image':
+          return Image.fromJson(value);
         case 'InternalWatchlistResult':
           return InternalWatchlistResult.fromJson(value);
         case 'Invite':
@@ -95,6 +97,12 @@ class ApiClient {
           return NotificationTrigger.fromJson(value);
         case 'NotificationTriggerCreateParams':
           return NotificationTriggerCreateParams.fromJson(value);
+        case 'Package':
+          return Package.fromJson(value);
+        case 'PackageCreateParams':
+          return PackageCreateParams.fromJson(value);
+        case 'PackageUpdateParams':
+          return PackageUpdateParams.fromJson(value);
         case 'PaginatedAuditLogsList':
           return PaginatedAuditLogsList.fromJson(value);
         case 'PaginatedEmailTemplatesList':
@@ -105,6 +113,8 @@ class ApiClient {
           return PaginatedInvitesList.fromJson(value);
         case 'PaginatedLocationsList':
           return PaginatedLocationsList.fromJson(value);
+        case 'PaginatedPackagesList':
+          return PaginatedPackagesList.fromJson(value);
         case 'PaginatedRegistrationsList':
           return PaginatedRegistrationsList.fromJson(value);
         case 'PaginatedSigninsList':

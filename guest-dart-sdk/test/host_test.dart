@@ -26,13 +26,19 @@ void main() {
       // TODO
     });
 
-    // String mobile (default value: null)
-    test('to test the property `mobile`', () async {
+    // String profilePicUrl (default value: null)
+    test('to test the property `profilePicUrl`', () async {
       // TODO
     });
 
-    // String profilePicUrl (default value: null)
-    test('to test the property `profilePicUrl`', () async {
+    // 
+    // String department (default value: null)
+    test('to test the property `department`', () async {
+      // TODO
+    });
+
+    // String mobileNumber (default value: null)
+    test('to test the property `mobileNumber`', () async {
       // TODO
     });
 

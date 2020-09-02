@@ -6,13 +6,13 @@ void main() {
   var instance = new Pet();
 
   group('test PaginatedEmailTemplatesList', () {
-    // List<EmailTemplate> emailTemplates (default value: [])
-    test('to test the property `emailTemplates`', () async {
+    // Pagination pagination (default value: null)
+    test('to test the property `pagination`', () async {
       // TODO
     });
 
-    // Pagination pagination (default value: null)
-    test('to test the property `pagination`', () async {
+    // List<EmailTemplate> emailTemplates (default value: [])
+    test('to test the property `emailTemplates`', () async {
       // TODO
     });
 

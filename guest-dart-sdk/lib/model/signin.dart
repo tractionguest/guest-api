@@ -3,7 +3,7 @@ part of guest_sdk.api;
 class Signin {
   
   int id = null;
-  /*  */
+  
   String mobileNumber = null;
   
   SigninWatchlist signinWatchlist = null;

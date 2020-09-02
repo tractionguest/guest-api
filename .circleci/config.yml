@@ -37,10 +37,8 @@ jobs:
           name: Install Dependencies
           command: |
             sudo apt update
-            sudo apt-get install python-setuptools python-dev build-essential
-            sudo python /usr/lib/python2.7/dist-packages/easy_install.py pip
-            sudo easy_install pip
-            pip install shyaml --user
+            sudo apt install python3-pip
+            pip3 install shyaml --user
             source ./build-scripts/prepare_environment.sh
             npm install -g redoc-cli
             npm install speccy -g

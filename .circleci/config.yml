@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Lint Openapi Spec with docker
-          command: spectral openapi.yml --ruleset=.spectral.yml --fail-severity=warn --verbose
+          command: spectral lint openapi.yml --ruleset=.spectral.yml --fail-severity=warn --verbose
   build:
     docker:
       - image: circleci/node:12
@@ -28,13 +28,6 @@ jobs:
       - run:
           name: Danger
           command: yarn danger ci
-      - run:
-          name: Lint yaml file with npx
-          command: npx @stoplight/spectral lint openapi.yml --ruleset=.spectral.yml --fail-severity=warn --verbose --skip-rule=oas3-valid-oas-content-example
-      # Seems to work now, but is moot under their new system :|
-      # - run:
-      #     name: Publish docs
-      #     command: npx @stoplight/cli@4 push --ci-token d57d5d93-0ea3-49f5-b87c-3b1b79993ac9 --url https://tractionguest.stoplight.io
 workflows:
   version: 2
   build_and_lint:

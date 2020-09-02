@@ -60,41 +60,32 @@ jobs:
             rm -rf guest-*-sdk
             rm -rf docs/index.html
       - run:
-          name: Clone existing SDKs
+          name: Build & deplpoy SDKs
           command: |
             mv .git .disabled_git
             ./build-scripts/clone_sdk.sh guest-dart-sdk
+            ./build-scripts/dart.sh
+            ./build-scripts/git.sh guest-dart-sdk
+
             ./build-scripts/clone_sdk.sh guest-typescript-sdk
+            ./build-scripts/typescript-angular.sh
+            ./build-scripts/git.sh guest-typescript-sdk
+
             ./build-scripts/clone_sdk.sh guest-swift-sdk
+            ./build-scripts/swift.sh
+            ./build-scripts/git.sh guest-swift-sdk
+            
             ./build-scripts/clone_sdk.sh guest-objc-sdk
+            ./build-scripts/objc.sh
+            ./build-scripts/git.sh guest-objc-sdk
+
             ./build-scripts/clone_sdk.sh guest-android-sdk
-      - run:
-          name: Build Dart
-          command: ./build-scripts/dart.sh
-      - run:
-          name: Build TypeScript
-          command: ./build-scripts/typescript-angular.sh
-      - run:
-          name: Build Swift
-          command: ./build-scripts/swift.sh
-      - run:
-          name: Build ObjectiveC
-          command: ./build-scripts/objc.sh
-      - run:
-          name: Build Android
-          command: ./build-scripts/android.sh
+            ./build-scripts/android.sh
+            ./build-scripts/git.sh guest-android-sdk
+            mv .disabled_git .git
       - run:
           name: Build documentation HTML
           command: ./build-scripts/redoc.sh
-      - run:
-          name: Deplpoy SDKs
-          command: |
-            ./build-scripts/git.sh guest-dart-sdk
-            ./build-scripts/git.sh guest-typescript-sdk
-            ./build-scripts/git.sh guest-swift-sdk
-            ./build-scripts/git.sh guest-objc-sdk
-            ./build-scripts/git.sh guest-android-sdk
-            mv .disabled_git .git
       - run:
           name: Deploy
           command: ./build-scripts/git.sh .

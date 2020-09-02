@@ -896,7 +896,7 @@ paths:
                   last_name: some text
                   start_date: '2018-02-10T09:30Z'
                   title: some text
-                  watchlist_colour: string
+                  watchlist_colour: ORANGE
                   host_ids:
                     - 96
                     - 2

@@ -3,16 +3,16 @@ info:
   title: Traction Guest API
   version: 0.13.0
   x-logo:
-    url: "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png"
-    backgroundColor: "#FFFFFF"
-    altText: "Traction Guest"
-    href: "https://tractionguest.com"
+    url: 'https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png'
+    backgroundColor: '#FFFFFF'
+    altText: Traction Guest
+    href: 'https://tractionguest.com'
   description: |
     The Traction Guest API is currently under limited release to select customers as we gather and iterate on feedback.
 
     # Getting Started
     If you are interested in getting early access to the API, please send us an email to [support@tractionguest.com](mailto:support@tractionguest.com).
-    
+
     We will also add you to our Slack channel where you can ask questions and get further help.
 
     # Terms and Conditions
@@ -912,17 +912,17 @@ paths:
                   first_name: some text
                   notification_triggers:
                     - offset_direction: BEFORE
-                      offset_unit: "days"
+                      offset_unit: days
                       offset_amount: 34
-                      offset_origin: "START"
+                      offset_origin: START
                       email_template_id: 63
                       notification_groups:
                         - some text
                         - some text
                     - offset_direction: AFTER
-                      offset_unit: "hours"
+                      offset_unit: hours
                       offset_amount: 12
-                      offset_origin: "END"
+                      offset_origin: END
                       email_template_id: 2
                       notification_groups:
                         - some text
@@ -1787,8 +1787,8 @@ paths:
       summary: List all Invites
       description: Gets a list of all `Invite` entities.
   '/registrations/{registration_id}/invites':
-    summary: "Path used to create an `Invite` from `Registration` data."
-    description: "The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task."
+    summary: Path used to create an `Invite` from `Registration` data.
+    description: The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task.
     post:
       tags:
         - Invites
@@ -3698,40 +3698,29 @@ paths:
                         picked_up_at: '2020-08-17T01:59:59.999Z'
                         image:
                           full_size_url: 'https://i.pravatar.cc/'
-                      # TODO: allow examples to have objects with null values
-                      # - id: 71
+                      # TODO: allow examples to be nullable
+                      # - id: 72
                       #   package_state: processing
                       #   recipient: null
                       #   location:
-                      #     name: Burnaby
-                      #     id: 3
+                      #     name: Vancouver
+                      #     id: 2
                       #   carrier_name: null
-                      #   created_at: '2020-07-17T01:59:59.999Z'
-                      #   picked_up_at: date-time
+                      #   created_at: '2020-08-19T01:59:59.999Z'
+                      #   picked_up_at: null
                       #   image:
                       #     full_size_url: 'https://i.pravatar.cc/'
-                      - id: 72
-                        package_state: processing
-                        recipient: object
-                        location:
-                          name: Vancouver
-                          id: 2
-                        carrier_name: null
-                        created_at: '2020-08-19T01:59:59.999Z'
-                        picked_up_at: null
-                        image:
-                          full_size_url: 'https://i.pravatar.cc/'
-                      - id: 73
-                        package_state: needs_attention
-                        recipient: object
-                        location:
-                          name: Default
-                          id: 1
-                        carrier_name: null
-                        created_at: '2020-09-18T01:59:59.999Z'
-                        picked_up_at: null
-                        image:
-                          full_size_url: 'https://i.pravatar.cc/'
+                      # - id: 73
+                      #   package_state: needs_attention
+                      #   recipient: null
+                      #   location:
+                      #     name: Default
+                      #     id: 1
+                      #   carrier_name: null
+                      #   created_at: '2020-09-18T01:59:59.999Z'
+                      #   picked_up_at: null
+                      #   image:
+                      #     full_size_url: 'https://i.pravatar.cc/'
                       - id: 74
                         package_state: recipient_matched
                         recipient:
@@ -3816,20 +3805,8 @@ paths:
             application/json:
               schema:
                 $ref: ./models/Package.v1.yaml
-              examples:
-                example-response:
-                  value:
-                    id: 70
-                    package_state: processing
-                    recipient: object
-                    location:
-                      name: Default
-                      id: 1
-                    carrier_name: null
-                    created_at: '2018-02-10T09:30Z'
-                    picked_up_at: null
-                    image_url: some text
-        '4XX':
+              examples: {}
+        4XX:
           description: ''
           content:
             application/json:
@@ -3977,7 +3954,7 @@ tags:
   - name: Hosts
     description: All endpoints relating to the Host model
   - name: Invites
-    description: 'All endpoints relating to the Invite model'
+    description: All endpoints relating to the Invite model
   - name: Locations
     description: 'All endpoints relating to the Location model, aka. DeviceConfigurations'
   - name: Packages

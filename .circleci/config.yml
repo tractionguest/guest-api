@@ -41,8 +41,8 @@ jobs:
             sudo apt install python3-pip
             pip3 install shyaml --user
             source ./build-scripts/prepare_environment.sh
-            npm install -g redoc-cli
-            npm install speccy -g
+            sudo npm install -g redoc-cli
+            sudo npm install speccy -g
       - add_ssh_keys:
           fingerprints:
             - "bc:f2:95:a1:42:cb:da:32:dd:2d:fe:5c:db:4a:f6:52"

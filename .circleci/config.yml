@@ -33,6 +33,7 @@ jobs:
           command: |
             git config --global user.email "builds@circleci.com"
             git config --global user.name "CircleCI"
+      - checkout
       - run:
           name: Install Dependencies
           command: |
@@ -42,7 +43,6 @@ jobs:
             source ./build-scripts/prepare_environment.sh
             npm install -g redoc-cli
             npm install speccy -g
-      - checkout
       - add_ssh_keys:
           fingerprints:
             - "bc:f2:95:a1:42:cb:da:32:dd:2d:fe:5c:db:4a:f6:52"

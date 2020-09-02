@@ -3695,7 +3695,7 @@ paths:
                           id: 2
                         carrier_name: Purolator
                         created_at: '2020-08-11T09:30Z'
-                        picked_up_at: date-time
+                        picked_up_at: '2020-08-11T09:30Z'
                         image:
                           full_size_url: 'https://i.pravatar.cc/'
                       - id: 71
@@ -3820,7 +3820,7 @@ paths:
                   value:
                     id: 70
                     package_state: PROCESSING
-                    recipient: null
+                    recipient: object
                     location:
                       name: Default
                       id: 1

@@ -914,7 +914,7 @@ paths:
                     - offset_direction: {}
                       offset_unit: "days"
                       offset_amount: 34
-                      offset_origin: {}
+                      offset_origin: "start"
                       email_template_id: 63
                       notification_groups:
                         - some text
@@ -922,7 +922,7 @@ paths:
                     - offset_direction: {}
                       offset_unit: "hours"
                       offset_amount: 12
-                      offset_origin: {}
+                      offset_origin: "end"
                       email_template_id: 2
                       notification_groups:
                         - some text

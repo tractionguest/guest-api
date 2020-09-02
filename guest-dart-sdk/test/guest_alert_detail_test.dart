@@ -6,7 +6,7 @@ void main() {
   var instance = new Pet();
 
   group('test GuestAlertDetail', () {
-    // pending, success, partial success, or failure  
+    // pending, success, partial success, or failure 
     // String deliveryStatus (default value: null)
     test('to test the property `deliveryStatus`', () async {
       // TODO
@@ -30,6 +30,7 @@ void main() {
       // TODO
     });
 
+    // 
     // String message (default value: null)
     test('to test the property `message`', () async {
       // TODO

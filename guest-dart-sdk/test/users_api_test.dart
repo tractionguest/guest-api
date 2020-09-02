@@ -11,7 +11,7 @@ void main() {
     //
     // Gets the details of a single instance of the current `User`.
     //
-    //Future<User> getCurrentUser() async 
+    //Future<User> getCurrentUser(String userId, { String include }) async 
     test('test getCurrentUser', () async {
       // TODO
     });

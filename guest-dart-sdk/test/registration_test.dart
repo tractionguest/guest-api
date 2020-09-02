@@ -12,27 +12,13 @@ void main() {
       // TODO
     });
 
-    // Datetime when registration was created
-    // DateTime createdAt (default value: null)
-    test('to test the property `createdAt`', () async {
+    // Visitor visitor (default value: null)
+    test('to test the property `visitor`', () async {
       // TODO
     });
 
-    // Guest's name
-    // String name (default value: null)
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
-    // E-mail
-    // String email (default value: null)
-    test('to test the property `email`', () async {
-      // TODO
-    });
-
-    // Company's name
-    // String company (default value: null)
-    test('to test the property `company`', () async {
+    // Invite invite (default value: null)
+    test('to test the property `invite`', () async {
       // TODO
     });
 
@@ -42,19 +28,32 @@ void main() {
       // TODO
     });
 
-    // Response given by the guest
-    // List<GuestResponse> guestReponses (default value: [])
-    test('to test the property `guestReponses`', () async {
+    // Company's name
+    // String company (default value: null)
+    test('to test the property `company`', () async {
       // TODO
     });
 
-    // Invite invite (default value: null)
-    test('to test the property `invite`', () async {
+    // E-mail
+    // String email (default value: null)
+    test('to test the property `email`', () async {
       // TODO
     });
 
-    // Visitor visitor (default value: null)
-    test('to test the property `visitor`', () async {
+    // Guest's name
+    // String name (default value: null)
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // Datetime when registration was created
+    // DateTime createdAt (default value: null)
+    test('to test the property `createdAt`', () async {
+      // TODO
+    });
+
+    // Signin signin (default value: null)
+    test('to test the property `signin`', () async {
       // TODO
     });
 

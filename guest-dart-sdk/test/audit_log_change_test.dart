@@ -25,7 +25,7 @@ void main() {
     });
 
     // The format type of the field
-    // String format (default value: FormatEnum.null_)
+    // String format (default value: null)
     test('to test the property `format`', () async {
       // TODO
     });

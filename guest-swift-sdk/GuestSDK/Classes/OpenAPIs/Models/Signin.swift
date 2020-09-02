@@ -12,7 +12,6 @@ public struct Signin: Codable {
 
 
     public var id: Int
-    /**  */
     public var mobileNumber: String?
     public var signinWatchlist: SigninWatchlist?
     public var hosts: [Host]

@@ -100,8 +100,13 @@ Class | Method | HTTP request | Description
 *InvitesApi* | [**updateInvite**](docs/InvitesApi.md#updateInvite) | **PUT** /invites/{invite_id} | Update an Invite
 *LocationsApi* | [**getLocation**](docs/LocationsApi.md#getLocation) | **GET** /locations/{location_id} | Get the details of a location
 *LocationsApi* | [**getLocations**](docs/LocationsApi.md#getLocations) | **GET** /locations | List all Locations
-*RegistrationApi* | [**getRegistration**](docs/RegistrationApi.md#getRegistration) | **GET** /registrations/{registration_id} | Get a Registration
-*RegistrationApi* | [**getRegistrations**](docs/RegistrationApi.md#getRegistrations) | **GET** /registrations | List all Registrations
+*PackagesApi* | [**createPackage**](docs/PackagesApi.md#createPackage) | **POST** /packages | Create package
+*PackagesApi* | [**deletePackage**](docs/PackagesApi.md#deletePackage) | **DELETE** /packages/{package_id} | 
+*PackagesApi* | [**getPackage**](docs/PackagesApi.md#getPackage) | **GET** /packages/{package_id} | Get Package
+*PackagesApi* | [**getPackages**](docs/PackagesApi.md#getPackages) | **GET** /packages | Get packages
+*PackagesApi* | [**updatePackage**](docs/PackagesApi.md#updatePackage) | **PUT** /packages/{package_id} | Update Package
+*RegistrationsApi* | [**getRegistration**](docs/RegistrationsApi.md#getRegistration) | **GET** /registrations/{registration_id} | Get a Registration
+*RegistrationsApi* | [**getRegistrations**](docs/RegistrationsApi.md#getRegistrations) | **GET** /registrations | List all Registrations
 *SigninsApi* | [**createSignin**](docs/SigninsApi.md#createSignin) | **POST** /signins | Create Signin
 *SigninsApi* | [**getSignin**](docs/SigninsApi.md#getSignin) | **GET** /signins/{signin_id} | Get a Signin
 *SigninsApi* | [**getSignins**](docs/SigninsApi.md#getSignins) | **GET** /signins | List all Signins
@@ -136,6 +141,7 @@ Class | Method | HTTP request | Description
  - [Host](docs/Host.md)
  - [HostBatchCreateParams](docs/HostBatchCreateParams.md)
  - [HostCreateParams](docs/HostCreateParams.md)
+ - [Image](docs/Image.md)
  - [InternalWatchlistResult](docs/InternalWatchlistResult.md)
  - [Invite](docs/Invite.md)
  - [InviteCreateParams](docs/InviteCreateParams.md)
@@ -143,13 +149,17 @@ Class | Method | HTTP request | Description
  - [InviteUpdateParams](docs/InviteUpdateParams.md)
  - [InviteWatchlist](docs/InviteWatchlist.md)
  - [Location](docs/Location.md)
+ - [ModelPackage](docs/ModelPackage.md)
  - [NotificationTrigger](docs/NotificationTrigger.md)
  - [NotificationTriggerCreateParams](docs/NotificationTriggerCreateParams.md)
+ - [PackageCreateParams](docs/PackageCreateParams.md)
+ - [PackageUpdateParams](docs/PackageUpdateParams.md)
  - [PaginatedAuditLogsList](docs/PaginatedAuditLogsList.md)
  - [PaginatedEmailTemplatesList](docs/PaginatedEmailTemplatesList.md)
  - [PaginatedHostsList](docs/PaginatedHostsList.md)
  - [PaginatedInvitesList](docs/PaginatedInvitesList.md)
  - [PaginatedLocationsList](docs/PaginatedLocationsList.md)
+ - [PaginatedPackagesList](docs/PaginatedPackagesList.md)
  - [PaginatedRegistrationsList](docs/PaginatedRegistrationsList.md)
  - [PaginatedSigninsList](docs/PaginatedSigninsList.md)
  - [PaginatedWatchlistList](docs/PaginatedWatchlistList.md)

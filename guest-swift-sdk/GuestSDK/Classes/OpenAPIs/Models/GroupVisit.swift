@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+/**  */
 public struct GroupVisit: Codable { 
 
 

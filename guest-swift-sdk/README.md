@@ -1,44 +1,21 @@
 # Swift5 API client for GuestSDK
 
-The Traction Guest API is currently in **closed beta**.
-We're still building, testing, and fixing bugs.
+The Traction Guest API is currently under limited release to select customers as we gather and iterate on feedback.
 
-If you're interested in helping us get to version 1.0.0, contact your CS team representative.
-Only paid accounts are elligible.
+# Getting Started
+If you are interested in getting early access to the API, please send us an email to [support@tractionguest.com](mailto:support@tractionguest.com).
 
-# Slack
+We will also add you to our Slack channel where you can ask questions and get further help.
 
-Do you have Slack?
-Want faster answers to Traction Guest API questions?
-
-Ask to be added to the Traction Guest API Slack channel!
-
-Talk to your CS team representative, or send an email to the API support email above, and we'll add you.
+# Terms and Conditions
+Please visit: [https://tractionguest.com/tos/api/](https://tractionguest.com/tos/api/)
 
 # Versioning
-
 This API follows [semantic versioning](https://semver.org/), which follows the `Major`.`Minor`.`Patch` format.
-In short:
 
 * The `Major` number increments when potentially incompatible changes are made.
 * The `Minor` number increments when backwards-compatible additions are made.
 * The `Patch` number increments when backwards-compatible bug-fixes are made.
-
-So, once the API is out of closed beta, and has reached version 1.0.0, some things may change.
-
-**However**, the developers at Traction Guest strive to keep things running smoothly for our clients.
-We plan to **deprecate and warn** before making any potentially breaking changes;
-you may receive messages that follow the format
-\"this is deprecated, and will be removed in version X.X.X, which is scheduled for release on or after 20XX-01-01.\"
-Please note that the deprecation message format and content may change.
-
-At this time, we are not planning to make older or 'legacy' versions of the API available, going forward.
-
-# Getting Started
-
-Would you like your team to be a part of closed beta testing?
-Talk to your CS team representative.
-We'll walk you through the process of enabling API access and provisioning your account.
 
 
 ## Overview
@@ -82,8 +59,13 @@ Class | Method | HTTP request | Description
 *InvitesAPI* | [**updateInvite**](docs/InvitesAPI.md#updateinvite) | **PUT** /invites/{invite_id} | Update an Invite
 *LocationsAPI* | [**getLocation**](docs/LocationsAPI.md#getlocation) | **GET** /locations/{location_id} | Get the details of a location
 *LocationsAPI* | [**getLocations**](docs/LocationsAPI.md#getlocations) | **GET** /locations | List all Locations
-*RegistrationAPI* | [**getRegistration**](docs/RegistrationAPI.md#getregistration) | **GET** /registrations/{registration_id} | Get a Registration
-*RegistrationAPI* | [**getRegistrations**](docs/RegistrationAPI.md#getregistrations) | **GET** /registrations | List all Registrations
+*PackagesAPI* | [**createPackage**](docs/PackagesAPI.md#createpackage) | **POST** /packages | Create package
+*PackagesAPI* | [**deletePackage**](docs/PackagesAPI.md#deletepackage) | **DELETE** /packages/{package_id} | 
+*PackagesAPI* | [**getPackage**](docs/PackagesAPI.md#getpackage) | **GET** /packages/{package_id} | Get Package
+*PackagesAPI* | [**getPackages**](docs/PackagesAPI.md#getpackages) | **GET** /packages | Get packages
+*PackagesAPI* | [**updatePackage**](docs/PackagesAPI.md#updatepackage) | **PUT** /packages/{package_id} | Update Package
+*RegistrationsAPI* | [**getRegistration**](docs/RegistrationsAPI.md#getregistration) | **GET** /registrations/{registration_id} | Get a Registration
+*RegistrationsAPI* | [**getRegistrations**](docs/RegistrationsAPI.md#getregistrations) | **GET** /registrations | List all Registrations
 *SigninsAPI* | [**createSignin**](docs/SigninsAPI.md#createsignin) | **POST** /signins | Create Signin
 *SigninsAPI* | [**getSignin**](docs/SigninsAPI.md#getsignin) | **GET** /signins/{signin_id} | Get a Signin
 *SigninsAPI* | [**getSignins**](docs/SigninsAPI.md#getsignins) | **GET** /signins | List all Signins
@@ -117,6 +99,7 @@ Class | Method | HTTP request | Description
  - [Host](docs/Host.md)
  - [HostBatchCreateParams](docs/HostBatchCreateParams.md)
  - [HostCreateParams](docs/HostCreateParams.md)
+ - [Image](docs/Image.md)
  - [InternalWatchlistResult](docs/InternalWatchlistResult.md)
  - [Invite](docs/Invite.md)
  - [InviteCreateParams](docs/InviteCreateParams.md)
@@ -127,11 +110,15 @@ Class | Method | HTTP request | Description
  - [ModelError](docs/ModelError.md)
  - [NotificationTrigger](docs/NotificationTrigger.md)
  - [NotificationTriggerCreateParams](docs/NotificationTriggerCreateParams.md)
+ - [Package](docs/Package.md)
+ - [PackageCreateParams](docs/PackageCreateParams.md)
+ - [PackageUpdateParams](docs/PackageUpdateParams.md)
  - [PaginatedAuditLogsList](docs/PaginatedAuditLogsList.md)
  - [PaginatedEmailTemplatesList](docs/PaginatedEmailTemplatesList.md)
  - [PaginatedHostsList](docs/PaginatedHostsList.md)
  - [PaginatedInvitesList](docs/PaginatedInvitesList.md)
  - [PaginatedLocationsList](docs/PaginatedLocationsList.md)
+ - [PaginatedPackagesList](docs/PaginatedPackagesList.md)
  - [PaginatedRegistrationsList](docs/PaginatedRegistrationsList.md)
  - [PaginatedSigninsList](docs/PaginatedSigninsList.md)
  - [PaginatedWatchlistList](docs/PaginatedWatchlistList.md)

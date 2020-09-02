@@ -11,69 +11,33 @@ void main() {
       // TODO
     });
 
-    // String company (default value: null)
-    test('to test the property `company`', () async {
+    // List<SignableDocument> documents (default value: [])
+    test('to test the property `documents`', () async {
       // TODO
     });
 
-    // String email (default value: null)
-    test('to test the property `email`', () async {
+    // SigninWatchlist signinWatchlist (default value: null)
+    test('to test the property `signinWatchlist`', () async {
       // TODO
     });
 
-    // String firstName (default value: null)
-    test('to test the property `firstName`', () async {
+    // List<Host> hosts (default value: [])
+    test('to test the property `hosts`', () async {
       // TODO
     });
 
-    // bool isAccountedFor (default value: null)
-    test('to test the property `isAccountedFor`', () async {
+    // List<SigninData> signinData (default value: [])
+    test('to test the property `signinData`', () async {
       // TODO
     });
 
-    // Whether this Signin has been acknowledged yet. Can also be used as a one-way method of setting the Signin as acknowledged.
-    // bool isAcknowledged (default value: null)
-    test('to test the property `isAcknowledged`', () async {
+    // SigninAcknowledgement signinAcknowledgement (default value: null)
+    test('to test the property `signinAcknowledgement`', () async {
       // TODO
     });
 
-    // String lastName (default value: null)
-    test('to test the property `lastName`', () async {
-      // TODO
-    });
-
-    // String locationName (default value: null)
-    test('to test the property `locationName`', () async {
-      // TODO
-    });
-
-    // String mobileNumber (default value: null)
-    test('to test the property `mobileNumber`', () async {
-      // TODO
-    });
-
-    // DateTime signedOutTimestamp (default value: null)
-    test('to test the property `signedOutTimestamp`', () async {
-      // TODO
-    });
-
-    // String signinPhotoUrl (default value: null)
-    test('to test the property `signinPhotoUrl`', () async {
-      // TODO
-    });
-
-    // DateTime signinTimestamp (default value: null)
-    test('to test the property `signinTimestamp`', () async {
-      // TODO
-    });
-
-    // SigninWatchlist watchlist (default value: null)
-    test('to test the property `watchlist`', () async {
-      // TODO
-    });
-
-    // SigninParsedInfo parsedInfo (default value: null)
-    test('to test the property `parsedInfo`', () async {
+    // String note (default value: null)
+    test('to test the property `note`', () async {
       // TODO
     });
 
@@ -83,13 +47,64 @@ void main() {
       // TODO
     });
 
-    // String note (default value: null)
-    test('to test the property `note`', () async {
+    // DateTime signinTimestamp (default value: null)
+    test('to test the property `signinTimestamp`', () async {
       // TODO
     });
 
-    // SigninAcknowledgement signinAcknowledgement (default value: null)
-    test('to test the property `signinAcknowledgement`', () async {
+    // String signinPhotoUrl (default value: null)
+    test('to test the property `signinPhotoUrl`', () async {
+      // TODO
+    });
+
+    // DateTime signedOutTimestamp (default value: null)
+    test('to test the property `signedOutTimestamp`', () async {
+      // TODO
+    });
+
+    // String mobileNumber (default value: null)
+    test('to test the property `mobileNumber`', () async {
+      // TODO
+    });
+
+    // String locationName (default value: null)
+    test('to test the property `locationName`', () async {
+      // TODO
+    });
+
+    // String lastName (default value: null)
+    test('to test the property `lastName`', () async {
+      // TODO
+    });
+
+    // Whether this Signin has been acknowledged yet. Can also be used as a one-way method of setting the Signin as acknowledged.
+    // bool isAcknowledged (default value: null)
+    test('to test the property `isAcknowledged`', () async {
+      // TODO
+    });
+
+    // bool isAccountedFor (default value: null)
+    test('to test the property `isAccountedFor`', () async {
+      // TODO
+    });
+
+    // String firstName (default value: null)
+    test('to test the property `firstName`', () async {
+      // TODO
+    });
+
+    // String email (default value: null)
+    test('to test the property `email`', () async {
+      // TODO
+    });
+
+    // String company (default value: null)
+    test('to test the property `company`', () async {
+      // TODO
+    });
+
+    // Registration registration (default value: null)
+    test('to test the property `registration`', () async {
       // TODO
     });
 

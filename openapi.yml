@@ -911,7 +911,7 @@ paths:
                   mobile_number: some text
                   first_name: some text
                   notification_triggers:
-                    - offset_direction: {}
+                    - offset_direction: BEFORE
                       offset_unit: "days"
                       offset_amount: 34
                       offset_origin: "START"
@@ -919,7 +919,7 @@ paths:
                       notification_groups:
                         - some text
                         - some text
-                    - offset_direction: {}
+                    - offset_direction: AFTER
                       offset_unit: "hours"
                       offset_amount: 12
                       offset_origin: "END"

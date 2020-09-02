@@ -26,7 +26,7 @@ jobs:
 
   build:
     docker:
-      - image: circleci/openjdk:14-buster-node
+      - image: circleci/openjdk:16-jdk-buster-node
     steps:
       - run:
           name: Setup git
@@ -37,7 +37,8 @@ jobs:
           name: Install Dependencies
           command: |
             sudo apt update
-            sudo apt-get install python-setuptools
+            sudo apt-get install python-setuptools python-dev build-essential
+            sudo python /usr/lib/python2.7/dist-packages/easy_install.py pip
             sudo easy_install pip
             pip install shyaml --user
             source ./build-scripts/prepare_environment.sh

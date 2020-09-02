@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Lint Openapi Spec with docker
-          command: lint openapi.yml --ruleset=.spectral.yml --fail-severity=warn --verbose
+          command: spectral openapi.yml --ruleset=.spectral.yml --fail-severity=warn --verbose
   build:
     docker:
       - image: circleci/node:12

@@ -62,6 +62,7 @@ jobs:
       - run:
           name: Clone existing SDKs
           command: |
+            mv .git .disabled_git
             ./build-scripts/clone_sdk.sh guest-dart-sdk
             ./build-scripts/clone_sdk.sh guest-typescript-sdk
             ./build-scripts/clone_sdk.sh guest-swift-sdk
@@ -93,6 +94,7 @@ jobs:
             ./build-scripts/git.sh guest-swift-sdk
             ./build-scripts/git.sh guest-objc-sdk
             ./build-scripts/git.sh guest-android-sdk
+            mv .disabled_git .git
       - run:
           name: Deploy
           command: ./build-scripts/git.sh .

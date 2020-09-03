@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  lint:
+  validate_yaml:
     docker:
       - image: 'stoplight/spectral'
     steps:
@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Lint Openapi Spec
           command: spectral lint openapi.yml --ruleset=.spectral.yml --fail-severity=warn --verbose --skip-rule=oas3-valid-oas-content-example
-  validate:
+  validate_pr:
     docker:
       - image: circleci/node:12
     steps:
@@ -25,13 +25,9 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      # - run:
-      #     name: Danger
-      #     command: yarn danger ci
       - run:
-          name: Lint yaml file
-          command: npx @stoplight/spectral lint openapi.yml -- --ruleset=.spectral.yml --fail-severity=warn
-
+          name: Danger
+          command: yarn danger ci
   build:
     docker:
       - image: circleci/openjdk:16-jdk-buster-node
@@ -72,22 +68,19 @@ workflows:
   version: 2
   validate_and_build:
     jobs:
-      - validate:
-          filters:
-            branches:
-              ignore:
-                - /^v[0-9]/
-      - lint:
-          requires:
-            - validate
+      # - validate_pr:
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - /^v[0-9]/
+      - validate_yaml:
           filters:
             branches:
               ignore:
                 - /^v[0-9]/
       - build:
           requires:
-            - validate
-            - lint
+            - validate_yaml
           filters:
             branches:
               ignore:

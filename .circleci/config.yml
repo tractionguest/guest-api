@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  validate:
     docker:
       - image: circleci/node:12
     steps:
@@ -17,13 +17,63 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      - run:
-          name: Danger
-          command: yarn danger ci
+      # - run:
+      #     name: Danger
+      #     command: yarn danger ci
       - run:
           name: Lint yaml file
           command: npx @stoplight/spectral lint openapi.yml -- --ruleset=.spectral.yml --fail-severity=warn
-      # Seems to work now, but is moot under their new system :|
-      # - run:
-      #     name: Publish docs
-      #     command: npx @stoplight/cli@4 push --ci-token d57d5d93-0ea3-49f5-b87c-3b1b79993ac9 --url https://tractionguest.stoplight.io
+
+  build:
+    docker:
+      - image: circleci/openjdk:16-jdk-buster-node
+    steps:
+      - run:
+          name: Setup git
+          command: |
+            git config --global user.email "builds@circleci.com"
+            git config --global user.name "CircleCI"
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: |
+            sudo apt update
+            sudo apt install python3-pip
+            pip3 install shyaml --user
+            source ./build-scripts/prepare_environment.sh
+            sudo npm install -g redoc-cli
+            sudo npm install speccy -g
+      - run:
+          name: Validate
+          command: ./openapi-generator.sh validate -i openapi.yml
+      - run:
+          name: Clear generated content
+          command: |
+            rm -rf guest-*-sdk
+            rm -rf docs/index.html
+      - run:
+          name: Build & deplpoy SDKs
+          command: ./build-scripts/generate_sdks.sh
+      - run:
+          name: Build documentation HTML
+          command: ./build-scripts/redoc.sh
+      - run:
+          name: Deploy
+          command: ./build-scripts/git.sh .
+workflows:
+  version: 2
+
+  validate_and_build:
+    jobs:
+      - validate:
+          filters:
+            branches:
+              ignore:
+                - /^v[0-9]/
+      - build:
+          requires:
+            - validate
+          filters:
+            branches:
+              ignore:
+                - /^v[0-9]/

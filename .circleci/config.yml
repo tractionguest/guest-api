@@ -43,14 +43,6 @@ jobs:
             source ./build-scripts/prepare_environment.sh
             sudo npm install -g redoc-cli
             sudo npm install speccy -g
-      - add_ssh_keys:
-          fingerprints:
-            - "bc:f2:95:a1:42:cb:da:32:dd:2d:fe:5c:db:4a:f6:52"
-            - "c5:ff:27:df:e4:eb:d9:e4:ef:ae:39:d9:c7:1f:56:2b"
-            - "b8:50:a0:af:51:74:fb:5f:99:e2:fe:ad:e7:49:3c:64"
-            - "d2:33:7b:8b:12:4a:d6:55:4e:b7:32:d4:9d:11:9e:fd"
-            - "f5:34:1b:38:e9:59:cb:7f:ec:69:14:89:62:e5:4c:81"
-            - "12:e8:f4:d9:26:2a:3a:e6:e4:da:0c:4b:c9:2f:f7:17"
       - run:
           name: Validate
           command: ./openapi-generator.sh validate -i openapi.yml

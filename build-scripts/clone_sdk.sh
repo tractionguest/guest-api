@@ -12,4 +12,3 @@ else
   echo "Creating branch $CIRCLE_BRANCH"
   git checkout -b $CIRCLE_BRANCH
 fi
-git branch --set-upstream-to=origin/$CIRCLE_BRANCH $CIRCLE_BRANCH

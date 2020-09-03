@@ -2,6 +2,7 @@ title: NotificationTrigger
 type: object
 x-examples:
   default:
+    offset_unit: hours
     offset_direction: {}
     offset_type: {}
     offset_amount: 94

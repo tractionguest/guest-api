@@ -1,0 +1,77 @@
+title: Package
+type: object
+x-examples:
+  picked-up-example:
+    id: 70
+    package_state: picked_up
+    recipient:
+      id: 71
+      email: somehost@gmail.com
+      first_name: some
+      last_name: host
+      mobile_number: some text
+      profile_pic_url: some text
+      department: Marketing
+    location:
+      name: Default
+      id: 1
+    carrier_name: USPS
+    created_at: '2018-02-10T09:30Z'
+    picked_up_at: '2018-02-10T10:30Z'
+    image_url: some text
+  needs-attention-example:
+    id: 70
+    package_state: needs_attention
+    recipient: null
+    location:
+      name: Default
+      id: 1
+    carrier_name: null
+    created_at: '2018-02-10T09:30Z'
+    picked_up_at: null
+    image_url: some text
+  processing-example:
+    id: 70
+    package_state: processing
+    recipient: null
+    location:
+      name: Default
+      id: 1
+    carrier_name: null
+    created_at: '2018-02-10T09:30Z'
+    picked_up_at: null
+    image_url: some text
+description: "Root for a Package type's schema"
+properties:
+  id:
+    type: integer
+  recipient:
+    $ref: ./Host.v1.yaml
+    nullable: true
+  location:
+    $ref: ./Location.v1.yaml
+  package_state:
+    type: string
+    description: "this can be one of the following states: 'processing', 'recipient_matched', 'needs_attention' or 'picked_up'"
+    enum:
+      - processing
+      - recipient_matched
+      - needs_attention
+      - picked_up
+  carrier_name:
+    type: string
+    description: 'A carrier name that gets detected on the shipping label. i.e. USPS, Purolator, DHL, Canada Post, Royal Mail, etc... '
+  picked_up_at:
+    type: string
+    format: date-time
+    nullable: true
+  created_at:
+    type: string
+    format: date-time
+  image:
+    $ref: ./Image.v1.yaml
+required:
+  - id
+  - location
+  - package_state
+  - created_at

@@ -2,7 +2,6 @@ const { message, danger } = require("danger");
 
 /* Constants */
 const branchName = danger.github.pr.head.ref;
-const wrikeIds = getUniqueWrikeIds();
 const docsLink = `https://tractionguest.stoplight.io/docs/guest-api/branches/${branchName}/openapi.yml`;
 const isDevelopBranch = branchName == 'develop';
 const isFeatureBranch = !isDevelopBranch && branchName != 'master';
@@ -12,12 +11,6 @@ const versionLabelList = `\`${versioningLabels.slice(0, versioningLabels.length 
 
 /* Steps */
 message(`<a href="${docsLink}" target="_blank">View docs for this page</a> <em>(You'll need to have access to see this version of the docs)</em>`);
-
-// Attach Wrike tickets
-if (wrikeIds.length) {
-  const mappedIds = wrikeIds.map(id => wrikeLink(id)).join(', ');
-  message(`Associated Wrike Tickets:\n${mappedIds}`);
-}
 
 // Version bump reminder
 if (isDevelopBranch) {
@@ -41,25 +34,6 @@ if (danger.github.commits.length > 1) {
 }
 
 /* Functions */
-function wrikeLink(wrikeId) {
-  return `<a href='https://www.wrike.com/open.htm?id=${wrikeId}' target="_blank">#${wrikeId}</a>`;
-}
-
-function getUniqueWrikeIds() {
-  const commits = danger.github.commits;
-  const wrikeIds = commits.reduce((acc, obj) => {
-      const msg = obj.commit.message;
-      const wrikeId = msg.match(/^\[\#(\d*)\]/);
-      if (wrikeId) {
-        acc.push(wrikeId[1]);
-      }
-
-      return acc;
-    }, []);
-
-  return wrikeIds;
-}
-
 function getPrLabels() {
   const labelHash = danger.github.pr.labels;
   const labelLength = Object.keys(labelHash).length;

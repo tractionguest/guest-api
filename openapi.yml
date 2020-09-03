@@ -3643,29 +3643,28 @@ paths:
                         picked_up_at: '2020-08-17T01:59:59.999Z'
                         image:
                           full_size_url: 'https://i.pravatar.cc/'
-                      # TODO: allow examples to be nullable
-                      # - id: 72
-                      #   package_state: processing
-                      #   recipient: null
-                      #   location:
-                      #     name: Vancouver
-                      #     id: 2
-                      #   carrier_name: null
-                      #   created_at: '2020-08-19T01:59:59.999Z'
-                      #   picked_up_at: null
-                      #   image:
-                      #     full_size_url: 'https://i.pravatar.cc/'
-                      # - id: 73
-                      #   package_state: needs_attention
-                      #   recipient: null
-                      #   location:
-                      #     name: Default
-                      #     id: 1
-                      #   carrier_name: null
-                      #   created_at: '2020-09-18T01:59:59.999Z'
-                      #   picked_up_at: null
-                      #   image:
-                      #     full_size_url: 'https://i.pravatar.cc/'
+                      - id: 72
+                        package_state: processing
+                        recipient: null
+                        location:
+                          name: Vancouver
+                          id: 2
+                        carrier_name: null
+                        created_at: '2020-08-19T01:59:59.999Z'
+                        picked_up_at: null
+                        image:
+                          full_size_url: 'https://i.pravatar.cc/'
+                      - id: 73
+                        package_state: needs_attention
+                        recipient: null
+                        location:
+                          name: Default
+                          id: 1
+                        carrier_name: null
+                        created_at: '2020-09-18T01:59:59.999Z'
+                        picked_up_at: null
+                        image:
+                          full_size_url: 'https://i.pravatar.cc/'
                       - id: 74
                         package_state: recipient_matched
                         recipient:

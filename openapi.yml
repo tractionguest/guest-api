@@ -1825,7 +1825,7 @@ paths:
             application/json:
               schema:
                 $ref: ./models/BatchJob.v1.yaml
-        '401':
+        '4XX':
           description: Unauthorized
           content:
             application/json:

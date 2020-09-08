@@ -3218,61 +3218,6 @@ paths:
         name: audit_log_id
         in: path
         required: true
-  /guest_alerts:
-    summary: Broadcasts alerts to guests via specified channel
-    post:
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ./models/GuestAlertCreateParams.v1.yaml
-            examples:
-              default:
-                value:
-                  message: some text
-                  channels:
-                    - SMS
-                    - EMAIL
-                  signin_selectors:
-                    signin_ids:
-                      - 19
-                      - 64
-                    is_signed_out: false
-        required: true
-      tags:
-        - GuestAlerts
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: ./models/GuestAlertDetail.v1.yaml
-          description: Guest Alert has been scheduled for delivery
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: ./models/ErrorsList.v1.yaml
-              examples:
-                default:
-                  value:
-                    errors:
-                      - domain: some text
-                        attribute: some text
-                        code: some text
-                        message: some text
-                      - domain: some text
-                        attribute: some text
-                        code: some text
-                        message: some text
-          description: A generic error
-        '401':
-          description: "You don't have permission to create requested Guest Alerts"
-        '403':
-          description: You do not have permission for this action
-      operationId: createGuestAlert
-      summary: Create GuestAlert
-      description: Enqueues guest alerts via specified channels
   '/registrations/{registration_id}':
     summary: Path used to display a single Registration.
     description: The REST endpoint/path used to get single instances of a `Registration`.
@@ -3966,8 +3911,6 @@ tags:
     description: All endpoints related to the User model
   - name: Watchlists
     description: All endpoint related to the Watchlist model
-  - name: GuestAlerts
-    description: 'All endpoints relating to sending guest alerts '
   - name: AuditLogs
     description: All endpoints related to the AuditLog model.
   - name: Registrations

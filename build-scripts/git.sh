@@ -26,5 +26,5 @@ then
   git push -q --follow-tags
 else
   printf "${GREEN}Deploying NON-MASTER branch${NC}\n"
-  git push
+  git push --force
 fi

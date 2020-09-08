@@ -21,8 +21,10 @@ git push --set-upstream origin $CIRCLE_BRANCH
 printf "${GREEN}Deploying $SDK_NAME to $CIRCLE_BRANCH${NC}\n"
 
 if [ "$CIRCLE_BRANCH" = "master" ]
-then 
+then
+  printf "${GREEN}Deploying master branch${NC}\n"
   git push -q --follow-tags
 else
+  printf "${GREEN}Deploying NON-MASTER branch${NC}\n"
   git push
 fi

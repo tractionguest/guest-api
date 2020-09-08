@@ -4028,3 +4028,5 @@ tags:
     description: All endpoints related to Registrations.
   - name: Capacities
     description: All endpoints related to Capacity management.
+  - name: Batches
+    description: All endpoints related to Batch-type actions.

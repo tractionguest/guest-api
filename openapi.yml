@@ -56,7 +56,7 @@ paths:
             application/json:
               schema:
                 $ref: ./models/BatchJob.v1.yaml
-        '404':
+        '4XX':
           description: Not Found
           content:
             application/json:

@@ -6,7 +6,8 @@ NC='\033[0m'
 
 SDK_NAME=$1
 
-export GIT_TAG=v$API_VERSION
+API_VERSION=`cat .VERSION`
+GIT_TAG=v$API_VERSION
 printf "${GREEN}Comitting $SDK_NAME version $GIT_TAG${NC}\n"
 
 cd $SDK_NAME

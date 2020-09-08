@@ -43,7 +43,7 @@ jobs:
           command: |
             sudo apt update
             sudo apt install python3-pip
-            pip3 install shyaml --user
+            sudo pip3 install shyaml
             source ./build-scripts/prepare_environment.sh
             sudo npm install -g redoc-cli
             sudo npm install speccy -g

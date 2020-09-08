@@ -1,0 +1,27 @@
+title: PackageUpdateParams.v1
+type: object
+x-examples:
+  update-picked-up:
+    picked_up: true
+  update-package-carrier:
+    carrier_name: USPS
+  update-package-recipient:
+    recipient_id: 1
+description: |
+  Update/Edit information about a Package.
+
+  [picked_up] - changes the package_state to picked up and assigns non null value to picked_up_at
+
+  [recipient_id] - update the package's intended recipient. Changes package_state to 'recipient_matched' and notifies host about their package via email. A previous recipient will stop getting notifications
+
+  [carrier_name] - change/update the package's carrier/courier information
+properties:
+  picked_up:
+    type: boolean
+    description: changes the package_state to picked up and assigns non null value to picked_up_at
+  carrier_name:
+    type: string
+    description: "change/update the package's carrier/courier information"
+  recipient_id:
+    type: integer
+    description: id of the Host for which you want to send notifications to regarding their package

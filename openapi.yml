@@ -1,52 +1,29 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.13.0
+  version: 0.14.0
   x-logo:
-    url: "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png"
-    backgroundColor: "#FFFFFF"
-    altText: "Traction Guest logo"
-    href: "https://tractionguest.com"
+    url: 'https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png'
+    backgroundColor: '#FFFFFF'
+    altText: Traction Guest
+    href: 'https://tractionguest.com'
   description: |
-    The Traction Guest API is currently in **closed beta**.
-    We're still building, testing, and fixing bugs.
+    The Traction Guest API is currently under limited release to select customers as we gather and iterate on feedback.
 
-    If you're interested in helping us get to version 1.0.0, contact your CS team representative.
-    Only paid accounts are elligible.
+    # Getting Started
+    If you are interested in getting early access to the API, please send us an email to [support@tractionguest.com](mailto:support@tractionguest.com).
 
-    # Slack
+    We will also add you to our Slack channel where you can ask questions and get further help.
 
-    Do you have Slack?
-    Want faster answers to Traction Guest API questions?
-
-    Ask to be added to the Traction Guest API Slack channel!
-
-    Talk to your CS team representative, or send an email to the API support email above, and we'll add you.
+    # Terms and Conditions
+    Please visit: [https://tractionguest.com/tos/api/](https://tractionguest.com/tos/api/)
 
     # Versioning
-
     This API follows [semantic versioning](https://semver.org/), which follows the `Major`.`Minor`.`Patch` format.
-    In short:
 
     * The `Major` number increments when potentially incompatible changes are made.
     * The `Minor` number increments when backwards-compatible additions are made.
     * The `Patch` number increments when backwards-compatible bug-fixes are made.
-
-    So, once the API is out of closed beta, and has reached version 1.0.0, some things may change.
-
-    **However**, the developers at Traction Guest strive to keep things running smoothly for our clients.
-    We plan to **deprecate and warn** before making any potentially breaking changes;
-    you may receive messages that follow the format
-    "this is deprecated, and will be removed in version X.X.X, which is scheduled for release on or after 20XX-01-01."
-    Please note that the deprecation message format and content may change.
-
-    At this time, we are not planning to make older or 'legacy' versions of the API available, going forward.
-
-    # Getting Started
-
-    Would you like your team to be a part of closed beta testing?
-    Talk to your CS team representative.
-    We'll walk you through the process of enabling API access and provisioning your account.
   contact:
     name: API Support
     url: 'https://tractionguest.com'
@@ -169,6 +146,7 @@ paths:
               examples:
                 default:
                   value:
+                    id: 1
                     email: some text
                     first_name: some text
                     last_name: some text
@@ -914,37 +892,37 @@ paths:
                 value:
                   company: some text
                   email: some text
-                  end_date: '2018-02-10T09:30Z'
+                  end_date: '2020-07-17T01:59:59.999Z'
                   last_name: some text
-                  start_date: '2018-02-10T09:30Z'
+                  start_date: '2020-07-17T01:59:59.999Z'
                   title: some text
-                  watchlist_colour: {}
+                  watchlist_colour: ORANGE
                   host_ids:
                     - 96
                     - 2
                   custom_fields:
-                    - format: {}
+                    - format: string
                       field_name: some text
                       field_value: some text
-                    - format: {}
+                    - format: string
                       field_name: some text
                       field_value: some text
                   email_template_id: 53
                   mobile_number: some text
                   first_name: some text
                   notification_triggers:
-                    - offset_direction: {}
-                      offset_type: {}
+                    - offset_direction: BEFORE
+                      offset_unit: days
                       offset_amount: 34
-                      offset_origin: {}
+                      offset_origin: START
                       email_template_id: 63
                       notification_groups:
                         - some text
                         - some text
-                    - offset_direction: {}
-                      offset_type: {}
+                    - offset_direction: AFTER
+                      offset_unit: hours
                       offset_amount: 12
-                      offset_origin: {}
+                      offset_origin: END
                       email_template_id: 2
                       notification_groups:
                         - some text
@@ -965,12 +943,12 @@ paths:
                   value:
                     id: 93
                     company: some text
-                    created_at: '2018-02-10T09:30Z'
+                    created_at: '2020-07-17T01:59:59.999Z'
                     email: some text
-                    end_date: '2018-02-10T09:30Z'
+                    end_date: '2020-07-17T01:59:59.999Z'
                     first_name: some text
                     last_name: some text
-                    start_date: '2018-02-10T09:30Z'
+                    start_date: '2020-07-17T01:59:59.999Z'
                     hosts:
                       - id: 23
                         email: some text
@@ -1467,7 +1445,7 @@ paths:
                               colour: some text
                               last_name: some text
                               first_name: some text
-                        end_date: '2018-02-10T09:30Z'
+                        end_date: '2020-07-17T01:59:59.999Z'
                         email: some text
                         mobile_number: some text
                       - id: 0
@@ -1779,7 +1757,7 @@ paths:
                               colour: some text
                               last_name: some text
                               first_name: some text
-                        end_date: '2018-02-10T09:30Z'
+                        end_date: '2020-07-17T01:59:59.999Z'
                         email: some text
                         mobile_number: some text
           description: Successful response - returns an array of `Invite` entities.
@@ -1809,8 +1787,8 @@ paths:
       summary: List all Invites
       description: Gets a list of all `Invite` entities.
   '/registrations/{registration_id}/invites':
-    summary: "Path used to create an `Invite` from `Registration` data."
-    description: "The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task."
+    summary: Path used to create an `Invite` from `Registration` data.
+    description: The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task.
     post:
       tags:
         - Invites
@@ -1827,12 +1805,12 @@ paths:
                   value:
                     id: 93
                     company: some text
-                    created_at: '2018-02-10T09:30Z'
+                    created_at: '2020-07-17T01:59:59.999Z'
                     email: some text
-                    end_date: '2018-02-10T09:30Z'
+                    end_date: '2020-07-17T01:59:59.999Z'
                     first_name: some text
                     last_name: some text
-                    start_date: '2018-02-10T09:30Z'
+                    start_date: '2020-07-17T01:59:59.999Z'
                     hosts:
                       - id: 23
                         email: some text
@@ -2407,6 +2385,8 @@ paths:
                 default:
                   value:
                     id: 61
+                    registration_portal_enabled: true
+                    mobile_access_enabled: true
                     first_name: some text
                     last_name: some text
                     email: some text
@@ -2478,12 +2458,12 @@ paths:
                   value:
                     id: 2
                     company: some text
-                    created_at: '2018-02-10T09:30Z'
+                    created_at: '2020-07-17T01:59:59.999Z'
                     email: some text
-                    end_date: '2018-02-10T09:30Z'
+                    end_date: '2020-07-17T01:59:59.999Z'
                     first_name: some text
                     last_name: some text
-                    start_date: '2018-02-10T09:30Z'
+                    start_date: '2020-07-17T01:59:59.999Z'
                     hosts:
                       - id: 68
                         email: some text
@@ -2599,12 +2579,12 @@ paths:
                   value:
                     id: 54
                     company: some text
-                    created_at: '2018-02-10T09:30Z'
+                    created_at: '2020-07-17T01:59:59.999Z'
                     email: some text
-                    end_date: '2018-02-10T09:30Z'
+                    end_date: '2020-07-17T01:59:59.999Z'
                     first_name: some text
                     last_name: some text
-                    start_date: '2018-02-10T09:30Z'
+                    start_date: '2020-07-17T01:59:59.999Z'
                     hosts:
                       - id: 64
                         email: some text
@@ -3238,67 +3218,10 @@ paths:
         name: audit_log_id
         in: path
         required: true
-  /guest_alerts:
-    summary: Broadcasts alerts to guests via specified channel
-    post:
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ./models/GuestAlertCreateParams.v1.yaml
-            examples:
-              default:
-                value:
-                  message: some text
-                  channels:
-                    - SMS
-                    - EMAIL
-                  signin_selectors:
-                    signin_ids:
-                      - 19
-                      - 64
-                    is_signed_out: false
-        required: true
-      tags:
-        - GuestAlerts
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: ./models/GuestAlertDetail.v1.yaml
-          description: Guest Alert has been scheduled for delivery
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: ./models/ErrorsList.v1.yaml
-              examples:
-                default:
-                  value:
-                    errors:
-                      - domain: some text
-                        attribute: some text
-                        code: some text
-                        message: some text
-                      - domain: some text
-                        attribute: some text
-                        code: some text
-                        message: some text
-          description: A generic error
-        '401':
-          description: "You don't have permission to create requested Guest Alerts"
-        '403':
-          description: You do not have permission for this action
-      operationId: createGuestAlert
-      summary: Create GuestAlert
-      description: Enqueues guest alerts via specified channels
   '/registrations/{registration_id}':
     summary: Path used to display a single Registration.
     description: The REST endpoint/path used to get single instances of a `Registration`.
     get:
-      tags:
-        - Registration
       parameters:
         - name: include
           description: A list of comma-separated related models to include
@@ -3352,7 +3275,7 @@ paths:
                         internal_colours:
                           - some text
                           - some text
-                      end_date: '2018-02-10T09:30Z'
+                      end_date: '2020-07-17T01:59:59.999Z'
                       email: some text
                       mobile_number: some text
                     visitor:
@@ -3391,7 +3314,7 @@ paths:
                             field_value: some text
                           - field_name: some text
                             field_value: some text
-          description: Successful response - returns a single `Registration`.
+          description: Successful response - returns a single `RegistrationDetail`.
         '400':
           content:
             application/json:
@@ -3422,6 +3345,8 @@ paths:
       operationId: getRegistration
       summary: Get a Registration
       description: Gets the details of a single instance of a `Registration`
+      tags:
+        - Registrations
     parameters:
       - schema:
           type: string
@@ -3442,7 +3367,7 @@ paths:
               examples:
                 default:
                   value:
-                    bid: 123
+                    bid: string
                     created_at: date-string
                     status: string
                     total_records: 12
@@ -3467,8 +3392,6 @@ paths:
   /registrations:
     get:
       summary: List all Registrations
-      tags:
-        - Registration
       responses:
         '200':
           description: OK
@@ -3512,6 +3435,8 @@ paths:
           in: query
           name: created_after
           description: Restricts results to only those that were created after the provided date
+      tags:
+        - Registrations
   '/locations/{location_id}/capacity_forecasts':
     parameters:
       - schema:
@@ -3683,6 +3608,250 @@ paths:
           description: The Location does not exist
       operationId: getLocation
       description: Gets details of a single instance of `Location`.
+  /packages:
+    get:
+      summary: Get packages
+      tags:
+        - Packages
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: ./models/PaginatedPackagesList.v1.yaml
+              examples:
+                example:
+                  value:
+                    packages:
+                      - id: 70
+                        package_state: picked_up
+                        recipient:
+                          id: 5
+                          email: tsala@example.com
+                          first_name: Tatiane
+                          last_name: Sala
+                          mobile_number: (604)111-1111
+                          profile_pic_url: 'https://i.pravatar.cc/'
+                          department: Development
+                        location:
+                          name: Vancouver
+                          id: 2
+                        carrier_name: Purolator
+                        created_at: '2020-08-11T01:59:59.999Z'
+                        picked_up_at: '2020-08-17T01:59:59.999Z'
+                        image:
+                          full_size_url: 'https://i.pravatar.cc/'
+                      - id: 72
+                        package_state: processing
+                        recipient: null
+                        location:
+                          name: Vancouver
+                          id: 2
+                        carrier_name: null
+                        created_at: '2020-08-19T01:59:59.999Z'
+                        picked_up_at: null
+                        image:
+                          full_size_url: 'https://i.pravatar.cc/'
+                      - id: 73
+                        package_state: needs_attention
+                        recipient: null
+                        location:
+                          name: Default
+                          id: 1
+                        carrier_name: null
+                        created_at: '2020-09-18T01:59:59.999Z'
+                        picked_up_at: null
+                        image:
+                          full_size_url: 'https://i.pravatar.cc/'
+                      - id: 74
+                        package_state: recipient_matched
+                        recipient:
+                          id: 4
+                          email: vbaldys@example.com
+                          first_name: Veronica
+                          last_name: Baldys
+                          mobile_number: (604)999-9999
+                          profile_pic_url: 'https://i.pravatar.cc/'
+                          department: Development
+                        location:
+                          name: Vancouver
+                          id: 2
+                        carrier_name: Canada Post
+                        created_at: '2020-07-18T01:59:59.999Z'
+                        picked_up_at: null
+                        image:
+                          full_size_url: 'https://i.pravatar.cc/'
+                    pagination:
+                      total_records: 5
+                      current_offset: 0
+                      next_offset: null
+                      last_id: null
+                      limit: 20
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+          description: ''
+      operationId: getPackages
+      description: 'Gets a list of [Package] entities.'
+      parameters:
+        - schema:
+            type: string
+            example: '1,2,3'
+          in: query
+          name: location_ids
+          description: |-
+            A comma separated list of Location ids for filtering. i.e. '1,2,3'
+            Will return all packages from all locations if none are specified
+        - schema:
+            type: integer
+            minimum: 1
+            default: 50
+          in: query
+          name: limit
+          description: 'Limits the results to a specified number, defaults to 50'
+        - schema:
+            type: integer
+            minimum: 0
+            default: 0
+          in: query
+          name: offset
+          description: 'Offsets the results to a specified number, defaults to 0'
+        - schema:
+            type: string
+            example: 'recipient,location,image'
+          in: query
+          name: include
+          description: "A list of comma-separated related models to include. Possible values: 'recipient', 'location', 'image'"
+        - schema:
+            type: boolean
+          in: query
+          name: picked_up
+          description: 'Filters packages by their "picked_up" state..'
+          allowEmptyValue: false
+        - schema:
+            type: string
+          in: query
+          name: query
+          description: Searches for packages by recipient name
+    post:
+      summary: Create package
+      operationId: createPackage
+      tags:
+        - Packages
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Package.v1.yaml
+              examples: {}
+        4XX:
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      description: 'Creates a [Package] entity by extracting information about the recipient and carrier from the given image file.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/PackageCreateParams.v1.yaml
+        description: Parameters for creating a package
+  '/packages/{package_id}':
+    parameters:
+      - schema:
+          type: string
+        name: package_id
+        in: path
+        required: true
+    get:
+      summary: Get Package
+      tags:
+        - Packages
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Package.v1.yaml
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+          description: User submission error
+      operationId: getPackage
+      description: Gets the details of a single instance of a Package
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: include
+          description: |
+            A list of comma-separated related models to include
+    put:
+      summary: Update Package
+      operationId: updatePackage
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/Package.v1.yaml
+        4XX:
+          description: User submission error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      description: |+
+        Update/Edit information about a Package.
+
+        picked_up - changes the package_state to picked up and assigns non null value to picked_up_at
+
+        recipient_id - update the package's intended recipient. Changes package_state to 'recipient_matched' if a match hasn't been found and notifies host about their package via email. A previous recipient will stop getting notifications
+
+        carrier_name - change/update the package's carrier/courier information
+
+
+
+      tags:
+        - Packages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/PackageUpdateParams.v1.yaml
+        description: ''
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+    delete:
+      summary: ''
+      operationId: deletePackage
+      responses:
+        '204':
+          description: The package has been deleted
+        4XX:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      description: Delete a pacakge
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+      security:
+        - TractionGuestAuth: []
+      tags:
+        - Packages
 components:
   parameters:
     idempotencyKey:
@@ -3694,8 +3863,9 @@ components:
       required: false
   securitySchemes:
     TractionGuestAuth:
-      openIdConnectUrl: 'https://tractionguest.com/.well-known/openid-configuration'
+      openIdConnectUrl: 'https://us.tractionguest.com/.well-known/openid-configuration'
       type: openIdConnect
+  schemas: {}
 security:
   - TractionGuestAuth:
       - all
@@ -3728,20 +3898,22 @@ tags:
   - name: Hosts
     description: All endpoints relating to the Host model
   - name: Invites
-    description: 'All endpoints relating to the Invite model, aka. PreRegistrations'
+    description: All endpoints relating to the Invite model
   - name: Locations
     description: 'All endpoints relating to the Location model, aka. DeviceConfigurations'
+  - name: Packages
+    description: All endpoints relating to the Packages model
+  - name: Parking
+    description: 'All endpoint related to the parking feature, including the ParkingLot and ParkingStallRange models'
   - name: Signins
     description: 'All endpoints related to models that track signing in and out of a location. E.g., Signin, Signout, SigninAcknowledgment models'
   - name: Users
     description: All endpoints related to the User model
   - name: Watchlists
     description: All endpoint related to the Watchlist model
-  - name: GuestAlerts
-    description: 'All endpoints relating to sending guest alerts '
   - name: AuditLogs
     description: All endpoints related to the AuditLog model.
-  - name: Registration
-    description: All endpoints related to the Registration model.
+  - name: Registrations
+    description: All endpoints related to Registrations.
   - name: Capacities
-    description: All endpoints related to the Capacity model.
+    description: All endpoints related to Capacity management.

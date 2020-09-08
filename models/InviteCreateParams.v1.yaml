@@ -25,7 +25,7 @@ x-examples:
     first_name: some text
     notification_triggers:
       - offset_direction: AFTER
-        offset_type: days
+        offset_unit: days
         offset_amount: 36
         offset_origin: START
         email_template_id: 16
@@ -33,7 +33,7 @@ x-examples:
           - some text
           - some text
       - offset_direction: BEFORE
-        offset_type: days
+        offset_unit: days
         offset_amount: 83
         offset_origin: START
         email_template_id: 89

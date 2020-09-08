@@ -44,9 +44,11 @@ jobs:
             sudo apt update
             sudo apt install python3-pip
             sudo pip3 install shyaml
-            source ./build-scripts/prepare_environment.sh
             sudo npm install -g redoc-cli
             sudo npm install speccy -g
+      - run:
+          name: Set API version
+          command: source ./build-scripts/prepare_environment.sh
       - run:
           name: Validate
           command: ./openapi-generator.sh validate -i openapi.yml

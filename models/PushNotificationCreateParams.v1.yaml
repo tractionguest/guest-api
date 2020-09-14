@@ -1,0 +1,5 @@
+title: PushNotificationCreateParams.v1
+type: object
+properties:
+  device_token:
+    type: string

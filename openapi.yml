@@ -3920,6 +3920,23 @@ paths:
         - TractionGuestAuth: []
       tags:
         - Packages
+  /push_notifications:
+    post:
+      summary: ''
+      operationId: createPushNotifications
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/PushNotificationCreateParams.v1.yaml
+        description: ''
+      description: ''
+      tags:
+        - PushNotifications
+    parameters: []
 components:
   parameters:
     idempotencyKey:
@@ -3987,3 +4004,5 @@ tags:
     description: All endpoints related to Registrations.
   - name: Capacities
     description: All endpoints related to Capacity management.
+  - name: PushNotifications
+    description: All endpoints related to Push Notifications.

@@ -2390,6 +2390,7 @@ paths:
                     first_name: some text
                     last_name: some text
                     email: some text
+                    account_uuid: some text
                     permission_groups:
                       - name: some text
                         visibility: some text

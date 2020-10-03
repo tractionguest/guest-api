@@ -7,6 +7,7 @@ x-examples:
     first_name: some text
     last_name: some text
     email: some text
+    account_uuid: some text
     permission_groups:
       - name: some text
         visibility: some text
@@ -42,6 +43,8 @@ properties:
   registration_portal_enabled:
     type: boolean
     description: Determines if the registration portal has been enabled for this account
+  account_uuid:
+    type: string
 required:
   - id
   - mobile_access_enabled

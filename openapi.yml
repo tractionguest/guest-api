@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.14.0
+  version: 0.14.1
   x-logo:
     url: 'https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png'
     backgroundColor: '#FFFFFF'
@@ -2390,6 +2390,7 @@ paths:
                     first_name: some text
                     last_name: some text
                     email: some text
+                    account_uuid: some text
                     permission_groups:
                       - name: some text
                         visibility: some text

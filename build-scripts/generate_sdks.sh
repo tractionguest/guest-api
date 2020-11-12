@@ -20,4 +20,8 @@ mv .git .disabled_git
 ./build-scripts/clone_sdk.sh guest-android-sdk
 ./build-scripts/android.sh
 ./build-scripts/git.sh guest-android-sdk
+
+./build-scripts/clone_sdk.sh guest-python-sdk
+./build-scripts/python.sh
+./build-scripts/git.sh guest-python-sdk
 mv .disabled_git .git

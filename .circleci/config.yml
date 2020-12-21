@@ -44,14 +44,18 @@ jobs:
             sudo apt update
             sudo apt install python3-pip
             sudo pip3 install shyaml
+            sudo npm install -g swagger-cli
             sudo npm install -g redoc-cli
             sudo npm install speccy -g
       - run:
           name: Set API version
           command: source ./build-scripts/prepare_environment.sh
       - run:
+          name: Bundle
+          command: swagger-cli bundle openapi.yml > bundled_openapi.json
+      - run:
           name: Validate
-          command: ./openapi-generator.sh validate -i openapi.yml
+          command: ./openapi-generator.sh validate -i bundled_openapi.json
       - run:
           name: Clear generated content
           command: |

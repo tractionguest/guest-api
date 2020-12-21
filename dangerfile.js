@@ -2,7 +2,7 @@ const { message, danger } = require("danger");
 
 /* Constants */
 const branchName = danger.github.pr.head.ref;
-const docsLink = `https://tractionguest.stoplight.io/docs/guest-api/branches/${branchName}/bundled_openapi.json`;
+const docsLink = `https://tractionguest.stoplight.io/docs/guest-api/branches/${branchName}/openapi.yml`;
 const isDevelopBranch = branchName == 'develop';
 const isFeatureBranch = !isDevelopBranch && branchName != 'master';
 const versioningLabels = ['patch', 'minor', 'major'];

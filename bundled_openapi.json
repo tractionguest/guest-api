@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Traction Guest API",
-    "version": "0.14.1",
+    "version": "0.14.2",
     "x-logo": {
       "url": "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png",
       "backgroundColor": "#FFFFFF",
@@ -5698,6 +5698,7 @@
                       "end_date": "2018-02-10T09:30Z",
                       "first_name": "some text",
                       "last_name": "some text",
+                      "checked_in": false,
                       "start_date": "2018-02-10T09:30Z",
                       "hosts": [
                         {
@@ -6353,6 +6354,9 @@
                     },
                     "company": {
                       "type": "string"
+                    },
+                    "checked_in": {
+                      "type": "boolean"
                     },
                     "group_visit": {
                       "title": "GroupVisit",

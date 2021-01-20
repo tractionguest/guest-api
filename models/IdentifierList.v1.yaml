@@ -1,0 +1,14 @@
+title: IdentifierList
+type: object
+x-tags:
+  - Invites
+x-examples:
+  default:
+    ids:
+      - an_id_string
+      - another_id_string
+properties:
+  ids:
+    type: array
+    items:
+      type: string

@@ -1,6 +1,6 @@
 title: GroupVisit
 type: object
-description: ''
+description: The data structure for a Group Visit object. Also called an Appointment.
 properties:
   id:
     type: integer

@@ -39,7 +39,7 @@ x-examples:
         notification_groups:
           - some text
           - some text
-description: "The root of the InviteCreateParams type's schema."
+description: The root of the InviteCreateParams type's schema.
 properties:
   mobile_number:
     type: string
@@ -81,6 +81,8 @@ properties:
     type: string
   company:
     type: string
+  group_visit_id:
+    type: integer
 required:
   - first_name
   - last_name

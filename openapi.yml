@@ -4042,6 +4042,12 @@ paths:
       description: Updates an existing `GroupVisit` (Appointment).
       parameters:
         - $ref: '#/components/parameters/idempotencyKey'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/GroupVisitUpdateParams.v1.yaml
+        description: ''
     delete:
       summary: Delete a Group Visit (Appointment)
       operationId: deleteGroupVisit

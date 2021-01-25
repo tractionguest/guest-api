@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.13.0
+  version: 0.14.2
   x-logo:
     url: 'https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png'
     backgroundColor: '#FFFFFF'
@@ -38,6 +38,32 @@ servers:
           - 'http://localhost:3000/api/v3'
         default: 'https://tractionguest.ca/api/v3'
 paths:
+  '/batches/{batch_id}':
+    parameters:
+      - schema:
+          type: string
+        name: batch_id
+        in: path
+        required: true
+    get:
+      summary: Get a BatchJob
+      tags:
+        - Batches
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/BatchJob.v1.yaml
+        '4XX':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      operationId: getBatch
+      description: Retrieve a given `BatchJob` entity.
   /hosts:
     summary: Path used to manage the list of Hosts.
     description: 'The REST endpoint/path used to list and create zero or more `Host` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.'
@@ -1786,6 +1812,33 @@ paths:
       operationId: getInvites
       summary: List all Invites
       description: Gets a list of all `Invite` entities.
+  /invites/batch_delete:
+    post:
+      summary: Delete Multiple Invites
+      tags:
+        - Invites
+        - Batches
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: ./models/BatchJob.v1.yaml
+        '4XX':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      operationId: batchDeleteInvites
+      description: 'Queues up a "delete" background task for one or more `Invite` entities.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/IdentifierList.v1.yaml
+        description: ''
   '/registrations/{registration_id}/invites':
     summary: Path used to create an `Invite` from `Registration` data.
     description: The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task.
@@ -2390,6 +2443,7 @@ paths:
                     first_name: some text
                     last_name: some text
                     email: some text
+                    account_uuid: some text
                     permission_groups:
                       - name: some text
                         visibility: some text
@@ -3218,61 +3272,6 @@ paths:
         name: audit_log_id
         in: path
         required: true
-  /guest_alerts:
-    summary: Broadcasts alerts to guests via specified channel
-    post:
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ./models/GuestAlertCreateParams.v1.yaml
-            examples:
-              default:
-                value:
-                  message: some text
-                  channels:
-                    - SMS
-                    - EMAIL
-                  signin_selectors:
-                    signin_ids:
-                      - 19
-                      - 64
-                    is_signed_out: false
-        required: true
-      tags:
-        - GuestAlerts
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: ./models/GuestAlertDetail.v1.yaml
-          description: Guest Alert has been scheduled for delivery
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: ./models/ErrorsList.v1.yaml
-              examples:
-                default:
-                  value:
-                    errors:
-                      - domain: some text
-                        attribute: some text
-                        code: some text
-                        message: some text
-                      - domain: some text
-                        attribute: some text
-                        code: some text
-                        message: some text
-          description: A generic error
-        '401':
-          description: "You don't have permission to create requested Guest Alerts"
-        '403':
-          description: You do not have permission for this action
-      operationId: createGuestAlert
-      summary: Create GuestAlert
-      description: Enqueues guest alerts via specified channels
   '/registrations/{registration_id}':
     summary: Path used to display a single Registration.
     description: The REST endpoint/path used to get single instances of a `Registration`.
@@ -3971,11 +3970,11 @@ tags:
     description: All endpoints related to the User model
   - name: Watchlists
     description: All endpoint related to the Watchlist model
-  - name: GuestAlerts
-    description: 'All endpoints relating to sending guest alerts '
   - name: AuditLogs
     description: All endpoints related to the AuditLog model.
   - name: Registrations
     description: All endpoints related to Registrations.
   - name: Capacities
     description: All endpoints related to Capacity management.
+  - name: Batches
+    description: All endpoints related to Batch-type actions.

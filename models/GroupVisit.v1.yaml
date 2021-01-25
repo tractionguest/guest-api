@@ -1,5 +1,6 @@
 title: GroupVisit
 type: object
+description: ''
 properties:
   id:
     type: integer
@@ -19,4 +20,46 @@ properties:
     type: string
   updated_at:
     type: string
-description: ''
+  registration_limit:
+    type:
+      - integer
+      - 'null'
+  registration_url:
+    type:
+      - string
+      - 'null'
+  invites_count:
+    type: integer
+  unconfirmed_registrations_count:
+    type: integer
+  manual_registration_approval:
+    type: boolean
+  public_registration_enabled:
+    type: boolean
+x-examples:
+  default:
+    id: 0
+    location:
+      id: 0
+      name: Location Name
+      max_capacity: 0
+      timezone: UTC
+    hosts:
+      - id: 0
+        email: email@example.com
+        first_name: John
+        last_name: Smith
+        profile_pic_url: string
+        department: string
+        mobile_number: string
+    name: Appointment Name
+    start_time: '2021-01-01T12:34:56Z'
+    end_time: '2021-01-01T12:34:56Z'
+    created_at: '2021-01-01T12:34:56Z'
+    updated_at: '2021-01-01T12:34:56Z'
+    registration_limit: null
+    registration_url: null
+    invites_count: 0
+    unconfirmed_registrations_count: 0
+    manual_registration_approval: true
+    public_registration_enabled: true

@@ -3489,6 +3489,11 @@ paths:
           in: query
           name: created_after
           description: Restricts results to only those that were created after the provided date
+        - schema:
+            type: boolean
+          in: query
+          name: needs_confirmation
+          description: "A confirmed `Registration` is one with an associated `Invite`. This filter returns those without an `Invite` when true, and those with an `Invite` when false."
       tags:
         - Registrations
   '/locations/{location_id}/capacity_forecasts':

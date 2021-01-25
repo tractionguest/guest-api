@@ -3954,8 +3954,33 @@ paths:
       summary: ''
       operationId: createGroupVisit
       responses:
-        '200':
-          description: OK
+        '201':
+          description: Created the `GroupVisit`
+          content:
+            application/json:
+              schema:
+                $ref: ./models/GroupVisit.v1.yaml
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: You do not have permission to create this
+        '403':
+          description: You do not have permission for this action
+        '422':
+          description: Your request was not formatted correctly
+      description: Creates a `GroupVisit` (Appointment)
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/GroupVisitCreateParams.v1.yaml
+        description: ''
 components:
   parameters:
     idempotencyKey:

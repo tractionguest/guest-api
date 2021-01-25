@@ -3982,6 +3982,8 @@ paths:
             schema:
               $ref: ./models/GroupVisitCreateParams.v1.yaml
         description: ''
+      tags:
+        - GroupVisits
   '/group_visits/{group_visit_id}':
     parameters:
       - schema:
@@ -4048,6 +4050,8 @@ paths:
             schema:
               $ref: ./models/GroupVisitUpdateParams.v1.yaml
         description: ''
+      tags:
+        - GroupVisits
     delete:
       summary: Delete a Group Visit (Appointment)
       operationId: deleteGroupVisit
@@ -4059,6 +4063,8 @@ paths:
       description: Deletes a single instance of `GroupVisit` (Appointment).
       parameters:
         - $ref: '#/components/parameters/idempotencyKey'
+      tags:
+        - GroupVisits
 components:
   parameters:
     idempotencyKey:

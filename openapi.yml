@@ -3913,7 +3913,8 @@ paths:
   /group_visits:
     get:
       summary: List all Group Visits (Appointments)
-      tags: []
+      tags:
+        - GroupVisits
       responses:
         '200':
           description: Successful response - returns an array of `GroupVisit` entities.
@@ -3951,7 +3952,7 @@ paths:
           name: sort_with
           description: 'A combination of attribute and direction, joined with an underscore, for sorting. Valid attributes are: `created_at`, `updated_at`, `name`, and `start_time`. Valid directions are `asc` and `desc`. E.g., `name_desc`, `start_time_asc`.'
     post:
-      summary: ''
+      summary: Create a new Group Visit (Appointment)
       operationId: createGroupVisit
       responses:
         '201':
@@ -3981,6 +3982,77 @@ paths:
             schema:
               $ref: ./models/GroupVisitCreateParams.v1.yaml
         description: ''
+  '/group_visits/{group_visit_id}':
+    parameters:
+      - schema:
+          type: string
+        name: group_visit_id
+        in: path
+        required: true
+    get:
+      summary: Get a Group Visit (Appointment)
+      tags:
+        - GroupVisits
+      responses:
+        '200':
+          description: Successful response - returns a single `GroupVisit`.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/GroupVisit.v1.yaml
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: You do not have permission to view this GroupVisit
+        '403':
+          description: You do not have permission for this action
+        '404':
+          description: The GroupVisit does not exist
+      operationId: getGroupVisit
+      description: Gets the details of a single instance of a `GroupVisit`.
+    put:
+      summary: Update a Group Visit (Appointment)
+      operationId: updateGroupVisit
+      responses:
+        '202':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: ./models/GroupVisit.v1.yaml
+        '400':
+          description: A generic error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: You do not have permission to view this GroupVisit
+        '403':
+          description: You do not have permission for this action
+        '404':
+          description: The GroupVisit does not exist
+        '422':
+          description: Your request was not formatted correctly
+      description: Updates an existing `GroupVisit` (Appointment).
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+    delete:
+      summary: Delete a Group Visit (Appointment)
+      operationId: deleteGroupVisit
+      responses:
+        '200':
+          description: The `GroupVisit` has been deleted
+        '400':
+          description: There was an error in trying to delete the `GroupVisit`
+      description: Deletes a single instance of `GroupVisit` (Appointment).
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
 components:
   parameters:
     idempotencyKey:
@@ -4048,3 +4120,5 @@ tags:
     description: All endpoints related to Capacity management.
   - name: Batches
     description: All endpoints related to Batch-type actions.
+  - name: GroupVisits
+    description: All endpoints related to Group Visits (Appointments).

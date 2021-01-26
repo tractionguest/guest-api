@@ -1,0 +1,42 @@
+title: GroupVisitCreateParams
+type: object
+x-examples:
+  default:
+    name: Appointment Name
+    start_time: '2021-01-01T12:34:56Z'
+    end_time: '2021-01-01T12:34:56Z'
+    location_id: 0
+    registration_limit: 25
+    manual_registration_approval: true
+    public_registration_enabled: true
+    host_ids:
+      - 1
+      - 2
+      - 3
+properties:
+  name:
+    type: string
+  start_time:
+    type: string
+  end_time:
+    type: string
+  location_id:
+    type: integer
+  registration_limit:
+    type: integer
+    nullable: true
+  manual_registration_approval:
+    type: boolean
+    nullable: true
+  public_registration_enabled:
+    type: boolean
+    nullable: true
+  host_ids:
+    type: array
+    items:
+      type: integer
+required:
+  - name
+  - start_time
+  - end_time
+  - location_id

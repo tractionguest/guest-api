@@ -56,7 +56,7 @@ paths:
             application/json:
               schema:
                 $ref: ./models/BatchJob.v1.yaml
-        '4XX':
+        4XX:
           description: Not Found
           content:
             application/json:
@@ -137,7 +137,7 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to view these Hosts"
+          description: You don't have permission to view these Hosts
         '403':
           description: You do not have permission for this action
       operationId: getHosts
@@ -251,7 +251,7 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to view this EmailTemplate"
+          description: You don't have permission to view this EmailTemplate
         '403':
           description: You do not have permission for this action
       operationId: getEmailTemplates
@@ -527,7 +527,7 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to view this Signin"
+          description: You don't have permission to view this Signin
         '403':
           description: You do not have permission for this action
         '404':
@@ -537,7 +537,9 @@ paths:
       description: Gets the details of a single instance of a `Signin`.
     put:
       requestBody:
-        description: "The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`. \n`is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible."
+        description: |-
+          The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`. 
+          `is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible.
         content:
           application/json:
             schema:
@@ -811,7 +813,7 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to update this Signin"
+          description: You don't have permission to update this Signin
         '403':
           description: You do not have permission for this action
         '404':
@@ -894,7 +896,7 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to view these Locations"
+          description: You don't have permission to view these Locations
           content:
             application/json:
               schema:
@@ -905,7 +907,7 @@ paths:
       summary: List all Locations
       description: Gets a list of all `Location` entities.
   '/locations/{location_id}/invites':
-    summary: "Path used to manage a single Location's invites."
+    summary: Path used to manage a single Location's invites.
     description: The REST endpoint/path used to create single instances of an `Invite` for a specific `Location`.
     post:
       requestBody:
@@ -1050,7 +1052,7 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to create this Invite"
+          description: You don't have permission to create this Invite
         '403':
           description: You do not have permission for this action
         '404':
@@ -1114,13 +1116,13 @@ paths:
               - updated_at_desc
           in: query
         - name: starts_before
-          description: 'Filters results to all those *before* the provided datetime'
+          description: Filters results to all those *before* the provided datetime
           schema:
             format: date
             type: string
           in: query
         - name: starts_after
-          description: 'Filters results to all those *after* the provided datetime'
+          description: Filters results to all those *after* the provided datetime
           schema:
             format: date
             type: string
@@ -1136,13 +1138,13 @@ paths:
             type: boolean
           in: query
         - name: active_after
-          description: "Checks that an invite hasn't yet started, or has started and is still active after a specified time"
+          description: 'Checks that an invite hasn''t yet started, or has started and is still active after a specified time'
           schema:
             format: date-time
             type: string
           in: query
         - name: active_before
-          description: "Checks that an invite hasn't ended before a specified time"
+          description: Checks that an invite hasn't ended before a specified time
           schema:
             format: date-time
             type: string
@@ -1806,7 +1808,7 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to view these Invites"
+          description: You don't have permission to view these Invites
         '403':
           description: You do not have permission for this action
       operationId: getInvites
@@ -1825,14 +1827,14 @@ paths:
             application/json:
               schema:
                 $ref: ./models/BatchJob.v1.yaml
-        '4XX':
+        4XX:
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
       operationId: batchDeleteInvites
-      description: 'Queues up a "delete" background task for one or more `Invite` entities.'
+      description: Queues up a "delete" background task for one or more `Invite` entities.
       requestBody:
         content:
           application/json:
@@ -1939,7 +1941,7 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to create this Invite"
+          description: You don't have permission to create this Invite
         '403':
           description: You do not have permission for this action
         '404':
@@ -1990,13 +1992,13 @@ paths:
             type: boolean
           in: query
         - name: signin_before
-          description: 'Filters results to all those *before* the provided datetime'
+          description: Filters results to all those *before* the provided datetime
           schema:
             format: date
             type: string
           in: query
         - name: signin_after
-          description: 'Filters results to all those *after* the provided datetime'
+          description: Filters results to all those *after* the provided datetime
           schema:
             format: date
             type: string
@@ -2354,7 +2356,7 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to view these Signins"
+          description: You don't have permission to view these Signins
         '403':
           description: You do not have permission for this action
       operationId: getSignins
@@ -2475,7 +2477,7 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to view this User"
+          description: You don't have permission to view this User
         '403':
           description: You do not have permission for this action
         '404':
@@ -2594,7 +2596,7 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to view this Invite"
+          description: You don't have permission to view this Invite
         '403':
           description: You do not have permission for this action
         '404':
@@ -2713,7 +2715,7 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to view this Invite"
+          description: You don't have permission to view this Invite
         '403':
           description: You do not have permission for this action
         '404':
@@ -3202,7 +3204,7 @@ paths:
                         message: some text
           description: A generic error
         '401':
-          description: "You don't have permission to view this AuditLog"
+          description: You don't have permission to view this AuditLog
         '403':
           description: You do not have permission for this action
       operationId: getAuditLogs
@@ -3258,7 +3260,7 @@ paths:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
         '401':
-          description: "You don't have permission to view this AuditLog"
+          description: You don't have permission to view this AuditLog
         '403':
           description: You do not have permission for this action
         '404':
@@ -3493,7 +3495,7 @@ paths:
             type: boolean
           in: query
           name: needs_confirmation
-          description: "A confirmed `Registration` is one with an associated `Invite`. This filter returns those without an `Invite` when true, and those with an `Invite` when false."
+          description: 'A confirmed `Registration` is one with an associated `Invite`. This filter returns those without an `Invite` when true, and those with an `Invite` when false.'
       tags:
         - Registrations
   '/locations/{location_id}/capacity_forecasts':
@@ -3561,7 +3563,7 @@ paths:
                         code: some text
                         message: some text
         '401':
-          description: "You don't have permission to view the details of the location's capacity."
+          description: You don't have permission to view the details of the location's capacity.
           content:
             application/json:
               schema:
@@ -3614,7 +3616,7 @@ paths:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
         '401':
-          description: "You don't have permission to view the details of the location's capacity."
+          description: You don't have permission to view the details of the location's capacity.
           content:
             application/json:
               schema:
@@ -3656,7 +3658,7 @@ paths:
                 $ref: ./models/ErrorsList.v1.yaml
               examples: {}
         '401':
-          description: "You don't have permission to view this Location"
+          description: You don't have permission to view this Location
           content:
             application/json:
               schema:
@@ -3784,12 +3786,12 @@ paths:
             example: 'recipient,location,image'
           in: query
           name: include
-          description: "A list of comma-separated related models to include. Possible values: 'recipient', 'location', 'image'"
+          description: 'A list of comma-separated related models to include. Possible values: ''recipient'', ''location'', ''image'''
         - schema:
             type: boolean
           in: query
           name: picked_up
-          description: 'Filters packages by their "picked_up" state..'
+          description: Filters packages by their "picked_up" state..
           allowEmptyValue: false
         - schema:
             type: string
@@ -3871,7 +3873,7 @@ paths:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-      description: |+
+      description: |
         Update/Edit information about a Package.
 
         picked_up - changes the package_state to picked up and assigns non null value to picked_up_at
@@ -3879,9 +3881,6 @@ paths:
         recipient_id - update the package's intended recipient. Changes package_state to 'recipient_matched' if a match hasn't been found and notifies host about their package via email. A previous recipient will stop getting notifications
 
         carrier_name - change/update the package's carrier/courier information
-
-
-
       tags:
         - Packages
       requestBody:
@@ -3911,11 +3910,166 @@ paths:
         - TractionGuestAuth: []
       tags:
         - Packages
+  /group_visits:
+    get:
+      summary: List all Group Visits (Appointments)
+      tags:
+        - GroupVisits
+      responses:
+        '200':
+          description: Successful response - returns an array of `GroupVisit` entities.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '400':
+          description: A generic error
+        '401':
+          description: You do not have permission to view this
+        '403':
+          description: You do not have permission for this action
+      operationId: getGroupVisits
+      description: Gets a list of all `GroupVisit` entities (Appointments).
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: limit
+          description: Limits the results to a specified number. Defaults to 50.
+        - schema:
+            type: string
+          in: query
+          name: offset
+          description: Offsets the results to a specified number. Defaults to 0.
+        - schema:
+            type: string
+          in: query
+          name: location_ids
+          description: 'A comma-separated string of locations IDs, to only show group visits (appointments) from those locations.'
+        - schema:
+            type: string
+          in: query
+          name: sort_with
+          description: 'A combination of attribute and direction, joined with an underscore, for sorting. Valid attributes are: `created_at`, `updated_at`, `name`, and `start_time`. Valid directions are `asc` and `desc`. E.g., `name_desc`, `start_time_asc`.'
+    post:
+      summary: Create a new Group Visit (Appointment)
+      operationId: createGroupVisit
+      responses:
+        '201':
+          description: Created the `GroupVisit`
+          content:
+            application/json:
+              schema:
+                $ref: ./models/GroupVisit.v1.yaml
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: You do not have permission to create this
+        '403':
+          description: You do not have permission for this action
+        '422':
+          description: Your request was not formatted correctly
+      description: Creates a `GroupVisit` (Appointment)
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/GroupVisitCreateParams.v1.yaml
+        description: ''
+      tags:
+        - GroupVisits
+  '/group_visits/{group_visit_id}':
+    parameters:
+      - schema:
+          type: string
+        name: group_visit_id
+        in: path
+        required: true
+    get:
+      summary: Get a Group Visit (Appointment)
+      tags:
+        - GroupVisits
+      responses:
+        '200':
+          description: Successful response - returns a single `GroupVisit`.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/GroupVisit.v1.yaml
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: You do not have permission to view this GroupVisit
+        '403':
+          description: You do not have permission for this action
+        '404':
+          description: The GroupVisit does not exist
+      operationId: getGroupVisit
+      description: Gets the details of a single instance of a `GroupVisit`.
+    put:
+      summary: Update a Group Visit (Appointment)
+      operationId: updateGroupVisit
+      responses:
+        '202':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: ./models/GroupVisit.v1.yaml
+        '400':
+          description: A generic error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: You do not have permission to view this GroupVisit
+        '403':
+          description: You do not have permission for this action
+        '404':
+          description: The GroupVisit does not exist
+        '422':
+          description: Your request was not formatted correctly
+      description: Updates an existing `GroupVisit` (Appointment).
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/GroupVisitUpdateParams.v1.yaml
+        description: ''
+      tags:
+        - GroupVisits
+    delete:
+      summary: Delete a Group Visit (Appointment)
+      operationId: deleteGroupVisit
+      responses:
+        '200':
+          description: The `GroupVisit` has been deleted
+        '400':
+          description: There was an error in trying to delete the `GroupVisit`
+      description: Deletes a single instance of `GroupVisit` (Appointment).
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+      tags:
+        - GroupVisits
 components:
   parameters:
     idempotencyKey:
       name: Idempotency-Key
-      description: "An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored"
+      description: 'An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it''s submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored'
       schema:
         type: string
       in: header
@@ -3978,3 +4132,5 @@ tags:
     description: All endpoints related to Capacity management.
   - name: Batches
     description: All endpoints related to Batch-type actions.
+  - name: GroupVisits
+    description: All endpoints related to Group Visits (Appointments).

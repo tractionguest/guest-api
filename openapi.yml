@@ -3921,9 +3921,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/ErrorsList.v1.yaml
+                $ref: ./models/PaginatedGroupVisitsList.v1.yaml
         '400':
           description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
         '401':
           description: You do not have permission to view this
         '403':

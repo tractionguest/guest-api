@@ -20,7 +20,6 @@ x-examples:
         field_name: some text
         field_value: some text
     email_template_id: 65
-    group_visit_id: 12
     mobile_number: some text
     first_name: some text
     notification_triggers:
@@ -40,7 +39,7 @@ x-examples:
         notification_groups:
           - some text
           - some text
-description: "The root of the InviteCreateParams type's schema."
+description: The root of the InviteCreateParams type's schema.
 properties:
   mobile_number:
     type: string
@@ -83,7 +82,7 @@ properties:
   company:
     type: string
   group_visit_id:
-    type: string
+    type: integer
 required:
   - first_name
   - last_name

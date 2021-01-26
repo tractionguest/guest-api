@@ -43,7 +43,7 @@ x-examples:
         trigger_span: {}
         trigger_pointer: {}
         event_offset: 41
-description: "The root of the InviteUpdateParams type's schema."
+description: The root of the InviteUpdateParams type's schema.
 properties:
   mobile_number:
     type: string
@@ -83,3 +83,5 @@ properties:
     type: string
   company:
     type: string
+  group_visit_id:
+    type: integer

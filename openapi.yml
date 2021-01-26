@@ -3922,6 +3922,41 @@ paths:
             application/json:
               schema:
                 $ref: ./models/PaginatedGroupVisitsList.v1.yaml
+              examples:
+                default:
+                  value:
+                    pagination:
+                      total_records: 0
+                      current_offset: 0
+                      next_offset: 0
+                      last_id: 0
+                      limit: 0
+                    group_visits:
+                      - id: 1
+                        location:
+                          id: 1
+                          name: Location Name
+                          max_capacity: 10
+                          timezone: UTC
+                        hosts:
+                          - id: 0
+                            email: email@sample.com
+                            first_name: John
+                            last_name: Smith
+                            profile_pic_url: string
+                            department: Accounting
+                            mobile_number: string
+                        name: Appointment Name
+                        start_time: '2021-01-01T12:34:56Z'
+                        end_time: '2021-01-01T12:34:56Z'
+                        created_at: '2021-01-01T12:34:56Z'
+                        updated_at: '2021-01-01T12:34:56Z'
+                        registration_limit: 5
+                        registration_url: null
+                        invites_count: 0
+                        unconfirmed_registrations_count: 0
+                        manual_registration_approval: true
+                        public_registration_enabled: true
         '400':
           description: A generic error
           content:
@@ -3965,6 +4000,34 @@ paths:
             application/json:
               schema:
                 $ref: ./models/GroupVisit.v1.yaml
+              examples:
+                default:
+                  value:
+                    id: 0
+                    location:
+                      id: 0
+                      name: Location Name
+                      max_capacity: 0
+                      timezone: UTC
+                    hosts:
+                      - id: 0
+                        email: email@sample.com
+                        first_name: Jane
+                        last_name: Doe
+                        profile_pic_url: string
+                        department: Engineering
+                        mobile_number: string
+                    name: Appointment Name
+                    start_time: '2021-01-01T12:34:56Z'
+                    end_time: '2021-01-01T12:34:56Z'
+                    created_at: '2021-01-01T12:34:56Z'
+                    updated_at: '2021-01-01T12:34:56Z'
+                    registration_limit: 0
+                    registration_url: url
+                    invites_count: 0
+                    unconfirmed_registrations_count: 0
+                    manual_registration_approval: true
+                    public_registration_enabled: true
         '400':
           description: A generic error
           content:
@@ -4006,6 +4069,34 @@ paths:
             application/json:
               schema:
                 $ref: ./models/GroupVisit.v1.yaml
+              examples:
+                default:
+                  value:
+                    id: 0
+                    location:
+                      id: 0
+                      name: Location Name
+                      max_capacity: 0
+                      timezone: UTC
+                    hosts:
+                      - id: 0
+                        email: demo@example.com
+                        first_name: Jack
+                        last_name: Frost
+                        profile_pic_url: url
+                        department: Weather Monitoring
+                        mobile_number: string
+                    name: Appointment Name
+                    start_time: '2021-01-01T12:34:56Z'
+                    end_time: '2021-01-01T12:34:56Z'
+                    created_at: '2021-01-01T12:34:56Z'
+                    updated_at: '2021-01-01T12:34:56Z'
+                    registration_limit: 0
+                    registration_url: url
+                    invites_count: 0
+                    unconfirmed_registrations_count: 0
+                    manual_registration_approval: true
+                    public_registration_enabled: true
         '400':
           description: A generic error
           content:
@@ -4030,6 +4121,34 @@ paths:
             application/json:
               schema:
                 $ref: ./models/GroupVisit.v1.yaml
+              examples:
+                default:
+                  value:
+                    id: 0
+                    location:
+                      id: 0
+                      name: Location Name
+                      max_capacity: 0
+                      timezone: UTC
+                    hosts:
+                      - id: 0
+                        email: email@sample.com
+                        first_name: Jane
+                        last_name: Doe
+                        profile_pic_url: string
+                        department: Engineering
+                        mobile_number: string
+                    name: Appointment Name
+                    start_time: '2021-01-01T12:34:56Z'
+                    end_time: '2021-01-01T12:34:56Z'
+                    created_at: '2021-01-01T12:34:56Z'
+                    updated_at: '2021-01-01T12:34:56Z'
+                    registration_limit: 0
+                    registration_url: url
+                    invites_count: 0
+                    unconfirmed_registrations_count: 0
+                    manual_registration_approval: true
+                    public_registration_enabled: true
         '400':
           description: A generic error
           headers: {}

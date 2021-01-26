@@ -23,17 +23,14 @@ properties:
   location_id:
     type: integer
   registration_limit:
-    type:
-      - integer
-      - 'null'
+    type: integer
+    nullable: true
   manual_registration_approval:
-    type:
-      - boolean
-      - 'null'
+    type: boolean
+    nullable: true
   public_registration_enabled:
-    type:
-      - boolean
-      - 'null'
+    type: boolean
+    nullable: true
   host_ids:
     type: array
     items:

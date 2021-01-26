@@ -21,13 +21,11 @@ properties:
   updated_at:
     type: string
   registration_limit:
-    type:
-      - integer
-      - 'null'
+    type: integer
+    nullable: true
   registration_url:
-    type:
-      - string
-      - 'null'
+    type: string
+    nullable: true
   invites_count:
     type: integer
   unconfirmed_registrations_count:

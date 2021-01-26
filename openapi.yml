@@ -3967,6 +3967,11 @@ paths:
           description: You do not have permission to view this
         '403':
           description: You do not have permission for this action
+      security:
+        - TractionGuestAuth:
+            - all
+            - 'visitors:*'
+            - 'visitors:read'
       operationId: getGroupVisits
       description: Gets a list of all `GroupVisit` entities (Appointments).
       parameters:
@@ -3992,6 +3997,11 @@ paths:
           description: 'A combination of attribute and direction, joined with an underscore, for sorting. Valid attributes are: `created_at`, `updated_at`, `name`, and `start_time`. Valid directions are `asc` and `desc`. E.g., `name_desc`, `start_time_asc`.'
     post:
       summary: Create a new Group Visit (Appointment)
+      security:
+        - TractionGuestAuth:
+            - all
+            - 'visitors:*'
+            - 'visitors:write'
       operationId: createGroupVisit
       responses:
         '201':
@@ -4109,10 +4119,20 @@ paths:
           description: You do not have permission for this action
         '404':
           description: The GroupVisit does not exist
+      security:
+        - TractionGuestAuth:
+            - all
+            - 'visitors:*'
+            - 'visitors:read'
       operationId: getGroupVisit
       description: Gets the details of a single instance of a `GroupVisit`.
     put:
       summary: Update a Group Visit (Appointment)
+      security:
+        - TractionGuestAuth:
+            - all
+            - 'visitors:*'
+            - 'visitors:write'
       operationId: updateGroupVisit
       responses:
         '202':
@@ -4177,6 +4197,11 @@ paths:
         - GroupVisits
     delete:
       summary: Delete a Group Visit (Appointment)
+      security:
+        - TractionGuestAuth:
+            - all
+            - 'visitors:*'
+            - 'visitors:write'
       operationId: deleteGroupVisit
       responses:
         '200':

@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Traction Guest API",
-    "version": "0.14.2",
+    "version": "0.15.0",
     "x-logo": {
       "url": "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png",
       "backgroundColor": "#FFFFFF",
@@ -2105,7 +2105,6 @@
                       }
                     ],
                     "email_template_id": 65,
-                    "group_visit_id": 12,
                     "mobile_number": "some text",
                     "first_name": "some text",
                     "notification_triggers": [
@@ -2194,7 +2193,7 @@
                     "type": "string"
                   },
                   "group_visit_id": {
-                    "type": "string"
+                    "type": "integer"
                   }
                 },
                 "required": [
@@ -6464,38 +6463,7 @@
                       "type": "boolean"
                     },
                     "group_visit": {
-                      "title": "GroupVisit",
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer"
-                        },
-                        "location": {
-                          "$ref": "#/paths/~1locations~1%7Blocation_id%7D/get/responses/200/content/application~1json/schema"
-                        },
-                        "hosts": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/paths/~1hosts/post/responses/201/content/application~1json/schema"
-                          }
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "start_time": {
-                          "type": "string"
-                        },
-                        "end_time": {
-                          "type": "string"
-                        },
-                        "created_at": {
-                          "type": "string"
-                        },
-                        "updated_at": {
-                          "type": "string"
-                        }
-                      },
-                      "description": ""
+                      "$ref": "#/paths/~1group_visits/post/responses/201/content/application~1json/schema"
                     }
                   },
                   "required": [
@@ -6865,6 +6833,9 @@
                   },
                   "company": {
                     "type": "string"
+                  },
+                  "group_visit_id": {
+                    "type": "integer"
                   }
                 }
               },
@@ -8514,7 +8485,7 @@
                           "nullable": true
                         },
                         "group_visit": {
-                          "$ref": "#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/group_visit",
+                          "$ref": "#/paths/~1group_visits/post/responses/201/content/application~1json/schema",
                           "nullable": true
                         }
                       },
@@ -8967,6 +8938,14 @@
             "in": "query",
             "name": "created_after",
             "description": "Restricts results to only those that were created after the provided date"
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "needs_confirmation",
+            "description": "A confirmed `Registration` is one with an associated `Invite`. This filter returns those without an `Invite` when true, and those with an `Invite` when false."
           }
         ],
         "tags": [
@@ -9838,7 +9817,7 @@
             }
           }
         },
-        "description": "Update/Edit information about a Package.\n\npicked_up - changes the package_state to picked up and assigns non null value to picked_up_at\n\nrecipient_id - update the package's intended recipient. Changes package_state to 'recipient_matched' if a match hasn't been found and notifies host about their package via email. A previous recipient will stop getting notifications\n\ncarrier_name - change/update the package's carrier/courier information\n\n\n\n",
+        "description": "Update/Edit information about a Package.\n\npicked_up - changes the package_state to picked up and assigns non null value to picked_up_at\n\nrecipient_id - update the package's intended recipient. Changes package_state to 'recipient_matched' if a match hasn't been found and notifies host about their package via email. A previous recipient will stop getting notifications\n\ncarrier_name - change/update the package's carrier/courier information\n",
         "tags": [
           "Packages"
         ],
@@ -9916,6 +9895,453 @@
         ],
         "tags": [
           "Packages"
+        ]
+      }
+    },
+    "/group_visits": {
+      "get": {
+        "summary": "List all Group Visits (Appointments)",
+        "tags": [
+          "GroupVisits"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response - returns an array of `GroupVisit` entities.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1hosts/get/responses/400/content/application~1json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A generic error"
+          },
+          "401": {
+            "description": "You do not have permission to view this"
+          },
+          "403": {
+            "description": "You do not have permission for this action"
+          }
+        },
+        "operationId": "getGroupVisits",
+        "description": "Gets a list of all `GroupVisit` entities (Appointments).",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "limit",
+            "description": "Limits the results to a specified number. Defaults to 50."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "offset",
+            "description": "Offsets the results to a specified number. Defaults to 0."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "location_ids",
+            "description": "A comma-separated string of locations IDs, to only show group visits (appointments) from those locations."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sort_with",
+            "description": "A combination of attribute and direction, joined with an underscore, for sorting. Valid attributes are: `created_at`, `updated_at`, `name`, and `start_time`. Valid directions are `asc` and `desc`. E.g., `name_desc`, `start_time_asc`."
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create a new Group Visit (Appointment)",
+        "operationId": "createGroupVisit",
+        "responses": {
+          "201": {
+            "description": "Created the `GroupVisit`",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "GroupVisit",
+                  "type": "object",
+                  "description": "The data structure for a Group Visit object. Also called an Appointment.",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "location": {
+                      "$ref": "#/paths/~1locations~1%7Blocation_id%7D/get/responses/200/content/application~1json/schema"
+                    },
+                    "hosts": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/paths/~1hosts/post/responses/201/content/application~1json/schema"
+                      }
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "start_time": {
+                      "type": "string"
+                    },
+                    "end_time": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    },
+                    "registration_limit": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "registration_url": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "invites_count": {
+                      "type": "integer"
+                    },
+                    "unconfirmed_registrations_count": {
+                      "type": "integer"
+                    },
+                    "manual_registration_approval": {
+                      "type": "boolean"
+                    },
+                    "public_registration_enabled": {
+                      "type": "boolean"
+                    }
+                  },
+                  "x-examples": {
+                    "default": {
+                      "id": 0,
+                      "location": {
+                        "id": 0,
+                        "name": "Location Name",
+                        "max_capacity": 0,
+                        "timezone": "UTC"
+                      },
+                      "hosts": [
+                        {
+                          "id": 0,
+                          "email": "email@example.com",
+                          "first_name": "John",
+                          "last_name": "Smith",
+                          "profile_pic_url": "string",
+                          "department": "string",
+                          "mobile_number": "string"
+                        }
+                      ],
+                      "name": "Appointment Name",
+                      "start_time": "2021-01-01T12:34:56Z",
+                      "end_time": "2021-01-01T12:34:56Z",
+                      "created_at": "2021-01-01T12:34:56Z",
+                      "updated_at": "2021-01-01T12:34:56Z",
+                      "registration_limit": null,
+                      "registration_url": null,
+                      "invites_count": 0,
+                      "unconfirmed_registrations_count": 0,
+                      "manual_registration_approval": true,
+                      "public_registration_enabled": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A generic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1hosts/get/responses/400/content/application~1json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "You do not have permission to create this"
+          },
+          "403": {
+            "description": "You do not have permission for this action"
+          },
+          "422": {
+            "description": "Your request was not formatted correctly"
+          }
+        },
+        "description": "Creates a `GroupVisit` (Appointment)",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "GroupVisitCreateParams",
+                "type": "object",
+                "x-examples": {
+                  "default": {
+                    "name": "Appointment Name",
+                    "start_time": "2021-01-01T12:34:56Z",
+                    "end_time": "2021-01-01T12:34:56Z",
+                    "location_id": 0,
+                    "registration_limit": 25,
+                    "manual_registration_approval": true,
+                    "public_registration_enabled": true,
+                    "host_ids": [
+                      1,
+                      2,
+                      3
+                    ]
+                  }
+                },
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "start_time": {
+                    "type": "string"
+                  },
+                  "end_time": {
+                    "type": "string"
+                  },
+                  "location_id": {
+                    "type": "integer"
+                  },
+                  "registration_limit": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "manual_registration_approval": {
+                    "type": "boolean",
+                    "nullable": true
+                  },
+                  "public_registration_enabled": {
+                    "type": "boolean",
+                    "nullable": true
+                  },
+                  "host_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "start_time",
+                  "end_time",
+                  "location_id"
+                ]
+              }
+            }
+          },
+          "description": ""
+        },
+        "tags": [
+          "GroupVisits"
+        ]
+      }
+    },
+    "/group_visits/{group_visit_id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "group_visit_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get a Group Visit (Appointment)",
+        "tags": [
+          "GroupVisits"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response - returns a single `GroupVisit`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1group_visits/post/responses/201/content/application~1json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A generic error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1hosts/get/responses/400/content/application~1json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "You do not have permission to view this GroupVisit"
+          },
+          "403": {
+            "description": "You do not have permission for this action"
+          },
+          "404": {
+            "description": "The GroupVisit does not exist"
+          }
+        },
+        "operationId": "getGroupVisit",
+        "description": "Gets the details of a single instance of a `GroupVisit`."
+      },
+      "put": {
+        "summary": "Update a Group Visit (Appointment)",
+        "operationId": "updateGroupVisit",
+        "responses": {
+          "202": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1group_visits/post/responses/201/content/application~1json/schema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A generic error",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1hosts/get/responses/400/content/application~1json/schema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "You do not have permission to view this GroupVisit"
+          },
+          "403": {
+            "description": "You do not have permission for this action"
+          },
+          "404": {
+            "description": "The GroupVisit does not exist"
+          },
+          "422": {
+            "description": "Your request was not formatted correctly"
+          }
+        },
+        "description": "Updates an existing `GroupVisit` (Appointment).",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "GroupVisitUpdateParams",
+                "type": "object",
+                "x-examples": {
+                  "default": {
+                    "name": "Appointment Name",
+                    "start_time": "2021-01-01T12:34:56Z",
+                    "end_time": "2021-01-01T12:34:56Z",
+                    "location_id": 0,
+                    "registration_limit": 25,
+                    "manual_registration_approval": true,
+                    "public_registration_enabled": true,
+                    "host_ids": [
+                      1,
+                      2,
+                      3
+                    ]
+                  }
+                },
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "start_time": {
+                    "type": "string"
+                  },
+                  "end_time": {
+                    "type": "string"
+                  },
+                  "location_id": {
+                    "type": "integer"
+                  },
+                  "registration_limit": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "manual_registration_approval": {
+                    "type": "boolean",
+                    "nullable": true
+                  },
+                  "public_registration_enabled": {
+                    "type": "boolean",
+                    "nullable": true
+                  },
+                  "host_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "invite_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "refresh_registration_url": {
+                    "type": "boolean"
+                  }
+                },
+                "description": "The allowable changes when updating a Group Visit (Appointment)."
+              }
+            }
+          },
+          "description": ""
+        },
+        "tags": [
+          "GroupVisits"
+        ]
+      },
+      "delete": {
+        "summary": "Delete a Group Visit (Appointment)",
+        "operationId": "deleteGroupVisit",
+        "responses": {
+          "200": {
+            "description": "The `GroupVisit` has been deleted"
+          },
+          "400": {
+            "description": "There was an error in trying to delete the `GroupVisit`"
+          }
+        },
+        "description": "Deletes a single instance of `GroupVisit` (Appointment).",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "tags": [
+          "GroupVisits"
         ]
       }
     }
@@ -10022,6 +10448,10 @@
     {
       "name": "Batches",
       "description": "All endpoints related to Batch-type actions."
+    },
+    {
+      "name": "GroupVisits",
+      "description": "All endpoints related to Group Visits (Appointments)."
     }
   ]
 }

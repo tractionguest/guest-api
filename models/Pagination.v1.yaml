@@ -1,5 +1,5 @@
 title: Pagination
-description: "The root of the Pagination type's schema."
+description: The root of the Pagination type's schema.
 type: object
 x-examples:
   default:
@@ -21,7 +21,7 @@ properties:
     nullable: true
   last_id:
     format: int32
-    description: "The last ID rendered, if the request included the 'after_id' param."
+    description: 'The last ID rendered, if the request included the ''after_id'' param.'
     type: integer
     nullable: true
   limit:

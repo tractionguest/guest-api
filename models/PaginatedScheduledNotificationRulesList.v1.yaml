@@ -1,0 +1,7 @@
+title: PaginatedScheduledNotificationRulesList.v1
+type: object
+properties:
+  pagination:
+    $ref: ./Pagination.v1.yaml
+  scheduled_notification_rules:
+    $ref: ./ScheduledNotificationRule.v1.yaml

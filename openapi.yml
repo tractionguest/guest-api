@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Traction Guest API
-  version: 0.15.0
+  version: 0.16.0
   x-logo:
     url: 'https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png'
     backgroundColor: '#FFFFFF'
@@ -4212,6 +4212,200 @@ paths:
         - $ref: '#/components/parameters/idempotencyKey'
       tags:
         - GroupVisits
+  '/locations/{location_id}/scheduled_notification_rules':
+    get:
+      summary: Your GET endpoint
+      responses:
+        '200':
+          description: Successful response - returns an array of `ScheduledNotificationRule` entities.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/PaginatedScheduledNotificationRulesList.v1.yaml
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: You don't have permission to view these ScheduledNotificationRules
+      operationId: getScheduledNotificationRules
+      description: Gets a list of all `ScheduleNotificationRule` entities.
+      tags:
+        - ScheduledNotificationRules
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: ''
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: 'Limits the results to a specified number, defaults to 50'
+        - schema:
+            type: integer
+          in: query
+          name: offset
+          description: 'Offsets the results to a specified number, defaults to 0'
+    post:
+      summary: ''
+      operationId: createScheduledNotificationRule
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ScheduledNotificationRule.v1.yaml
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      description: Creates a `ScheduleNotificationRule`.
+      tags:
+        - ScheduledNotificationRules
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/ScheduledNotificationRuleCreateParams.v1.yaml
+            examples:
+              example-1:
+                value:
+                  send_offset: P-1D
+                  email_template_id: 0
+                  location_preference_id: 0
+        description: |-
+          The `send_offset` value needs to be written as ISO 8601 time intervals:
+          ```
+          P [ years-months-days ] [ T hours:minutes:seconds ]
+          ```
+
+          The string must begin with P, and a T separates the date and time parts of the interval
+
+          ```
+          M: Months (in the date part)
+          W: Weeks
+          D: Days
+          H: Hours
+          M: Minutes (in the time part)
+          S: Seconds
+          ```
+          E.g.:
+          ```
+          "P-1D" = 1 day before
+          "PT+1H" = 1 hour after
+          ```
+    parameters: []
+  '/locations/{location_id}/scheduled_notification_rules/{scheduled_notification_rule_id}':
+    parameters:
+      - schema:
+          type: string
+        name: scheduled_notification_rule_id
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: location_id
+        in: path
+        required: true
+    put:
+      summary: ''
+      operationId: updateScheduledNotificationRule
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ScheduledNotificationRule.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/ScheduledNotificationRuleUpdateParams.v1.yaml
+        description: |-
+          The `send_offset` value needs to be written as ISO 8601 time intervals:
+          ```
+          P [ years-months-days ] [ T hours:minutes:seconds ]
+          ```
+
+          The string must begin with P, and a T separates the date and time parts of the interval
+
+          ```
+          M: Months (in the date part)
+          W: Weeks
+          D: Days
+          H: Hours
+          M: Minutes (in the time part)
+          S: Seconds
+          ```
+          E.g.:
+          ```
+          "P-1D" = 1 day before
+          "PT1H" = 1 hour after
+          "P-1DT1H" = 1 day before, plus 1 hour (so, 23 hours before)
+          ```
+      description: Update an existing `ScheduledNotificationRule` record.
+    delete:
+      summary: ''
+      operationId: destroyScheduledNotificationRule
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      description: Deletes an existing `ScheduledNotificationRule` record.
+    get:
+      summary: ''
+      operationId: getScheduledNotificationRule
+      responses:
+        '200':
+          description: Successful response - returns a `ScheduledNotificationRule`.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ScheduledNotificationRule.v1.yaml
+        '400':
+          description: A generic error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: You don't have permission to see this Scheduled Notification Rule
+      description: Gets a `ScheduleNotificationRule` entity.
 components:
   parameters:
     idempotencyKey:

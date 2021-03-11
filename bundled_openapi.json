@@ -10560,6 +10560,81 @@
           "GroupVisits"
         ]
       }
+    },
+    "/scheduled_notification_rules": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "Successful response - returns an array of `ScheduledNotificationRules` entities.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pagination": {
+                      "type": "string"
+                    },
+                    "scheduled_notification_rules": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A generic error"
+          },
+          "401": {
+            "description": "You don't have permission to view these ScheduledNotificationRules"
+          },
+          "403": {
+            "description": "You do not have permission for this action"
+          }
+        },
+        "operationId": "get-scheduled_notification_rules"
+      }
+    },
+    "/scheduled_notification_rules/{scheduled_notification_rule_id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "scheduled_notification_rule_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "",
+        "operationId": "put-scheduled_notification_rules-scheduled_notification_rule_id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "summary": "",
+        "operationId": "delete-scheduled_notification_rules-scheduled_notification_rule_id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "summary": "",
+        "operationId": "get-scheduled_notification_rules-scheduled_notification_rule_id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -10671,4 +10746,3 @@
     }
   ]
 }
-

@@ -1,0 +1,11 @@
+title: ScheduledNotificationRuleUpdateParams.v1
+type: object
+properties:
+  send_offset:
+    type: string
+  email_template_id:
+    type: integer
+x-examples:
+  example-1:
+    send_offset: P-1D
+    email_template_id: 0

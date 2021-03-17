@@ -79,6 +79,7 @@ x-examples:
       watchlist_level: some text
       created_at: '2018-02-10T09:30Z'
       updated_at: '2018-02-10T09:30Z'
+    status: signed_in
 description: The data of a Registration
 properties:
   id:
@@ -88,6 +89,7 @@ properties:
     $ref: ./Visitor.v1.yaml
   invite:
     $ref: ./Invite.v1.yaml
+    nullable: true
   guest_responses:
     type: array
     description: Response given by the guest
@@ -115,6 +117,16 @@ properties:
     type: string
   signin:
     $ref: ./Signin.v1.yaml
+  status:
+    type: string
+    enum:
+      - not_started
+      - started
+      - completed
+      - rejected
+      - signed_in
+      - signed_out
+    description: 'An enum describing the state of the `Registration` which can have one of the following: not_started, started, completed, rejected, signed_in signed_out'
 required:
   - id
   - created_at

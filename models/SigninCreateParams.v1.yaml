@@ -1,9 +1,12 @@
 title: SigninCreateParams
 type: object
+description: ''
 properties:
   registration_id:
-    description: UUID of a Registration
     type: string
+    description: UUID of a Registration
+    format: uuid
+    deprecated: true
   email:
     type: string
     description: 'E-mail, ignored if `registration_id` is included'
@@ -25,11 +28,10 @@ properties:
     description: 'ID of the Location where the Signin happened, ignored if `registration_id` is included'
   host_ids:
     type: array
+    description: 'Array of Host ids, ignored if `registration_id` is included'
     items:
       type: integer
-    description: 'Array of Host ids, ignored if `registration_id` is included'
   host_email_template_id:
     type: integer
   guest_email_template_id:
     type: integer
-description: ''

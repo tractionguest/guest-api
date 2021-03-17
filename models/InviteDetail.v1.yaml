@@ -9,6 +9,7 @@ x-examples:
     end_date: '2018-02-10T09:30Z'
     first_name: some text
     last_name: some text
+    checked_in: false
     start_date: '2018-02-10T09:30Z'
     hosts:
       - id: 35
@@ -162,6 +163,8 @@ properties:
     type: string
   company:
     type: string
+  checked_in:
+    type: boolean
   group_visit:
     $ref: ./GroupVisit.v1.yaml
 required:

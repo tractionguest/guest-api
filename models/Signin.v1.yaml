@@ -342,8 +342,6 @@ properties:
     type: string
   company:
     type: string
-  registration:
-    $ref: ./Registration.v1.yaml
 required:
   - id
   - hosts

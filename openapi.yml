@@ -3852,6 +3852,63 @@ paths:
         - TractionGuestAuth: []
       tags:
         - Packages
+  '/registrations/{registration_id}/signins':
+    parameters:
+      - schema:
+          type: string
+        name: registration_id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: createRegistrationSignin
+      responses:
+        '201':
+          description: Created a `SigninDetail` from the given `Registration` UUID.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/SigninDetail.v1.yaml
+        4XX:
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      description: Creates a new `Signin` from a `Registration`
+      tags:
+        - Signins
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+  '/registrations/{registration_id}/signouts':
+    parameters:
+      - schema:
+          type: string
+        name: registration_id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: createRegistrationSignout
+      responses:
+        '200':
+          description: Sucessfully signed out sign-in from registration
+          content:
+            application/json:
+              schema:
+                $ref: ./models/SigninDetail.v1.yaml
+        4XX:
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      description: 'Signs out the last `Signin` on a `Registration`. Returns the `SigninDetail` that was signed out, if the sign out is successful.'
+      parameters:
+        - $ref: '#/components/parameters/idempotencyKey'
+      tags:
+        - Signins
+        - Registrations
 components:
   parameters:
     idempotencyKey:

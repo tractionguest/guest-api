@@ -3878,6 +3878,7 @@ paths:
       description: Creates a new `Signin` from a `Registration`
       tags:
         - Signins
+        - Registrations
       parameters:
         - $ref: '#/components/parameters/idempotencyKey'
   '/registrations/{registration_id}/signouts':

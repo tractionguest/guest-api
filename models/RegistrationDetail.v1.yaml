@@ -89,6 +89,7 @@ properties:
     $ref: ./Visitor.v1.yaml
   invite:
     $ref: ./Invite.v1.yaml
+    nullable: true
   guest_responses:
     type: array
     description: Response given by the guest

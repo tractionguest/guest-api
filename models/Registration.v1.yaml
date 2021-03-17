@@ -89,6 +89,10 @@ properties:
     $ref: ./Visitor.v1.yaml
   invite:
     $ref: ./Invite.v1.yaml
+    nullable: true
+  signin:
+    $ref: ./Signin.v1.yaml
+    nullable: true
   photo_url:
     description: URL of the uploaded photo
     type: string
@@ -123,3 +127,4 @@ properties:
 required:
   - id
   - created_at
+  - status

@@ -1,0 +1,10 @@
+title: PaginatedScheduledNotificationList.v1
+type: object
+description: ''
+properties:
+  pagination:
+    $ref: ./Pagination.v1.yaml
+  scheduled_notifications:
+    type: array
+    items:
+      $ref: ./ScheduledNotification.v1.yaml

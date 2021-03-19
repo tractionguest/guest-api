@@ -1,14 +1,12 @@
 title: ScheduledNotificationRuleCreateParams
 type: object
-properties:
-  send_offset:
-    type: string
-  email_template_id:
-    type: integer
-  location_preference_id:
-    type: integer
 x-examples:
   example-1:
     send_offset: P-1D
     email_template_id: 0
     location_preference_id: 0
+properties:
+  send_offset:
+    type: string
+  email_template_id:
+    type: integer

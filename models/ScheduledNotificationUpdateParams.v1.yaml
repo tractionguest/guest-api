@@ -1,0 +1,9 @@
+title: ScheduledNotificationUpdateParams.v1
+type: object
+properties:
+  email_template_id:
+    type: integer
+  offset_base_source:
+    type: string
+  send_offset:
+    type: string

@@ -4230,21 +4230,14 @@ paths:
                 $ref: ./models/ErrorsList.v1.yaml
         '401':
           description: You don't have permission to view these ScheduledNotificationRules
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
       operationId: getScheduledNotificationRules
       description: Gets a list of all `ScheduleNotificationRule` entities.
       tags:
         - ScheduledNotificationRules
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties: {}
-          application/xml:
-            schema:
-              type: object
-              properties: {}
-        description: ''
       parameters:
         - schema:
             type: integer
@@ -4270,8 +4263,10 @@ paths:
           description: Bad Request
         '401':
           description: Unauthorized
-        '403':
-          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
       description: Creates a `ScheduleNotificationRule`.
       tags:
         - ScheduledNotificationRules
@@ -4338,8 +4333,16 @@ paths:
                 $ref: ./models/ErrorsList.v1.yaml
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
       requestBody:
         content:
           application/json:
@@ -4382,10 +4385,16 @@ paths:
                 $ref: ./models/ErrorsList.v1.yaml
         '401':
           description: Unauthorized
-        '403':
-          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
       description: Deletes an existing `ScheduledNotificationRule` record.
     get:
       summary: ''
@@ -4405,7 +4414,185 @@ paths:
                 $ref: ./models/ErrorsList.v1.yaml
         '401':
           description: You don't have permission to see this Scheduled Notification Rule
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
       description: Gets a `ScheduleNotificationRule` entity.
+  '/invites/{invite_id}/scheduled_notifications':
+    parameters:
+      - schema:
+          type: string
+        name: invite_id
+        in: path
+        required: true
+    get:
+      summary: Get Scheduled Notifications from Invite
+      tags: []
+      responses:
+        '200':
+          description: Successful response - returns an array of `ScheduledNotification` entities.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/PaginatedScheduledNotificationList.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      operationId: getScheduledNotifications
+      description: Gets a list of all `ScheduleNotifications` entities.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: limit
+          description: 'Limits the results to a specified number, defaults to 50'
+        - schema:
+            type: string
+          in: query
+          name: offset
+          description: 'Offsets the results to a specified number, defaults to 0'
+    post:
+      summary: Create Scheduled Notification for Invite
+      operationId: createScheduledNotification
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ScheduledNotification.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/ScheduledNotificationCreateParams.v1.yaml
+  '/invites/{invite_id}/scheduled_notifications/{scheduled_notification_id}':
+    parameters:
+      - schema:
+          type: string
+        name: invite_id
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: scheduled_notification_id
+        in: path
+        required: true
+    get:
+      summary: Get Scheduled Notification
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ScheduledNotification.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      operationId: getScheduledNotification
+    put:
+      summary: Update Scheduled Notification
+      operationId: updateScheduledNotification
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ScheduledNotification.v1.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/ScheduledNotificationUpdateParams.v1.yaml
+    delete:
+      summary: Destroy Scheduled Notification
+      operationId: destroyScheduledNotification
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+      description: ''
 components:
   parameters:
     idempotencyKey:

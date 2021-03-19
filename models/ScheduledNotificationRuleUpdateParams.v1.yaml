@@ -3,8 +3,10 @@ type: object
 properties:
   send_offset:
     type: string
+    nullable: true
   email_template_id:
     type: integer
+    nullable: true
 x-examples:
   example-1:
     send_offset: P-1D

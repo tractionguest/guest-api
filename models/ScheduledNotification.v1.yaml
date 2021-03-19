@@ -1,0 +1,19 @@
+title: ScheduledNotification.v1
+type: object
+properties:
+  id:
+    type: string
+  offset_base_source:
+    type: string
+  send_attempted_at:
+    type: string
+    nullable: true
+  sent_at:
+    type: string
+    nullable: true
+  send_offset:
+    type: string
+  status:
+    type: string
+  email_template:
+    $ref: ./EmailTemplate.v1.yaml

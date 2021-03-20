@@ -4213,6 +4213,18 @@ paths:
         - $ref: '#/components/parameters/idempotencyKey'
       tags:
         - GroupVisits
+  /workflow_emails:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-workflow_emails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/PaginatedWorkflowEmailsList.v1.yaml
+        description: ''
 components:
   parameters:
     idempotencyKey:

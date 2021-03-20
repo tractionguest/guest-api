@@ -1,0 +1,20 @@
+title: WorkflowEmail
+type: object
+x-tags:
+  - email
+  - workflow
+properties:
+  uuid:
+    type: string
+  body:
+    type: string
+  subject:
+    type: string
+  account_uuid:
+    type: string
+x-examples:
+  example:
+    uuid: 113E97E2-6EAF-478E-A251-F3FAEE19C046
+    body: Request medical advice.
+    subject: Pan Pan
+    account_uuid: 113E97E2-6EAF-478E-A251-F3FAEE19C046

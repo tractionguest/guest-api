@@ -4218,7 +4218,7 @@ paths:
       summary: Your GET endpoint
       tags: []
       responses: {}
-      operationId: get-workflow_emails
+      operationId: getWorkflowEmails
       requestBody:
         content:
           application/json:

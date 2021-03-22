@@ -4225,6 +4225,21 @@ paths:
               schema:
                 $ref: ./models/PaginatedWorkflowEmailsList.v1.yaml
       operationId: getWorkflowEmails
+    post:
+      summary: ''
+      operationId: createWorkflowEmail
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ./models/WorkflowEmail.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/WorkflowEmail.v1.yaml
 components:
   parameters:
     idempotencyKey:

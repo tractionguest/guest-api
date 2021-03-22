@@ -5,7 +5,7 @@ x-tags:
   - email
 properties:
   pagination:
-    $ref: ./PaginatedAuditLogsList.v1.yaml
+    $ref: ./Pagination.v1.yaml
   workflow_emails:
     type: array
     items:

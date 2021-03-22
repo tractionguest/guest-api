@@ -4217,14 +4217,14 @@ paths:
     get:
       summary: Your GET endpoint
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/PaginatedWorkflowEmailsList.v1.yaml
       operationId: getWorkflowEmails
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ./models/PaginatedWorkflowEmailsList.v1.yaml
-        description: ''
 components:
   parameters:
     idempotencyKey:

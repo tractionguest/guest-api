@@ -4267,6 +4267,12 @@ paths:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
       description: Creates a `ScheduleNotificationRule`.
       tags:
         - ScheduledNotificationRules
@@ -4485,6 +4491,12 @@ paths:
                 $ref: ./models/ErrorsList.v1.yaml
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+        '404':
+          description: Not Found
           content:
             application/json:
               schema:

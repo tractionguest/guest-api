@@ -4240,6 +4240,39 @@ paths:
           application/json:
             schema:
               $ref: ./models/WorkflowEmail.v1.yaml
+  '/workflow_emails/{workflow_email_uuid}':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/WorkflowEmail.v1.yaml
+      operationId: getWorkflowEmail
+    parameters:
+      - schema:
+          type: string
+        name: workflow_email_uuid
+        in: path
+        required: true
+    put:
+      summary: ''
+      operationId: putWorkflowEmail
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: ./models/WorkflowEmail.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/WorkflowEmail.v1.yaml
 components:
   parameters:
     idempotencyKey:

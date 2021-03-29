@@ -4222,6 +4222,22 @@ paths:
             application/json:
               schema:
                 $ref: ./models/PaginatedScheduledNotificationRulesList.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    pagination:
+                      total_records: 0
+                      current_offset: 0
+                      next_offset: 0
+                      last_id: 0
+                      limit: 0
+                    scheduled_notification_rules:
+                      - id: string
+                        send_offset: string
+                        email_template:
+                          id: 0
+                          name: string
+                          template_type: string
         '400':
           description: A generic error
           content:
@@ -4306,7 +4322,7 @@ paths:
           E.g.:
           ```
           "P-1D" = 1 day before
-          "PT+1H" = 1 hour after
+          "PT1H" = 1 hour after
           ```
     parameters: []
   '/locations/{location_id}/scheduled_notification_rules/{scheduled_notification_rule_id}':
@@ -4354,6 +4370,11 @@ paths:
           application/json:
             schema:
               $ref: ./models/ScheduledNotificationRuleUpdateParams.v1.yaml
+            examples:
+              example-1:
+                value:
+                  send_offset: string
+                  email_template_id: 0
         description: |-
           The `send_offset` value needs to be written as ISO 8601 time intervals:
           ```
@@ -4412,6 +4433,15 @@ paths:
             application/json:
               schema:
                 $ref: ./models/ScheduledNotificationRule.v1.yaml
+              examples:
+                example-1:
+                  value:
+                    id: string
+                    send_offset: string
+                    email_template:
+                      id: 0
+                      name: string
+                      template_type: string
         '400':
           description: A generic error
           content:
@@ -4506,13 +4536,8 @@ paths:
           application/json:
             schema:
               $ref: ./models/ScheduledNotificationCreateParams.v1.yaml
-  '/invites/{invite_id}/scheduled_notifications/{scheduled_notification_id}':
+  '/scheduled_notifications/{scheduled_notification_id}':
     parameters:
-      - schema:
-          type: string
-        name: invite_id
-        in: path
-        required: true
       - schema:
           type: string
         name: scheduled_notification_id

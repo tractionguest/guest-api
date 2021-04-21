@@ -4213,6 +4213,92 @@ paths:
         - $ref: '#/components/parameters/idempotencyKey'
       tags:
         - GroupVisits
+  /conditions:
+    get:
+      summary: Gets a list of all `Conditions` from branch nodes in workflows.
+      tags:
+        - Conditions
+      responses: {}
+      operationId: get-api-v3-conditions
+      description: ''
+      parameters:
+        '0':
+          schema:
+            type: integer
+          in: query
+          description: 'Limits the results to a specified number, defaults to 50'
+          name: limit
+        '1':
+          schema:
+            type: string
+          in: query
+        '-':
+          schema:
+            type: string
+          in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                conditions:
+                  type: array
+                  items:
+                    $ref: ./models/Conditions.v1.yaml
+            examples:
+              default:
+                value:
+                  conditions:
+                    - experience:
+                        id: 1
+                        name: Experience 1
+                      field: '{{ entity.metadata.__first_branch.value }}'
+                      data_name: first_branch
+                      display: Are you an adult?
+                      type: list
+                      list:
+                        - display: 'Yes'
+                          value: 0
+                        - display: 'No'
+                          value: 1
+                    - experience:
+                        id: 1
+                        name: Experience 1
+                      field: '{{ entity.metadata.__second_branch.value }}'
+                      data_name: second_branch
+                      display: Are you married?
+                      type: list
+                      list:
+                        - display: 'Yes'
+                          value: 0
+                        - display: 'No'
+                          value: 1
+                    - experience:
+                        id: 2
+                        name: Experience 2
+                      field: '{{ entity.metadata.__another_first_branch.value }}'
+                      data_name: another_first_branch
+                      display: Are you sick?
+                      type: list
+                      list:
+                        - display: 'Yes'
+                          value: 0
+                        - display: 'No'
+                          value: 1
+                    - experience:
+                        id: 2
+                        name: Experience 2
+                      field: '{{ entity.metadata.__another_second_branch.value }}'
+                      data_name: another_second_branch
+                      display: Are you working by yourself?
+                      type: list
+                      list:
+                        - display: 'Yes'
+                          value: 0
+                        - display: 'No'
+                          value: 1
+    parameters: []
 components:
   parameters:
     idempotencyKey:
@@ -4226,7 +4312,13 @@ components:
     TractionGuestAuth:
       openIdConnectUrl: 'https://us.tractionguest.com/.well-known/openid-configuration'
       type: openIdConnect
-  schemas: {}
+  schemas:
+    Condition.v1.yaml:
+      title: Condition.v1.yaml
+      type: object
+      properties:
+        id:
+          type: string
 security:
   - TractionGuestAuth:
       - all

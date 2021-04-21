@@ -1,0 +1,13 @@
+title: ConditionList
+type: object
+properties:
+  display:
+    type: string
+  value:
+    type: string
+required:
+  - display
+x-examples:
+  default:
+    display: 'Yes'
+    value: 1

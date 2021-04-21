@@ -1,0 +1,54 @@
+title: Conditions
+type: array
+x-examples:
+  default:
+    - experience:
+        id: 1
+        name: Experience 1
+      field: '{{ entity.metadata.__first_branch.value }}'
+      data_name: first_branch
+      display: Are you an adult?
+      type: list
+      list:
+        - display: 'Yes'
+          value: 0
+        - display: 'No'
+          value: 1
+    - experience:
+        id: 1
+        name: Experience 1
+      field: '{{ entity.metadata.__second_branch.value }}'
+      data_name: second_branch
+      display: Are you married?
+      type: list
+      list:
+        - display: 'Yes'
+          value: 0
+        - display: 'No'
+          value: 1
+    - experience:
+        id: 2
+        name: Experience 2
+      field: '{{ entity.metadata.__another_first_branch.value }}'
+      data_name: another_first_branch
+      display: Are you sick?
+      type: list
+      list:
+        - display: 'Yes'
+          value: 0
+        - display: 'No'
+          value: 1
+    - experience:
+        id: 2
+        name: Experience 2
+      field: '{{ entity.metadata.__another_second_branch.value }}'
+      data_name: another_second_branch
+      display: Are you working by yourself?
+      type: list
+      list:
+        - display: 'Yes'
+          value: 0
+        - display: 'No'
+          value: 1
+items:
+  $ref: ./Condition.v1.yaml

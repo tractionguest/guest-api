@@ -1,0 +1,29 @@
+title: Condition
+type: object
+x-examples:
+  default:
+    experience:
+      id: 1
+      name: Test Experience
+    field: '{{ entity.metadata.__first_branch.value }}'
+    data_name: first_branch
+    display: Are you an adult?
+    type: list
+    list:
+      - display: 'Yes'
+        value: 0
+      - display: 'No'
+        value: 1
+properties:
+  experience:
+    $ref: ./Experience.v1.yaml
+  field:
+    type: string
+  data_name:
+    type: string
+  type:
+    type: string
+  list:
+    type: array
+    items:
+      $ref: ./ConditionList.v1.yaml

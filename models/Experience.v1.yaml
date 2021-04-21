@@ -1,0 +1,14 @@
+title: Experience
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+required:
+  - id
+  - name
+x-examples:
+  default:
+    id: 1
+    name: Experience Name

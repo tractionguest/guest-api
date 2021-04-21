@@ -4218,9 +4218,15 @@ paths:
       summary: Gets a list of all `Conditions` from branch nodes in workflows.
       tags:
         - Conditions
-      responses: {}
+      responses:
+        '200':
+          description: Successful response - returns an array of `Conditions`.
+        '400':
+          description: A generic error
+        '401':
+          description: You don't have permission to view this
       operationId: get-api-v3-conditions
-      description: ''
+      description: Gets a list of all `Conditions` from experiences.
       parameters:
         '0':
           schema:

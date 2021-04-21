@@ -64,6 +64,13 @@ paths:
                 $ref: ./models/ErrorsList.v1.yaml
       operationId: getBatch
       description: Retrieve a given `BatchJob` entity.
+      parameters:
+        - schema:
+            type: string
+          in: query
+        - schema:
+            type: string
+          in: query
   /hosts:
     summary: Path used to manage the list of Hosts.
     description: 'The REST endpoint/path used to list and create zero or more `Host` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.'
@@ -209,6 +216,12 @@ paths:
         - name: include
           description: A list of comma-separated related models to include
           schema:
+            type: string
+          in: query
+        - schema:
+            type: string
+          in: query
+        - schema:
             type: string
           in: query
       responses:
@@ -4227,21 +4240,6 @@ paths:
           description: You don't have permission to view this
       operationId: get-api-v3-conditions
       description: Gets a list of all `Conditions` from experiences.
-      parameters:
-        '0':
-          schema:
-            type: integer
-          in: query
-          description: 'Limits the results to a specified number, defaults to 50'
-          name: limit
-        '1':
-          schema:
-            type: string
-          in: query
-        '-':
-          schema:
-            type: string
-          in: query
       requestBody:
         content:
           application/json:
@@ -4252,58 +4250,18 @@ paths:
                   type: array
                   items:
                     $ref: ./models/Conditions.v1.yaml
-            examples:
-              default:
-                value:
-                  conditions:
-                    - experience:
-                        id: 1
-                        name: Experience 1
-                      field: '{{ entity.metadata.__first_branch.value }}'
-                      data_name: first_branch
-                      display: Are you an adult?
-                      type: list
-                      list:
-                        - display: 'Yes'
-                          value: 0
-                        - display: 'No'
-                          value: 1
-                    - experience:
-                        id: 1
-                        name: Experience 1
-                      field: '{{ entity.metadata.__second_branch.value }}'
-                      data_name: second_branch
-                      display: Are you married?
-                      type: list
-                      list:
-                        - display: 'Yes'
-                          value: 0
-                        - display: 'No'
-                          value: 1
-                    - experience:
-                        id: 2
-                        name: Experience 2
-                      field: '{{ entity.metadata.__another_first_branch.value }}'
-                      data_name: another_first_branch
-                      display: Are you sick?
-                      type: list
-                      list:
-                        - display: 'Yes'
-                          value: 0
-                        - display: 'No'
-                          value: 1
-                    - experience:
-                        id: 2
-                        name: Experience 2
-                      field: '{{ entity.metadata.__another_second_branch.value }}'
-                      data_name: another_second_branch
-                      display: Are you working by yourself?
-                      type: list
-                      list:
-                        - display: 'Yes'
-                          value: 0
-                        - display: 'No'
-                          value: 1
+            examples: {}
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: limit
+          description: Limits the results to a specified number. Defaults to 50.
+        - schema:
+            type: string
+          in: query
+          name: offset
+          description: 'Offsets the results to a specified number, defaults to 0'
     parameters: []
 components:
   parameters:

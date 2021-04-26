@@ -17,4 +17,4 @@ properties:
   account_uuid:
     type: string
   id:
-    type: uuid
+    type: string

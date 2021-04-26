@@ -1,0 +1,12 @@
+title: PaginatedWorkflowEmailsList
+type: object
+x-tags:
+  - workflow
+  - email
+properties:
+  pagination:
+    $ref: ./Pagination.v1.yaml
+  workflow_emails:
+    type: array
+    items:
+      $ref: ./WorkflowEmail.v1.yaml

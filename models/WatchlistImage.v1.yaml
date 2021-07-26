@@ -1,0 +1,11 @@
+title: WatchlistImage
+type: object
+description: "The root of the Watchlist Image type's schema."
+properties:
+  id:
+    type: integer
+  url:
+    type: string
+required:
+  - id
+  - url

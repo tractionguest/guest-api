@@ -1,0 +1,10 @@
+title: WatchlistImageParams
+type: object
+description: Parameters required for updating or creating watchlist records
+properties:
+  base64_image:
+    type: string
+    format: byte
+    description: base 64 encoded string of the attached watchlist image.
+required:
+  - base64_image

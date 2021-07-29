@@ -1,7 +1,7 @@
 title: WatchlistCreateParams
 type: object
 x-examples:
-  default:
+  example:
     colour: RED
     email: bperson@example.com
     first_name: Bad
@@ -10,7 +10,9 @@ x-examples:
     aliases:
       - Horrible Person
       - Bad Guy
-description: Parameters required for updating or creating watchlist records
+    base64_image: base 64 encoded string
+description: |
+  Parameters required for updating or creating watchlist records
 properties:
   aliases:
     type: array
@@ -31,3 +33,7 @@ properties:
       - GREEN
       - ORANGE
     type: string
+  base64_image:
+    type: string
+    format: byte
+    description: 'A base64 encoded image. base64_image should be strict encoded '

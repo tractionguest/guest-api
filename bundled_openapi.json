@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Traction Guest API",
-    "version": "0.15.0",
+    "version": "0.16.0",
     "x-logo": {
       "url": "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png",
       "backgroundColor": "#FFFFFF",
@@ -5203,6 +5203,15 @@
                                 "title": "WatchlistSearch",
                                 "description": "",
                                 "type": "object",
+                                "x-examples": {
+                                  "default": {
+                                    "name": "Gabe Querioz",
+                                    "company": "Traction",
+                                    "city": "Burnaby",
+                                    "country": "Canada",
+                                    "state": "BC"
+                                  }
+                                },
                                 "properties": {
                                   "name": {
                                     "type": "string"
@@ -5218,15 +5227,6 @@
                                   },
                                   "state": {
                                     "type": "string"
-                                  }
-                                },
-                                "x-examples": {
-                                  "default": {
-                                    "name": "Gabe Querioz",
-                                    "company": "Traction",
-                                    "city": "Burnaby",
-                                    "country": "Canada",
-                                    "state": "BC"
                                   }
                                 }
                               }
@@ -7499,7 +7499,7 @@
                 "title": "WatchlistCreateParams",
                 "type": "object",
                 "x-examples": {
-                  "default": {
+                  "example": {
                     "colour": "RED",
                     "email": "bperson@example.com",
                     "first_name": "Bad",
@@ -7508,10 +7508,11 @@
                     "aliases": [
                       "Horrible Person",
                       "Bad Guy"
-                    ]
+                    ],
+                    "base64_image": "base 64 encoded string"
                   }
                 },
-                "description": "Parameters required for updating or creating watchlist records",
+                "description": "Parameters required for updating or creating watchlist records\n",
                 "properties": {
                   "aliases": {
                     "type": "array",
@@ -7539,6 +7540,11 @@
                       "ORANGE"
                     ],
                     "type": "string"
+                  },
+                  "base64_image": {
+                    "type": "string",
+                    "format": "byte",
+                    "description": "A base64 encoded image. base64_image should be strict encoded "
                   }
                 }
               },
@@ -8847,7 +8853,8 @@
               },
               "examples": {}
             }
-          }
+          },
+          "description": ""
         },
         "parameters": [
           {

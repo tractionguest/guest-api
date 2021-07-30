@@ -33,10 +33,9 @@ servers:
     variables:
       domain:
         enum:
-          - 'https://tractionguest.ca/api/v3'
-          - 'https://dravaqa.tractionguest.ca/api/v3'
+          - 'https://us.tractionguest.com/api/v3'
           - 'http://localhost:3000/api/v3'
-        default: 'https://tractionguest.ca/api/v3'
+        default: 'https://us.tractionguest.com/api/v3'
 paths:
   '/batches/{batch_id}':
     parameters:

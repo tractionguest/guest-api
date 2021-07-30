@@ -1,4 +1,5 @@
 {
+  "specUrl": "https://raw.githubusercontent.com/tractionguest/guest-api/master/bundled_openapi.json",
   "noAutoAuth": true,
   "theme": {
     "spacing": {

@@ -2825,6 +2825,7 @@ paths:
                   aliases:
                     - some text
                     - some text
+                  base64_image: base 64 encoded image
                   driver_license: some text
         required: true
       tags:
@@ -3021,6 +3022,8 @@ paths:
                   aliases:
                     - some text
                     - some text
+                  base64_image: base 64 encoded image
+                  driver_license: some text
         required: true
       tags:
         - Watchlists
@@ -3045,6 +3048,7 @@ paths:
                     aliases:
                       - some text
                       - some text
+                    driver_license: some text
           description: The newly created `Watchlist`
         4XX:
           content:

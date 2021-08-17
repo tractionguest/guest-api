@@ -39,4 +39,3 @@ properties:
     description: 'A base64 encoded image. base64_image should be strict encoded '
   driver_license:
     type: string
-examples: []

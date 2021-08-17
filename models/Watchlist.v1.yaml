@@ -12,7 +12,7 @@ x-examples:
     aliases:
       - some text
       - some text
-description: "The root of the Watchlist type's schema."
+description: The root of the Watchlist type's schema.
 properties:
   id:
     type: integer
@@ -38,5 +38,7 @@ properties:
       - YELLOW
       - GREEN
       - ORANGE
+  driver_license:
+    type: string
 required:
   - id

@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Traction Guest API",
-    "version": "0.16.0",
+    "version": "0.17.0",
     "x-logo": {
       "url": "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png",
       "backgroundColor": "#FFFFFF",
@@ -7106,7 +7106,8 @@
                       "aliases": [
                         "some text",
                         "some text"
-                      ]
+                      ],
+                      "driver_license": "some text"
                     }
                   }
                 }
@@ -7158,7 +7159,9 @@
                     "aliases": [
                       "some text",
                       "some text"
-                    ]
+                    ],
+                    "base64_image": "base 64 encoded image",
+                    "driver_license": "some text"
                   }
                 }
               }
@@ -7194,7 +7197,8 @@
                       "aliases": [
                         "some text",
                         "some text"
-                      ]
+                      ],
+                      "driver_license": "some text"
                     }
                   }
                 }
@@ -7423,7 +7427,8 @@
                           "aliases": [
                             "some text",
                             "some text"
-                          ]
+                          ],
+                          "driver_license": "some text"
                         },
                         {
                           "id": 26,
@@ -7436,7 +7441,8 @@
                           "aliases": [
                             "some text",
                             "some text"
-                          ]
+                          ],
+                          "driver_license": "some text"
                         }
                       ]
                     }
@@ -7545,6 +7551,9 @@
                     "type": "string",
                     "format": "byte",
                     "description": "A base64 encoded image. base64_image should be strict encoded "
+                  },
+                  "driver_license": {
+                    "type": "string"
                   }
                 }
               },
@@ -7559,7 +7568,9 @@
                     "aliases": [
                       "some text",
                       "some text"
-                    ]
+                    ],
+                    "base64_image": "base 64 encoded image",
+                    "driver_license": "some text"
                   }
                 }
               }
@@ -7632,6 +7643,9 @@
                         "GREEN",
                         "ORANGE"
                       ]
+                    },
+                    "driver_license": {
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -7651,7 +7665,8 @@
                       "aliases": [
                         "some text",
                         "some text"
-                      ]
+                      ],
+                      "driver_license": "some text"
                     }
                   }
                 }

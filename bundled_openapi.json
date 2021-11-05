@@ -10056,6 +10056,14 @@
             "in": "query",
             "name": "sort_with",
             "description": "A combination of attribute and direction, joined with an underscore, for sorting. Valid attributes are: `created_at`, `updated_at`, `name`, and `start_time`. Valid directions are `asc` and `desc`. E.g., `name_desc`, `start_time_asc`."
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "upcoming",
+            "description": "If true, returns group visits for the future and if false, returns the past group visits"
           }
         ]
       },
@@ -10693,4 +10701,3 @@
     }
   ]
 }
-

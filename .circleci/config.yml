@@ -2,12 +2,12 @@ version: 2
 jobs:
   validate_yaml:
     docker:
-      - image: 'stoplight/spectral:6.1.0'
+      - image: 'stoplight/spectral'
     steps:
       - checkout
       - run:
           name: Lint Openapi Spec
-          command: spectral lint openapi.yml --ruleset=.spectral.yml --fail-severity=warn --verbose --skip-rule=oas3-valid-oas-content-example
+          command: spectral lint openapi.yml --ruleset=.spectral.yml --fail-severity=warn --verbose
   validate_pr:
     docker:
       - image: circleci/node:12

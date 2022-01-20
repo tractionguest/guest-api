@@ -2,7 +2,7 @@ version: 2
 jobs:
   validate_yaml:
     docker:
-      - image: 'stoplight/spectral:6.1.0'
+      - image: 'stoplight/spectral:5.9'
     steps:
       - checkout
       - run:

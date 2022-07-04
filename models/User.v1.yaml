@@ -19,7 +19,7 @@ x-examples:
         permissions:
           - some text
           - some text
-description: "The root of the User type's schema."
+description: The root of the User type's schema.
 properties:
   id:
     type: integer

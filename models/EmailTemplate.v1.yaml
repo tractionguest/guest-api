@@ -1,5 +1,5 @@
 title: EmailTemplate
-description: "The root of the EmailTemplate type's schema."
+description: The root of the EmailTemplate type's schema.
 required:
   - id
 type: object

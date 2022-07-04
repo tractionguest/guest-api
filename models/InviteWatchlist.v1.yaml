@@ -287,7 +287,7 @@ x-examples:
         colour: some text
         last_name: some text
         first_name: some text
-description: "The root of the InviteWatchlist type's schema."
+description: The root of the InviteWatchlist type's schema.
 properties:
   id:
     type: integer

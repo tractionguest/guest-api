@@ -21,7 +21,7 @@ properties:
     description: changes the package_state to picked up and assigns non null value to picked_up_at
   carrier_name:
     type: string
-    description: "change/update the package's carrier/courier information"
+    description: change/update the package's carrier/courier information
   recipient_id:
     type: integer
     description: id of the Host for which you want to send notifications to regarding their package

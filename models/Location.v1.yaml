@@ -1,5 +1,5 @@
 title: Location
-description: "The root of the Location type's schema."
+description: The root of the Location type's schema.
 type: object
 x-examples:
   default:

@@ -1,5 +1,5 @@
 title: Error
-description: "The root of the Error type's schema."
+description: The root of the Error type's schema.
 required:
   - domain
   - code

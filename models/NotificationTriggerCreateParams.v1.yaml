@@ -11,7 +11,7 @@ x-examples:
     notification_groups:
       - some text
       - some text
-description: "The root of the NotificationTrigger type's schema."
+description: The root of the NotificationTrigger type's schema.
 properties:
   offset_unit:
     description: Whether the offset should be calculated as `days` or `hours`

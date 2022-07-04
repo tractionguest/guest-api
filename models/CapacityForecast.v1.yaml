@@ -27,7 +27,7 @@ x-examples:
       - range_start: '2020-07-17T07:59:59.999Z'
         range_end: '2020-07-17T08:59:59.999Z'
         expected_visitors: 1
-description: "The root of the CapacityForecast's schema."
+description: The root of the CapacityForecast's schema.
 properties:
   invites_by_hour:
     type: array

@@ -1,0 +1,38 @@
+title: ScheduledNotification.v1
+x-stoplight:
+  id: xplecd5eb9g87
+type: object
+properties:
+  id:
+    type: integer
+  offset_base_source:
+    type: string
+    enum:
+      - created_at
+      - start_date
+      - end_date
+    example: start_date
+  send_attempted_at:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    readOnly: true
+  sent_at:
+    type:
+      - string
+      - 'null'
+    format: date-time
+    readOnly: true
+  send_offset:
+    type: string
+  email_template_id:
+    type: integer
+  status:
+    type: string
+    enum:
+      - pending
+      - sent
+      - send_failed
+    example: pending
+    readOnly: true

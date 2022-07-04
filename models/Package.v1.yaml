@@ -41,7 +41,7 @@ x-examples:
     created_at: '2018-02-10T09:30Z'
     picked_up_at: null
     image_url: some text
-description: "Root for a Package type's schema"
+description: Root for a Package type's schema
 properties:
   id:
     type: integer
@@ -52,7 +52,7 @@ properties:
     $ref: ./Location.v1.yaml
   package_state:
     type: string
-    description: "this can be one of the following states: 'processing', 'recipient_matched', 'needs_attention' or 'picked_up'"
+    description: 'this can be one of the following states: ''processing'', ''recipient_matched'', ''needs_attention'' or ''picked_up'''
     enum:
       - processing
       - recipient_matched

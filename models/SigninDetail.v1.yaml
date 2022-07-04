@@ -231,7 +231,7 @@ x-examples:
             template_name: some text
             id: some text
             title: some text
-description: "The root of the Signin type's schema."
+description: The root of the Signin type's schema.
 properties:
   id:
     type: integer

@@ -1,6 +1,6 @@
 title: BatchJob
 type: object
-description: "The root of the BatchJob's schema."
+description: The root of the BatchJob's schema.
 properties:
   bid:
     type: string

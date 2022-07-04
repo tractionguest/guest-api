@@ -2,7 +2,7 @@ title: CapacityByHourResponse
 type: object
 x-tags:
   - Capacities
-description: "The root of the CapacityByHour's schema."
+description: The root of the CapacityByHour's schema.
 x-examples:
   default:
     range_start: '2020-07-17T01:59:59.999Z'

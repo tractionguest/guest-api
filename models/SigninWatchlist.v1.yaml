@@ -125,7 +125,7 @@ x-examples:
         colour: RED
         last_name: some text
         first_name: some text
-description: "The root of the SigninWatchlist type's schema."
+description: The root of the SigninWatchlist type's schema.
 properties:
   id:
     type: integer

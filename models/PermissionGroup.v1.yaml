@@ -1,5 +1,5 @@
 title: Permission
-description: "The root of the Permission type's schema."
+description: The root of the Permission type's schema.
 type: object
 properties:
   name:

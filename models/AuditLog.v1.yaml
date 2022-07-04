@@ -1,6 +1,6 @@
 title: AuditLog
 type: object
-description: "The root of the AuditLog type's schema."
+description: The root of the AuditLog type's schema.
 x-examples:
   default:
     id: 58

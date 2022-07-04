@@ -7,10 +7,12 @@ x-examples:
     created_at: '2018-02-10T09:30Z'
     email: some text
     end_date: '2018-02-10T09:30Z'
+    end_date_utc: '2018-02-10T09:30Z'
     first_name: some text
     last_name: some text
     checked_in: false
     start_date: '2018-02-10T09:30Z'
+    start_date_utc: '2018-02-10T09:30Z'
     hosts:
       - id: 35
         email: some text
@@ -110,7 +112,7 @@ x-examples:
         watchlist_level: some text
         created_at: '2018-02-10T09:30Z'
         updated_at: '2018-02-10T09:30Z'
-description: "The root of the InviteDetail type's schema."
+description: The root of the InviteDetail type's schema.
 properties:
   id:
     type: integer
@@ -149,11 +151,19 @@ properties:
   start_date:
     format: date-time
     type: string
+    description: Deprecated. Use `start_date_utc` instead.
+  start_date_utc:
+    format: date-time
+    type: string
   last_name:
     type: string
   first_name:
     type: string
   end_date:
+    format: date-time
+    type: string
+    description: Deprecated. Use `end_date_utc` instead.
+  end_date_utc:
     format: date-time
     type: string
   email:
@@ -167,6 +177,10 @@ properties:
     type: boolean
   group_visit:
     $ref: ./GroupVisit.v1.yaml
+  scheculed_notifications:
+    type: array
+    items:
+      $ref: ./ScheduledNotification.v1.yaml
 required:
   - id
   - last_name

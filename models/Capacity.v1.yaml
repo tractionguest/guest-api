@@ -11,4 +11,4 @@ properties:
     type: integer
   invites_expected_next_hour:
     type: integer
-description: "The root of the Capacity's schema."
+description: The root of the Capacity's schema.

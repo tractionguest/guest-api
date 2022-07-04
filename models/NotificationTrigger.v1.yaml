@@ -1,5 +1,5 @@
 title: NotificationTrigger
-description: "The root of the NotificationTrigger type's schema."
+description: The root of the NotificationTrigger type's schema.
 required:
   - offset_unit
   - offset_origin

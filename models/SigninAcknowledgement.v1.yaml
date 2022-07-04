@@ -1,5 +1,5 @@
 title: SigninAcknowledgement
-description: "The root of the SigninAcknowledgement type's schema."
+description: The root of the SigninAcknowledgement type's schema.
 required:
   - id
 type: object

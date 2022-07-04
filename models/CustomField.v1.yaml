@@ -1,5 +1,5 @@
 title: CustomField
-description: "The root of the CustomField type's schema."
+description: The root of the CustomField type's schema.
 type: object
 x-examples:
   default:

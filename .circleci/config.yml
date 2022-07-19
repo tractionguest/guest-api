@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Lint Openapi Spec
-          command: spectral lint openapi.yml --ruleset=.spectral.yml --fail-severity=warn --verbose
+          command: spectral lint openapi.yml --ruleset=.spectral.yml --fail-severity=warn --verbose --skip-rule=oas3-valid-oas-content-example
   validate_pr:
     docker:
       - image: circleci/node:12

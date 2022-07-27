@@ -8874,7 +8874,22 @@
                   }
                 }
               },
-              "examples": {}
+              "examples": {
+                "default": {
+                  "value": {
+                    "hosts": [
+                      {
+                        "email": "string",
+                        "first_name": "string",
+                        "last_name": "string",
+                        "profile_pic_url": "string",
+                        "department": "string",
+                        "mobile_number": "string"
+                      }
+                    ]
+                  }
+                }
+              }
             }
           },
           "description": ""

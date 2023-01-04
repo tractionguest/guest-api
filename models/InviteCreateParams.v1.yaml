@@ -23,6 +23,10 @@ x-examples:
     mobile_number: some text
     first_name: some text
     license_plate: some text
+    parking_stall:
+      stall_number: 66
+      parking_lot_id: 321
+      parking_stall_id: 332
     notification_triggers:
       - offset_direction: AFTER
         offset_unit: days
@@ -84,8 +88,15 @@ properties:
     type: string
   group_visit_id:
     type: integer
-  license_plate:
-    type: string
+  parking_stall:
+    type: object
+    properties:
+      stall_number: 
+        type: integer
+      parking_lot_id: 
+        type: integer
+      parking_stall_id: 
+        type: integer
 required:
   - first_name
   - last_name

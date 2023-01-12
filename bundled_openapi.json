@@ -2292,6 +2292,7 @@
                       "end_date": "2020-07-17T01:59:59.999Z",
                       "first_name": "some text",
                       "last_name": "some text",
+                      "license_plate": "some text",
                       "start_date": "2020-07-17T01:59:59.999Z",
                       "hosts": [
                         {
@@ -5809,6 +5810,7 @@
                       "last_name": "some text",
                       "checked_in": false,
                       "start_date": "2018-02-10T09:30Z",
+                      "license_plate": "some text",
                       "hosts": [
                         {
                           "id": 35,
@@ -6469,6 +6471,9 @@
                     },
                     "group_visit": {
                       "$ref": "#/paths/~1group_visits/post/responses/201/content/application~1json/schema"
+                    },
+                    "license_plate": {
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -6654,6 +6659,7 @@
                     "email_template_id": 18,
                     "mobile_number": "some text",
                     "first_name": "some text",
+                    "license_plate": "some text",
                     "notification_triggers": [
                       {
                         "subject": "some text",
@@ -6854,7 +6860,8 @@
                     "on_premise": true,
                     "sent_email": "some text",
                     "user_id": 45,
-                    "device_configuration_id": 14
+                    "device_configuration_id": 14,
+                    "license_plate": "some text"
                   }
                 }
               }
@@ -6887,6 +6894,7 @@
                       "end_date": "2020-07-17T01:59:59.999Z",
                       "first_name": "some text",
                       "last_name": "some text",
+                      "license_plate": "some text",
                       "start_date": "2020-07-17T01:59:59.999Z",
                       "hosts": [
                         {

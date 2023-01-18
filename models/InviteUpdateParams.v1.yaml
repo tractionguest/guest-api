@@ -22,6 +22,7 @@ x-examples:
     email_template_id: 18
     mobile_number: some text
     first_name: some text
+    license_plate: some text
     notification_triggers:
       - subject: some text
         title: some text
@@ -85,3 +86,5 @@ properties:
     type: string
   group_visit_id:
     type: integer
+  license_plate:
+    type: string

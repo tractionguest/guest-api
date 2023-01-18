@@ -11,6 +11,7 @@ x-examples:
     last_name: some text
     checked_in: false
     start_date: '2018-02-10T09:30Z'
+    license_plate: some text
     hosts:
       - id: 35
         email: some text
@@ -167,6 +168,8 @@ properties:
     type: boolean
   group_visit:
     $ref: ./GroupVisit.v1.yaml
+  license_plate:
+    type: string
 required:
   - id
   - last_name

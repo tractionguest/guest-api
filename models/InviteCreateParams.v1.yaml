@@ -22,6 +22,7 @@ x-examples:
     email_template_id: 65
     mobile_number: some text
     first_name: some text
+    license_plate: some text
     notification_triggers:
       - offset_direction: AFTER
         offset_unit: days
@@ -83,6 +84,8 @@ properties:
     type: string
   group_visit_id:
     type: integer
+  license_plate:
+    type: string
 required:
   - first_name
   - last_name

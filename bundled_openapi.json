@@ -2108,6 +2108,11 @@
                     "mobile_number": "some text",
                     "first_name": "some text",
                     "license_plate": "some text",
+                    "parking_stall": {
+                      "stall_number": 66,
+                      "parking_lot_id": 321,
+                      "parking_stall_id": 332
+                    },
                     "notification_triggers": [
                       {
                         "offset_direction": "AFTER",
@@ -2196,8 +2201,19 @@
                   "group_visit_id": {
                     "type": "integer"
                   },
-                  "license_plate": {
-                    "type": "string"
+                  "parking_stall": {
+                    "type": "object",
+                    "properties": {
+                      "stall_number": {
+                        "type": "integer"
+                      },
+                      "parking_lot_id": {
+                        "type": "integer"
+                      },
+                      "parking_stall_id": {
+                        "type": "integer"
+                      }
+                    }
                   }
                 },
                 "required": [
@@ -2259,7 +2275,12 @@
                           "some text"
                         ]
                       }
-                    ]
+                    ],
+                    "parking_stall": {
+                      "stall_number": 66,
+                      "parking_lot_id": 321,
+                      "parking_stall_id": 332
+                    }
                   }
                 }
               }
@@ -2361,6 +2382,14 @@
                         }
                       ],
                       "mobile_number": "some text",
+                      "invites_parking_lot": {
+                        "id": 123,
+                        "stall_number": 66,
+                        "stall_type": "private",
+                        "parking_lot_name": "some text",
+                        "parking_lot_id": 321,
+                        "parking_stall_id": 332
+                      },
                       "invite_watchlist": {
                         "id": 3,
                         "external_colours": [
@@ -2521,7 +2550,7 @@
           },
           {
             "name": "include",
-            "description": "A list of comma-separated related models to include",
+            "description": "A list of comma-separated related models to include\ni.e., 'assigned_stall'",
             "schema": {
               "type": "string"
             },
@@ -3027,7 +3056,15 @@
                           },
                           "end_date": "2020-07-17T01:59:59.999Z",
                           "email": "some text",
-                          "mobile_number": "some text"
+                          "mobile_number": "some text",
+                          "invites_parking_lot": {
+                            "id": 123,
+                            "stall_number": 66,
+                            "stall_type": "private",
+                            "parking_lot_name": "some text",
+                            "parking_lot_id": 321,
+                            "parking_stall_id": 332
+                          }
                         },
                         {
                           "id": 0,
@@ -5785,7 +5822,7 @@
         "parameters": [
           {
             "name": "include",
-            "description": "A list of comma-separated related models to include",
+            "description": "A list of comma-separated related models to include\ni.e., 'assigned_stall'",
             "schema": {
               "type": "string"
             },
@@ -5947,6 +5984,14 @@
                           "watchlist_level": "some text",
                           "created_at": "2018-02-10T09:30Z",
                           "updated_at": "2018-02-10T09:30Z"
+                        },
+                        "invites_parking_lot": {
+                          "id": 123,
+                          "stall_number": 66,
+                          "stall_type": "private",
+                          "parking_lot_name": "some text",
+                          "parking_lot_id": 321,
+                          "parking_stall_id": 332
                         }
                       }
                     }
@@ -6474,6 +6519,29 @@
                     },
                     "license_plate": {
                       "type": "string"
+                    },
+                    "invites_parking_lot": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "stall_number": {
+                          "type": "integer"
+                        },
+                        "stall_type": {
+                          "type": "string"
+                        },
+                        "parking_lot_name": {
+                          "type": "string"
+                        },
+                        "parking_lot_id": {
+                          "type": "integer"
+                        },
+                        "parking_stall_id": {
+                          "type": "integer"
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -6571,6 +6639,14 @@
                           "some text",
                           "some text"
                         ]
+                      },
+                      "invites_parking_lot": {
+                        "id": 123,
+                        "stall_number": 66,
+                        "stall_type": "private",
+                        "parking_lot_name": "some text",
+                        "parking_lot_id": 321,
+                        "parking_stall_id": 332
                       }
                     }
                   }

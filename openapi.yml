@@ -955,6 +955,10 @@ paths:
                       notification_groups:
                         - some text
                         - some text
+                  parking_stall:
+                    stall_number: 66
+                    parking_lot_id: 321
+                    parking_stall_id: 332
         required: true
       tags:
         - Invites
@@ -1026,6 +1030,13 @@ paths:
                         offset_unit: days
                         email_template_name: some text
                     mobile_number: some text
+                    invites_parking_lot:
+                      id: 123
+                      stall_number: 66
+                      stall_type: private
+                      parking_lot_name: some text
+                      parking_lot_id: 321
+                      parking_stall_id: 332
                     invite_watchlist:
                       id: 3
                       external_colours:
@@ -1129,7 +1140,9 @@ paths:
             type: string
           in: query
         - name: include
-          description: A list of comma-separated related models to include
+          description: |-
+            A list of comma-separated related models to include
+            i.e., 'assigned_stall'
           schema:
             type: string
           in: query
@@ -1477,6 +1490,13 @@ paths:
                         end_date: "2020-07-17T01:59:59.999Z"
                         email: some text
                         mobile_number: some text
+                        invites_parking_lot:
+                          id: 123
+                          stall_number: 66
+                          stall_type: private
+                          parking_lot_name: some text
+                          parking_lot_id: 321
+                          parking_stall_id: 332
                       - id: 0
                         first_name: some text
                         last_name: some text
@@ -2500,7 +2520,9 @@ paths:
         - Invites
       parameters:
         - name: include
-          description: A list of comma-separated related models to include
+          description: |-
+            A list of comma-separated related models to include
+            i.e., 'assigned_stall'
           schema:
             type: string
           in: query
@@ -2577,6 +2599,13 @@ paths:
                       internal_colours:
                         - some text
                         - some text
+                    invites_parking_lot:
+                      id: 123
+                      stall_number: 66
+                      stall_type: private
+                      parking_lot_name: some text
+                      parking_lot_id: 321
+                      parking_stall_id: 332
           description: Successful response - returns a single `Invite`.
         "400":
           content:

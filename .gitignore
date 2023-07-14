@@ -3,3 +3,6 @@ node_modules
 tmp
 guest-*-sdk
 .VERSION
+.idea
+.idea/*
+

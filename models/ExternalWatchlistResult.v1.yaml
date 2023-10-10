@@ -148,6 +148,7 @@ properties:
       - GREEN
       - YELLOW
       - ORANGE
+      - GRAY
     type: string
   integration:
     description: ''

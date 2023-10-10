@@ -5220,12 +5220,12 @@
                                     "source_lists": {
                                       "description": "",
                                       "type": "string"
+                                    },
+                                    "error": {
+                                      "description": "",
+                                      "type": "string"
                                     }
-                                  },
-                                  "required": [
-                                    "name",
-                                    "list"
-                                  ]
+                                  }
                                 }
                               },
                               "colour": {
@@ -5234,7 +5234,8 @@
                                   "RED",
                                   "GREEN",
                                   "YELLOW",
-                                  "ORANGE"
+                                  "ORANGE",
+                                  "GRAY"
                                 ],
                                 "type": "string"
                               },

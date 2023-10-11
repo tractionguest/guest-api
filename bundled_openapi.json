@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Traction Guest API",
-    "version": "0.18.0",
+    "version": "0.19.0",
     "x-logo": {
       "url": "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png",
       "backgroundColor": "#FFFFFF",
@@ -5220,12 +5220,12 @@
                                     "source_lists": {
                                       "description": "",
                                       "type": "string"
+                                    },
+                                    "error": {
+                                      "description": "",
+                                      "type": "string"
                                     }
-                                  },
-                                  "required": [
-                                    "name",
-                                    "list"
-                                  ]
+                                  }
                                 }
                               },
                               "colour": {
@@ -5234,7 +5234,8 @@
                                   "RED",
                                   "GREEN",
                                   "YELLOW",
-                                  "ORANGE"
+                                  "ORANGE",
+                                  "GRAY"
                                 ],
                                 "type": "string"
                               },

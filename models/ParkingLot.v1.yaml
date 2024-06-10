@@ -1,0 +1,28 @@
+title: ParkingLot
+type: object
+x-examples:
+  default:
+    id: 1
+    name: 'West Lot'
+    user_id: 1
+    locations:
+      - id: 1
+        name: 'Default'
+description: "Root for a Parking Lot type's schema"
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+    description: 'The name of the parking lot.'
+  user_id:
+    type: integer
+    description: 'The user id of the user that created the parking lot.'
+  locations:
+    type: array
+    items:
+      $ref: ./Location.v1.yaml
+    description: 'The locations that the parking lot has been assigned to.'
+required:
+  - id
+  - name

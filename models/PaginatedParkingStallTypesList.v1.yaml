@@ -1,0 +1,19 @@
+title: PaginatedParkingStallTypesList
+type: object
+x-examples:
+  example-1:
+    stall_types:
+      - "Handicap"
+    pagination:
+      total_records: 16
+      current_offset: 31
+      next_offset: 20
+      last_id: 28
+properties:
+  stall_types:
+    type: array
+  pagination:
+    $ref: ./Pagination.v1.yaml
+required:
+  - stall_types
+  - pagination

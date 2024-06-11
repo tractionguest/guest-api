@@ -12,6 +12,8 @@ x-examples:
 properties:
   stall_types:
     type: array
+    items:
+      $ref: ./ParkingStallType.v1.yaml
   pagination:
     $ref: ./Pagination.v1.yaml
 required:

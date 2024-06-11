@@ -11062,7 +11062,15 @@
                   },
                   "properties": {
                     "stall_types": {
-                      "type": "array"
+                      "type": "array",
+                      "items": {
+                        "title": "Parking Stall Type",
+                        "type": "string",
+                        "x-examples": {
+                          "default": "General"
+                        },
+                        "description": "Root for a Parking Stall type's schema"
+                      }
                     },
                     "pagination": {
                       "$ref": "#/paths/~1hosts/get/responses/200/content/application~1json/schema/properties/pagination"

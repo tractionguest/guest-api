@@ -10844,7 +10844,7 @@
         ]
       }
     },
-    "/parking_lots/${parking_lot_id}/parking_stalls": {
+    "/parking_lots/{parking_lot_id}/parking_stalls": {
       "parameters": [
         {
           "schema": {
@@ -11022,7 +11022,7 @@
         ]
       }
     },
-    "/parking_lots/${parking_lot_id}/parking_stalls/stall_types": {
+    "/parking_lots/{parking_lot_id}/parking_stalls/stall_types": {
       "parameters": [
         {
           "schema": {

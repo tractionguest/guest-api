@@ -30,9 +30,6 @@ properties:
     type: string
     nullable: true
     description: 'The postfix of the stall range. i.e. "A", "B", "C", etc...'
-  parking_lot_id:
-    type: integer
-    description: 'The id of the parking lot that the stall is assigned to.'
 required:
   - id
   - stall_type

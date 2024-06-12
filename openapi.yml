@@ -4313,7 +4313,7 @@ paths:
           in: query
           name: offset
           description: "Offsets the results to a specified number, defaults to 0"
-  "/parking_lots/${parking_lot_id}/parking_stalls":
+  "/parking_lots/{parking_lot_id}/parking_stalls":
     parameters:
       - schema:
           type: string
@@ -4380,7 +4380,7 @@ paths:
           in: query
           name: offset
           description: "Offsets the results to a specified number, defaults to 0"
-  "/parking_lots/${parking_lot_id}/parking_stalls/stall_types":
+  "/parking_lots/{parking_lot_id}/parking_stalls/stall_types":
     parameters:
       - schema:
           type: string

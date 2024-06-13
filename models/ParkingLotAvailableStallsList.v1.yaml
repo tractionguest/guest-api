@@ -1,0 +1,8 @@
+title: Parking Lot Available Stalls List
+type: array
+x-examples:
+  default:
+    []
+description: "Root for Parking Lot Available Stall List type's schema"
+items:
+  $ref: ./ParkingLotAvailableStalls.v1.yaml

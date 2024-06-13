@@ -4428,6 +4428,62 @@ paths:
           in: query
           name: offset
           description: "Offsets the results to a specified number, defaults to 0"
+  "/parking_lots/{parking_lot_id}/available_stalls":
+    parameters:
+      - schema:
+          type: string
+        name: parking_lot_id
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: stall_type
+        in: query
+        required: true
+        description: "The type of stall to filter by. E.g., 'Compact', 'Standard', 'Electric', 'Handicapped'"
+      - schema:
+          type: string
+        name: start_date
+        in: query
+        required: true
+        description: "The start date to filter by. E.g., '2024-06-13T15:30:00'"
+      - schema:
+          type: string
+        name: end_date
+        in: query
+        required: true
+        description: "The end date to filter by. E.g., '2024-06-13T15:30:00'"
+    get:
+      summary: Get available stalls for stall type
+      tags:
+        - Parking
+      responses:
+        "200":
+          description: OK
+          headers: {}
+          content:
+            application/json:
+                schema:
+                  $ref:
+                    ./models/ParkingLotAvailableStallsList.v1.yaml
+                example:
+                  - parking_stall_id: 23
+                    range: null
+                    stall_count: 5
+                    open_stalls:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+          description: ""
+      operationId: getParkingLotAvailableStalls
+      description: "Gets a list of [ParkingLotAvailableStalls] entities."
 components:
   parameters:
     idempotencyKey:

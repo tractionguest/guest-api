@@ -1,0 +1,34 @@
+title: Parking Lot Available Stalls
+type: object
+x-examples:
+  default:
+    parking_stall_id: 1
+    stall_count: 5
+    range: null
+    open_stalls:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+description: "Root for Parking Lot Available Stall type's schema"
+properties:
+  parking_stall_id:
+    type: integer
+  stall_count:
+    type: integer
+    description: 'The number of stalls of type in the parking lot.'
+  range:
+    type: integer
+    nullable: true
+    description: 'The starting number of the stall range.'
+  open_stalls:
+    type: array
+    description: 'An array of the open stall numbers.'
+    items:
+      type: integer
+      description: 'The number of the open stall.'
+required:
+  - parking_stall_id
+  - stall_count
+  - open_stalls

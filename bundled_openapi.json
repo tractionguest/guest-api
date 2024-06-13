@@ -11144,7 +11144,8 @@
         },
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "name": "start_date",
           "in": "query",
@@ -11153,7 +11154,8 @@
         },
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "name": "end_date",
           "in": "query",

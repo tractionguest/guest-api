@@ -4443,12 +4443,14 @@ paths:
         description: "The type of stall to filter by. E.g., 'Compact', 'Standard', 'Electric', 'Handicapped'"
       - schema:
           type: string
+          format: date-time
         name: start_date
         in: query
         required: true
         description: "The start date to filter by. E.g., '2024-06-13T15:30:00'"
       - schema:
           type: string
+          format: date-time
         name: end_date
         in: query
         required: true

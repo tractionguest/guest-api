@@ -19,7 +19,7 @@ properties:
     type: integer
     description: 'The number of stalls of type in the parking lot.'
   range:
-    type: integer
+    type: string
     nullable: true
     description: 'The starting number of the stall range.'
   open_stalls:

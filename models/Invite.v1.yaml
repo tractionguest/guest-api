@@ -118,6 +118,8 @@ properties:
   start_date:
     format: date-time
     type: string
+  assigned_stall:
+    $ref: ./AssignedStall.v1.yaml
   last_name:
     type: string
     nullable: true

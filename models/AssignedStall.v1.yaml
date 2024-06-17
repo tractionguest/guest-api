@@ -22,7 +22,7 @@ properties:
     type: string
   parking_lot_id:
     description: 'The id of the assigned parking lot.'
-    type: string
+    type: integer
   stall_number:
     description: 'The number of the assigned parking stall.'
     type: integer

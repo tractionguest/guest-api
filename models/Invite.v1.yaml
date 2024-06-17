@@ -118,8 +118,6 @@ properties:
   start_date:
     format: date-time
     type: string
-  assigned_stall:
-    $ref: ./AssignedStall.v1.yaml
   last_name:
     type: string
     nullable: true
@@ -128,6 +126,9 @@ properties:
     nullable: true
   group_visit:
     $ref: ./GroupVisit.v1.yaml
+    nullable: true
+  assigned_stall:
+    $ref: ./AssignedStall.v1.yaml
     nullable: true
 required:
   - id

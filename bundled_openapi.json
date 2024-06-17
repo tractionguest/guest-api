@@ -8598,7 +8598,20 @@
                           "format": "date-time",
                           "type": "string"
                         },
+                        "last_name": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "first_name": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "group_visit": {
+                          "$ref": "#/paths/~1group_visits/post/responses/201/content/application~1json/schema",
+                          "nullable": true
+                        },
                         "assigned_stall": {
+                          "nullable": true,
                           "title": "Assigned Stall",
                           "type": "object",
                           "description": "The root of the Assigned Stall type's schema.",
@@ -8628,7 +8641,7 @@
                             },
                             "parking_lot_id": {
                               "description": "The id of the assigned parking lot.",
-                              "type": "string"
+                              "type": "integer"
                             },
                             "stall_number": {
                               "description": "The number of the assigned parking stall.",
@@ -8662,18 +8675,6 @@
                             "stall_number",
                             "stall_type"
                           ]
-                        },
-                        "last_name": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "first_name": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "group_visit": {
-                          "$ref": "#/paths/~1group_visits/post/responses/201/content/application~1json/schema",
-                          "nullable": true
                         }
                       },
                       "required": [

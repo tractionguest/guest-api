@@ -177,21 +177,8 @@ properties:
     $ref: ./GroupVisit.v1.yaml
   license_plate:
     type: string
-  invites_parking_lot:
-    type: object
-    properties:
-      id:
-        type: integer
-      stall_number:
-        type: integer
-      stall_type:
-        type: string
-      parking_lot_name:
-        type: string
-      parking_lot_id:
-        type: integer
-      parking_stall_id:
-        type: integer
+  assigned_stall:
+    $ref: ./AssignedStall.v1.yaml
 required:
   - id
   - last_name

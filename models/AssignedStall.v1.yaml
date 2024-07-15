@@ -9,6 +9,8 @@ x-examples:
     parking_lot_id: 4
     stall_number: 4
     stall_type: "Regular"
+    computed_stall_number: "VIP-4"
+    range: null
     range_prefix: "R-"
     range_postfix: ""
 properties:
@@ -29,6 +31,9 @@ properties:
   stall_type:
     description: 'The type name of the assigned parking stall.'
     type: string
+  computed_stall_number:
+    description: 'The computed number of the assigned parking stall along with the pre and post fix, if any.'
+    type: string
   range:
     description: 'The starting number of the stall range.'
     type: string
@@ -48,3 +53,4 @@ required:
   - parking_lot_id
   - stall_number
   - stall_type
+  - computed_stall_number

@@ -11,8 +11,6 @@ x-examples:
     stall_type: "Regular"
     computed_stall_number: "VIP-4"
     range: null
-    range_prefix: "R-"
-    range_postfix: ""
 properties:
   id:
     type: integer
@@ -36,14 +34,6 @@ properties:
     type: string
   range:
     description: 'The starting number of the stall range.'
-    type: string
-    nullable: true
-  range_prefix:
-    description: 'The prefix of the stall range. i.e. "A", "B", "C", etc...'
-    type: string
-    nullable: true
-  range_postfix:
-    description: 'The postfix of the stall range. i.e. "A", "B", "C", etc...'
     type: string
     nullable: true
 required:

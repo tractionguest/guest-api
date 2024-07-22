@@ -11111,6 +11111,15 @@
           "in": "query",
           "required": true,
           "description": "The end date to filter by. E.g., '2024-06-13T15:30:00'"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "timezone",
+          "in": "query",
+          "required": false,
+          "description": "The IANA timezone to be used if not provided in both start_date and end_date. E.g., 'America/Vancouver'"
         }
       ],
       "get": {

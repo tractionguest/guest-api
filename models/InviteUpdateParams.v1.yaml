@@ -88,3 +88,12 @@ properties:
     type: integer
   license_plate:
     type: string
+  parking_stall:
+    type: object
+    properties:
+      stall_number: 
+        type: integer
+      parking_lot_id: 
+        type: integer
+      parking_stall_id: 
+        type: integer

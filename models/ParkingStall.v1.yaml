@@ -1,0 +1,37 @@
+title: Parking Stall
+type: object
+x-examples:
+  default:
+    id: 1
+    stall_type: 'Handicap'
+    stall_count: 5
+    parking_lot:
+      id: 1
+      name: 'West Lot'
+description: "Root for a Parking Stall type's schema"
+properties:
+  id:
+    type: integer
+  stall_type:
+    type: string
+    description: 'A string that represents the type of stall. i.e. "compact", "regular", "handicap", etc...'
+  stall_count:
+    type: integer
+    description: 'The number of stalls of type in the parking lot.'
+  range:
+    type: string
+    nullable: true
+    description: 'The starting number of the stall range.'
+  range_prefix:
+    type: string
+    nullable: true
+    description: 'The prefix of the stall range. i.e. "A", "B", "C", etc...'
+  range_postfix:
+    type: string
+    nullable: true
+    description: 'The postfix of the stall range. i.e. "A", "B", "C", etc...'
+required:
+  - id
+  - stall_type
+  - stall_count
+  - parking_lot_id

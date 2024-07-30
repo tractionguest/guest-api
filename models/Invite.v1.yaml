@@ -127,6 +127,9 @@ properties:
   group_visit:
     $ref: ./GroupVisit.v1.yaml
     nullable: true
+  assigned_stall:
+    $ref: ./AssignedStall.v1.yaml
+    nullable: true
 required:
   - id
   - email

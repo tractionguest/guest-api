@@ -1,0 +1,21 @@
+title: PaginatedParkingStallsList
+type: object
+x-examples:
+  example-1:
+    parking_stalls:
+      - []
+    pagination:
+      total_records: 16
+      current_offset: 31
+      next_offset: 20
+      last_id: 28
+properties:
+  parking_stalls:
+    type: array
+    items:
+      $ref: ./ParkingStall.v1.yaml
+  pagination:
+    $ref: ./Pagination.v1.yaml
+required:
+  - parking_stalls
+  - pagination

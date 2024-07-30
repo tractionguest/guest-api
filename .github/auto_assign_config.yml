@@ -4,10 +4,8 @@ numberOfReviewers: 1
 useReviewGroups: true
 reviewGroups:
   backend:
-    - brandonjmckay
-    - stevenallen05
+    - ErebusBat
   mobile:
-    - baldys
-    - fernandojinzenji
+    - mbastos-sis
   management:
-    - jzhang729
+    - cameronwiebe

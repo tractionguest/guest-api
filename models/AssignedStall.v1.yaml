@@ -1,0 +1,46 @@
+title: Assigned Stall
+type: object
+description: "The root of the Assigned Stall type's schema."
+x-examples:
+  default:
+    id: 25,
+    parking_stall_id: 279,
+    parking_lot_name: "East Lot"
+    parking_lot_id: 4
+    stall_number: 4
+    stall_type: "Regular"
+    computed_stall_number: "VIP-4"
+    range: null
+properties:
+  id:
+    type: integer
+  parking_stall_id:
+    type: integer
+    description: 'The id of the assigned parking stall.'
+  parking_lot_name:
+    description: 'The name of the assigned parking lot.'
+    type: string
+  parking_lot_id:
+    description: 'The id of the assigned parking lot.'
+    type: integer
+  stall_number:
+    description: 'The number of the assigned parking stall.'
+    type: integer
+  stall_type:
+    description: 'The type name of the assigned parking stall.'
+    type: string
+  computed_stall_number:
+    description: 'The computed number of the assigned parking stall along with the pre and post fix, if any.'
+    type: string
+  range:
+    description: 'The starting number of the stall range.'
+    type: string
+    nullable: true
+required:
+  - id
+  - parking_stall_id
+  - parking_lot_name
+  - parking_lot_id
+  - stall_number
+  - stall_type
+  - computed_stall_number

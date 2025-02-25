@@ -1503,7 +1503,7 @@
       },
       "put": {
         "requestBody": {
-          "description": "The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`. \n`is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible.",
+          "description": "The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.\n`is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible.",
           "content": {
             "application/json": {
               "schema": {
@@ -3801,6 +3801,14 @@
               "type": "string"
             },
             "in": "query"
+          },
+          {
+            "name": "include_anonymized",
+            "description": "Set this flag to `true` to include anonymized signins in the response",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -6362,13 +6370,13 @@
                         "internal": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1signins~1%7Bsignin_id%7D/get/responses/200/content/application~1json/schema/properties/signin_watchlist/properties/internal/items"
+                            "$ref": "#/paths/~1signins/post/responses/201/content/application~1json/schema/properties/signin_watchlist/properties/internal/items"
                           }
                         },
                         "external": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1signins~1%7Bsignin_id%7D/get/responses/200/content/application~1json/schema/properties/signin_watchlist/properties/external/items"
+                            "$ref": "#/paths/~1signins/post/responses/201/content/application~1json/schema/properties/signin_watchlist/properties/external/items"
                           }
                         },
                         "internal_colours": {

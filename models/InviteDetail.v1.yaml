@@ -118,6 +118,14 @@ x-examples:
         parking_lot_name: some text
         parking_lot_id: 321
         parking_stall_id: 332
+    created_by:
+      id: 42
+      first_name: Jane
+      last_name: Doe
+      email: jane.doe@example.com
+      permission_bundles:
+        - ADMIN
+        - INVITES
 description: "The root of the InviteDetail type's schema."
 properties:
   id:
@@ -179,6 +187,8 @@ properties:
     type: string
   assigned_stall:
     $ref: ./AssignedStall.v1.yaml
+  created_by:
+    $ref: ./CreatedByUser.v1.yaml
 required:
   - id
   - last_name

@@ -1,12 +1,12 @@
 openapi: 3.0.2
 info:
-  title: Traction Guest API
+  title: Sign In Solutions VMS API
   version: 0.20.0
   x-logo:
-    url: "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png"
+    url: "https://signinenterprise.com/wp-content/uploads/tg-logo-light@2.png"
     backgroundColor: "#FFFFFF"
-    altText: Traction Guest
-    href: "https://tractionguest.com"
+    altText: Sign In Solutions
+    href: "https://signinsolutions.com/signinenterprise"
   description: |
     The Traction Guest API is currently under limited release to select customers as we gather and iterate on feedback.
 
@@ -16,7 +16,7 @@ info:
     We will also add you to our Slack channel where you can ask questions and get further help.
 
     # Terms and Conditions
-    Please visit: [https://tractionguest.com/tos/api/](https://tractionguest.com/tos/api/)
+    Please visit: [https://signinsolutions.com/compliance-hub](https://signinsolutions.com/compliance-hub)
 
     # Versioning
     This API follows [semantic versioning](https://semver.org/), which follows the `Major`.`Minor`.`Patch` format.
@@ -26,7 +26,7 @@ info:
     * The `Patch` number increments when backwards-compatible bug-fixes are made.
   contact:
     name: API Support
-    url: "https://tractionguest.com"
+    url: "https://signinsolutions.com/signinenterprise"
     email: support@tractionguest.com
 servers:
   - url: "{domain}"

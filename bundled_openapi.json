@@ -1,18 +1,18 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "title": "Traction Guest API",
+    "title": "Sign In Solutions VMS API",
     "version": "0.20.0",
     "x-logo": {
-      "url": "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png",
+      "url": "https://signinenterprise.com/wp-content/uploads/tg-logo-light@2.png",
       "backgroundColor": "#FFFFFF",
-      "altText": "Traction Guest",
-      "href": "https://tractionguest.com"
+      "altText": "Sign In Solutions",
+      "href": "https://signinsolutions.com/signinenterprise"
     },
-    "description": "The Traction Guest API is currently under limited release to select customers as we gather and iterate on feedback.\n\n# Getting Started\nIf you are interested in getting early access to the API, please send us an email to [support@tractionguest.com](mailto:support@tractionguest.com).\n\nWe will also add you to our Slack channel where you can ask questions and get further help.\n\n# Terms and Conditions\nPlease visit: [https://tractionguest.com/tos/api/](https://tractionguest.com/tos/api/)\n\n# Versioning\nThis API follows [semantic versioning](https://semver.org/), which follows the `Major`.`Minor`.`Patch` format.\n\n* The `Major` number increments when potentially incompatible changes are made.\n* The `Minor` number increments when backwards-compatible additions are made.\n* The `Patch` number increments when backwards-compatible bug-fixes are made.\n",
+    "description": "The Sign In Solutions API is currently under limited release to select customers as we gather and iterate on feedback.\n\n# Getting Started\nIf you are interested in getting early access to the API, please send us an email to [support@tractionguest.com](mailto:support@tractionguest.com).\n\nWe will also add you to our Slack channel where you can ask questions and get further help.\n\n# Terms and Conditions\nPlease visit: [https://signinsolutions.com/compliance-hub](https://signinsolutions.com/compliance-hub)\n\n# Versioning\nThis API follows [semantic versioning](https://semver.org/), which follows the `Major`.`Minor`.`Patch` format.\n\n* The `Major` number increments when potentially incompatible changes are made.\n* The `Minor` number increments when backwards-compatible additions are made.\n* The `Patch` number increments when backwards-compatible bug-fixes are made.\n",
     "contact": {
       "name": "API Support",
-      "url": "https://tractionguest.com",
+      "url": "https://signinsolutions.com/signinenterprise",
       "email": "support@tractionguest.com"
     }
   },

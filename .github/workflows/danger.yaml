@@ -3,7 +3,6 @@ on:
   pull_request:
 
 permissions:
-  issues: write
   pull-requests: write
   statuses: write
   contents: read

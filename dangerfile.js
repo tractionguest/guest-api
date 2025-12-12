@@ -29,7 +29,7 @@ if (isFeatureBranch && !hasVersionLabel) {
 if (danger.github.commits.length > 1) {
   message(
     `Remember to use the \`Squash and Merge\` button to merge for single PRs!
-    Always remember, your final commit message needs to start with a wrike ticket like, \`[#1234] Your commit message\`.`
+    Always remember, your final commit message needs to start with a Linear ticket like, \`[DEV-1234] Your commit message\`.`
   );
 }
 

@@ -1,10 +1,6 @@
 name: pipeline
 on:
   push:
-  pull_request:
-    branches:
-      - master
-      - develop
 
 permissions:
   id-token: write

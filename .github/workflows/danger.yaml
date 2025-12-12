@@ -1,0 +1,30 @@
+name: validate_pr
+on:
+  pull_request:
+
+permissions:
+  pull-requests: write
+  statuses: write
+  contents: read
+  checks: write
+
+jobs:
+  dangerbot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'yarn'
+
+      - name: Install yarn dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Danger JS
+        uses: danger/danger-js@13.0.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

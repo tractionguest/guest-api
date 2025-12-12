@@ -1,6 +1,7 @@
 name: validate_pr
 on:
   pull_request:
+  push:
 
 permissions:
   pull-requests: write

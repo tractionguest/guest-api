@@ -1,12 +1,12 @@
 openapi: 3.0.2
 info:
-  title: Traction Guest API
-  version: 0.17.0
+  title: Sign In Solutions VMS API
+  version: 0.20.1
   x-logo:
-    url: 'https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png'
-    backgroundColor: '#FFFFFF'
-    altText: Traction Guest
-    href: 'https://tractionguest.com'
+    url: "https://signinenterprise.com/wp-content/uploads/tg-logo-light@2.png"
+    backgroundColor: "#FFFFFF"
+    altText: Sign In Solutions
+    href: "https://signinsolutions.com/signinenterprise"
   description: |
     The Traction Guest API is currently under limited release to select customers as we gather and iterate on feedback.
 
@@ -16,7 +16,7 @@ info:
     We will also add you to our Slack channel where you can ask questions and get further help.
 
     # Terms and Conditions
-    Please visit: [https://tractionguest.com/tos/api/](https://tractionguest.com/tos/api/)
+    Please visit: [https://signinsolutions.com/compliance-hub](https://signinsolutions.com/compliance-hub)
 
     # Versioning
     This API follows [semantic versioning](https://semver.org/), which follows the `Major`.`Minor`.`Patch` format.
@@ -26,18 +26,18 @@ info:
     * The `Patch` number increments when backwards-compatible bug-fixes are made.
   contact:
     name: API Support
-    url: 'https://tractionguest.com'
+    url: "https://signinsolutions.com/signinenterprise"
     email: support@tractionguest.com
 servers:
-  - url: '{domain}'
+  - url: "{domain}"
     variables:
       domain:
         enum:
-          - 'https://us.tractionguest.com/api/v3'
-          - 'http://localhost:3000/api/v3'
-        default: 'https://us.tractionguest.com/api/v3'
+          - "https://us.tractionguest.com/api/v3"
+          - "http://localhost:3000/api/v3"
+        default: "https://us.tractionguest.com/api/v3"
 paths:
-  '/batches/{batch_id}':
+  "/batches/{batch_id}":
     parameters:
       - schema:
           type: string
@@ -49,7 +49,7 @@ paths:
       tags:
         - Batches
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -65,23 +65,23 @@ paths:
       description: Retrieve a given `BatchJob` entity.
   /hosts:
     summary: Path used to manage the list of Hosts.
-    description: 'The REST endpoint/path used to list and create zero or more `Host` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.'
+    description: "The REST endpoint/path used to list and create zero or more `Host` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively."
     get:
       tags:
         - Hosts
       parameters:
         - name: query
-          description: 'Will filter by `first_name`, `last_name`, and `email`'
+          description: "Will filter by `first_name`, `last_name`, and `email`"
           schema:
             type: string
           in: query
         - name: limit
-          description: 'Limits the results to a specified number, defaults to 50'
+          description: "Limits the results to a specified number, defaults to 50"
           schema:
             type: integer
           in: query
         - name: offset
-          description: 'Offsets the results to a specified number, defaults to 0'
+          description: "Offsets the results to a specified number, defaults to 0"
           schema:
             type: integer
           in: query
@@ -91,7 +91,7 @@ paths:
             type: string
           in: query
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -117,7 +117,7 @@ paths:
                       current_offset: 41
                       next_offset: 85
           description: Successful response - returns an array of `Host` entities.
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -135,9 +135,9 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
+        "401":
           description: You don't have permission to view these Hosts
-        '403':
+        "403":
           description: You do not have permission for this action
       operationId: getHosts
       summary: List all Hosts
@@ -161,9 +161,9 @@ paths:
       tags:
         - Hosts
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
@@ -179,7 +179,7 @@ paths:
                     department: some text
                     mobile_number: some text
           description: Successful response
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -196,12 +196,12 @@ paths:
         - EmailTemplates
       parameters:
         - name: limit
-          description: 'Limits the results to a specified number, defaults to 50'
+          description: "Limits the results to a specified number, defaults to 50"
           schema:
             type: integer
           in: query
         - name: offset
-          description: 'Offsets the results to a specified number, defaults to 0'
+          description: "Offsets the results to a specified number, defaults to 0"
           schema:
             type: integer
           in: query
@@ -211,7 +211,7 @@ paths:
             type: string
           in: query
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -231,7 +231,7 @@ paths:
                       current_offset: 99
                       next_offset: 45
           description: Successful response - returns an array of `EmailTemplate` entities.
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -249,14 +249,14 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
+        "401":
           description: You don't have permission to view this EmailTemplate
-        '403':
+        "403":
           description: You do not have permission for this action
       operationId: getEmailTemplates
       summary: List all EmailTemplates
       description: Gets a list of all `EmailTemplate` entities.
-  '/signins/{signin_id}':
+  "/signins/{signin_id}":
     summary: Path used to manage a single Signin.
     description: The REST endpoint/path used to get single instances of an `Signin`.
     get:
@@ -269,7 +269,7 @@ paths:
             type: string
           in: query
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -286,14 +286,14 @@ paths:
                     last_name: some text
                     location_name: some text
                     mobile_number: some text
-                    signed_out_timestamp: '2018-02-10T09:30Z'
+                    signed_out_timestamp: "2018-02-10T09:30Z"
                     signin_photo_url: some text
-                    signin_timestamp: '2018-02-10T09:30Z'
+                    signin_timestamp: "2018-02-10T09:30Z"
                     is_signed_out: true
                     note: some text
                     signin_acknowledgement:
                       code: some text
-                      acknowledged_at: '2018-02-10T09:30Z'
+                      acknowledged_at: "2018-02-10T09:30Z"
                       id: 99
                     signin_data:
                       - name: some text
@@ -355,8 +355,8 @@ paths:
                               country: some text
                               notes: some text
                               frc: some text
-                              start: '2018-01-17'
-                              end: '2018-01-17'
+                              start: "2018-01-17"
+                              end: "2018-01-17"
                               frserve: some text
                               optional_ID: some text
                               alert_type: some text
@@ -378,8 +378,8 @@ paths:
                               country: some text
                               notes: some text
                               frc: some text
-                              start: '2018-01-17'
-                              end: '2018-01-17'
+                              start: "2018-01-17"
+                              end: "2018-01-17"
                               frserve: some text
                               optional_ID: some text
                               alert_type: some text
@@ -410,8 +410,8 @@ paths:
                               country: some text
                               notes: some text
                               frc: some text
-                              start: '2018-01-17'
-                              end: '2018-01-17'
+                              start: "2018-01-17"
+                              end: "2018-01-17"
                               frserve: some text
                               optional_ID: some text
                               alert_type: some text
@@ -433,8 +433,8 @@ paths:
                               country: some text
                               notes: some text
                               frc: some text
-                              start: '2018-01-17'
-                              end: '2018-01-17'
+                              start: "2018-01-17"
+                              end: "2018-01-17"
                               frserve: some text
                               optional_ID: some text
                               alert_type: some text
@@ -454,7 +454,7 @@ paths:
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: '2018-02-10T09:30Z'
+                            nda_signed_date: "2018-02-10T09:30Z"
                             envelope_id: some text
                             sequence: 54
                             docusign_id: some text
@@ -463,7 +463,7 @@ paths:
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: '2018-02-10T09:30Z'
+                            nda_signed_date: "2018-02-10T09:30Z"
                             envelope_id: some text
                             sequence: 48
                             docusign_id: some text
@@ -482,7 +482,7 @@ paths:
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: '2018-02-10T09:30Z'
+                            nda_signed_date: "2018-02-10T09:30Z"
                             envelope_id: some text
                             sequence: 28
                             docusign_id: some text
@@ -491,7 +491,7 @@ paths:
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: '2018-02-10T09:30Z'
+                            nda_signed_date: "2018-02-10T09:30Z"
                             envelope_id: some text
                             sequence: 82
                             docusign_id: some text
@@ -507,7 +507,7 @@ paths:
                             id: some text
                             title: some text
           description: Successful response - returns a single `Signin`.
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -525,11 +525,11 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
+        "401":
           description: You don't have permission to view this Signin
-        '403':
+        "403":
           description: You do not have permission for this action
-        '404':
+        "404":
           description: The Signin does not exist
       operationId: getSignin
       summary: Get a Signin
@@ -537,7 +537,7 @@ paths:
     put:
       requestBody:
         description: |-
-          The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`. 
+          The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.
           `is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible.
         content:
           application/json:
@@ -553,9 +553,9 @@ paths:
       tags:
         - Signins
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -572,14 +572,14 @@ paths:
                     last_name: some text
                     location_name: some text
                     mobile_number: some text
-                    signed_out_timestamp: '2018-02-10T09:30Z'
+                    signed_out_timestamp: "2018-02-10T09:30Z"
                     signin_photo_url: some text
-                    signin_timestamp: '2018-02-10T09:30Z'
+                    signin_timestamp: "2018-02-10T09:30Z"
                     is_signed_out: true
                     note: some text
                     signin_acknowledgement:
                       code: some text
-                      acknowledged_at: '2018-02-10T09:30Z'
+                      acknowledged_at: "2018-02-10T09:30Z"
                       id: 9
                     signin_data:
                       - name: some text
@@ -641,8 +641,8 @@ paths:
                               country: some text
                               notes: some text
                               frc: some text
-                              start: '2018-01-17'
-                              end: '2018-01-17'
+                              start: "2018-01-17"
+                              end: "2018-01-17"
                               frserve: some text
                               optional_ID: some text
                               alert_type: some text
@@ -664,8 +664,8 @@ paths:
                               country: some text
                               notes: some text
                               frc: some text
-                              start: '2018-01-17'
-                              end: '2018-01-17'
+                              start: "2018-01-17"
+                              end: "2018-01-17"
                               frserve: some text
                               optional_ID: some text
                               alert_type: some text
@@ -696,8 +696,8 @@ paths:
                               country: some text
                               notes: some text
                               frc: some text
-                              start: '2018-01-17'
-                              end: '2018-01-17'
+                              start: "2018-01-17"
+                              end: "2018-01-17"
                               frserve: some text
                               optional_ID: some text
                               alert_type: some text
@@ -719,8 +719,8 @@ paths:
                               country: some text
                               notes: some text
                               frc: some text
-                              start: '2018-01-17'
-                              end: '2018-01-17'
+                              start: "2018-01-17"
+                              end: "2018-01-17"
                               frserve: some text
                               optional_ID: some text
                               alert_type: some text
@@ -740,7 +740,7 @@ paths:
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: '2018-02-10T09:30Z'
+                            nda_signed_date: "2018-02-10T09:30Z"
                             envelope_id: some text
                             sequence: 38
                             docusign_id: some text
@@ -749,7 +749,7 @@ paths:
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: '2018-02-10T09:30Z'
+                            nda_signed_date: "2018-02-10T09:30Z"
                             envelope_id: some text
                             sequence: 83
                             docusign_id: some text
@@ -768,7 +768,7 @@ paths:
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: '2018-02-10T09:30Z'
+                            nda_signed_date: "2018-02-10T09:30Z"
                             envelope_id: some text
                             sequence: 49
                             docusign_id: some text
@@ -777,7 +777,7 @@ paths:
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: '2018-02-10T09:30Z'
+                            nda_signed_date: "2018-02-10T09:30Z"
                             envelope_id: some text
                             sequence: 71
                             docusign_id: some text
@@ -792,8 +792,8 @@ paths:
                             template_name: some text
                             id: some text
                             title: some text
-          description: 'The Signin has been acknowledged, or signed out.'
-        '400':
+          description: "The Signin has been acknowledged, or signed out."
+        "400":
           content:
             application/json:
               schema:
@@ -811,17 +811,17 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
+        "401":
           description: You don't have permission to update this Signin
-        '403':
+        "403":
           description: You do not have permission for this action
-        '404':
+        "404":
           description: The Signin does not exist
-        '422':
+        "422":
           description: Your request was not formatted correctly
       operationId: updateSignin
       summary: Update a Signin
-      description: 'Update, acknowledge, or `Signout` a `Signin`'
+      description: "Update, acknowledge, or `Signout` a `Signin`"
     parameters:
       - schema:
           type: string
@@ -836,12 +836,12 @@ paths:
         - Locations
       parameters:
         - name: limit
-          description: 'Limits the results to a specified number, defaults to 50'
+          description: "Limits the results to a specified number, defaults to 50"
           schema:
             type: integer
           in: query
         - name: offset
-          description: 'Offsets the results to a specified number, defaults to 0'
+          description: "Offsets the results to a specified number, defaults to 0"
           schema:
             type: integer
           in: query
@@ -856,7 +856,7 @@ paths:
             type: string
           in: query
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -876,7 +876,7 @@ paths:
                         name: Rogers Arena
                         max_capacity: 45
           description: Successful response - returns an array of `Location` entities.
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -894,18 +894,18 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
+        "401":
           description: You don't have permission to view these Locations
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '403':
+        "403":
           description: You do not have permission for this action
       operationId: getLocations
       summary: List all Locations
       description: Gets a list of all `Location` entities.
-  '/locations/{location_id}/invites':
+  "/locations/{location_id}/invites":
     summary: Path used to manage a single Location's invites.
     description: The REST endpoint/path used to create single instances of an `Invite` for a specific `Location`.
     post:
@@ -919,9 +919,9 @@ paths:
                 value:
                   company: some text
                   email: some text
-                  end_date: '2020-07-17T01:59:59.999Z'
+                  end_date: "2020-07-17T01:59:59.999Z"
                   last_name: some text
-                  start_date: '2020-07-17T01:59:59.999Z'
+                  start_date: "2020-07-17T01:59:59.999Z"
                   title: some text
                   watchlist_colour: ORANGE
                   host_ids:
@@ -937,6 +937,7 @@ paths:
                   email_template_id: 53
                   mobile_number: some text
                   first_name: some text
+                  license_plate: some text
                   notification_triggers:
                     - offset_direction: BEFORE
                       offset_unit: days
@@ -954,13 +955,17 @@ paths:
                       notification_groups:
                         - some text
                         - some text
+                  parking_stall:
+                    stall_number: 66
+                    parking_lot_id: 321
+                    parking_stall_id: 332
         required: true
       tags:
         - Invites
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
@@ -970,12 +975,13 @@ paths:
                   value:
                     id: 93
                     company: some text
-                    created_at: '2020-07-17T01:59:59.999Z'
+                    created_at: "2020-07-17T01:59:59.999Z"
                     email: some text
-                    end_date: '2020-07-17T01:59:59.999Z'
+                    end_date: "2020-07-17T01:59:59.999Z"
                     first_name: some text
                     last_name: some text
-                    start_date: '2020-07-17T01:59:59.999Z'
+                    license_plate: some text
+                    start_date: "2020-07-17T01:59:59.999Z"
                     hosts:
                       - id: 23
                         email: some text
@@ -1024,6 +1030,13 @@ paths:
                         offset_unit: days
                         email_template_name: some text
                     mobile_number: some text
+                    invites_parking_lot:
+                      id: 123
+                      stall_number: 66
+                      stall_type: private
+                      parking_lot_name: some text
+                      parking_lot_id: 321
+                      parking_stall_id: 332
                     invite_watchlist:
                       id: 3
                       external_colours:
@@ -1032,7 +1045,7 @@ paths:
                         - some text
                         - some text
           description: Created the `Invite` for the `Location`
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -1050,13 +1063,13 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
+        "401":
           description: You don't have permission to create this Invite
-        '403':
+        "403":
           description: You do not have permission for this action
-        '404':
+        "404":
           description: The Location does not exist
-        '422':
+        "422":
           description: Your request was not formatted correctly
       operationId: createLocationInvite
       summary: Create an Invite
@@ -1069,23 +1082,23 @@ paths:
         required: true
   /invites:
     summary: Path used to manage the list of Invites.
-    description: 'The REST endpoint/path used to list and create zero or more `Invite` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.'
+    description: "The REST endpoint/path used to list and create zero or more `Invite` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively."
     get:
       tags:
         - Invites
       parameters:
         - name: limit
-          description: 'Limits the results to a specified number, defaults to 50'
+          description: "Limits the results to a specified number, defaults to 50"
           schema:
             type: integer
           in: query
         - name: offset
-          description: 'Offsets the results to a specified number, defaults to 0'
+          description: "Offsets the results to a specified number, defaults to 0"
           schema:
             type: integer
           in: query
         - name: query
-          description: 'Filters by `first_name`, `last_name`, `company`, and `email`'
+          description: "Filters by `first_name`, `last_name`, `company`, and `email`"
           schema:
             type: string
           in: query
@@ -1127,17 +1140,19 @@ paths:
             type: string
           in: query
         - name: include
-          description: A list of comma-separated related models to include
+          description: |-
+            A list of comma-separated related models to include
+            i.e., 'assigned_stall'
           schema:
             type: string
           in: query
         - name: is_approved
-          description: 'True to return approved and auto approved invites, False to return pending and rejected invites'
+          description: "True to return approved and auto approved invites, False to return pending and rejected invites"
           schema:
             type: boolean
           in: query
         - name: active_after
-          description: 'Checks that an invite hasn''t yet started, or has started and is still active after a specified time'
+          description: "Checks that an invite hasn't yet started, or has started and is still active after a specified time"
           schema:
             format: date-time
             type: string
@@ -1149,7 +1164,7 @@ paths:
             type: string
           in: query
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -1166,7 +1181,7 @@ paths:
                       - id: 37
                         first_name: some text
                         last_name: some text
-                        start_date: '2018-02-10T09:30Z'
+                        start_date: "2018-02-10T09:30Z"
                         location:
                           id: 70
                           name: some text
@@ -1472,13 +1487,20 @@ paths:
                               colour: some text
                               last_name: some text
                               first_name: some text
-                        end_date: '2020-07-17T01:59:59.999Z'
+                        end_date: "2020-07-17T01:59:59.999Z"
                         email: some text
                         mobile_number: some text
+                        invites_parking_lot:
+                          id: 123
+                          stall_number: 66
+                          stall_type: private
+                          parking_lot_name: some text
+                          parking_lot_id: 321
+                          parking_stall_id: 332
                       - id: 0
                         first_name: some text
                         last_name: some text
-                        start_date: '2018-02-10T09:30Z'
+                        start_date: "2018-02-10T09:30Z"
                         location:
                           id: 66
                           name: some text
@@ -1784,11 +1806,11 @@ paths:
                               colour: some text
                               last_name: some text
                               first_name: some text
-                        end_date: '2020-07-17T01:59:59.999Z'
+                        end_date: "2020-07-17T01:59:59.999Z"
                         email: some text
                         mobile_number: some text
           description: Successful response - returns an array of `Invite` entities.
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -1806,9 +1828,9 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
+        "401":
           description: You don't have permission to view these Invites
-        '403':
+        "403":
           description: You do not have permission for this action
       operationId: getInvites
       summary: List all Invites
@@ -1820,7 +1842,7 @@ paths:
         - Invites
         - Batches
       responses:
-        '202':
+        "202":
           description: Accepted
           content:
             application/json:
@@ -1839,17 +1861,17 @@ paths:
           application/json:
             schema:
               $ref: ./models/IdentifierList.v1.yaml
-        description: ''
-  '/registrations/{registration_id}/invites':
+        description: ""
+  "/registrations/{registration_id}/invites":
     summary: Path used to create an `Invite` from `Registration` data.
     description: The REST endpoint/path used to create an instance of an `Invite`. This path contains a `POST` operation used to perform the create task.
     post:
       tags:
         - Invites
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
@@ -1859,12 +1881,12 @@ paths:
                   value:
                     id: 93
                     company: some text
-                    created_at: '2020-07-17T01:59:59.999Z'
+                    created_at: "2020-07-17T01:59:59.999Z"
                     email: some text
-                    end_date: '2020-07-17T01:59:59.999Z'
+                    end_date: "2020-07-17T01:59:59.999Z"
                     first_name: some text
                     last_name: some text
-                    start_date: '2020-07-17T01:59:59.999Z'
+                    start_date: "2020-07-17T01:59:59.999Z"
                     hosts:
                       - id: 23
                         email: some text
@@ -1921,7 +1943,7 @@ paths:
                         - some text
                         - some text
           description: Created an `Invite` from the given `Registration` UUID.
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -1939,13 +1961,13 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
+        "401":
           description: You don't have permission to create this Invite
-        '403':
+        "403":
           description: You do not have permission for this action
-        '404':
+        "404":
           description: The Location does not exist
-        '422':
+        "422":
           description: Your request was not formatted correctly
       operationId: createRegistrationInvite
       summary: Create an Invite from a Registration
@@ -1958,7 +1980,7 @@ paths:
         required: true
   /signins:
     summary: Path used to manage the list of Signins.
-    description: 'The REST endpoint/path used to list and create zero or more `Signin` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.'
+    description: "The REST endpoint/path used to list and create zero or more `Signin` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively."
     get:
       tags:
         - Signins
@@ -1976,17 +1998,17 @@ paths:
             type: string
           in: query
         - name: query
-          description: 'Allows you to query by `company`, `email`, `first_name`, `last_name`, and `location_name`'
+          description: "Allows you to query by `company`, `email`, `first_name`, `last_name`, and `location_name`"
           schema:
             type: string
           in: query
         - name: with_acknowledged
-          description: 'Filters to all those `Signin`s that have, or have not been acknowledged'
+          description: "Filters to all those `Signin`s that have, or have not been acknowledged"
           schema:
             type: boolean
           in: query
         - name: with_signed_in
-          description: 'Filters to all `Signin`s that are, or are not currently signed out.'
+          description: "Filters to all `Signin`s that are, or are not currently signed out."
           schema:
             type: boolean
           in: query
@@ -2003,12 +2025,12 @@ paths:
             type: string
           in: query
         - name: limit
-          description: 'Limits the results to a specified number, defaults to 50'
+          description: "Limits the results to a specified number, defaults to 50"
           schema:
             type: integer
           in: query
         - name: offset
-          description: 'Offsets the results to a specified number, defaults to 0'
+          description: "Offsets the results to a specified number, defaults to 0"
           schema:
             type: integer
           in: query
@@ -2025,8 +2047,13 @@ paths:
           schema:
             type: string
           in: query
+        - name: include_anonymized
+          description: Set this flag to `true` to include anonymized signins in the response
+          in: query
+          schema:
+            type: boolean
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -2043,9 +2070,9 @@ paths:
                         is_acknowledged: true
                         last_name: some text
                         location_name: some text
-                        signed_out_timestamp: '2018-02-10T09:30Z'
+                        signed_out_timestamp: "2018-02-10T09:30Z"
                         signin_photo_url: some text
-                        signin_timestamp: '2018-02-10T09:30Z'
+                        signin_timestamp: "2018-02-10T09:30Z"
                         hosts:
                           - id: 9
                             email: some text
@@ -2089,8 +2116,8 @@ paths:
                                   country: some text
                                   notes: some text
                                   frc: some text
-                                  start: '2018-01-17'
-                                  end: '2018-01-17'
+                                  start: "2018-01-17"
+                                  end: "2018-01-17"
                                   frserve: some text
                                   optional_ID: some text
                                   alert_type: some text
@@ -2112,8 +2139,8 @@ paths:
                                   country: some text
                                   notes: some text
                                   frc: some text
-                                  start: '2018-01-17'
-                                  end: '2018-01-17'
+                                  start: "2018-01-17"
+                                  end: "2018-01-17"
                                   frserve: some text
                                   optional_ID: some text
                                   alert_type: some text
@@ -2144,8 +2171,8 @@ paths:
                                   country: some text
                                   notes: some text
                                   frc: some text
-                                  start: '2018-01-17'
-                                  end: '2018-01-17'
+                                  start: "2018-01-17"
+                                  end: "2018-01-17"
                                   frserve: some text
                                   optional_ID: some text
                                   alert_type: some text
@@ -2167,8 +2194,8 @@ paths:
                                   country: some text
                                   notes: some text
                                   frc: some text
-                                  start: '2018-01-17'
-                                  end: '2018-01-17'
+                                  start: "2018-01-17"
+                                  end: "2018-01-17"
                                   frserve: some text
                                   optional_ID: some text
                                   alert_type: some text
@@ -2191,9 +2218,9 @@ paths:
                         is_acknowledged: true
                         last_name: some text
                         location_name: some text
-                        signed_out_timestamp: '2018-02-10T09:30Z'
+                        signed_out_timestamp: "2018-02-10T09:30Z"
                         signin_photo_url: some text
-                        signin_timestamp: '2018-02-10T09:30Z'
+                        signin_timestamp: "2018-02-10T09:30Z"
                         hosts:
                           - id: 78
                             email: some text
@@ -2237,8 +2264,8 @@ paths:
                                   country: some text
                                   notes: some text
                                   frc: some text
-                                  start: '2018-01-17'
-                                  end: '2018-01-17'
+                                  start: "2018-01-17"
+                                  end: "2018-01-17"
                                   frserve: some text
                                   optional_ID: some text
                                   alert_type: some text
@@ -2260,8 +2287,8 @@ paths:
                                   country: some text
                                   notes: some text
                                   frc: some text
-                                  start: '2018-01-17'
-                                  end: '2018-01-17'
+                                  start: "2018-01-17"
+                                  end: "2018-01-17"
                                   frserve: some text
                                   optional_ID: some text
                                   alert_type: some text
@@ -2292,8 +2319,8 @@ paths:
                                   country: some text
                                   notes: some text
                                   frc: some text
-                                  start: '2018-01-17'
-                                  end: '2018-01-17'
+                                  start: "2018-01-17"
+                                  end: "2018-01-17"
                                   frserve: some text
                                   optional_ID: some text
                                   alert_type: some text
@@ -2315,8 +2342,8 @@ paths:
                                   country: some text
                                   notes: some text
                                   frc: some text
-                                  start: '2018-01-17'
-                                  end: '2018-01-17'
+                                  start: "2018-01-17"
+                                  end: "2018-01-17"
                                   frserve: some text
                                   optional_ID: some text
                                   alert_type: some text
@@ -2336,7 +2363,7 @@ paths:
                       current_offset: 31
                       next_offset: 26
           description: Successful response - returns an array of `Signin` entities.
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -2354,9 +2381,9 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
+        "401":
           description: You don't have permission to view these Signins
-        '403':
+        "403":
           description: You do not have permission for this action
       operationId: getSignins
       summary: List all Signins
@@ -2365,23 +2392,23 @@ paths:
       summary: Create Signin
       operationId: createSignin
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
               schema:
                 $ref: ./models/Signin.v1.yaml
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           description: Forbidden
-        '422':
+        "422":
           description: Unprocessable Entity (WebDAV)
       description: Creates a Signin
       tags:
@@ -2411,13 +2438,13 @@ paths:
                   email: some text
               registration:
                 value:
-                  registration_id: '123531144'
+                  registration_id: "123531144"
                   guest_email_template_id: 47
                   host_email_template_id: 65
                   send_notifications: true
                   sms_message: some text
         description: Params for creating a Signin can omit certain fields if a `registration_id` is present.
-  '/users/{user_id}':
+  "/users/{user_id}":
     summary: Path used to manage a single User.
     description: The REST endpoint/path used to get single instances of an `User` and their `PermissionBundle`s.
     get:
@@ -2430,7 +2457,7 @@ paths:
             type: string
           in: query
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -2457,7 +2484,7 @@ paths:
                           - some text
                           - some text
           description: Successful response - returns a single `User`.
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -2475,11 +2502,11 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
+        "401":
           description: You don't have permission to view this User
-        '403':
+        "403":
           description: You do not have permission for this action
-        '404':
+        "404":
           description: The User does not exist
       operationId: getCurrentUser
       summary: Get the current User
@@ -2490,20 +2517,22 @@ paths:
         name: user_id
         in: path
         required: true
-  '/invites/{invite_id}':
+  "/invites/{invite_id}":
     summary: Path used to manage a single Invite.
-    description: 'The REST endpoint/path used to get, update, and delete single instances of an `Invite`.  This path contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks, respectively.'
+    description: "The REST endpoint/path used to get, update, and delete single instances of an `Invite`.  This path contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks, respectively."
     get:
       tags:
         - Invites
       parameters:
         - name: include
-          description: A list of comma-separated related models to include
+          description: |-
+            A list of comma-separated related models to include
+            i.e., 'assigned_stall'
           schema:
             type: string
           in: query
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -2513,12 +2542,12 @@ paths:
                   value:
                     id: 2
                     company: some text
-                    created_at: '2020-07-17T01:59:59.999Z'
+                    created_at: "2020-07-17T01:59:59.999Z"
                     email: some text
-                    end_date: '2020-07-17T01:59:59.999Z'
+                    end_date: "2020-07-17T01:59:59.999Z"
                     first_name: some text
                     last_name: some text
-                    start_date: '2020-07-17T01:59:59.999Z'
+                    start_date: "2020-07-17T01:59:59.999Z"
                     hosts:
                       - id: 68
                         email: some text
@@ -2575,8 +2604,15 @@ paths:
                       internal_colours:
                         - some text
                         - some text
+                    invites_parking_lot:
+                      id: 123
+                      stall_number: 66
+                      stall_type: private
+                      parking_lot_name: some text
+                      parking_lot_id: 321
+                      parking_stall_id: 332
           description: Successful response - returns a single `Invite`.
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -2594,11 +2630,11 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
+        "401":
           description: You don't have permission to view this Invite
-        '403':
+        "403":
           description: You do not have permission for this action
-        '404':
+        "404":
           description: The Invite you are looking for does not exist
       operationId: getInvite
       summary: Get an Invite
@@ -2618,13 +2654,14 @@ paths:
                   sent_email: some text
                   user_id: 45
                   device_configuration_id: 14
+                  license_plate: some text
         required: true
       tags:
         - Invites
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
       responses:
-        '202':
+        "202":
           content:
             application/json:
               schema:
@@ -2634,12 +2671,13 @@ paths:
                   value:
                     id: 54
                     company: some text
-                    created_at: '2020-07-17T01:59:59.999Z'
+                    created_at: "2020-07-17T01:59:59.999Z"
                     email: some text
-                    end_date: '2020-07-17T01:59:59.999Z'
+                    end_date: "2020-07-17T01:59:59.999Z"
                     first_name: some text
                     last_name: some text
-                    start_date: '2020-07-17T01:59:59.999Z'
+                    license_plate: some text
+                    start_date: "2020-07-17T01:59:59.999Z"
                     hosts:
                       - id: 64
                         email: some text
@@ -2695,7 +2733,7 @@ paths:
                       internal_colours:
                         - some text
           description: Successful response.
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -2713,13 +2751,13 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
+        "401":
           description: You don't have permission to view this Invite
-        '403':
+        "403":
           description: You do not have permission for this action
-        '404':
+        "404":
           description: The Invite does not exist
-        '422':
+        "422":
           description: Your request was not formatted correctly
       operationId: updateInvite
       summary: Update an Invite
@@ -2728,11 +2766,11 @@ paths:
       tags:
         - Invites
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
       responses:
-        '204':
+        "204":
           description: The `Invite` has been deleted
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -2759,7 +2797,7 @@ paths:
         name: invite_id
         in: path
         required: true
-  '/watchlists/{watchlist_id}':
+  "/watchlists/{watchlist_id}":
     summary: Path used to manage a single Watchlist.
     description: The REST endpoint/path used to get single instances of a `Watchlist`.
     get:
@@ -2772,7 +2810,7 @@ paths:
             type: string
           in: query
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -2793,7 +2831,7 @@ paths:
                     driver_license: some text
           description: Successful response - returns a single `Watchlist`.
         4XX:
-          description: ''
+          description: ""
           content:
             application/json:
               schema:
@@ -2802,8 +2840,8 @@ paths:
       security:
         - TractionGuestAuth:
             - all
-            - 'watchlists:*'
-            - 'watchlists:read'
+            - "watchlists:*"
+            - "watchlists:read"
       operationId: getWatchlist
       summary: Get a Watchlist
       description: Gets the details of a single instance of a `Watchlist`.
@@ -2831,9 +2869,9 @@ paths:
       tags:
         - Watchlists
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -2862,8 +2900,8 @@ paths:
       security:
         - TractionGuestAuth:
             - all
-            - 'watchlists:*'
-            - 'watchlists:write'
+            - "watchlists:*"
+            - "watchlists:write"
       operationId: updateWatchlist
       summary: Update a Watchlist
       description: Update an existing `Watchlist` record. Every operation against this endpoint is recorded in the audit log.
@@ -2871,9 +2909,9 @@ paths:
       tags:
         - Watchlists
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
       responses:
-        '204':
+        "204":
           description: The Watchlist has been deleted
         4XX:
           content:
@@ -2896,8 +2934,8 @@ paths:
       security:
         - TractionGuestAuth:
             - all
-            - 'watchlists:*'
-            - 'watchlists:write'
+            - "watchlists:*"
+            - "watchlists:write"
       operationId: deleteWatchlist
       summary: Deletes a Watchlist
       description: Deletes a single instance of `Watchlist`
@@ -2915,17 +2953,17 @@ paths:
         - Watchlists
       parameters:
         - name: limit
-          description: 'Limits the results to a specified number, defaults to 50'
+          description: "Limits the results to a specified number, defaults to 50"
           schema:
             type: integer
           in: query
         - name: offset
-          description: 'Offsets the results to a specified number, defaults to 0'
+          description: "Offsets the results to a specified number, defaults to 0"
           schema:
             type: integer
           in: query
         - name: query
-          description: 'Query the results by `first_name`, `last_name`, `email`, `colour`, and `notes` all at once.'
+          description: "Query the results by `first_name`, `last_name`, `email`, `colour`, and `notes` all at once."
           schema:
             type: string
           in: query
@@ -2942,7 +2980,7 @@ paths:
             type: string
           in: query
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -2999,8 +3037,8 @@ paths:
       security:
         - TractionGuestAuth:
             - all
-            - 'watchlists:*'
-            - 'watchlists:read'
+            - "watchlists:*"
+            - "watchlists:read"
       operationId: getWatchlists
       summary: List all Watchlists
       description: Gets a list of all `Watchlist` entities.
@@ -3028,9 +3066,9 @@ paths:
       tags:
         - Watchlists
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
@@ -3059,11 +3097,11 @@ paths:
       security:
         - TractionGuestAuth:
             - all
-            - 'watchlists:*'
-            - 'watchlists:write'
+            - "watchlists:*"
+            - "watchlists:write"
       operationId: createWatchlist
       summary: Create Watchlist
-      description: 'Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log.'
+      description: "Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log."
   /audit_logs:
     summary: Path used to manage the list of AuditLogs.
     description: The REST endpoint/path used to list zero or more `AuditLog` entities.  This path contains a `GET` operation to perform the list task.
@@ -3072,13 +3110,13 @@ paths:
         - AuditLogs
       parameters:
         - name: limit
-          description: 'Limits the results to a specified number, defaults to 50'
+          description: "Limits the results to a specified number, defaults to 50"
           schema:
             type: integer
           in: query
           required: false
         - name: offset
-          description: 'Offsets the results to a specified number, defaults to 0'
+          description: "Offsets the results to a specified number, defaults to 0"
           schema:
             type: integer
           in: query
@@ -3136,7 +3174,7 @@ paths:
             type: integer
           in: query
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -3153,18 +3191,18 @@ paths:
                         action: some text
                         audited_changes:
                           - field_name: result
-                            field_value_before: '{}'
+                            field_value_before: "{}"
                             field_value_after: '{"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}'
                             format: json
                           - field_name: user_id
-                            field_value_before: '1'
-                            field_value_after: '2'
+                            field_value_before: "1"
+                            field_value_after: "2"
                             format: integer
                           - field_name: flag_enabled
-                            field_value_after: 'true'
+                            field_value_after: "true"
                             format: boolean
                           - field_name: email
-                            field_value_before: ''
+                            field_value_before: ""
                             field_value_after: some@email.com
                             format: string
                         version: 64
@@ -3180,7 +3218,7 @@ paths:
                         action: some text
                         audited_changes:
                           - field_name: email
-                            field_value_before: ''
+                            field_value_before: ""
                             field_value_after: another@email.com
                             format: string
                         version: 27
@@ -3193,7 +3231,7 @@ paths:
                       current_offset: 71
                       next_offset: 27
           description: Successful response - returns an array of `AuditLog` entities.
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -3211,21 +3249,21 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '401':
+        "401":
           description: You don't have permission to view this AuditLog
-        '403':
+        "403":
           description: You do not have permission for this action
       operationId: getAuditLogs
       summary: List all AuditLogs
       description: Gets a list of all `AuditLog` entities.
-  '/audit_logs/{audit_log_id}':
+  "/audit_logs/{audit_log_id}":
     summary: Path used to manage a single AuditLog.
     description: The REST endpoint/path used to get single instances of an `AuditLog`.
     get:
       tags:
         - AuditLogs
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -3241,18 +3279,18 @@ paths:
                     action: some text
                     audited_changes:
                       - field_name: result
-                        field_value_before: '{}'
+                        field_value_before: "{}"
                         field_value_after: '{"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}'
                         format: json
                       - field_name: user_id
-                        field_value_before: '1'
-                        field_value_after: '2'
+                        field_value_before: "1"
+                        field_value_after: "2"
                         format: integer
                       - field_name: flag_enabled
-                        field_value_after: 'true'
+                        field_value_after: "true"
                         format: boolean
                       - field_name: email
-                        field_value_before: ''
+                        field_value_before: ""
                         field_value_after: some@email.com
                         format: string
                     version: 66
@@ -3261,17 +3299,17 @@ paths:
                     request_uuid: some text
                     created_at: some text
           description: Successful response - returns a single `AuditLog`.
-        '400':
+        "400":
           description: A generic error
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '401':
+        "401":
           description: You don't have permission to view this AuditLog
-        '403':
+        "403":
           description: You do not have permission for this action
-        '404':
+        "404":
           description: The AuditLog does not exist
       operationId: getAuditLog
       summary: Get an AuditLog
@@ -3282,7 +3320,7 @@ paths:
         name: audit_log_id
         in: path
         required: true
-  '/registrations/{registration_id}':
+  "/registrations/{registration_id}":
     summary: Path used to display a single Registration.
     description: The REST endpoint/path used to get single instances of a `Registration`.
     get:
@@ -3293,7 +3331,7 @@ paths:
             type: string
           in: query
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
@@ -3302,7 +3340,7 @@ paths:
                 Default:
                   value:
                     id: uuid
-                    created_at: '2018-02-10T09:30Z'
+                    created_at: "2018-02-10T09:30Z"
                     name: some text
                     email: some text
                     company: some text
@@ -3311,7 +3349,7 @@ paths:
                       id: 96
                       first_name: some text
                       last_name: some text
-                      start_date: '2018-02-10T09:30Z'
+                      start_date: "2018-02-10T09:30Z"
                       location:
                         id: 95
                         name: some text
@@ -3339,7 +3377,7 @@ paths:
                         internal_colours:
                           - some text
                           - some text
-                      end_date: '2020-07-17T01:59:59.999Z'
+                      end_date: "2020-07-17T01:59:59.999Z"
                       email: some text
                       mobile_number: some text
                     visitor:
@@ -3357,8 +3395,8 @@ paths:
                       profile_pic_file_size: some text
                       profile_pic_updated_at: some text
                       watchlist_level: some text
-                      created_at: '2018-02-10T09:30Z'
-                      updated_at: '2018-02-10T09:30Z'
+                      created_at: "2018-02-10T09:30Z"
+                      updated_at: "2018-02-10T09:30Z"
                     guest_responses:
                       - title: some text
                         sequence: 9
@@ -3379,7 +3417,7 @@ paths:
                           - field_name: some text
                             field_value: some text
           description: Successful response - returns a single `RegistrationDetail`.
-        '400':
+        "400":
           content:
             application/json:
               schema:
@@ -3397,15 +3435,15 @@ paths:
                         code: some text
                         message: some text
           description: A generic error
-        '403':
+        "403":
           description: You do not have permission for this action
-        '404':
+        "404":
           description: The specified Registration was not found
       security:
         - TractionGuestAuth:
             - all
-            - 'signin:*'
-            - 'signin:read'
+            - "signin:*"
+            - "signin:read"
       operationId: getRegistration
       summary: Get a Registration
       description: Gets the details of a single instance of a `Registration`
@@ -3422,7 +3460,7 @@ paths:
       summary: Create multiple Hosts
       operationId: createHosts
       responses:
-        '202':
+        "202":
           description: Accepted
           content:
             application/json:
@@ -3436,7 +3474,7 @@ paths:
                     status: string
                     total_records: 12
                     worker_name: string
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -3444,33 +3482,33 @@ paths:
                 $ref: ./models/ErrorsList.v1.yaml
       tags:
         - Hosts
-      description: 'Creates a batch of `Host` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log.'
+      description: "Creates a batch of `Host` records in an async queue. Please note, every action taken against this endpoint is recorded in the audit log."
       requestBody:
         content:
           application/json:
             schema:
               $ref: ./models/HostBatchCreateParams.v1.yaml
             examples: {}
-        description: ''
+        description: ""
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
   /registrations:
     get:
       summary: List all Registrations
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: ./models/PaginatedRegistrationsList.v1.yaml
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '401':
+        "401":
           description: Unauthorized
       operationId: getRegistrations
       description: Gets a list of all `Registration` entities.
@@ -3479,12 +3517,12 @@ paths:
             type: integer
           in: query
           name: limit
-          description: 'Limits the results to a specified number, defaults to 50'
+          description: "Limits the results to a specified number, defaults to 50"
         - schema:
             type: integer
           in: query
           name: offset
-          description: 'Offsets the results to a specified number, defaults to 0'
+          description: "Offsets the results to a specified number, defaults to 0"
         - schema:
             type: string
           in: query
@@ -3504,10 +3542,10 @@ paths:
             type: boolean
           in: query
           name: needs_confirmation
-          description: 'A confirmed `Registration` is one with an associated `Invite`. This filter returns those without an `Invite` when true, and those with an `Invite` when false.'
+          description: "A confirmed `Registration` is one with an associated `Invite`. This filter returns those without an `Invite` when true, and those with an `Invite` when false."
       tags:
         - Registrations
-  '/locations/{location_id}/capacity_forecasts':
+  "/locations/{location_id}/capacity_forecasts":
     parameters:
       - schema:
           type: string
@@ -3519,7 +3557,7 @@ paths:
       tags:
         - Capacities
       responses:
-        '200':
+        "200":
           description: Successful response returns the expected invites for the next N number of hours.
           content:
             application/json:
@@ -3529,31 +3567,31 @@ paths:
                 default:
                   value:
                     invites_by_hour:
-                      - range_start: '2020-07-17T00:59:59.999Z'
-                        range_end: '2020-07-17T01:59:59.999Z'
+                      - range_start: "2020-07-17T00:59:59.999Z"
+                        range_end: "2020-07-17T01:59:59.999Z"
                         expected_visitors: 0
-                      - range_start: '2020-07-17T01:59:59.999Z'
-                        range_end: '2020-07-17T02:59:59.999Z'
+                      - range_start: "2020-07-17T01:59:59.999Z"
+                        range_end: "2020-07-17T02:59:59.999Z"
                         expected_visitors: 0
-                      - range_start: '2020-07-17T02:59:59.999Z'
-                        range_end: '2020-07-17T03:59:59.999Z'
+                      - range_start: "2020-07-17T02:59:59.999Z"
+                        range_end: "2020-07-17T03:59:59.999Z"
                         expected_visitors: 0
-                      - range_start: '2020-07-17T03:59:59.999Z'
-                        range_end: '2020-07-17T04:59:59.999Z'
+                      - range_start: "2020-07-17T03:59:59.999Z"
+                        range_end: "2020-07-17T04:59:59.999Z"
                         expected_visitors: 0
-                      - range_start: '2020-07-17T04:59:59.999Z'
-                        range_end: '2020-07-17T05:59:59.999Z'
+                      - range_start: "2020-07-17T04:59:59.999Z"
+                        range_end: "2020-07-17T05:59:59.999Z"
                         expected_visitors: 0
-                      - range_start: '2020-07-17T05:59:59.999Z'
-                        range_end: '2020-07-17T06:59:59.999Z'
+                      - range_start: "2020-07-17T05:59:59.999Z"
+                        range_end: "2020-07-17T06:59:59.999Z"
                         expected_visitors: 0
-                      - range_start: '2020-07-17T06:59:59.999Z'
-                        range_end: '2020-07-17T07:59:59.999Z'
+                      - range_start: "2020-07-17T06:59:59.999Z"
+                        range_end: "2020-07-17T07:59:59.999Z"
                         expected_visitors: 0
-                      - range_start: '2020-07-17T07:59:59.999Z'
-                        range_end: '2020-07-17T08:59:59.999Z'
+                      - range_start: "2020-07-17T07:59:59.999Z"
+                        range_end: "2020-07-17T08:59:59.999Z"
                         expected_visitors: 1
-        '400':
+        "400":
           description: A generic error
           content:
             application/json:
@@ -3571,13 +3609,13 @@ paths:
                         attribute: some text
                         code: some text
                         message: some text
-        '401':
+        "401":
           description: You don't have permission to view the details of the location's capacity.
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '403':
+        "403":
           description: You do not have permission for this action
       operationId: getCapacityForecast
       description: Gets the details of the future capacity in a location.
@@ -3589,13 +3627,13 @@ paths:
             default: 8
           in: query
           name: hours_to_forecast
-          description: 'The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8.'
+          description: "The next N number of hours, the data needs to be calculated. Range from 1 to 24. If not set, it defaults to 8."
         - schema:
             type: string
           in: query
           name: timestamp
           description: 'ISO8601 timestamp(includes the offset value) to use as the start point for the capacity estimate report. Defaults to the current local timestamp of the location if not provided. Eg: "2020-07-16T17:05:08-07:00"'
-  '/locations/{location_id}/capacities':
+  "/locations/{location_id}/capacities":
     parameters:
       - schema:
           type: string
@@ -3607,7 +3645,7 @@ paths:
       tags:
         - Capacities
       responses:
-        '200':
+        "200":
           description: Successful response returns the current_signins and expected invites for the next hour.
           content:
             application/json:
@@ -3618,23 +3656,23 @@ paths:
                   value:
                     signins_count: 189
                     invites_expected_next_hour: 1
-        '400':
+        "400":
           description: A generic error
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '401':
+        "401":
           description: You don't have permission to view the details of the location's capacity.
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '403':
+        "403":
           description: You do not have permission for this action
       operationId: getCapacity
       description: Get details of current capacity in a location
-  '/locations/{location_id}':
+  "/locations/{location_id}":
     parameters:
       - schema:
           type: string
@@ -3646,7 +3684,7 @@ paths:
       tags:
         - Locations
       responses:
-        '200':
+        "200":
           description: Successful response - returns a single `Location`.
           content:
             application/json:
@@ -3659,22 +3697,22 @@ paths:
                     name: Default
                     max_capacity: 30
                     timezone: America/Vancouver
-        '400':
+        "400":
           description: A generic error
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
               examples: {}
-        '401':
+        "401":
           description: You don't have permission to view this Location
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '403':
+        "403":
           description: You do not have permission for this action
-        '404':
+        "404":
           description: The Location does not exist
       operationId: getLocation
       description: Gets details of a single instance of `Location`.
@@ -3684,7 +3722,7 @@ paths:
       tags:
         - Packages
       responses:
-        '200':
+        "200":
           description: OK
           headers: {}
           content:
@@ -3703,16 +3741,16 @@ paths:
                           first_name: Tatiane
                           last_name: Sala
                           mobile_number: (604)111-1111
-                          profile_pic_url: 'https://i.pravatar.cc/'
+                          profile_pic_url: "https://i.pravatar.cc/"
                           department: Development
                         location:
                           name: Vancouver
                           id: 2
                         carrier_name: Purolator
-                        created_at: '2020-08-11T01:59:59.999Z'
-                        picked_up_at: '2020-08-17T01:59:59.999Z'
+                        created_at: "2020-08-11T01:59:59.999Z"
+                        picked_up_at: "2020-08-17T01:59:59.999Z"
                         image:
-                          full_size_url: 'https://i.pravatar.cc/'
+                          full_size_url: "https://i.pravatar.cc/"
                       - id: 72
                         package_state: processing
                         recipient: null
@@ -3720,10 +3758,10 @@ paths:
                           name: Vancouver
                           id: 2
                         carrier_name: null
-                        created_at: '2020-08-19T01:59:59.999Z'
+                        created_at: "2020-08-19T01:59:59.999Z"
                         picked_up_at: null
                         image:
-                          full_size_url: 'https://i.pravatar.cc/'
+                          full_size_url: "https://i.pravatar.cc/"
                       - id: 73
                         package_state: needs_attention
                         recipient: null
@@ -3731,10 +3769,10 @@ paths:
                           name: Default
                           id: 1
                         carrier_name: null
-                        created_at: '2020-09-18T01:59:59.999Z'
+                        created_at: "2020-09-18T01:59:59.999Z"
                         picked_up_at: null
                         image:
-                          full_size_url: 'https://i.pravatar.cc/'
+                          full_size_url: "https://i.pravatar.cc/"
                       - id: 74
                         package_state: recipient_matched
                         recipient:
@@ -3743,16 +3781,16 @@ paths:
                           first_name: Veronica
                           last_name: Baldys
                           mobile_number: (604)999-9999
-                          profile_pic_url: 'https://i.pravatar.cc/'
+                          profile_pic_url: "https://i.pravatar.cc/"
                           department: Development
                         location:
                           name: Vancouver
                           id: 2
                         carrier_name: Canada Post
-                        created_at: '2020-07-18T01:59:59.999Z'
+                        created_at: "2020-07-18T01:59:59.999Z"
                         picked_up_at: null
                         image:
-                          full_size_url: 'https://i.pravatar.cc/'
+                          full_size_url: "https://i.pravatar.cc/"
                     pagination:
                       total_records: 5
                       current_offset: 0
@@ -3764,13 +3802,13 @@ paths:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-          description: ''
+          description: ""
       operationId: getPackages
-      description: 'Gets a list of [Package] entities.'
+      description: "Gets a list of [Package] entities."
       parameters:
         - schema:
             type: string
-            example: '1,2,3'
+            example: "1,2,3"
           in: query
           name: location_ids
           description: |-
@@ -3782,20 +3820,20 @@ paths:
             default: 50
           in: query
           name: limit
-          description: 'Limits the results to a specified number, defaults to 50'
+          description: "Limits the results to a specified number, defaults to 50"
         - schema:
             type: integer
             minimum: 0
             default: 0
           in: query
           name: offset
-          description: 'Offsets the results to a specified number, defaults to 0'
+          description: "Offsets the results to a specified number, defaults to 0"
         - schema:
             type: string
-            example: 'recipient,location,image'
+            example: "recipient,location,image"
           in: query
           name: include
-          description: 'A list of comma-separated related models to include. Possible values: ''recipient'', ''location'', ''image'''
+          description: "A list of comma-separated related models to include. Possible values: 'recipient', 'location', 'image'"
         - schema:
             type: boolean
           in: query
@@ -3813,7 +3851,7 @@ paths:
       tags:
         - Packages
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -3821,19 +3859,19 @@ paths:
                 $ref: ./models/Package.v1.yaml
               examples: {}
         4XX:
-          description: ''
+          description: ""
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-      description: 'Creates a [Package] entity by extracting information about the recipient and carrier from the given image file.'
+      description: "Creates a [Package] entity by extracting information about the recipient and carrier from the given image file."
       requestBody:
         content:
           application/json:
             schema:
               $ref: ./models/PackageCreateParams.v1.yaml
         description: Parameters for creating a package
-  '/packages/{package_id}':
+  "/packages/{package_id}":
     parameters:
       - schema:
           type: string
@@ -3845,8 +3883,8 @@ paths:
       tags:
         - Packages
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
@@ -3870,7 +3908,7 @@ paths:
       summary: Update Package
       operationId: updatePackage
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -3897,14 +3935,14 @@ paths:
           application/json:
             schema:
               $ref: ./models/PackageUpdateParams.v1.yaml
-        description: ''
+        description: ""
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
     delete:
-      summary: ''
+      summary: "Delete Package"
       operationId: deletePackage
       responses:
-        '204':
+        "204":
           description: The package has been deleted
         4XX:
           description: Bad request
@@ -3914,7 +3952,7 @@ paths:
                 $ref: ./models/ErrorsList.v1.yaml
       description: Delete a pacakge
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
       security:
         - TractionGuestAuth: []
       tags:
@@ -3925,7 +3963,7 @@ paths:
       tags:
         - GroupVisits
       responses:
-        '200':
+        "200":
           description: Successful response - returns an array of `GroupVisit` entities.
           content:
             application/json:
@@ -3956,31 +3994,31 @@ paths:
                             department: Accounting
                             mobile_number: string
                         name: Appointment Name
-                        start_time: '2021-01-01T12:34:56Z'
-                        end_time: '2021-01-01T12:34:56Z'
-                        created_at: '2021-01-01T12:34:56Z'
-                        updated_at: '2021-01-01T12:34:56Z'
+                        start_time: "2021-01-01T12:34:56Z"
+                        end_time: "2021-01-01T12:34:56Z"
+                        created_at: "2021-01-01T12:34:56Z"
+                        updated_at: "2021-01-01T12:34:56Z"
                         registration_limit: 5
                         registration_url: null
                         invites_count: 0
                         unconfirmed_registrations_count: 0
                         manual_registration_approval: true
                         public_registration_enabled: true
-        '400':
+        "400":
           description: A generic error
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '401':
+        "401":
           description: You do not have permission to view this
-        '403':
+        "403":
           description: You do not have permission for this action
       security:
         - TractionGuestAuth:
             - all
-            - 'visitors:*'
-            - 'visitors:read'
+            - "visitors:*"
+            - "visitors:read"
       operationId: getGroupVisits
       description: Gets a list of all `GroupVisit` entities (Appointments).
       parameters:
@@ -3998,22 +4036,22 @@ paths:
             type: string
           in: query
           name: location_ids
-          description: 'A comma-separated string of locations IDs, to only show group visits (appointments) from those locations.'
+          description: "A comma-separated string of locations IDs, to only show group visits (appointments) from those locations."
         - schema:
             type: string
           in: query
           name: sort_with
-          description: 'A combination of attribute and direction, joined with an underscore, for sorting. Valid attributes are: `created_at`, `updated_at`, `name`, and `start_time`. Valid directions are `asc` and `desc`. E.g., `name_desc`, `start_time_asc`.'
+          description: "A combination of attribute and direction, joined with an underscore, for sorting. Valid attributes are: `created_at`, `updated_at`, `name`, and `start_time`. Valid directions are `asc` and `desc`. E.g., `name_desc`, `start_time_asc`."
     post:
       summary: Create a new Group Visit (Appointment)
       security:
         - TractionGuestAuth:
             - all
-            - 'visitors:*'
-            - 'visitors:write'
+            - "visitors:*"
+            - "visitors:write"
       operationId: createGroupVisit
       responses:
-        '201':
+        "201":
           description: Created the `GroupVisit`
           content:
             application/json:
@@ -4037,40 +4075,40 @@ paths:
                         department: Engineering
                         mobile_number: string
                     name: Appointment Name
-                    start_time: '2021-01-01T12:34:56Z'
-                    end_time: '2021-01-01T12:34:56Z'
-                    created_at: '2021-01-01T12:34:56Z'
-                    updated_at: '2021-01-01T12:34:56Z'
+                    start_time: "2021-01-01T12:34:56Z"
+                    end_time: "2021-01-01T12:34:56Z"
+                    created_at: "2021-01-01T12:34:56Z"
+                    updated_at: "2021-01-01T12:34:56Z"
                     registration_limit: 0
                     registration_url: url
                     invites_count: 0
                     unconfirmed_registrations_count: 0
                     manual_registration_approval: true
                     public_registration_enabled: true
-        '400':
+        "400":
           description: A generic error
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '401':
+        "401":
           description: You do not have permission to create this
-        '403':
+        "403":
           description: You do not have permission for this action
-        '422':
+        "422":
           description: Your request was not formatted correctly
       description: Creates a `GroupVisit` (Appointment)
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
       requestBody:
         content:
           application/json:
             schema:
               $ref: ./models/GroupVisitCreateParams.v1.yaml
-        description: ''
+        description: ""
       tags:
         - GroupVisits
-  '/group_visits/{group_visit_id}':
+  "/group_visits/{group_visit_id}":
     parameters:
       - schema:
           type: string
@@ -4082,7 +4120,7 @@ paths:
       tags:
         - GroupVisits
       responses:
-        '200':
+        "200":
           description: Successful response - returns a single `GroupVisit`.
           content:
             application/json:
@@ -4106,33 +4144,33 @@ paths:
                         department: Weather Monitoring
                         mobile_number: string
                     name: Appointment Name
-                    start_time: '2021-01-01T12:34:56Z'
-                    end_time: '2021-01-01T12:34:56Z'
-                    created_at: '2021-01-01T12:34:56Z'
-                    updated_at: '2021-01-01T12:34:56Z'
+                    start_time: "2021-01-01T12:34:56Z"
+                    end_time: "2021-01-01T12:34:56Z"
+                    created_at: "2021-01-01T12:34:56Z"
+                    updated_at: "2021-01-01T12:34:56Z"
                     registration_limit: 0
                     registration_url: url
                     invites_count: 0
                     unconfirmed_registrations_count: 0
                     manual_registration_approval: true
                     public_registration_enabled: true
-        '400':
+        "400":
           description: A generic error
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '401':
+        "401":
           description: You do not have permission to view this GroupVisit
-        '403':
+        "403":
           description: You do not have permission for this action
-        '404':
+        "404":
           description: The GroupVisit does not exist
       security:
         - TractionGuestAuth:
             - all
-            - 'visitors:*'
-            - 'visitors:read'
+            - "visitors:*"
+            - "visitors:read"
       operationId: getGroupVisit
       description: Gets the details of a single instance of a `GroupVisit`.
     put:
@@ -4140,11 +4178,11 @@ paths:
       security:
         - TractionGuestAuth:
             - all
-            - 'visitors:*'
-            - 'visitors:write'
+            - "visitors:*"
+            - "visitors:write"
       operationId: updateGroupVisit
       responses:
-        '202':
+        "202":
           description: Successful response
           content:
             application/json:
@@ -4168,40 +4206,40 @@ paths:
                         department: Engineering
                         mobile_number: string
                     name: Appointment Name
-                    start_time: '2021-01-01T12:34:56Z'
-                    end_time: '2021-01-01T12:34:56Z'
-                    created_at: '2021-01-01T12:34:56Z'
-                    updated_at: '2021-01-01T12:34:56Z'
+                    start_time: "2021-01-01T12:34:56Z"
+                    end_time: "2021-01-01T12:34:56Z"
+                    created_at: "2021-01-01T12:34:56Z"
+                    updated_at: "2021-01-01T12:34:56Z"
                     registration_limit: 0
                     registration_url: url
                     invites_count: 0
                     unconfirmed_registrations_count: 0
                     manual_registration_approval: true
                     public_registration_enabled: true
-        '400':
+        "400":
           description: A generic error
           headers: {}
           content:
             application/json:
               schema:
                 $ref: ./models/ErrorsList.v1.yaml
-        '401':
+        "401":
           description: You do not have permission to view this GroupVisit
-        '403':
+        "403":
           description: You do not have permission for this action
-        '404':
+        "404":
           description: The GroupVisit does not exist
-        '422':
+        "422":
           description: Your request was not formatted correctly
       description: Updates an existing `GroupVisit` (Appointment).
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
       requestBody:
         content:
           application/json:
             schema:
               $ref: ./models/GroupVisitUpdateParams.v1.yaml
-        description: ''
+        description: ""
       tags:
         - GroupVisits
     delete:
@@ -4209,59 +4247,248 @@ paths:
       security:
         - TractionGuestAuth:
             - all
-            - 'visitors:*'
-            - 'visitors:write'
+            - "visitors:*"
+            - "visitors:write"
       operationId: deleteGroupVisit
       responses:
-        '204':
+        "204":
           description: The `GroupVisit` has been deleted
-        '400':
+        "400":
           description: There was an error in trying to delete the `GroupVisit`
       description: Deletes a single instance of `GroupVisit` (Appointment).
       parameters:
-        - $ref: '#/components/parameters/idempotencyKey'
+        - $ref: "#/components/parameters/idempotencyKey"
       tags:
         - GroupVisits
+  /parking_lots:
+    get:
+      summary: Get parking lots
+      tags:
+        - Parking
+      responses:
+        "200":
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: ./models/PaginatedParkingLotsList.v1.yaml
+              examples:
+                example:
+                  value:
+                    parking_lots:
+                      - id: 1
+                        name: 'West Lot'
+                        user_id: 1
+                        locations:
+                          - id: 1
+                            name: 'Default'
+                      - id: 2
+                        name: 'East Lot'
+                        user_id: 1
+                        locations:
+                          - id: 2
+                            name: 'Vancouver'
+                    pagination:
+                      total_records: 5
+                      current_offset: 0
+                      next_offset: null
+                      last_id: null
+                      limit: 20
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+          description: ""
+      operationId: getParkingLots
+      description: "Gets a list of [ParkingLot] entities."
+      parameters:
+        - schema:
+            type: integer
+            minimum: 1
+            default: 50
+          in: query
+          name: limit
+          description: "Limits the results to a specified number, defaults to 50"
+        - schema:
+            type: integer
+            minimum: 0
+            default: 0
+          in: query
+          name: offset
+          description: "Offsets the results to a specified number, defaults to 0"
+  "/parking_lots/{parking_lot_id}/parking_stalls":
+    parameters:
+      - schema:
+          type: string
+        name: parking_lot_id
+        in: path
+        required: true
+    get:
+      summary: Get stalls of parking lot
+      tags:
+        - Parking
+      responses:
+        "200":
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref:
+                  ./models/PaginatedParkingStallsList.v1.yaml
+              examples:
+                example:
+                  value:
+                    parking_stalls:
+                      - id: 1
+                        parking_lot_id: 1
+                        stall_type: 'Handicap'
+                        range: 0
+                        stall_count: 5
+                        range_prefix: 'H'
+                        range_postfix: ''
+                      - id: 2
+                        parking_lot_id: 1
+                        stall_type: 'General'
+                        range: 5
+                        stall_count: 95
+                        range_prefix: 'P'
+                        range_postfix: ''
+                    pagination:
+                      total_records: 5
+                      current_offset: 0
+                      next_offset: null
+                      last_id: null
+                      limit: 20
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+          description: ""
+      operationId: getParkingStalls
+      description: "Gets a list of [ParkingStall] entities."
+      parameters:
+        - schema:
+            type: integer
+            minimum: 1
+            default: 50
+          in: query
+          name: limit
+          description: "Limits the results to a specified number, defaults to 50"
+        - schema:
+            type: integer
+            minimum: 0
+            default: 0
+          in: query
+          name: offset
+          description: "Offsets the results to a specified number, defaults to 0"
+  "/parking_lots/{parking_lot_id}/available_stalls":
+    parameters:
+      - schema:
+          type: string
+        name: parking_lot_id
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: stall_type
+        in: query
+        required: true
+        description: "The type of stall to filter by. E.g., 'Compact', 'Standard', 'Electric', 'Handicapped'"
+      - schema:
+          type: string
+          format: date-time
+        name: start_date
+        in: query
+        required: true
+        description: "The start date to filter by. E.g., '2024-06-13T15:30:00'"
+      - schema:
+          type: string
+          format: date-time
+        name: end_date
+        in: query
+        required: true
+        description: "The end date to filter by. E.g., '2024-06-13T15:30:00'"
+      - schema:
+          type: string
+        name: timezone
+        in: query
+        required: false
+        description: "The IANA timezone to be used if not provided in both start_date and end_date. E.g., 'America/Vancouver'"
+    get:
+      summary: Get available stalls for stall type
+      tags:
+        - Parking
+      responses:
+        "200":
+          description: OK
+          headers: {}
+          content:
+            application/json:
+                schema:
+                  $ref:
+                    ./models/ParkingLotAvailableStallsList.v1.yaml
+                example:
+                  - parking_stall_id: 23
+                    range: null
+                    stall_count: 5
+                    open_stalls:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+          description: ""
+      operationId: getParkingLotAvailableStalls
+      description: "Gets a list of [ParkingLotAvailableStalls] entities."
 components:
   parameters:
     idempotencyKey:
       name: Idempotency-Key
-      description: 'An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it''s submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored'
+      description: "An optional idempotency key to allow for repeat API requests. Any API request with this key will only be executed once, no matter how many times it's submitted. We store idempotency keys for only 24 hours. Any `Idempotency-Key` shorter than 10 characters will be ignored"
       schema:
         type: string
       in: header
       required: false
   securitySchemes:
     TractionGuestAuth:
-      openIdConnectUrl: 'https://us.tractionguest.com/.well-known/openid-configuration'
+      openIdConnectUrl: "https://us.tractionguest.com/.well-known/openid-configuration"
       type: openIdConnect
   schemas: {}
 security:
   - TractionGuestAuth:
       - all
       - openid
-      - 'admin:webhooks'
-      - 'watchlists:*'
-      - 'watchlists:read'
-      - 'watchlists:write'
-      - 'users:*'
-      - 'users:read'
-      - 'users:write'
-      - 'visitors:*'
-      - 'visitors:read'
-      - 'visitors:write'
-      - 'parking:*'
-      - 'parking:read'
-      - 'parking:write'
-      - 'locations:*'
-      - 'locations:read'
-      - 'locations:write'
-      - 'hosts:*'
-      - 'hosts:read'
-      - 'hosts:write'
-      - 'email_templates:*'
-      - 'email_templates:read'
-      - 'email_templates:write'
+      - "admin:webhooks"
+      - "watchlists:*"
+      - "watchlists:read"
+      - "watchlists:write"
+      - "users:*"
+      - "users:read"
+      - "users:write"
+      - "visitors:*"
+      - "visitors:read"
+      - "visitors:write"
+      - "parking:*"
+      - "parking:read"
+      - "parking:write"
+      - "locations:*"
+      - "locations:read"
+      - "locations:write"
+      - "hosts:*"
+      - "hosts:read"
+      - "hosts:write"
+      - "email_templates:*"
+      - "email_templates:read"
+      - "email_templates:write"
 tags:
   - name: EmailTemplates
     description: All endpoints relating to operations for the EmailTemplate model
@@ -4270,13 +4497,13 @@ tags:
   - name: Invites
     description: All endpoints relating to the Invite model
   - name: Locations
-    description: 'All endpoints relating to the Location model, aka. DeviceConfigurations'
+    description: "All endpoints relating to the Location model, aka. DeviceConfigurations"
   - name: Packages
     description: All endpoints relating to the Packages model
   - name: Parking
-    description: 'All endpoint related to the parking feature, including the ParkingLot and ParkingStallRange models'
+    description: "All endpoint related to the parking feature, including the ParkingLot and ParkingStallRange models"
   - name: Signins
-    description: 'All endpoints related to models that track signing in and out of a location. E.g., Signin, Signout, SigninAcknowledgment models'
+    description: "All endpoints related to models that track signing in and out of a location. E.g., Signin, Signout, SigninAcknowledgment models"
   - name: Users
     description: All endpoints related to the User model
   - name: Watchlists

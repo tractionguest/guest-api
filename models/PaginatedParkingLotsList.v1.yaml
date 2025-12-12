@@ -1,0 +1,21 @@
+title: PaginatedParkingLotsList
+type: object
+x-examples:
+  example-1:
+    parking_lots:
+      - {}
+    pagination:
+      total_records: 16
+      current_offset: 31
+      next_offset: 20
+      last_id: 28
+properties:
+  parking_lots:
+    type: array
+    items:
+      $ref: ./ParkingLot.v1.yaml
+  pagination:
+    $ref: ./Pagination.v1.yaml
+required:
+  - parking_lots
+  - pagination

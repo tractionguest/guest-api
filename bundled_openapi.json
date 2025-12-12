@@ -1,18 +1,18 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "title": "Traction Guest API",
-    "version": "0.17.0",
+    "title": "Sign In Solutions VMS API",
+    "version": "0.20.1",
     "x-logo": {
-      "url": "https://tractionguest.com/wp-content/uploads/tg-logo-light@2.png",
+      "url": "https://signinenterprise.com/wp-content/uploads/tg-logo-light@2.png",
       "backgroundColor": "#FFFFFF",
-      "altText": "Traction Guest",
-      "href": "https://tractionguest.com"
+      "altText": "Sign In Solutions",
+      "href": "https://signinsolutions.com/signinenterprise"
     },
-    "description": "The Traction Guest API is currently under limited release to select customers as we gather and iterate on feedback.\n\n# Getting Started\nIf you are interested in getting early access to the API, please send us an email to [support@tractionguest.com](mailto:support@tractionguest.com).\n\nWe will also add you to our Slack channel where you can ask questions and get further help.\n\n# Terms and Conditions\nPlease visit: [https://tractionguest.com/tos/api/](https://tractionguest.com/tos/api/)\n\n# Versioning\nThis API follows [semantic versioning](https://semver.org/), which follows the `Major`.`Minor`.`Patch` format.\n\n* The `Major` number increments when potentially incompatible changes are made.\n* The `Minor` number increments when backwards-compatible additions are made.\n* The `Patch` number increments when backwards-compatible bug-fixes are made.\n",
+    "description": "The Traction Guest API is currently under limited release to select customers as we gather and iterate on feedback.\n\n# Getting Started\nIf you are interested in getting early access to the API, please send us an email to [support@tractionguest.com](mailto:support@tractionguest.com).\n\nWe will also add you to our Slack channel where you can ask questions and get further help.\n\n# Terms and Conditions\nPlease visit: [https://signinsolutions.com/compliance-hub](https://signinsolutions.com/compliance-hub)\n\n# Versioning\nThis API follows [semantic versioning](https://semver.org/), which follows the `Major`.`Minor`.`Patch` format.\n\n* The `Major` number increments when potentially incompatible changes are made.\n* The `Minor` number increments when backwards-compatible additions are made.\n* The `Patch` number increments when backwards-compatible bug-fixes are made.\n",
     "contact": {
       "name": "API Support",
-      "url": "https://tractionguest.com",
+      "url": "https://signinsolutions.com/signinenterprise",
       "email": "support@tractionguest.com"
     }
   },
@@ -1503,7 +1503,7 @@
       },
       "put": {
         "requestBody": {
-          "description": "The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`. \n`is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible.",
+          "description": "The only updatable values for a `Signin` are `badge_number`, `badge_returned`, `is_accounted_for`, `is_signed_out`, and `is_acknowledged`.\n`is_signed_out` and `is_acknowledged` are pseudo attributes that once set to true, are irreversible.",
           "content": {
             "application/json": {
               "schema": {
@@ -2107,6 +2107,12 @@
                     "email_template_id": 65,
                     "mobile_number": "some text",
                     "first_name": "some text",
+                    "license_plate": "some text",
+                    "parking_stall": {
+                      "stall_number": 66,
+                      "parking_lot_id": 321,
+                      "parking_stall_id": 332
+                    },
                     "notification_triggers": [
                       {
                         "offset_direction": "AFTER",
@@ -2194,6 +2200,20 @@
                   },
                   "group_visit_id": {
                     "type": "integer"
+                  },
+                  "parking_stall": {
+                    "type": "object",
+                    "properties": {
+                      "stall_number": {
+                        "type": "integer"
+                      },
+                      "parking_lot_id": {
+                        "type": "integer"
+                      },
+                      "parking_stall_id": {
+                        "type": "integer"
+                      }
+                    }
                   }
                 },
                 "required": [
@@ -2231,6 +2251,7 @@
                     "email_template_id": 53,
                     "mobile_number": "some text",
                     "first_name": "some text",
+                    "license_plate": "some text",
                     "notification_triggers": [
                       {
                         "offset_direction": "BEFORE",
@@ -2254,7 +2275,12 @@
                           "some text"
                         ]
                       }
-                    ]
+                    ],
+                    "parking_stall": {
+                      "stall_number": 66,
+                      "parking_lot_id": 321,
+                      "parking_stall_id": 332
+                    }
                   }
                 }
               }
@@ -2287,6 +2313,7 @@
                       "end_date": "2020-07-17T01:59:59.999Z",
                       "first_name": "some text",
                       "last_name": "some text",
+                      "license_plate": "some text",
                       "start_date": "2020-07-17T01:59:59.999Z",
                       "hosts": [
                         {
@@ -2355,6 +2382,14 @@
                         }
                       ],
                       "mobile_number": "some text",
+                      "invites_parking_lot": {
+                        "id": 123,
+                        "stall_number": 66,
+                        "stall_type": "private",
+                        "parking_lot_name": "some text",
+                        "parking_lot_id": 321,
+                        "parking_stall_id": 332
+                      },
                       "invite_watchlist": {
                         "id": 3,
                         "external_colours": [
@@ -2515,7 +2550,7 @@
           },
           {
             "name": "include",
-            "description": "A list of comma-separated related models to include",
+            "description": "A list of comma-separated related models to include\ni.e., 'assigned_stall'",
             "schema": {
               "type": "string"
             },
@@ -3021,7 +3056,15 @@
                           },
                           "end_date": "2020-07-17T01:59:59.999Z",
                           "email": "some text",
-                          "mobile_number": "some text"
+                          "mobile_number": "some text",
+                          "invites_parking_lot": {
+                            "id": 123,
+                            "stall_number": 66,
+                            "stall_type": "private",
+                            "parking_lot_name": "some text",
+                            "parking_lot_id": 321,
+                            "parking_stall_id": 332
+                          }
                         },
                         {
                           "id": 0,
@@ -3758,6 +3801,14 @@
               "type": "string"
             },
             "in": "query"
+          },
+          {
+            "name": "include_anonymized",
+            "description": "Set this flag to `true` to include anonymized signins in the response",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -5177,12 +5228,12 @@
                                     "source_lists": {
                                       "description": "",
                                       "type": "string"
+                                    },
+                                    "error": {
+                                      "description": "",
+                                      "type": "string"
                                     }
-                                  },
-                                  "required": [
-                                    "name",
-                                    "list"
-                                  ]
+                                  }
                                 }
                               },
                               "colour": {
@@ -5191,7 +5242,8 @@
                                   "RED",
                                   "GREEN",
                                   "YELLOW",
-                                  "ORANGE"
+                                  "ORANGE",
+                                  "GRAY"
                                 ],
                                 "type": "string"
                               },
@@ -5779,7 +5831,7 @@
         "parameters": [
           {
             "name": "include",
-            "description": "A list of comma-separated related models to include",
+            "description": "A list of comma-separated related models to include\ni.e., 'assigned_stall'",
             "schema": {
               "type": "string"
             },
@@ -5804,6 +5856,7 @@
                       "last_name": "some text",
                       "checked_in": false,
                       "start_date": "2018-02-10T09:30Z",
+                      "license_plate": "some text",
                       "hosts": [
                         {
                           "id": 35,
@@ -5940,6 +5993,14 @@
                           "watchlist_level": "some text",
                           "created_at": "2018-02-10T09:30Z",
                           "updated_at": "2018-02-10T09:30Z"
+                        },
+                        "invites_parking_lot": {
+                          "id": 123,
+                          "stall_number": 66,
+                          "stall_type": "private",
+                          "parking_lot_name": "some text",
+                          "parking_lot_id": 321,
+                          "parking_stall_id": 332
                         }
                       }
                     }
@@ -6309,13 +6370,13 @@
                         "internal": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1signins~1%7Bsignin_id%7D/get/responses/200/content/application~1json/schema/properties/signin_watchlist/properties/internal/items"
+                            "$ref": "#/paths/~1signins/post/responses/201/content/application~1json/schema/properties/signin_watchlist/properties/internal/items"
                           }
                         },
                         "external": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/paths/~1signins~1%7Bsignin_id%7D/get/responses/200/content/application~1json/schema/properties/signin_watchlist/properties/external/items"
+                            "$ref": "#/paths/~1signins/post/responses/201/content/application~1json/schema/properties/signin_watchlist/properties/external/items"
                           }
                         },
                         "internal_colours": {
@@ -6464,6 +6525,69 @@
                     },
                     "group_visit": {
                       "$ref": "#/paths/~1group_visits/post/responses/201/content/application~1json/schema"
+                    },
+                    "license_plate": {
+                      "type": "string"
+                    },
+                    "assigned_stall": {
+                      "title": "Assigned Stall",
+                      "type": "object",
+                      "description": "The root of the Assigned Stall type's schema.",
+                      "x-examples": {
+                        "default": {
+                          "id": "25,",
+                          "parking_stall_id": "279,",
+                          "parking_lot_name": "East Lot",
+                          "parking_lot_id": 4,
+                          "stall_number": 4,
+                          "stall_type": "Regular",
+                          "computed_stall_number": "VIP-4",
+                          "range": null
+                        }
+                      },
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "parking_stall_id": {
+                          "type": "integer",
+                          "description": "The id of the assigned parking stall."
+                        },
+                        "parking_lot_name": {
+                          "description": "The name of the assigned parking lot.",
+                          "type": "string"
+                        },
+                        "parking_lot_id": {
+                          "description": "The id of the assigned parking lot.",
+                          "type": "integer"
+                        },
+                        "stall_number": {
+                          "description": "The number of the assigned parking stall.",
+                          "type": "integer"
+                        },
+                        "stall_type": {
+                          "description": "The type name of the assigned parking stall.",
+                          "type": "string"
+                        },
+                        "computed_stall_number": {
+                          "description": "The computed number of the assigned parking stall along with the pre and post fix, if any.",
+                          "type": "string"
+                        },
+                        "range": {
+                          "description": "The starting number of the stall range.",
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "parking_stall_id",
+                        "parking_lot_name",
+                        "parking_lot_id",
+                        "stall_number",
+                        "stall_type",
+                        "computed_stall_number"
+                      ]
                     }
                   },
                   "required": [
@@ -6561,6 +6685,14 @@
                           "some text",
                           "some text"
                         ]
+                      },
+                      "invites_parking_lot": {
+                        "id": 123,
+                        "stall_number": 66,
+                        "stall_type": "private",
+                        "parking_lot_name": "some text",
+                        "parking_lot_id": 321,
+                        "parking_stall_id": 332
                       }
                     }
                   }
@@ -6649,6 +6781,7 @@
                     "email_template_id": 18,
                     "mobile_number": "some text",
                     "first_name": "some text",
+                    "license_plate": "some text",
                     "notification_triggers": [
                       {
                         "subject": "some text",
@@ -6836,6 +6969,23 @@
                   },
                   "group_visit_id": {
                     "type": "integer"
+                  },
+                  "license_plate": {
+                    "type": "string"
+                  },
+                  "parking_stall": {
+                    "type": "object",
+                    "properties": {
+                      "stall_number": {
+                        "type": "integer"
+                      },
+                      "parking_lot_id": {
+                        "type": "integer"
+                      },
+                      "parking_stall_id": {
+                        "type": "integer"
+                      }
+                    }
                   }
                 }
               },
@@ -6846,7 +6996,8 @@
                     "on_premise": true,
                     "sent_email": "some text",
                     "user_id": 45,
-                    "device_configuration_id": 14
+                    "device_configuration_id": 14,
+                    "license_plate": "some text"
                   }
                 }
               }
@@ -6879,6 +7030,7 @@
                       "end_date": "2020-07-17T01:59:59.999Z",
                       "first_name": "some text",
                       "last_name": "some text",
+                      "license_plate": "some text",
                       "start_date": "2020-07-17T01:59:59.999Z",
                       "hosts": [
                         {
@@ -7645,6 +7797,14 @@
                       ]
                     },
                     "driver_license": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "format": "date-time",
                       "type": "string"
                     }
                   },
@@ -8507,6 +8667,10 @@
                         },
                         "group_visit": {
                           "$ref": "#/paths/~1group_visits/post/responses/201/content/application~1json/schema",
+                          "nullable": true
+                        },
+                        "assigned_stall": {
+                          "$ref": "#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/assigned_stall",
                           "nullable": true
                         }
                       },
@@ -9887,7 +10051,7 @@
         ]
       },
       "delete": {
-        "summary": "",
+        "summary": "Delete Package",
         "operationId": "deletePackage",
         "responses": {
           "204": {
@@ -10581,6 +10745,486 @@
         "tags": [
           "GroupVisits"
         ]
+      }
+    },
+    "/parking_lots": {
+      "get": {
+        "summary": "Get parking lots",
+        "tags": [
+          "Parking"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "PaginatedParkingLotsList",
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "parking_lots": [
+                        {}
+                      ],
+                      "pagination": {
+                        "total_records": 16,
+                        "current_offset": 31,
+                        "next_offset": 20,
+                        "last_id": 28
+                      }
+                    }
+                  },
+                  "properties": {
+                    "parking_lots": {
+                      "type": "array",
+                      "items": {
+                        "title": "ParkingLot",
+                        "type": "object",
+                        "x-examples": {
+                          "default": {
+                            "id": 1,
+                            "name": "West Lot",
+                            "user_id": 1,
+                            "locations": [
+                              {
+                                "id": 1,
+                                "name": "Default"
+                              }
+                            ]
+                          }
+                        },
+                        "description": "Root for a Parking Lot type's schema",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The name of the parking lot."
+                          },
+                          "user_id": {
+                            "type": "integer",
+                            "description": "The user id of the user that created the parking lot."
+                          },
+                          "locations": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/paths/~1locations~1%7Blocation_id%7D/get/responses/200/content/application~1json/schema"
+                            },
+                            "description": "The locations that the parking lot has been assigned to."
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name"
+                        ]
+                      }
+                    },
+                    "pagination": {
+                      "$ref": "#/paths/~1hosts/get/responses/200/content/application~1json/schema/properties/pagination"
+                    }
+                  },
+                  "required": [
+                    "parking_lots",
+                    "pagination"
+                  ]
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "parking_lots": [
+                        {
+                          "id": 1,
+                          "name": "West Lot",
+                          "user_id": 1,
+                          "locations": [
+                            {
+                              "id": 1,
+                              "name": "Default"
+                            }
+                          ]
+                        },
+                        {
+                          "id": 2,
+                          "name": "East Lot",
+                          "user_id": 1,
+                          "locations": [
+                            {
+                              "id": 2,
+                              "name": "Vancouver"
+                            }
+                          ]
+                        }
+                      ],
+                      "pagination": {
+                        "total_records": 5,
+                        "current_offset": 0,
+                        "next_offset": null,
+                        "last_id": null,
+                        "limit": 20
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1hosts/get/responses/400/content/application~1json/schema"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "operationId": "getParkingLots",
+        "description": "Gets a list of [ParkingLot] entities.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 50
+            },
+            "in": "query",
+            "name": "limit",
+            "description": "Limits the results to a specified number, defaults to 50"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            },
+            "in": "query",
+            "name": "offset",
+            "description": "Offsets the results to a specified number, defaults to 0"
+          }
+        ]
+      }
+    },
+    "/parking_lots/{parking_lot_id}/parking_stalls": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "parking_lot_id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get stalls of parking lot",
+        "tags": [
+          "Parking"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "PaginatedParkingStallsList",
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "parking_stalls": [
+                        []
+                      ],
+                      "pagination": {
+                        "total_records": 16,
+                        "current_offset": 31,
+                        "next_offset": 20,
+                        "last_id": 28
+                      }
+                    }
+                  },
+                  "properties": {
+                    "parking_stalls": {
+                      "type": "array",
+                      "items": {
+                        "title": "Parking Stall",
+                        "type": "object",
+                        "x-examples": {
+                          "default": {
+                            "id": 1,
+                            "stall_type": "Handicap",
+                            "stall_count": 5,
+                            "parking_lot": {
+                              "id": 1,
+                              "name": "West Lot"
+                            }
+                          }
+                        },
+                        "description": "Root for a Parking Stall type's schema",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "stall_type": {
+                            "type": "string",
+                            "description": "A string that represents the type of stall. i.e. \"compact\", \"regular\", \"handicap\", etc..."
+                          },
+                          "stall_count": {
+                            "type": "integer",
+                            "description": "The number of stalls of type in the parking lot."
+                          },
+                          "range": {
+                            "type": "string",
+                            "nullable": true,
+                            "description": "The starting number of the stall range."
+                          },
+                          "range_prefix": {
+                            "type": "string",
+                            "nullable": true,
+                            "description": "The prefix of the stall range. i.e. \"A\", \"B\", \"C\", etc..."
+                          },
+                          "range_postfix": {
+                            "type": "string",
+                            "nullable": true,
+                            "description": "The postfix of the stall range. i.e. \"A\", \"B\", \"C\", etc..."
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "stall_type",
+                          "stall_count",
+                          "parking_lot_id"
+                        ]
+                      }
+                    },
+                    "pagination": {
+                      "$ref": "#/paths/~1hosts/get/responses/200/content/application~1json/schema/properties/pagination"
+                    }
+                  },
+                  "required": [
+                    "parking_stalls",
+                    "pagination"
+                  ]
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "parking_stalls": [
+                        {
+                          "id": 1,
+                          "parking_lot_id": 1,
+                          "stall_type": "Handicap",
+                          "range": 0,
+                          "stall_count": 5,
+                          "range_prefix": "H",
+                          "range_postfix": ""
+                        },
+                        {
+                          "id": 2,
+                          "parking_lot_id": 1,
+                          "stall_type": "General",
+                          "range": 5,
+                          "stall_count": 95,
+                          "range_prefix": "P",
+                          "range_postfix": ""
+                        }
+                      ],
+                      "pagination": {
+                        "total_records": 5,
+                        "current_offset": 0,
+                        "next_offset": null,
+                        "last_id": null,
+                        "limit": 20
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1hosts/get/responses/400/content/application~1json/schema"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "operationId": "getParkingStalls",
+        "description": "Gets a list of [ParkingStall] entities.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 50
+            },
+            "in": "query",
+            "name": "limit",
+            "description": "Limits the results to a specified number, defaults to 50"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            },
+            "in": "query",
+            "name": "offset",
+            "description": "Offsets the results to a specified number, defaults to 0"
+          }
+        ]
+      }
+    },
+    "/parking_lots/{parking_lot_id}/available_stalls": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "parking_lot_id",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "stall_type",
+          "in": "query",
+          "required": true,
+          "description": "The type of stall to filter by. E.g., 'Compact', 'Standard', 'Electric', 'Handicapped'"
+        },
+        {
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": "start_date",
+          "in": "query",
+          "required": true,
+          "description": "The start date to filter by. E.g., '2024-06-13T15:30:00'"
+        },
+        {
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": "end_date",
+          "in": "query",
+          "required": true,
+          "description": "The end date to filter by. E.g., '2024-06-13T15:30:00'"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "timezone",
+          "in": "query",
+          "required": false,
+          "description": "The IANA timezone to be used if not provided in both start_date and end_date. E.g., 'America/Vancouver'"
+        }
+      ],
+      "get": {
+        "summary": "Get available stalls for stall type",
+        "tags": [
+          "Parking"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Parking Lot Available Stalls List",
+                  "type": "array",
+                  "x-examples": {
+                    "default": []
+                  },
+                  "description": "Root for Parking Lot Available Stall List type's schema",
+                  "items": {
+                    "title": "Parking Lot Available Stalls",
+                    "type": "object",
+                    "x-examples": {
+                      "default": {
+                        "parking_stall_id": 1,
+                        "stall_count": 5,
+                        "range": null,
+                        "open_stalls": [
+                          1,
+                          2,
+                          3,
+                          4,
+                          5
+                        ]
+                      }
+                    },
+                    "description": "Root for Parking Lot Available Stall type's schema",
+                    "properties": {
+                      "parking_stall_id": {
+                        "type": "integer"
+                      },
+                      "stall_count": {
+                        "type": "integer",
+                        "description": "The number of stalls of type in the parking lot."
+                      },
+                      "range": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "The starting number of the stall range."
+                      },
+                      "open_stalls": {
+                        "type": "array",
+                        "description": "An array of the open stall numbers.",
+                        "items": {
+                          "type": "integer",
+                          "description": "The number of the open stall."
+                        }
+                      }
+                    },
+                    "required": [
+                      "parking_stall_id",
+                      "stall_count",
+                      "open_stalls"
+                    ]
+                  }
+                },
+                "example": [
+                  {
+                    "parking_stall_id": 23,
+                    "range": null,
+                    "stall_count": 5,
+                    "open_stalls": [
+                      1,
+                      2,
+                      3,
+                      4,
+                      5
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1hosts/get/responses/400/content/application~1json/schema"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "operationId": "getParkingLotAvailableStalls",
+        "description": "Gets a list of [ParkingLotAvailableStalls] entities."
       }
     }
   },

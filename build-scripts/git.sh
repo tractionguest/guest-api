@@ -12,15 +12,15 @@ printf "${GREEN}Comitting $SDK_NAME version $GIT_TAG${NC}\n"
 
 cd $SDK_NAME
 git add .
-git commit -m "[ci skip] Generated SDK version v$API_VERSION from CircleCI for build $CIRCLE_BUILD_NUM"
-if [ "$CIRCLE_PULL_REQUESTS" != *"github.com"* -a "$CIRCLE_BRANCH" = "master" ]; then 
-  git tag $GIT_TAG -a -m "Generated tag from CircleCI for build $CIRCLE_BUILD_NUM"
+git commit -m "[ci skip] Generated SDK version v$API_VERSION from GitHub Actions for build $GITHUB_RUN_NUMBER"
+if [ "$GITHUB_EVENT_NAME" != "pull_request" -a "$GITHUB_REF_NAME" = "master" ]; then
+  git tag $GIT_TAG -a -m "Generated tag from GitHub Actions for build $GITHUB_RUN_NUMBER"
 fi
-git push --set-upstream origin $CIRCLE_BRANCH
+git push --set-upstream origin $GITHUB_REF_NAME
 
-printf "${GREEN}Deploying $SDK_NAME to $CIRCLE_BRANCH${NC}\n"
+printf "${GREEN}Deploying $SDK_NAME to $GITHUB_REF_NAME${NC}\n"
 
-if [ "$CIRCLE_BRANCH" = "master" ]
+if [ "$GITHUB_REF_NAME" = "master" ]
 then
   printf "${GREEN}Deploying master branch${NC}\n"
   git push -q --follow-tags

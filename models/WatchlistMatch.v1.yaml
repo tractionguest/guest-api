@@ -187,6 +187,6 @@ properties:
   source_lists:
     description: ''
     type: string
-required:
-  - name
-  - list
+  error:
+    description: ''
+    type: string

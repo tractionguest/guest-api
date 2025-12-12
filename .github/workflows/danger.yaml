@@ -1,9 +1,6 @@
 name: validate_pr
 on:
   pull_request:
-    branches:
-      - develop
-      - master
 
 permissions:
   pull-requests: write

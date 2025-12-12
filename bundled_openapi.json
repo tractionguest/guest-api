@@ -2390,6 +2390,16 @@
                         "parking_lot_id": 321,
                         "parking_stall_id": 332
                       },
+                      "created_by": {
+                        "id": 42,
+                        "first_name": "Jane",
+                        "last_name": "Doe",
+                        "email": "jane.doe@example.com",
+                        "permission_bundles": [
+                          "ADMIN",
+                          "INVITES"
+                        ]
+                      },
                       "invite_watchlist": {
                         "id": 3,
                         "external_colours": [
@@ -6002,6 +6012,16 @@
                           "parking_lot_id": 321,
                           "parking_stall_id": 332
                         }
+                      },
+                      "created_by": {
+                        "id": 42,
+                        "first_name": "Jane",
+                        "last_name": "Doe",
+                        "email": "jane.doe@example.com",
+                        "permission_bundles": [
+                          "ADMIN",
+                          "INVITES"
+                        ]
                       }
                     }
                   },
@@ -6588,6 +6608,58 @@
                         "stall_type",
                         "computed_stall_number"
                       ]
+                    },
+                    "created_by": {
+                      "title": "CreatedByUser",
+                      "type": "object",
+                      "x-examples": {
+                        "default": {
+                          "id": 42,
+                          "first_name": "Jane",
+                          "last_name": "Doe",
+                          "email": "jane.doe@example.com",
+                          "permission_bundles": [
+                            "ADMIN",
+                            "INVITES"
+                          ]
+                        }
+                      },
+                      "description": "User who created the invite with their permission bundles",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "format": "int32",
+                          "description": "User ID"
+                        },
+                        "first_name": {
+                          "type": "string",
+                          "description": "User's first name"
+                        },
+                        "last_name": {
+                          "type": "string",
+                          "description": "User's last name"
+                        },
+                        "email": {
+                          "type": "string",
+                          "format": "email",
+                          "description": "User's email address"
+                        },
+                        "permission_bundles": {
+                          "type": "array",
+                          "description": "List of permission bundle names assigned to the user",
+                          "items": {
+                            "type": "string",
+                            "example": "ADMIN"
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "first_name",
+                        "last_name",
+                        "email",
+                        "permission_bundles"
+                      ]
                     }
                   },
                   "required": [
@@ -6693,6 +6765,16 @@
                         "parking_lot_name": "some text",
                         "parking_lot_id": 321,
                         "parking_stall_id": 332
+                      },
+                      "created_by": {
+                        "id": 42,
+                        "first_name": "Jane",
+                        "last_name": "Doe",
+                        "email": "jane.doe@example.com",
+                        "permission_bundles": [
+                          "ADMIN",
+                          "INVITES"
+                        ]
                       }
                     }
                   }
@@ -8601,7 +8683,17 @@
                               "updated_at": "2018-02-10T09:30Z"
                             }
                           },
-                          "mobile_number": "some text"
+                          "mobile_number": "some text",
+                          "created_by": {
+                            "id": 42,
+                            "first_name": "Jane",
+                            "last_name": "Doe",
+                            "email": "jane.doe@example.com",
+                            "permission_bundles": [
+                              "ADMIN",
+                              "INVITES"
+                            ]
+                          }
                         }
                       },
                       "description": "The root of the Invite type's schema.",
@@ -8671,6 +8763,10 @@
                         },
                         "assigned_stall": {
                           "$ref": "#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/assigned_stall",
+                          "nullable": true
+                        },
+                        "created_by": {
+                          "$ref": "#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/created_by",
                           "nullable": true
                         }
                       },

@@ -14,7 +14,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/SigninDetail.v1.yaml
+            $ref: ../models/SigninDetail.v1.yaml
           examples:
             default:
               value:
@@ -252,7 +252,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples:
             default:
               value:
@@ -287,7 +287,7 @@ put:
     content:
       application/json:
         schema:
-          $ref: ./models/SigninUpdateParams.v1.yaml
+          $ref: ../models/SigninUpdateParams.v1.yaml
         examples:
           default:
             value:
@@ -304,7 +304,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: ./models/SigninDetail.v1.yaml
+            $ref: ../models/SigninDetail.v1.yaml
           examples:
             default:
               value:
@@ -542,7 +542,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples:
             default:
               value:

@@ -14,7 +14,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/Location.v1.yaml
+            $ref: ../models/Location.v1.yaml
           examples:
             default:
               value:
@@ -27,14 +27,14 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples: {}
     '401':
       description: You don't have permission to view this Location
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
     '403':
       description: You do not have permission for this action
     '404':

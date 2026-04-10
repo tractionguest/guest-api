@@ -9,7 +9,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/PaginatedPackagesList.v1.yaml
+            $ref: ../models/PaginatedPackagesList.v1.yaml
           examples:
             example:
               value:
@@ -82,7 +82,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
       description: ''
   operationId: getPackages
   description: Gets a list of [Package] entities.
@@ -139,14 +139,14 @@ post:
       content:
         application/json:
           schema:
-            $ref: ./models/Package.v1.yaml
+            $ref: ../models/Package.v1.yaml
           examples: {}
     4XX:
       description: ''
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
   description: >-
     Creates a [Package] entity by extracting information about the recipient and
     carrier from the given image file.
@@ -154,5 +154,5 @@ post:
     content:
       application/json:
         schema:
-          $ref: ./models/PackageCreateParams.v1.yaml
+          $ref: ../models/PackageCreateParams.v1.yaml
     description: Parameters for creating a package

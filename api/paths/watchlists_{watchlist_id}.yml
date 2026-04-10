@@ -14,7 +14,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/Watchlist.v1.yaml
+            $ref: ../models/Watchlist.v1.yaml
           examples:
             default:
               value:
@@ -35,7 +35,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples: {}
   security:
     - TractionGuestAuth:
@@ -51,7 +51,7 @@ put:
     content:
       application/json:
         schema:
-          $ref: ./models/WatchlistCreateParams.v1.yaml
+          $ref: ../models/WatchlistCreateParams.v1.yaml
         examples:
           NewWatchlist:
             value:
@@ -75,7 +75,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: ./models/Watchlist.v1.yaml
+            $ref: ../models/Watchlist.v1.yaml
           examples:
             UpdatedWatchlist:
               value:
@@ -95,7 +95,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
       description: Bad request
   security:
     - TractionGuestAuth:
@@ -119,7 +119,7 @@ delete:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples:
             default:
               value:

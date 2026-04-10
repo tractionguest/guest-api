@@ -7,7 +7,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: ./models/BatchJob.v1.yaml
+            $ref: ../models/BatchJob.v1.yaml
           examples:
             default:
               value:
@@ -21,7 +21,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
   tags:
     - Hosts
   description: >-
@@ -31,7 +31,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: ./models/HostBatchCreateParams.v1.yaml
+          $ref: ../models/HostBatchCreateParams.v1.yaml
         examples: {}
     description: ''
   parameters:

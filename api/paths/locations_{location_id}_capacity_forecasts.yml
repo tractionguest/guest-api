@@ -16,7 +16,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/CapacityForecast.v1.yaml
+            $ref: ../models/CapacityForecast.v1.yaml
           examples:
             default:
               value:
@@ -50,7 +50,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples:
             default:
               value:
@@ -70,7 +70,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
     '403':
       description: You do not have permission for this action
   operationId: getCapacityForecast

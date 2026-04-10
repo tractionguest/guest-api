@@ -12,7 +12,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/RegistrationDetail.v1.yaml
+            $ref: ../models/RegistrationDetail.v1.yaml
           examples:
             Default:
               value:
@@ -98,7 +98,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples:
             default:
               value:

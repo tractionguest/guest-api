@@ -19,7 +19,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/InviteDetail.v1.yaml
+            $ref: ../models/InviteDetail.v1.yaml
           examples:
             default:
               value:
@@ -99,7 +99,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples:
             default:
               value:
@@ -128,7 +128,7 @@ put:
     content:
       application/json:
         schema:
-          $ref: ./models/InviteUpdateParams.v1.yaml
+          $ref: ../models/InviteUpdateParams.v1.yaml
         examples:
           default:
             value:
@@ -148,7 +148,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: ./models/InviteDetail.v1.yaml
+            $ref: ../models/InviteDetail.v1.yaml
           examples:
             default:
               value:
@@ -220,7 +220,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples:
             default:
               value:
@@ -257,7 +257,7 @@ delete:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples:
             default:
               value:

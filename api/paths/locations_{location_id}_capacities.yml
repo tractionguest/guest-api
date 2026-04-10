@@ -16,7 +16,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/Capacity.v1.yaml
+            $ref: ../models/Capacity.v1.yaml
           examples:
             default:
               value:
@@ -27,7 +27,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
     '401':
       description: >-
         You don't have permission to view the details of the location's
@@ -35,7 +35,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
     '403':
       description: You do not have permission for this action
   operationId: getCapacity

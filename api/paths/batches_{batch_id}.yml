@@ -14,12 +14,12 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/BatchJob.v1.yaml
+            $ref: ../models/BatchJob.v1.yaml
     4XX:
       description: Not Found
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
   operationId: getBatch
   description: Retrieve a given `BatchJob` entity.

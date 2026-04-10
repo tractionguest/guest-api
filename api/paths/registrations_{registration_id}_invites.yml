@@ -12,7 +12,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: ./models/InviteDetail.v1.yaml
+            $ref: ../models/InviteDetail.v1.yaml
           examples:
             default:
               value:
@@ -84,7 +84,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples:
             default:
               value:

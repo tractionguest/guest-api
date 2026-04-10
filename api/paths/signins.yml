@@ -81,7 +81,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/PaginatedSigninsList.v1.yaml
+            $ref: ../models/PaginatedSigninsList.v1.yaml
           examples:
             default:
               value:
@@ -391,7 +391,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples:
             default:
               value:
@@ -421,13 +421,13 @@ post:
       content:
         application/json:
           schema:
-            $ref: ./models/Signin.v1.yaml
+            $ref: ../models/Signin.v1.yaml
     '400':
       description: Bad Request
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
     '401':
       description: Unauthorized
     '403':
@@ -441,7 +441,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: ./models/SigninCreateParams.v1.yaml
+          $ref: ../models/SigninCreateParams.v1.yaml
         examples:
           default:
             value:

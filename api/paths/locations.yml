@@ -29,7 +29,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/PaginatedLocationsList.v1.yaml
+            $ref: ../models/PaginatedLocationsList.v1.yaml
           examples:
             default:
               value:
@@ -49,7 +49,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples:
             default:
               value:
@@ -68,7 +68,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
     '403':
       description: You do not have permission for this action
   operationId: getLocations

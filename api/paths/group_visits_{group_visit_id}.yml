@@ -14,7 +14,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/GroupVisit.v1.yaml
+            $ref: ../models/GroupVisit.v1.yaml
           examples:
             default:
               value:
@@ -48,7 +48,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
     '401':
       description: You do not have permission to view this GroupVisit
     '403':
@@ -76,7 +76,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: ./models/GroupVisit.v1.yaml
+            $ref: ../models/GroupVisit.v1.yaml
           examples:
             default:
               value:
@@ -111,7 +111,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
     '401':
       description: You do not have permission to view this GroupVisit
     '403':
@@ -127,7 +127,7 @@ put:
     content:
       application/json:
         schema:
-          $ref: ./models/GroupVisitUpdateParams.v1.yaml
+          $ref: ../models/GroupVisitUpdateParams.v1.yaml
     description: ''
   tags:
     - GroupVisits

@@ -9,7 +9,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/PaginatedParkingLotsList.v1.yaml
+            $ref: ../models/PaginatedParkingLotsList.v1.yaml
           examples:
             example:
               value:
@@ -36,7 +36,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
       description: ''
   operationId: getParkingLots
   description: Gets a list of [ParkingLot] entities.

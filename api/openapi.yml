@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Sign In Solutions VMS API
-  version: 0.20.1
+  version: 0.20.2
   x-logo:
     url: https://signinenterprise.com/wp-content/uploads/tg-logo-light@2.png
     backgroundColor: '#FFFFFF'

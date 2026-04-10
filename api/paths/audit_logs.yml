@@ -100,7 +100,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/PaginatedAuditLogsList.v1.yaml
+            $ref: ../models/PaginatedAuditLogsList.v1.yaml
           examples:
             default:
               value:
@@ -158,7 +158,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples:
             default:
               value:

@@ -14,12 +14,12 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/Package.v1.yaml
+            $ref: ../models/Package.v1.yaml
     4XX:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
       description: User submission error
   operationId: getPackage
   description: Gets the details of a single instance of a Package
@@ -39,13 +39,13 @@ put:
       content:
         application/json:
           schema:
-            $ref: ./models/Package.v1.yaml
+            $ref: ../models/Package.v1.yaml
     4XX:
       description: User submission error
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
   description: >
     Update/Edit information about a Package.
 
@@ -67,7 +67,7 @@ put:
     content:
       application/json:
         schema:
-          $ref: ./models/PackageUpdateParams.v1.yaml
+          $ref: ../models/PackageUpdateParams.v1.yaml
     description: ''
   parameters:
     - $ref: ../components/parameters/idempotencyKey.yml
@@ -82,7 +82,7 @@ delete:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
   description: Delete a pacakge
   parameters:
     - $ref: ../components/parameters/idempotencyKey.yml

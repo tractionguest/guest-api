@@ -8,7 +8,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/AuditLog.v1.yaml
+            $ref: ../models/AuditLog.v1.yaml
           examples:
             default:
               value:
@@ -46,7 +46,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
     '401':
       description: You don't have permission to view this AuditLog
     '403':

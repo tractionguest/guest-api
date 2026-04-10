@@ -38,7 +38,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/PaginatedWatchlistList.v1.yaml
+            $ref: ../models/PaginatedWatchlistList.v1.yaml
           examples:
             default:
               value:
@@ -74,7 +74,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
           examples:
             default:
               value:
@@ -102,7 +102,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: ./models/WatchlistCreateParams.v1.yaml
+          $ref: ../models/WatchlistCreateParams.v1.yaml
         examples:
           NewWatchlist:
             value:
@@ -126,7 +126,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: ./models/Watchlist.v1.yaml
+            $ref: ../models/Watchlist.v1.yaml
           examples:
             NewWatchlist:
               value:
@@ -146,7 +146,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: ./models/ErrorsList.v1.yaml
+            $ref: ../models/ErrorsList.v1.yaml
       description: An error happened
   security:
     - TractionGuestAuth:

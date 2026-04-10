@@ -1,0 +1,92 @@
+parameters:
+  - schema:
+      type: string
+    name: package_id
+    in: path
+    required: true
+get:
+  summary: Get Package
+  tags:
+    - Packages
+  responses:
+    '200':
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: ./models/Package.v1.yaml
+    4XX:
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+      description: User submission error
+  operationId: getPackage
+  description: Gets the details of a single instance of a Package
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: include
+      description: |
+        A list of comma-separated related models to include
+put:
+  summary: Update Package
+  operationId: updatePackage
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ./models/Package.v1.yaml
+    4XX:
+      description: User submission error
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+  description: >
+    Update/Edit information about a Package.
+
+
+    picked_up - changes the package_state to picked up and assigns non null
+    value to picked_up_at
+
+
+    recipient_id - update the package's intended recipient. Changes
+    package_state to 'recipient_matched' if a match hasn't been found and
+    notifies host about their package via email. A previous recipient will stop
+    getting notifications
+
+
+    carrier_name - change/update the package's carrier/courier information
+  tags:
+    - Packages
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ./models/PackageUpdateParams.v1.yaml
+    description: ''
+  parameters:
+    - $ref: ../components/parameters/idempotencyKey.yml
+delete:
+  summary: Delete Package
+  operationId: deletePackage
+  responses:
+    '204':
+      description: The package has been deleted
+    4XX:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+  description: Delete a pacakge
+  parameters:
+    - $ref: ../components/parameters/idempotencyKey.yml
+  security:
+    - TractionGuestAuth: []
+  tags:
+    - Packages

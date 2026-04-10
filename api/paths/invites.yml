@@ -1,0 +1,763 @@
+summary: Path used to manage the list of Invites.
+description: >-
+  The REST endpoint/path used to list and create zero or more `Invite`
+  entities.  This path contains a `GET` and `POST` operation to perform the list
+  and create tasks, respectively.
+get:
+  tags:
+    - Invites
+  parameters:
+    - name: limit
+      description: Limits the results to a specified number, defaults to 50
+      schema:
+        type: integer
+      in: query
+    - name: offset
+      description: Offsets the results to a specified number, defaults to 0
+      schema:
+        type: integer
+      in: query
+    - name: query
+      description: Filters by `first_name`, `last_name`, `company`, and `email`
+      schema:
+        type: string
+      in: query
+    - name: with_colours
+      description: |-
+        A comma separated list of case-insensitive colour values.
+        i.e., `red`, `green`, `yellow`, and `orange`
+      schema:
+        type: string
+      in: query
+    - name: location_ids
+      description: A comma separated list of Location IDs
+      schema:
+        type: string
+      in: query
+    - name: sort_by
+      description: >-
+        Sorts by the field name and direction provided where the pattern is
+        `FIELD_NAME_DIRECTION`
+      schema:
+        enum:
+          - start_date_asc
+          - start_date_desc
+          - end_date_asc
+          - end_date_desc
+          - created_at_asc
+          - created_at_desc
+          - updated_at_asc
+          - updated_at_desc
+      in: query
+    - name: starts_before
+      description: Filters results to all those *before* the provided datetime
+      schema:
+        format: date
+        type: string
+      in: query
+    - name: starts_after
+      description: Filters results to all those *after* the provided datetime
+      schema:
+        format: date
+        type: string
+      in: query
+    - name: include
+      description: |-
+        A list of comma-separated related models to include
+        i.e., 'assigned_stall'
+      schema:
+        type: string
+      in: query
+    - name: is_approved
+      description: >-
+        True to return approved and auto approved invites, False to return
+        pending and rejected invites
+      schema:
+        type: boolean
+      in: query
+    - name: active_after
+      description: >-
+        Checks that an invite hasn't yet started, or has started and is still
+        active after a specified time
+      schema:
+        format: date-time
+        type: string
+      in: query
+    - name: active_before
+      description: Checks that an invite hasn't ended before a specified time
+      schema:
+        format: date-time
+        type: string
+      in: query
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            $ref: ./models/PaginatedInvitesList.v1.yaml
+          examples:
+            default:
+              value:
+                pagination:
+                  total_records: 89
+                  current_offset: 72
+                  next_offset: 29
+                  last_id: 49
+                invites:
+                  - id: 37
+                    first_name: some text
+                    last_name: some text
+                    start_date: 2018-02-10T09:30Z
+                    location:
+                      id: 70
+                      name: some text
+                    watchlist_colour: RED
+                    hosts:
+                      - id: 78
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        profile_pic_url: some text
+                        department: some text
+                        mobile_number: some text
+                      - id: 41
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        profile_pic_url: some text
+                        department: some text
+                        mobile_number: some text
+                    invite_watchlist:
+                      id: 61
+                      external_colours:
+                        - some text
+                        - some text
+                      internal_colours:
+                        - some text
+                        - some text
+                      external:
+                        - search_terms:
+                            name: some text
+                            company: some text
+                            city: some text
+                            country: some text
+                            state: some text
+                          integration: some text
+                          colour: YELLOW
+                          matches:
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: some text
+                              end: some text
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                              pair_status: some text
+                              pair_reason: some text
+                              pair_comments: some text
+                              application_display_name: some text
+                              application_id: some text
+                              client_id: some text
+                              client_key: some text
+                              client_full_name: some text
+                              list_key: some text
+                              list_name: some text
+                              list_id: some text
+                              list_version: some text
+                              list_modify_date: some text
+                              list_profile_id: some text
+                              list_profile_key: some text
+                              link_single_string_name: some text
+                              list_parent_single_string_name: some text
+                              list_category: some text
+                              list_pep_category: some text
+                              list_do_bs: some text
+                              list_countries: some text
+                              rank_string: some text
+                              ranktype: some text
+                              rankweight: some text
+                              pair_load_date: some text
+                              e_address_to: some text
+                              e_address_cc: some text
+                              origin: some text
+                              secondsviewed: some text
+                              initial_user: some text
+                              is_pair_parent_flag: some text
+                              pair_met_search_criteria_flag: some text
+                              editable_due_to_assignment_flag: some text
+                              modify_date: some text
+                              modified_by_user: some text
+                              pair_report_type: some text
+                              finscan_category: some text
+                              wrapper_status: some text
+                              source_lists: some text
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: some text
+                              end: some text
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                              pair_status: some text
+                              pair_reason: some text
+                              pair_comments: some text
+                              application_display_name: some text
+                              application_id: some text
+                              client_id: some text
+                              client_key: some text
+                              client_full_name: some text
+                              list_key: some text
+                              list_name: some text
+                              list_id: some text
+                              list_version: some text
+                              list_modify_date: some text
+                              list_profile_id: some text
+                              list_profile_key: some text
+                              link_single_string_name: some text
+                              list_parent_single_string_name: some text
+                              list_category: some text
+                              list_pep_category: some text
+                              list_do_bs: some text
+                              list_countries: some text
+                              rank_string: some text
+                              ranktype: some text
+                              rankweight: some text
+                              pair_load_date: some text
+                              e_address_to: some text
+                              e_address_cc: some text
+                              origin: some text
+                              secondsviewed: some text
+                              initial_user: some text
+                              is_pair_parent_flag: some text
+                              pair_met_search_criteria_flag: some text
+                              editable_due_to_assignment_flag: some text
+                              modify_date: some text
+                              modified_by_user: some text
+                              pair_report_type: some text
+                              finscan_category: some text
+                              wrapper_status: some text
+                              source_lists: some text
+                        - search_terms:
+                            name: some text
+                            company: some text
+                            city: some text
+                            country: some text
+                            state: some text
+                          integration: some text
+                          colour: RED
+                          matches:
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: some text
+                              end: some text
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                              pair_status: some text
+                              pair_reason: some text
+                              pair_comments: some text
+                              application_display_name: some text
+                              application_id: some text
+                              client_id: some text
+                              client_key: some text
+                              client_full_name: some text
+                              list_key: some text
+                              list_name: some text
+                              list_id: some text
+                              list_version: some text
+                              list_modify_date: some text
+                              list_profile_id: some text
+                              list_profile_key: some text
+                              link_single_string_name: some text
+                              list_parent_single_string_name: some text
+                              list_category: some text
+                              list_pep_category: some text
+                              list_do_bs: some text
+                              list_countries: some text
+                              rank_string: some text
+                              ranktype: some text
+                              rankweight: some text
+                              pair_load_date: some text
+                              e_address_to: some text
+                              e_address_cc: some text
+                              origin: some text
+                              secondsviewed: some text
+                              initial_user: some text
+                              is_pair_parent_flag: some text
+                              pair_met_search_criteria_flag: some text
+                              editable_due_to_assignment_flag: some text
+                              modify_date: some text
+                              modified_by_user: some text
+                              pair_report_type: some text
+                              finscan_category: some text
+                              wrapper_status: some text
+                              source_lists: some text
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: some text
+                              end: some text
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                              pair_status: some text
+                              pair_reason: some text
+                              pair_comments: some text
+                              application_display_name: some text
+                              application_id: some text
+                              client_id: some text
+                              client_key: some text
+                              client_full_name: some text
+                              list_key: some text
+                              list_name: some text
+                              list_id: some text
+                              list_version: some text
+                              list_modify_date: some text
+                              list_profile_id: some text
+                              list_profile_key: some text
+                              link_single_string_name: some text
+                              list_parent_single_string_name: some text
+                              list_category: some text
+                              list_pep_category: some text
+                              list_do_bs: some text
+                              list_countries: some text
+                              rank_string: some text
+                              ranktype: some text
+                              rankweight: some text
+                              pair_load_date: some text
+                              e_address_to: some text
+                              e_address_cc: some text
+                              origin: some text
+                              secondsviewed: some text
+                              initial_user: some text
+                              is_pair_parent_flag: some text
+                              pair_met_search_criteria_flag: some text
+                              editable_due_to_assignment_flag: some text
+                              modify_date: some text
+                              modified_by_user: some text
+                              pair_report_type: some text
+                              finscan_category: some text
+                              wrapper_status: some text
+                              source_lists: some text
+                      internal:
+                        - id: 92
+                          email: some text
+                          colour: some text
+                          last_name: some text
+                          first_name: some text
+                        - id: 44
+                          email: some text
+                          colour: some text
+                          last_name: some text
+                          first_name: some text
+                    end_date: '2020-07-17T01:59:59.999Z'
+                    email: some text
+                    mobile_number: some text
+                    invites_parking_lot:
+                      id: 123
+                      stall_number: 66
+                      stall_type: private
+                      parking_lot_name: some text
+                      parking_lot_id: 321
+                      parking_stall_id: 332
+                  - id: 0
+                    first_name: some text
+                    last_name: some text
+                    start_date: 2018-02-10T09:30Z
+                    location:
+                      id: 66
+                      name: some text
+                    watchlist_colour: RED
+                    hosts:
+                      - id: 92
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        profile_pic_url: some text
+                        department: some text
+                        mobile_number: some text
+                      - id: 85
+                        email: some text
+                        first_name: some text
+                        last_name: some text
+                        profile_pic_url: some text
+                        department: some text
+                        mobile_number: some text
+                    invite_watchlist:
+                      id: 57
+                      external_colours:
+                        - some text
+                        - some text
+                      internal_colours:
+                        - some text
+                        - some text
+                      external:
+                        - search_terms:
+                            name: some text
+                            company: some text
+                            city: some text
+                            country: some text
+                            state: some text
+                          integration: some text
+                          colour: GREEN
+                          matches:
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: some text
+                              end: some text
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                              pair_status: some text
+                              pair_reason: some text
+                              pair_comments: some text
+                              application_display_name: some text
+                              application_id: some text
+                              client_id: some text
+                              client_key: some text
+                              client_full_name: some text
+                              list_key: some text
+                              list_name: some text
+                              list_id: some text
+                              list_version: some text
+                              list_modify_date: some text
+                              list_profile_id: some text
+                              list_profile_key: some text
+                              link_single_string_name: some text
+                              list_parent_single_string_name: some text
+                              list_category: some text
+                              list_pep_category: some text
+                              list_do_bs: some text
+                              list_countries: some text
+                              rank_string: some text
+                              ranktype: some text
+                              rankweight: some text
+                              pair_load_date: some text
+                              e_address_to: some text
+                              e_address_cc: some text
+                              origin: some text
+                              secondsviewed: some text
+                              initial_user: some text
+                              is_pair_parent_flag: some text
+                              pair_met_search_criteria_flag: some text
+                              editable_due_to_assignment_flag: some text
+                              modify_date: some text
+                              modified_by_user: some text
+                              pair_report_type: some text
+                              finscan_category: some text
+                              wrapper_status: some text
+                              source_lists: some text
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: some text
+                              end: some text
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                              pair_status: some text
+                              pair_reason: some text
+                              pair_comments: some text
+                              application_display_name: some text
+                              application_id: some text
+                              client_id: some text
+                              client_key: some text
+                              client_full_name: some text
+                              list_key: some text
+                              list_name: some text
+                              list_id: some text
+                              list_version: some text
+                              list_modify_date: some text
+                              list_profile_id: some text
+                              list_profile_key: some text
+                              link_single_string_name: some text
+                              list_parent_single_string_name: some text
+                              list_category: some text
+                              list_pep_category: some text
+                              list_do_bs: some text
+                              list_countries: some text
+                              rank_string: some text
+                              ranktype: some text
+                              rankweight: some text
+                              pair_load_date: some text
+                              e_address_to: some text
+                              e_address_cc: some text
+                              origin: some text
+                              secondsviewed: some text
+                              initial_user: some text
+                              is_pair_parent_flag: some text
+                              pair_met_search_criteria_flag: some text
+                              editable_due_to_assignment_flag: some text
+                              modify_date: some text
+                              modified_by_user: some text
+                              pair_report_type: some text
+                              finscan_category: some text
+                              wrapper_status: some text
+                              source_lists: some text
+                        - search_terms:
+                            name: some text
+                            company: some text
+                            city: some text
+                            country: some text
+                            state: some text
+                          integration: some text
+                          colour: YELLOW
+                          matches:
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: some text
+                              end: some text
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                              pair_status: some text
+                              pair_reason: some text
+                              pair_comments: some text
+                              application_display_name: some text
+                              application_id: some text
+                              client_id: some text
+                              client_key: some text
+                              client_full_name: some text
+                              list_key: some text
+                              list_name: some text
+                              list_id: some text
+                              list_version: some text
+                              list_modify_date: some text
+                              list_profile_id: some text
+                              list_profile_key: some text
+                              link_single_string_name: some text
+                              list_parent_single_string_name: some text
+                              list_category: some text
+                              list_pep_category: some text
+                              list_do_bs: some text
+                              list_countries: some text
+                              rank_string: some text
+                              ranktype: some text
+                              rankweight: some text
+                              pair_load_date: some text
+                              e_address_to: some text
+                              e_address_cc: some text
+                              origin: some text
+                              secondsviewed: some text
+                              initial_user: some text
+                              is_pair_parent_flag: some text
+                              pair_met_search_criteria_flag: some text
+                              editable_due_to_assignment_flag: some text
+                              modify_date: some text
+                              modified_by_user: some text
+                              pair_report_type: some text
+                              finscan_category: some text
+                              wrapper_status: some text
+                              source_lists: some text
+                            - id: some text
+                              alt_names:
+                                - some text
+                                - some text
+                              federal_register_notice: some text
+                              name: some text
+                              source_information_url: some text
+                              source_list_url: some text
+                              list: some text
+                              type: some text
+                              category: some text
+                              street1: some text
+                              street2: some text
+                              city: some text
+                              state: some text
+                              country: some text
+                              notes: some text
+                              frc: some text
+                              start: some text
+                              end: some text
+                              frserve: some text
+                              optional_ID: some text
+                              alert_type: some text
+                              pair_status: some text
+                              pair_reason: some text
+                              pair_comments: some text
+                              application_display_name: some text
+                              application_id: some text
+                              client_id: some text
+                              client_key: some text
+                              client_full_name: some text
+                              list_key: some text
+                              list_name: some text
+                              list_id: some text
+                              list_version: some text
+                              list_modify_date: some text
+                              list_profile_id: some text
+                              list_profile_key: some text
+                              link_single_string_name: some text
+                              list_parent_single_string_name: some text
+                              list_category: some text
+                              list_pep_category: some text
+                              list_do_bs: some text
+                              list_countries: some text
+                              rank_string: some text
+                              ranktype: some text
+                              rankweight: some text
+                              pair_load_date: some text
+                              e_address_to: some text
+                              e_address_cc: some text
+                              origin: some text
+                              secondsviewed: some text
+                              initial_user: some text
+                              is_pair_parent_flag: some text
+                              pair_met_search_criteria_flag: some text
+                              editable_due_to_assignment_flag: some text
+                              modify_date: some text
+                              modified_by_user: some text
+                              pair_report_type: some text
+                              finscan_category: some text
+                              wrapper_status: some text
+                              source_lists: some text
+                      internal:
+                        - id: 46
+                          email: some text
+                          colour: some text
+                          last_name: some text
+                          first_name: some text
+                        - id: 37
+                          email: some text
+                          colour: some text
+                          last_name: some text
+                          first_name: some text
+                    end_date: '2020-07-17T01:59:59.999Z'
+                    email: some text
+                    mobile_number: some text
+      description: Successful response - returns an array of `Invite` entities.
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+          examples:
+            default:
+              value:
+                errors:
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+      description: A generic error
+    '401':
+      description: You don't have permission to view these Invites
+    '403':
+      description: You do not have permission for this action
+  operationId: getInvites
+  summary: List all Invites
+  description: Gets a list of all `Invite` entities.

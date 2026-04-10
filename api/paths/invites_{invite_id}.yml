@@ -1,0 +1,282 @@
+summary: Path used to manage a single Invite.
+description: >-
+  The REST endpoint/path used to get, update, and delete single instances of an
+  `Invite`.  This path contains `GET`, `PUT`, and `DELETE` operations used to
+  perform the get, update, and delete tasks, respectively.
+get:
+  tags:
+    - Invites
+  parameters:
+    - name: include
+      description: |-
+        A list of comma-separated related models to include
+        i.e., 'assigned_stall'
+      schema:
+        type: string
+      in: query
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            $ref: ./models/InviteDetail.v1.yaml
+          examples:
+            default:
+              value:
+                id: 2
+                company: some text
+                created_at: '2020-07-17T01:59:59.999Z'
+                email: some text
+                end_date: '2020-07-17T01:59:59.999Z'
+                first_name: some text
+                last_name: some text
+                start_date: '2020-07-17T01:59:59.999Z'
+                hosts:
+                  - id: 68
+                    email: some text
+                    first_name: some text
+                    last_name: some text
+                    mobile_number: some text
+                    profile_pic_url: some text
+                  - id: 82
+                    email: some text
+                    first_name: some text
+                    last_name: some text
+                    mobile_number: some text
+                    profile_pic_url: some text
+                location:
+                  id: 10
+                  name: some text
+                watchlist_colour: GREEN
+                template:
+                  id: 0
+                  name: some text
+                  template_type: some text
+                custom_fields:
+                  - format: string
+                    field_name: some text
+                    field_value: some text
+                  - format: string
+                    field_name: some text
+                    field_value: some text
+                notification_triggers:
+                  - offset_direction: AFTER
+                    offset_amount: 95
+                    offset_origin: START
+                    email_template_id: 83
+                    notification_groups:
+                      - some text
+                      - some text
+                    offset_unit: days
+                    email_template_name: some text
+                  - offset_direction: AFTER
+                    offset_amount: 32
+                    offset_origin: END
+                    email_template_id: 32
+                    notification_groups:
+                      - some text
+                      - some text
+                    offset_unit: days
+                    email_template_name: some text
+                mobile_number: some text
+                invite_watchlist:
+                  id: 47
+                  external_colours:
+                    - some text
+                    - some text
+                  internal_colours:
+                    - some text
+                    - some text
+                invites_parking_lot:
+                  id: 123
+                  stall_number: 66
+                  stall_type: private
+                  parking_lot_name: some text
+                  parking_lot_id: 321
+                  parking_stall_id: 332
+      description: Successful response - returns a single `Invite`.
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+          examples:
+            default:
+              value:
+                errors:
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+      description: A generic error
+    '401':
+      description: You don't have permission to view this Invite
+    '403':
+      description: You do not have permission for this action
+    '404':
+      description: The Invite you are looking for does not exist
+  operationId: getInvite
+  summary: Get an Invite
+  description: Gets the details of a single instance of a `Invite`.
+put:
+  requestBody:
+    description: Updated `Invite` information.
+    content:
+      application/json:
+        schema:
+          $ref: ./models/InviteUpdateParams.v1.yaml
+        examples:
+          default:
+            value:
+              checked_in: true
+              on_premise: true
+              sent_email: some text
+              user_id: 45
+              device_configuration_id: 14
+              license_plate: some text
+    required: true
+  tags:
+    - Invites
+  parameters:
+    - $ref: ../components/parameters/idempotencyKey.yml
+  responses:
+    '202':
+      content:
+        application/json:
+          schema:
+            $ref: ./models/InviteDetail.v1.yaml
+          examples:
+            default:
+              value:
+                id: 54
+                company: some text
+                created_at: '2020-07-17T01:59:59.999Z'
+                email: some text
+                end_date: '2020-07-17T01:59:59.999Z'
+                first_name: some text
+                last_name: some text
+                license_plate: some text
+                start_date: '2020-07-17T01:59:59.999Z'
+                hosts:
+                  - id: 64
+                    email: some text
+                    first_name: some text
+                    last_name: some text
+                    mobile_number: some text
+                    profile_pic_url: some text
+                  - id: 54
+                    email: some text
+                    first_name: some text
+                    last_name: some text
+                    mobile_number: some text
+                    profile_pic_url: some text
+                location:
+                  id: 67
+                  name: some text
+                watchlist_colour: YELLOW
+                template:
+                  id: 77
+                  name: some text
+                  template_type: some text
+                custom_fields:
+                  - format: string
+                    field_name: some text
+                    field_value: some text
+                  - format: string
+                    field_name: some text
+                    field_value: some text
+                notification_triggers:
+                  - offset_direction: AFTER
+                    offset_amount: 45
+                    offset_origin: START
+                    email_template_id: 93
+                    notification_groups:
+                      - some text
+                      - some text
+                    offset_unit: hours
+                    email_template_name: some text
+                  - offset_direction: AFTER
+                    offset_amount: 28
+                    offset_origin: END
+                    email_template_id: 19
+                    notification_groups:
+                      - some text
+                      - some text
+                    offset_unit: days
+                    email_template_name: some text
+                mobile_number: some text
+                invite_watchlist:
+                  id: 43
+                  external_colours:
+                    - some text
+                  internal_colours:
+                    - some text
+      description: Successful response.
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+          examples:
+            default:
+              value:
+                errors:
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+      description: A generic error
+    '401':
+      description: You don't have permission to view this Invite
+    '403':
+      description: You do not have permission for this action
+    '404':
+      description: The Invite does not exist
+    '422':
+      description: Your request was not formatted correctly
+  operationId: updateInvite
+  summary: Update an Invite
+  description: Updates an existing `Invite`.
+delete:
+  tags:
+    - Invites
+  parameters:
+    - $ref: ../components/parameters/idempotencyKey.yml
+  responses:
+    '204':
+      description: The `Invite` has been deleted
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+          examples:
+            default:
+              value:
+                errors:
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+      description: There was an error in trying to delete the `Invite`
+  operationId: deleteInvite
+  summary: Deletes an Invite
+  description: Deletes a single instance of `Invite`
+parameters:
+  - schema:
+      type: string
+    name: invite_id
+    in: path
+    required: true

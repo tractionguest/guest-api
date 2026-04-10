@@ -1,0 +1,38 @@
+post:
+  summary: Create multiple Hosts
+  operationId: createHosts
+  responses:
+    '202':
+      description: Accepted
+      content:
+        application/json:
+          schema:
+            $ref: ./models/BatchJob.v1.yaml
+          examples:
+            default:
+              value:
+                bid: string
+                created_at: date-string
+                status: string
+                total_records: 12
+                worker_name: string
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+  tags:
+    - Hosts
+  description: >-
+    Creates a batch of `Host` records in an async queue. Please note, every
+    action taken against this endpoint is recorded in the audit log.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ./models/HostBatchCreateParams.v1.yaml
+        examples: {}
+    description: ''
+  parameters:
+    - $ref: ../components/parameters/idempotencyKey.yml

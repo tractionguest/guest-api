@@ -1,0 +1,64 @@
+summary: Path used to manage a single AuditLog.
+description: The REST endpoint/path used to get single instances of an `AuditLog`.
+get:
+  tags:
+    - AuditLogs
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            $ref: ./models/AuditLog.v1.yaml
+          examples:
+            default:
+              value:
+                id: 90
+                auditable_id: 49
+                auditable_type: some text
+                user_id: 72
+                username: some text
+                action: some text
+                audited_changes:
+                  - field_name: result
+                    field_value_before: '{}'
+                    field_value_after: >-
+                      {"external":[],"internal":[{"id":1,"email":"some@email.com","notes":null,"colour":"RED"}]}
+                    format: json
+                  - field_name: user_id
+                    field_value_before: '1'
+                    field_value_after: '2'
+                    format: integer
+                  - field_name: flag_enabled
+                    field_value_after: 'true'
+                    format: boolean
+                  - field_name: email
+                    field_value_before: ''
+                    field_value_after: some@email.com
+                    format: string
+                version: 66
+                comment: some text
+                remote_address: some text
+                request_uuid: some text
+                created_at: some text
+      description: Successful response - returns a single `AuditLog`.
+    '400':
+      description: A generic error
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+    '401':
+      description: You don't have permission to view this AuditLog
+    '403':
+      description: You do not have permission for this action
+    '404':
+      description: The AuditLog does not exist
+  operationId: getAuditLog
+  summary: Get an AuditLog
+  description: Gets the details of a single instance of an `AuditLog`.
+parameters:
+  - schema:
+      type: string
+    name: audit_log_id
+    in: path
+    required: true

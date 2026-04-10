@@ -1,0 +1,74 @@
+summary: Path used to manage a single User.
+description: >-
+  The REST endpoint/path used to get single instances of an `User` and their
+  `PermissionBundle`s.
+get:
+  tags:
+    - Users
+  parameters:
+    - name: include
+      description: A list of comma-separated related models to include
+      schema:
+        type: string
+      in: query
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            $ref: ./models/User.v1.yaml
+          examples:
+            default:
+              value:
+                id: 61
+                registration_portal_enabled: true
+                mobile_access_enabled: true
+                first_name: some text
+                last_name: some text
+                email: some text
+                account_uuid: some text
+                permission_groups:
+                  - name: some text
+                    visibility: some text
+                    permissions:
+                      - some text
+                      - some text
+                  - name: some text
+                    visibility: some text
+                    permissions:
+                      - some text
+                      - some text
+      description: Successful response - returns a single `User`.
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+          examples:
+            default:
+              value:
+                errors:
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+      description: A generic error
+    '401':
+      description: You don't have permission to view this User
+    '403':
+      description: You do not have permission for this action
+    '404':
+      description: The User does not exist
+  operationId: getCurrentUser
+  summary: Get the current User
+  description: Gets the details of a single instance of the current `User`.
+parameters:
+  - schema:
+      type: string
+    name: user_id
+    in: path
+    required: true

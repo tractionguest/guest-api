@@ -1,0 +1,26 @@
+post:
+  summary: Delete Multiple Invites
+  tags:
+    - Invites
+    - Batches
+  responses:
+    '202':
+      description: Accepted
+      content:
+        application/json:
+          schema:
+            $ref: ./models/BatchJob.v1.yaml
+    4XX:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+  operationId: batchDeleteInvites
+  description: Queues up a "delete" background task for one or more `Invite` entities.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ./models/IdentifierList.v1.yaml
+    description: ''

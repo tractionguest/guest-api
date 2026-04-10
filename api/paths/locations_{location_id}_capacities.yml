@@ -1,0 +1,42 @@
+parameters:
+  - schema:
+      type: string
+    name: location_id
+    in: path
+    required: true
+get:
+  summary: Get the current capacity details for a location
+  tags:
+    - Capacities
+  responses:
+    '200':
+      description: >-
+        Successful response returns the current_signins and expected invites for
+        the next hour.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/Capacity.v1.yaml
+          examples:
+            default:
+              value:
+                signins_count: 189
+                invites_expected_next_hour: 1
+    '400':
+      description: A generic error
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+    '401':
+      description: >-
+        You don't have permission to view the details of the location's
+        capacity.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+    '403':
+      description: You do not have permission for this action
+  operationId: getCapacity
+  description: Get details of current capacity in a location

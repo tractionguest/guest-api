@@ -1,0 +1,179 @@
+openapi: 3.0.2
+info:
+  title: Sign In Solutions VMS API
+  version: 0.20.1
+  x-logo:
+    url: https://signinenterprise.com/wp-content/uploads/tg-logo-light@2.png
+    backgroundColor: '#FFFFFF'
+    altText: Sign In Solutions
+    href: https://signinsolutions.com/signinenterprise
+  description: >
+    The Traction Guest API is currently under limited release to select
+    customers as we gather and iterate on feedback.
+
+
+    # Getting Started
+
+    If you are interested in getting early access to the API, please send us an
+    email to [support@tractionguest.com](mailto:support@tractionguest.com).
+
+
+    We will also add you to our Slack channel where you can ask questions and
+    get further help.
+
+
+    # Terms and Conditions
+
+    Please visit:
+    [https://signinsolutions.com/compliance-hub](https://signinsolutions.com/compliance-hub)
+
+
+    # Versioning
+
+    This API follows [semantic versioning](https://semver.org/), which follows
+    the `Major`.`Minor`.`Patch` format.
+
+
+    * The `Major` number increments when potentially incompatible changes are
+    made.
+
+    * The `Minor` number increments when backwards-compatible additions are
+    made.
+
+    * The `Patch` number increments when backwards-compatible bug-fixes are
+    made.
+  contact:
+    name: API Support
+    url: https://signinsolutions.com/signinenterprise
+    email: support@tractionguest.com
+servers:
+  - url: '{domain}'
+    variables:
+      domain:
+        enum:
+          - https://us.tractionguest.com/api/v3
+          - http://localhost:3000/api/v3
+        default: https://us.tractionguest.com/api/v3
+paths:
+  /batches/{batch_id}:
+    $ref: paths/batches_{batch_id}.yml
+  /hosts:
+    $ref: paths/hosts.yml
+  /email_templates:
+    $ref: paths/email_templates.yml
+  /signins/{signin_id}:
+    $ref: paths/signins_{signin_id}.yml
+  /locations:
+    $ref: paths/locations.yml
+  /locations/{location_id}/invites:
+    $ref: paths/locations_{location_id}_invites.yml
+  /invites:
+    $ref: paths/invites.yml
+  /invites/batch_delete:
+    $ref: paths/invites_batch_delete.yml
+  /registrations/{registration_id}/invites:
+    $ref: paths/registrations_{registration_id}_invites.yml
+  /signins:
+    $ref: paths/signins.yml
+  /users/{user_id}:
+    $ref: paths/users_{user_id}.yml
+  /invites/{invite_id}:
+    $ref: paths/invites_{invite_id}.yml
+  /watchlists/{watchlist_id}:
+    $ref: paths/watchlists_{watchlist_id}.yml
+  /watchlists:
+    $ref: paths/watchlists.yml
+  /audit_logs:
+    $ref: paths/audit_logs.yml
+  /audit_logs/{audit_log_id}:
+    $ref: paths/audit_logs_{audit_log_id}.yml
+  /registrations/{registration_id}:
+    $ref: paths/registrations_{registration_id}.yml
+  /hosts/batch:
+    $ref: paths/hosts_batch.yml
+  /registrations:
+    $ref: paths/registrations.yml
+  /locations/{location_id}/capacity_forecasts:
+    $ref: paths/locations_{location_id}_capacity_forecasts.yml
+  /locations/{location_id}/capacities:
+    $ref: paths/locations_{location_id}_capacities.yml
+  /locations/{location_id}:
+    $ref: paths/locations_{location_id}.yml
+  /packages:
+    $ref: paths/packages.yml
+  /packages/{package_id}:
+    $ref: paths/packages_{package_id}.yml
+  /group_visits:
+    $ref: paths/group_visits.yml
+  /group_visits/{group_visit_id}:
+    $ref: paths/group_visits_{group_visit_id}.yml
+  /parking_lots:
+    $ref: paths/parking_lots.yml
+  /parking_lots/{parking_lot_id}/parking_stalls:
+    $ref: paths/parking_lots_{parking_lot_id}_parking_stalls.yml
+  /parking_lots/{parking_lot_id}/available_stalls:
+    $ref: paths/parking_lots_{parking_lot_id}_available_stalls.yml
+components:
+  securitySchemes:
+    TractionGuestAuth:
+      openIdConnectUrl: https://us.tractionguest.com/.well-known/openid-configuration
+      type: openIdConnect
+security:
+  - TractionGuestAuth:
+      - all
+      - openid
+      - admin:webhooks
+      - watchlists:*
+      - watchlists:read
+      - watchlists:write
+      - users:*
+      - users:read
+      - users:write
+      - visitors:*
+      - visitors:read
+      - visitors:write
+      - parking:*
+      - parking:read
+      - parking:write
+      - locations:*
+      - locations:read
+      - locations:write
+      - hosts:*
+      - hosts:read
+      - hosts:write
+      - email_templates:*
+      - email_templates:read
+      - email_templates:write
+tags:
+  - name: EmailTemplates
+    description: All endpoints relating to operations for the EmailTemplate model
+  - name: Hosts
+    description: All endpoints relating to the Host model
+  - name: Invites
+    description: All endpoints relating to the Invite model
+  - name: Locations
+    description: All endpoints relating to the Location model, aka. DeviceConfigurations
+  - name: Packages
+    description: All endpoints relating to the Packages model
+  - name: Parking
+    description: >-
+      All endpoint related to the parking feature, including the ParkingLot and
+      ParkingStallRange models
+  - name: Signins
+    description: >-
+      All endpoints related to models that track signing in and out of a
+      location. E.g., Signin, Signout, SigninAcknowledgment models
+  - name: Users
+    description: All endpoints related to the User model
+  - name: Watchlists
+    description: All endpoint related to the Watchlist model
+  - name: AuditLogs
+    description: All endpoints related to the AuditLog model.
+  - name: Registrations
+    description: All endpoints related to Registrations.
+  - name: Capacities
+    description: All endpoints related to Capacity management.
+  - name: Batches
+    description: All endpoints related to Batch-type actions.
+  - name: GroupVisits
+    description: All endpoints related to Group Visits (Appointments).

@@ -1,0 +1,97 @@
+parameters:
+  - schema:
+      type: string
+    name: location_id
+    in: path
+    required: true
+get:
+  summary: Get the capacity details for a location
+  tags:
+    - Capacities
+  responses:
+    '200':
+      description: >-
+        Successful response returns the expected invites for the next N number
+        of hours.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/CapacityForecast.v1.yaml
+          examples:
+            default:
+              value:
+                invites_by_hour:
+                  - range_start: '2020-07-17T00:59:59.999Z'
+                    range_end: '2020-07-17T01:59:59.999Z'
+                    expected_visitors: 0
+                  - range_start: '2020-07-17T01:59:59.999Z'
+                    range_end: '2020-07-17T02:59:59.999Z'
+                    expected_visitors: 0
+                  - range_start: '2020-07-17T02:59:59.999Z'
+                    range_end: '2020-07-17T03:59:59.999Z'
+                    expected_visitors: 0
+                  - range_start: '2020-07-17T03:59:59.999Z'
+                    range_end: '2020-07-17T04:59:59.999Z'
+                    expected_visitors: 0
+                  - range_start: '2020-07-17T04:59:59.999Z'
+                    range_end: '2020-07-17T05:59:59.999Z'
+                    expected_visitors: 0
+                  - range_start: '2020-07-17T05:59:59.999Z'
+                    range_end: '2020-07-17T06:59:59.999Z'
+                    expected_visitors: 0
+                  - range_start: '2020-07-17T06:59:59.999Z'
+                    range_end: '2020-07-17T07:59:59.999Z'
+                    expected_visitors: 0
+                  - range_start: '2020-07-17T07:59:59.999Z'
+                    range_end: '2020-07-17T08:59:59.999Z'
+                    expected_visitors: 1
+    '400':
+      description: A generic error
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+          examples:
+            default:
+              value:
+                errors:
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+    '401':
+      description: >-
+        You don't have permission to view the details of the location's
+        capacity.
+      content:
+        application/json:
+          schema:
+            $ref: ./models/ErrorsList.v1.yaml
+    '403':
+      description: You do not have permission for this action
+  operationId: getCapacityForecast
+  description: Gets the details of the future capacity in a location.
+  parameters:
+    - schema:
+        type: integer
+        minimum: 1
+        maximum: 24
+        default: 8
+      in: query
+      name: hours_to_forecast
+      description: >-
+        The next N number of hours, the data needs to be calculated. Range from
+        1 to 24. If not set, it defaults to 8.
+    - schema:
+        type: string
+      in: query
+      name: timestamp
+      description: >-
+        ISO8601 timestamp(includes the offset value) to use as the start point
+        for the capacity estimate report. Defaults to the current local
+        timestamp of the location if not provided. Eg:
+        "2020-07-16T17:05:08-07:00"

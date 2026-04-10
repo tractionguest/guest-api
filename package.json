@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "babel-node dangerfile.js",
-    "stats": " redocly stats openapi.yml"
+    "build": "redocly build-docs api/openapi.yml -t custom-theme.hbs --templateOptions=./custom-options.json"
   },
   "devDependencies": {
     "@redocly/cli": "^2.26.0",

@@ -1,8 +1,10 @@
 {
   "scripts": {
-    "start": "babel-node dangerfile.js"
+    "start": "babel-node dangerfile.js",
+    "stats": " redocly stats openapi.yml"
   },
   "devDependencies": {
+    "@redocly/cli": "^2.26.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "danger": "^10.2.0"

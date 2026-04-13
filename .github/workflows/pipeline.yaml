@@ -45,6 +45,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'yarn'
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -59,7 +60,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install shyaml
-          npm install -g swagger-cli redoc-cli speccy
+          yarn install --immutable
 
       - name: Set API version
         run: source ./build-scripts/prepare_environment.sh

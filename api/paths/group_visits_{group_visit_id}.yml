@@ -1,0 +1,151 @@
+parameters:
+  - schema:
+      type: string
+    name: group_visit_id
+    in: path
+    required: true
+get:
+  summary: Get a Group Visit (Appointment)
+  tags:
+    - GroupVisits
+  responses:
+    '200':
+      description: Successful response - returns a single `GroupVisit`.
+      content:
+        application/json:
+          schema:
+            $ref: ../models/GroupVisit.v1.yaml
+          examples:
+            default:
+              value:
+                id: 0
+                location:
+                  id: 0
+                  name: Location Name
+                  max_capacity: 0
+                  timezone: UTC
+                hosts:
+                  - id: 0
+                    email: demo@example.com
+                    first_name: Jack
+                    last_name: Frost
+                    profile_pic_url: url
+                    department: Weather Monitoring
+                    mobile_number: string
+                name: Appointment Name
+                start_time: '2021-01-01T12:34:56Z'
+                end_time: '2021-01-01T12:34:56Z'
+                created_at: '2021-01-01T12:34:56Z'
+                updated_at: '2021-01-01T12:34:56Z'
+                registration_limit: 0
+                registration_url: url
+                invites_count: 0
+                unconfirmed_registrations_count: 0
+                manual_registration_approval: true
+                public_registration_enabled: true
+    '400':
+      description: A generic error
+      content:
+        application/json:
+          schema:
+            $ref: ../models/ErrorsList.v1.yaml
+    '401':
+      description: You do not have permission to view this GroupVisit
+    '403':
+      description: You do not have permission for this action
+    '404':
+      description: The GroupVisit does not exist
+  security:
+    - TractionGuestAuth:
+        - all
+        - visitors:*
+        - visitors:read
+  operationId: getGroupVisit
+  description: Gets the details of a single instance of a `GroupVisit`.
+put:
+  summary: Update a Group Visit (Appointment)
+  security:
+    - TractionGuestAuth:
+        - all
+        - visitors:*
+        - visitors:write
+  operationId: updateGroupVisit
+  responses:
+    '202':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            $ref: ../models/GroupVisit.v1.yaml
+          examples:
+            default:
+              value:
+                id: 0
+                location:
+                  id: 0
+                  name: Location Name
+                  max_capacity: 0
+                  timezone: UTC
+                hosts:
+                  - id: 0
+                    email: email@sample.com
+                    first_name: Jane
+                    last_name: Doe
+                    profile_pic_url: string
+                    department: Engineering
+                    mobile_number: string
+                name: Appointment Name
+                start_time: '2021-01-01T12:34:56Z'
+                end_time: '2021-01-01T12:34:56Z'
+                created_at: '2021-01-01T12:34:56Z'
+                updated_at: '2021-01-01T12:34:56Z'
+                registration_limit: 0
+                registration_url: url
+                invites_count: 0
+                unconfirmed_registrations_count: 0
+                manual_registration_approval: true
+                public_registration_enabled: true
+    '400':
+      description: A generic error
+      headers: {}
+      content:
+        application/json:
+          schema:
+            $ref: ../models/ErrorsList.v1.yaml
+    '401':
+      description: You do not have permission to view this GroupVisit
+    '403':
+      description: You do not have permission for this action
+    '404':
+      description: The GroupVisit does not exist
+    '422':
+      description: Your request was not formatted correctly
+  description: Updates an existing `GroupVisit` (Appointment).
+  parameters:
+    - $ref: ../components/parameters/idempotencyKey.yml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../models/GroupVisitUpdateParams.v1.yaml
+    description: ''
+  tags:
+    - GroupVisits
+delete:
+  summary: Delete a Group Visit (Appointment)
+  security:
+    - TractionGuestAuth:
+        - all
+        - visitors:*
+        - visitors:write
+  operationId: deleteGroupVisit
+  responses:
+    '204':
+      description: The `GroupVisit` has been deleted
+    '400':
+      description: There was an error in trying to delete the `GroupVisit`
+  description: Deletes a single instance of `GroupVisit` (Appointment).
+  parameters:
+    - $ref: ../components/parameters/idempotencyKey.yml
+  tags:
+    - GroupVisits

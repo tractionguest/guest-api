@@ -1,0 +1,160 @@
+summary: Path used to manage the list of Watchlists.
+description: The REST endpoint/path used to list zero or more `Watchlist` entities.
+get:
+  tags:
+    - Watchlists
+  parameters:
+    - name: limit
+      description: Limits the results to a specified number, defaults to 50
+      schema:
+        type: integer
+      in: query
+    - name: offset
+      description: Offsets the results to a specified number, defaults to 0
+      schema:
+        type: integer
+      in: query
+    - name: query
+      description: >-
+        Query the results by `first_name`, `last_name`, `email`, `colour`, and
+        `notes` all at once.
+      schema:
+        type: string
+      in: query
+    - name: with_colours
+      description: |-
+        A comma separated list of case-insensitive colour values.
+        i.e., `red`, `green`, `yellow`, and `orange`
+      schema:
+        type: string
+      in: query
+    - name: include
+      description: A list of comma-separated related models to include
+      schema:
+        type: string
+      in: query
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            $ref: ../models/PaginatedWatchlistList.v1.yaml
+          examples:
+            default:
+              value:
+                pagination:
+                  total_records: 78
+                  current_offset: 62
+                  next_offset: 57
+                watchlists:
+                  - id: 24
+                    colour: GREEN
+                    email: some text
+                    first_name: some text
+                    last_name: some text
+                    notes: some text
+                    photo: some text
+                    aliases:
+                      - some text
+                      - some text
+                    driver_license: some text
+                  - id: 26
+                    colour: ORANGE
+                    email: some text
+                    first_name: some text
+                    last_name: some text
+                    notes: some text
+                    photo: some text
+                    aliases:
+                      - some text
+                      - some text
+                    driver_license: some text
+      description: Successful response - returns an array of `Watchlist` entities.
+    4XX:
+      content:
+        application/json:
+          schema:
+            $ref: ../models/ErrorsList.v1.yaml
+          examples:
+            default:
+              value:
+                errors:
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+      description: A generic error
+  security:
+    - TractionGuestAuth:
+        - all
+        - watchlists:*
+        - watchlists:read
+  operationId: getWatchlists
+  summary: List all Watchlists
+  description: Gets a list of all `Watchlist` entities.
+post:
+  requestBody:
+    description: The new `Watchlist` to create
+    content:
+      application/json:
+        schema:
+          $ref: ../models/WatchlistCreateParams.v1.yaml
+        examples:
+          NewWatchlist:
+            value:
+              colour: GREEN
+              email: some text
+              first_name: some text
+              last_name: some text
+              notes: some text
+              aliases:
+                - some text
+                - some text
+              base64_image: base 64 encoded image
+              driver_license: some text
+    required: true
+  tags:
+    - Watchlists
+  parameters:
+    - $ref: ../components/parameters/idempotencyKey.yml
+  responses:
+    '201':
+      content:
+        application/json:
+          schema:
+            $ref: ../models/Watchlist.v1.yaml
+          examples:
+            NewWatchlist:
+              value:
+                id: 77
+                colour: GREEN
+                email: some text
+                first_name: some text
+                last_name: some text
+                notes: some text
+                photo: some text
+                aliases:
+                  - some text
+                  - some text
+                driver_license: some text
+      description: The newly created `Watchlist`
+    4XX:
+      content:
+        application/json:
+          schema:
+            $ref: ../models/ErrorsList.v1.yaml
+      description: An error happened
+  security:
+    - TractionGuestAuth:
+        - all
+        - watchlists:*
+        - watchlists:write
+  operationId: createWatchlist
+  summary: Create Watchlist
+  description: >-
+    Create a new `Watchlist` record. Please note, every action taken against
+    this endpoint is recorded in the audit log.

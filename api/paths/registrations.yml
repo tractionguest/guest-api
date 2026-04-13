@@ -1,0 +1,59 @@
+get:
+  summary: List all Registrations
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../models/PaginatedRegistrationsList.v1.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../models/ErrorsList.v1.yaml
+    '401':
+      description: Unauthorized
+  operationId: getRegistrations
+  description: Gets a list of all `Registration` entities.
+  parameters:
+    - schema:
+        type: integer
+      in: query
+      name: limit
+      description: Limits the results to a specified number, defaults to 50
+    - schema:
+        type: integer
+      in: query
+      name: offset
+      description: Offsets the results to a specified number, defaults to 0
+    - schema:
+        type: string
+      in: query
+      name: location_ids
+      description: A comma separated list of Location IDs
+    - schema:
+        type: string
+      in: query
+      name: created_before
+      description: >-
+        Restricts results to only those that were created before the provided
+        date
+    - schema:
+        type: string
+      in: query
+      name: created_after
+      description: >-
+        Restricts results to only those that were created after the provided
+        date
+    - schema:
+        type: boolean
+      in: query
+      name: needs_confirmation
+      description: >-
+        A confirmed `Registration` is one with an associated `Invite`. This
+        filter returns those without an `Invite` when true, and those with an
+        `Invite` when false.
+  tags:
+    - Registrations

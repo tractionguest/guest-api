@@ -1,8 +1,11 @@
 {
   "scripts": {
-    "start": "babel-node dangerfile.js"
+    "start": "babel-node dangerfile.js",
+    "build": "redocly build-docs api/openapi.yml -t custom-theme.hbs --templateOptions=./custom-options.json",
+    "lint": "redocly lint --extends=minimal api/openapi.yml"
   },
   "devDependencies": {
+    "@redocly/cli": "^2.26.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "danger": "^10.2.0"

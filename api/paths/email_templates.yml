@@ -1,0 +1,69 @@
+summary: Path used to manage the list of EmailTemplates.
+description: >-
+  The REST endpoint/path used to list zero or more `EmailTemplate` entities. 
+  This path contains a `GET` operation to perform the list task.
+get:
+  tags:
+    - EmailTemplates
+  parameters:
+    - name: limit
+      description: Limits the results to a specified number, defaults to 50
+      schema:
+        type: integer
+      in: query
+    - name: offset
+      description: Offsets the results to a specified number, defaults to 0
+      schema:
+        type: integer
+      in: query
+    - name: include
+      description: A list of comma-separated related models to include
+      schema:
+        type: string
+      in: query
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            $ref: ../models/PaginatedEmailTemplatesList.v1.yaml
+          examples:
+            default:
+              value:
+                email_templates:
+                  - id: 58
+                    name: some text
+                    template_type: some text
+                  - id: 90
+                    name: some text
+                    template_type: some text
+                pagination:
+                  total_records: 84
+                  current_offset: 99
+                  next_offset: 45
+      description: Successful response - returns an array of `EmailTemplate` entities.
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: ../models/ErrorsList.v1.yaml
+          examples:
+            default:
+              value:
+                errors:
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+                  - domain: some text
+                    attribute: some text
+                    code: some text
+                    message: some text
+      description: A generic error
+    '401':
+      description: You don't have permission to view this EmailTemplate
+    '403':
+      description: You do not have permission for this action
+  operationId: getEmailTemplates
+  summary: List all EmailTemplates
+  description: Gets a list of all `EmailTemplate` entities.

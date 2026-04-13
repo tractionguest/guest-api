@@ -63,6 +63,7 @@ properties:
     type: integer
   custom_fields:
     type: array
+    deprecated: true
     items:
       $ref: ./CustomField.v1.yaml
   host_ids:
@@ -91,9 +92,9 @@ properties:
   parking_stall:
     type: object
     properties:
-      stall_number: 
+      stall_number:
         type: integer
-      parking_lot_id: 
+      parking_lot_id:
         type: integer
-      parking_stall_id: 
+      parking_stall_id:
         type: integer

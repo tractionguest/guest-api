@@ -927,13 +927,13 @@ paths:
                   host_ids:
                     - 96
                     - 2
-                  custom_fields:
-                    - format: string
-                      field_name: some text
-                      field_value: some text
-                    - format: string
-                      field_name: some text
-                      field_value: some text
+                  flex_values:
+                    - flex_definition_id: 1
+                      raw_value: Canada
+                      label: Country
+                    - flex_definition_id: 2
+                      raw_value: English
+                      label: Language
                   email_template_id: 53
                   mobile_number: some text
                   first_name: some text
@@ -2628,6 +2628,13 @@ paths:
                   on_premise: true
                   user_id: 45
                   license_plate: some text
+                  flex_values:
+                    - flex_definition_id: 1
+                      raw_value: Canada
+                      label: Country
+                    - flex_definition_id: 2
+                      raw_value: English
+                      label: Language
         required: true
       tags:
         - Invites

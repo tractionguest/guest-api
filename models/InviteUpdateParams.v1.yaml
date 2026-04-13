@@ -64,7 +64,7 @@ properties:
   flex_values:
     type: array
     items:
-      $ref: ./flexvalue.v1.yaml
+      $ref: ./FlexValue.v1.yaml
   custom_fields:
     type: array
     deprecated: true

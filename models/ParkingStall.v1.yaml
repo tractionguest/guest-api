@@ -18,6 +18,8 @@ properties:
   stall_count:
     type: integer
     description: 'The number of stalls of type in the parking lot.'
+  parking_lot_id:
+    type: integer
   range:
     type: string
     nullable: true

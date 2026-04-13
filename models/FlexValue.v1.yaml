@@ -16,7 +16,7 @@ properties:
     description: The actual value hold by the field, as a string.
   flex_definition_id:
     type: integer
-    description: The unique ID of the flex definition holding the value. Must exist before creating/updating.
+    description: The unique ID of the flex definition holding the value. Must exist before use.
   label:
     type: string
     nullable: true

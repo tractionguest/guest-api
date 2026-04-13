@@ -56,6 +56,10 @@ properties:
     type: string
   email_template_id:
     type: integer
+  flex_values:
+    type: array
+    items:
+      $ref: ./FlexValue.v1.yaml
   custom_fields:
     type: array
     deprecated: true

@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Sign In Solutions VMS API",
-    "version": "0.20.1",
+    "version": "0.21.0",
     "x-logo": {
       "url": "https://signinenterprise.com/wp-content/uploads/tg-logo-light@2.png",
       "backgroundColor": "#FFFFFF",
@@ -1157,14 +1157,14 @@
                       "last_name": "some text",
                       "location_name": "some text",
                       "mobile_number": "some text",
-                      "signed_out_timestamp": "2018-02-10T09:30Z",
+                      "signed_out_timestamp": "2018-02-10T09:30:00Z",
                       "signin_photo_url": "some text",
-                      "signin_timestamp": "2018-02-10T09:30Z",
+                      "signin_timestamp": "2018-02-10T09:30:00Z",
                       "is_signed_out": true,
                       "note": "some text",
                       "signin_acknowledgement": {
                         "code": "some text",
-                        "acknowledged_at": "2018-02-10T09:30Z",
+                        "acknowledged_at": "2018-02-10T09:30:00Z",
                         "id": 99
                       },
                       "signin_data": [
@@ -1375,9 +1375,9 @@
                               "template_id": "some text",
                               "integration": "some text",
                               "nda_status": "some text",
-                              "nda_signed_date": "2018-02-10T09:30Z",
+                              "nda_signed_date": "2018-02-10T09:30:00Z",
                               "envelope_id": "some text",
-                              "sequence": 54,
+                              "sequence": "54",
                               "docusign_id": "some text",
                               "docusign_name": "some text",
                               "title": "some text"
@@ -1386,9 +1386,9 @@
                               "template_id": "some text",
                               "integration": "some text",
                               "nda_status": "some text",
-                              "nda_signed_date": "2018-02-10T09:30Z",
+                              "nda_signed_date": "2018-02-10T09:30:00Z",
                               "envelope_id": "some text",
-                              "sequence": 48,
+                              "sequence": "48",
                               "docusign_id": "some text",
                               "docusign_name": "some text",
                               "title": "some text"
@@ -1415,9 +1415,9 @@
                               "template_id": "some text",
                               "integration": "some text",
                               "nda_status": "some text",
-                              "nda_signed_date": "2018-02-10T09:30Z",
+                              "nda_signed_date": "2018-02-10T09:30:00Z",
                               "envelope_id": "some text",
-                              "sequence": 28,
+                              "sequence": "28",
                               "docusign_id": "some text",
                               "docusign_name": "some text",
                               "title": "some text"
@@ -1426,9 +1426,9 @@
                               "template_id": "some text",
                               "integration": "some text",
                               "nda_status": "some text",
-                              "nda_signed_date": "2018-02-10T09:30Z",
+                              "nda_signed_date": "2018-02-10T09:30:00Z",
                               "envelope_id": "some text",
-                              "sequence": 82,
+                              "sequence": "82",
                               "docusign_id": "some text",
                               "docusign_name": "some text",
                               "title": "some text"
@@ -1571,14 +1571,14 @@
                       "last_name": "some text",
                       "location_name": "some text",
                       "mobile_number": "some text",
-                      "signed_out_timestamp": "2018-02-10T09:30Z",
+                      "signed_out_timestamp": "2018-02-10T09:30:00Z",
                       "signin_photo_url": "some text",
-                      "signin_timestamp": "2018-02-10T09:30Z",
+                      "signin_timestamp": "2018-02-10T09:30:00Z",
                       "is_signed_out": true,
                       "note": "some text",
                       "signin_acknowledgement": {
                         "code": "some text",
-                        "acknowledged_at": "2018-02-10T09:30Z",
+                        "acknowledged_at": "2018-02-10T09:30:00Z",
                         "id": 9
                       },
                       "signin_data": [
@@ -1789,9 +1789,9 @@
                               "template_id": "some text",
                               "integration": "some text",
                               "nda_status": "some text",
-                              "nda_signed_date": "2018-02-10T09:30Z",
+                              "nda_signed_date": "2018-02-10T09:30:00Z",
                               "envelope_id": "some text",
-                              "sequence": 38,
+                              "sequence": "38",
                               "docusign_id": "some text",
                               "docusign_name": "some text",
                               "title": "some text"
@@ -1800,9 +1800,9 @@
                               "template_id": "some text",
                               "integration": "some text",
                               "nda_status": "some text",
-                              "nda_signed_date": "2018-02-10T09:30Z",
+                              "nda_signed_date": "2018-02-10T09:30:00Z",
                               "envelope_id": "some text",
-                              "sequence": 83,
+                              "sequence": "83",
                               "docusign_id": "some text",
                               "docusign_name": "some text",
                               "title": "some text"
@@ -1829,9 +1829,9 @@
                               "template_id": "some text",
                               "integration": "some text",
                               "nda_status": "some text",
-                              "nda_signed_date": "2018-02-10T09:30Z",
+                              "nda_signed_date": "2018-02-10T09:30:00Z",
                               "envelope_id": "some text",
-                              "sequence": 49,
+                              "sequence": "49",
                               "docusign_id": "some text",
                               "docusign_name": "some text",
                               "title": "some text"
@@ -1840,9 +1840,9 @@
                               "template_id": "some text",
                               "integration": "some text",
                               "nda_status": "some text",
-                              "nda_signed_date": "2018-02-10T09:30Z",
+                              "nda_signed_date": "2018-02-10T09:30:00Z",
                               "envelope_id": "some text",
-                              "sequence": 71,
+                              "sequence": "71",
                               "docusign_id": "some text",
                               "docusign_name": "some text",
                               "title": "some text"
@@ -2156,8 +2156,15 @@
                   "email_template_id": {
                     "type": "integer"
                   },
+                  "flex_values": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/paths/~1invites~1%7Binvite_id%7D/put/requestBody/content/application~1json/schema/properties/flex_values/items"
+                    }
+                  },
                   "custom_fields": {
                     "type": "array",
+                    "deprecated": true,
                     "items": {
                       "$ref": "#/paths/~1invites~1%7Binvite_id%7D/put/requestBody/content/application~1json/schema/properties/custom_fields/items"
                     }
@@ -2201,6 +2208,9 @@
                   "group_visit_id": {
                     "type": "integer"
                   },
+                  "license_plate": {
+                    "type": "string"
+                  },
                   "parking_stall": {
                     "type": "object",
                     "properties": {
@@ -2236,16 +2246,16 @@
                       96,
                       2
                     ],
-                    "custom_fields": [
+                    "flex_values": [
                       {
-                        "format": "string",
-                        "field_name": "some text",
-                        "field_value": "some text"
+                        "flex_definition_id": 1,
+                        "raw_value": "Canada",
+                        "label": "Country"
                       },
                       {
-                        "format": "string",
-                        "field_name": "some text",
-                        "field_value": "some text"
+                        "flex_definition_id": 2,
+                        "raw_value": "English",
+                        "label": "Language"
                       }
                     ],
                     "email_template_id": 53,
@@ -2338,7 +2348,7 @@
                         "name": "some text"
                       },
                       "watchlist_colour": "YELLOW",
-                      "template": {
+                      "email_template": {
                         "id": 15,
                         "name": "some text",
                         "template_type": "some text"
@@ -2382,14 +2392,6 @@
                         }
                       ],
                       "mobile_number": "some text",
-                      "invites_parking_lot": {
-                        "id": 123,
-                        "stall_number": 66,
-                        "stall_type": "private",
-                        "parking_lot_name": "some text",
-                        "parking_lot_id": 321,
-                        "parking_stall_id": 332
-                      },
                       "invite_watchlist": {
                         "id": 3,
                         "external_colours": [
@@ -2713,7 +2715,7 @@
                           "id": 37,
                           "first_name": "some text",
                           "last_name": "some text",
-                          "start_date": "2018-02-10T09:30Z",
+                          "start_date": "2018-02-10T09:30:00Z",
                           "location": {
                             "id": 70,
                             "name": "some text"
@@ -3056,21 +3058,13 @@
                           },
                           "end_date": "2020-07-17T01:59:59.999Z",
                           "email": "some text",
-                          "mobile_number": "some text",
-                          "invites_parking_lot": {
-                            "id": 123,
-                            "stall_number": 66,
-                            "stall_type": "private",
-                            "parking_lot_name": "some text",
-                            "parking_lot_id": 321,
-                            "parking_stall_id": 332
-                          }
+                          "mobile_number": "some text"
                         },
                         {
                           "id": 0,
                           "first_name": "some text",
                           "last_name": "some text",
-                          "start_date": "2018-02-10T09:30Z",
+                          "start_date": "2018-02-10T09:30:00Z",
                           "location": {
                             "id": 66,
                             "name": "some text"
@@ -3581,7 +3575,7 @@
                         "name": "some text"
                       },
                       "watchlist_colour": "YELLOW",
-                      "template": {
+                      "email_template": {
                         "id": 15,
                         "name": "some text",
                         "template_type": "some text"
@@ -3847,9 +3841,9 @@
                           "is_acknowledged": true,
                           "last_name": "some text",
                           "location_name": "some text",
-                          "signed_out_timestamp": "2018-02-10T09:30Z",
+                          "signed_out_timestamp": "2018-02-10T09:30:00Z",
                           "signin_photo_url": "some text",
-                          "signin_timestamp": "2018-02-10T09:30Z",
+                          "signin_timestamp": "2018-02-10T09:30:00Z",
                           "hosts": [
                             {
                               "id": 9,
@@ -4029,9 +4023,9 @@
                           "is_acknowledged": true,
                           "last_name": "some text",
                           "location_name": "some text",
-                          "signed_out_timestamp": "2018-02-10T09:30Z",
+                          "signed_out_timestamp": "2018-02-10T09:30:00Z",
                           "signin_photo_url": "some text",
-                          "signin_timestamp": "2018-02-10T09:30Z",
+                          "signin_timestamp": "2018-02-10T09:30:00Z",
                           "hosts": [
                             {
                               "id": 78,
@@ -5448,8 +5442,13 @@
                           "$ref": "#/paths/~1registrations~1%7Bregistration_id%7D/get/responses/200/content/application~1json/schema/properties/visitor"
                         },
                         "invite": {
-                          "$ref": "#/paths/~1registrations~1%7Bregistration_id%7D/get/responses/200/content/application~1json/schema/properties/invite",
-                          "nullable": true
+                          "nullable": true,
+                          "type": "object",
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1registrations~1%7Bregistration_id%7D/get/responses/200/content/application~1json/schema/properties/invite"
+                            }
+                          ]
                         },
                         "photo_url": {
                           "description": "URL of the uploaded photo",
@@ -5477,8 +5476,13 @@
                           "type": "string"
                         },
                         "signin": {
-                          "$ref": "#/paths/~1signins/post/responses/201/content/application~1json/schema",
-                          "nullable": true
+                          "nullable": true,
+                          "type": "object",
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1signins/post/responses/201/content/application~1json/schema"
+                            }
+                          ]
                         }
                       },
                       "required": [
@@ -5583,10 +5587,6 @@
                     ],
                     "location_id": 79,
                     "send_notifications": true,
-                    "photos": [
-                      {},
-                      {}
-                    ],
                     "sms_message": "some text",
                     "first_name": "some text",
                     "last_name": "some text",
@@ -6631,7 +6631,7 @@
                         "name": "some text"
                       },
                       "watchlist_colour": "GREEN",
-                      "template": {
+                      "email_template": {
                         "id": 0,
                         "name": "some text",
                         "template_type": "some text"
@@ -6685,14 +6685,6 @@
                           "some text",
                           "some text"
                         ]
-                      },
-                      "invites_parking_lot": {
-                        "id": 123,
-                        "stall_number": 66,
-                        "stall_type": "private",
-                        "parking_lot_name": "some text",
-                        "parking_lot_id": 321,
-                        "parking_stall_id": 332
                       }
                     }
                   }
@@ -6900,8 +6892,44 @@
                   "email_template_id": {
                     "type": "integer"
                   },
+                  "flex_values": {
+                    "type": "array",
+                    "items": {
+                      "title": "FlexValue",
+                      "description": "A custom value",
+                      "type": "object",
+                      "x-examples": {
+                        "default": {
+                          "id": 1,
+                          "raw_value": "Acme Corporation",
+                          "flex_definition_id": 10,
+                          "label": "Company"
+                        }
+                      },
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "raw_value": {
+                          "type": "string",
+                          "nullable": true,
+                          "description": "The actual value hold by the field, as a string."
+                        },
+                        "flex_definition_id": {
+                          "type": "integer",
+                          "description": "The unique ID of the flex definition holding the value. Must exist before use."
+                        },
+                        "label": {
+                          "type": "string",
+                          "nullable": true,
+                          "description": "A label used when presenting the field on the UI."
+                        }
+                      }
+                    }
+                  },
                   "custom_fields": {
                     "type": "array",
+                    "deprecated": true,
                     "items": {
                       "title": "CustomField",
                       "description": "The root of the CustomField type's schema.",
@@ -6992,12 +7020,21 @@
               "examples": {
                 "default": {
                   "value": {
-                    "checked_in": true,
                     "on_premise": true,
-                    "sent_email": "some text",
                     "user_id": 45,
-                    "device_configuration_id": 14,
-                    "license_plate": "some text"
+                    "license_plate": "some text",
+                    "flex_values": [
+                      {
+                        "flex_definition_id": 1,
+                        "raw_value": "Canada",
+                        "label": "Country"
+                      },
+                      {
+                        "flex_definition_id": 2,
+                        "raw_value": "English",
+                        "label": "Language"
+                      }
+                    ]
                   }
                 }
               }
@@ -7055,7 +7092,7 @@
                         "name": "some text"
                       },
                       "watchlist_colour": "YELLOW",
-                      "template": {
+                      "email_template": {
                         "id": 77,
                         "name": "some text",
                         "template_type": "some text"
@@ -7312,7 +7349,7 @@
                       "some text",
                       "some text"
                     ],
-                    "base64_image": "base 64 encoded image",
+                    "base64_image": "aGVsbG8=",
                     "driver_license": "some text"
                   }
                 }
@@ -7721,7 +7758,7 @@
                       "some text",
                       "some text"
                     ],
-                    "base64_image": "base 64 encoded image",
+                    "base64_image": "aGVsbG8=",
                     "driver_license": "some text"
                   }
                 }
@@ -8611,8 +8648,13 @@
                           "format": "int32"
                         },
                         "registration": {
-                          "$ref": "#/paths/~1signins/post/responses/201/content/application~1json/schema/properties/registration",
-                          "nullable": true
+                          "nullable": true,
+                          "type": "object",
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1signins/post/responses/201/content/application~1json/schema/properties/registration"
+                            }
+                          ]
                         },
                         "mobile_number": {
                           "description": "",
@@ -8631,8 +8673,13 @@
                           "nullable": true
                         },
                         "invite_watchlist": {
-                          "$ref": "#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/invite_watchlist",
-                          "nullable": true
+                          "nullable": true,
+                          "type": "object",
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/invite_watchlist"
+                            }
+                          ]
                         },
                         "hosts": {
                           "type": "array",
@@ -8666,12 +8713,22 @@
                           "nullable": true
                         },
                         "group_visit": {
-                          "$ref": "#/paths/~1group_visits/post/responses/201/content/application~1json/schema",
-                          "nullable": true
+                          "nullable": true,
+                          "type": "object",
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1group_visits/post/responses/201/content/application~1json/schema"
+                            }
+                          ]
                         },
                         "assigned_stall": {
-                          "$ref": "#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/assigned_stall",
-                          "nullable": true
+                          "nullable": true,
+                          "type": "object",
+                          "allOf": [
+                            {
+                              "$ref": "#/paths/~1invites~1%7Binvite_id%7D/get/responses/200/content/application~1json/schema/properties/assigned_stall"
+                            }
+                          ]
                         }
                       },
                       "required": [
@@ -8770,7 +8827,7 @@
                   "Default": {
                     "value": {
                       "id": "uuid",
-                      "created_at": "2018-02-10T09:30Z",
+                      "created_at": "2018-02-10T09:30:00Z",
                       "name": "some text",
                       "email": "some text",
                       "company": "some text",
@@ -8779,7 +8836,7 @@
                         "id": 96,
                         "first_name": "some text",
                         "last_name": "some text",
-                        "start_date": "2018-02-10T09:30Z",
+                        "start_date": "2018-02-10T09:30:00Z",
                         "location": {
                           "id": 95,
                           "name": "some text"
@@ -8821,7 +8878,7 @@
                         "mobile_number": "some text"
                       },
                       "visitor": {
-                        "id": 7,
+                        "id": "uuid",
                         "active": true,
                         "company": "some text",
                         "created_via": "some text",
@@ -8835,14 +8892,14 @@
                         "profile_pic_file_size": "some text",
                         "profile_pic_updated_at": "some text",
                         "watchlist_level": "some text",
-                        "created_at": "2018-02-10T09:30Z",
-                        "updated_at": "2018-02-10T09:30Z"
+                        "created_at": "2018-02-10T09:30:00Z",
+                        "updated_at": "2018-02-10T09:30:00Z"
                       },
                       "guest_responses": [
                         {
                           "title": "some text",
                           "sequence": 9,
-                          "id": 46,
+                          "id": "uuid-1",
                           "page_type": "some text",
                           "custom_fields": [
                             {
@@ -8858,7 +8915,7 @@
                         {
                           "title": "some text",
                           "sequence": 8,
-                          "id": 22,
+                          "id": "uuid-2",
                           "page_type": "some text",
                           "custom_fields": [
                             {
@@ -9622,14 +9679,11 @@
                         {
                           "id": 72,
                           "package_state": "processing",
-                          "recipient": null,
                           "location": {
                             "name": "Vancouver",
                             "id": 2
                           },
-                          "carrier_name": null,
                           "created_at": "2020-08-19T01:59:59.999Z",
-                          "picked_up_at": null,
                           "image": {
                             "full_size_url": "https://i.pravatar.cc/"
                           }
@@ -9637,14 +9691,11 @@
                         {
                           "id": 73,
                           "package_state": "needs_attention",
-                          "recipient": null,
                           "location": {
                             "name": "Default",
                             "id": 1
                           },
-                          "carrier_name": null,
                           "created_at": "2020-09-18T01:59:59.999Z",
-                          "picked_up_at": null,
                           "image": {
                             "full_size_url": "https://i.pravatar.cc/"
                           }
@@ -9826,8 +9877,13 @@
                       "type": "integer"
                     },
                     "recipient": {
-                      "$ref": "#/paths/~1hosts/post/responses/201/content/application~1json/schema",
-                      "nullable": true
+                      "nullable": true,
+                      "type": "object",
+                      "allOf": [
+                        {
+                          "$ref": "#/paths/~1hosts/post/responses/201/content/application~1json/schema"
+                        }
+                      ]
                     },
                     "location": {
                       "$ref": "#/paths/~1locations~1%7Blocation_id%7D/get/responses/200/content/application~1json/schema"
@@ -10975,6 +11031,9 @@
                             "type": "integer",
                             "description": "The number of stalls of type in the parking lot."
                           },
+                          "parking_lot_id": {
+                            "type": "integer"
+                          },
                           "range": {
                             "type": "string",
                             "nullable": true,
@@ -11016,7 +11075,7 @@
                           "id": 1,
                           "parking_lot_id": 1,
                           "stall_type": "Handicap",
-                          "range": 0,
+                          "range": "0",
                           "stall_count": 5,
                           "range_prefix": "H",
                           "range_postfix": ""
@@ -11025,7 +11084,7 @@
                           "id": 2,
                           "parking_lot_id": 1,
                           "stall_type": "General",
-                          "range": 5,
+                          "range": "5",
                           "stall_count": 95,
                           "range_prefix": "P",
                           "range_postfix": ""

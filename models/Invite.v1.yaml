@@ -77,6 +77,14 @@ x-examples:
         created_at: '2018-02-10T09:30Z'
         updated_at: '2018-02-10T09:30Z'
     mobile_number: some text
+    created_by:
+      id: 42
+      first_name: Jane
+      last_name: Doe
+      email: jane.doe@example.com
+      permission_bundles:
+        - ADMIN
+        - INVITES
 description: "The root of the Invite type's schema."
 properties:
   id:
@@ -129,6 +137,9 @@ properties:
     nullable: true
   assigned_stall:
     $ref: ./AssignedStall.v1.yaml
+    nullable: true
+  created_by:
+    $ref: ./CreatedByUser.v1.yaml
     nullable: true
 required:
   - id

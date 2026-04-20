@@ -1,0 +1,39 @@
+title: CreatedByUser
+type: object
+x-examples:
+  default:
+    id: 42
+    first_name: Jane
+    last_name: Doe
+    email: jane.doe@example.com
+    permission_bundles:
+      - ADMIN
+      - INVITES
+description: User who created the invite with their permission bundles
+properties:
+  id:
+    type: integer
+    format: int32
+    description: User ID
+  first_name:
+    type: string
+    description: User's first name
+  last_name:
+    type: string
+    description: User's last name
+  email:
+    type: string
+    format: email
+    description: User's email address
+  permission_bundles:
+    type: array
+    description: List of permission bundle names assigned to the user
+    items:
+      type: string
+      example: ADMIN
+required:
+  - id
+  - first_name
+  - last_name
+  - email
+  - permission_bundles

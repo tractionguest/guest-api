@@ -1037,6 +1037,14 @@ paths:
                       parking_lot_name: some text
                       parking_lot_id: 321
                       parking_stall_id: 332
+                    created_by:
+                      id: 42
+                      first_name: Jane
+                      last_name: Doe
+                      email: jane.doe@example.com
+                      permission_bundles:
+                        - ADMIN
+                        - INVITES
                     invite_watchlist:
                       id: 3
                       external_colours:
@@ -2611,6 +2619,14 @@ paths:
                       parking_lot_name: some text
                       parking_lot_id: 321
                       parking_stall_id: 332
+                    created_by:
+                      id: 42
+                      first_name: Jane
+                      last_name: Doe
+                      email: jane.doe@example.com
+                      permission_bundles:
+                        - ADMIN
+                        - INVITES
           description: Successful response - returns a single `Invite`.
         "400":
           content:

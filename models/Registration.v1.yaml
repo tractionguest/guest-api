@@ -87,8 +87,10 @@ properties:
   visitor:
     $ref: ./Visitor.v1.yaml
   invite:
-    $ref: ./Invite.v1.yaml
     nullable: true
+    type: object
+    allOf:
+      - $ref: ./Invite.v1.yaml
   photo_url:
     description: URL of the uploaded photo
     type: string
@@ -110,8 +112,10 @@ properties:
     description: Datetime when registration was created
     type: string
   signin:
-    $ref: ./Signin.v1.yaml
     nullable: true
+    type: object
+    allOf:
+      - $ref: ./Signin.v1.yaml
 required:
   - id
   - created_at

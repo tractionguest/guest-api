@@ -83,8 +83,10 @@ properties:
     type: integer
     format: int32
   registration:
-    $ref: ./Registration.v1.yaml
     nullable: true
+    type: object
+    allOf:
+      - $ref: ./Registration.v1.yaml
   mobile_number:
     description: ''
     type: string
@@ -99,8 +101,10 @@ properties:
     type: string
     nullable: true
   invite_watchlist:
-    $ref: ./InviteWatchlist.v1.yaml
     nullable: true
+    type: object
+    allOf:
+      - $ref: ./InviteWatchlist.v1.yaml
   hosts:
     type: array
     items:
@@ -125,11 +129,15 @@ properties:
     type: string
     nullable: true
   group_visit:
-    $ref: ./GroupVisit.v1.yaml
     nullable: true
+    type: object
+    allOf:
+      - $ref: ./GroupVisit.v1.yaml
   assigned_stall:
-    $ref: ./AssignedStall.v1.yaml
     nullable: true
+    type: object
+    allOf:
+      - $ref: ./AssignedStall.v1.yaml
 required:
   - id
   - email

@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Sign In Solutions VMS API
-  version: 0.20.1
+  version: 0.21.0
   x-logo:
     url: "https://signinenterprise.com/wp-content/uploads/tg-logo-light@2.png"
     backgroundColor: "#FFFFFF"
@@ -286,14 +286,14 @@ paths:
                     last_name: some text
                     location_name: some text
                     mobile_number: some text
-                    signed_out_timestamp: "2018-02-10T09:30Z"
+                    signed_out_timestamp: "2018-02-10T09:30:00Z"
                     signin_photo_url: some text
-                    signin_timestamp: "2018-02-10T09:30Z"
+                    signin_timestamp: "2018-02-10T09:30:00Z"
                     is_signed_out: true
                     note: some text
                     signin_acknowledgement:
                       code: some text
-                      acknowledged_at: "2018-02-10T09:30Z"
+                      acknowledged_at: "2018-02-10T09:30:00Z"
                       id: 99
                     signin_data:
                       - name: some text
@@ -454,18 +454,18 @@ paths:
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: "2018-02-10T09:30Z"
+                            nda_signed_date: "2018-02-10T09:30:00Z"
                             envelope_id: some text
-                            sequence: 54
+                            sequence: '54'
                             docusign_id: some text
                             docusign_name: some text
                             title: some text
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: "2018-02-10T09:30Z"
+                            nda_signed_date: "2018-02-10T09:30:00Z"
                             envelope_id: some text
-                            sequence: 48
+                            sequence: '48'
                             docusign_id: some text
                             docusign_name: some text
                             title: some text
@@ -482,18 +482,18 @@ paths:
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: "2018-02-10T09:30Z"
+                            nda_signed_date: "2018-02-10T09:30:00Z"
                             envelope_id: some text
-                            sequence: 28
+                            sequence: '28'
                             docusign_id: some text
                             docusign_name: some text
                             title: some text
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: "2018-02-10T09:30Z"
+                            nda_signed_date: "2018-02-10T09:30:00Z"
                             envelope_id: some text
-                            sequence: 82
+                            sequence: '82'
                             docusign_id: some text
                             docusign_name: some text
                             title: some text
@@ -572,14 +572,14 @@ paths:
                     last_name: some text
                     location_name: some text
                     mobile_number: some text
-                    signed_out_timestamp: "2018-02-10T09:30Z"
+                    signed_out_timestamp: "2018-02-10T09:30:00Z"
                     signin_photo_url: some text
-                    signin_timestamp: "2018-02-10T09:30Z"
+                    signin_timestamp: "2018-02-10T09:30:00Z"
                     is_signed_out: true
                     note: some text
                     signin_acknowledgement:
                       code: some text
-                      acknowledged_at: "2018-02-10T09:30Z"
+                      acknowledged_at: "2018-02-10T09:30:00Z"
                       id: 9
                     signin_data:
                       - name: some text
@@ -740,18 +740,18 @@ paths:
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: "2018-02-10T09:30Z"
+                            nda_signed_date: "2018-02-10T09:30:00Z"
                             envelope_id: some text
-                            sequence: 38
+                            sequence: '38'
                             docusign_id: some text
                             docusign_name: some text
                             title: some text
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: "2018-02-10T09:30Z"
+                            nda_signed_date: "2018-02-10T09:30:00Z"
                             envelope_id: some text
-                            sequence: 83
+                            sequence: '83'
                             docusign_id: some text
                             docusign_name: some text
                             title: some text
@@ -768,18 +768,18 @@ paths:
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: "2018-02-10T09:30Z"
+                            nda_signed_date: "2018-02-10T09:30:00Z"
                             envelope_id: some text
-                            sequence: 49
+                            sequence: '49'
                             docusign_id: some text
                             docusign_name: some text
                             title: some text
                           - template_id: some text
                             integration: some text
                             nda_status: some text
-                            nda_signed_date: "2018-02-10T09:30Z"
+                            nda_signed_date: "2018-02-10T09:30:00Z"
                             envelope_id: some text
-                            sequence: 71
+                            sequence: '71'
                             docusign_id: some text
                             docusign_name: some text
                             title: some text
@@ -927,13 +927,13 @@ paths:
                   host_ids:
                     - 96
                     - 2
-                  custom_fields:
-                    - format: string
-                      field_name: some text
-                      field_value: some text
-                    - format: string
-                      field_name: some text
-                      field_value: some text
+                  flex_values:
+                    - flex_definition_id: 1
+                      raw_value: Canada
+                      label: Country
+                    - flex_definition_id: 2
+                      raw_value: English
+                      label: Language
                   email_template_id: 53
                   mobile_number: some text
                   first_name: some text
@@ -999,7 +999,7 @@ paths:
                       id: 20
                       name: some text
                     watchlist_colour: YELLOW
-                    template:
+                    email_template:
                       id: 15
                       name: some text
                       template_type: some text
@@ -1030,13 +1030,6 @@ paths:
                         offset_unit: days
                         email_template_name: some text
                     mobile_number: some text
-                    invites_parking_lot:
-                      id: 123
-                      stall_number: 66
-                      stall_type: private
-                      parking_lot_name: some text
-                      parking_lot_id: 321
-                      parking_stall_id: 332
                     invite_watchlist:
                       id: 3
                       external_colours:
@@ -1181,7 +1174,7 @@ paths:
                       - id: 37
                         first_name: some text
                         last_name: some text
-                        start_date: "2018-02-10T09:30Z"
+                        start_date: "2018-02-10T09:30:00Z"
                         location:
                           id: 70
                           name: some text
@@ -1490,17 +1483,10 @@ paths:
                         end_date: "2020-07-17T01:59:59.999Z"
                         email: some text
                         mobile_number: some text
-                        invites_parking_lot:
-                          id: 123
-                          stall_number: 66
-                          stall_type: private
-                          parking_lot_name: some text
-                          parking_lot_id: 321
-                          parking_stall_id: 332
                       - id: 0
                         first_name: some text
                         last_name: some text
-                        start_date: "2018-02-10T09:30Z"
+                        start_date: "2018-02-10T09:30:00Z"
                         location:
                           id: 66
                           name: some text
@@ -1904,7 +1890,7 @@ paths:
                       id: 20
                       name: some text
                     watchlist_colour: YELLOW
-                    template:
+                    email_template:
                       id: 15
                       name: some text
                       template_type: some text
@@ -2070,9 +2056,9 @@ paths:
                         is_acknowledged: true
                         last_name: some text
                         location_name: some text
-                        signed_out_timestamp: "2018-02-10T09:30Z"
+                        signed_out_timestamp: "2018-02-10T09:30:00Z"
                         signin_photo_url: some text
-                        signin_timestamp: "2018-02-10T09:30Z"
+                        signin_timestamp: "2018-02-10T09:30:00Z"
                         hosts:
                           - id: 9
                             email: some text
@@ -2218,9 +2204,9 @@ paths:
                         is_acknowledged: true
                         last_name: some text
                         location_name: some text
-                        signed_out_timestamp: "2018-02-10T09:30Z"
+                        signed_out_timestamp: "2018-02-10T09:30:00Z"
                         signin_photo_url: some text
-                        signin_timestamp: "2018-02-10T09:30Z"
+                        signin_timestamp: "2018-02-10T09:30:00Z"
                         hosts:
                           - id: 78
                             email: some text
@@ -2428,9 +2414,6 @@ paths:
                     - 49
                   location_id: 79
                   send_notifications: true
-                  photos:
-                    - {}
-                    - {}
                   sms_message: some text
                   first_name: some text
                   last_name: some text
@@ -2565,7 +2548,7 @@ paths:
                       id: 10
                       name: some text
                     watchlist_colour: GREEN
-                    template:
+                    email_template:
                       id: 0
                       name: some text
                       template_type: some text
@@ -2604,13 +2587,6 @@ paths:
                       internal_colours:
                         - some text
                         - some text
-                    invites_parking_lot:
-                      id: 123
-                      stall_number: 66
-                      stall_type: private
-                      parking_lot_name: some text
-                      parking_lot_id: 321
-                      parking_stall_id: 332
           description: Successful response - returns a single `Invite`.
         "400":
           content:
@@ -2649,12 +2625,16 @@ paths:
             examples:
               default:
                 value:
-                  checked_in: true
                   on_premise: true
-                  sent_email: some text
                   user_id: 45
-                  device_configuration_id: 14
                   license_plate: some text
+                  flex_values:
+                    - flex_definition_id: 1
+                      raw_value: Canada
+                      label: Country
+                    - flex_definition_id: 2
+                      raw_value: English
+                      label: Language
         required: true
       tags:
         - Invites
@@ -2695,7 +2675,7 @@ paths:
                       id: 67
                       name: some text
                     watchlist_colour: YELLOW
-                    template:
+                    email_template:
                       id: 77
                       name: some text
                       template_type: some text
@@ -2863,7 +2843,7 @@ paths:
                   aliases:
                     - some text
                     - some text
-                  base64_image: base 64 encoded image
+                  base64_image: aGVsbG8=
                   driver_license: some text
         required: true
       tags:
@@ -3060,7 +3040,7 @@ paths:
                   aliases:
                     - some text
                     - some text
-                  base64_image: base 64 encoded image
+                  base64_image: aGVsbG8=
                   driver_license: some text
         required: true
       tags:
@@ -3340,7 +3320,7 @@ paths:
                 Default:
                   value:
                     id: uuid
-                    created_at: "2018-02-10T09:30Z"
+                    created_at: "2018-02-10T09:30:00Z"
                     name: some text
                     email: some text
                     company: some text
@@ -3349,7 +3329,7 @@ paths:
                       id: 96
                       first_name: some text
                       last_name: some text
-                      start_date: "2018-02-10T09:30Z"
+                      start_date: "2018-02-10T09:30:00Z"
                       location:
                         id: 95
                         name: some text
@@ -3381,7 +3361,7 @@ paths:
                       email: some text
                       mobile_number: some text
                     visitor:
-                      id: 7
+                      id: uuid
                       active: true
                       company: some text
                       created_via: some text
@@ -3395,12 +3375,12 @@ paths:
                       profile_pic_file_size: some text
                       profile_pic_updated_at: some text
                       watchlist_level: some text
-                      created_at: "2018-02-10T09:30Z"
-                      updated_at: "2018-02-10T09:30Z"
+                      created_at: "2018-02-10T09:30:00Z"
+                      updated_at: "2018-02-10T09:30:00Z"
                     guest_responses:
                       - title: some text
                         sequence: 9
-                        id: 46
+                        id: uuid-1
                         page_type: some text
                         custom_fields:
                           - field_name: some text
@@ -3409,7 +3389,7 @@ paths:
                             field_value: some text
                       - title: some text
                         sequence: 8
-                        id: 22
+                        id: uuid-2
                         page_type: some text
                         custom_fields:
                           - field_name: some text
@@ -3753,24 +3733,18 @@ paths:
                           full_size_url: "https://i.pravatar.cc/"
                       - id: 72
                         package_state: processing
-                        recipient: null
                         location:
                           name: Vancouver
                           id: 2
-                        carrier_name: null
                         created_at: "2020-08-19T01:59:59.999Z"
-                        picked_up_at: null
                         image:
                           full_size_url: "https://i.pravatar.cc/"
                       - id: 73
                         package_state: needs_attention
-                        recipient: null
                         location:
                           name: Default
                           id: 1
-                        carrier_name: null
                         created_at: "2020-09-18T01:59:59.999Z"
-                        picked_up_at: null
                         image:
                           full_size_url: "https://i.pravatar.cc/"
                       - id: 74
@@ -4345,14 +4319,14 @@ paths:
                       - id: 1
                         parking_lot_id: 1
                         stall_type: 'Handicap'
-                        range: 0
+                        range: '0'
                         stall_count: 5
                         range_prefix: 'H'
                         range_postfix: ''
                       - id: 2
                         parking_lot_id: 1
                         stall_type: 'General'
-                        range: 5
+                        range: '5'
                         stall_count: 95
                         range_prefix: 'P'
                         range_postfix: ''

@@ -1,0 +1,23 @@
+title: FlexValue
+description: A custom value
+type: object
+x-examples:
+  default:
+    id: 1
+    raw_value: "Acme Corporation"
+    flex_definition_id: 10
+    label: "Company"
+properties:
+  id:
+    type: integer
+  raw_value:
+    type: string
+    nullable: true
+    description: The actual value hold by the field, as a string.
+  flex_definition_id:
+    type: integer
+    description: The unique ID of the flex definition holding the value. Must exist before use.
+  label:
+    type: string
+    nullable: true
+    description: A label used when presenting the field on the UI.

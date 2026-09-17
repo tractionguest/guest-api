@@ -2180,7 +2180,8 @@
                       "RED",
                       "GREEN",
                       "YELLOW",
-                      "ORANGE"
+                      "ORANGE",
+                      "SAFE"
                     ],
                     "type": "string"
                   },
@@ -6483,7 +6484,8 @@
                         "RED",
                         "GREEN",
                         "YELLOW",
-                        "ORANGE"
+                        "ORANGE",
+                        "SAFE"
                       ],
                       "type": "string"
                     },
@@ -8707,7 +8709,8 @@
                             "RED",
                             "GREEN",
                             "YELLOW",
-                            "ORANGE"
+                            "ORANGE",
+                            "SAFE"
                           ],
                           "type": "string",
                           "nullable": true

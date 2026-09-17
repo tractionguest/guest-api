@@ -125,6 +125,7 @@ properties:
       - GREEN
       - YELLOW
       - ORANGE
+      - SAFE
     type: string
     nullable: true
   location:

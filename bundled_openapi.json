@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Sign In Solutions VMS API",
-    "version": "0.21.0",
+    "version": "0.22.0",
     "x-logo": {
       "url": "https://signinenterprise.com/wp-content/uploads/tg-logo-light@2.png",
       "backgroundColor": "#FFFFFF",
@@ -2180,7 +2180,8 @@
                       "RED",
                       "GREEN",
                       "YELLOW",
-                      "ORANGE"
+                      "ORANGE",
+                      "SAFE"
                     ],
                     "type": "string"
                   },
@@ -2501,7 +2502,7 @@
           },
           {
             "name": "with_colours",
-            "description": "A comma separated list of case-insensitive colour values.\ni.e., `red`, `green`, `yellow`, and `orange`",
+            "description": "A comma separated list of case-insensitive colour values.\ni.e., `red`, `green`, `yellow`, `orange`, and `safe`",
             "schema": {
               "type": "string"
             },
@@ -3712,7 +3713,7 @@
           },
           {
             "name": "with_colours",
-            "description": "A comma separated list of case-insensitive colour values.\ni.e., `red`, `green`, `yellow`, and `orange`",
+            "description": "A comma separated list of case-insensitive colour values.\ni.e., `red`, `green`, `yellow`, `orange`, and `safe`",
             "schema": {
               "type": "string"
             },
@@ -6483,7 +6484,8 @@
                         "RED",
                         "GREEN",
                         "YELLOW",
-                        "ORANGE"
+                        "ORANGE",
+                        "SAFE"
                       ],
                       "type": "string"
                     },
@@ -7521,7 +7523,7 @@
           },
           {
             "name": "with_colours",
-            "description": "A comma separated list of case-insensitive colour values.\ni.e., `red`, `green`, `yellow`, and `orange`",
+            "description": "A comma separated list of case-insensitive colour values.\ni.e., `red`, `green`, `yellow`, `orange`, and `safe`",
             "schema": {
               "type": "string"
             },
@@ -7732,7 +7734,8 @@
                       "RED",
                       "YELLOW",
                       "GREEN",
-                      "ORANGE"
+                      "ORANGE",
+                      "SAFE"
                     ],
                     "type": "string"
                   },
@@ -7830,7 +7833,8 @@
                         "RED",
                         "YELLOW",
                         "GREEN",
-                        "ORANGE"
+                        "ORANGE",
+                        "SAFE"
                       ]
                     },
                     "driver_license": {
@@ -8541,6 +8545,8 @@
                           "id": 59,
                           "first_name": "some text",
                           "last_name": "some text",
+                          "checked_in": false,
+                          "status": "invited",
                           "start_date": "2018-02-10T09:30Z",
                           "location": {
                             "id": 54,
@@ -8647,6 +8653,17 @@
                           "type": "integer",
                           "format": "int32"
                         },
+                        "checked_in": {
+                          "type": "boolean"
+                        },
+                        "status": {
+                          "description": "'registered' once the guest completed the registration portal form, otherwise 'invited'.",
+                          "type": "string",
+                          "enum": [
+                            "invited",
+                            "registered"
+                          ]
+                        },
                         "registration": {
                           "nullable": true,
                           "type": "object",
@@ -8692,7 +8709,8 @@
                             "RED",
                             "GREEN",
                             "YELLOW",
-                            "ORANGE"
+                            "ORANGE",
+                            "SAFE"
                           ],
                           "type": "string",
                           "nullable": true

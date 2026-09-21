@@ -5,6 +5,8 @@ x-examples:
     id: 59
     first_name: some text
     last_name: some text
+    checked_in: false
+    status: invited
     start_date: '2018-02-10T09:30Z'
     location:
       id: 54
@@ -82,6 +84,14 @@ properties:
   id:
     type: integer
     format: int32
+  checked_in:
+    type: boolean
+  status:
+    description: "'registered' once the guest completed the registration portal form, otherwise 'invited'."
+    type: string
+    enum:
+      - invited
+      - registered
   registration:
     nullable: true
     type: object
@@ -115,6 +125,7 @@ properties:
       - GREEN
       - YELLOW
       - ORANGE
+      - SAFE
     type: string
     nullable: true
   location:

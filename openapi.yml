@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Sign In Solutions VMS API
-  version: 0.21.0
+  version: 0.22.0
   x-logo:
     url: "https://signinenterprise.com/wp-content/uploads/tg-logo-light@2.png"
     backgroundColor: "#FFFFFF"
@@ -1098,7 +1098,7 @@ paths:
         - name: with_colours
           description: |-
             A comma separated list of case-insensitive colour values.
-            i.e., `red`, `green`, `yellow`, and `orange`
+            i.e., `red`, `green`, `yellow`, `orange`, and `safe`
           schema:
             type: string
           in: query
@@ -1979,7 +1979,7 @@ paths:
         - name: with_colours
           description: |-
             A comma separated list of case-insensitive colour values.
-            i.e., `red`, `green`, `yellow`, and `orange`
+            i.e., `red`, `green`, `yellow`, `orange`, and `safe`
           schema:
             type: string
           in: query
@@ -2950,7 +2950,7 @@ paths:
         - name: with_colours
           description: |-
             A comma separated list of case-insensitive colour values.
-            i.e., `red`, `green`, `yellow`, and `orange`
+            i.e., `red`, `green`, `yellow`, `orange`, and `safe`
           schema:
             type: string
           in: query

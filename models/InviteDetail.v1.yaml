@@ -147,6 +147,7 @@ properties:
       - GREEN
       - YELLOW
       - ORANGE
+      - SAFE
     type: string
   location:
     $ref: ./Location.v1.yaml

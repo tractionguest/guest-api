@@ -38,6 +38,7 @@ properties:
       - YELLOW
       - GREEN
       - ORANGE
+      - SAFE
   driver_license:
     type: string
   created_at:

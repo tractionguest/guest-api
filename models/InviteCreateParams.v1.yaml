@@ -75,6 +75,7 @@ properties:
       - GREEN
       - YELLOW
       - ORANGE
+      - SAFE
     type: string
   title:
     type: string

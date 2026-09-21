@@ -32,6 +32,7 @@ properties:
       - YELLOW
       - GREEN
       - ORANGE
+      - SAFE
     type: string
   base64_image:
     type: string

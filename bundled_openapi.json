@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Sign In Solutions VMS API",
-    "version": "0.23.0",
+    "version": "0.24.0",
     "x-logo": {
       "url": "https://signinenterprise.com/wp-content/uploads/tg-logo-light@2.png",
       "backgroundColor": "#FFFFFF",
@@ -609,6 +609,7 @@
                       "signin_data": [
                         {
                           "name": "some text",
+                          "title": "some text",
                           "custom_fields": [
                             {
                               "format": "string",
@@ -624,6 +625,7 @@
                         },
                         {
                           "name": "some text",
+                          "title": null,
                           "custom_fields": [
                             {
                               "format": "string",
@@ -1039,6 +1041,7 @@
                         "x-examples": {
                           "default": {
                             "name": "some text",
+                            "title": "some text",
                             "custom_fields": [
                               {
                                 "format": "string",
@@ -1062,6 +1065,11 @@
                           },
                           "name": {
                             "type": "string"
+                          },
+                          "title": {
+                            "description": "Title of the sign-in flow page that captured this entry, as configured in the workflow. Null when the page has none.",
+                            "type": "string",
+                            "nullable": true
                           }
                         }
                       }
@@ -1170,6 +1178,7 @@
                       "signin_data": [
                         {
                           "name": "some text",
+                          "title": "some text",
                           "custom_fields": [
                             {
                               "format": "string",
@@ -1185,6 +1194,7 @@
                         },
                         {
                           "name": "some text",
+                          "title": null,
                           "custom_fields": [
                             {
                               "format": "string",
@@ -1584,6 +1594,7 @@
                       "signin_data": [
                         {
                           "name": "some text",
+                          "title": "some text",
                           "custom_fields": [
                             {
                               "format": "string",
@@ -1599,6 +1610,7 @@
                         },
                         {
                           "name": "some text",
+                          "title": null,
                           "custom_fields": [
                             {
                               "format": "string",

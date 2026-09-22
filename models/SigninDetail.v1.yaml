@@ -22,6 +22,7 @@ x-examples:
       id: 31
     signin_data:
       - name: some text
+        title: some text
         custom_fields:
           - format: string
             field_name: some text
@@ -30,6 +31,7 @@ x-examples:
             field_name: some text
             field_value: some text
       - name: some text
+        title: null
         custom_fields:
           - format: string
             field_name: some text

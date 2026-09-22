@@ -3,6 +3,7 @@ type: object
 x-examples:
   default:
     name: some text
+    title: some text
     custom_fields:
       - format: string
         field_name: some text
@@ -17,3 +18,7 @@ properties:
       $ref: ./CustomField.v1.yaml
   name:
     type: string
+  title:
+    description: Title of the sign-in flow page that captured this entry, as configured in the workflow. Null when the page has none.
+    type: string
+    nullable: true

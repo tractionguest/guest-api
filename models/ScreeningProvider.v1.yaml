@@ -1,0 +1,48 @@
+title: ScreeningProvider
+type: object
+description: "An external watchlist screening provider connected to the account. Supported providers and their `type_id` values: Visual Compliance (3), Integration Point (5), FinScan (8), Treasury / International Trade Administration (10), Risk Insights (15), Checkr (18)."
+x-examples:
+  default:
+    id: 12
+    name: Visual Compliance
+    activated: true
+    type_id: 3
+    account_id: 1
+    category_id: 5
+    integration_settings:
+      - field_name: username
+        field_value: vc-user
+      - field_name: password
+        field_value: vc-secret
+properties:
+  id:
+    type: integer
+    description: The unique identifier for the screening provider integration
+  name:
+    type: string
+    description: The provider's display name
+  activated:
+    type: boolean
+    description: Whether the provider is connected, computed from its required credentials being present
+  type_id:
+    type: integer
+    description: The provider type identifier
+  account_id:
+    type: integer
+    description: The account the provider belongs to
+  category_id:
+    type: integer
+    description: The integration category identifier
+  integration_settings:
+    type: array
+    description: The provider's settings, keyed by `field_name`
+    items:
+      $ref: ./ScreeningProviderSetting.v1.yaml
+required:
+  - id
+  - name
+  - activated
+  - type_id
+  - account_id
+  - category_id
+  - integration_settings

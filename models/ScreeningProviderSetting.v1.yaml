@@ -1,0 +1,13 @@
+title: ScreeningProviderSetting
+type: object
+description: A single screening provider setting, stored and read by `field_name` verbatim
+properties:
+  field_name:
+    type: string
+    description: The setting's key
+  field_value:
+    type: string
+    description: The setting's value
+required:
+  - field_name
+  - field_value

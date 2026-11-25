@@ -1,0 +1,22 @@
+title: ScreeningProviderCreateParams
+type: object
+description: The params needed to connect a new ScreeningProvider
+properties:
+  type_id:
+    type: integer
+    description: "The provider type to connect: Visual Compliance (3), Integration Point (5), FinScan (8), Treasury / International Trade Administration (10), Risk Insights (15), Checkr (18)"
+  integration_settings:
+    type: array
+    description: The provider's settings
+    items:
+      $ref: ./ScreeningProviderSetting.v1.yaml
+required:
+  - type_id
+x-examples:
+  default:
+    type_id: 3
+    integration_settings:
+      - field_name: username
+        field_value: vc-user
+      - field_name: password
+        field_value: vc-secret

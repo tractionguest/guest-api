@@ -1,0 +1,14 @@
+title: ScreeningProviderUpdateParams
+type: object
+description: The params to update a connected ScreeningProvider's settings
+properties:
+  integration_settings:
+    type: array
+    description: The settings to assign
+    items:
+      $ref: ./ScreeningProviderSetting.v1.yaml
+x-examples:
+  default:
+    integration_settings:
+      - field_name: username
+        field_value: new-vc-user

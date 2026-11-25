@@ -1,0 +1,57 @@
+title: ScreeningProviderUsage
+type: object
+description: "Guard Dog credit usage for one connected credit-consuming screening provider. Credit fields are null when `available` is false (Guard Dog could not be reached, or the provider is not activated) and also when the contract has unlimited credits, in which case `available` is true."
+x-examples:
+  default:
+    screening_provider_id: 42
+    type_id: 15
+    available: true
+    provider: clear
+    credits_used: 1240
+    credits_remaining: 760
+    credits_purchased: 2000
+    credits_start_date: "2026-01-01"
+    credits_end_date: "2026-12-31"
+properties:
+  screening_provider_id:
+    type: integer
+    description: The screening provider integration the usage belongs to
+  type_id:
+    type: integer
+    description: The provider type identifier
+  available:
+    type: boolean
+    description: Whether usage could be read for this provider
+  provider:
+    type: string
+    description: "Guard Dog's name for the provider: `clear` for Risk Insights, `checkr` for Checkr"
+  credits_used:
+    type: integer
+    description: Credits consumed in the current contract period
+    nullable: true
+  credits_remaining:
+    type: integer
+    description: Credits left in the current contract period, null when unlimited
+    nullable: true
+  credits_purchased:
+    type: integer
+    description: Credits purchased for the current contract period, null when unlimited
+    nullable: true
+  credits_start_date:
+    type: string
+    description: First day of the current contract period
+    nullable: true
+  credits_end_date:
+    type: string
+    description: Last day of the current contract period
+    nullable: true
+required:
+  - screening_provider_id
+  - type_id
+  - available
+  - provider
+  - credits_used
+  - credits_remaining
+  - credits_purchased
+  - credits_start_date
+  - credits_end_date

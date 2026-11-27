@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Sign In Solutions VMS API",
-    "version": "0.23.0",
+    "version": "0.24.0",
     "x-logo": {
       "url": "https://signinenterprise.com/wp-content/uploads/tg-logo-light@2.png",
       "backgroundColor": "#FFFFFF",
@@ -7909,6 +7909,706 @@
         "description": "Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log."
       }
     },
+    "/screening_providers": {
+      "summary": "Path used to manage the list of ScreeningProviders.",
+      "description": "The REST endpoint/path used to list and connect `ScreeningProvider` entities: the external watchlist screening providers connected to the account.",
+      "get": {
+        "tags": [
+          "ScreeningProviders"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Limits the results to a specified number, defaults to 50",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "offset",
+            "description": "Offsets the results to a specified number, defaults to 0",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "PaginatedScreeningProvidersList",
+                  "type": "object",
+                  "properties": {
+                    "screening_providers": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/paths/~1screening_providers/post/responses/201/content/application~1json/schema"
+                      }
+                    },
+                    "pagination": {
+                      "$ref": "#/paths/~1hosts/get/responses/200/content/application~1json/schema/properties/pagination"
+                    }
+                  },
+                  "required": [
+                    "screening_providers",
+                    "pagination"
+                  ]
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "pagination": {
+                        "total_records": 2,
+                        "current_offset": 0,
+                        "next_offset": null
+                      },
+                      "screening_providers": [
+                        {
+                          "id": 12,
+                          "name": "Visual Compliance",
+                          "activated": true,
+                          "type_id": 3,
+                          "account_id": 1,
+                          "category_id": 5,
+                          "integration_settings": [
+                            {
+                              "field_name": "username",
+                              "field_value": "vc-user"
+                            },
+                            {
+                              "field_name": "password",
+                              "field_value": "vc-secret"
+                            }
+                          ]
+                        },
+                        {
+                          "id": 14,
+                          "name": "FinScan",
+                          "activated": false,
+                          "type_id": 8,
+                          "account_id": 1,
+                          "category_id": 5,
+                          "integration_settings": []
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Successful response - returns an array of `ScreeningProvider` entities."
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1hosts/get/responses/400/content/application~1json/schema"
+                }
+              }
+            },
+            "description": "A generic error"
+          }
+        },
+        "security": [
+          {
+            "TractionGuestAuth": [
+              "all",
+              "screening_providers:*",
+              "screening_providers:read"
+            ]
+          }
+        ],
+        "operationId": "getScreeningProviders",
+        "summary": "List all ScreeningProviders",
+        "description": "Gets a list of the account's connected `ScreeningProvider` entities."
+      },
+      "post": {
+        "requestBody": {
+          "description": "The `ScreeningProvider` to connect",
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "ScreeningProviderCreateParams",
+                "type": "object",
+                "description": "The params needed to connect a new ScreeningProvider",
+                "properties": {
+                  "type_id": {
+                    "type": "integer",
+                    "description": "The provider type to connect: Visual Compliance (3), Integration Point (5), FinScan (8), Treasury / International Trade Administration (10), Risk Insights (15), Checkr (18)"
+                  },
+                  "integration_settings": {
+                    "type": "array",
+                    "description": "The provider's settings",
+                    "items": {
+                      "title": "ScreeningProviderSetting",
+                      "type": "object",
+                      "description": "A single screening provider setting, stored and read by `field_name` verbatim",
+                      "properties": {
+                        "field_name": {
+                          "type": "string",
+                          "description": "The setting's key"
+                        },
+                        "field_value": {
+                          "type": "string",
+                          "description": "The setting's value"
+                        }
+                      },
+                      "required": [
+                        "field_name",
+                        "field_value"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "type_id"
+                ],
+                "x-examples": {
+                  "default": {
+                    "type_id": 3,
+                    "integration_settings": [
+                      {
+                        "field_name": "username",
+                        "field_value": "vc-user"
+                      },
+                      {
+                        "field_name": "password",
+                        "field_value": "vc-secret"
+                      }
+                    ]
+                  }
+                }
+              },
+              "examples": {
+                "NewScreeningProvider": {
+                  "value": {
+                    "type_id": 3,
+                    "integration_settings": [
+                      {
+                        "field_name": "username",
+                        "field_value": "vc-user"
+                      },
+                      {
+                        "field_name": "password",
+                        "field_value": "vc-secret"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "tags": [
+          "ScreeningProviders"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "ScreeningProvider",
+                  "type": "object",
+                  "description": "An external watchlist screening provider connected to the account. Supported providers and their `type_id` values: Visual Compliance (3), Integration Point (5), FinScan (8), Treasury / International Trade Administration (10), Risk Insights (15), Checkr (18).",
+                  "x-examples": {
+                    "default": {
+                      "id": 12,
+                      "name": "Visual Compliance",
+                      "activated": true,
+                      "type_id": 3,
+                      "account_id": 1,
+                      "category_id": 5,
+                      "integration_settings": [
+                        {
+                          "field_name": "username",
+                          "field_value": "vc-user"
+                        },
+                        {
+                          "field_name": "password",
+                          "field_value": "vc-secret"
+                        }
+                      ]
+                    }
+                  },
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "The unique identifier for the screening provider integration"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "The provider's display name"
+                    },
+                    "activated": {
+                      "type": "boolean",
+                      "description": "Whether the provider is connected, computed from its required credentials being present"
+                    },
+                    "type_id": {
+                      "type": "integer",
+                      "description": "The provider type identifier"
+                    },
+                    "account_id": {
+                      "type": "integer",
+                      "description": "The account the provider belongs to"
+                    },
+                    "category_id": {
+                      "type": "integer",
+                      "description": "The integration category identifier"
+                    },
+                    "integration_settings": {
+                      "type": "array",
+                      "description": "The provider's settings, keyed by `field_name`",
+                      "items": {
+                        "$ref": "#/paths/~1screening_providers/post/requestBody/content/application~1json/schema/properties/integration_settings/items"
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "activated",
+                    "type_id",
+                    "account_id",
+                    "category_id",
+                    "integration_settings"
+                  ]
+                },
+                "examples": {
+                  "NewScreeningProvider": {
+                    "value": {
+                      "id": 12,
+                      "name": "Visual Compliance",
+                      "activated": true,
+                      "type_id": 3,
+                      "account_id": 1,
+                      "category_id": 5,
+                      "integration_settings": [
+                        {
+                          "field_name": "username",
+                          "field_value": "vc-user"
+                        },
+                        {
+                          "field_name": "password",
+                          "field_value": "vc-secret"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "description": "The newly connected `ScreeningProvider`"
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1hosts/get/responses/400/content/application~1json/schema"
+                }
+              }
+            },
+            "description": "An error happened. A `type_id` outside the supported screening providers is rejected with a not-found error."
+          }
+        },
+        "security": [
+          {
+            "TractionGuestAuth": [
+              "all",
+              "screening_providers:*",
+              "screening_providers:write"
+            ]
+          }
+        ],
+        "operationId": "createScreeningProvider",
+        "summary": "Connect a ScreeningProvider",
+        "description": "Connects a `ScreeningProvider` by creating the integration with its settings. Only the supported screening provider `type_id` values are accepted."
+      }
+    },
+    "/screening_providers/usage": {
+      "summary": "Path used to read Guard Dog credit usage for the account's screening providers.",
+      "description": "The REST endpoint/path used to read credit usage for the account's connected credit-consuming `ScreeningProvider` entities (Risk Insights and Checkr).",
+      "get": {
+        "tags": [
+          "ScreeningProviders"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "ScreeningProvidersUsageList",
+                  "type": "object",
+                  "properties": {
+                    "usage": {
+                      "type": "array",
+                      "items": {
+                        "title": "ScreeningProviderUsage",
+                        "type": "object",
+                        "description": "Guard Dog credit usage for one connected credit-consuming screening provider. Credit fields are null when `available` is false (Guard Dog could not be reached, or the provider is not activated) and also when the contract has unlimited credits, in which case `available` is true.",
+                        "x-examples": {
+                          "default": {
+                            "screening_provider_id": 42,
+                            "type_id": 15,
+                            "available": true,
+                            "provider": "clear",
+                            "credits_used": 1240,
+                            "credits_remaining": 760,
+                            "credits_purchased": 2000,
+                            "credits_start_date": "2026-01-01",
+                            "credits_end_date": "2026-12-31"
+                          }
+                        },
+                        "properties": {
+                          "screening_provider_id": {
+                            "type": "integer",
+                            "description": "The screening provider integration the usage belongs to"
+                          },
+                          "type_id": {
+                            "type": "integer",
+                            "description": "The provider type identifier"
+                          },
+                          "available": {
+                            "type": "boolean",
+                            "description": "Whether usage could be read for this provider"
+                          },
+                          "provider": {
+                            "type": "string",
+                            "description": "Guard Dog's name for the provider: `clear` for Risk Insights, `checkr` for Checkr"
+                          },
+                          "credits_used": {
+                            "type": "integer",
+                            "description": "Credits consumed in the current contract period",
+                            "nullable": true
+                          },
+                          "credits_remaining": {
+                            "type": "integer",
+                            "description": "Credits left in the current contract period, null when unlimited",
+                            "nullable": true
+                          },
+                          "credits_purchased": {
+                            "type": "integer",
+                            "description": "Credits purchased for the current contract period, null when unlimited",
+                            "nullable": true
+                          },
+                          "credits_start_date": {
+                            "type": "string",
+                            "description": "First day of the current contract period",
+                            "nullable": true
+                          },
+                          "credits_end_date": {
+                            "type": "string",
+                            "description": "Last day of the current contract period",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "screening_provider_id",
+                          "type_id",
+                          "available",
+                          "provider",
+                          "credits_used",
+                          "credits_remaining",
+                          "credits_purchased",
+                          "credits_start_date",
+                          "credits_end_date"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "usage"
+                  ]
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "usage": [
+                        {
+                          "screening_provider_id": 42,
+                          "type_id": 15,
+                          "available": true,
+                          "provider": "clear",
+                          "credits_used": 1240,
+                          "credits_remaining": 760,
+                          "credits_purchased": 2000,
+                          "credits_start_date": "2026-01-01",
+                          "credits_end_date": "2026-12-31"
+                        },
+                        {
+                          "screening_provider_id": 43,
+                          "type_id": 18,
+                          "available": false,
+                          "provider": "checkr",
+                          "credits_used": null,
+                          "credits_remaining": null,
+                          "credits_purchased": null,
+                          "credits_start_date": null,
+                          "credits_end_date": null
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Successful response - returns one usage entry per connected credit-consuming `ScreeningProvider`, or an empty array when none are connected."
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1hosts/get/responses/400/content/application~1json/schema"
+                }
+              }
+            },
+            "description": "A generic error"
+          }
+        },
+        "security": [
+          {
+            "TractionGuestAuth": [
+              "all",
+              "screening_providers:*",
+              "screening_providers:read"
+            ]
+          }
+        ],
+        "operationId": "getScreeningProvidersUsage",
+        "summary": "Read ScreeningProvider credit usage",
+        "description": "Reads Guard Dog credit usage for each of the account's connected credit-consuming `ScreeningProvider` entities. Credits are billed against a contract-level pool shared by every provider on the same credential, so providers sharing one credential report identical figures. Not paginated."
+      }
+    },
+    "/screening_providers/{screening_provider_id}": {
+      "summary": "Path used to manage a single ScreeningProvider.",
+      "description": "The REST endpoint/path used to get, configure, and disconnect single instances of a `ScreeningProvider`.",
+      "get": {
+        "tags": [
+          "ScreeningProviders"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1screening_providers/post/responses/201/content/application~1json/schema"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "id": 12,
+                      "name": "Visual Compliance",
+                      "activated": true,
+                      "type_id": 3,
+                      "account_id": 1,
+                      "category_id": 5,
+                      "integration_settings": [
+                        {
+                          "field_name": "username",
+                          "field_value": "vc-user"
+                        },
+                        {
+                          "field_name": "password",
+                          "field_value": "vc-secret"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Successful response - returns a single `ScreeningProvider`."
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1hosts/get/responses/400/content/application~1json/schema"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "TractionGuestAuth": [
+              "all",
+              "screening_providers:*",
+              "screening_providers:read"
+            ]
+          }
+        ],
+        "operationId": "getScreeningProvider",
+        "summary": "Get a ScreeningProvider",
+        "description": "Gets the details of a single instance of a `ScreeningProvider`."
+      },
+      "put": {
+        "requestBody": {
+          "description": "The screening provider settings to update",
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "ScreeningProviderUpdateParams",
+                "type": "object",
+                "description": "The params to update a connected ScreeningProvider's settings",
+                "properties": {
+                  "integration_settings": {
+                    "type": "array",
+                    "description": "The settings to assign",
+                    "items": {
+                      "$ref": "#/paths/~1screening_providers/post/requestBody/content/application~1json/schema/properties/integration_settings/items"
+                    }
+                  }
+                },
+                "x-examples": {
+                  "default": {
+                    "integration_settings": [
+                      {
+                        "field_name": "username",
+                        "field_value": "new-vc-user"
+                      }
+                    ]
+                  }
+                }
+              },
+              "examples": {
+                "UpdatedScreeningProvider": {
+                  "value": {
+                    "integration_settings": [
+                      {
+                        "field_name": "username",
+                        "field_value": "new-vc-user"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "tags": [
+          "ScreeningProviders"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1screening_providers/post/responses/201/content/application~1json/schema"
+                },
+                "examples": {
+                  "UpdatedScreeningProvider": {
+                    "value": {
+                      "id": 12,
+                      "name": "Visual Compliance",
+                      "activated": true,
+                      "type_id": 3,
+                      "account_id": 1,
+                      "category_id": 5,
+                      "integration_settings": [
+                        {
+                          "field_name": "username",
+                          "field_value": "new-vc-user"
+                        },
+                        {
+                          "field_name": "password",
+                          "field_value": "vc-secret"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "description": "The complete updated `ScreeningProvider`"
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1hosts/get/responses/400/content/application~1json/schema"
+                }
+              }
+            },
+            "description": "Bad request"
+          }
+        },
+        "security": [
+          {
+            "TractionGuestAuth": [
+              "all",
+              "screening_providers:*",
+              "screening_providers:write"
+            ]
+          }
+        ],
+        "operationId": "updateScreeningProvider",
+        "summary": "Update a ScreeningProvider",
+        "description": "Updates the settings of a connected `ScreeningProvider`."
+      },
+      "delete": {
+        "tags": [
+          "ScreeningProviders"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idempotencyKey"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The ScreeningProvider has been disconnected"
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/paths/~1hosts/get/responses/400/content/application~1json/schema"
+                }
+              }
+            },
+            "description": "Bad request"
+          }
+        },
+        "security": [
+          {
+            "TractionGuestAuth": [
+              "all",
+              "screening_providers:*",
+              "screening_providers:write"
+            ]
+          }
+        ],
+        "operationId": "deleteScreeningProvider",
+        "summary": "Disconnect a ScreeningProvider",
+        "description": "Disconnects a `ScreeningProvider`, removing the integration and its settings."
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "screening_provider_id",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/audit_logs": {
       "summary": "Path used to manage the list of AuditLogs.",
       "description": "The REST endpoint/path used to list zero or more `AuditLog` entities.  This path contains a `GET` operation to perform the list task.",
@@ -11420,6 +12120,10 @@
     {
       "name": "GroupVisits",
       "description": "All endpoints related to Group Visits (Appointments)."
+    },
+    {
+      "name": "ScreeningProviders",
+      "description": "All endpoints related to the external watchlist screening providers connected to an account"
     }
   ]
 }

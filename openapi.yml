@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Sign In Solutions VMS API
-  version: 0.23.0
+  version: 0.24.0
   x-logo:
     url: "https://signinenterprise.com/wp-content/uploads/tg-logo-light@2.png"
     backgroundColor: "#FFFFFF"
@@ -3082,6 +3082,297 @@ paths:
       operationId: createWatchlist
       summary: Create Watchlist
       description: "Create a new `Watchlist` record. Please note, every action taken against this endpoint is recorded in the audit log."
+  /screening_providers:
+    summary: Path used to manage the list of ScreeningProviders.
+    description: "The REST endpoint/path used to list and connect `ScreeningProvider` entities: the external watchlist screening providers connected to the account."
+    get:
+      tags:
+        - ScreeningProviders
+      parameters:
+        - name: limit
+          description: "Limits the results to a specified number, defaults to 50"
+          schema:
+            type: integer
+          in: query
+        - name: offset
+          description: "Offsets the results to a specified number, defaults to 0"
+          schema:
+            type: integer
+          in: query
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: ./models/PaginatedScreeningProvidersList.v1.yaml
+              examples:
+                default:
+                  value:
+                    pagination:
+                      total_records: 2
+                      current_offset: 0
+                      next_offset: null
+                    screening_providers:
+                      - id: 12
+                        name: Visual Compliance
+                        activated: true
+                        type_id: 3
+                        account_id: 1
+                        category_id: 5
+                        integration_settings:
+                          - field_name: username
+                            field_value: vc-user
+                          - field_name: password
+                            field_value: vc-secret
+                      - id: 14
+                        name: FinScan
+                        activated: false
+                        type_id: 8
+                        account_id: 1
+                        category_id: 5
+                        integration_settings: []
+          description: Successful response - returns an array of `ScreeningProvider` entities.
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+          description: A generic error
+      security:
+        - TractionGuestAuth:
+            - all
+            - "screening_providers:*"
+            - "screening_providers:read"
+      operationId: getScreeningProviders
+      summary: List all ScreeningProviders
+      description: Gets a list of the account's connected `ScreeningProvider` entities.
+    post:
+      requestBody:
+        description: The `ScreeningProvider` to connect
+        content:
+          application/json:
+            schema:
+              $ref: ./models/ScreeningProviderCreateParams.v1.yaml
+            examples:
+              NewScreeningProvider:
+                value:
+                  type_id: 3
+                  integration_settings:
+                    - field_name: username
+                      field_value: vc-user
+                    - field_name: password
+                      field_value: vc-secret
+        required: true
+      tags:
+        - ScreeningProviders
+      parameters:
+        - $ref: "#/components/parameters/idempotencyKey"
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ScreeningProvider.v1.yaml
+              examples:
+                NewScreeningProvider:
+                  value:
+                    id: 12
+                    name: Visual Compliance
+                    activated: true
+                    type_id: 3
+                    account_id: 1
+                    category_id: 5
+                    integration_settings:
+                      - field_name: username
+                        field_value: vc-user
+                      - field_name: password
+                        field_value: vc-secret
+          description: The newly connected `ScreeningProvider`
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+          description: "An error happened. A `type_id` outside the supported screening providers is rejected with a not-found error."
+      security:
+        - TractionGuestAuth:
+            - all
+            - "screening_providers:*"
+            - "screening_providers:write"
+      operationId: createScreeningProvider
+      summary: Connect a ScreeningProvider
+      description: "Connects a `ScreeningProvider` by creating the integration with its settings. Only the supported screening provider `type_id` values are accepted."
+  /screening_providers/usage:
+    summary: Path used to read Guard Dog credit usage for the account's screening providers.
+    description: "The REST endpoint/path used to read credit usage for the account's connected credit-consuming `ScreeningProvider` entities (Risk Insights and Checkr)."
+    get:
+      tags:
+        - ScreeningProviders
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ScreeningProvidersUsageList.v1.yaml
+              examples:
+                default:
+                  value:
+                    usage:
+                      - screening_provider_id: 42
+                        type_id: 15
+                        available: true
+                        provider: clear
+                        credits_used: 1240
+                        credits_remaining: 760
+                        credits_purchased: 2000
+                        credits_start_date: "2026-01-01"
+                        credits_end_date: "2026-12-31"
+                      - screening_provider_id: 43
+                        type_id: 18
+                        available: false
+                        provider: checkr
+                        credits_used: null
+                        credits_remaining: null
+                        credits_purchased: null
+                        credits_start_date: null
+                        credits_end_date: null
+          description: "Successful response - returns one usage entry per connected credit-consuming `ScreeningProvider`, or an empty array when none are connected."
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+          description: A generic error
+      security:
+        - TractionGuestAuth:
+            - all
+            - "screening_providers:*"
+            - "screening_providers:read"
+      operationId: getScreeningProvidersUsage
+      summary: Read ScreeningProvider credit usage
+      description: "Reads Guard Dog credit usage for each of the account's connected credit-consuming `ScreeningProvider` entities. Credits are billed against a contract-level pool shared by every provider on the same credential, so providers sharing one credential report identical figures. Not paginated."
+  "/screening_providers/{screening_provider_id}":
+    summary: Path used to manage a single ScreeningProvider.
+    description: The REST endpoint/path used to get, configure, and disconnect single instances of a `ScreeningProvider`.
+    get:
+      tags:
+        - ScreeningProviders
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ScreeningProvider.v1.yaml
+              examples:
+                default:
+                  value:
+                    id: 12
+                    name: Visual Compliance
+                    activated: true
+                    type_id: 3
+                    account_id: 1
+                    category_id: 5
+                    integration_settings:
+                      - field_name: username
+                        field_value: vc-user
+                      - field_name: password
+                        field_value: vc-secret
+          description: Successful response - returns a single `ScreeningProvider`.
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+          description: ""
+      security:
+        - TractionGuestAuth:
+            - all
+            - "screening_providers:*"
+            - "screening_providers:read"
+      operationId: getScreeningProvider
+      summary: Get a ScreeningProvider
+      description: Gets the details of a single instance of a `ScreeningProvider`.
+    put:
+      requestBody:
+        description: The screening provider settings to update
+        content:
+          application/json:
+            schema:
+              $ref: ./models/ScreeningProviderUpdateParams.v1.yaml
+            examples:
+              UpdatedScreeningProvider:
+                value:
+                  integration_settings:
+                    - field_name: username
+                      field_value: new-vc-user
+        required: true
+      tags:
+        - ScreeningProviders
+      parameters:
+        - $ref: "#/components/parameters/idempotencyKey"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ScreeningProvider.v1.yaml
+              examples:
+                UpdatedScreeningProvider:
+                  value:
+                    id: 12
+                    name: Visual Compliance
+                    activated: true
+                    type_id: 3
+                    account_id: 1
+                    category_id: 5
+                    integration_settings:
+                      - field_name: username
+                        field_value: new-vc-user
+                      - field_name: password
+                        field_value: vc-secret
+          description: The complete updated `ScreeningProvider`
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+          description: Bad request
+      security:
+        - TractionGuestAuth:
+            - all
+            - "screening_providers:*"
+            - "screening_providers:write"
+      operationId: updateScreeningProvider
+      summary: Update a ScreeningProvider
+      description: Updates the settings of a connected `ScreeningProvider`.
+    delete:
+      tags:
+        - ScreeningProviders
+      parameters:
+        - $ref: "#/components/parameters/idempotencyKey"
+      responses:
+        "204":
+          description: The ScreeningProvider has been disconnected
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ErrorsList.v1.yaml
+          description: Bad request
+      security:
+        - TractionGuestAuth:
+            - all
+            - "screening_providers:*"
+            - "screening_providers:write"
+      operationId: deleteScreeningProvider
+      summary: Disconnect a ScreeningProvider
+      description: Disconnects a `ScreeningProvider`, removing the integration and its settings.
+    parameters:
+      - schema:
+          type: string
+        name: screening_provider_id
+        in: path
+        required: true
   /audit_logs:
     summary: Path used to manage the list of AuditLogs.
     description: The REST endpoint/path used to list zero or more `AuditLog` entities.  This path contains a `GET` operation to perform the list task.
@@ -4492,3 +4783,5 @@ tags:
     description: All endpoints related to Batch-type actions.
   - name: GroupVisits
     description: All endpoints related to Group Visits (Appointments).
+  - name: ScreeningProviders
+    description: All endpoints related to the external watchlist screening providers connected to an account

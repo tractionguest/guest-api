@@ -1,0 +1,12 @@
+title: PaginatedScreeningProvidersList
+type: object
+properties:
+  screening_providers:
+    type: array
+    items:
+      $ref: ./ScreeningProvider.v1.yaml
+  pagination:
+    $ref: ./Pagination.v1.yaml
+required:
+  - screening_providers
+  - pagination

@@ -1,0 +1,9 @@
+title: ScreeningProvidersUsageList
+type: object
+properties:
+  usage:
+    type: array
+    items:
+      $ref: ./ScreeningProviderUsage.v1.yaml
+required:
+  - usage
